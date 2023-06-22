@@ -1,0 +1,15 @@
+.content {
+  padding: 0.5vmin;
+  background-color: var(--surface-container-highest);
+  border-top: solid 2px var(--error);
+  box-shadow: var(--dp7);
+  overflow: hidden;
+}
+
+.isDone {
+  color: var(--outlined);
+}
+
+.notDone {
+  color: var(--error);
+}

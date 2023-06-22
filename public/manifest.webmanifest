@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json.schemastore.org/web-manifest",
+  "short_name": "RyS",
+  "name": "R&S Asesoría Jurídica Especializada S.A.S",
+  "description": "description",
+  "dir": "auto",
+  "shortcuts": [
+{
+  "name": "Demandados",
+  "url": "/Demandados"
+}, {
+  "name": "Nueva Nota",
+  "url": "/NuevaNota"
+}
+  ],
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icons/mstile-70x70.png",
+      "sizes": "70x70",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/mstile-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "maskable monochrome any"
+    },
+    {
+      "src": "icons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "maskable monochrome any"
+    },
+    {
+      "src": "icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+
+    {
+      "src": "icons/favicon-194x194.png",
+      "sizes": "194x194",
+      "type": "image/png",
+      "purpose": "maskable monochrome any"
+    },
+    {
+      "src": "icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "background_color": "#006686",
+  "theme_color": "#ffd1ac",
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "any"
+}

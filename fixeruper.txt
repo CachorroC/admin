@@ -1,0 +1,67 @@
+para hacer peticiones sin https:
+  process.env[ "NODE_TLS_REJECT_UNAUTHORIZED" ] = "0"
+
+para hacer componentes de jsx que sean asyncrónicos sin activar el Promise<Element> is not a JSX Element error:
+  {/* @ts-expect-error Async Server Component */ }
+
+  https://insiders.vscode.dev/github/CachorroC/app/blob/notebook/src/app/Procesos/page.tsx
+
+
+
+promessing but not quite:
+
+ const act = getActuacionFecha(
+              { idProceso: row.idProceso }
+            ).then(
+              (
+                fullfiled
+              ) => {
+                const fl = fullfiled;
+                return fl;
+              },
+              (async() => await fetchRetry(
+                row.idProceso
+              ))
+            );
+
+
+
+
+
+
+
+  procesos.forEach(
+    (
+      proceso, index, procArr
+    ) => {
+
+      const iOfA = `${index + 1}-${procArr.length}`;
+      setTimeout(
+        async () => {
+          const idProceso = proceso.idProceso;
+          const helper = await fetchActuaciones(
+            idProceso,
+            iOfA
+          );
+          helpers.push(
+            helper
+          );
+          if ( helper.acts[0] ) {
+            const fechaUltimaAct = helper.acts[ 0 ].fechaActuacion;
+            rows.push(
+              <Suspense key={ proceso.idProceso } fallback={<CardSkeleton/>}>
+                <Card key={ proceso.idProceso } index={  index} path={ '/Procesos' } llaveProceso={ proceso.llaveProceso } array={ procArr} title={ proceso.sujetosProcesales } actuacion={ false }>
+                  <Suspense fallback={<sub className={card.date}>loading</sub>}>
+                    <sub className={card.date}>{fixFechas(
+                      fechaUltimaAct
+                    )}</sub>
+                  </Suspense>
+                </Card>
+              </Suspense>
+            );
+          }
+        },
+        index * 2000
+      );
+    }
+  );
