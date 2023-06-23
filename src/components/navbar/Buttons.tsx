@@ -1,9 +1,9 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import navbar from '#@/components/navbar/navbar.module.scss';
-import { useNavigator } from '#@/app/search-context';
 import Link from 'next/link';
 import { useModal } from '#@/app/modal-context';
+import { useNavigator } from '#@/app/search-context';
 
 export const ForwardButton = () => {
   const [

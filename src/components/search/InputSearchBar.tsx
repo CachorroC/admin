@@ -1,8 +1,7 @@
 'use client';
 import { usePathname } from 'next/navigation';
 import searchbar from '#@/components/search/searchbar.module.scss';
-import { useSearch } from '#@/app/search-context';
-import { useNavigator } from '#@/app/search-context';
+import { useNavigator, useSearch } from '#@/app/search-context';
 
 export default function InputSearchBar() {
   const [

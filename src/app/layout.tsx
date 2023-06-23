@@ -1,4 +1,5 @@
-import './globals.css';
+import '#@/styles/css/globals.css';
+import 'material-symbols';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import Script from 'next/script';
@@ -11,6 +12,10 @@ import {
 } from '#@/styles/fonts/fonts';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { ReactNode } from 'react';
+import { SearchProvider } from './search-context';
+import { ModalProvider } from './modal-context';
+import { NoteProvider } from './notes-context';
+import layout from '#@/styles/scss/layout.module.scss';
 
 
 
@@ -116,16 +121,31 @@ export const metadata: Metadata = {
 
 export default function RootLayout(
   {
-    children,modal
+    children,modal, header
   }: {
-      children: ReactNode; modal: ReactNode
+      children: ReactNode; modal: ReactNode; header: ReactNode
 }
 ) {
   return (
     <html lang="en">
       <body className={ `${ poiret.variable } ${ raleway.variable } ${ inter.variable } ${ roboto.variable } ${ josefina.variable } [ color-scheme: light dark ]` }>
-        {modal}
-        { children }
+        <ModalProvider>
+          <SearchProvider>
+            <NoteProvider>
+              {modal}
+              <div className={ layout.container }>
+
+                <div className={ layout.header }>
+                  {header}
+                </div>
+
+                <div className={ layout.body }>
+                  {children}
+                </div>
+              </div>
+            </NoteProvider>
+          </SearchProvider>
+        </ModalProvider>
         <Script src={ `${ getBaseUrl() }/service-worker.js` } />
       </body>
     </html>

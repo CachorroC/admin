@@ -7,15 +7,12 @@ import {
   useParams,
 } from 'next/navigation';
 import type { Route } from 'next';
-import { useNavigator } from '#@/app/search-context';
 import searchbar from '#@/components/search/searchbar.module.scss';
 import { ReactNode, Fragment } from 'react';
-import { useModal } from '#@/app/modal-context';
-import card from '#@/components/card/card.module.scss';
-import Heading from '../typográficos/Heading';
 import { intFecha } from '#@/lib/types/mongodb';
 import { fixFechas } from '#@/lib/fix';
 import typography from '#@/components/typográficos/typography.module.scss';
+import { useNavigator } from '#@/app/search-context';
 
 export const LinkCard = (
   {
@@ -35,10 +32,7 @@ export const LinkCard = (
     isNavOpen,
     setIsNavOpen
   ] = useNavigator();
-  const [
-    isOpen,
-    setIsOpen
-  ] = useModal();
+
 
   const href = (
     llaveProceso
@@ -60,9 +54,7 @@ export const LinkCard = (
     setIsNavOpen(
       false
     );
-    setIsOpen(
-      true
-    );
+
   };
   return (
     <div className={`${searchbar.container} ${isActive && searchbar.active  }`}>

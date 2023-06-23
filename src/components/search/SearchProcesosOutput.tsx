@@ -1,9 +1,9 @@
 'use client';
-import { useSearch } from '#@/app/search-context';
 import { monDemandado } from '#@/lib/types/mongodb';
 import { LinkCard } from './link';
 import { intFecha } from '#@/lib/types/mongodb';
 import typography from '#@/components/typográficos/typography.module.scss';
+import { useSearch } from '#@/app/search-context';
 
 export default function SearchOutputList (
   {

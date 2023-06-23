@@ -4,11 +4,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import card from '#@/components/card/card.module.scss';
-import layout from '#@/styles/css/layout.module.css';
-import { useNavigator } from '#@/app/search-context';
 import { useModal } from '#@/app/modal-context';
-import typography from '#@/components/typográficos/typography.module.scss';
-import { raleway } from '#@/styles/fonts/fonts';
+import typography from '#@/styles/fonts/typography.module.scss';
+import { useNavigator } from '#@/app/search-context';
 export const Card = (
   {
     name,
@@ -47,13 +45,12 @@ export const Card = (
   const href = (
     llaveProceso
       ? idProceso
-        ? `${path}/${llaveProceso}/${idProceso}/Actuaciones`
+        ? `${path}/${llaveProceso}/${idProceso}`
         : `${path}/${llaveProceso}`
       : `${path}`
   ) as Route;
   const isActive =
     pathname === href ||
-    pathname === `${path}/${llaveProceso}/${idProceso}/Actuaciones` ||
     pathname === `${path}/${llaveProceso}/${idProceso}` ||
     pathname === `${path}/${llaveProceso}` ||
     pathname === path;
@@ -62,7 +59,9 @@ export const Card = (
       <div className={card.layout}>
         <h1 className={typography.titleMedium}>{name}</h1>
 
-        {children}
+        <div className={ card.content }>
+          {children}
+        </div>
 
         <Link
           onClick={clickHandler}
@@ -72,7 +71,7 @@ export const Card = (
             : card.link}
         >
           <span className={`material-symbols-outlined ${card.icon}`}>
-            {icon ?? 'star'}
+            {icon ?? 'open_in_new'}
           </span>
         </Link>
       </div>

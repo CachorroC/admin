@@ -1,6 +1,6 @@
 import clientPromise from '#@/lib/mongodb';
-import { intCarpetaDemandado, monCarpetaDemandado } from '../types/demandados';
 import { NextResponse } from 'next/server';
+import { monCarpetaDemandado, intCarpetaDemandado } from '../types/demandados';
 const Collection = async () => {
   const client = await clientPromise;
   if ( !client ) {

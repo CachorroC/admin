@@ -43,7 +43,7 @@ export function useNoter() {
 
   if (context === null) {
     throw new Error(
-      'useModal must be used within a ModalProvider'
+      'useModal must be used within NoteProvider'
     );
   }
 

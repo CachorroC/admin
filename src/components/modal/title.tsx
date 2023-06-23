@@ -1,9 +1,9 @@
 'use client';
 
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { useSelectedLayoutSegment, usePathname } from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
 import typeface from '#@/styles/fonts/typeface.module.scss';
-import { useNavigator } from '#@/app/(context)/search-context';
+import { useNavigator } from '#@/app/search-context';
 
 export default function Title(
   { helper }: { helper?: string }
@@ -12,7 +12,7 @@ export default function Title(
     isNavOpen,
     setIsNavOpen
   ] = useNavigator();
-
+  const pathname = usePathname();
   const segment = useSelectedLayoutSegment();
   const today = new Date();
   let day;
@@ -62,12 +62,15 @@ export default function Title(
     'diciembre ',
   ];
   return (
-    <h1 className={isNavOpen
-      ? typeface.drawer
-      : typeface.navbar}>
-      {helper ?? `${days[today.getDay()]}, ${fixFechas(
-        today.toString()
-      )}`}
-    </h1>
+    <>
+      <h1 className={isNavOpen
+        ? typeface.drawer
+        : typeface.navbar}>
+        {helper ?? `${days[today.getDay()]}, ${fixFechas(
+          today.toString()
+        )}`}
+      </h1>
+      <h1>{segment ?? pathname}</h1>
+    </>
   );
 }

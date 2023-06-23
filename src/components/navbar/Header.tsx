@@ -1,7 +1,6 @@
 'use client';
 import layout from '#@/styles/scss/layout.module.scss';
 import useMedia from './mediaQuery';
-import typeface from '#@/components/typográficos/typeface.module.scss';
 import InputSearchBar from '#@/components/search/InputSearchBar';
 import { Suspense } from 'react';
 import {
@@ -12,6 +11,7 @@ import {
 } from './Buttons';
 import Drawer from './drawer';
 import { ButtonSkeleton } from './ButtonSkeleton';
+import typeface from '#@/styles/fonts/typeface.module.scss';
 export default function Header (
   { children }: { children: React.ReactNode }
 ) {

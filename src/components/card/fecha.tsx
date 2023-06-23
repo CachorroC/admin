@@ -5,7 +5,7 @@ import typography from '#@/components/typográficos/typography.module.scss';
 export function Fecha(
   { helper }: { helper: string | null | undefined }
 ) {
-  return <sub className={typography.labelSmall}>{fixFechas(
+  return <sub className={`${typography.labelSmall} ${card.date}`}>{fixFechas(
     helper
   )}</sub>;
 }

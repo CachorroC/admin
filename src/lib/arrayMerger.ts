@@ -2,7 +2,7 @@ import { intConsultaNumeroRadicacion } from './types/procesos';
 import { intProceso, intActuacion, IntActuaciones } from '#@/lib/types/procesos';
 import { monDemandado, intFecha } from './types/mongodb';
 import { monNota } from '#@/lib/types/notas';
-import { intJuzgados } from '#@/lib/types/demandados';
+import { monCarpetaDemandado } from './types/demandados';
 
 export function arrayMergerByidProceso (
   { a, b }: {
@@ -44,8 +44,8 @@ export function arrayMergerByidProceso (
 
 export function arrayMergerByllaveProceso (
   { a, b }: {
-    a: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intJuzgados[] | intActuacion[];
-    b: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intJuzgados[] | intActuacion[];
+    a: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intActuacion[];
+    b: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intActuacion[];
 
   }
 ) {
@@ -77,4 +77,27 @@ export function arrayMergerByllaveProceso (
     )
   );
   return mergedArr;
+}
+
+
+export function newMerger (
+  { a, b }: { a: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intActuacion[] | monCarpetaDemandado[]; b: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intActuacion[] | monCarpetaDemandado[] }
+) {
+  const arrNew = a.map(
+    (
+      c
+    ) => {
+      const f = b.filter(
+        (
+          d
+        ) => d.llaveProceso === c.llaveProceso
+      );
+      const ner = {
+        ...c,
+        f,
+      };
+      return ner;
+    }
+  );
+  return arrNew;
 }

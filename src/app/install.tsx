@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Workbox } from 'workbox-window';
 import layout from '#@/styles/scss/layout.module.scss';
 
 export default function Install () {
