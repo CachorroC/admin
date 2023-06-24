@@ -210,13 +210,8 @@
 {
   .layout
   {
-    display: grid;
-
-    padding: 0.5vmin;
-    gap: 0.5vmin;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, auto);
-    grid-template-areas: ' title title title sub' 'content content content content' 'date date date link';
+    display: flex;
+    flex-flow: row nowrap;
     background-color: var(--sf-1);
 
     &:nth-child(2)

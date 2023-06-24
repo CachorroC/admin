@@ -1,0 +1,66 @@
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.card,
+.cardIsActive {
+  box-sizing: border-box;
+  display: flex;
+  perspective: 1000px;
+  container-type: inline-size;
+  container-name: card;
+  border-radius: 2vmin;
+  width: 100%;
+  height: auto;
+  flex-grow: 1;
+  text-align: center;
+
+  .cardInner {
+    border-radius: 2vmin;
+    box-sizing: border-box;
+    gap: 2vmin;
+    width: auto;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+
+    .cardFront,
+    .cardBack {
+      position: absolute;
+      border-radius: 2vmin;
+      width: 100%;
+      height: auto;
+    }
+
+    .cardFront {
+      background-color: var(--surface-container-highest);
+      color: var(--on-surface-variant);
+    }
+
+    /* Style the back side */
+    .cardBack {
+      background-color: var(--inverse-surface);
+      color: var(--inverse-on-surface);
+      transform: rotateY(180deg);
+    }
+  }
+
+  &:hover .cardInner {
+    transform: rotateY(180deg);
+  }
+}
+
+.card {
+  background-color: var(--surface-container);
+  color: var(--on-surface);
+  box-shadow: var(--dp3);
+}
+
+.cardIsActive {
+  background-color: var(--primary-container);
+  color: var(--on-primary-container);
+  box-shadow: var(--dp8);
+}
+
+/* This container is needed to position the front and back side */
+
+/* Position the front and back side */
+
+/* Style the front side (fallback if image is missing) */

@@ -134,14 +134,8 @@ export default function RootLayout(
             <NoteProvider>
               {modal}
               <div className={ layout.container }>
-
-                <div className={ layout.header }>
-                  {header}
-                </div>
-
-                <div className={ layout.body }>
-                  {children}
-                </div>
+                {header}
+                {children}
               </div>
             </NoteProvider>
           </SearchProvider>

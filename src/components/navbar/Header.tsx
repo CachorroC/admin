@@ -23,7 +23,7 @@ export default function Header (
   );
   if ( isDesktop ) {
     return (
-      <>
+      <div className={layout.header}>
         <Suspense fallback={ <ButtonSkeleton /> }>
           <HomeButton />
         </Suspense>
@@ -40,11 +40,11 @@ export default function Header (
           <InputSearchBar />
         </Suspense>
         <DrawerMenuButton />
-      </>
+      </div>
     );
   }
   return (
-    <>
+    <div className={layout.header}>
       <Suspense fallback={ <ButtonSkeleton /> }>
         <HomeButton />
       </Suspense>
@@ -56,6 +56,6 @@ export default function Header (
         <DrawerMenuButton />
       </Suspense>
 
-    </>
+    </div>
   );
 }

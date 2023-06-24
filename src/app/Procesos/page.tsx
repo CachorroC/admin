@@ -1,85 +1,88 @@
-import { arrayMergerByllaveProceso, newMerger } from '#@/lib/arrayMerger';
-import { getNotas } from '#@/lib/notas';
+import SearchOutputList from '#@/components/search/SearchProcesosOutput';
+import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
+import { fetchFechas, getConsultaNumeroRadicion, getJuzgados } from '#@/lib/RamaJudicial';
+import { arrayMergerByllaveProceso } from '#@/lib/arrayMerger';
+import { monDemandado } from '#@/lib/types/mongodb';
+import { Suspense, Fragment } from 'react';
+import layout from '#@/styles/scss/layout.module.scss';
+import typography from '#@/styles/fonts/typography.module.scss';
+import { getCarpetas } from '#@/lib/Carpetas';
+import { LinkCard } from '#@/components/search/link';
+import { Card } from '#@/components/card/card';
+import { fixDemandado } from '#@/lib/fix';
+import { JuzgadosByllaveProceso } from '#@/lib/RamaJudicial/juzgados';
+import CardSkeleton from '#@/components/card/card-skeleton';
 import { getProcesos } from '#@/lib/procesos';
 import Link from 'next/link';
-import layout from '#@/styles/scss/layout.module.scss';
-import { getCarpetas } from '#@/lib/Carpetas';
-import { Card } from '#@/components/card/card';
-import { fetchFechas } from '#@/lib/RamaJudicial';
-import card from '#@/components/card/card.module.scss';
-import { Fragment } from 'react';
-import typography from '#@/styles/fonts/typography.module.scss';
+import { CardCarpeta } from '#@/components/card/cardCarpeta';
+import { monCarpetaDemandado } from '../../lib/types/demandados';
+
+/* export async function List (
+  { procesos }: { procesos: monCarpetaDemandado[] }
+) {
+  const fechas = await fetchFechas(
+    { procesos: procesos }
+  );
+  return (
+    <SearchOutputList
+      path={ '/Procesos' }
+      procesos={ procesos }
+      fechas={ fechas } />
+  );
+} */
 
 export default async function Page () {
   const procesos = await getProcesos();
-  const cardsData = await fetchFechas(
-    {
-      procesos: procesos
-    }
-  );
   const carpetas = await getCarpetas();
-
-  const merged = newMerger(
+  const Request = await getJuzgados(
     {
-      a: carpetas,
-      b: cardsData,
-    }
-  );
-  const mergedReverse = newMerger(
-    {
-      a: cardsData,
-      b: carpetas,
+      procesos: carpetas
     }
   );
   return (
-    <>
+    <div className={layout.body}>
       <div className={ layout.name }>
-        <h1 className={typography.displaySmall}>Procesos</h1>
+        <h1 className={ typography.displayMedium }>Procesos</h1>
       </div>
       <div className={ layout.main }>
-        <div className={ layout.left }>
-          {
-            mergedReverse.map(
-              (
-                m, i, arr
-              ) => {
-                const nombre = m.sujetosProcesales ?? m.Demandado.Nombre;
-                return (
-                  <Card key={ m.llaveProceso } name={ nombre } path={ '/Procesos' } llaveProceso={ m.llaveProceso }>
-                    <sub>{
-                      JSON.stringify(
-                        m
-                      )}</sub>
-                    <p>{ m.fecha }</p>
-                    <sup>{`${i+1} de ${arr.length}`}</sup>
-                  </Card>
-                );
-              }
-            )
-          }
-        </div>
+
         <div className={ layout.right }>
-          {
-            merged.map(
-              (
-                m, i, arr
-              ) => {
-                const nombre = m.sujetosProcesales ?? m.Demandado.Nombre;
-                return (
-                  <Card key={ m.llaveProceso } name={ nombre } path={ '/Procesos' } llaveProceso={ m.llaveProceso }>
-                    <sup>{`${i+1} de ${arr.length}`}</sup>
-                    <p>{ m.fecha }</p>
-                    <sub>{
-                      JSON.stringify(
-                        m
-                      )}</sub>
-                  </Card>
-                );
-              }
-            )
-          }
+          <Suspense fallback={ <SearchOutputListSkeleton /> }>
+            {
+              carpetas.map(
+                async (
+                  carpeta, index, arr
+                ) => {
+
+                  let subIndice = `${ index + 1 } de ${ arr.length }`;
+                  const nombre =  carpeta.Demandado.Nombre;
+
+                  return (
+                    <Card name={ nombre } key={ carpeta._id } path={ '/Procesos' } llaveProceso={ carpeta.llaveProceso }>
+                      { carpeta.idProceso && carpeta.idProceso.map(
+                        (
+                          proceso
+                        ) => (
+                          <Link key={ proceso } href={ `/Procesos/${carpeta.llaveProceso}/${proceso}` }>
+                            <p>{proceso}</p>
+                          </Link>
+                        )
+                      )}
+                      <sup>{ subIndice }</sup>
+                      <JuzgadosByllaveProceso llaveProceso={carpeta.llaveProceso } />
+                    </Card>
+
+                  );
+                }
+              )}
+          </Suspense>
         </div>
+        <div className={ layout.left }>
+          {Request}
+        </div>
+
+
       </div>
-    </>
+    </div>
   );
 }

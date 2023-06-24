@@ -1,5 +1,5 @@
 import { Card } from '#@/components/card/card';
-import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
+import { getCarpetas, getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { getConsultaNumeroRadicion } from '#@/lib/RamaJudicial';
 import { newMerger } from '#@/lib/arrayMerger';
 import { fixDemandado } from '#@/lib/fix';
@@ -15,7 +15,6 @@ export default async function Page (
   }
   }
 ) {
-  const carpetas = await getCarpetas();
 
   const carpeta = await getCarpetasByllaveProceso(
     {
@@ -27,12 +26,7 @@ export default async function Page (
       llaveProceso: params.llaveProceso
     }
   );
-  const merged = newMerger(
-    {
-      a: carpeta,
-      b: Procesos,
-    }
-  );
+
   return (
     <div className={ layout.main }>
       <div className={ layout.right }>
@@ -46,7 +40,7 @@ export default async function Page (
               );
               return (
                 <Card key={ proceso.idProceso } name={ nombre } path={ '/Procesos' } llaveProceso={ params.llaveProceso } idProceso={ proceso.idProceso }>
-                  <p></p>
+                  <p>{nombre}</p>
                 </Card>
               );
             }
@@ -55,18 +49,18 @@ export default async function Page (
       </div>
       <div className={ layout.left }>
         {
-          merged.map(
+          carpeta.map(
             (
               crp
             ) => (
               <Fragment key={ crp._id }>
                 <h1>{ crp.Demandado.Nombre }</h1>
-                <p>{ crp.Proceso.Juzgado.UbicacionActual }</p>
+                <p>{ crp.Carpeta}</p>
               </Fragment>
             )
           )
         }
-      di</div>
+      </div>
     </div>
   );
 }

@@ -9,10 +9,10 @@ import {
 import type { Route } from 'next';
 import searchbar from '#@/components/search/searchbar.module.scss';
 import { ReactNode, Fragment } from 'react';
-import { intFecha } from '#@/lib/types/mongodb';
+import { intFecha } from '#@/lib/types/demandados';
 import { fixFechas } from '#@/lib/fix';
-import typography from '#@/components/typográficos/typography.module.scss';
 import { useNavigator } from '#@/app/search-context';
+import typography from '#@/styles/fonts/typography.module.scss';
 
 export const LinkCard = (
   {

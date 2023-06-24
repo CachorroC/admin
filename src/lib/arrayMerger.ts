@@ -1,8 +1,9 @@
 import { intConsultaNumeroRadicacion } from './types/procesos';
 import { intProceso, intActuacion, IntActuaciones } from '#@/lib/types/procesos';
-import { monDemandado, intFecha } from './types/mongodb';
+import { monDemandado } from './types/mongodb';
 import { monNota } from '#@/lib/types/notas';
 import { monCarpetaDemandado } from './types/demandados';
+import { intFecha } from '#@/lib/types/demandados';
 
 export function arrayMergerByidProceso (
   { a, b }: {

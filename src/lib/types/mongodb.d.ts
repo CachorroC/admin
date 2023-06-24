@@ -15,10 +15,6 @@ export interface monDemandado extends WithId<Document> {
   idProceso: number;
 }
 
-export interface intFecha extends monDemandado {
-  fecha: string;
-}
-
 export interface intUri {
   host: string;
   searchParams: string;

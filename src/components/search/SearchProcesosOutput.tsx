@@ -1,9 +1,10 @@
 'use client';
 import { monDemandado } from '#@/lib/types/mongodb';
 import { LinkCard } from './link';
-import { intFecha } from '#@/lib/types/mongodb';
-import typography from '#@/components/typográficos/typography.module.scss';
+import { intFecha } from '#@/lib/types/demandados';
+import typography from '#@/styles/fonts/typography.module.scss';
 import { useSearch } from '#@/app/search-context';
+import { monCarpetaDemandado } from '../../lib/types/demandados';
 
 export default function SearchOutputList (
   {
@@ -12,7 +13,7 @@ export default function SearchOutputList (
     fechas
   }: {
     path: string;
-    procesos: monDemandado[];
+    procesos: monCarpetaDemandado[];
       fechas: intFecha[];
   }
 ) {
@@ -48,10 +49,10 @@ export default function SearchOutputList (
     (
       proceso, index, array
     ) => {
-      const { idProceso, llaveProceso, sujetosProcesales, fecha } = proceso;
+      const { idProceso, llaveProceso, fecha } = proceso;
 
       if (
-        sujetosProcesales.toLowerCase().indexOf(
+        proceso.Demandado.Nombre.toLowerCase().indexOf(
           search.toLowerCase()
         ) ===
         -1
@@ -63,7 +64,7 @@ export default function SearchOutputList (
         <LinkCard
           path={ path }
           proceso={ proceso }
-          key={idProceso}>
+          key={index}>
           <sub className={ typography.labelSmall } >
             {
               `${index + 1} of ${array.length}`
