@@ -2,16 +2,11 @@
 
 import { useSelectedLayoutSegment, usePathname } from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
-import typeface from '#@/styles/fonts/typeface.module.scss';
-import { useNavigator } from '#@/app/search-context';
+import typography from '#@/styles/fonts/typography.module.scss';
 
-export default function Title(
+export default function Nombre(
   { helper }: { helper?: string }
 ) {
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] = useNavigator();
   const pathname = usePathname();
   const segment = useSelectedLayoutSegment();
   const today = new Date();
@@ -63,13 +58,14 @@ export default function Title(
   ];
   return (
 
-    <h1 className={isNavOpen
-      ? typeface.drawer
-      : typeface.navbar}>
-      {helper ?? `${days[today.getDay()]}, ${fixFechas(
-        today.toString()
-      )}`}
-    </h1>
+    <>
+      <h1 className={typography.displaySmall}>
+        {helper ?? `${days[today.getDay()]}, ${fixFechas(
+          today.toString()
+        )}`}
+      </h1>
+      <p className={ typography.labelSmall }>{ pathname }</p>
+    </>
 
 
   );

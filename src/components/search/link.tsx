@@ -13,19 +13,24 @@ import { intFecha } from '#@/lib/types/demandados';
 import { fixFechas } from '#@/lib/fix';
 import { useNavigator } from '#@/app/search-context';
 import typography from '#@/styles/fonts/typography.module.scss';
+import { intCarpetaDemandado } from '../../lib/types/demandados';
 
 export const LinkCard = (
   {
     path,
     proceso,
     children,
+    llaveProceso, idProceso
   }: {
   path: string;
- proceso: intFecha;
+      proceso: intFecha;
+      llaveProceso: string;
+      idProceso: number;
   children: ReactNode;
 }
 ) => {
-  const { llaveProceso, idProceso, sujetosProcesales, fecha } = proceso;
+  const {  Demandado, fecha } = proceso;
+  const {Nombre, Id, Direccion, Tel} = Demandado;
   const params = useParams();
   const pathname = usePathname();
   const [
@@ -64,7 +69,7 @@ export const LinkCard = (
           : searchbar.title }
         onClick={ clickHandler }
         href={ `/Procesos/${llaveProceso}/${idProceso}/Actuaciones` }      >
-        <h1 className={typography.titleMedium}> { sujetosProcesales }</h1>
+        <h1 className={typography.titleMedium}> { Nombre}</h1>
 
       </Link>
 

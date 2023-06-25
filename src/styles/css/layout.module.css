@@ -1,8 +1,15 @@
+/* $MinLW: 1200px; //minimum large width
+$MaxLW: 1800px; // maximum large width
+$Bp1W: 960px;
+$MaxMW: 1200px;
+$MinMW: 600px;
+$MinSW: 320px; // minimum small width
+$MaxSW: 480px; //maximum sma width
+
 .container {
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .header {
@@ -14,41 +21,41 @@
   padding: 1vmax;
   box-shadow: var(--dp6);
   background-color: var(--nav-background);
-}
-.header .sidenav {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-area: ProcesosLayoutList;
-  grid-template-rows: repeat(10, 1fr);
-  gap: 2vmin;
-  justify-content: center;
-  align-content: start;
-  justify-items: stretch;
-  box-sizing: border-box;
-  padding: 2vmin;
-  box-shadow: var(--dp16);
-  background-color: var(--sf-2);
-  border-radius: 2vmin;
-  overflow: clip;
-  overflow-y: scroll;
+
+  .sidenav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-area: ProcesosLayoutList;
+    grid-template-rows: repeat(10, 1fr);
+    gap: 2vmin;
+    justify-content: center;
+    align-content: start;
+    justify-items: stretch;
+    box-sizing: border-box;
+    padding: 2vmin;
+    box-shadow: var(--dp16);
+    background-color: var(--sf-2);
+    border-radius: 2vmin;
+  }
 }
 
 .body {
   box-sizing: border-box;
-  overflow: scroll;
-  height: 90%;
-  width: 100%;
   display: grid;
+  height: 100%;
+  overflow: scroll;
   grid-auto-rows: minmax(min-content, 1fr);
   gap: 2vmin;
   padding: 2vmin;
   grid-auto-flow: row;
-}
-@media screen and (max-width: 360px) {
-  .body {
+
+  @media screen and (max-width: 360px) {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    grid-template-areas: "name name name name" "main main main main" "main main main main";
+    grid-template-areas:
+      'name name name name'
+      'main main main main'
+      'main main main main';
   }
 }
 
@@ -59,16 +66,22 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 2vmin;
     grid-auto-flow: row;
-    grid-template-areas: "name name name name name name name name name name name name" "main main main main main main main main main main main main" "main main main main main main main main main main main main" "main main main main main main main main main main main main" "main main main main main main main main main main main main" "main main main main main main main main main main main main" "main main main main main main main main main main main main" "main main main main main main main main main main main main";
+    grid-template-areas:
+      'name name name name name name name name name name name name'
+      'main main main main main main main main main main main main'
+      'main main main main main main main main main main main main'
+      'main main main main main main main main main main main main'
+      'main main main main main main main main main main main main'
+      'main main main main main main main main main main main main'
+      'main main main main main main main main main main main main'
+      'main main main main main main main main main main main main';
+
+    @media screen and (min-width: 1920px) {
+      margin: 0 auto;
+      width: 1920px;
+    }
   }
-}
-@media screen and (min-width: 1200px) and (min-width: 1920px) {
-  .body {
-    margin: 0 auto;
-    width: 1920px;
-  }
-}
-@media screen and (min-width: 1200px) {
+
   .name {
     display: flex;
     flex-flow: row nowrap;
@@ -79,26 +92,30 @@
     align-items: stretch;
     grid-area: name;
   }
+
   .main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 2vmin;
     grid-auto-flow: row;
-    grid-template-areas: "left left right" "left left right";
+    grid-template-areas:
+      'left left right'
+      'left left right';
     grid-area: main;
   }
+
   .left {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-auto-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-auto-rows: 1fr;
     gap: 2vmin;
-    grid-auto-flow: row dense;
     justify-items: stretch;
     align-items: stretch;
     grid-area: left;
   }
+
   .right {
     display: grid;
     grid-auto-columns: 1fr;
@@ -108,6 +125,7 @@
     grid-area: right;
   }
 }
+
 @media screen and (max-width: 600px) {
   .body {
     display: grid;
@@ -116,6 +134,7 @@
     gap: 0px 0px;
     grid-auto-flow: row;
   }
+
   .name {
     display: grid;
     grid-template-columns: 1fr;
@@ -123,16 +142,18 @@
     grid-auto-rows: 1fr;
     gap: 0px 0px;
     grid-auto-flow: column dense;
-    grid-area: 1/1/2/2;
+    grid-area: 1 / 1 / 2 / 2;
   }
+
   .main {
     display: grid;
     grid-auto-columns: 1fr;
     grid-auto-rows: 1fr;
     gap: 0px 0px;
     grid-auto-flow: row dense;
-    grid-area: 2/1/13/2;
+    grid-area: 2 / 1 / 13 / 2;
   }
+
   .left {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
@@ -140,16 +161,92 @@
     grid-auto-rows: 1fr;
     gap: 0px 0px;
     grid-auto-flow: column dense;
-    grid-template-areas: "" "" "" "" "";
+    grid-template-areas:
+      ''
+      ''
+      ''
+      ''
+      '';
   }
+
   .right {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
-    grid-template-areas: ". . ." ". . ." ". . .";
+    grid-template-areas:
+      '. . .'
+      '. . .'
+      '. . .';
   }
+}
+ */
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "header header header header header header header header header header header header" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body";
+}
+
+.header {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: column dense;
+  grid-area: header;
+}
+
+.body {
+  display: grid;
+  grid-template-rows: 0.5fr 2fr;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-area: body;
+}
+
+.name {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: column dense;
+  grid-area: 1/1/2/2;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  grid-auto-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: column;
+  grid-area: 2/1/3/2;
+}
+
+.right {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-area: 1/2/2/3;
+}
+
+.left {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: ". . ." ". . .";
+  grid-area: 1/1/2/2;
 }
 
 /*# sourceMappingURL=layout.module.css.map */

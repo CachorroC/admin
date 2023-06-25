@@ -3,16 +3,22 @@
 //   import { Convert } from "./file";
 //
 //   const intCarpetaDemandado = Convert.toIntCarpetaDemandado(json);
+// To parse this data:
+//
+//   import { Convert } from "./file";
+//
+//   const intCarpetaDemandado = Convert.toIntCarpetaDemandado(json);
 
 export interface intCarpetaDemandado {
-
   Carpeta: number;
   Demandado: Demandado;
   llaveProceso: string;
-  Category: string;
-  idProceso?: number[];
+  Category: Category;
+  idProceso: number;
   Codeudor?: Codeudor;
 }
+
+export type Category = 'Bancolombia';
 
 export interface Codeudor {
   Id: number | string;
@@ -44,7 +50,7 @@ export class Convert {
     );
   }
 
-  public static IntCarpetaDemandadoToJson (
+  public static intCarpetaDemandadoToJson (
     value: intCarpetaDemandado[]
   ): string {
     return JSON.stringify(
@@ -52,6 +58,7 @@ export class Convert {
     );
   }
 }
+
 
 export interface monCarpetaDemandado extends intCarpetaDemandado {
   _id: string;

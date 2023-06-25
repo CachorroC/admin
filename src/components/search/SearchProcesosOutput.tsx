@@ -1,11 +1,11 @@
 'use client';
 import { monDemandado } from '#@/lib/types/mongodb';
-import { LinkCard } from './link';
 import { intFecha } from '#@/lib/types/demandados';
-import typography from '#@/styles/fonts/typography.module.scss';
 import { useSearch } from '#@/app/search-context';
-import { monCarpetaDemandado } from '../../lib/types/demandados';
-
+import { LinkCard } from './link';
+import typography from '#@/styles/fonts/typography.module.scss';
+import { fixFechas } from '#@/lib/fix';
+import card from '#@/components/card/card.module.scss';
 export default function SearchOutputList (
   {
     path,
@@ -13,7 +13,7 @@ export default function SearchOutputList (
     fechas
   }: {
     path: string;
-    procesos: monCarpetaDemandado[];
+    procesos: monDemandado[];
       fechas: intFecha[];
   }
 ) {
@@ -49,10 +49,11 @@ export default function SearchOutputList (
     (
       proceso, index, array
     ) => {
-      const { idProceso, llaveProceso, fecha } = proceso;
+      const { idProceso, llaveProceso, Demandado, fecha , _id} = proceso;
+      const {Nombre, Id, Tel, Direccion} = Demandado;
 
       if (
-        proceso.Demandado.Nombre.toLowerCase().indexOf(
+        Nombre.toLowerCase().indexOf(
           search.toLowerCase()
         ) ===
         -1
@@ -61,16 +62,23 @@ export default function SearchOutputList (
       }
       rows.push(
 
+
         <LinkCard
           path={ path }
           proceso={ proceso }
-          key={index}>
+          key={ _id.toString() } llaveProceso={ llaveProceso } idProceso={idProceso } >
           <sub className={ typography.labelSmall } >
             {
               `${index + 1} of ${array.length}`
             }
           </sub>
+          <sub className={ card.date }>
+            {fixFechas(
+              fecha
+            )}
+          </sub>
         </LinkCard>
+
 
 
       );

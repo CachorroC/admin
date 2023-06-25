@@ -7,7 +7,7 @@ import { intFecha, monCarpetaDemandado } from '../types/demandados';
 import { Card } from '#@/components/card/card';
 import { JuzgadosByllaveProceso } from '#@/lib/RamaJudicial/juzgados';
 
-export const getJuzgados = cache(
+export const Juzgados = cache(
   async (
     { procesos }: { procesos: monCarpetaDemandado[] }
   ) => {
