@@ -4,6 +4,8 @@ import { useSelectedLayoutSegment, usePathname } from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
 import typeface from '#@/styles/fonts/typeface.module.scss';
 import { useNavigator } from '#@/app/search-context';
+import useMedia from '../navbar/mediaQuery';
+import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function Title(
   { helper }: { helper?: string }
@@ -63,9 +65,9 @@ export default function Title(
   ];
   return (
 
-    <h1 className={isNavOpen
+    <h1 className={ `${typography.headlineSmall }  ${isNavOpen
       ? typeface.drawer
-      : typeface.navbar}>
+      : typeface.navbar}`}>
       {helper ?? `${days[today.getDay()]}, ${fixFechas(
         today.toString()
       )}`}

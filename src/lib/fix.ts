@@ -2,7 +2,7 @@ export function fixFechas (
   fecha: string | null | undefined
 ) {
   if ( fecha === null ) {
-    return 'no hay contenido';
+    return 'no hay fechas: null';
   }
   if ( fecha === undefined ) {
     return 'no se ha definido el contenido';

@@ -65,5 +65,5 @@ export interface monCarpetaDemandado extends intCarpetaDemandado {
 }
 
 export interface intFecha extends monCarpetaDemandado {
-  fecha: string;
+  fecha: string | null | undefined;
 }

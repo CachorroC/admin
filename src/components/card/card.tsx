@@ -2,11 +2,13 @@
 import { Route } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import card from '#@/components/card/card.module.scss';
 import { useModal } from '#@/app/modal-context';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { useNavigator } from '#@/app/search-context';
+import Nombre from '#@/components/Headings/nombre';
+import Name from '../Headings/nombre';
 export const Card = (
   {
     name,
@@ -55,26 +57,37 @@ export const Card = (
     pathname === `${path}/${llaveProceso}` ||
     pathname === path;
   return (
-    <div className={card.container}>
-      <div className={card.layout}>
-        <h1 className={typography.titleMedium}>{name}</h1>
+    <div className={`${ card.container } ${isActive
+      ? card.isActive
+      : card.notActive }` }>
+      <div className={ card.parent }>
 
-        <div className={ card.content }>
-          {children}
+        <div className={card.cardFront}>
+          <h1 className={typography.titleMedium}>{name}</h1>
+
+          <Link
+            onClick={clickHandler}
+            href={href}
+            className={isActive
+              ? card.linkIsActive
+              : card.link}
+          >
+            <span className={`material-symbols-outlined ${card.icon}`}>
+              {icon ?? 'open_in_new'}
+            </span>
+          </Link>
         </div>
+        <div className={ card.cardBack }>
 
-        <Link
-          onClick={clickHandler}
-          href={href}
-          className={isActive
-            ? card.linkIsActive
-            : card.link}
-        >
-          <span className={`material-symbols-outlined ${card.icon}`}>
-            {icon ?? 'open_in_new'}
-          </span>
-        </Link>
+          <Suspense fallback={ <p>Loading...</p> }>
+            {children}
+          </Suspense>
+
+        </div>
       </div>
+
+
+
     </div>
   );
 };

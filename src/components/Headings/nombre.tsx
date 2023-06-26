@@ -4,7 +4,7 @@ import { useSelectedLayoutSegment, usePathname } from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export default function Nombre(
+export default function Name(
   { helper }: { helper?: string }
 ) {
   const pathname = usePathname();

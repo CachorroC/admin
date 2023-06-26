@@ -14,22 +14,21 @@ import { fixFechas } from '#@/lib/fix';
 import { useNavigator } from '#@/app/search-context';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { intCarpetaDemandado } from '../../lib/types/demandados';
+import Name from '../Headings/nombre';
 
 export const LinkCard = (
   {
     path,
     proceso,
     children,
-    llaveProceso, idProceso
   }: {
+
   path: string;
       proceso: intFecha;
-      llaveProceso: string;
-      idProceso: number;
   children: ReactNode;
 }
 ) => {
-  const {  Demandado, fecha } = proceso;
+  const {  Demandado, fecha, llaveProceso, idProceso } = proceso;
   const {Nombre, Id, Direccion, Tel} = Demandado;
   const params = useParams();
   const pathname = usePathname();
@@ -41,19 +40,16 @@ export const LinkCard = (
 
   const href = (
     llaveProceso
-      ? idProceso
-        ? `${path}/${llaveProceso}/${idProceso}/Actuaciones`
+      ? idProceso !== 0
+        ? `${path}/${llaveProceso}/${idProceso}`
         : `${path}/${llaveProceso}`
       : path
   ) as Route;
   const isActive =
     pathname === href ||
-    pathname === `${path}/${llaveProceso}/${idProceso}/Actuaciones` ||
     pathname === `${path}/${llaveProceso}/${idProceso}` ||
     pathname === `${path}/${llaveProceso}`;
-  const mismoDemandado =
-    params.llaveProceso === llaveProceso &&
-    params.idProceso !== idProceso?.toString();
+
 
   const clickHandler = () => {
     setIsNavOpen(
@@ -62,21 +58,25 @@ export const LinkCard = (
 
   };
   return (
-    <div className={`${searchbar.container} ${isActive && searchbar.active  }`}>
+    <div className={ `${ searchbar.container } ${ isActive && searchbar.active }` }>
+      <Name helper={Nombre}/>
       <Link
         className={ isActive
-          ? searchbar.titleActive
-          : searchbar.title }
+          ? searchbar.linkIsActive
+          : searchbar.link  }
         onClick={ clickHandler }
-        href={ `/Procesos/${llaveProceso}/${idProceso}/Actuaciones` }      >
-        <h1 className={typography.titleMedium}> { Nombre}</h1>
+        href={ href}      >
+
+        <span className={`${searchbar.icon} material-symbols-outlined`}>file_open</span>
 
       </Link>
 
       <div className={ searchbar.section }>
-        <p className={typography.labelMedium}>{fixFechas(
-          fecha
-        ) }</p>
+        <sub className={ searchbar.date }>
+          {fixFechas(
+            fecha
+          )}
+        </sub>
         {children}
       </div>
 

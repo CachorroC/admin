@@ -7,7 +7,7 @@ import note from '#@/components/nota/note.module.scss';
 import { Fragment, useState } from 'react';
 
 import accordion from './accordion.module.scss';
-import typography from '#@/components/typográficos/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.scss';
 
 export function NewNota (
   {

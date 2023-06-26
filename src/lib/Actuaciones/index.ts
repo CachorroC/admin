@@ -14,6 +14,7 @@ export async function getActuacionesByidProceso (
         message: 'no existe el idProceso de este proceso;'
       }
     };
+    return response;
   }
   try {
     const request = await fetch(
@@ -57,7 +58,7 @@ export async function getActuacionesByidProceso (
   }
   catch {
     (
-      error: unknown | any
+      error: { message: string; }
     ) => {
       const response: IntActuaciones = {
         idProceso: idProceso,
@@ -100,7 +101,7 @@ export async function fetchFechas (
     if ( !acts.acts ) {
       const fecha = {
         ...proceso,
-        fecha: acts.text.message,
+        fecha: null,
       };
       fechas.push(
         fecha
@@ -131,7 +132,7 @@ export async function fetchFecha (
 
   const fecha: intFecha = {
     ...proceso,
-    fecha: acts.text.message,
+    fecha: undefined,
   };
   return fecha;
 }

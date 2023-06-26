@@ -17,7 +17,7 @@ import { Juzgados } from '#@/lib/RamaJudicial';
 import { monCarpetaDemandado } from '#@/lib/types/demandados';
 
 export async function List (
-  { procesos, carpetas }: { procesos: monDemandado[];  carpetas: monCarpetaDemandado[]}
+  {  carpetas }: { carpetas: monCarpetaDemandado[]}
 ) {
   const fechas = await fetchFechas(
     { procesos: carpetas }
@@ -25,23 +25,12 @@ export async function List (
   return (
     <SearchOutputList
       path={ '/Procesos' }
-      fechas={ fechas } procesos={ procesos} />
+      fechas={ fechas }  />
   );
 }
 
 export default async function Page () {
-  const procesos = await getProcesos();
   const carpetas = await getCarpetas();
-  const fechas = await fetchFechas(
-    {
-      procesos: carpetas
-    }
-  );
-  const Request = await Juzgados(
-    {
-      procesos: carpetas
-    }
-  );
   return (
     <div className={layout.body}>
       <div className={ layout.name }>
@@ -49,9 +38,11 @@ export default async function Page () {
 
       </div>
       <div className={ layout.main }>
-        <Suspense fallback={<SearchOutputListSkeleton />}>
-          <List procesos={procesos} carpetas={carpetas} />
-        </Suspense>
+        <div className={ layout.left }>
+          <Suspense fallback={<SearchOutputListSkeleton />}>
+            <List carpetas={carpetas} />
+          </Suspense>
+        </div>
       </div>
     </div>
   );

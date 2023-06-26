@@ -20,10 +20,17 @@ const Collection = async () => {
 
 export async function getCarpetas () {
   const collection = await Collection();
-  const carpetas = ( await collection.find(
+  const carpetasRaw = await collection.find(
     {}
-  ).toArray() ) as unknown as monCarpetaDemandado[];
+  ).toArray();
+  const carpetas1 = JSON.stringify(
+    carpetasRaw
+  );
+  const carpetas = ( JSON.parse(
+    carpetas1
+  ) ) as monCarpetaDemandado[];
   return carpetas;
+
 }
 
 export async function getCarpetasByllaveProceso (

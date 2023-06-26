@@ -9,11 +9,9 @@ import card from '#@/components/card/card.module.scss';
 export default function SearchOutputList (
   {
     path,
-    procesos,
     fechas
   }: {
     path: string;
-    procesos: monDemandado[];
       fechas: intFecha[];
   }
 ) {
@@ -66,17 +64,13 @@ export default function SearchOutputList (
         <LinkCard
           path={ path }
           proceso={ proceso }
-          key={ _id.toString() } llaveProceso={ llaveProceso } idProceso={idProceso } >
+          key={ _id.toString() }>
           <sub className={ typography.labelSmall } >
             {
               `${index + 1} of ${array.length}`
             }
           </sub>
-          <sub className={ card.date }>
-            {fixFechas(
-              fecha
-            )}
-          </sub>
+
         </LinkCard>
 
 

@@ -132,8 +132,8 @@ export default function RootLayout(
         <ModalProvider>
           <SearchProvider>
             <NoteProvider>
-              {modal}
               <div className={ layout.container }>
+                {modal}
                 {header}
                 {children}
               </div>

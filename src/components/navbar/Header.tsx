@@ -16,12 +16,15 @@ export default function Header (
   { children }: { children: React.ReactNode }
 ) {
   const isDesktop = useMedia(
-    '(min-width: 600px)'
+    2
   );
   const isMobile = useMedia(
-    '(max-width: 600px)'
+    0
   );
-  if ( isDesktop ) {
+  const isBigDesktop = useMedia(
+    3
+  );
+  if ( isDesktop || isBigDesktop ) {
     return (
       <div className={layout.header}>
         <Suspense fallback={ <ButtonSkeleton /> }>
@@ -43,19 +46,22 @@ export default function Header (
       </div>
     );
   }
-  return (
-    <div className={layout.header}>
-      <Suspense fallback={ <ButtonSkeleton /> }>
-        <HomeButton />
-      </Suspense>
-      <DrawerMenuButton />
-      <Suspense fallback={ <sub className={ typeface.title }>Loading</sub> }>
-        { children }
-      </Suspense>
-      <Suspense fallback={ <ButtonSkeleton /> }>
+  if ( isMobile ) {
+    return (
+      <div className={layout.header}>
+        <Suspense fallback={ <ButtonSkeleton /> }>
+          <HomeButton />
+        </Suspense>
         <DrawerMenuButton />
-      </Suspense>
+        <Suspense fallback={ <sub className={ typeface.title }>Loading</sub> }>
+          { children }
+        </Suspense>
+        <Suspense fallback={ <ButtonSkeleton /> }>
+          <DrawerMenuButton />
+        </Suspense>
 
-    </div>
-  );
+      </div>
+    );
+  }
+  return null;
 }

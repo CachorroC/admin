@@ -2,7 +2,6 @@ import 'server-only';
 import { monNota } from '#@/lib/types/notas';
 import note from '#@/components/nota/note.module.scss';
 import { inter, raleway } from '#@/styles/fonts/fonts';
-import typography from '#@/components/typográficos/typography.module.scss';
 import { fixFechas } from '#@/lib/fix';
 import { Suspense } from 'react';
 import {
@@ -11,12 +10,13 @@ import {
 } from '#@/components/nota/ButtonsNoteHandlers';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { AccordionRow } from '#@/components/nota/accordion';
-import { getProcesosByllaveProceso } from '#@/lib/getProcesos';
 import { ButtonSkeleton } from '../navbar/ButtonSkeleton';
+import typography from '#@/styles/fonts/typography.module.scss';
+import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 export async function Name(
   { llaveProceso }: { llaveProceso: string }
 ) {
-  const proceso = await getProcesosByllaveProceso(
+  const proceso = await getCarpetasByllaveProceso(
     {
       llaveProceso: llaveProceso,
     }
@@ -24,7 +24,7 @@ export async function Name(
   const nombre = proceso.map(
     (
       p
-    ) => p.sujetosProcesales
+    ) => p.Demandado.Nombre
   ).toString();
   return <h1 className={typography.headlineSmall}>{nombre}</h1>;
 }

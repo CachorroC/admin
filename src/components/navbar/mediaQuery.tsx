@@ -1,8 +1,10 @@
 'use client';
 import { useEffect, useState } from 'react';
+
 export default function useMedia(
-  query: string
+  query: number
 ) {
+
   const [
     matches,
     setMatches
@@ -11,6 +13,45 @@ export default function useMedia(
   );
   useEffect(
     () => {
+
+      const mediaQueries = (
+        query: number
+      )=> {
+        let media;
+        switch ( query ) {
+        case 0:
+          media = '(max-width: 400px)';
+          console.log(
+            media
+          );
+          break;
+        case 1:
+          media = '(min-width: 400px) and (max-width: 1200px)';
+          console.log(
+            media
+          );
+          break;
+        case 2:
+          media = '(min-width: 1200px) and (max-width: 1920px)';
+          console.log(
+            media
+          );
+          break;
+        case 3:
+          media = '(min-width: 1920px)';
+          console.log(
+            media
+          );
+          break;
+        default:
+          media = '';
+        }
+        return media;
+      };
+
+      const md = mediaQueries(
+        query
+      );
       function handleMatchMedia() {
         setMatches(
           true
@@ -23,7 +64,7 @@ export default function useMedia(
       }
 
       const media = window.matchMedia(
-        query
+        md
       );
 
       const listener = () => setMatches(

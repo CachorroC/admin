@@ -19,10 +19,10 @@ export default function Drawer (
   { children }: { children: ReactNode }
 ) {
   const isDesktop = useMedia(
-    '(min-width: 600px)'
+    2
   );
   const isMobile = useMedia(
-    '(max-width: 600px)'
+    0 
   );
   const [
     isNavOpen,

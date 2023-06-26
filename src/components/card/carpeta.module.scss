@@ -6,15 +6,12 @@
   container-type: inline-size;
   container-name: card;
   border-radius: 2vmin;
-  min-height: 200px;
-  width: 100%;
-  height: 100%;
   text-align: center;
+  & > * {
+    width: 100%;
+  }
 
   .cardInner {
-    position: relative;
-    width: 100%;
-    height: 100%;
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;

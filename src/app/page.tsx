@@ -6,6 +6,7 @@ import Install from './install';
 import navbar from '#@/components/navbar/navbar.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getCarpetas } from '#@/lib/Carpetas';
+import { Suspense } from 'react';
 
 
 export default async function Page () {
@@ -20,27 +21,26 @@ export default async function Page () {
   return (
     <div className={ layout.body }>
       <div className={ layout.name }>
-        <Title helper='R&S Asesores Jurídicos'/>
+        <Suspense>
+          <Title helper='R&S Asesores Jurídicos'/>
+        </Suspense>
       </div>
 
-      <div className={ layout.main }>
-        <div className={ layout.left }>
 
-        </div>
-        <div className={ layout.right }>
-          <Title helper='Navega por nuestro sitio web:'/>
-          <Card name={ 'Procesos' } path={ '/Procesos' } icon="folder_open">
-            <h1 className={ typography.displayMedium }> Procesos</h1>
-          </Card>
-          <Card name={ 'Nueva Nota' } path={ '/Demandados/NuevoProceso' } icon="add">
-            <h1 className={ typography.displayMedium }>NuevoProceso</h1>
-          </Card>
-          <Card name={ 'Demandados' } path={ '/Demandados' } icon="person_pin">
-            <h1 className={ typography.displayMedium }> Demandados</h1>
-          </Card>
-          <Install />
-        </div>
+      <div className={ layout.left }>
+        <Title helper='Navega por nuestro sitio web:'/>
+        <Card name={ 'Procesos' } path={ '/Procesos' } icon="folder_open">
+          <h1 className={ typography.displayMedium }> Procesos</h1>
+        </Card>
+        <Card name={ 'Nueva Nota' } path={ '/Demandados/NuevoProceso' } icon="add">
+          <h1 className={ typography.displayMedium }>NuevoProceso</h1>
+        </Card>
+        <Card name={ 'Demandados' } path={ '/Demandados' } icon="person_pin">
+          <h1 className={ typography.displayMedium }> Demandados</h1>
+        </Card>
+        <Install />
       </div>
     </div>
+
   );
 }

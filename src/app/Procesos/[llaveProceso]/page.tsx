@@ -28,7 +28,7 @@ export default async function Page (
   );
 
   return (
-    <div className={ layout.main }>
+    <>
       <div className={ layout.right }>
         {
           Procesos.map(
@@ -61,6 +61,6 @@ export default async function Page (
           )
         }
       </div>
-    </div>
+    </>
   );
 }

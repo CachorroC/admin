@@ -8,9 +8,8 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import carpeta from './carpeta.module.scss';
 import { useNavigator } from '#@/app/search-context';
 import Image from 'next/image';
-import { Name } from '../nota/notas';
 import Title from '../modal/title';
-import Nombre from '../Headings/nombre';
+import Name from '../Headings/nombre';
 export const CardCarpeta = (
   {
     name,
@@ -69,7 +68,7 @@ export const CardCarpeta = (
 
       <div className={carpeta.cardInner}>
         <div className={carpeta.cardFront}>
-          <Nombre helper={ name } />
+          <Name helper={ name } />
         </div>
         <div className={ carpeta.cardBack }>
 

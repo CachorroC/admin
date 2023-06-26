@@ -1,15 +1,12 @@
-/* $MinLW: 1200px; //minimum large width
-$MaxLW: 1800px; // maximum large width
-$Bp1W: 960px;
-$MaxMW: 1200px;
-$MinMW: 600px;
-$MinSW: 320px; // minimum small width
-$MaxSW: 480px; //maximum sma width
-
 .container {
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 2vmin;
+  grid-template-areas: "header header header header header header header header header header header header" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body";
 }
 
 .header {
@@ -21,61 +18,260 @@ $MaxSW: 480px; //maximum sma width
   padding: 1vmax;
   box-shadow: var(--dp6);
   background-color: var(--nav-background);
+}
+.header .sidenav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-area: ProcesosLayoutList;
+  grid-template-rows: repeat(10, 1fr);
+  gap: 2vmin;
+  justify-content: center;
+  align-content: start;
+  justify-items: stretch;
+  box-sizing: border-box;
+  padding: 2vmin;
+  box-shadow: var(--dp16);
+  background-color: var(--sf-2);
+  border-radius: 2vmin;
+  overflow: clip;
+  overflow-y: scroll;
+}
 
-  .sidenav {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-area: ProcesosLayoutList;
-    grid-template-rows: repeat(10, 1fr);
-    gap: 2vmin;
-    justify-content: center;
-    align-content: start;
-    justify-items: stretch;
-    box-sizing: border-box;
-    padding: 2vmin;
-    box-shadow: var(--dp16);
-    background-color: var(--sf-2);
-    border-radius: 2vmin;
-  }
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 1% 1%;
+  grid-auto-flow: row;
+  grid-template-areas: "header header header header header header header header header header header header" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body";
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
+  gap: 1% 1%;
+  grid-auto-flow: row;
+  grid-template-areas: "homeButton . inputSearchBar inputSearchBar inputSearchBar forwardButton . backwardsButton . . drawerMenuButton drawerMenuButton";
+  grid-area: header;
+}
+
+.homeButton {
+  grid-area: homeButton;
+}
+
+.inputSearchBar {
+  grid-area: inputSearchBar;
+}
+
+.forwardButton {
+  grid-area: forwardButton;
+}
+
+.backwardsButton {
+  grid-area: backwardsButton;
+}
+
+.drawerMenuButton {
+  grid-area: drawerMenuButton;
 }
 
 .body {
-  box-sizing: border-box;
   display: grid;
-  height: 100%;
-  overflow: scroll;
-  grid-auto-rows: minmax(min-content, 1fr);
-  gap: 2vmin;
-  padding: 2vmin;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  gap: 1% 1%;
   grid-auto-flow: row;
-
-  @media screen and (max-width: 360px) {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-areas:
-      'name name name name'
-      'main main main main'
-      'main main main main';
-  }
+  grid-template-areas: "name name name name name name name name name name right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right";
+  grid-area: body;
 }
 
+.right {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(9, 1fr);
+  gap: 1% 1%;
+  grid-auto-flow: row;
+  grid-template-areas: "link1" "link2" "link3" "link4" "link5" "link6" "link7" "link8" "link9";
+  grid-area: right;
+}
+
+.link1 {
+  grid-area: link1;
+}
+
+.link2 {
+  grid-area: link2;
+}
+
+.link3 {
+  grid-area: link3;
+}
+
+.link4 {
+  grid-area: link4;
+}
+
+.link5 {
+  grid-area: link5;
+}
+
+.link6 {
+  grid-area: link6;
+}
+
+.link7 {
+  grid-area: link7;
+}
+
+.link8 {
+  grid-area: link8;
+}
+
+.link9 {
+  grid-area: link9;
+}
+
+.name {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 1fr;
+  gap: 1% 1%;
+  grid-auto-flow: row;
+  grid-template-areas: "note1 note1 note2 note2 note3 note3 note4 note4 note5 note5";
+  grid-area: name;
+}
+
+.note1 {
+  grid-area: note1;
+}
+
+.note2 {
+  grid-area: note2;
+}
+
+.note3 {
+  grid-area: note3;
+}
+
+.note4 {
+  grid-area: note4;
+}
+
+.note5 {
+  grid-area: note5;
+}
+
+.left {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 1% 1%;
+  grid-auto-flow: row;
+  grid-template-areas: "card1 card1 card2 card2 card3 card3 card4 card4 card5 card5" "card1 card1 card2 card2 card3 card3 card4 card4 card5 card5" "card6 card6 card7 card7 card8 card8 card9 card9 card10 card10" "card6 card6 card7 card7 card8 card8 card9 card9 card10 card10" "card11 card11 card12 card12 card13 card13 card14 card14 card15 card15" "card11 card11 card12 card12 card13 card13 card14 card14 card15 card15" "card16 card16 card17 card17 card18 card18 card19 card19 card20 card20" "card16 card16 card17 card17 card18 card18 card19 card19 card20 card20";
+  grid-area: left;
+}
+.left :nth-child(1) {
+  grid-area: card1;
+}
+.left :nth-child(1) {
+  grid-area: card1;
+}
+.left :nth-child(2) {
+  grid-area: card2;
+}
+.left :nth-child(3) {
+  grid-area: card3;
+}
+.left :nth-child(4) {
+  grid-area: card4;
+}
+.left :nth-child(5) {
+  grid-area: card5;
+}
+.left :nth-child(6) {
+  grid-area: card6;
+}
+.left :nth-child(7) {
+  grid-area: card7;
+}
+.left :nth-child(8) {
+  grid-area: card8;
+}
+.left :nth-child(9) {
+  grid-area: card9;
+}
+.left :nth-child(10) {
+  grid-area: card10;
+}
+.left :nth-child(11) {
+  grid-area: card11;
+}
+.left :nth-child(12) {
+  grid-area: card12;
+}
+.left :nth-child(13) {
+  grid-area: card13;
+}
+.left :nth-child(14) {
+  grid-area: card14;
+}
+.left :nth-child(15) {
+  grid-area: card15;
+}
+.left :nth-child(16) {
+  grid-area: card16;
+}
+.left :nth-child(17) {
+  grid-area: card17;
+}
+.left :nth-child(18) {
+  grid-area: card18;
+}
+.left :nth-child(19) {
+  grid-area: card19;
+}
+.left :nth-child(20) {
+  grid-area: card20;
+}
+
+/*
 @media screen and (min-width: 1200px) {
-  .body {
+  .container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     gap: 2vmin;
     grid-auto-flow: row;
     grid-template-areas:
-      'name name name name name name name name name name name name'
-      'main main main main main main main main main main main main'
-      'main main main main main main main main main main main main'
-      'main main main main main main main main main main main main'
-      'main main main main main main main main main main main main'
-      'main main main main main main main main main main main main'
-      'main main main main main main main main main main main main'
-      'main main main main main main main main main main main main';
+      'header header header header header header header header header header header header'
+      'body body body body body body body body body body body body'
+      'body body body body body body body body body body body body'
+      'body body body body body body body body body body body body'
+      'body body body body body body body body body body body body'
+      'body body body body body body body body body body body body'
+      'body body body body body body body body body body body body'
+      'body body body body body body body body body body body body'
+      'body body body body body body body body body body body body'
+      'body body body body body body body body body body body body';
+  }
 
+  .header {
+    display: flex;
+    flex-flow: row nowrap;
+    flex: none;
+    gap: 2vmin;
+    grid-area: header;
+  }
+
+  .body {
+    display: grid;
+    grid-template-rows: 0.5fr 2fr;
+    grid-auto-columns: 1fr;
+    gap: 2vmin;
+    grid-auto-flow: row;
+    grid-area: body;
     @media screen and (min-width: 1920px) {
       margin: 0 auto;
       width: 1920px;
@@ -83,46 +279,39 @@ $MaxSW: 480px; //maximum sma width
   }
 
   .name {
-    display: flex;
-    flex-flow: row nowrap;
-    gap: 2vmin;
-    justify-content: stretch;
-    align-content: stretch;
-    justify-items: stretch;
-    align-items: stretch;
-    grid-area: name;
-  }
-
-  .main {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 2vmin;
-    grid-auto-flow: row;
-    grid-template-areas:
-      'left left right'
-      'left left right';
-    grid-area: main;
-  }
-
-  .left {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-auto-rows: 1fr;
-    gap: 2vmin;
-    justify-items: stretch;
-    align-items: stretch;
-    grid-area: left;
-  }
-
-  .right {
     display: grid;
     grid-auto-columns: 1fr;
     grid-auto-rows: 1fr;
     gap: 2vmin;
-    grid-auto-flow: row dense;
-    grid-area: right;
+    grid-auto-flow: column dense;
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  .main {
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+    grid-auto-rows: 1fr;
+    gap: 2vmin;
+    grid-auto-flow: column;
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .right {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 2vmin;
+    grid-auto-flow: row;
+    grid-area: 1 / 2 / 2 / 3;
+  }
+
+  .left {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 2vmin;
+    grid-area: 1 / 1 / 2 / 2;
   }
 }
 
@@ -131,7 +320,7 @@ $MaxSW: 480px; //maximum sma width
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-auto-columns: 1fr;
-    gap: 0px 0px;
+    gap: 2vmin;
     grid-auto-flow: row;
   }
 
@@ -140,7 +329,7 @@ $MaxSW: 480px; //maximum sma width
     grid-template-columns: 1fr;
     grid-auto-columns: 1fr;
     grid-auto-rows: 1fr;
-    gap: 0px 0px;
+    gap: 2vmin;
     grid-auto-flow: column dense;
     grid-area: 1 / 1 / 2 / 2;
   }
@@ -149,7 +338,7 @@ $MaxSW: 480px; //maximum sma width
     display: grid;
     grid-auto-columns: 1fr;
     grid-auto-rows: 1fr;
-    gap: 0px 0px;
+    gap: 2vmin;
     grid-auto-flow: row dense;
     grid-area: 2 / 1 / 13 / 2;
   }
@@ -159,7 +348,7 @@ $MaxSW: 480px; //maximum sma width
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-auto-columns: 1fr;
     grid-auto-rows: 1fr;
-    gap: 0px 0px;
+    gap: 2vmin;
     grid-auto-flow: column dense;
     grid-template-areas:
       ''
@@ -173,7 +362,7 @@ $MaxSW: 480px; //maximum sma width
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px 0px;
+    gap: 2vmin;
     grid-auto-flow: row;
     grid-template-areas:
       '. . .'
@@ -182,71 +371,5 @@ $MaxSW: 480px; //maximum sma width
   }
 }
  */
-.container {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas: "header header header header header header header header header header header header" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body";
-}
-
-.header {
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: column dense;
-  grid-area: header;
-}
-
-.body {
-  display: grid;
-  grid-template-rows: 0.5fr 2fr;
-  grid-auto-columns: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-area: body;
-}
-
-.name {
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: column dense;
-  grid-area: 1/1/2/2;
-}
-
-.main {
-  display: grid;
-  grid-template-columns: 1.5fr 0.5fr;
-  grid-auto-rows: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: column;
-  grid-area: 2/1/3/2;
-}
-
-.right {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-rows: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-area: 1/2/2/3;
-}
-
-.left {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-auto-rows: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas: ". . ." ". . .";
-  grid-area: 1/1/2/2;
-}
 
 /*# sourceMappingURL=layout.module.css.map */
