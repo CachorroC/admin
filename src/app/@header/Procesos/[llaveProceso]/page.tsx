@@ -22,7 +22,9 @@ export default async function Page({
 
   return (
     <Drawer>
-      {proceso.map((prc, i, prcArr) => (
+      {proceso.map((
+        prc, i, prcArr
+      ) => (
         <Title key={prc._id.toString()} helper={prc.Demandado.Nombre} />
       ))}
 

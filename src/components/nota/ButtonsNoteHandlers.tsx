@@ -5,9 +5,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 export function DeleteNoteButton({ id, uri }: { id: string; uri: string }) {
   async function deleteRequestHandler() {
-    const Request = await fetch(`${uri}/api/Notas?_id=${id}`, {
-      method: 'DELETE',
-    });
+    const Request = await fetch(
+      `${uri}/api/Notas?_id=${id}`,
+      {
+        method: 'DELETE',
+      }
+    );
     if (!Request.ok) {
       return;
     }
@@ -24,13 +27,16 @@ export function DeleteNoteButton({ id, uri }: { id: string; uri: string }) {
 
 export function AddNoteButton({ nota, uri }: { nota: intNota; uri: string }) {
   async function addRequestHandler() {
-    const Request = await fetch(`${uri}/api/Notas`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(nota),
-    }).then((fullfilled) => {
+    const Request = await fetch(
+      `${uri}/api/Notas`,
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(nota),
+      }
+    ).then((fullfilled) => {
       alert(fullfilled.status);
       return fullfilled;
     });

@@ -1,5 +1,7 @@
 import { Nota } from '#@/components/nota/notas';
 import { getNotasByllaveProceso } from '#@/lib/notas';
+import { NewNota } from '#@/components/nota/NuevaNota';
+import { getBaseUrl } from '#@/lib/getBaseUrl';
 
 export default async function Page({
   params: { llaveProceso },
@@ -13,6 +15,7 @@ export default async function Page({
   }
   return (
     <>
+      <NewNota llaveProceso={ llaveProceso} uri={ `${getBaseUrl()}` } />
       {notas.map((
         nota, index, arrNotas
       ) => (

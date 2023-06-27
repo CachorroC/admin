@@ -19,18 +19,28 @@ export default function SearchOutputList({
   fechas: intFecha[];
 }) {
   const pathname = usePathname();
-  const [search, setSearch] = useSearch();
+  const [
+    search,
+    setSearch
+  ] = useSearch();
   const clickHandler = () => {
     setIsNavOpen(false);
   };
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] = useNavigator();
 
   const isActive = pathname === path;
   const href = path as Route;
 
   const rows: any[] = [];
 
-  const idk = [...fechas].sort((a, b) => {
+  const idk = [
+    ...fechas
+  ].sort((
+    a, b
+  ) => {
     if (!a.fecha || a.fecha === undefined) {
       return 1;
     }
@@ -47,29 +57,33 @@ export default function SearchOutputList({
     }
     return 0;
   });
-  idk.forEach((proceso, index, array) => {
+  idk.forEach((
+    proceso, index, array
+  ) => {
     const { idProceso, llaveProceso, Demandado, fecha, _id } = proceso;
     const { Nombre, Id, Tel, Direccion } = Demandado;
 
     if (Nombre.toLowerCase().indexOf(search.toLowerCase()) === -1) {
       return;
     }
-    rows.push(
-      <LinkCard path={path} proceso={proceso} key={_id.toString()}>
-        <sub className={typography.labelSmall}>
-          {`${index + 1} of ${array.length}`}
-        </sub>
-      </LinkCard>
-    );
+    rows.push(<LinkCard path={path} proceso={proceso} key={_id.toString()}>
+      <sub className={typography.labelSmall}>
+        {`${index + 1} of ${array.length}`}
+      </sub>
+    </LinkCard>);
   });
 
   return (
     <>
       <div className={searchbar.container}>
-        <div className={isActive ? searchbar.isActive : searchbar.notActive}>
+        <div className={isActive
+          ? searchbar.isActive
+          : searchbar.notActive}>
           <Name helper={path} />
           <Link
-            className={isActive ? searchbar.linkIsActive : searchbar.link}
+            className={isActive
+              ? searchbar.linkIsActive
+              : searchbar.link}
             onClick={clickHandler}
             href={href}
           >
@@ -85,7 +99,9 @@ export default function SearchOutputList({
           </div>
           <div className={searchbar.links}>
             <Link
-              className={isActive ? searchbar.linkIsActive : searchbar.link}
+              className={isActive
+                ? searchbar.linkIsActive
+                : searchbar.link}
               href={'/Procesos'}
             >
               <span className={`material-symbols-outlined ${searchbar.icon}`}>
@@ -93,7 +109,9 @@ export default function SearchOutputList({
               </span>
             </Link>
             <Link
-              className={isActive ? searchbar.linkIsActive : searchbar.link}
+              className={isActive
+                ? searchbar.linkIsActive
+                : searchbar.link}
               href={'/NuevaNota'}
             >
               <span className={`material-symbols-outlined ${searchbar.icon}`}>

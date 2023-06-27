@@ -24,9 +24,7 @@ export function Edit({ uri, nota }: { uri: string; nota: monNota }) {
     name: 'tareas',
     control,
   });
-  const onSubmit: SubmitHandler<intNotaFormValues> = async (
-    data: intNotaFormValues
-  ) => {
+  const onSubmit: SubmitHandler<intNotaFormValues> = async (data: intNotaFormValues) => {
     const newData = {
       ...data,
       llaveProceso: nota.llaveProceso,
@@ -34,11 +32,14 @@ export function Edit({ uri, nota }: { uri: string; nota: monNota }) {
       fecha: nota.fecha,
     };
     alert(JSON.stringify(newData));
-    const postNewNote = await fetch(`${uri}/api/Notas?id=${nota._id}`, {
-      method: 'PUT',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(newData),
-    }).then((fullfilled) => {
+    const postNewNote = await fetch(
+      `${uri}/api/Notas?id=${nota._id}`,
+      {
+        method: 'PUT',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(newData),
+      }
+    ).then((fullfilled) => {
       alert(fullfilled.status);
       return fullfilled;
     });
@@ -54,9 +55,14 @@ export function Edit({ uri, nota }: { uri: string; nota: monNota }) {
         <textarea
           className={note.textArea}
           defaultValue={nota.nota}
-          {...register('nota', { required: true })}
+          {...register(
+            'nota',
+            { required: true }
+          )}
         />
-        {nota.tareas.map((field, index) => (
+        {nota.tareas.map((
+          field, index
+        ) => (
           <Fragment key={field.tarea}>
             <div className={note.section}>
               <label htmlFor={`tareas.${index}.text`} className={note.label}>
@@ -64,7 +70,10 @@ export function Edit({ uri, nota }: { uri: string; nota: monNota }) {
               </label>
               <textarea
                 placeholder='tarea'
-                {...register(`tareas.${index}.tarea` as const, {})}
+                {...register(
+`tareas.${index}.tarea` as const,
+{}
+                )}
                 className={note.textArea}
                 defaultValue={field.tarea}
               />
@@ -76,7 +85,10 @@ export function Edit({ uri, nota }: { uri: string; nota: monNota }) {
               <input
                 defaultChecked={field.isDone}
                 type='checkbox'
-                {...register(`tareas.${index}.isDone` as const, {})}
+                {...register(
+`tareas.${index}.isDone` as const,
+{}
+                )}
                 className={note.checkbox}
               />
             </div>
@@ -88,7 +100,10 @@ export function Edit({ uri, nota }: { uri: string; nota: monNota }) {
                 type='date'
                 defaultValue={field.dueDate}
                 placeholder={`tareas.${index}.dueDate`}
-                {...register(`tareas.${index}.dueDate`, {})}
+                {...register(
+                  `tareas.${index}.dueDate`,
+                  {}
+                )}
               />
             </div>
 
@@ -125,7 +140,10 @@ export function Edit({ uri, nota }: { uri: string; nota: monNota }) {
           <button
             type='button'
             onClick={() => {
-              setValue('nota', nota.nota);
+              setValue(
+                'nota',
+                nota.nota
+              );
             }}
           >
             Set All Values

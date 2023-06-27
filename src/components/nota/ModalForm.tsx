@@ -16,11 +16,17 @@ export const ModalForm = ({
     },
   });
 
-  React.useEffect(() => {
-    reset({
-      mail,
-    });
-  }, [reset, mail]);
+  React.useEffect(
+    () => {
+      reset({
+        mail,
+      });
+    },
+    [
+      reset,
+      mail
+    ]
+  );
 
   const onSubmit = (data: FormValues) => {
     setModalFormData(data.mail);
@@ -29,7 +35,10 @@ export const ModalForm = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <h2>Modal</h2>
-      <input placeholder='mail' {...register('mail', { required: true })} />
+      <input placeholder='mail' {...register(
+        'mail',
+        { required: true }
+      )} />
       <input type='submit' />
     </form>
   );

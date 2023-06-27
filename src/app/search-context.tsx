@@ -17,12 +17,24 @@ const NavContext = createContext<
 export const LevelContext = createContext(0);
 export function SearchProvider({ children }: { children: ReactNode }) {
   const level = useContext(LevelContext);
-  const [search, setSearch] = useState('');
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [
+    search,
+    setSearch
+  ] = useState('');
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] = useState(false);
   return (
     <LevelContext.Provider value={level + 1}>
-      <SearchContext.Provider value={[search, setSearch]}>
-        <NavContext.Provider value={[isNavOpen, setIsNavOpen]}>
+      <SearchContext.Provider value={[
+        search,
+        setSearch
+      ]}>
+        <NavContext.Provider value={[
+          isNavOpen,
+          setIsNavOpen
+        ]}>
           {children}
         </NavContext.Provider>
       </SearchContext.Provider>

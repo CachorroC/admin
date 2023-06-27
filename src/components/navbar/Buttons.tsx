@@ -6,7 +6,10 @@ import { useModal } from '#@/app/modal-context';
 import { useNavigator } from '#@/app/search-context';
 
 export const ForwardButton = () => {
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] = useNavigator();
   const router = useRouter();
   return (
     <button
@@ -23,7 +26,10 @@ export const ForwardButton = () => {
   );
 };
 export const BackwardsButton = () => {
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] = useNavigator();
   const router = useRouter();
   return (
     <button
@@ -40,7 +46,10 @@ export const BackwardsButton = () => {
   );
 };
 export const DrawerMenuButton = () => {
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] = useNavigator();
 
   if (isNavOpen) {
     return (
@@ -67,7 +76,10 @@ export const DrawerMenuButton = () => {
 };
 
 export const HomeButton = () => {
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] = useNavigator();
   return (
     <Link
       href={'/'}
@@ -82,7 +94,10 @@ export const HomeButton = () => {
   );
 };
 export const ModalButton = () => {
-  const [isOpen, setIsOpen] = useModal();
+  const [
+    isOpen,
+    setIsOpen
+  ] = useModal();
   return (
     <button className={navbar.ModalButton} onClick={() => setIsOpen(true)}>
       <span className='material-symbols-outlined'>box</span>

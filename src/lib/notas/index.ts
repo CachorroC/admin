@@ -40,14 +40,15 @@ export async function postNota({ nota }: { nota: intNota }) {
   const outgoingRequest = await collection.insertOne(nota);
 
   if (!outgoingRequest.acknowledged) {
-    return new NextResponse(null, {
-      status: 404,
-    });
+    return new NextResponse(
+      null,
+      {
+        status: 404,
+      }
+    );
   }
   return new NextResponse(
-    JSON.stringify(
-      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
-    ),
+    JSON.stringify(outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`),
     {
       status: 200,
       headers: {

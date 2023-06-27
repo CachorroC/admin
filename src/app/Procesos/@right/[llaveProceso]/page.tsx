@@ -12,6 +12,9 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import box from '#@/styles/scss/box.module.scss';
 import { IntActuaciones } from '#@/lib/types/procesos';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
+import { getNotas, getNotasByllaveProceso } from '#@/lib/notas';
+import { NewNota } from '#@/components/nota/NuevaNota';
+import note from '#@/components/nota/note.module.scss';
 async function Name({ llaveProceso }: { llaveProceso: string }) {
   const proceso = await getCarpetasByllaveProceso({
     llaveProceso: llaveProceso,
@@ -43,52 +46,173 @@ async function Acts({ idProceso }: { idProceso: number }) {
 }
 
 export default async function PageProcesosRightllaveProceso({
-  params: { llaveProceso },
+  params
 }: {
   params: {
     llaveProceso: string;
   };
 }) {
   const carpeta = await getCarpetasByllaveProceso({
-    llaveProceso: llaveProceso,
+    llaveProceso: params.llaveProceso,
   });
   const Procesos = await getConsultaNumeroRadicion({
-    llaveProceso: llaveProceso,
+    llaveProceso: params.llaveProceso,
   });
-  const cantidadProcesos = Procesos.length;
   const cantidadCarpetas = carpeta.length;
-
-  switch (cantidadCarpetas) {
+  const notasllaveProceso = await getNotasByllaveProceso( {
+    llaveProceso: params.llaveProceso
+  } );
+  const cantidadNotas = notasllaveProceso.length;
+  const notas = await getNotas();
+  switch (cantidadNotas) {
   case 0:
-    return null;
-  case 1:
-    const { idProceso } = Procesos[0];
     return (
       <>
-        {carpeta.map((
+        <NewNota llaveProceso={ params.llaveProceso } uri={ `${ getBaseUrl()}`} />
+        {notas.map((
           prc, i, arr
-        ) => (
-          <Fragment key={prc._id.toString()}>
-            <Acts key={prc.idProceso} idProceso={prc.idProceso} />
-            <Card
-              key={prc._id.toString()}
-              name={prc.Demandado.Nombre}
-              llaveProceso={prc.llaveProceso}
-              idProceso={prc.idProceso}
-              path={'/Procesos'}
-            >
-              <span className='material-symbols-outlined'>
-                  clock_loader_30
-              </span>
-            </Card>
-          </Fragment>
-        ))}
+        ) => {
+          const { nota, tareas, _id, llaveProceso, pathname } = prc;
+          return (
+            <Fragment key={_id.toString()}>
+              <Card
+                key={_id.toString()}
+                name={nota}
+                llaveProceso={llaveProceso}
+                path={pathname}
+              >
+                { tareas.map((
+                  t, i, arr
+                ) => {
+                  const { isDone, tarea, dueDate } = t;
+                  return (
+                    <div key={ i } className={ isDone
+                      ? note.tarea
+                      : note.tareaDone }>
+                      <p className={typography.bodyMedium}>{tarea}</p>
+                      <p className={typography.labelMedium}>{fixFechas(dueDate)}</p>
+                    </div>
+                  );
+                })}
+                <span className='material-symbols-outlined'>
+                  note
+                </span>
+              </Card>
+            </Fragment>
+          );
+        })}
+      </>
+    );
+  case 1:
+    return (
+      <>
+        <NewNota llaveProceso={ params.llaveProceso } uri={ `${ getBaseUrl()}`} />
+        {notasllaveProceso.map((
+          prc, i, arr
+        ) => {
+          const { nota, tareas, _id, llaveProceso, pathname } = prc;
+          return (
+            <Fragment key={_id.toString()}>
+              <Card
+                key={_id.toString()}
+                name={nota}
+                llaveProceso={llaveProceso}
+                path={pathname}
+              >
+                { tareas.map((
+                  t, i, arr
+                ) => {
+                  const { isDone, tarea, dueDate } = t;
+                  return (
+                    <div key={ i } className={ isDone
+                      ? note.tarea
+                      : note.tareaDone }>
+                      <p className={typography.bodyMedium}>{tarea}</p>
+                      <p className={typography.labelMedium}>{fixFechas(dueDate)}</p>
+                    </div>
+                  );
+                })}
+                <span className='material-symbols-outlined'>
+                  note
+                </span>
+              </Card>
+            </Fragment>
+          );
+        })}
       </>
     );
   case 2:
-    return null;
+    return (   <>
+      <NewNota llaveProceso={ params.llaveProceso } uri={ `${ getBaseUrl()}`} />
+      {notasllaveProceso.map((
+        prc, i, arr
+      ) => {
+        const { nota, tareas, _id, llaveProceso, pathname } = prc;
+        return (
+          <Fragment key={_id.toString()}>
+            <Card
+              key={_id.toString()}
+              name={nota}
+              llaveProceso={llaveProceso}
+              path={pathname}
+            >
+              { tareas.map((
+                t, i, arr
+              ) => {
+                const { isDone, tarea, dueDate } = t;
+                return (
+                  <div key={ i } className={ isDone
+                    ? note.tarea
+                    : note.tareaDone }>
+                    <p className={typography.bodyMedium}>{tarea}</p>
+                    <p className={typography.labelMedium}>{fixFechas(dueDate)}</p>
+                  </div>
+                );
+              })}
+              <span className='material-symbols-outlined'>
+                  note
+              </span>
+            </Card>
+          </Fragment>
+        );
+      })}
+    </>);
 
   default:
-    return null;
+    return (   <>
+      <NewNota llaveProceso={ params.llaveProceso } uri={ `${ getBaseUrl()}`} />
+      {notasllaveProceso.map((
+        prc, i, arr
+      ) => {
+        const { nota, tareas, _id, llaveProceso, pathname } = prc;
+        return (
+          <Fragment key={_id.toString()}>
+            <Card
+              key={_id.toString()}
+              name={nota}
+              llaveProceso={llaveProceso}
+              path={pathname}
+            >
+              { tareas.map((
+                t, i, arr
+              ) => {
+                const { isDone, tarea, dueDate } = t;
+                return (
+                  <div key={ i } className={ isDone
+                    ? note.tarea
+                    : note.tareaDone }>
+                    <p className={typography.bodyMedium}>{tarea}</p>
+                    <p className={typography.labelMedium}>{fixFechas(dueDate)}</p>
+                  </div>
+                );
+              })}
+              <span className='material-symbols-outlined'>
+                  note
+              </span>
+            </Card>
+          </Fragment>
+        );
+      })}
+    </>);
   }
 }

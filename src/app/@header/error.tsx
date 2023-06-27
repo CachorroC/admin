@@ -5,9 +5,17 @@ import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function Error({ error, reset }: any) {
-  React.useEffect(() => {
-    console.log('logging error:', error);
-  }, [error]);
+  React.useEffect(
+    () => {
+      console.log(
+        'logging error:',
+        error
+      );
+    },
+    [
+      error
+    ]
+  );
 
   return (
     <div className={layout.header}>

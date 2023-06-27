@@ -20,18 +20,14 @@ export const getProcesos = cache(async () => {
     .toArray()) as unknown as monDemandado[];
   return procesos;
 });
-export const getProcesosByllaveProceso = cache(
-  async ({ llaveProceso }: { llaveProceso: string }) => {
-    const collection = await Collection();
-    const procesos = (await collection
-      .find({})
-      .toArray()) as unknown as monDemandado[];
-    const Procesos = procesos.filter(
-      (proceso) => proceso.llaveProceso === llaveProceso
-    );
-    return Procesos;
-  }
-);
+export const getProcesosByllaveProceso = cache(async ({ llaveProceso }: { llaveProceso: string }) => {
+  const collection = await Collection();
+  const procesos = (await collection
+    .find({})
+    .toArray()) as unknown as monDemandado[];
+  const Procesos = procesos.filter((proceso) => proceso.llaveProceso === llaveProceso);
+  return Procesos;
+});
 export const getProcesoById = cache(async ({ _id }: { _id: string }) => {
   const collection = await Collection();
   const procesos = (await collection
@@ -46,14 +42,15 @@ export async function postProceso({ proceso }: { proceso: intDemandado }) {
   const outgoingRequest = await collection.insertOne(proceso);
 
   if (!outgoingRequest.acknowledged) {
-    return new NextResponse(null, {
-      status: 404,
-    });
+    return new NextResponse(
+      null,
+      {
+        status: 404,
+      }
+    );
   }
   return new NextResponse(
-    JSON.stringify(
-      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
-    ),
+    JSON.stringify(outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`),
     {
       status: 200,
       headers: {

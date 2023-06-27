@@ -24,7 +24,11 @@ export const metadata: Metadata = {
   generator: 'R&S Asesoría Jurídica',
   applicationName: 'R&S Asesoría Jurídica',
   referrer: 'origin-when-cross-origin',
-  keywords: ['Next.js', 'React', 'JavaScript'],
+  keywords: [
+    'Next.js',
+    'React',
+    'JavaScript'
+  ],
   authors: [
     {
       name: 'cam',
@@ -80,7 +84,10 @@ export const metadata: Metadata = {
       {
         url: '/icons/favicon.png',
       },
-      new URL('/favicon.svg', 'https://app.rsasesorjuridico.com'),
+      new URL(
+        '/favicon.svg',
+        'https://app.rsasesorjuridico.com'
+      ),
     ],
     shortcut: '/safari-pinned-tab.svg',
     apple: '/icons/apple-touch-icon.png',

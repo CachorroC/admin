@@ -27,30 +27,39 @@ export async function GET(Request: NextRequest) {
   const llaveProceso = searchParams.get('llaveProceso');
   if (llaveProceso) {
     const Tareas = notas.filter((nota) => nota.llaveProceso === llaveProceso);
-    return new NextResponse(JSON.stringify(Tareas), {
-      status: 200,
-      headers: {
-        'content-type': 'application/json',
-      },
-    });
+    return new NextResponse(
+      JSON.stringify(Tareas),
+      {
+        status: 200,
+        headers: {
+          'content-type': 'application/json',
+        },
+      }
+    );
   }
 
   const _id = searchParams.get('_id');
   if (_id) {
     const Nota = notas.find((nota) => nota._id.toString() === _id);
-    return new NextResponse(JSON.stringify(Nota), {
+    return new NextResponse(
+      JSON.stringify(Nota),
+      {
+        status: 200,
+        headers: {
+          'content-type': 'application/json',
+        },
+      }
+    );
+  }
+  return new NextResponse(
+    JSON.stringify(notas),
+    {
       status: 200,
       headers: {
         'content-type': 'application/json',
       },
-    });
-  }
-  return new NextResponse(JSON.stringify(notas), {
-    status: 200,
-    headers: {
-      'content-type': 'application/json',
-    },
-  });
+    }
+  );
 }
 
 export async function POST(request: NextRequest) {
@@ -59,14 +68,15 @@ export async function POST(request: NextRequest) {
   const outgoingRequest = await client.insertOne(incomingRequest);
 
   if (!outgoingRequest.acknowledged) {
-    return new NextResponse(null, {
-      status: 404,
-    });
+    return new NextResponse(
+      null,
+      {
+        status: 404,
+      }
+    );
   }
   return new NextResponse(
-    JSON.stringify(
-      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
-    ),
+    JSON.stringify(outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`),
     {
       status: 200,
       headers: {
@@ -86,16 +96,24 @@ export async function PUT(Request: NextRequest) {
     const query = {
       _id: new ObjectId(id),
     };
-    const result = await notas.updateOne(query, { $set: updatedNote });
+    const result = await notas.updateOne(
+      query,
+      { $set: updatedNote }
+    );
     if (result.acknowledged) {
-      return new NextResponse(`Successfully updated game with id ${id}`, {
-        status: 200,
-        headers: { 'content-type': 'text/html' },
-      });
+      return new NextResponse(
+        `Successfully updated game with id ${id}`,
+        {
+          status: 200,
+          headers: { 'content-type': 'text/html' },
+        }
+      );
     }
     return new NextResponse(
       `the result was ${
-        result.acknowledged ? 'true' : 'false'
+        result.acknowledged
+          ? 'true'
+          : 'false'
       } with ${result.modifiedCount.toString()}`,
       {
         status: 200,
@@ -105,9 +123,12 @@ export async function PUT(Request: NextRequest) {
       }
     );
   }
-  return new NextResponse(null, {
-    status: 404,
-  });
+  return new NextResponse(
+    null,
+    {
+      status: 404,
+    }
+  );
 }
 
 export async function DELETE(Request: NextRequest) {
@@ -126,20 +147,29 @@ export async function DELETE(Request: NextRequest) {
         deletedCount: count,
         deletedId: id,
       };
-      return new NextResponse(JSON.stringify(response), {
-        status: 202,
-        headers: {
-          'content-type': 'application/json',
-        },
-      });
+      return new NextResponse(
+        JSON.stringify(response),
+        {
+          status: 202,
+          headers: {
+            'content-type': 'application/json',
+          },
+        }
+      );
     }
     if (!Result.acknowledged) {
-      return new NextResponse(JSON.stringify(`error 400 ${id} not deleted`), {
-        status: 400,
-      });
+      return new NextResponse(
+        JSON.stringify(`error 400 ${id} not deleted`),
+        {
+          status: 400,
+        }
+      );
     }
-    return new NextResponse(JSON.stringify(Result), {
-      status: 200,
-    });
+    return new NextResponse(
+      JSON.stringify(Result),
+      {
+        status: 200,
+      }
+    );
   }
 }

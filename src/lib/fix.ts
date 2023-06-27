@@ -26,37 +26,41 @@ export function fixFechas(fecha: string | null | undefined) {
   return dia + ' de ' + month + ' de ' + ano;
 }
 function trimmer(sujetosProcesales: string) {
-  const locateDemandado = sujetosProcesales.search(
-    /(demandado|causante)+:(?:\s*?|'\s*?')/gi
-  );
+  const locateDemandado = sujetosProcesales.search(/(demandado|causante)+:(?:\s*?|'\s*?')/gi);
 
   const extractDemandado = sujetosProcesales
     .slice(locateDemandado + 10)
     .toLocaleLowerCase();
 
-  const trimDemandado = extractDemandado.replace(/^\s+|\s+$/gm, '');
-  const splitDemandado = trimDemandado.split(' ');
-  const splitDemandadotoUnify = splitDemandado.map(
-    (nombreOapellido: string, index: number) => {
-      if (index >= 5) {
-        return '';
-      }
-
-      if (nombreOapellido === '|') {
-        return '';
-      }
-      if (nombreOapellido.includes('s.a.s')) {
-        return '';
-      }
-      if (nombreOapellido.includes('sas')) {
-        return '';
-      }
-      if (nombreOapellido.includes('(emplazado)')) {
-        return '';
-      }
-      return nombreOapellido.replace(/^./, (str: string) => str.toUpperCase());
-    }
+  const trimDemandado = extractDemandado.replace(
+    /^\s+|\s+$/gm,
+    ''
   );
+  const splitDemandado = trimDemandado.split(' ');
+  const splitDemandadotoUnify = splitDemandado.map((
+    nombreOapellido: string, index: number
+  ) => {
+    if (index >= 5) {
+      return '';
+    }
+
+    if (nombreOapellido === '|') {
+      return '';
+    }
+    if (nombreOapellido.includes('s.a.s')) {
+      return '';
+    }
+    if (nombreOapellido.includes('sas')) {
+      return '';
+    }
+    if (nombreOapellido.includes('(emplazado)')) {
+      return '';
+    }
+    return nombreOapellido.replace(
+      /^./,
+      (str: string) => str.toUpperCase()
+    );
+  });
   const unifyDemandado = splitDemandadotoUnify.join(' ');
   return unifyDemandado;
 }

@@ -20,12 +20,15 @@ export async function GET() {
   if (!procesos.length) {
     notFound();
   }
-  return new NextResponse(JSON.stringify(procesos), {
-    status: 200,
-    headers: {
-      'content-type': 'application/json',
-    },
-  });
+  return new NextResponse(
+    JSON.stringify(procesos),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  );
 }
 
 export async function POST(Request: NextRequest) {
@@ -43,9 +46,7 @@ export async function POST(Request: NextRequest) {
     );
   }
   return new NextResponse(
-    JSON.stringify(
-      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
-    ),
+    JSON.stringify(outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`),
     {
       status: 200,
       headers: {

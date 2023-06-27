@@ -13,16 +13,26 @@ export async function POST(request: Request) {
     const result = await procesosCollection.insertOne(proceso);
 
     if (!result.acknowledged) {
-      return new NextResponse(null, {
-        status: 400,
-      });
+      return new NextResponse(
+        null,
+        {
+          status: 400,
+        }
+      );
     }
-    return new NextResponse(JSON.stringify(JSON.stringify(result.insertedId)), {
-      status: 200,
-    });
-  } catch (error) {
-    return new NextResponse(JSON.stringify(error), {
-      status: 505,
-    });
+    return new NextResponse(
+      JSON.stringify(JSON.stringify(result.insertedId)),
+      {
+        status: 200,
+      }
+    );
+  }
+  catch (error) {
+    return new NextResponse(
+      JSON.stringify(error),
+      {
+        status: 505,
+      }
+    );
   }
 }

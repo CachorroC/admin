@@ -9,9 +9,7 @@ export async function JuzgadosByllaveProceso({
   llaveProceso: string;
 }) {
   try {
-    const Request = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`
-    );
+    const Request = await fetch(`https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`);
     if (!Request.ok) {
       return (
         <CardCarpeta
@@ -50,7 +48,8 @@ export async function JuzgadosByllaveProceso({
       );
     });
     return <>{mapeandoProcesos}</>;
-  } catch (err) {
+  }
+  catch (err) {
     console.log(err);
     const error = JSON.stringify(err);
     return (

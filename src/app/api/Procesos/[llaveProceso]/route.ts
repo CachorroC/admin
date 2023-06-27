@@ -20,17 +20,16 @@ export async function GET(
     .find({})
     .toArray()) as unknown as monDemandado[];
   const delay = searchParams.get('delay');
-  const Procesos = procesos.filter(
-    (proceso) => proceso.llaveProceso === llaveProceso
-  );
+  const Procesos = procesos.filter((proceso) => proceso.llaveProceso === llaveProceso);
   if (delay) {
-    await new Promise((resolve) => setTimeout(resolve, Number(delay)));
+    await new Promise((resolve) => setTimeout(
+      resolve,
+      Number(delay)
+    ));
   }
   const idProceso = searchParams.get('idProceso');
   if (idProceso) {
-    const Procesos = procesos.find(
-      (proceso) => proceso.idProceso.toString() === idProceso
-    );
+    const Procesos = procesos.find((proceso) => proceso.idProceso.toString() === idProceso);
     if (!Procesos) {
       const num = parseInt(idProceso);
       const noProc = {
@@ -38,24 +37,33 @@ export async function GET(
         llaveProceso: params.llaveProceso,
         sujetosProcesales: 'no existe',
       };
-      return new NextResponse(JSON.stringify(noProc), {
+      return new NextResponse(
+        JSON.stringify(noProc),
+        {
+          status: 200,
+          headers: {
+            'content-type': 'application/json',
+          },
+        }
+      );
+    }
+    return new NextResponse(
+      JSON.stringify(Procesos),
+      {
         status: 200,
         headers: {
           'content-type': 'application/json',
         },
-      });
-    }
-    return new NextResponse(JSON.stringify(Procesos), {
+      }
+    );
+  }
+  return new NextResponse(
+    JSON.stringify(Procesos),
+    {
       status: 200,
       headers: {
         'content-type': 'application/json',
       },
-    });
-  }
-  return new NextResponse(JSON.stringify(Procesos), {
-    status: 200,
-    headers: {
-      'content-type': 'application/json',
-    },
-  });
+    }
+  );
 }

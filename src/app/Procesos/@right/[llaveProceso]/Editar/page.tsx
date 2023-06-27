@@ -18,7 +18,9 @@ export default async function page({
 
   return (
     <div className={note.container}>
-      {nota.map((ntext, i) => (
+      {nota.map((
+        ntext, i
+      ) => (
         <Fragment key={ntext._id.toString()}>
           <h1 key={i} className={typeface.title}>
             {ntext.nota}

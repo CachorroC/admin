@@ -6,14 +6,22 @@ import { useModal } from '#@/app/modal-context';
 import modal from '#@/components/modal/modal.module.scss';
 
 export default function Modal({ children }: { children: ReactNode }) {
-  const [isOpen, setIsOpen] = useModal();
+  const [
+    isOpen,
+    setIsOpen
+  ] = useModal();
   const overlay = useRef(null);
   const wrapper = useRef(null);
   const router = useRouter();
 
-  const onDismiss = useCallback(() => {
-    router.back();
-  }, [router]);
+  const onDismiss = useCallback(
+    () => {
+      router.back();
+    },
+    [
+      router
+    ]
+  );
 
   const onClick = useCallback(
     (e: MouseEvent<HTMLElement>) => {
@@ -23,7 +31,11 @@ export default function Modal({ children }: { children: ReactNode }) {
         }
       }
     },
-    [onDismiss, overlay, wrapper]
+    [
+      onDismiss,
+      overlay,
+      wrapper
+    ]
   );
 
   const onKeyDown = useCallback(
@@ -32,13 +44,26 @@ export default function Modal({ children }: { children: ReactNode }) {
         onDismiss();
       }
     },
-    [onDismiss]
+    [
+      onDismiss
+    ]
   );
 
-  useEffect(() => {
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, [onKeyDown]);
+  useEffect(
+    () => {
+      document.addEventListener(
+        'keydown',
+        onKeyDown
+      );
+      return () => document.removeEventListener(
+        'keydown',
+        onKeyDown
+      );
+    },
+    [
+      onKeyDown
+    ]
+  );
 
   return (
     <div ref={overlay} onClick={onClick} className={modal.modal}>

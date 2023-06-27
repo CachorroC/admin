@@ -50,11 +50,14 @@ export function NewNota({
       fecha: new Date(),
     };
     alert(JSON.stringify(newData));
-    const postNewNote = await fetch(`${uri}/api/Notas`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(newData),
-    }).then((fullfilled) => {
+    const postNewNote = await fetch(
+      `${uri}/api/Notas`,
+      {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(newData),
+      }
+    ).then((fullfilled) => {
       alert(fullfilled.status);
       return fullfilled;
     });
@@ -63,7 +66,10 @@ export function NewNota({
     return responsePostNewNote;
   };
   console.log(errors);
-  const [isActive, setIsActive] = useState(false);
+  const [
+    isActive,
+    setIsActive
+  ] = useState(false);
   return (
     <div className={note.container}>
       <form className={note.form} onSubmit={handleSubmit(onSubmit)}>
@@ -73,17 +79,24 @@ export function NewNota({
         <textarea
           placeholder='agregue su nota'
           className={note.textArea}
-          {...register('nota', { required: true })}
+          {...register(
+            'nota',
+            { required: true }
+          )}
         />
         <div className={accordion.title} onClick={() => setIsActive(!isActive)}>
           <span className='material-symbols-outlined'>
-            {isActive ? 'expand_less' : 'expand_more'}
+            {isActive
+              ? 'expand_less'
+              : 'expand_more'}
           </span>
           <h1 className={typography.titleSmall}>Tareas</h1>
         </div>
         {isActive && (
           <div className={accordion.content}>
-            {fields.map((field, index) => {
+            {fields.map((
+              field, index
+            ) => {
               const watchIsDone = watch(`tareas.${index}.isDone`);
               return (
                 <Fragment key={field.id}>
@@ -96,7 +109,10 @@ export function NewNota({
                     </label>
                     <textarea
                       placeholder='tarea'
-                      {...register(`tareas.${index}.tarea`, {})}
+                      {...register(
+                        `tareas.${index}.tarea`,
+                        {}
+                      )}
                       className={note.textArea}
                       defaultValue={field.tarea}
                     />
@@ -111,11 +127,16 @@ export function NewNota({
                       type='button'
                       className={note.button}
                       onClick={() => {
-                        setValue(`tareas.${index}.isDone`, !watchIsDone);
+                        setValue(
+                          `tareas.${index}.isDone`,
+                          !watchIsDone
+                        );
                       }}
                     >
                       <span className='material-symbols-outlined'>
-                        {watchIsDone ? 'check_box' : 'check_box_outline_blank'}
+                        {watchIsDone
+                          ? 'check_box'
+                          : 'check_box_outline_blank'}
                       </span>
                     </button>
                   </div>
@@ -129,7 +150,10 @@ export function NewNota({
                     <input
                       type='date'
                       placeholder={`tareas.${index}.dueDate`}
-                      {...register(`tareas.${index}.dueDate`, {})}
+                      {...register(
+                        `tareas.${index}.dueDate`,
+                        {}
+                      )}
                     />
                   </div>
                   <div className={note.section}>

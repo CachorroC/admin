@@ -14,27 +14,38 @@ export function AccordionRow({
   dueDate: string;
   isDone: boolean;
 }) {
-  const [isActive, setIsActive] = useState(false);
+  const [
+    isActive,
+    setIsActive
+  ] = useState(false);
   return (
     <div className={accordion.accordion}>
       <div className={accordion.item}>
         <div className={accordion.title} onClick={() => setIsActive(!isActive)}>
           <span className='material-symbols-outlined'>
-            {isActive ? 'expand_less' : 'expand_more'}
+            {isActive
+              ? 'expand_less'
+              : 'expand_more'}
           </span>
         </div>
         {isActive && (
           <div className={accordion.content}>
             <h1 className={typography.titleMedium}>{tarea}</h1>
-            <p className={isDone ? note.innactive : note.active}>
+            <p className={isDone
+              ? note.innactive
+              : note.active}>
               {`fecha de entrega: ${fixFechas(dueDate.toString())}`}
             </p>
             <span
               className={`${
-                isDone ? note.innactive : note.active
+                isDone
+                  ? note.innactive
+                  : note.active
               } material-symbols-outlined`}
             >
-              {isDone ? 'assignment_turned_in' : 'assignment_late'}
+              {isDone
+                ? 'assignment_turned_in'
+                : 'assignment_late'}
             </span>
           </div>
         )}

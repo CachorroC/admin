@@ -46,9 +46,7 @@ export class Convert {
     return JSON.parse(json);
   }
 
-  public static intCarpetaDemandadoToJson(
-    value: intCarpetaDemandado[]
-  ): string {
+  public static intCarpetaDemandadoToJson(value: intCarpetaDemandado[]): string {
     return JSON.stringify(value);
   }
 }

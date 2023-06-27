@@ -17,13 +17,18 @@ export function arrayMergerByidProceso({
   b: intProceso[] | IntActuaciones[] | monDemandado[] | intFecha[];
 }) {
   const map = new Map();
-  a.forEach((item) => map.set(item.idProceso, item));
+  a.forEach((item) => map.set(
+    item.idProceso,
+    item
+  ));
   b.forEach((item) =>
-    map.set(item.idProceso, {
-      ...map.get(item.idProceso),
-      ...item,
-    })
-  );
+    map.set(
+      item.idProceso,
+      {
+        ...map.get(item.idProceso),
+        ...item,
+      }
+    ));
   const mergedArr = Array.from(map.values());
 
   console.log(JSON.stringify(mergedArr));
@@ -38,13 +43,18 @@ export function arrayMergerByllaveProceso({
   b: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intActuacion[];
 }) {
   const map = new Map();
-  a.forEach((item) => map.set(item.llaveProceso, item));
+  a.forEach((item) => map.set(
+    item.llaveProceso,
+    item
+  ));
   b.forEach((item) =>
-    map.set(item.llaveProceso, {
-      ...map.get(item.llaveProceso),
-      ...item,
-    })
-  );
+    map.set(
+      item.llaveProceso,
+      {
+        ...map.get(item.llaveProceso),
+        ...item,
+      }
+    ));
   const mergedArr = Array.from(map.values());
 
   console.log(JSON.stringify(mergedArr));

@@ -11,32 +11,28 @@ import { intFecha, monCarpetaDemandado } from '../types/demandados';
 import { Card } from '#@/components/card/card';
 import { JuzgadosByllaveProceso } from '#@/lib/RamaJudicial/juzgados';
 
-export const Juzgados = cache(
-  async ({ procesos }: { procesos: monCarpetaDemandado[] }) => {
-    const rowPrc = [];
-    const juzgados = await Promise.all(
-      procesos.map(async (proceso, i) => {
-        sleep(i * 500);
-        rowPrc.push(Request);
-        return (
-          <JuzgadosByllaveProceso
-            key={proceso._id}
-            llaveProceso={proceso.llaveProceso}
-          />
-        );
-      })
+export const Juzgados = cache(async ({ procesos }: { procesos: monCarpetaDemandado[] }) => {
+  const rowPrc = [];
+  const juzgados = await Promise.all(procesos.map(async (
+    proceso, i
+  ) => {
+    sleep(i * 500);
+    rowPrc.push(Request);
+    return (
+      <JuzgadosByllaveProceso
+        key={proceso._id}
+        llaveProceso={proceso.llaveProceso}
+      />
     );
-    return <>{juzgados}</>;
-  }
-);
+  }));
+  return <>{juzgados}</>;
+});
 export async function getConsultaNumeroRadicion({
   llaveProceso,
 }: {
   llaveProceso: string;
 }) {
-  const Request = await fetch(
-    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`
-  );
+  const Request = await fetch(`https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`);
   if (!Request.ok) {
     console.log(Request.text());
     throw new Error('not ok getJuzgadoByllaveProceso');
@@ -56,68 +52,76 @@ export async function getActuacionesByidProceso({
   if (!idProcesos || idProcesos.length === 0) {
     throw new Error('error');
   }
-  const nMap = idProcesos.map((idProceso, index) => {
+  const nMap = idProcesos.map((
+    idProceso, index
+  ) => {
     const rows: IntActuaciones[] = [];
-    setTimeout(async () => {
-      try {
-        const request = await fetch(
-          `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${idProceso}`,
-          { cache: 'no-store' }
-        );
-        if (!request.ok) {
+    setTimeout(
+      async () => {
+        try {
+          const request = await fetch(
+            `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${idProceso}`,
+            { cache: 'no-store' }
+          );
+          if (!request.ok) {
+            const text = await request.text();
+            const response: IntActuaciones = {
+              idProceso: idProceso,
+              text: text
+                ? JSON.parse(text)
+                : '',
+            };
+            rows.push(response);
+            return response;
+          }
+
+          const res = (await request.json()) as intConsultaActuaciones;
+          if (res.actuaciones) {
+            const response: IntActuaciones = {
+              idProceso: idProceso,
+
+              text: {
+                statusCode: request.status,
+                message: request.statusText,
+              },
+              acts: res.actuaciones,
+            };
+            rows.push(response);
+            return response;
+          }
           const text = await request.text();
           const response: IntActuaciones = {
             idProceso: idProceso,
-            text: text ? JSON.parse(text) : '',
+            text: JSON.parse(text),
           };
           rows.push(response);
           return response;
         }
-
-        const res = (await request.json()) as intConsultaActuaciones;
-        if (res.actuaciones) {
-          const response: IntActuaciones = {
-            idProceso: idProceso,
-
-            text: {
-              statusCode: request.status,
-              message: request.statusText,
-            },
-            acts: res.actuaciones,
+        catch {
+          (error: unknown | any) => {
+            const response: IntActuaciones = {
+              idProceso: idProceso,
+              text: {
+                message: error.message ?? 'error',
+                statusCode: 0,
+              },
+            };
+            rows.push(response);
+            return response;
           };
-          rows.push(response);
-          return response;
         }
-        const text = await request.text();
         const response: IntActuaciones = {
           idProceso: idProceso,
-          text: JSON.parse(text),
+          text: {
+            message: 'error final',
+            statusCode: 0,
+          },
         };
         rows.push(response);
         return response;
-      } catch {
-        (error: unknown | any) => {
-          const response: IntActuaciones = {
-            idProceso: idProceso,
-            text: {
-              message: error.message ?? 'error',
-              statusCode: 0,
-            },
-          };
-          rows.push(response);
-          return response;
-        };
-      }
-      const response: IntActuaciones = {
-        idProceso: idProceso,
-        text: {
-          message: 'error final',
-          statusCode: 0,
-        },
-      };
-      rows.push(response);
-      return response;
-    }, index * 1000);
+      },
+      index * 1000
+    );
     return rows;
   });
   return nMap;

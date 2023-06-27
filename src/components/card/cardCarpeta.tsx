@@ -25,8 +25,14 @@ export const CardCarpeta = ({
   idProceso?: number;
   icon?: string;
 }) => {
-  const [isNavOpen, setIsNavOpen] = useNavigator();
-  const [isOpen, setIsOpen] = useModal();
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] = useNavigator();
+  const [
+    isOpen,
+    setIsOpen
+  ] = useModal();
   const clickHandler = () => {
     setIsNavOpen(false);
     setIsOpen(true);
@@ -46,7 +52,9 @@ export const CardCarpeta = ({
     pathname === `${path}/${llaveProceso}` ||
     pathname === path;
   return (
-    <div className={isActive ? carpeta.cardIsActive : carpeta.card}>
+    <div className={isActive
+      ? carpeta.cardIsActive
+      : carpeta.card}>
       <div className={carpeta.cardInner}>
         <div className={carpeta.cardFront}>
           <Name helper={name} />

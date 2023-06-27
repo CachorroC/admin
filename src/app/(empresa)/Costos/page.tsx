@@ -19,7 +19,9 @@ const Total = ({ control }: { control: Control<FormValues> }) => {
     control,
   });
   const total = formValues.reduce(
-    (acc, current) => acc + (current.price || 0) * (current.quantity || 0),
+    (
+      acc, current
+    ) => acc + (current.price || 0) * (current.quantity || 0),
     0
   );
   return <p>Total Amount: {total}</p>;
@@ -54,35 +56,52 @@ export default function App() {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input {...register('firstName')} placeholder='First Name' />
-        {fields.map((field, index) => (
+        {fields.map((
+          field, index
+        ) => (
           <div key={field.id}>
             <section className={'section'} key={field.id}>
               <input
                 placeholder='name'
-                {...register(`cart.${index}.name` as const, {
-                  required: true,
-                })}
-                className={errors?.cart?.[index]?.name ? 'error' : ''}
+                {...register(
+`cart.${index}.name` as const,
+{
+  required: true,
+}
+                )}
+                className={errors?.cart?.[index]?.name
+                  ? 'error'
+                  : ''}
                 defaultValue={field.name}
               />
               <input
                 placeholder='quantity'
                 type='number'
-                {...register(`cart.${index}.quantity` as const, {
-                  valueAsNumber: true,
-                  required: true,
-                })}
-                className={errors?.cart?.[index]?.quantity ? 'error' : ''}
+                {...register(
+`cart.${index}.quantity` as const,
+{
+  valueAsNumber: true,
+  required: true,
+}
+                )}
+                className={errors?.cart?.[index]?.quantity
+                  ? 'error'
+                  : ''}
                 defaultValue={field.quantity}
               />
               <input
                 placeholder='value'
                 type='number'
-                {...register(`cart.${index}.price` as const, {
-                  valueAsNumber: true,
-                  required: true,
-                })}
-                className={errors?.cart?.[index]?.price ? 'error' : ''}
+                {...register(
+`cart.${index}.price` as const,
+{
+  valueAsNumber: true,
+  required: true,
+}
+                )}
+                className={errors?.cart?.[index]?.price
+                  ? 'error'
+                  : ''}
                 defaultValue={field.price}
               />
               <button type='button' onClick={() => remove(index)}>

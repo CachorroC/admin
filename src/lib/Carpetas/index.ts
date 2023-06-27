@@ -28,9 +28,7 @@ export async function getCarpetasByllaveProceso({
   const carpetas = (await collection
     .find({})
     .toArray()) as unknown as monCarpetaDemandado[];
-  const Carpetas = carpetas.filter(
-    (carpeta) => carpeta.llaveProceso === llaveProceso
-  );
+  const Carpetas = carpetas.filter((carpeta) => carpeta.llaveProceso === llaveProceso);
   return Carpetas;
 }
 export async function getCarpetaById({ _id }: { _id: string }) {
@@ -47,14 +45,15 @@ export async function postCarpeta({ nota }: { nota: intCarpetaDemandado }) {
   const outgoingRequest = await collection.insertOne(nota);
 
   if (!outgoingRequest.acknowledged) {
-    return new NextResponse(null, {
-      status: 404,
-    });
+    return new NextResponse(
+      null,
+      {
+        status: 404,
+      }
+    );
   }
   return new NextResponse(
-    JSON.stringify(
-      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
-    ),
+    JSON.stringify(outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`),
     {
       status: 200,
       headers: {

@@ -32,7 +32,9 @@ export async function getActuacionesByidProceso({
       const text = await request.text();
       const response: IntActuaciones = {
         idProceso: idProceso,
-        text: text ? JSON.parse(text) : '',
+        text: text
+          ? JSON.parse(text)
+          : '',
       };
       return response;
     }
@@ -56,7 +58,8 @@ export async function getActuacionesByidProceso({
       text: JSON.parse(text),
     };
     return response;
-  } catch {
+  }
+  catch {
     (error: { message: string }) => {
       const response: IntActuaciones = {
         idProceso: idProceso,
