@@ -16,17 +16,15 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { intCarpetaDemandado } from '../../lib/types/demandados';
 import Name from '../Headings/nombre';
 
-export const LinkCard = (
-  {
-    path,
-    proceso,
-    children,
-  }: {
+export const LinkCard = ({
+  path,
+  proceso,
+  children,
+}: {
   path: string;
   proceso: intFecha;
   children: ReactNode;
-}
-) => {
+}) => {
   const { Demandado, fecha, llaveProceso, idProceso } = proceso;
   const { Nombre, Id, Direccion, Tel } = Demandado;
   const params = useParams();
@@ -49,9 +47,7 @@ export const LinkCard = (
     pathname === `${path}/${llaveProceso}`;
 
   const clickHandler = () => {
-    setIsNavOpen(
-      false
-    );
+    setIsNavOpen(false);
   };
   return (
     <div className={searchbar.container}>
@@ -59,24 +55,10 @@ export const LinkCard = (
         ? searchbar.isActive
         : searchbar.notActive}>
         <Name helper={Nombre} />
-        <Link
-          className={isActive
-            ? searchbar.linkIsActive
-            : searchbar.link}
-          onClick={clickHandler}
-          href={href}
-        >
-          <span className={`${searchbar.icon} material-symbols-outlined`}>
-            file_open
-          </span>
-        </Link>
 
-        <div className={searchbar.section}>
-          <sub className={searchbar.date}>{fixFechas(
-            fecha
-          )}</sub>
-          {children}
-        </div>
+        <sub className={searchbar.date}>{fixFechas(fecha)}</sub>
+
+        {children}
 
         <div className={searchbar.links}>
           <Link
@@ -86,7 +68,7 @@ export const LinkCard = (
             href={`/Procesos/${llaveProceso}`}
           >
             <span className={`material-symbols-outlined ${searchbar.icon}`}>
-              open_in_new
+              badge
             </span>
           </Link>
           <Link
@@ -99,6 +81,18 @@ export const LinkCard = (
               add
             </span>
           </Link>
+          <Link
+            className={isActive
+              ? searchbar.linkIsActive
+              : searchbar.link}
+            onClick={clickHandler}
+            href={href}
+          >
+            <span className={`${searchbar.icon} material-symbols-outlined`}>
+              file_open
+            </span>
+          </Link>
+
         </div>
       </div>
     </div>

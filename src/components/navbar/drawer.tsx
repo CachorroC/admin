@@ -13,21 +13,12 @@ import {
   ForwardButton,
   HomeButton,
 } from './Buttons';
-import Title from '#@/components/modal/title';
+import Title from '#@/components/Headings/title';
 import { ButtonSkeleton } from './ButtonSkeleton';
-export default function Drawer(
-  { children }: { children: ReactNode }
-) {
-  const isDesktop = useMedia(
-    2
-  );
-  const isMobile = useMedia(
-    0
-  );
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] = useNavigator();
+export default function Drawer({ children }: { children: ReactNode }) {
+  const isDesktop = useMedia(2);
+  const isMobile = useMedia(0);
+  const [isNavOpen, setIsNavOpen] = useNavigator();
 
   if (isNavOpen) {
     if (isMobile) {

@@ -1,15 +1,11 @@
-export function fixFechas(
-  fecha: string | null | undefined
-) {
+export function fixFechas(fecha: string | null | undefined) {
   if (fecha === null) {
     return 'no hay fechas: null';
   }
   if (fecha === undefined) {
     return 'no se ha definido el contenido';
   }
-  const date = new Date(
-    fecha
-  );
+  const date = new Date(fecha);
   const months = [
     'enero',
     'febrero',
@@ -29,30 +25,19 @@ export function fixFechas(
   const ano = date.getFullYear();
   return dia + ' de ' + month + ' de ' + ano;
 }
-function trimmer(
-  sujetosProcesales: string
-) {
+function trimmer(sujetosProcesales: string) {
   const locateDemandado = sujetosProcesales.search(
     /(demandado|causante)+:(?:\s*?|'\s*?')/gi
   );
 
   const extractDemandado = sujetosProcesales
-    .slice(
-      locateDemandado + 10
-    )
+    .slice(locateDemandado + 10)
     .toLocaleLowerCase();
 
-  const trimDemandado = extractDemandado.replace(
-    /^\s+|\s+$/gm,
-    ''
-  );
-  const splitDemandado = trimDemandado.split(
-    ' '
-  );
+  const trimDemandado = extractDemandado.replace(/^\s+|\s+$/gm, '');
+  const splitDemandado = trimDemandado.split(' ');
   const splitDemandadotoUnify = splitDemandado.map(
-    (
-      nombreOapellido: string, index: number
-    ) => {
+    (nombreOapellido: string, index: number) => {
       if (index >= 5) {
         return '';
       }
@@ -60,47 +45,28 @@ function trimmer(
       if (nombreOapellido === '|') {
         return '';
       }
-      if (nombreOapellido.includes(
-        's.a.s'
-      )) {
+      if (nombreOapellido.includes('s.a.s')) {
         return '';
       }
-      if (nombreOapellido.includes(
-        'sas'
-      )) {
+      if (nombreOapellido.includes('sas')) {
         return '';
       }
-      if (nombreOapellido.includes(
-        '(emplazado)'
-      )) {
+      if (nombreOapellido.includes('(emplazado)')) {
         return '';
       }
-      return nombreOapellido.replace(
-        /^./,
-        (
-          str: string
-        ) => str.toUpperCase()
-      );
+      return nombreOapellido.replace(/^./, (str: string) => str.toUpperCase());
     }
   );
-  const unifyDemandado = splitDemandadotoUnify.join(
-    ' '
-  );
+  const unifyDemandado = splitDemandadotoUnify.join(' ');
   return unifyDemandado;
 }
-export const fixDemandado = (
-  sujetosProcesales: string
-) => {
+export const fixDemandado = (sujetosProcesales: string) => {
   const mySubString = 'Demandado';
 
-  const count = sujetosProcesales.split(
-    mySubString
-  ).length - 1;
+  const count = sujetosProcesales.split(mySubString).length - 1;
 
   if (count === 1) {
-    return trimmer(
-      sujetosProcesales
-    );
+    return trimmer(sujetosProcesales);
   }
   return sujetosProcesales;
 };

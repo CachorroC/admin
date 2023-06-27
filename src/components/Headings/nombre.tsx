@@ -4,34 +4,32 @@ import { useSelectedLayoutSegment, usePathname } from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export default function Name(
-  { helper }: { helper?: string }
-) {
+export default function Name({ helper }: { helper?: string }) {
   const pathname = usePathname();
   const segment = useSelectedLayoutSegment();
   const today = new Date();
   let day;
   switch (today.getDay()) {
-  case 0:
-    day = 'Mimingo';
-    break;
-  case 1:
-    day = 'Lunes';
-    break;
-  case 2:
-    day = 'Martes';
-    break;
-  case 3:
-    day = 'Miércoles';
-    break;
-  case 4:
-    day = 'Jueves';
-    break;
-  case 5:
-    day = 'Viernes';
-    break;
-  case 6:
-    day = 'Sábado';
+    case 0:
+      day = 'Mimingo';
+      break;
+    case 1:
+      day = 'Lunes';
+      break;
+    case 2:
+      day = 'Martes';
+      break;
+    case 3:
+      day = 'Miércoles';
+      break;
+    case 4:
+      day = 'Jueves';
+      break;
+    case 5:
+      day = 'Viernes';
+      break;
+    case 6:
+      day = 'Sábado';
   }
   const days = [
     'mimingo',
@@ -58,9 +56,7 @@ export default function Name(
   ];
   return (
     <h1 className={typography.displaySmall}>
-      {helper ?? `${days[today.getDay()]}, ${fixFechas(
-        today.toString()
-      )}`}
+      {helper ?? `${days[today.getDay()]}, ${fixFechas(today.toString())}`}
     </h1>
   );
 }

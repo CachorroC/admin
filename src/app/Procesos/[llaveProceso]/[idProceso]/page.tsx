@@ -1,52 +1,24 @@
-import { arrayMergerByllaveProceso } from '#@/lib/arrayMerger';
-import { getNotasByllaveProceso } from '#@/lib/notas';
-import { getProcesosByllaveProceso } from '#@/lib/procesos';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import { getActuacionesByidProceso } from '#@/lib/Actuaciones';
-import { Card } from '#@/components/card/card';
-import Name from '#@/components/Headings/nombre';
-import { fixFechas } from '#@/lib/fix';
 import typography from '#@/styles/fonts/typography.module.scss';
-import layout from '#@/styles/scss/layout.module.scss';
-
-export default async function Page(
-  {
-    params,
-  }: {
-  params: { llaveProceso: string; idProceso: number };
+import { Suspense } from 'react';
+async function Name({ llaveProceso }: { llaveProceso: string }) {
+  const proceso = await getCarpetasByllaveProceso({
+    llaveProceso: llaveProceso,
+  });
+  const nombre = proceso.map((p) => p.Demandado.Nombre).toString();
+  return <h3 className={typography.displayMedium}>{nombre}</h3>;
 }
-) {
-  const procesos = await getCarpetasByllaveProceso(
-    {
-      llaveProceso: params.llaveProceso,
-    }
-  );
-  const actuaciones = await getActuacionesByidProceso(
-    {
-      idProceso: params.idProceso,
-    }
-  );
+
+export default function PageProcesosllaveProceso({
+  params: { llaveProceso },
+}: {
+  params: {
+    llaveProceso: string;
+  };
+}) {
   return (
-    <div className={layout.left}>
-      {actuaciones.acts &&
-        actuaciones.acts.map(
-          (
-            actuacion, index, arr
-          ) => (
-            <Card
-              key={actuacion.idRegActuacion}
-              name={actuacion.actuacion}
-              path={'/Procesos'}
-              llaveProceso={params.llaveProceso}
-              idProceso={params.idProceso}
-            >
-              <Name helper={fixFechas(
-                actuacion.fechaActuacion
-              )} />
-              <p className={typography.bodyMedium}>{actuacion.anotacion}</p>
-            </Card>
-          )
-        )}
-    </div>
+    <Suspense fallback={<h3 className={typography.displayMedium}>Cargando</h3>}>
+      <Name llaveProceso={llaveProceso} />
+    </Suspense>
   );
 }

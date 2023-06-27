@@ -2,7 +2,7 @@ import Drawer from '#@/components/navbar/drawer';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 import { Suspense } from 'react';
-import Title from '#@/components/modal/title';
+import Title from '#@/components/Headings/title';
 import typeface from '#@/components/typográficos/typeface.module.scss';
 import Header from '#@/components/navbar/Header';
 import { ButtonSkeleton } from '#@/components/navbar/ButtonSkeleton';
@@ -11,9 +11,7 @@ import { fetchFechas } from '#@/lib/Actuaciones';
 
 export default async function Page() {
   const procesos = await getCarpetas();
-  const fechas = await fetchFechas(
-    { procesos: procesos }
-  );
+  const fechas = await fetchFechas({ procesos: procesos });
 
   return (
     <>

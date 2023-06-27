@@ -86,6 +86,7 @@ $MaxSW: 480px; //maximum sma width
   align-items: stretch;
   align-content: stretch;
   grid-area: right;
+  overflow: scroll;
   &:after {
     display: block;
     content: ' placeholder ';
@@ -119,6 +120,7 @@ $MaxSW: 480px; //maximum sma width
   justify-content: space-between;
   align-items: stretch;
   align-content: stretch;
+  overflow: scroll;
   & > * {
     display: block;
     flex-grow: 1;

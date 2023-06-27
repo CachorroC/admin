@@ -7,11 +7,15 @@
 }
 .isActive,
 .notActive {
+  height: 100cqmin;
+  width: 100cqmin;
+  box-sizing: border-box;
+  align-items: stretch;
   display: flex;
-  flex-flow: column nowrap;
-  padding: 1cqmin;
-  gap: 1cqmin;
-  border-radius: 2cqmin;
+  flex-flow: column wrap;
+  padding: 2vmin;
+  gap: 5cqmin;
+  border-radius: 2vmin;
   text-align: center;
 }
 .date {

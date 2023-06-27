@@ -1,89 +1,50 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-export default function useMedia(
-  query: number
-) {
-  const [
-    matches,
-    setMatches
-  ] = useState(
-    false
-  );
-  useEffect(
-    () => {
-      const mediaQueries = (
-        query: number
-      ) => {
-        let media;
-        switch (query) {
+export default function useMedia(query: number) {
+  const [matches, setMatches] = useState(false);
+  useEffect(() => {
+    const mediaQueries = (query: number) => {
+      let media;
+      switch (query) {
         case 0:
           media = '(max-width: 400px)';
-          console.log(
-            media
-          );
+          console.log(media);
           break;
         case 1:
           media = '(min-width: 400px) and (max-width: 1200px)';
-          console.log(
-            media
-          );
+          console.log(media);
           break;
         case 2:
           media = '(min-width: 1200px) and (max-width: 1920px)';
-          console.log(
-            media
-          );
+          console.log(media);
           break;
         case 3:
           media = '(min-width: 1920px)';
-          console.log(
-            media
-          );
+          console.log(media);
           break;
         default:
           media = '';
-        }
-        return media;
-      };
-
-      const md = mediaQueries(
-        query
-      );
-      function handleMatchMedia() {
-        setMatches(
-          true
-        );
       }
-      function handleNoMatchMedia() {
-        setMatches(
-          false
-        );
-      }
+      return media;
+    };
 
-      const media = window.matchMedia(
-        md
-      );
+    const md = mediaQueries(query);
+    function handleMatchMedia() {
+      setMatches(true);
+    }
+    function handleNoMatchMedia() {
+      setMatches(false);
+    }
 
-      const listener = () => setMatches(
-        media.matches
-      );
-      listener();
+    const media = window.matchMedia(md);
 
-      media.addEventListener(
-        'change',
-        listener
-      );
+    const listener = () => setMatches(media.matches);
+    listener();
 
-      return () => media.removeEventListener(
-        'change',
-        listener
-      );
-    },
-    [
-      matches,
-      query
-    ]
-  );
+    media.addEventListener('change', listener);
+
+    return () => media.removeEventListener('change', listener);
+  }, [matches, query]);
   return matches;
 }

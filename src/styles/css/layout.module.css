@@ -58,6 +58,7 @@
   align-items: stretch;
   align-content: stretch;
   grid-area: right;
+  overflow: scroll;
 }
 .right:after {
   display: block;
@@ -91,6 +92,7 @@
   justify-content: space-between;
   align-items: stretch;
   align-content: stretch;
+  overflow: scroll;
 }
 .left > * {
   display: block;

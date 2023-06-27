@@ -1,8 +1,8 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "array-bracket-newline": ["error", { "multiline": true, "minItems": 2 }],
-    "array-element-newline": ["error", { "multiline": true, "minItems": 2 }],
+    "array-bracket-newline": ["error", { "multiline": true, "minItems": 1 }],
+    "array-element-newline": ["error", { "multiline": true, "minItems": 1 }],
     "array-bracket-spacing": ["error", "always"],
     "array-callback-return": "error",
     "arrow-body-style": [
@@ -19,7 +19,7 @@
     "function-paren-newline": [
       "error",
       {
-        "minItems": 1
+        "minItems": 2
       }
     ],
     "getter-return": "error",

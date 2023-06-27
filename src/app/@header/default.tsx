@@ -1,4 +1,4 @@
-import Title from '#@/components/modal/title';
+import Title from '#@/components/Headings/title';
 import Header from '#@/components/navbar/Header';
 
 export default async function Default() {

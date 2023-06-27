@@ -2,25 +2,24 @@
   container-type: inline-size;
   container-name: card;
 
-  background-color: var(--surface-container);
-  padding: 2cqmin;
-  gap: 2cqmin;
-  border-radius: 2cqmin;
-  box-shadow: var(--dp3);
-  text-align: center;
-  display: flex;
-  flex-flow: column nowrap;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  perspective: 1000px;
   & > * {
     width: 100%;
   }
+}
+.isActive,
+.notActive {
+  box-sizing: border-box;
+  padding: 2cqmin;
+  gap: 2cqmin;
+  border-radius: 2cqmin;
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
 
   .cardFront,
   .cardBack {
-    border-radius: 2vmin;
-    padding: 2vmin;
+    border-radius: 2cqmin;
+    padding: 2cqmin;
     box-sizing: border-box;
     -webkit-backface-visibility: hidden;
     /* Safari */
@@ -43,7 +42,6 @@
     transform: rotateY(180deg);
   }
 }
-
 .notActive {
   background-color: var(--surface-container);
   color: var(--on-surface);
@@ -63,10 +61,10 @@
 .date {
   grid-area: date;
   background-color: var(--surface);
-  padding: 2vmin;
+  padding: 2cqmin;
   color: var(--on-surface);
   font-family: var(--font-poiret);
-  border-radius: 2vmin;
+  border-radius: 2cqmin;
   align-self: center;
 }
 
@@ -183,8 +181,8 @@
   justify-content: center;
   align-items: center;
   grid-area: link;
-  border-radius: 2vmin;
-  padding: 2vmin;
+  border-radius: 2cqmin;
+  padding: 2cqmin;
   align-self: center;
 
   .icon {

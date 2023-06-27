@@ -1,4 +1,4 @@
-import Title from '#@/components/modal/title';
+import Title from '#@/components/Headings/title';
 import layout from '#@/styles/scss/layout.module.scss';
 
 export default function NotFound() {
