@@ -1,10 +1,10 @@
-export function fixFechas (
+export function fixFechas(
   fecha: string | null | undefined
 ) {
-  if ( fecha === null ) {
+  if (fecha === null) {
     return 'no hay fechas: null';
   }
-  if ( fecha === undefined ) {
+  if (fecha === undefined) {
     return 'no se ha definido el contenido';
   }
   const date = new Date(
@@ -24,12 +24,12 @@ export function fixFechas (
     'noviembre',
     'diciembre',
   ];
-  const month = months[ date.getMonth() ];
+  const month = months[date.getMonth()];
   const dia = date.getDate();
   const ano = date.getFullYear();
   return dia + ' de ' + month + ' de ' + ano;
 }
-function trimmer (
+function trimmer(
   sujetosProcesales: string
 ) {
   const locateDemandado = sujetosProcesales.search(
@@ -53,26 +53,26 @@ function trimmer (
     (
       nombreOapellido: string, index: number
     ) => {
-      if ( index >= 5 ) {
+      if (index >= 5) {
         return '';
       }
 
-      if ( nombreOapellido === '|' ) {
+      if (nombreOapellido === '|') {
         return '';
       }
-      if ( nombreOapellido.includes(
+      if (nombreOapellido.includes(
         's.a.s'
-      ) ) {
+      )) {
         return '';
       }
-      if ( nombreOapellido.includes(
+      if (nombreOapellido.includes(
         'sas'
-      ) ) {
+      )) {
         return '';
       }
-      if ( nombreOapellido.includes(
+      if (nombreOapellido.includes(
         '(emplazado)'
-      ) ) {
+      )) {
         return '';
       }
       return nombreOapellido.replace(
@@ -91,18 +91,16 @@ function trimmer (
 export const fixDemandado = (
   sujetosProcesales: string
 ) => {
-
   const mySubString = 'Demandado';
 
   const count = sujetosProcesales.split(
     mySubString
   ).length - 1;
 
-  if ( count === 1 ) {
+  if (count === 1) {
     return trimmer(
       sujetosProcesales
     );
   }
   return sujetosProcesales;
-
 };

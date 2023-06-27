@@ -8,8 +8,7 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { Suspense } from 'react';
 
-
-export default async function Page () {
+export default async function Page() {
   const carpetas = await getCarpetas();
   const lyr = [
     'I met God Just for a minute Sat in His house, took a look around And saw I didn\'t fit in I tried love Gave me something to believe in Planning futures from the start, giving pieces of my heart Just to end up leaving',
@@ -19,26 +18,24 @@ export default async function Page () {
     'Am I gonna die trying to find my happy ending?And will I ever know what its likeTo be fine without pretending that my',
   ];
   return (
-    <div className={ layout.body }>
-      <div className={ layout.name }>
+    <div className={layout.body}>
+      <div className={layout.name}>
         <Suspense>
-          <Title helper='R&S Asesores Jurídicos'/>
+          <Title helper='R&S Asesores Jurídicos' />
         </Suspense>
       </div>
 
-
-      <div className={ layout.left }>
-        <Card name={ 'Procesos' } path={ '/Procesos' } icon="folder_open">
-          <h1 className={ typography.displayMedium }> Procesos</h1>
+      <div className={layout.left}>
+        <Card name={'Procesos'} path={'/Procesos'} icon='folder_open'>
+          <h1 className={typography.displayMedium}> Procesos</h1>
         </Card>
-        <Card name={ 'Nueva Nota' } path={ '/Demandados/NuevoProceso' } icon="add">
-          <h1 className={ typography.displayMedium }>NuevoProceso</h1>
+        <Card name={'Nueva Nota'} path={'/Demandados/NuevoProceso'} icon='add'>
+          <h1 className={typography.displayMedium}>NuevoProceso</h1>
         </Card>
-        <Card name={ 'Demandados' } path={ '/Demandados' } icon="person_pin">
-          <h1 className={ typography.displayMedium }> Demandados</h1>
+        <Card name={'Demandados'} path={'/Demandados'} icon='person_pin'>
+          <h1 className={typography.displayMedium}> Demandados</h1>
         </Card>
       </div>
     </div>
-
   );
 }

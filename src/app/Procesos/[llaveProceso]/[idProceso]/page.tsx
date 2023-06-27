@@ -9,35 +9,44 @@ import { fixFechas } from '#@/lib/fix';
 import typography from '#@/styles/fonts/typography.module.scss';
 import layout from '#@/styles/scss/layout.module.scss';
 
-export default async function Page (
-  { params }: { params: { llaveProceso: string;  idProceso: number } }
+export default async function Page(
+  {
+    params,
+  }: {
+  params: { llaveProceso: string; idProceso: number };
+}
 ) {
   const procesos = await getCarpetasByllaveProceso(
     {
-      llaveProceso: params.llaveProceso
+      llaveProceso: params.llaveProceso,
     }
   );
   const actuaciones = await getActuacionesByidProceso(
     {
-      idProceso: params.idProceso
+      idProceso: params.idProceso,
     }
   );
   return (
     <div className={layout.left}>
-      {
-        actuaciones.acts && actuaciones.acts.map(
+      {actuaciones.acts &&
+        actuaciones.acts.map(
           (
             actuacion, index, arr
           ) => (
-            <Card key={ actuacion.idRegActuacion } name={ actuacion.actuacion } path={ '/Procesos' } llaveProceso={ params.llaveProceso } idProceso={ params.idProceso }>
+            <Card
+              key={actuacion.idRegActuacion}
+              name={actuacion.actuacion}
+              path={'/Procesos'}
+              llaveProceso={params.llaveProceso}
+              idProceso={params.idProceso}
+            >
               <Name helper={fixFechas(
                 actuacion.fechaActuacion
-              ) } />
+              )} />
               <p className={typography.bodyMedium}>{actuacion.anotacion}</p>
             </Card>
           )
-        )
-      }
+        )}
     </div>
   );
 }

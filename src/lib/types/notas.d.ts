@@ -52,7 +52,7 @@ export interface intTarea {
 
 // Converts JSON strings to/from your types
 export class Convert {
-  public static toNota (
+  public static toNota(
     json: string
   ): Nota {
     return JSON.parse(
@@ -60,7 +60,7 @@ export class Convert {
     );
   }
 
-  public static notaToJson (
+  public static notaToJson(
     value: Nota
   ): string {
     return JSON.stringify(

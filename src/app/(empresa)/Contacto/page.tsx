@@ -13,8 +13,8 @@ export default function Page() {
   return (
     <>
       <div className={layout.name}>
-        <Title helper='Quienes Somos'/>
-        <Title helper='R&S La Familia'/>
+        <Title helper='Quienes Somos' />
+        <Title helper='R&S La Familia' />
       </div>
       <Formulario />
     </>

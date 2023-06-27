@@ -31,8 +31,8 @@ export default async function page(
               {ntext.nota}
             </h1>
             <Edit uri={getBaseUrl()} nota={ntext} />
-
-          </Fragment>)
+          </Fragment>
+        )
       )}
     </div>
   );

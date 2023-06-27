@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 export default function useMedia(
   query: number
 ) {
-
   const [
     matches,
     setMatches
@@ -13,12 +12,11 @@ export default function useMedia(
   );
   useEffect(
     () => {
-
       const mediaQueries = (
         query: number
-      )=> {
+      ) => {
         let media;
-        switch ( query ) {
+        switch (query) {
         case 0:
           media = '(max-width: 400px)';
           console.log(

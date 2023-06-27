@@ -22,21 +22,19 @@ export const LinkCard = (
     proceso,
     children,
   }: {
-
   path: string;
-      proceso: intFecha;
+  proceso: intFecha;
   children: ReactNode;
 }
 ) => {
-  const {  Demandado, fecha, llaveProceso, idProceso } = proceso;
-  const {Nombre, Id, Direccion, Tel} = Demandado;
+  const { Demandado, fecha, llaveProceso, idProceso } = proceso;
+  const { Nombre, Id, Direccion, Tel } = Demandado;
   const params = useParams();
   const pathname = usePathname();
   const [
     isNavOpen,
     setIsNavOpen
   ] = useNavigator();
-
 
   const href = (
     llaveProceso
@@ -50,55 +48,58 @@ export const LinkCard = (
     pathname === `${path}/${llaveProceso}/${idProceso}` ||
     pathname === `${path}/${llaveProceso}`;
 
-
   const clickHandler = () => {
     setIsNavOpen(
       false
     );
-
   };
   return (
-    <div className={ `${ searchbar.container } ${ isActive && searchbar.active }` }>
-      <Name helper={Nombre}/>
-      <Link
-        className={ isActive
-          ? searchbar.linkIsActive
-          : searchbar.link  }
-        onClick={ clickHandler }
-        href={ href}      >
+    <div className={searchbar.container}>
+      <div className={isActive
+        ? searchbar.isActive
+        : searchbar.notActive}>
+        <Name helper={Nombre} />
+        <Link
+          className={isActive
+            ? searchbar.linkIsActive
+            : searchbar.link}
+          onClick={clickHandler}
+          href={href}
+        >
+          <span className={`${searchbar.icon} material-symbols-outlined`}>
+            file_open
+          </span>
+        </Link>
 
-        <span className={`${searchbar.icon} material-symbols-outlined`}>file_open</span>
-
-      </Link>
-
-      <div className={ searchbar.section }>
-        <sub className={ searchbar.date }>
-          {fixFechas(
+        <div className={searchbar.section}>
+          <sub className={searchbar.date}>{fixFechas(
             fecha
-          )}
-        </sub>
-        {children}
-      </div>
+          )}</sub>
+          {children}
+        </div>
 
-      <div className={ searchbar.links }>
-        <Link className={isActive
-          ? searchbar.linkIsActive
-          : searchbar.link }
-
-        href={ `/Procesos/${ llaveProceso }` }>
-          <span className={ `material-symbols-outlined ${ searchbar.icon }` }>
-          open_in_new
-          </span>
-        </Link>
-        <Link className={isActive
-          ? searchbar.linkIsActive
-          : searchbar.link }
-
-        href={ `/NuevaNota/${ llaveProceso }` }>
-          <span className={ `material-symbols-outlined ${ searchbar.icon }` }>
-          add
-          </span>
-        </Link>
+        <div className={searchbar.links}>
+          <Link
+            className={isActive
+              ? searchbar.linkIsActive
+              : searchbar.link}
+            href={`/Procesos/${llaveProceso}`}
+          >
+            <span className={`material-symbols-outlined ${searchbar.icon}`}>
+              open_in_new
+            </span>
+          </Link>
+          <Link
+            className={isActive
+              ? searchbar.linkIsActive
+              : searchbar.link}
+            href={`/NuevaNota/${llaveProceso}`}
+          >
+            <span className={`material-symbols-outlined ${searchbar.icon}`}>
+              add
+            </span>
+          </Link>
+        </div>
       </div>
     </div>
   );

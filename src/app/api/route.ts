@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET (
+export async function GET(
   Request: NextRequest
 ) {
   const { host, searchParams, hostname, port } = new URL(
@@ -12,14 +12,14 @@ export async function GET (
         host: host,
         searchParams: searchParams,
         port: port,
-        hostname: hostname
+        hostname: hostname,
       }
     ),
     {
       status: 200,
       headers: {
-        'content-type': 'application/json'
-      }
+        'content-type': 'application/json',
+      },
     }
   );
 }

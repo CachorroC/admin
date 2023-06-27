@@ -15,58 +15,58 @@ import {
 } from './Buttons';
 import Title from '#@/components/modal/title';
 import { ButtonSkeleton } from './ButtonSkeleton';
-export default function Drawer (
+export default function Drawer(
   { children }: { children: ReactNode }
 ) {
   const isDesktop = useMedia(
     2
   );
   const isMobile = useMedia(
-    0 
+    0
   );
   const [
     isNavOpen,
     setIsNavOpen
   ] = useNavigator();
 
-  if ( isNavOpen ) {
-    if ( isMobile ) {
+  if (isNavOpen) {
+    if (isMobile) {
       return (
-        <nav className={ navbar.drawer }>
-          <Suspense fallback={ <ButtonSkeleton /> }>
+        <nav className={navbar.drawer}>
+          <Suspense fallback={<ButtonSkeleton />}>
             <DrawerMenuButton />
           </Suspense>
-          <Suspense fallback={ <ButtonSkeleton /> }>
+          <Suspense fallback={<ButtonSkeleton />}>
             <Title />
           </Suspense>
-          <Suspense fallback={ <ButtonSkeleton /> }>
+          <Suspense fallback={<ButtonSkeleton />}>
             <ForwardButton />
           </Suspense>
-          <Suspense fallback={ <ButtonSkeleton /> }>
+          <Suspense fallback={<ButtonSkeleton />}>
             <BackwardsButton />
           </Suspense>
-          <Suspense fallback={ <ButtonSkeleton /> }>
+          <Suspense fallback={<ButtonSkeleton />}>
             <InputSearchBar />
           </Suspense>
-          <Suspense fallback={ <ButtonSkeleton /> }>
+          <Suspense fallback={<ButtonSkeleton />}>
             <HomeButton />
           </Suspense>
-          <div className={ navbar.sidenav }>{ children }</div>
+          <div className={navbar.sidenav}>{children}</div>
         </nav>
       );
     }
     return (
-      <nav className={ navbar.drawer }>
-        <Suspense fallback={ <ButtonSkeleton /> }>
+      <nav className={navbar.drawer}>
+        <Suspense fallback={<ButtonSkeleton />}>
           <InputSearchBar />
         </Suspense>
-        <Suspense fallback={ <ButtonSkeleton /> }>
+        <Suspense fallback={<ButtonSkeleton />}>
           <DrawerMenuButton />
         </Suspense>
-        <Suspense fallback={ <ButtonSkeleton /> }>
+        <Suspense fallback={<ButtonSkeleton />}>
           <Title />
         </Suspense>
-        <div className={ navbar.sidenav }>{ children }</div>
+        <div className={navbar.sidenav}>{children}</div>
       </nav>
     );
   }

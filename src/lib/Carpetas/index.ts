@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import { monCarpetaDemandado, intCarpetaDemandado } from '../types/demandados';
 const Collection = async () => {
   const client = await clientPromise;
-  if ( !client ) {
+  if (!client) {
     throw new Error(
       'no hay cliente mongólico'
     );
@@ -17,8 +17,7 @@ const Collection = async () => {
   return notas;
 };
 
-
-export async function getCarpetas () {
+export async function getCarpetas() {
   const collection = await Collection();
   const carpetasRaw = await collection.find(
     {}
@@ -26,22 +25,25 @@ export async function getCarpetas () {
   const carpetas1 = JSON.stringify(
     carpetasRaw
   );
-  const carpetas = ( JSON.parse(
+  const carpetas = JSON.parse(
     carpetas1
-  ) ) as monCarpetaDemandado[];
+  ) as monCarpetaDemandado[];
   return carpetas;
-
 }
 
-export async function getCarpetasByllaveProceso (
+export async function getCarpetasByllaveProceso(
   {
-    llaveProceso
-  }: { llaveProceso: string }
+    llaveProceso,
+  }: {
+  llaveProceso: string;
+}
 ) {
   const collection = await Collection();
-  const carpetas = ( await collection.find(
-    {}
-  ).toArray() ) as unknown as monCarpetaDemandado[];
+  const carpetas = (await collection
+    .find(
+      {}
+    )
+    .toArray()) as unknown as monCarpetaDemandado[];
   const Carpetas = carpetas.filter(
     (
       carpeta
@@ -49,15 +51,15 @@ export async function getCarpetasByllaveProceso (
   );
   return Carpetas;
 }
-export async function getCarpetaById (
-  {
-    _id
-  }: { _id: string }
+export async function getCarpetaById(
+  { _id }: { _id: string }
 ) {
   const collection = await Collection();
-  const notas = ( await collection.find(
-    {}
-  ).toArray() ) as unknown as monCarpetaDemandado[];
+  const notas = (await collection
+    .find(
+      {}
+    )
+    .toArray()) as unknown as monCarpetaDemandado[];
   const Notas = notas.filter(
     (
       nota
@@ -66,17 +68,15 @@ export async function getCarpetaById (
   return Notas;
 }
 
-export async function postCarpeta (
-  {
-    nota
-  }: { nota: intCarpetaDemandado }
+export async function postCarpeta(
+  { nota }: { nota: intCarpetaDemandado }
 ) {
   const collection = await Collection();
   const outgoingRequest = await collection.insertOne(
     nota
   );
 
-  if ( !outgoingRequest.acknowledged ) {
+  if (!outgoingRequest.acknowledged) {
     return new NextResponse(
       null,
       {
@@ -86,7 +86,7 @@ export async function postCarpeta (
   }
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${ outgoingRequest.acknowledged }`
+      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
     ),
     {
       status: 200,

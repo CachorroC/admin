@@ -42,7 +42,7 @@ export interface Demandado {
 
 // Converts JSON strings to/from your types
 export class Convert {
-  public static toIntCarpetaDemandado (
+  public static toIntCarpetaDemandado(
     json: string
   ): intCarpetaDemandado[] {
     return JSON.parse(
@@ -50,7 +50,7 @@ export class Convert {
     );
   }
 
-  public static intCarpetaDemandadoToJson (
+  public static intCarpetaDemandadoToJson(
     value: intCarpetaDemandado[]
   ): string {
     return JSON.stringify(
@@ -58,7 +58,6 @@ export class Convert {
     );
   }
 }
-
 
 export interface monCarpetaDemandado extends intCarpetaDemandado {
   _id: string;

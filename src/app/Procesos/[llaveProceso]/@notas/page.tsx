@@ -12,7 +12,7 @@ export default async function Page(
     { llaveProceso: llaveProceso }
   );
 
-  if ( notas.length === 0 ) {
+  if (notas.length === 0) {
     return null;
   }
   return (

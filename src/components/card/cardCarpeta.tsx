@@ -58,29 +58,17 @@ export const CardCarpeta = (
     pathname === `${path}/${llaveProceso}` ||
     pathname === path;
   return (
-
-
-    <div className={
-      isActive
-        ? carpeta.cardIsActive
-        : carpeta.card
-    }>
-
+    <div className={isActive
+      ? carpeta.cardIsActive
+      : carpeta.card}>
       <div className={carpeta.cardInner}>
         <div className={carpeta.cardFront}>
-          <Name helper={ name } />
+          <Name helper={name} />
         </div>
-        <div className={ carpeta.cardBack }>
-
-          <Suspense fallback={ <p>Loading...</p> }>
-            {children}
-          </Suspense>
-
+        <div className={carpeta.cardBack}>
+          <Suspense fallback={<p>Loading...</p>}>{children}</Suspense>
         </div>
       </div>
     </div>
-
-
-
   );
 };

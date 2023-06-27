@@ -19,14 +19,19 @@ export default function Error(
 
   return (
     <div className={layout.header}>
+      <h1 className={typography.displayLarge} style={{ color: 'var(--error)' }}>
+        Error
+      </h1>
+      <p
+        className={typography.bodyLarge}
+        style={{ color: 'var(--on-surface-container)' }}
+      >
+        {error?.message}
+      </p>
 
-      <h1 className={typography.displayLarge} style={{color: 'var(--error)'}}>Error</h1>
-      <p className={typography.bodyLarge}style={ { color: 'var(--on-surface-container)' } }>
-        {error?.message}</p>
-
-      <button onClick={() => reset()} className={layout.button}>Try Again</button>
-
-
+      <button onClick={() => reset()} className={layout.button}>
+        Try Again
+      </button>
     </div>
   );
 }

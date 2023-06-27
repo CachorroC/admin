@@ -22,10 +22,7 @@ export default async function Page() {
       </Suspense>
       <Drawer>
         <Suspense fallback={<SearchOutputListSkeleton />}>
-          <SearchOutputList
-            path={'/Procesos'}
-            fechas={fechas}
-          />
+          <SearchOutputList path={'/Procesos'} fechas={fechas} />
         </Suspense>
       </Drawer>
     </>

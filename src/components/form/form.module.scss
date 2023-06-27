@@ -1,5 +1,4 @@
-.container
-{
+.container {
   container-name: note;
   container-type: inline-size;
   display: flex;
@@ -9,48 +8,41 @@
   background-color: var(--surface-container-lowest);
 
   .form,
-  .nota
-  {
+  .nota {
     border-radius: 2vmin;
     display: flex;
     flex-flow: column nowrap;
     padding: 2vmin;
     gap: 2vmin;
 
-    sub
-    {
+    sub {
       color: var(--primary);
     }
 
-    .buttonsRow
-    {
+    .buttonsRow {
       display: flex;
       flex-flow: row nowrap;
     }
 
-    .section
-    {
+    .section {
       gap: 2vmin;
       padding: 1vmin;
       display: flex;
       flex-flow: row wrap;
 
-      .label
-      {
+      .label {
         font-family: var(--font-poiret);
         flex-grow: 1;
       }
 
-      .titleInput
-      {
+      .titleInput {
         flex-grow: 2;
       }
     }
   }
 }
 
-.submitButton
-{
+.submitButton {
   border: none;
   box-shadow: var(--dp5);
   border-radius: 2vmax;
@@ -58,28 +50,24 @@
   width: 20em;
   background-color: var(--secondary);
 
-  & > span
-  {
+  & > span {
     color: var(--on-secondary);
     font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
   }
 
   &:hover,
-  &:active
-  {
+  &:active {
     background-color: var(--secondary);
     box-shadow: var(--dp8);
 
-    & > span
-    {
+    & > span {
       font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 200, 'opsz' 48;
       color: var(--on-secondary);
     }
   }
 }
 
-.textArea
-{
+.textArea {
   background-color: var(--surface-container-highest);
   color: var(--on-surface);
   box-shadow: var(--dp2);
@@ -89,35 +77,29 @@
   text-align: center;
   padding: 1vmin;
 
-  &:hover
-  {
+  &:hover {
     box-shadow: var(--dp8);
     border: var(--surface-tint) solid 2px;
   }
 
-  &:focus
-  {
+  &:focus {
     background-color: var(--surface-container-lowest);
   }
 }
 
-.editButton
-{
+.editButton {
   grid-area: editButton;
 }
 
-.deleteButton
-{
+.deleteButton {
   grid-area: deleteButton;
 }
 
-.addButton
-{
+.addButton {
   grid-area: addButton;
 }
 
-.HomeButton
-{
+.HomeButton {
   grid-area: HomeButton;
 }
 
@@ -125,8 +107,7 @@
 .editButton,
 .deleteButton,
 .addButton,
-.HomeButton
-{
+.HomeButton {
   border: none;
   box-shadow: var(--dp5);
   border-radius: 2vmin;
@@ -140,100 +121,84 @@
   justify-content: center;
   align-content: center;
 
-  & > .ButtonTextHelper
-  {
+  & > .ButtonTextHelper {
     display: none;
     opacity: 0;
     transition: all 1s;
   }
 
-  & > span
-  {
+  & > span {
     color: var(--on-secondary);
     font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
   }
 
   &:hover,
-  &:active
-  {
+  &:active {
     background-color: var(--tertiary-container);
     box-shadow: var(--dp8);
 
-    & > span
-    {
+    & > span {
       font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 200, 'opsz' 24;
       color: var(--tertiary);
     }
   }
 }
 
-.content
-{
+.content {
   align-self: stretch;
 }
 
-.checkboxItem
-{
+.checkboxItem {
   padding: 15px;
 }
 
-.tareas
-{
+.tareas {
   display: flex;
   flex-flow: column nowrap;
 }
 
-.select
-{
+.select {
   background-color: var(--primary-container);
 }
 
-.innactive
-{
+.innactive {
   background-color: var(--outline-variant);
   color: var(--outline);
 }
 
-.active
-{
+.active {
   background-color: var(--secondary);
   color: var(--on-secondary);
 }
 
 /* The switch - the box around the slider */
-.switch
-{
+.switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
 
-  .checkbox
-  {
+  .checkbox {
     opacity: 0;
     width: 0;
     height: 0;
 
-    &:checked + .slider
-    {
+    &:checked + .slider {
       background-color: #2196f3;
 
-      &:before
-      {
+      &:before {
         -webkit-transform: translateX(26px);
         -ms-transform: translateX(26px);
         transform: translateX(26px);
       }
     }
 
-    &:focus + .slider
-    {
+    &:focus + .slider {
       box-shadow: 0 0 1px #2196f3;
     }
   }
 
-  .slider
-  {
+  .slider {
     position: absolute;
     top: 0;
     left: 0;
@@ -244,8 +209,7 @@
     -webkit-transition: 0.4s;
     transition: 0.4s;
 
-    &:before
-    {
+    &:before {
       position: absolute;
       content: '';
       height: 26px;

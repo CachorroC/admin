@@ -61,15 +61,16 @@ export default function Title(
     'diciembre ',
   ];
   return (
-
-    <h1 className={ `${typography.titleMedium}  ${isNavOpen
-      ? typeface.drawer
-      : typeface.navbar}`}>
+    <h1
+      className={`${typography.titleMedium}  ${
+        isNavOpen
+          ? typeface.drawer
+          : typeface.navbar
+      }`}
+    >
       {helper ?? `${days[today.getDay()]}, ${fixFechas(
         today.toString()
       )}`}
     </h1>
-
-
   );
 }

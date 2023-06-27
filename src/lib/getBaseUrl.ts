@@ -7,7 +7,7 @@ const baseEnvironment = process.env.NODE_ENV;
 
 export const getBaseUrl = cache(
   () => {
-    const uri = `https://${ baseUrl }` ?? `http://localhost:${ basePort }`;
+    const uri = `https://${baseUrl}` ?? `http://localhost:${basePort}`;
     return uri;
   }
 );

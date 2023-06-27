@@ -119,13 +119,12 @@ $MaxSW: 480px; //maximum sma width
   justify-content: space-between;
   align-items: stretch;
   align-content: stretch;
-
   & > * {
     display: block;
-    flex-grow: 0;
+    flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 15%;
-    align-self: auto;
+    align-self: stretch;
     order: 0;
   }
 }

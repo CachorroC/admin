@@ -5,7 +5,7 @@ import { cache } from 'react';
 
 const Collection = async () => {
   const client = await clientPromise;
-  if ( !client ) {
+  if (!client) {
     throw new Error(
       'no hay cliente mongólico'
     );
@@ -22,22 +22,24 @@ const Collection = async () => {
 export const getProcesos = cache(
   async () => {
     const collection = await Collection();
-    const procesos = ( await collection.find(
-      {}
-    ).toArray() ) as unknown as monDemandado[];
+    const procesos = (await collection
+      .find(
+        {}
+      )
+      .toArray()) as unknown as monDemandado[];
     return procesos;
   }
 );
 export const getProcesosByllaveProceso = cache(
   async (
-    {
-      llaveProceso
-    }: { llaveProceso: string }
+    { llaveProceso }: { llaveProceso: string }
   ) => {
     const collection = await Collection();
-    const procesos = ( await collection.find(
-      {}
-    ).toArray() ) as unknown as monDemandado[];
+    const procesos = (await collection
+      .find(
+        {}
+      )
+      .toArray()) as unknown as monDemandado[];
     const Procesos = procesos.filter(
       (
         proceso
@@ -48,14 +50,14 @@ export const getProcesosByllaveProceso = cache(
 );
 export const getProcesoById = cache(
   async (
-    {
-      _id
-    }: { _id: string }
+    { _id }: { _id: string }
   ) => {
     const collection = await Collection();
-    const procesos = ( await collection.find(
-      {}
-    ).toArray() ) as unknown as monDemandado[];
+    const procesos = (await collection
+      .find(
+        {}
+      )
+      .toArray()) as unknown as monDemandado[];
     const Procesos = procesos.filter(
       (
         proceso
@@ -65,17 +67,15 @@ export const getProcesoById = cache(
   }
 );
 
-export async function postProceso (
-  {
-    proceso
-  }: { proceso: intDemandado }
+export async function postProceso(
+  { proceso }: { proceso: intDemandado }
 ) {
   const collection = await Collection();
   const outgoingRequest = await collection.insertOne(
     proceso
   );
 
-  if ( !outgoingRequest.acknowledged ) {
+  if (!outgoingRequest.acknowledged) {
     return new NextResponse(
       null,
       {
@@ -85,7 +85,7 @@ export async function postProceso (
   }
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${ outgoingRequest.acknowledged }`
+      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
     ),
     {
       status: 200,

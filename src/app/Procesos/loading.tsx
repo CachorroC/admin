@@ -4,12 +4,12 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import CardSkeleton from '#@/components/card/card-skeleton';
 export default function Loading() {
   return (
-    <div className={ layout.body }>
-      <div className={ layout.name }>
+    <div className={layout.body}>
+      <div className={layout.name}>
         <h1 className={typography.displayMedium}>Cardgando ...</h1>
       </div>
-      <div className={ layout.main }>
-        <div className={ layout.left }>
+      <div className={layout.main}>
+        <div className={layout.left}>
           <CardSkeleton key={0} />
           <CardSkeleton key={1} />
           <CardSkeleton key={2} />
@@ -21,12 +21,12 @@ export default function Loading() {
           <CardSkeleton key={8} />
           <CardSkeleton key={9} />
         </div>
-        <div className={ layout.right }>
-          <CardSkeleton key="a" />
-          <CardSkeleton key="b" />
-          <CardSkeleton key="c" />
-          <CardSkeleton key="d" />
-          <CardSkeleton key="e" />
+        <div className={layout.right}>
+          <CardSkeleton key='a' />
+          <CardSkeleton key='b' />
+          <CardSkeleton key='c' />
+          <CardSkeleton key='d' />
+          <CardSkeleton key='e' />
         </div>
       </div>
     </div>

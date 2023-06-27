@@ -1,8 +1,9 @@
 {
-  "extends": "next/core-web-vitals", "rules": {
-    "array-bracket-newline": [ "error", { "multiline": true, "minItems": 2 } ],
-    "array-element-newline": [ "error", { "multiline": true, "minItems": 2 } ],
-    "array-bracket-spacing": [ "error", "always" ],
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "array-bracket-newline": ["error", { "multiline": true, "minItems": 2 }],
+    "array-element-newline": ["error", { "multiline": true, "minItems": 2 }],
+    "array-bracket-spacing": ["error", "always"],
     "array-callback-return": "error",
     "arrow-body-style": [
       "error",
@@ -11,10 +12,10 @@
         "requireReturnForObjectLiteral": true
       }
     ],
-    "brace-style": [ "error", "stroustrup" ],
+    "brace-style": ["error", "stroustrup"],
     "consistent-return": "error",
     "curly": "error",
-    "function-call-argument-newline": [ "error", "always" ],
+    "function-call-argument-newline": ["error", "always"],
     "function-paren-newline": [
       "error",
       {
@@ -27,8 +28,8 @@
       2,
       { "FunctionDeclaration": { "parameters": "first" } }
     ],
-    "linebreak-style": [ "error", "unix" ],
-    "multiline-ternary": [ "error", "always" ],
+    "linebreak-style": ["error", "unix"],
+    "multiline-ternary": ["error", "always"],
     "no-dupe-else-if": "error",
     "no-dupe-args": "error",
     "no-else-return": [
@@ -39,8 +40,8 @@
     ],
     "no-unreachable": "error",
     "object-property-newline": "error",
-    "template-tag-spacing": [ "error", "always" ],
-    "quotes": [ "error", "single" ],
+    "template-tag-spacing": ["error", "always"],
+    "quotes": ["error", "single"],
     "semi": "error"
   }
 }

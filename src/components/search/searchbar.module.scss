@@ -1,19 +1,19 @@
 .container {
   container-type: inline-size;
   container-name: link;
-  display: flex;
-  flex-flow: column nowrap;
-  background-color: var(--surface-container);
-  padding: 1cqmin;
-  gap: 1cqmin;
-  border-radius: 2cqmin;
-  box-shadow: var(--dp3);
-  text-align: center;
   & > * {
     width: 100%;
   }
 }
-
+.isActive,
+.notActive {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 1cqmin;
+  gap: 1cqmin;
+  border-radius: 2cqmin;
+  text-align: center;
+}
 .date {
   grid-area: date;
   background-color: var(--surface);
@@ -23,7 +23,11 @@
   border-radius: 2cqmin;
   align-self: center;
 }
-.active {
+.notActive {
+  background-color: var(--surface-container);
+  box-shadow: var(--dp3);
+}
+.isActive {
   background-color: var(--surface-container-highest);
   box-shadow: var(--dp5);
 }

@@ -9,14 +9,14 @@ import { Fragment, useState } from 'react';
 import accordion from './accordion.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export function NewNota (
+export function NewNota(
   {
     llaveProceso,
     uri,
   }: {
-    llaveProceso: string;
-    uri: string;
-  }
+  llaveProceso: string;
+  uri: string;
+}
 ) {
   const pathname = usePathname();
   const {
@@ -63,7 +63,7 @@ export function NewNota (
       )
     );
     const postNewNote = await fetch(
-      `${ uri }/api/Notas`,
+      `${uri}/api/Notas`,
       {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
@@ -97,113 +97,113 @@ export function NewNota (
     false
   );
   return (
-    <div className={ note.container }>
-      <form className={ note.form } onSubmit={ handleSubmit(
+    <div className={note.container}>
+      <form className={note.form} onSubmit={handleSubmit(
         onSubmit
-      ) }>
-        <label htmlFor={ 'nota' } className={ note.label }>
-          <h1 className={ typography.titleMedium }> Nota</h1>
+      )}>
+        <label htmlFor={'nota'} className={note.label}>
+          <h1 className={typography.titleMedium}> Nota</h1>
         </label>
         <textarea
           placeholder='agregue su nota'
-          className={ note.textArea }
-          { ...register(
+          className={note.textArea}
+          {...register(
             'nota',
             { required: true }
-          ) }
+          )}
         />
-        <div className={ accordion.title } onClick={ () => setIsActive(
+        <div className={accordion.title} onClick={() => setIsActive(
           !isActive
-        ) }>
+        )}>
           <span className='material-symbols-outlined'>
-            { isActive
+            {isActive
               ? 'expand_less'
-              : 'expand_more' }
+              : 'expand_more'}
           </span>
-          <h1 className={ typography.titleSmall }>Tareas</h1>
+          <h1 className={typography.titleSmall}>Tareas</h1>
         </div>
-        { isActive && (
-          <div className={ accordion.content }>
-            { fields.map(
+        {isActive && (
+          <div className={accordion.content}>
+            {fields.map(
               (
                 field, index
               ) => {
                 const watchIsDone = watch(
-                  `tareas.${ index }.isDone`
+                  `tareas.${index}.isDone`
                 );
                 return (
-                  <Fragment key={ field.id }>
-                    <div className={ note.section }>
+                  <Fragment key={field.id}>
+                    <div className={note.section}>
                       <label
-                        htmlFor={ `tareas.${ index }.text` }
-                        className={ note.label }
+                        htmlFor={`tareas.${index}.text`}
+                        className={note.label}
                       >
-                        Tarea:{ ' ' }
+                      Tarea:{' '}
                       </label>
                       <textarea
                         placeholder='tarea'
-                        { ...register(
-                          `tareas.${ index }.tarea`,
+                        {...register(
+                          `tareas.${index}.tarea`,
                           {}
-                        ) }
-                        className={ note.textArea }
-                        defaultValue={ field.tarea }
+                        )}
+                        className={note.textArea}
+                        defaultValue={field.tarea}
                       />
                     </div>
-                    <div className={ note.section }>
-                      <p className={ note.label }>
-                        { watchIsDone
+                    <div className={note.section}>
+                      <p className={note.label}>
+                        {watchIsDone
                           ? '¡ tarea completa !'
-                          : '¿ completar tarea ?' }
+                          : '¿ completar tarea ?'}
                       </p>
                       <button
                         type='button'
-                        className={ note.button }
-                        onClick={ () => {
+                        className={note.button}
+                        onClick={() => {
                           setValue(
-                            `tareas.${ index }.isDone`,
+                            `tareas.${index}.isDone`,
                             !watchIsDone
                           );
-                        } }
+                        }}
                       >
                         <span className='material-symbols-outlined'>
-                          { watchIsDone
+                          {watchIsDone
                             ? 'check_box'
-                            : 'check_box_outline_blank' }
+                            : 'check_box_outline_blank'}
                         </span>
                       </button>
                     </div>
-                    <div className={ note.section }>
+                    <div className={note.section}>
                       <label
-                        htmlFor={ `tareas.${ index }.dueDate` }
-                        className={ note.label }
+                        htmlFor={`tareas.${index}.dueDate`}
+                        className={note.label}
                       >
-                        Para cuándo es?:{ ' ' }
+                      Para cuándo es?:{' '}
                       </label>
                       <input
                         type='date'
-                        placeholder={ `tareas.${ index }.dueDate` }
-                        { ...register(
-                          `tareas.${ index }.dueDate`,
+                        placeholder={`tareas.${index}.dueDate`}
+                        {...register(
+                          `tareas.${index}.dueDate`,
                           {}
-                        ) }
+                        )}
                       />
                     </div>
-                    <div className={ note.section }>
+                    <div className={note.section}>
                       <button
-                        className={ note.submitButton }
+                        className={note.submitButton}
                         type='button'
-                        onClick={ () => remove(
+                        onClick={() => remove(
                           index
-                        ) }
+                        )}
                       >
                         <span className='material-symbols-outlined'>remove</span>
                       </button>
 
                       <button
                         type='button'
-                        className={ note.submitButton }
-                        onClick={ () =>
+                        className={note.submitButton}
+                        onClick={() =>
                           append(
                             {
                               tarea: '',
@@ -219,11 +219,11 @@ export function NewNota (
                   </Fragment>
                 );
               }
-            ) }
+            )}
           </div>
-        ) }
-        <div className={ note.section }>
-          <button type='submit' className={ note.submitButton }>
+        )}
+        <div className={note.section}>
+          <button type='submit' className={note.submitButton}>
             <span className='material-symbols-outlined'>send</span>
           </button>
         </div>

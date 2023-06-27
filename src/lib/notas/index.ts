@@ -4,7 +4,7 @@ import { monNota, idk, intNota } from '#@/lib/types/notas';
 
 const Collection = async () => {
   const client = await clientPromise;
-  if ( !client ) {
+  if (!client) {
     throw new Error(
       'no hay cliente mongólico'
     );
@@ -18,23 +18,25 @@ const Collection = async () => {
   return notas;
 };
 
-export async function getNotas () {
+export async function getNotas() {
   const collection = await Collection();
-  const notas = ( await collection.find(
+  const notas = (await collection.find(
     {}
-  ).toArray() ) as unknown as monNota[];
+  ).toArray()) as unknown as monNota[];
   return notas;
 }
 
-export async function getNotasByllaveProceso (
+export async function getNotasByllaveProceso(
   {
-    llaveProceso
-  }: { llaveProceso: string }
+    llaveProceso,
+  }: {
+  llaveProceso: string;
+}
 ) {
   const collection = await Collection();
-  const notas = ( await collection.find(
+  const notas = (await collection.find(
     {}
-  ).toArray() ) as unknown as monNota[];
+  ).toArray()) as unknown as monNota[];
   const Notas = notas.filter(
     (
       nota
@@ -43,14 +45,12 @@ export async function getNotasByllaveProceso (
   return Notas;
 }
 export const getNotaById = async (
-  {
-    _id
-  }: { _id: string }
+  { _id }: { _id: string }
 ) => {
   const collection = await Collection();
-  const notas = ( await collection.find(
+  const notas = (await collection.find(
     {}
-  ).toArray() ) as unknown as monNota[];
+  ).toArray()) as unknown as monNota[];
   const Notas = notas.filter(
     (
       nota
@@ -59,17 +59,15 @@ export const getNotaById = async (
   return Notas;
 };
 
-export async function postNota (
-  {
-    nota
-  }: { nota: intNota }
+export async function postNota(
+  { nota }: { nota: intNota }
 ) {
   const collection = await Collection();
   const outgoingRequest = await collection.insertOne(
     nota
   );
 
-  if ( !outgoingRequest.acknowledged ) {
+  if (!outgoingRequest.acknowledged) {
     return new NextResponse(
       null,
       {
@@ -79,7 +77,7 @@ export async function postNota (
   }
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${ outgoingRequest.acknowledged }`
+      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
     ),
     {
       status: 200,

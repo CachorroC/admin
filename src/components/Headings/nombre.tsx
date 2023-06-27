@@ -57,16 +57,10 @@ export default function Name(
     'diciembre ',
   ];
   return (
-
-    <>
-      <h1 className={typography.displaySmall}>
-        {helper ?? `${days[today.getDay()]}, ${fixFechas(
-          today.toString()
-        )}`}
-      </h1>
-      <p className={ typography.labelSmall }>{ pathname }</p>
-    </>
-
-
+    <h1 className={typography.displaySmall}>
+      {helper ?? `${days[today.getDay()]}, ${fixFechas(
+        today.toString()
+      )}`}
+    </h1>
   );
 }

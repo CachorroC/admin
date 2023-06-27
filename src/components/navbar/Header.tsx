@@ -12,7 +12,7 @@ import {
 import Drawer from './drawer';
 import { ButtonSkeleton } from './ButtonSkeleton';
 import typeface from '#@/styles/fonts/typeface.module.scss';
-export default function Header (
+export default function Header(
   { children }: { children: React.ReactNode }
 ) {
   const isDesktop = useMedia(
@@ -24,60 +24,59 @@ export default function Header (
   const isBigDesktop = useMedia(
     3
   );
-  if ( isDesktop || isBigDesktop ) {
+  if (isDesktop || isBigDesktop) {
     return (
       <div className={layout.header}>
-        <Suspense fallback={ <ButtonSkeleton /> }>
+        <Suspense fallback={<ButtonSkeleton />}>
           <HomeButton />
         </Suspense>
-        <Suspense fallback={ <sub className={ typeface.title }>Loading</sub> }>
-          { children }
+        <Suspense fallback={<sub className={typeface.title}>Loading</sub>}>
+          {children}
         </Suspense>
-        <Suspense fallback={ <ButtonSkeleton /> }>
+        <Suspense fallback={<ButtonSkeleton />}>
           <ForwardButton />
         </Suspense>
-        <Suspense fallback={ <ButtonSkeleton /> }>
+        <Suspense fallback={<ButtonSkeleton />}>
           <BackwardsButton />
         </Suspense>
-        <Suspense fallback={ <ButtonSkeleton /> }>
+        <Suspense fallback={<ButtonSkeleton />}>
           <InputSearchBar />
         </Suspense>
         <DrawerMenuButton />
       </div>
     );
   }
-  if ( isMobile ) {
+  if (isMobile) {
     return (
       <div className={layout.header}>
-        <Suspense fallback={ <ButtonSkeleton /> }>
+        <Suspense fallback={<ButtonSkeleton />}>
           <HomeButton />
         </Suspense>
         <DrawerMenuButton />
-        <Suspense fallback={ <sub className={ typeface.title }>Loading</sub> }>
-          { children }
+        <Suspense fallback={<sub className={typeface.title}>Loading</sub>}>
+          {children}
         </Suspense>
-        <Suspense fallback={ <ButtonSkeleton /> }>
+        <Suspense fallback={<ButtonSkeleton />}>
           <DrawerMenuButton />
         </Suspense>
-
       </div>
     );
   }
   return (
     <div className={layout.header}>
-      <Suspense fallback={ <ButtonSkeleton /> }>
+      <Suspense fallback={<ButtonSkeleton />}>
         <HomeButton />
       </Suspense>
-      <Suspense fallback={ <sub className={ typeface.title }>Loading</sub> }>
-        { children }
+      <Suspense fallback={<sub className={typeface.title}>Loading</sub>}>
+        {children}
       </Suspense>
-      <Suspense fallback={ <ButtonSkeleton /> }>
+      <Suspense fallback={<ButtonSkeleton />}>
         <ForwardButton />
       </Suspense>
-      <Suspense fallback={ <ButtonSkeleton /> }>
+      <Suspense fallback={<ButtonSkeleton />}>
         <BackwardsButton />
       </Suspense>
-      <Suspense fallback={ <ButtonSkeleton /> }>
+      <Suspense fallback={<ButtonSkeleton />}>
         <InputSearchBar />
       </Suspense>
       <DrawerMenuButton />

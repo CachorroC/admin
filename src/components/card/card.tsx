@@ -57,11 +57,14 @@ export const Card = (
     pathname === `${path}/${llaveProceso}` ||
     pathname === path;
   return (
-    <div className={`${ card.container } ${isActive
-      ? card.isActive
-      : card.notActive }` }>
-      <div className={ card.parent }>
-
+    <div
+      className={`${card.container} ${
+        isActive
+          ? card.isActive
+          : card.notActive
+      }`}
+    >
+      <div className={card.parent}>
         <div className={card.cardFront}>
           <h1 className={typography.titleMedium}>{name}</h1>
 
@@ -77,17 +80,10 @@ export const Card = (
             </span>
           </Link>
         </div>
-        <div className={ card.cardBack }>
-
-          <Suspense fallback={ <p>Loading...</p> }>
-            {children}
-          </Suspense>
-
+        <div className={card.cardBack}>
+          <Suspense fallback={<p>Loading...</p>}>{children}</Suspense>
         </div>
       </div>
-
-
-
     </div>
   );
 };

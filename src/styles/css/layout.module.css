@@ -6,7 +6,7 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(10, 1fr);
   gap: 2vmin;
-  grid-template-areas: "header header header header header header header header header header header header" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body";
+  grid-template-areas: 'header header header header header header header header header header header header' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body';
 }
 
 .header {
@@ -46,7 +46,7 @@
   grid-template-rows: repeat(9, 1fr);
   gap: 1% 1%;
   grid-auto-flow: row;
-  grid-template-areas: "name name name name name name name name name name right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right" "left left left left left left left left left left right right";
+  grid-template-areas: 'name name name name name name name name name name right right' 'left left left left left left left left left left right right' 'left left left left left left left left left left right right' 'left left left left left left left left left left right right' 'left left left left left left left left left left right right' 'left left left left left left left left left left right right' 'left left left left left left left left left left right right' 'left left left left left left left left left left right right' 'left left left left left left left left left left right right';
   grid-area: body;
 }
 
@@ -61,7 +61,7 @@
 }
 .right:after {
   display: block;
-  content: " placeholder ";
+  content: ' placeholder ';
   margin: 10px;
   flex: 999 999 auto;
 }
@@ -94,10 +94,10 @@
 }
 .left > * {
   display: block;
-  flex-grow: 0;
+  flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 15%;
-  align-self: auto;
+  align-self: stretch;
   order: 0;
 }
 

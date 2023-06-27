@@ -17,8 +17,6 @@ import { ModalProvider } from './modal-context';
 import { NoteProvider } from './notes-context';
 import layout from '#@/styles/scss/layout.module.scss';
 
-
-
 export const metadata: Metadata = {
   metadataBase: new URL(
     'https://app.rsasesorjuridico.com'
@@ -121,18 +119,24 @@ export const metadata: Metadata = {
 
 export default function RootLayout(
   {
-    children,modal, header
+    children,
+    modal,
+    header,
   }: {
-      children: ReactNode; modal: ReactNode; header: ReactNode
+  children: ReactNode;
+  modal: ReactNode;
+  header: ReactNode;
 }
 ) {
   return (
-    <html lang="en">
-      <body className={ `${ poiret.variable } ${ raleway.variable } ${ inter.variable } ${ roboto.variable } ${ josefina.variable } [ color-scheme: light dark ]` }>
+    <html lang='en'>
+      <body
+        className={`${poiret.variable} ${raleway.variable} ${inter.variable} ${roboto.variable} ${josefina.variable} [ color-scheme: light dark ]`}
+      >
         <SearchProvider>
           <ModalProvider>
             <NoteProvider>
-              <div className={ layout.container }>
+              <div className={layout.container}>
                 {modal}
                 {header}
                 {children}
@@ -140,7 +144,7 @@ export default function RootLayout(
             </NoteProvider>
           </ModalProvider>
         </SearchProvider>
-        <Script src={ `${ getBaseUrl() }/service-worker.js` } />
+        <Script src={`${getBaseUrl()}/service-worker.js`} />
       </body>
     </html>
   );

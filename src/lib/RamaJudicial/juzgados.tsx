@@ -1,30 +1,37 @@
-
 import { notFound } from 'next/navigation';
 import { intConsultaNumeroRadicacion } from '../types/procesos';
 import { fixDemandado } from '../fix';
 import { CardCarpeta } from '#@/components/card/cardCarpeta';
 
-export async function JuzgadosByllaveProceso (
+export async function JuzgadosByllaveProceso(
   {
-    llaveProceso
-  }: { llaveProceso: string }
+    llaveProceso,
+  }: {
+  llaveProceso: string;
+}
 ) {
   try {
-
-
     const Request = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=false`
+      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`
     );
-    if ( !Request.ok ) {
+    if (!Request.ok) {
       return (
-        <CardCarpeta name={ `${ Request.text() } error` } path={ '/Procesos' } llaveProceso={ llaveProceso } >
+        <CardCarpeta
+          name={`${Request.text()} error`}
+          path={'/Procesos'}
+          llaveProceso={llaveProceso}
+        >
           <p> Error </p>
         </CardCarpeta>
       );
     }
-    const res = ( await Request.json() ) as intConsultaNumeroRadicacion;
-    if ( res.procesos.length === 0 ) {
-      <CardCarpeta name={ res.parametros.numero } path={ '/Procesos' } llaveProceso={ res.parametros.numero } >
+    const res = (await Request.json()) as intConsultaNumeroRadicacion;
+    if (res.procesos.length === 0) {
+      <CardCarpeta
+        name={res.parametros.numero}
+        path={'/Procesos'}
+        llaveProceso={res.parametros.numero}
+      >
         <p> No Hay Procesos </p>
       </CardCarpeta>;
     }
@@ -35,21 +42,24 @@ export async function JuzgadosByllaveProceso (
       ) => {
         const { llaveProceso, idProceso, sujetosProcesales, despacho } = Proceso;
         return (
-          <CardCarpeta key={ idProceso } name={ fixDemandado(
-            sujetosProcesales
-          ) } path={ '/Procesos' } llaveProceso={ llaveProceso } idProceso={ idProceso }>
-            <p>{ despacho }</p>
+          <CardCarpeta
+            key={idProceso}
+            name={fixDemandado(
+              sujetosProcesales
+            )}
+            path={'/Procesos'}
+            llaveProceso={llaveProceso}
+            idProceso={idProceso}
+          >
+            <p>{despacho}</p>
             <p>{`idProceso= ${idProceso}`}</p>
-
           </CardCarpeta>
         );
       }
     );
-    return (
-      <>{mapeandoProcesos}</>
-    );
+    return <>{mapeandoProcesos}</>;
   }
-  catch ( err ) {
+  catch (err) {
     console.log(
       err
     );
@@ -57,7 +67,7 @@ export async function JuzgadosByllaveProceso (
       err
     );
     return (
-      <CardCarpeta name={ error } path={ '/Procesos' } llaveProceso={llaveProceso} >
+      <CardCarpeta name={error} path={'/Procesos'} llaveProceso={llaveProceso}>
         <p>{error}</p>
       </CardCarpeta>
     );

@@ -5,13 +5,14 @@
   "description": "description",
   "dir": "auto",
   "shortcuts": [
-{
-  "name": "Demandados",
-  "url": "/Demandados"
-}, {
-  "name": "Nueva Nota",
-  "url": "/NuevaNota"
-}
+    {
+      "name": "Demandados",
+      "url": "/Demandados"
+    },
+    {
+      "name": "Nueva Nota",
+      "url": "/NuevaNota"
+    }
   ],
   "scope": "/",
   "icons": [

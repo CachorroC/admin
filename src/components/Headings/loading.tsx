@@ -7,7 +7,7 @@ export default function Loading() {
       <button className={navbar.button}>
         <span className='material-symbols-outlined'>spin</span>
       </button>
-      <sub className={ typography.displayLarge }>Loading</sub>
+      <sub className={typography.displayLarge}>Loading</sub>
       <button className={navbar.button}>
         <span className='material-symbols-outlined'>spin</span>
       </button>

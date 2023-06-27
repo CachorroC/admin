@@ -9,14 +9,20 @@ export default async function Page(
 }
 ) {
   const notas = await getNotasByllaveProceso(
-    {llaveProceso:   params.llaveProceso}
+    {
+      llaveProceso: params.llaveProceso,
+    }
   );
   return (
     <div>
-      { notas.map(
+      {notas.map(
         (
           nota
-        ) => <h1 className={typography.displaySmall} key={nota._id}>{nota.nota}</h1>
+        ) => (
+          <h1 className={typography.displaySmall} key={nota._id}>
+            {nota.nota}
+          </h1>
+        )
       )}
     </div>
   );
