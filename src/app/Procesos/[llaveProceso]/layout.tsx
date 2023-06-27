@@ -2,23 +2,30 @@ import { Card } from '#@/components/card/card';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import layout from '#@/styles/scss/layout.module.scss';
 import card from '#@/components/card/card.module.scss';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
+import { Name } from '#@/components/nota/notas';
+import { NewNota } from '#@/components/nota/NuevaNota';
+import { getBaseUrl } from '#@/lib/getBaseUrl';
 export default async function Layout (
-  { params, children }: {
+  { params: {llaveProceso}, children, notas }: {
     params: {
       llaveProceso: string
     };
 
-children: ReactNode  }
+    children: ReactNode; notas: ReactNode  }
 ) {
   const procesos = await getCarpetasByllaveProceso(
     {
-      llaveProceso: params.llaveProceso
+      llaveProceso: llaveProceso
     }
   );
   return (
     <div className={ layout.body }>
       <div className={ layout.name }>
+        <Suspense>
+          <Name llaveProceso={ llaveProceso } />
+          <NewNota llaveProceso={ llaveProceso } uri={ `${ getBaseUrl() }` } />
+        </Suspense>
         { procesos.map(
           (
             proceso, index, array
@@ -40,8 +47,11 @@ children: ReactNode  }
           }
         )}
       </div>
-      <div className={ layout.main }>
+      <div className={ layout.left }>
         {children}
+      </div>
+      <div className={ layout.right }>
+        {notas}
       </div>
     </div>
   );

@@ -63,5 +63,24 @@ export default function Header (
       </div>
     );
   }
-  return null;
+  return (
+    <div className={layout.header}>
+      <Suspense fallback={ <ButtonSkeleton /> }>
+        <HomeButton />
+      </Suspense>
+      <Suspense fallback={ <sub className={ typeface.title }>Loading</sub> }>
+        { children }
+      </Suspense>
+      <Suspense fallback={ <ButtonSkeleton /> }>
+        <ForwardButton />
+      </Suspense>
+      <Suspense fallback={ <ButtonSkeleton /> }>
+        <BackwardsButton />
+      </Suspense>
+      <Suspense fallback={ <ButtonSkeleton /> }>
+        <InputSearchBar />
+      </Suspense>
+      <DrawerMenuButton />
+    </div>
+  );
 }

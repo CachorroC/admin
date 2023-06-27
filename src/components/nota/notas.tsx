@@ -13,7 +13,7 @@ import { AccordionRow } from '#@/components/nota/accordion';
 import { ButtonSkeleton } from '../navbar/ButtonSkeleton';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-export async function Name(
+async function Name(
   { llaveProceso }: { llaveProceso: string }
 ) {
   const proceso = await getCarpetasByllaveProceso(

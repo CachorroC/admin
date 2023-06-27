@@ -1,6 +1,8 @@
 'use client';
 import box from '#@/styles/scss/box.module.scss';
 import React from 'react';
+import layout from '#@/styles/scss/layout.module.scss';
+import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function Error(
   { error, reset }: any
@@ -16,13 +18,14 @@ export default function Error(
   );
 
   return (
-    <div className={box.container}>
-      <div className='space-y-4'>
-        <h2 className='text-lg font-bold'>Error</h2>
-        <p className='text-sm'>{error?.message}</p>
-        <div>
-          <button onClick={() => reset()}>Try Again</button>
-        </div>
+    <div className={layout.body}>
+      <div className={layout.name} style={{backgroundColor: 'var(--error-container)'}}>
+        <h2 className={typography.displayLarge} style={{color: 'var(--on-error-container)'}}>Error</h2>
+        <p className={typography.bodyLarge}>{error?.message}</p>
+
+      </div>
+      <div className={layout.right}>
+        <button onClick={() => reset()} className={layout.button}>Try Again</button>
       </div>
     </div>
   );

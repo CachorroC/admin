@@ -129,8 +129,8 @@ export default function RootLayout(
   return (
     <html lang="en">
       <body className={ `${ poiret.variable } ${ raleway.variable } ${ inter.variable } ${ roboto.variable } ${ josefina.variable } [ color-scheme: light dark ]` }>
-        <ModalProvider>
-          <SearchProvider>
+        <SearchProvider>
+          <ModalProvider>
             <NoteProvider>
               <div className={ layout.container }>
                 {modal}
@@ -138,8 +138,8 @@ export default function RootLayout(
                 {children}
               </div>
             </NoteProvider>
-          </SearchProvider>
-        </ModalProvider>
+          </ModalProvider>
+        </SearchProvider>
         <Script src={ `${ getBaseUrl() }/service-worker.js` } />
       </body>
     </html>

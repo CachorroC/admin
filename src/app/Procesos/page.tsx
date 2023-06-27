@@ -37,13 +37,13 @@ export default async function Page () {
         <h1 className={ typography.displayMedium }>Procesos</h1>
 
       </div>
-      <div className={ layout.main }>
-        <div className={ layout.left }>
-          <Suspense fallback={<SearchOutputListSkeleton />}>
-            <List carpetas={carpetas} />
-          </Suspense>
-        </div>
+
+      <div className={ layout.left }>
+        <Suspense fallback={<SearchOutputListSkeleton />}>
+          <List carpetas={carpetas} />
+        </Suspense>
       </div>
+
     </div>
   );
 }

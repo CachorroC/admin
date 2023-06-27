@@ -70,21 +70,21 @@
   --md-sys-typescale-label-large-font-family-name: Roboto;
   --md-sys-typescale-label-large-font-family-style: Medium;
   --md-sys-typescale-label-large-font-weight: 500px;
-  --md-sys-typescale-label-large-font-size: 1rem;
+  --md-sys-typescale-label-large-font-size: 0.7rem;
   --md-sys-typescale-label-large-line-height: 20px;
   --md-sys-typescale-label-large-letter-spacing: 0.1px;
   /* label - medium */
   --md-sys-typescale-label-medium-font-family-name: Roboto;
   --md-sys-typescale-label-medium-font-family-style: Medium;
   --md-sys-typescale-label-medium-font-weight: 500px;
-  --md-sys-typescale-label-medium-font-size: 0.8rem;
+  --md-sys-typescale-label-medium-font-size: 0.5rem;
   --md-sys-typescale-label-medium-line-height: 16px;
   --md-sys-typescale-label-medium-letter-spacing: 0.5px;
   /* label - small */
   --md-sys-typescale-label-small-font-family-name: Roboto;
   --md-sys-typescale-label-small-font-family-style: Medium;
   --md-sys-typescale-label-small-font-weight: 500px;
-  --md-sys-typescale-label-small-font-size: 0.6rem;
+  --md-sys-typescale-label-small-font-size: 0.3rem;
   --md-sys-typescale-label-small-line-height: 16px;
   --md-sys-typescale-label-small-letter-spacing: 0.5px;
   /* title - large */
@@ -218,60 +218,6 @@
   }
 }
 
-// hue definitions
-.wrapper[data-theme='travel'] {
-  --hue: var(--first-hue);
-}
-
-.wrapper[data-theme='lifestyle'] {
-  --hue: calc(var(--first-hue) + calc(var(--hue-step)));
-}
-
-.wrapper[data-theme='food'] {
-  --hue: calc(var(--first-hue) + calc(var(--hue-step) * 2));
-}
-
-// fallback
-.wrapper {
-  --hue: var(--first-hue);
-}
-
-h1 {
-  color: hsl(var(--hue), 100%, var(--lgt-2));
-}
-
-.primary-block {
-  background: hsl(var(--hue), 100%, var(--lgt-2));
-
-  h2 {
-    color: hsl(var(--hue), 100%, var(--lgt-5));
-  }
-}
-
-.secondary-block {
-  h2 {
-    color: hsl(var(--hue), 100%, var(--lgt-2));
-  }
-}
-
-[data-theme='food'] {
-  [href='#food'] {
-    border-color: hsl(var(--hue), 100%, var(--lgt-2));
-  }
-}
-
-[data-theme='lifestyle'] {
-  [href='#lifestyle'] {
-    border-color: hsl(var(--hue), 100%, var(--lgt-2));
-  }
-}
-
-[data-theme='travel'] {
-  [href='#travel'] {
-    border-color: hsl(var(--hue), 100%, var(--lgt-2));
-  }
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -287,7 +233,7 @@ h1 {
 :root,
 html {
   font-family: var(--roboto);
-  /*font-size: min(max(14px, 4vmin), 16px);*/
+
   font-size: calc(14px + (22 - 14) * ((100vw - 300px) / (1920 - 300)));
 }
 

@@ -1,6 +1,7 @@
 
-import Title from '#@/components/modal/title';
+
 import layout from '#@/styles/scss/layout.module.scss';
+import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function NotFound () {
   return (
@@ -9,9 +10,8 @@ export default function NotFound () {
         className={ layout.name }
         style={ { backgroundColor: 'var(--error-container)' } }
       >
-        <Title helper='perdido' />
-
-        <p style={ { color: 'var(--on-error-container)' } }>
+        <h1 className={typography.displayLarge} style={{color: 'var(--on-error-container)'}}>¿Perdido?</h1>
+        <p className={typography.bodyLarge} style={ { color: 'var(--on-error-container)' } }>
           No pudimos resolver la consulta que realizaste. No existe el recurso{ ' ' }
         </p>
       </div>

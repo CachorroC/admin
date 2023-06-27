@@ -28,7 +28,6 @@ export default async function Page () {
 
 
       <div className={ layout.left }>
-        <Title helper='Navega por nuestro sitio web:'/>
         <Card name={ 'Procesos' } path={ '/Procesos' } icon="folder_open">
           <h1 className={ typography.displayMedium }> Procesos</h1>
         </Card>
@@ -38,7 +37,6 @@ export default async function Page () {
         <Card name={ 'Demandados' } path={ '/Demandados' } icon="person_pin">
           <h1 className={ typography.displayMedium }> Demandados</h1>
         </Card>
-        <Install />
       </div>
     </div>
 
