@@ -26,5 +26,6 @@
     "titleBar.border": "#dae77a",
     "titleBar.inactiveBackground": "#dae77a99",
     "titleBar.inactiveForeground": "#15202b99"
-  }
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

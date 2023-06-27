@@ -3,9 +3,9 @@ import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import layout from '#@/styles/scss/layout.module.scss';
 import card from '#@/components/card/card.module.scss';
 import { ReactNode, Suspense } from 'react';
-import { Name } from '#@/components/nota/notas';
 import { NewNota } from '#@/components/nota/NuevaNota';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
+import { Name } from '#@/components/nota/notas';
 export default async function Layout (
   { params: {llaveProceso}, children, notas }: {
     params: {

@@ -1,6 +1,6 @@
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
-import { monNota, idk, intNota } from '../types/notas';
+import { monNota, idk, intNota } from '#@/lib/types/notas';
 
 const Collection = async () => {
   const client = await clientPromise;
@@ -42,11 +42,11 @@ export async function getNotasByllaveProceso (
   );
   return Notas;
 }
-export async function getNotaById (
+export const getNotaById = async (
   {
     _id
   }: { _id: string }
-) {
+) => {
   const collection = await Collection();
   const notas = ( await collection.find(
     {}
@@ -57,7 +57,7 @@ export async function getNotaById (
     ) => nota._id === _id
   );
   return Notas;
-}
+};
 
 export async function postNota (
   {

@@ -1,8 +1,8 @@
 import { NewNota } from '#@/components/nota/NuevaNota';
-import Heading from '#@/components/typográficos/Heading';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import layout from '#@/styles/scss/layout.module.scss';
 import Formulario from './formulario';
+import Title from '#@/components/modal/title';
 export default function Page() {
   const lrs = [
     'Like a serpent in the gardenI am truth and I am darkness I\'m an angel, I’m a demon Just depends on what you\'re feeling I\'m the fruit that was forbidden But don’t keep my evil hidden I\'m the one she was afraid of Now I\'m what your dreams are made of',
@@ -13,8 +13,8 @@ export default function Page() {
   return (
     <>
       <div className={layout.name}>
-        <Heading>Quienes Somos</Heading>
-        <Heading>R&S La Familia</Heading>
+        <Title helper='Quienes Somos'/>
+        <Title helper='R&S La Familia'/>
       </div>
       <Formulario />
     </>

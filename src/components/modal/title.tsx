@@ -62,7 +62,7 @@ export default function Title(
   ];
   return (
 
-    <h1 className={ `${typography.displayMedium }  ${isNavOpen
+    <h1 className={ `${typography.titleMedium}  ${isNavOpen
       ? typeface.drawer
       : typeface.navbar}`}>
       {helper ?? `${days[today.getDay()]}, ${fixFechas(
