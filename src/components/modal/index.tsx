@@ -1,30 +1,42 @@
 'use client';
-import { useCallback, useRef, useEffect, ReactNode, MouseEvent } from 'react';
+import { useCallback, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useModal } from '#@/app/modal-context';
 import modal from '#@/components/modal/modal.module.scss';
 
-export default function Modal({ children }: { children: ReactNode }) {
+export default function Modal(
+  { children }: {children: React.ReactNode}
+) {
+  const overlay = useRef(
+    null
+  );
+  const wrapper = useRef(
+    null
+  );
+  const router = useRouter();
   const [
     isOpen,
     setIsOpen
   ] = useModal();
-  const overlay = useRef(null);
-  const wrapper = useRef(null);
-  const router = useRouter();
 
   const onDismiss = useCallback(
     () => {
+      setIsOpen(
+        false
+      );
       router.back();
     },
     [
-      router
+      router,
+      setIsOpen
     ]
   );
 
   const onClick = useCallback(
-    (e: MouseEvent<HTMLElement>) => {
+    (
+      e: { target: undefined; }
+    ) => {
       if (e.target === overlay.current || e.target === wrapper.current) {
         if (onDismiss) {
           onDismiss();
@@ -39,7 +51,9 @@ export default function Modal({ children }: { children: ReactNode }) {
   );
 
   const onKeyDown = useCallback(
-    (e: any) => {
+    (
+      e: { key: string; }
+    ) => {
       if (e.key === 'Escape') {
         onDismiss();
       }
@@ -64,25 +78,22 @@ export default function Modal({ children }: { children: ReactNode }) {
       onKeyDown
     ]
   );
-
-  return (
-    <div ref={overlay} onClick={onClick} className={modal.modal}>
-      <button
+  if ( isOpen ) {
+    return (
+      <div
+        ref={overlay}
+        className={modal.modal}
         onClick={() => {
-          router.back();
+          onClick;
         }}
       >
-        <span className='material-symbols-outlined'>undo</span>
-      </button>
-      <button
-        onClick={() => {
-          router.refresh();
-          router.forward();
-        }}
-      >
-        <span className='material-symbols-outlined'>redo</span>
-      </button>
-      {children}
-    </div>
-  );
+        <div
+          ref={wrapper}
+          className={modal.wrapper}
+        >
+          {children}
+        </div>
+      </div>
+    );
+  }
 }

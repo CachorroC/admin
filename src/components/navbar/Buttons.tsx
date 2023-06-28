@@ -14,10 +14,12 @@ export const ForwardButton = () => {
   return (
     <button
       type='button'
-      className={navbar.ForwardButton}
+      className={navbar.forwardButton}
       onClick={() => {
         router.forward();
-        setIsNavOpen(false);
+        setIsNavOpen(
+          false
+        );
       }}
     >
       <span className='material-symbols-outlined'>redo</span>
@@ -34,9 +36,11 @@ export const BackwardsButton = () => {
   return (
     <button
       type='button'
-      className={navbar.BackwardsButton}
+      className={navbar.backwardsButton}
       onClick={() => {
-        setIsNavOpen(false);
+        setIsNavOpen(
+          false
+        );
         router.back();
       }}
     >
@@ -55,8 +59,10 @@ export const DrawerMenuButton = () => {
     return (
       <button
         type='button'
-        className={navbar.DrawerMenuButton}
-        onClick={() => setIsNavOpen(false)}
+        className={navbar.drawerMenuButton}
+        onClick={() => setIsNavOpen(
+          false
+        )}
       >
         <span className='material-symbols-outlined'>close</span>
         <p className={navbar.ButtonTextHelper}>cerrar</p>
@@ -66,8 +72,10 @@ export const DrawerMenuButton = () => {
   return (
     <button
       type='button'
-      className={navbar.DrawerMenuButton}
-      onClick={() => setIsNavOpen(true)}
+      className={navbar.drawerMenuButton}
+      onClick={() => setIsNavOpen(
+        true
+      )}
     >
       <span className='material-symbols-outlined'>menu</span>
       <p className={navbar.ButtonTextHelper}>abrir</p>
@@ -83,9 +91,11 @@ export const HomeButton = () => {
   return (
     <Link
       href={'/'}
-      className={navbar.HomeButton}
+      className={navbar.homeButton}
       onClick={() => {
-        setIsNavOpen(false);
+        setIsNavOpen(
+          false
+        );
       }}
     >
       <span className='material-symbols-outlined'>home</span>
@@ -99,7 +109,9 @@ export const ModalButton = () => {
     setIsOpen
   ] = useModal();
   return (
-    <button className={navbar.ModalButton} onClick={() => setIsOpen(true)}>
+    <button className={navbar.ModalButton} onClick={() => setIsOpen(
+      true
+    )}>
       <span className='material-symbols-outlined'>box</span>
     </button>
   );

@@ -12,8 +12,8 @@
   grid-template-rows: repeat(12, 1fr);
   gap: 2vmin;
   grid-template-areas:
-    'title title title title  DrawerMenuButton '
-    '. InputSearchBar InputSearchBar InputSearchBar DrawerMenuButton'
+    'title title title title  drawerMenuButton '
+    '. inputSearchBar inputSearchBar inputSearchBar drawerMenuButton'
     'ProcesosLayoutList  ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList'
     'ProcesosLayoutList  ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList'
     'ProcesosLayoutList  ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList'
@@ -53,8 +53,8 @@
       ' ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList '
       ' ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList '
       ' ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList '
-      'DrawerMenuButton Title HomeButton'
-      'BackwardsButton  InputSearchBar ForwardButton';
+      'drawerMenuButton Title homeButton'
+      'backwardsButton  inputSearchBar forwardButton';
 
     .menu {
       display: flex;
@@ -88,27 +88,27 @@
   overflow: scroll;
 }
 
-.ForwardButton {
+.forwardButton {
   grid-area: forwardButton;
 }
 
-.BackwardsButton {
+.backwardsButton {
   grid-area: backwardsButton;
 }
 
-.DrawerMenuButton {
+.drawerMenuButton {
   grid-area: drawerMenuButton;
 }
 
-.HomeButton {
+.homeButton {
   grid-area: homeButton;
 }
 
 .button,
-.ForwardButton,
-.BackwardsButton,
-.DrawerMenuButton,
-.HomeButton {
+.forwardButton,
+.backwardsButton,
+.drawerMenuButton,
+.homeButton {
   border: none;
   box-shadow: var(--dp5);
   border-radius: 2vmin;

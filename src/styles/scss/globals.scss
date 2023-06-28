@@ -224,6 +224,12 @@
   padding: 0;
 
   &:focus {
+    --min-font-size: 14px;
+    --max-font-size: 20px;
+    --full-viewport: 100vw;
+    --min-viewport: 300px;
+    --min-width: 300;
+    --max-viewport: 1920px;
     border: 2px dashed var(--outline-variant);
     background-color: var(--surface-variant);
     color: var(--on-surface-variant);
@@ -234,7 +240,7 @@
 html {
   font-family: var(--roboto);
 
-  font-size: calc(14px + (22 - 14) * ((100vw - 300px) / (1920 - 300)));
+  font-size: clamp(0.625rem, 0.256vw + 0.567rem, 0.875rem);
 }
 
 .material-symbols-outlined {

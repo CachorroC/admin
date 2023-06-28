@@ -11,20 +11,24 @@ import searchbar from '#@/components/search/searchbar.module.scss';
 import { usePathname } from 'next/navigation';
 import Name from '../Headings/nombre';
 import type { Route } from 'next';
-export default function SearchOutputList({
-  path,
-  fechas,
-}: {
+export default function SearchOutputList(
+  {
+    path,
+    fechas,
+  }: {
   path: string;
   fechas: intFecha[];
-}) {
+}
+) {
   const pathname = usePathname();
   const [
     search,
     setSearch
   ] = useSearch();
   const clickHandler = () => {
-    setIsNavOpen(false);
+    setIsNavOpen(
+      false
+    );
   };
   const [
     isNavOpen,
@@ -38,40 +42,48 @@ export default function SearchOutputList({
 
   const idk = [
     ...fechas
-  ].sort((
-    a, b
-  ) => {
-    if (!a.fecha || a.fecha === undefined) {
-      return 1;
+  ].sort(
+    (
+      a, b
+    ) => {
+      if (!a.fecha || a.fecha === undefined) {
+        return 1;
+      }
+      if (!b.fecha || b.fecha === undefined) {
+        return -1;
+      }
+      let x = a.fecha.toLowerCase();
+      let y = b.fecha.toLowerCase();
+      if (x < y) {
+        return 1;
+      }
+      if (x > y) {
+        return -1;
+      }
+      return 0;
     }
-    if (!b.fecha || b.fecha === undefined) {
-      return -1;
-    }
-    let x = a.fecha.toLowerCase();
-    let y = b.fecha.toLowerCase();
-    if (x < y) {
-      return 1;
-    }
-    if (x > y) {
-      return -1;
-    }
-    return 0;
-  });
-  idk.forEach((
-    proceso, index, array
-  ) => {
-    const { idProceso, llaveProceso, Demandado, fecha, _id } = proceso;
-    const { Nombre, Id, Tel, Direccion } = Demandado;
+  );
+  idk.forEach(
+    (
+      proceso, index, array
+    ) => {
+      const { idProceso, llaveProceso, Demandado, fecha, _id } = proceso;
+      const { Nombre, Id, Tel, Direccion } = Demandado;
 
-    if (Nombre.toLowerCase().indexOf(search.toLowerCase()) === -1) {
-      return;
+      if (Nombre.toLowerCase().indexOf(
+        search.toLowerCase()
+      ) === -1) {
+        return;
+      }
+      rows.push(
+        <LinkCard path={path} proceso={proceso} key={_id.toString()}>
+          <sub className={typography.labelSmall}>
+            {`${index + 1} of ${array.length}`}
+          </sub>
+        </LinkCard>
+      );
     }
-    rows.push(<LinkCard path={path} proceso={proceso} key={_id.toString()}>
-      <sub className={typography.labelSmall}>
-        {`${index + 1} of ${array.length}`}
-      </sub>
-    </LinkCard>);
-  });
+  );
 
   return (
     <>
@@ -80,21 +92,13 @@ export default function SearchOutputList({
           ? searchbar.isActive
           : searchbar.notActive}>
           <Name helper={path} />
-          <Link
-            className={isActive
-              ? searchbar.linkIsActive
-              : searchbar.link}
-            onClick={clickHandler}
-            href={href}
-          >
-            <span className={`${searchbar.icon} material-symbols-outlined`}>
-              file_open
-            </span>
-          </Link>
+
 
           <div className={searchbar.section}>
             <sub className={searchbar.date}>
-              {fixFechas(new Date().toISOString())}
+              {fixFechas(
+                new Date().toISOString()
+              )}
             </sub>
           </div>
           <div className={searchbar.links}>
@@ -102,17 +106,18 @@ export default function SearchOutputList({
               className={isActive
                 ? searchbar.linkIsActive
                 : searchbar.link}
-              href={'/Procesos'}
+              onClick={clickHandler}
+              href={href}
             >
-              <span className={`material-symbols-outlined ${searchbar.icon}`}>
-                open_in_new
+              <span className={`${searchbar.icon} material-symbols-outlined`}>
+              file_open
               </span>
             </Link>
             <Link
               className={isActive
                 ? searchbar.linkIsActive
                 : searchbar.link}
-              href={'/NuevaNota'}
+              href="/NuevaNota"
             >
               <span className={`material-symbols-outlined ${searchbar.icon}`}>
                 add

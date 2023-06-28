@@ -1,14 +1,26 @@
-/* The Modal (background) */
 .modal {
+  container-name: modal;
+  container-type: inline-size;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 10;
+
+  height: 100vh;
+}
+
+/* The Modal (background) */
+.wrapper {
   /* Hidden by default */
 
-  width: 80vw;
+  width: 80qcw;
   /* Full width */
-  height: 80vh;
+  height: 80qch;
   z-index: 10;
-  position: fixed;
-  top: 10vh;
-  left: 10vw;
+
+  box-sizing: border-box;
+
   box-shadow: var(--dp16);
   background-color: var(--primary-container);
   display: grid;

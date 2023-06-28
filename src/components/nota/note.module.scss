@@ -1,44 +1,41 @@
 .container {
   container-name: note;
   container-type: inline-size;
+  border-radius: 2vmin;
+}
+.form,
+.nota {
   display: flex;
   box-shadow: var(--dp2);
-  border-radius: 2vmin;
+  border-radius: 2vmin;;
   flex-grow: 1;
   flex-flow: column nowrap;
-  background-color: var(--surface-container-lowest);
+  background-color: var(--surface-container);
+  padding: 2cqmin;
+  gap: 2cqmin;
 
-  .form,
-  .nota {
-    border-radius: 2vmin;
+  sub {
+    color: var(--primary);
+  }
+
+  .buttonsRow {
     display: flex;
-    flex-flow: column nowrap;
-    padding: 2vmin;
-    gap: 2vmin;
+    flex-flow: row nowrap;
+  }
 
-    sub {
-      color: var(--primary);
+  .section {
+    gap: 2cqmin;
+    padding: 1cqmin;
+    display: flex;
+    flex-flow: row nowrap;
+
+    .label {
+      font-family: var(--font-poiret);
+      flex-grow: 1;
     }
 
-    .buttonsRow {
-      display: flex;
-      flex-flow: row nowrap;
-    }
-
-    .section {
-      gap: 2vmin;
-      padding: 1vmin;
-      display: flex;
-      flex-flow: row nowrap;
-
-      .label {
-        font-family: var(--font-poiret);
-        flex-grow: 1;
-      }
-
-      .titleInput {
-        flex-grow: 2;
-      }
+    .titleInput {
+      flex-grow: 2;
     }
   }
 }
@@ -73,10 +70,10 @@
   color: var(--on-surface-variant);
   box-shadow: var(--dp2) inset;
   border: var(--outline);
-  border-radius: 2vmin;
+  border-radius: 2cqmin;
   resize: both;
   text-align: center;
-  padding: 2vmin;
+  padding: 2cqmin;
   flex-grow: 3;
 
   &:focus {
@@ -107,7 +104,7 @@
 .HomeButton {
   border: none;
   box-shadow: var(--dp5);
-  border-radius: 2vmin;
+  border-radius: 2cqmin;
   flex-grow: 1;
   background-color: var(--secondary);
   display: flex;

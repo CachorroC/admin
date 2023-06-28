@@ -11,18 +11,16 @@ import { fetchFechas } from '#@/lib/Actuaciones';
 
 export default async function Page() {
   const procesos = await getCarpetas();
-  const fechas = await fetchFechas({ procesos: procesos });
+  const fechas = await fetchFechas(
+    { procesos: procesos }
+  );
 
   return (
     <>
       <Suspense fallback={<ButtonSkeleton />}>
         <Title />
       </Suspense>
-      <Drawer>
-        <Suspense fallback={<SearchOutputListSkeleton />}>
-          <SearchOutputList path={'/Procesos'} fechas={fechas} />
-        </Suspense>
-      </Drawer>
+
     </>
   );
 }

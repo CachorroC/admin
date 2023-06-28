@@ -1,7 +1,6 @@
 .container {
   container-type: inline-size;
   container-name: card;
-
   & > * {
     width: 100%;
   }
@@ -21,9 +20,6 @@
     border-radius: 2cqmin;
     padding: 2cqmin;
     box-sizing: border-box;
-    -webkit-backface-visibility: hidden;
-    /* Safari */
-    backface-visibility: hidden;
   }
 
   .cardFront {
@@ -35,11 +31,6 @@
   .cardBack {
     background-color: var(--secondary-container);
     color: var(--on-secondary-container);
-    transform: rotateY(180deg);
-  }
-
-  &:hover {
-    transform: rotateY(180deg);
   }
 }
 .notActive {

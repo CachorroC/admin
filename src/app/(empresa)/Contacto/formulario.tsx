@@ -17,11 +17,19 @@ export default function Formulario() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  const onSubmit: SubmitHandler<FormValues> = (data) =>
-    alert(JSON.stringify(data));
+  const onSubmit: SubmitHandler<FormValues> = (
+    data
+  ) =>
+    alert(
+      JSON.stringify(
+        data
+      )
+    );
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(
+      onSubmit
+    )}>
       <input
         type='text'
         placeholder='Nombres'

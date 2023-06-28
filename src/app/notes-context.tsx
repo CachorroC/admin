@@ -13,13 +13,19 @@ import { SetStateAction } from 'react';
 
 const NoteContext = createContext<
   [boolean, Dispatch<SetStateAction<boolean>>] | null
->(null);
+>(
+  null
+);
 
-export function NoteProvider({ children }: { children: ReactNode }) {
+export function NoteProvider(
+  { children }: { children: ReactNode }
+) {
   const [
     isShowing,
     setIsShowing
-  ] = useState(false);
+  ] = useState(
+    false
+  );
   return (
     <NoteContext.Provider value={[
       isShowing,
@@ -31,10 +37,14 @@ export function NoteProvider({ children }: { children: ReactNode }) {
 }
 
 export function useNoter() {
-  const context = useContext(NoteContext);
+  const context = useContext(
+    NoteContext
+  );
 
   if (context === null) {
-    throw new Error('useModal must be used within NoteProvider');
+    throw new Error(
+      'useModal must be used within NoteProvider'
+    );
   }
 
   return context;

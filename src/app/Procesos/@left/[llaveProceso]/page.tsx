@@ -13,49 +13,65 @@ import box from '#@/styles/scss/box.module.scss';
 import { IntActuaciones } from '#@/lib/types/procesos';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-async function Name({ llaveProceso }: { llaveProceso: string }) {
-  const proceso = await getCarpetasByllaveProceso({
-    llaveProceso: llaveProceso,
-  });
-  const nombre = proceso.map((p) => p.Demandado.Nombre).toString();
+async function Name(
+  { llaveProceso }: { llaveProceso: string }
+) {
+  const proceso = await getCarpetasByllaveProceso(
+    {
+      llaveProceso: llaveProceso,
+    }
+  );
+  const nombre = proceso.map(
+    (
+      p
+    ) => p.Demandado.Nombre
+  ).toString();
   return <h3 className={typography.displayMedium}>{nombre}</h3>;
 }
-async function Acts({ idProceso }: { idProceso: number }) {
-  const acts = await fetch(`${getBaseUrl()}/api/Procesos/Actuaciones/${idProceso}`);
-  const res = (await acts.json()) as IntActuaciones;
-
+async function Acts (
+  { idProceso }: { idProceso: number } 
+) {
+  const actuaciones = await getActuacionesByidProceso(
+    {idProceso: idProceso}
+  );
   return (
-    <div className={box.container} key={idProceso}>
-      <h1 className={typography.titleLarge}>{res.text.message}</h1>
-      <p className={typography.bodyMedium}>{res.text.statusCode.toString()}</p>
-      {res.acts
-        ? (
-          <>
-            <p>{res.acts[0].actuacion}</p>
-            <p>{res.acts[0].anotacion}</p>
-            <p>{fixFechas(res.acts[0].fechaActuacion)}</p>
-          </>
-        )
-        : (
-          <p>nothing</p>
-        )}
-    </div>
+    <>
+      {actuaciones.acts && actuaciones.acts.map(
+        (
+          act, i, arr
+        ) => {
+          const { actuacion, anotacion,idRegActuacion, llaveProceso, fechaActuacion } = act;
+          return (
+            <Card key={ idRegActuacion } name={ actuacion } path={ '/NuevaNota' } llaveProceso={ llaveProceso } idProceso={ idProceso }>
+              <p className={typography.bodymedium}>{anotacion ?? fechaActuacion}</p>
+            </Card>
+          );
+        }
+      )
+      }
+    </>
   );
 }
 
-export default async function PageProcesosLeftllaveProceso({
-  params: { llaveProceso },
-}: {
+export default async function PageProcesosLeftllaveProceso(
+  {
+    params: { llaveProceso },
+  }: {
   params: {
     llaveProceso: string;
   };
-}) {
-  const carpeta = await getCarpetasByllaveProceso({
-    llaveProceso: llaveProceso,
-  });
-  const Procesos = await getConsultaNumeroRadicion({
-    llaveProceso: llaveProceso,
-  });
+}
+) {
+  const carpeta = await getCarpetasByllaveProceso(
+    {
+      llaveProceso: llaveProceso,
+    }
+  );
+  const Procesos = await getConsultaNumeroRadicion(
+    {
+      llaveProceso: llaveProceso,
+    }
+  );
   const cantidadProcesos = Procesos.length;
   const cantidadCarpetas = carpeta.length;
 
@@ -63,27 +79,29 @@ export default async function PageProcesosLeftllaveProceso({
   case 0:
     return (
       <Fragment key={llaveProceso}>
-        {carpeta.map((
-          prc, i, arr
-        ) => {
-          const { idProceso, _id, Demandado } = prc;
-          return (
-            <Fragment key={_id.toString()}>
-              <Acts key={idProceso} idProceso={idProceso} />
-              <Card
-                key={_id.toString()}
-                name={Demandado.Nombre}
-                llaveProceso={prc.llaveProceso}
-                idProceso={prc.idProceso}
-                path={'/Procesos'}
-              >
-                <span className='material-symbols-outlined'>
+        {carpeta.map(
+          (
+            prc, i, arr
+          ) => {
+            const { idProceso, _id, Demandado } = prc;
+            return (
+              <Fragment key={_id.toString()}>
+                <Acts key={idProceso} idProceso={idProceso} />
+                <Card
+                  key={_id.toString()}
+                  name={Demandado.Nombre}
+                  llaveProceso={prc.llaveProceso}
+                  idProceso={prc.idProceso}
+                  path={'/Procesos'}
+                >
+                  <span className='material-symbols-outlined'>
                     clock_loader_30
-                </span>
-              </Card>
-            </Fragment>
-          );
-        })}
+                  </span>
+                </Card>
+              </Fragment>
+            );
+          }
+        )}
       </Fragment>
     );
   case 1:
@@ -96,44 +114,48 @@ export default async function PageProcesosLeftllaveProceso({
   case 2:
     return (
       <>
-        {carpeta.map((
-          carp, index, arr
-        ) => {
-          const { idProceso, Demandado, _id } = carp;
-          return (
-            <Card
-              key={_id.toString()}
-              name={Demandado.Nombre}
-              path={'/Procesos'}
-              llaveProceso={llaveProceso}
-              idProceso={idProceso}
-            >
-              <p>{Demandado.Direccion}</p>
-            </Card>
-          );
-        })}
+        {carpeta.map(
+          (
+            carp, index, arr
+          ) => {
+            const { idProceso, Demandado, _id } = carp;
+            return (
+              <Card
+                key={_id.toString()}
+                name={Demandado.Nombre}
+                path={'/Procesos'}
+                llaveProceso={llaveProceso}
+                idProceso={idProceso}
+              >
+                <p>{Demandado.Direccion}</p>
+              </Card>
+            );
+          }
+        )}
       </>
     );
 
   default:
     return (
       <>
-        {carpeta.map((
-          carp, index, arr
-        ) => {
-          const { idProceso, Demandado, _id } = carp;
-          return (
-            <Card
-              key={_id.toString()}
-              name={Demandado.Nombre}
-              path={'/Procesos'}
-              llaveProceso={llaveProceso}
-              idProceso={idProceso}
-            >
-              <p>{Demandado.Direccion}</p>
-            </Card>
-          );
-        })}
+        {carpeta.map(
+          (
+            carp, index, arr
+          ) => {
+            const { idProceso, Demandado, _id } = carp;
+            return (
+              <Card
+                key={_id.toString()}
+                name={Demandado.Nombre}
+                path={'/Procesos'}
+                llaveProceso={llaveProceso}
+                idProceso={idProceso}
+              >
+                <p>{Demandado.Direccion}</p>
+              </Card>
+            );
+          }
+        )}
       </>
     );
   }

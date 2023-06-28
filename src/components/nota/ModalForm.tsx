@@ -3,24 +3,30 @@ import { useForm } from 'react-hook-form';
 
 type FormValues = { mail: string };
 
-export const ModalForm = ({
-  mail,
-  setModalFormData,
-}: {
+export const ModalForm = (
+  {
+    mail,
+    setModalFormData,
+  }: {
   mail: string;
   setModalFormData: React.Dispatch<React.SetStateAction<string>>;
-}) => {
-  const { register, reset, handleSubmit } = useForm<FormValues>({
-    defaultValues: {
-      mail,
-    },
-  });
+}
+) => {
+  const { register, reset, handleSubmit } = useForm<FormValues>(
+    {
+      defaultValues: {
+        mail,
+      },
+    }
+  );
 
   React.useEffect(
     () => {
-      reset({
-        mail,
-      });
+      reset(
+        {
+          mail,
+        }
+      );
     },
     [
       reset,
@@ -28,12 +34,18 @@ export const ModalForm = ({
     ]
   );
 
-  const onSubmit = (data: FormValues) => {
-    setModalFormData(data.mail);
+  const onSubmit = (
+    data: FormValues
+  ) => {
+    setModalFormData(
+      data.mail
+    );
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(
+      onSubmit
+    )}>
       <h2>Modal</h2>
       <input placeholder='mail' {...register(
         'mail',

@@ -15,16 +15,27 @@ import { useNavigator } from '#@/app/search-context';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { intCarpetaDemandado } from '../../lib/types/demandados';
 import Name from '../Headings/nombre';
+import useMedia from '../navbar/mediaQuery';
+import { useModal } from '#@/app/modal-context';
 
-export const LinkCard = ({
-  path,
-  proceso,
-  children,
-}: {
+export const LinkCard = (
+  {
+    path,
+    proceso,
+    children,
+  }: {
   path: string;
   proceso: intFecha;
   children: ReactNode;
-}) => {
+  }
+) => {
+  const[
+    isOpen,
+    setIsOpen
+  ] = useModal();
+  const isMobile = useMedia(
+    0
+  );
   const { Demandado, fecha, llaveProceso, idProceso } = proceso;
   const { Nombre, Id, Direccion, Tel } = Demandado;
   const params = useParams();
@@ -44,28 +55,62 @@ export const LinkCard = ({
   const isActive =
     pathname === href ||
     pathname === `${path}/${llaveProceso}/${idProceso}` ||
-    pathname === `${path}/${llaveProceso}`;
+    pathname === `${ path }/${ llaveProceso }`;
+
+
 
   const clickHandler = () => {
-    setIsNavOpen(false);
+    setIsNavOpen(
+      false
+    );
+    setIsOpen(
+      isOpen
+        ? false
+        : true
+    );
   };
+  if ( isMobile ) {
+    return (
+      <Link href={ href } onClick={ ()=>{
+        clickHandler;
+      }}  className={isActive
+        ? searchbar.linkIsActive
+        : searchbar.link }>
+        <Name helper={Nombre} />
+        <span className={`material-symbols-outlined ${searchbar.icon}`}>
+              badge
+        </span>
+        <sub className={searchbar.date}>{fixFechas(
+          fecha
+        )}</sub>
+        {children}
+      </Link>
+    );
+  }
   return (
     <div className={searchbar.container}>
       <div className={isActive
         ? searchbar.isActive
-        : searchbar.notActive}>
+        : searchbar.notActive }>
+
         <Name helper={Nombre} />
 
-        <sub className={searchbar.date}>{fixFechas(fecha)}</sub>
+        <div className={
+          searchbar.section
+        }>
+          <sub className={searchbar.date}>{fixFechas(
+            fecha
+          )}</sub>
 
-        {children}
+          {children}
+        </div>
 
         <div className={searchbar.links}>
           <Link
             className={isActive
               ? searchbar.linkIsActive
               : searchbar.link}
-            href={`/Procesos/${llaveProceso}`}
+            href={`${path}/${llaveProceso}`}
           >
             <span className={`material-symbols-outlined ${searchbar.icon}`}>
               badge
@@ -75,7 +120,12 @@ export const LinkCard = ({
             className={isActive
               ? searchbar.linkIsActive
               : searchbar.link}
-            href={`/NuevaNota/${llaveProceso}`}
+            href={ `/NuevaNota/${ llaveProceso }` }
+            onClick={ () => {
+              setIsOpen(
+                true
+              );
+            }}
           >
             <span className={`material-symbols-outlined ${searchbar.icon}`}>
               add

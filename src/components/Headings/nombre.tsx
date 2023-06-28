@@ -4,7 +4,9 @@ import { useSelectedLayoutSegment, usePathname } from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export default function Name({ helper }: { helper?: string }) {
+export default function Name(
+  { helper }: { helper?: string }
+) {
   const pathname = usePathname();
   const segment = useSelectedLayoutSegment();
   const today = new Date();
@@ -55,8 +57,10 @@ export default function Name({ helper }: { helper?: string }) {
     'diciembre ',
   ];
   return (
-    <h1 className={typography.displaySmall}>
-      {helper ?? `${days[today.getDay()]}, ${fixFechas(today.toString())}`}
+    <h1 className={typography.titleMedium}>
+      {helper ?? `${days[today.getDay()]}, ${fixFechas(
+        today.toString()
+      )}`}
     </h1>
   );
 }

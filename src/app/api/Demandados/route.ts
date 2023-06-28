@@ -6,25 +6,47 @@ import { ObjectId } from 'mongodb';
 const Collection = async () => {
   const client = await clientPromise;
   if (!client) {
-    throw new Error('no hay cliente mongólico');
+    throw new Error(
+      'no hay cliente mongólico'
+    );
   }
-  const db = client.db('RyS');
-  const notas = db.collection('Demandados');
+  const db = client.db(
+    'RyS'
+  );
+  const notas = db.collection(
+    'Demandados'
+  );
   return notas;
 };
 
-export async function GET(Request: NextRequest) {
-  const { searchParams } = new URL(Request.url);
+export async function GET(
+  Request: NextRequest
+) {
+  const { searchParams } = new URL(
+    Request.url
+  );
   const collection = await Collection();
-  const notas = await collection.find({}).toArray();
+  const notas = await collection.find(
+    {}
+  ).toArray();
   if (!notas.length) {
-    throw new Error('no hay entradas en mongo');
+    throw new Error(
+      'no hay entradas en mongo'
+    );
   }
-  const llaveProceso = searchParams.get('llaveProceso');
+  const llaveProceso = searchParams.get(
+    'llaveProceso'
+  );
   if (llaveProceso) {
-    const Demandados = notas.filter((nota) => nota.llaveProceso === llaveProceso);
+    const Demandados = notas.filter(
+      (
+        nota
+      ) => nota.llaveProceso === llaveProceso
+    );
     return new NextResponse(
-      JSON.stringify(Demandados),
+      JSON.stringify(
+        Demandados
+      ),
       {
         status: 200,
         headers: {
@@ -34,11 +56,19 @@ export async function GET(Request: NextRequest) {
     );
   }
 
-  const _id = searchParams.get('_id');
+  const _id = searchParams.get(
+    '_id'
+  );
   if (_id) {
-    const Nota = notas.find((nota) => nota._id.toString() === _id);
+    const Nota = notas.find(
+      (
+        nota
+      ) => nota._id.toString() === _id
+    );
     return new NextResponse(
-      JSON.stringify(Nota),
+      JSON.stringify(
+        Nota
+      ),
       {
         status: 200,
         headers: {
@@ -48,7 +78,9 @@ export async function GET(Request: NextRequest) {
     );
   }
   return new NextResponse(
-    JSON.stringify(notas),
+    JSON.stringify(
+      notas
+    ),
     {
       status: 200,
       headers: {
@@ -58,10 +90,14 @@ export async function GET(Request: NextRequest) {
   );
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(
+  request: NextRequest
+) {
   const incomingRequest = await request.json();
   const client = await Collection();
-  const outgoingRequest = await client.insertOne(incomingRequest);
+  const outgoingRequest = await client.insertOne(
+    incomingRequest
+  );
 
   if (!outgoingRequest.acknowledged) {
     return new NextResponse(
@@ -72,7 +108,9 @@ export async function POST(request: NextRequest) {
     );
   }
   return new NextResponse(
-    JSON.stringify(outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`),
+    JSON.stringify(
+      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
+    ),
     {
       status: 200,
       headers: {
@@ -82,15 +120,23 @@ export async function POST(request: NextRequest) {
   );
 }
 
-export async function PUT(Request: NextRequest) {
+export async function PUT(
+  Request: NextRequest
+) {
   const updatedNote = await Request.json();
   const notas = await Collection();
 
-  const { searchParams } = new URL(Request.url);
-  const id = searchParams.get('id');
+  const { searchParams } = new URL(
+    Request.url
+  );
+  const id = searchParams.get(
+    'id'
+  );
   if (id) {
     const query = {
-      _id: new ObjectId(id),
+      _id: new ObjectId(
+        id
+      ),
     };
     const result = await notas.updateOne(
       query,
@@ -127,15 +173,25 @@ export async function PUT(Request: NextRequest) {
   );
 }
 
-export async function DELETE(Request: NextRequest) {
+export async function DELETE(
+  Request: NextRequest
+) {
   const notas = await Collection();
-  const { searchParams } = new URL(Request.url);
-  const id = searchParams.get('_id');
+  const { searchParams } = new URL(
+    Request.url
+  );
+  const id = searchParams.get(
+    '_id'
+  );
   if (id) {
     const query = {
-      _id: new ObjectId(id),
+      _id: new ObjectId(
+        id
+      ),
     };
-    const Result = await notas.deleteOne(query);
+    const Result = await notas.deleteOne(
+      query
+    );
     if (Result.acknowledged) {
       const count = Result.deletedCount;
       const response = {
@@ -144,7 +200,9 @@ export async function DELETE(Request: NextRequest) {
         deletedId: id,
       };
       return new NextResponse(
-        JSON.stringify(response),
+        JSON.stringify(
+          response
+        ),
         {
           status: 202,
           headers: {
@@ -155,14 +213,18 @@ export async function DELETE(Request: NextRequest) {
     }
     if (!Result.acknowledged) {
       return new NextResponse(
-        JSON.stringify(`error 400 ${id} not deleted`),
+        JSON.stringify(
+          `error 400 ${id} not deleted`
+        ),
         {
           status: 400,
         }
       );
     }
     return new NextResponse(
-      JSON.stringify(Result),
+      JSON.stringify(
+        Result
+      ),
       {
         status: 200,
       }

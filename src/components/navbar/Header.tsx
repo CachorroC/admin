@@ -12,13 +12,21 @@ import {
 import Drawer from './drawer';
 import { ButtonSkeleton } from './ButtonSkeleton';
 import typeface from '#@/styles/fonts/typeface.module.scss';
-export default function Header({ children }: { children: React.ReactNode }) {
-  const isDesktop = useMedia(2);
-  const isMobile = useMedia(0);
-  const isBigDesktop = useMedia(3);
+export default function Header(
+  { children }: { children: React.ReactNode }
+) {
+  const isDesktop = useMedia(
+    2
+  );
+  const isMobile = useMedia(
+    0
+  );
+  const isBigDesktop = useMedia(
+    3
+  );
   if (isDesktop || isBigDesktop) {
     return (
-      <div className={layout.header}>
+      <div className={ layout.header }>
         <Suspense fallback={<ButtonSkeleton />}>
           <HomeButton />
         </Suspense>

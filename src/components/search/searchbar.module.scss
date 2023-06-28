@@ -12,7 +12,9 @@
   box-sizing: border-box;
   align-items: stretch;
   display: flex;
-  flex-flow: column wrap;
+  justify-content: space-between;
+  align-content: stretch;
+  flex-flow: column nowrap;
   padding: 2vmin;
   gap: 5cqmin;
   border-radius: 2vmin;
@@ -83,7 +85,14 @@
     }
   }
 }
-
+.links {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2cqmin;
+  padding: 2cqmin;
+  align-items: stretch;
+  justify-content: space-between;
+}
 .link,
 .linkIsActive {
   text-decoration: none;
@@ -194,30 +203,7 @@
   }
 }
 
-@container link (max-width: 200px) {
-  .section {
-    gap: 1 cqmax;
-  }
-
-  .links {
-    display: none;
-  }
-
-  .link,
-  .link:link,
-  .link:visited {
-    background-color: var(--primary-container);
-  }
-}
-
 @container link (min-width: 200px) {
-  .links {
-    display: flex;
-    flex-flow: row nowrap;
-    gap: 2cqmin;
-    padding: 2cqmin;
-  }
-
   .link,
   .linkIsActive {
     width: 50%;
