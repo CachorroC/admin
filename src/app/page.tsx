@@ -26,15 +26,15 @@ export default async function Page() {
       </div>
 
       <div className={layout.left}>
-        <Card name={'Procesos'} path={'/Procesos'} icon='folder_open'>
+        <Link className={layout.link} href={'/Procesos'} ><span className='material-symbols-outlined'>folder_open</span>
           <h1 className={typography.displayMedium}> Procesos</h1>
-        </Card>
-        <Card name={'Nueva Nota'} path={'/Demandados/NuevoProceso'} icon='add'>
+        </Link>
+        <Link className={layout.link} href={'/Demandados/NuevoProceso'} ><span className='material-symbols-outlined'>add</span>
           <h1 className={typography.displayMedium}>NuevoProceso</h1>
-        </Card>
-        <Card name={'Demandados'} path={'/Demandados'} icon='person_pin'>
+        </Link>
+        <Link className={layout.link} href={'/Demandados'} ><span className='material-symbols-outlined'>person_pin</span>
           <h1 className={typography.displayMedium}> Demandados</h1>
-        </Card>
+        </Link>
       </div>
     </div>
   );

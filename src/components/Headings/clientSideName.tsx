@@ -58,7 +58,7 @@ export const  Name = (
   ];
   return (
     <h1 className={typography.titleMedium}>
-      {helper ?? `${days[today.getDay()]}, ${fixFechas(
+      {helper?.toLocaleLowerCase() ?? `${days[today.getDay()]}, ${fixFechas(
         today.toString()
       )}`}
     </h1>

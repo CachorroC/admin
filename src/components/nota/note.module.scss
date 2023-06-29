@@ -6,6 +6,8 @@
 .nota,
 .note {
   display: flex;
+  height: 100%;
+  box-sizing: border-box;
   box-shadow: var(--dp2);
   border-radius: 2vmin;
   padding: 2vmin;

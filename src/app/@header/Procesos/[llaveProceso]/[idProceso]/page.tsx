@@ -1,4 +1,5 @@
-import { Name } from '#@/components/nota/notas';
+import { Name } from '#@/components/Headings/serverSideName';
+
 
 export default async function Page(
   {

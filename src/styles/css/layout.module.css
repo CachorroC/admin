@@ -8,12 +8,6 @@
   grid-area: right;
   overflow: scroll;
 }
-.right:after {
-  display: block;
-  content: " placeholder ";
-  margin: 10px;
-  flex: 999 999 auto;
-}
 .right > * {
   flex: 1 0 auto;
   margin: 10px;
@@ -46,9 +40,25 @@
   display: block;
   flex-grow: 1;
   flex-shrink: 1;
-  flex-basis: 15%;
+  flex-basis: 20%;
   align-self: stretch;
   order: 0;
+}
+
+.link {
+  background-color: var(--surface-variant);
+  color: var(--on-surface-variant);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-content: stretch;
+  align-items: center;
+  border-radius: 2vmin;
+  box-shadow: var(--dp2);
+}
+.link:hover, .link:active {
+  background-color: var(--inverse-surface);
+  color: var(--inverse-on-surface);
 }
 
 @media screen and (max-width: 600px) {
@@ -71,7 +81,7 @@
     border-radius: 0 0 2vmin 2vmin;
     gap: 1vmin;
     padding: 1vmin;
-    box-shadow: var(--dp6);
+    box-shadow: var(--dp4);
     background-color: var(--nav-background);
   }
   .header .sidenav {
@@ -85,7 +95,7 @@
     justify-items: stretch;
     box-sizing: border-box;
     padding: 2vmin;
-    box-shadow: var(--dp16);
+    box-shadow: var(--dp8);
     background-color: var(--sf-2);
     border-radius: 2vmin;
     overflow: clip;
@@ -152,7 +162,7 @@
     justify-content: space-between;
     align-items: stretch;
     grid-area: header;
-    border-radius: 0 0 2vmax 2vmax;
+    border-radius: 0 0 2vmin 2vmin;
     gap: 1vmin;
     padding: 1vmin;
     box-shadow: var(--dp6);

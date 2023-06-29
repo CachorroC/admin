@@ -4,6 +4,8 @@ import { Fragment, Suspense } from 'react';
 import { getActuacionesByidProceso } from '#@/lib/Actuaciones';
 import { Card } from '#@/components/card/card';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
+import Link from 'next/link';
+import card from '#@/components/card/card.module.scss';
 async function Name(
   { llaveProceso }: { llaveProceso: string }
 ) {
@@ -64,7 +66,9 @@ export default async function PageProcesosllaveProceso(
   case 0:
     return (  <Name llaveProceso={params.llaveProceso} />);
   case 1:
-    const { idProceso, Demandado,_id  } = Carpetas[0];
+    const { idProceso, Demandado, _id } = Carpetas[ 0 ];
+    const { Tel, Direccion, Nombre } = Demandado;
+    const { Fijo, Celular } = Tel;
     return (
       <>
         <Name llaveProceso={params.llaveProceso} />
@@ -75,9 +79,10 @@ export default async function PageProcesosllaveProceso(
           llaveProceso={params.llaveProceso}
           idProceso={idProceso}
         >
-          <p>{Demandado.Direccion}</p>
+          <p>{ Demandado.Direccion }</p>
+           {Celular && ( <Link className={card.button} href={ `tel:${ Celular }` }><span className='material-symbols-outlined'>phone_iphone</span></Link>)}
+                {Fijo && (<Link className={card.button} href={ `tel:${ Fijo }` }><span className='material-symbols-outlined'>call</span></Link>)}
         </Card>
-
       </>
     );
   case 2:
@@ -89,6 +94,8 @@ export default async function PageProcesosllaveProceso(
             carp, index, arr
           ) => {
             const { idProceso, Demandado, _id } = carp;
+            const { Tel, Direccion, Nombre } = Demandado;
+            const { Fijo, Celular } = Tel;
             return (
               <Card
                 key={_id.toString()}
@@ -97,7 +104,9 @@ export default async function PageProcesosllaveProceso(
                 llaveProceso={params.llaveProceso}
                 idProceso={idProceso}
               >
-                <p>{Demandado.Direccion}</p>
+                <p>{ Demandado.Direccion }</p>
+                {Celular && ( <Link className={card.button} href={ `tel:${ Celular }` }><span className='material-symbols-outlined'>phone_iphone</span></Link>)}
+                {Fijo && (<Link className={card.button} href={ `tel:${ Fijo }` }><span className='material-symbols-outlined'>call</span></Link>)}
               </Card>
             );
           }
@@ -114,6 +123,8 @@ export default async function PageProcesosllaveProceso(
             carp, index, arr
           ) => {
             const { idProceso, Demandado, _id } = carp;
+            const { Tel, Direccion, Nombre } = Demandado;
+            const { Fijo, Celular } = Tel;
             return (
               <Card
                 key={_id.toString()}
@@ -122,7 +133,9 @@ export default async function PageProcesosllaveProceso(
                 llaveProceso={params.llaveProceso}
                 idProceso={idProceso}
               >
-                <p>{Demandado.Direccion}</p>
+                <p>{ Demandado.Direccion }</p>
+                 {Celular && ( <Link className={card.button} href={ `tel:${ Celular }` }><span className='material-symbols-outlined'>phone_iphone</span></Link>)}
+                {Fijo && (<Link className={card.button} href={ `tel:${ Fijo }` }><span className='material-symbols-outlined'>call</span></Link>)}
               </Card>
             );
           }

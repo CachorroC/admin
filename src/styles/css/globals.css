@@ -286,6 +286,10 @@ a {
   width: 1vmin;
 }
 
+::-webkit-scrollbar-corner {
+  background-color: var(--surface-container);
+}
+
 /* Track */
 ::-webkit-scrollbar-track {
   border-radius: 1vmin;

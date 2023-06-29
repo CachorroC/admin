@@ -5,7 +5,7 @@ import { getNotaById } from '#@/lib/notas';
 import { Edit } from '#@/components/nota/Edit';
 import { Fragment } from 'react';
 
-export default async function page(
+export default async function Default(
   {
     params,
     searchParams,

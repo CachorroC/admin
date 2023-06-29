@@ -14,9 +14,9 @@ import { fixFechas } from '#@/lib/fix';
 import { useNavigator } from '#@/app/search-context';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { intCarpetaDemandado } from '../../lib/types/demandados';
-import Name from '../Headings/clientSideName';
 import useMedia from '../navbar/mediaQuery';
 import { useModal } from '#@/app/modal-context';
+import { Name } from '../Headings/clientSideName';
 
 export const LinkCard = (
   {
@@ -120,7 +120,7 @@ export const LinkCard = (
             className={isActive
               ? searchbar.linkIsActive
               : searchbar.link}
-            href={ `/NuevaNota/${ llaveProceso }` }
+            href={ `/Notas/NuevaNota/${ llaveProceso }` }
             onClick={ () => {
               setIsOpen(
                 true

@@ -7,21 +7,8 @@ import {
 import { Fragment, Suspense } from 'react';
 import typography from '#@/styles/fonts/typography.module.scss';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-async function Name(
-  { llaveProceso }: { llaveProceso: string }
-) {
-  const proceso = await getCarpetasByllaveProceso(
-    {
-      llaveProceso: llaveProceso,
-    }
-  );
-  const nombre = proceso.map(
-    (
-      p
-    ) => p.Demandado.Nombre
-  ).toString();
-  return <h3 className={typography.displayMedium}>{nombre}</h3>;
-}
+import layout from '#@/styles/scss/layout.module.scss';
+
 async function Acts (
   { idProceso }: { idProceso: number }
 ) {
@@ -56,7 +43,7 @@ export default async function PageProcesosLeftllaveProceso(
   };
 }
 ) {
-  const carpeta = await getCarpetasByllaveProceso(
+  const Carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: llaveProceso,
     }
@@ -67,21 +54,23 @@ export default async function PageProcesosLeftllaveProceso(
     }
   );
   const cantidadProcesos = Procesos.length;
-  const cantidadCarpetas = carpeta.length;
+  const cantidadCarpetas =Carpetas.length;
 
-  switch (cantidadProcesos) {
+  switch (cantidadCarpetas) {
   case 0:
     return (
-      <Fragment key={ llaveProceso }>
+      <Fragment key={cantidadProcesos}>
         <h1 className={typography.displayLarge}>Page</h1>
-        {carpeta.map(
+        {Carpetas.map(
           (
             prc, i, arr
           ) => {
             const { idProceso, _id, Demandado } = prc;
             return (
               <Fragment key={_id.toString()}>
-                <Acts key={idProceso} idProceso={idProceso} />
+                <div className={ layout.section }>
+                  <Acts key={idProceso} idProceso={idProceso} />
+                </div>
                 <Card
                   key={_id.toString()}
                   name={Demandado.Nombre}
@@ -90,7 +79,7 @@ export default async function PageProcesosLeftllaveProceso(
                   path={'/Procesos'}
                 >
                   <span className='material-symbols-outlined'>
-                    clock_loader_30
+                    {`counter_${cantidadCarpetas}`}
                   </span>
                 </Card>
               </Fragment>
@@ -102,41 +91,43 @@ export default async function PageProcesosLeftllaveProceso(
   case 1:
     const { idProceso, sujetosProcesales, despacho } = Procesos[0];
     return (
-      <>
-        {carpeta.map(
+      <Fragment key={cantidadProcesos}>
+        {Carpetas.map(
           (
             carp, index, arr
           ) => {
-            const { idProceso, Demandado, _id } = carp;
+            const {  Demandado, _id } = carp;
             return (
-              <Fragment key={ _id.toString() }>
+              <Card
+                key={_id.toString()}
+                name={Demandado.Nombre}
+                path={'/Procesos'}
+                llaveProceso={llaveProceso}
+                idProceso={carp.idProceso}
+              >
+                <p>{ Demandado.Direccion }</p>
+                <span className='material-symbols-outlined'>
+                  {`counter_${cantidadCarpetas}`}
+                </span>
+              </Card>
 
-                <Card
-                  key={_id.toString()}
-                  name={Demandado.Nombre}
-                  path={'/Procesos'}
-                  llaveProceso={llaveProceso}
-                  idProceso={idProceso}
-                >
-                  <p>{Demandado.Direccion}</p>
-                </Card>
-                <Acts idProceso={idProceso } />
-              </Fragment>
             );
           }
         )}
-        <Suspense fallback={ <SearchOutputListSkeleton /> }>
-          <h1 className={typography.displayLarge}>Page</h1>
-          <Acts idProceso={idProceso} />
-        </Suspense>
+        <h1 className={typography.displayLarge} key={cantidadProcesos}>Page</h1>
+        <div className={ layout.section }>
 
-      </>
+          <Acts idProceso={idProceso} />
+
+        </div>
+
+      </Fragment>
     );
   case 2:
     return (
-      <>
-        <h1 className={typography.displayLarge}>Page</h1>
-        {carpeta.map(
+      <Fragment key={cantidadProcesos}>
+        <h1 className={typography.displayLarge} key={cantidadProcesos}>Page</h1>
+        {Carpetas.map(
           (
             carp, index, arr
           ) => {
@@ -150,21 +141,25 @@ export default async function PageProcesosLeftllaveProceso(
                   path={'/Procesos'}
                   llaveProceso={llaveProceso}
                   idProceso={idProceso}
-                >
+                > <span className='material-symbols-outlined'>
+                    {`counter_${cantidadCarpetas}`}
+                  </span>
                   <p>{Demandado.Direccion}</p>
                 </Card>
-                <Acts idProceso={idProceso } />
+                <div className={ layout.section } >
+                  <Acts idProceso={ idProceso } />
+                </div>
               </Fragment>
             );
           }
         )}
-      </>
+      </Fragment>
     );
 
   default:
     return (
-      <>
-        <h1 className={typography.displayLarge}>Page</h1>
+      <Fragment key={cantidadProcesos}>
+        <h1 className={typography.displayLarge} key={cantidadProcesos}>Page</h1>
         {carpeta.map(
           (
             carp, index, arr
@@ -179,7 +174,10 @@ export default async function PageProcesosLeftllaveProceso(
                   llaveProceso={llaveProceso}
                   idProceso={idProceso}
                 >
-                  <p>{Demandado.Direccion}</p>
+                  <p>{ Demandado.Direccion }</p>
+                  <span className='material-symbols-outlined'>
+                    {`counter_${cantidadCarpetas}`}
+                  </span>
                 </Card>
                 <Acts idProceso={idProceso} />
               </Fragment>
@@ -187,7 +185,7 @@ export default async function PageProcesosLeftllaveProceso(
             );
           }
         )}
-      </>
+      </Fragment>
     );
   }
 }

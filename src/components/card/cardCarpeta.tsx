@@ -9,7 +9,7 @@ import carpeta from './carpeta.module.scss';
 import { useNavigator } from '#@/app/search-context';
 import Image from 'next/image';
 import Title from '../Headings/title';
-import Name from '../Headings/clientSideName';
+import { Name } from '../Headings/clientSideName';
 export const CardCarpeta = (
   {
     name,

@@ -90,18 +90,22 @@
 
 .forwardButton {
   grid-area: forwardButton;
+  background-color: var(--surface-container);
 }
 
 .backwardsButton {
+  background-color: var(--surface-container);
   grid-area: backwardsButton;
 }
 
 .drawerMenuButton {
   grid-area: drawerMenuButton;
+  background-color: var(--primary-container);
 }
 
 .homeButton {
   grid-area: homeButton;
+  background-color: var(--primary-container);
 }
 
 .button,
@@ -110,10 +114,9 @@
 .drawerMenuButton,
 .homeButton {
   border: none;
-  box-shadow: var(--dp5);
+  box-shadow: var(--dp2);
   border-radius: 2vmin;
-  flex-grow: 1;
-  background-color: var(--primary-container);
+  flex: 0 0 5%;
   display: flex;
   flex-flow: column nowrap;
   justify-items: center;

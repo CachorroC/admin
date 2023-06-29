@@ -55,7 +55,7 @@ export function NewNota(
       ...data,
       llaveProceso: llaveProceso,
       pathname: pathname,
-      fecha: new Date(),
+      fecha: new Date().toString(),
     };
     alert(
       JSON.stringify(

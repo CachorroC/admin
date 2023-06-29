@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useModal } from '#@/app/modal-context';
 import modal from '#@/components/modal/modal.module.scss';
+import { BackwardsButton, ForwardButton } from '../navbar/Buttons';
 
 export default function Modal(
   { children }: {children: React.ReactNode}
@@ -91,7 +92,9 @@ export default function Modal(
           ref={wrapper}
           className={modal.wrapper}
         >
+          <ForwardButton />
           {children}
+          <BackwardsButton />
         </div>
       </div>
     );

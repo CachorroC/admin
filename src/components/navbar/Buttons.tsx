@@ -22,7 +22,7 @@ export const ForwardButton = () => {
         );
       }}
     >
-      <span className='material-symbols-outlined'>redo</span>
+      <span className='material-symbols-outlined'>chevron_right</span>
       <p className={navbar.ButtonTextHelper}>entrar</p>
     </button>
   );
@@ -44,7 +44,7 @@ export const BackwardsButton = () => {
         router.back();
       }}
     >
-      <span className='material-symbols-outlined'>undo</span>
+      <span className='material-symbols-outlined'>chevron_left</span>
       <p className={navbar.ButtonTextHelper}>atras</p>
     </button>
   );

@@ -2,10 +2,11 @@ import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
 import { monNota, idk, intNota } from '#@/lib/types/notas';
+import { cache } from 'react';
 
 const Collection = async () => {
   const client = await clientPromise;
-  if (!client) {
+  if ( !client ) {
     throw new Error(
       'no hay cliente mongólico'
     );
@@ -19,25 +20,25 @@ const Collection = async () => {
   return notas;
 };
 
-export async function getNotas() {
+export async function getNotas () {
   const collection = await Collection();
-  const notas = (await collection.find(
+  const notas = ( await collection.find(
     {}
-  ).toArray()) as unknown as monNota[];
+  ).toArray() ) as unknown as monNota[];
   return notas;
 }
 
-export async function getNotasByllaveProceso(
+export async function getNotasByllaveProceso (
   {
     llaveProceso,
   }: {
-  llaveProceso: string;
-}
+    llaveProceso: string;
+  }
 ) {
   const collection = await Collection();
-  const notas = (await collection.find(
+  const notas = ( await collection.find(
     {}
-  ).toArray()) as unknown as monNota[];
+  ).toArray() ) as unknown as monNota[];
   const Notas = notas.filter(
     (
       nota
@@ -45,22 +46,29 @@ export async function getNotasByllaveProceso(
   );
   return Notas;
 }
-export const getNotaById = async (
-  { _id }: { _id: string }
-) => {
-  const collection = await Collection();
-  const notas = (await collection.find(
-    {}
-  ).toArray()) as unknown as monNota[];
-  const Notas = notas.filter(
-    (
-      nota
-    ) => nota._id === _id
-  );
-  return Notas;
-};
-
-export async function postNota(
+export const getNotaById = cache(
+  async (
+    { _id }: { _id: string }
+  ) => {
+    const collection = await Collection();
+    const notasRaw = await collection.find(
+      {}
+    ).toArray();
+    const notas1 = JSON.stringify(
+      notasRaw
+    );
+    const notas = JSON.parse(
+      notas1
+    ) as monNota[];
+    const Notas = notas.filter(
+      (
+        nota
+      ) => nota._id.toString() === _id
+    );
+    return Notas;
+  }
+);
+export async function postNota (
   { nota }: { nota: intNota }
 ) {
   const collection = await Collection();
@@ -68,7 +76,7 @@ export async function postNota(
     nota
   );
 
-  if (!outgoingRequest.acknowledged) {
+  if ( !outgoingRequest.acknowledged ) {
     return new NextResponse(
       null,
       {
@@ -78,7 +86,7 @@ export async function postNota(
   }
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
+      outgoingRequest.insertedId + `${ outgoingRequest.acknowledged }`
     ),
     {
       status: 200,
