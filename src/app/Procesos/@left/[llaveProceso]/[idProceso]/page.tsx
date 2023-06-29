@@ -4,7 +4,7 @@ import { getProcesosByllaveProceso } from '#@/lib/procesos';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { getActuacionesByidProceso } from '#@/lib/Actuaciones';
 import { Card } from '#@/components/card/card';
-import Name from '#@/components/Headings/nombre';
+import Name from '#@/components/Headings/clientSideName';
 import { fixFechas } from '#@/lib/fix';
 import typography from '#@/styles/fonts/typography.module.scss';
 import layout from '#@/styles/scss/layout.module.scss';

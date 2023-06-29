@@ -1,35 +1,15 @@
 import { Card } from '#@/components/card/card';
-import { getCarpetas, getCarpetasByllaveProceso } from '#@/lib/Carpetas';
+import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import {
   getActuacionesByidProceso,
   getConsultaNumeroRadicion,
 } from '#@/lib/RamaJudicial';
-import { newMerger } from '#@/lib/arrayMerger';
-import { fixDemandado, fixFechas } from '#@/lib/fix';
-import layout from '#@/styles/scss/layout.module.scss';
 import { Fragment, Suspense } from 'react';
 import typography from '#@/styles/fonts/typography.module.scss';
-import box from '#@/styles/scss/box.module.scss';
-import { IntActuaciones } from '#@/lib/types/procesos';
-import { getBaseUrl } from '#@/lib/getBaseUrl';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-async function Name(
-  { llaveProceso }: { llaveProceso: string }
-) {
-  const proceso = await getCarpetasByllaveProceso(
-    {
-      llaveProceso: llaveProceso,
-    }
-  );
-  const nombre = proceso.map(
-    (
-      p
-    ) => p.Demandado.Nombre
-  ).toString();
-  return <h3 className={typography.displayMedium}>{nombre}</h3>;
-}
+
 async function Acts (
-  { idProceso }: { idProceso: number } 
+  { idProceso }: { idProceso: number }
 ) {
   const actuaciones = await getActuacionesByidProceso(
     {idProceso: idProceso}
@@ -73,19 +53,21 @@ export default async function DefaultProcesosLeftllaveProceso(
     }
   );
   const cantidadProcesos = Procesos.length;
-  const cantidadCarpetas = carpeta.length;
 
   switch (cantidadProcesos) {
   case 0:
     return (
-      <Fragment key={llaveProceso}>
+      <Fragment key={ llaveProceso }>
+        <h1 className={typography.displayLarge}>Default</h1>
         {carpeta.map(
           (
             prc, i, arr
           ) => {
             const { idProceso, _id, Demandado } = prc;
             return (
-              <Fragment key={_id.toString()}>
+
+              <Fragment key={ _id.toString() }>
+                <h1 className={typography.displayLarge}>Default</h1>
                 <Acts key={idProceso} idProceso={idProceso} />
                 <Card
                   key={_id.toString()}
@@ -107,13 +89,15 @@ export default async function DefaultProcesosLeftllaveProceso(
   case 1:
     const { idProceso, sujetosProcesales, despacho } = Procesos[0];
     return (
-      <Suspense fallback={<SearchOutputListSkeleton />}>
+      <Suspense fallback={ <SearchOutputListSkeleton /> }>
+        <h1 className={typography.displayLarge}>Default</h1>
         <Acts idProceso={idProceso} />
       </Suspense>
     );
   case 2:
     return (
       <>
+        <h1 className={typography.displayLarge}>Default</h1>
         {carpeta.map(
           (
             carp, index, arr
@@ -138,6 +122,7 @@ export default async function DefaultProcesosLeftllaveProceso(
   default:
     return (
       <>
+        <h1 className={typography.displayLarge}>Default Default</h1>
         {carpeta.map(
           (
             carp, index, arr

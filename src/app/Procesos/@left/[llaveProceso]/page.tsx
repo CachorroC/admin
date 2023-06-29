@@ -4,14 +4,8 @@ import {
   getActuacionesByidProceso,
   getConsultaNumeroRadicion,
 } from '#@/lib/RamaJudicial';
-import { newMerger } from '#@/lib/arrayMerger';
-import { fixDemandado, fixFechas } from '#@/lib/fix';
-import layout from '#@/styles/scss/layout.module.scss';
 import { Fragment, Suspense } from 'react';
 import typography from '#@/styles/fonts/typography.module.scss';
-import box from '#@/styles/scss/box.module.scss';
-import { IntActuaciones } from '#@/lib/types/procesos';
-import { getBaseUrl } from '#@/lib/getBaseUrl';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 async function Name(
   { llaveProceso }: { llaveProceso: string }
@@ -29,7 +23,7 @@ async function Name(
   return <h3 className={typography.displayMedium}>{nombre}</h3>;
 }
 async function Acts (
-  { idProceso }: { idProceso: number } 
+  { idProceso }: { idProceso: number }
 ) {
   const actuaciones = await getActuacionesByidProceso(
     {idProceso: idProceso}
@@ -78,7 +72,8 @@ export default async function PageProcesosLeftllaveProceso(
   switch (cantidadProcesos) {
   case 0:
     return (
-      <Fragment key={llaveProceso}>
+      <Fragment key={ llaveProceso }>
+        <h1 className={typography.displayLarge}>Page</h1>
         {carpeta.map(
           (
             prc, i, arr
@@ -107,12 +102,6 @@ export default async function PageProcesosLeftllaveProceso(
   case 1:
     const { idProceso, sujetosProcesales, despacho } = Procesos[0];
     return (
-      <Suspense fallback={<SearchOutputListSkeleton />}>
-        <Acts idProceso={idProceso} />
-      </Suspense>
-    );
-  case 2:
-    return (
       <>
         {carpeta.map(
           (
@@ -120,15 +109,52 @@ export default async function PageProcesosLeftllaveProceso(
           ) => {
             const { idProceso, Demandado, _id } = carp;
             return (
-              <Card
-                key={_id.toString()}
-                name={Demandado.Nombre}
-                path={'/Procesos'}
-                llaveProceso={llaveProceso}
-                idProceso={idProceso}
-              >
-                <p>{Demandado.Direccion}</p>
-              </Card>
+              <Fragment key={ _id.toString() }>
+
+                <Card
+                  key={_id.toString()}
+                  name={Demandado.Nombre}
+                  path={'/Procesos'}
+                  llaveProceso={llaveProceso}
+                  idProceso={idProceso}
+                >
+                  <p>{Demandado.Direccion}</p>
+                </Card>
+                <Acts idProceso={idProceso } />
+              </Fragment>
+            );
+          }
+        )}
+        <Suspense fallback={ <SearchOutputListSkeleton /> }>
+          <h1 className={typography.displayLarge}>Page</h1>
+          <Acts idProceso={idProceso} />
+        </Suspense>
+
+      </>
+    );
+  case 2:
+    return (
+      <>
+        <h1 className={typography.displayLarge}>Page</h1>
+        {carpeta.map(
+          (
+            carp, index, arr
+          ) => {
+            const { idProceso, Demandado, _id } = carp;
+            return (
+              <Fragment key={ _id.toString() }>
+
+                <Card
+                  key={_id.toString()}
+                  name={Demandado.Nombre}
+                  path={'/Procesos'}
+                  llaveProceso={llaveProceso}
+                  idProceso={idProceso}
+                >
+                  <p>{Demandado.Direccion}</p>
+                </Card>
+                <Acts idProceso={idProceso } />
+              </Fragment>
             );
           }
         )}
@@ -138,21 +164,26 @@ export default async function PageProcesosLeftllaveProceso(
   default:
     return (
       <>
+        <h1 className={typography.displayLarge}>Page</h1>
         {carpeta.map(
           (
             carp, index, arr
           ) => {
             const { idProceso, Demandado, _id } = carp;
             return (
-              <Card
-                key={_id.toString()}
-                name={Demandado.Nombre}
-                path={'/Procesos'}
-                llaveProceso={llaveProceso}
-                idProceso={idProceso}
-              >
-                <p>{Demandado.Direccion}</p>
-              </Card>
+              <Fragment key={_id.toString()}>
+                <Card
+                  key={_id.toString()}
+                  name={Demandado.Nombre}
+                  path={'/Procesos'}
+                  llaveProceso={llaveProceso}
+                  idProceso={idProceso}
+                >
+                  <p>{Demandado.Direccion}</p>
+                </Card>
+                <Acts idProceso={idProceso} />
+              </Fragment>
+
             );
           }
         )}

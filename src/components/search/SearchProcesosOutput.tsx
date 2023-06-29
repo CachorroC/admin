@@ -9,7 +9,7 @@ import card from '#@/components/card/card.module.scss';
 import Link from 'next/link';
 import searchbar from '#@/components/search/searchbar.module.scss';
 import { usePathname } from 'next/navigation';
-import Name from '../Headings/nombre';
+import Name from '../Headings/clientSideName';
 import type { Route } from 'next';
 export default function SearchOutputList(
   {

@@ -14,7 +14,7 @@ import { fixFechas } from '#@/lib/fix';
 import { useNavigator } from '#@/app/search-context';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { intCarpetaDemandado } from '../../lib/types/demandados';
-import Name from '../Headings/nombre';
+import Name from '../Headings/clientSideName';
 import useMedia from '../navbar/mediaQuery';
 import { useModal } from '#@/app/modal-context';
 
@@ -46,10 +46,10 @@ export const LinkCard = (
   ] = useNavigator();
 
   const href = (
-    llaveProceso
-      ? idProceso !== 0
-        ? `${path}/${llaveProceso}/${idProceso}`
-        : `${path}/${llaveProceso}`
+    proceso.llaveProceso
+      ? idProceso === 0
+        ? `${path}/${proceso.llaveProceso}`
+        : `${path}/${proceso.llaveProceso}/${proceso.idProceso}`
       : path
   ) as Route;
   const isActive =
@@ -110,7 +110,7 @@ export const LinkCard = (
             className={isActive
               ? searchbar.linkIsActive
               : searchbar.link}
-            href={`${path}/${llaveProceso}`}
+            href={`${path}/${llaveProceso}` as Route}
           >
             <span className={`material-symbols-outlined ${searchbar.icon}`}>
               badge

@@ -9,14 +9,14 @@ import { monNota } from '#@/lib/types/notas';
 import { monCarpetaDemandado } from './types/demandados';
 import { intFecha } from '#@/lib/types/demandados';
 
-export function arrayMergerByidProceso(
+export function arrayMergerByidProceso (
   {
     a,
     b,
   }: {
-  a: intProceso[] | IntActuaciones[] | monDemandado[] | intFecha[];
-  b: intProceso[] | IntActuaciones[] | monDemandado[] | intFecha[];
-}
+    a: intProceso[] | IntActuaciones[] | monDemandado[] | intFecha[];
+    b: intProceso[] | IntActuaciones[] | monDemandado[] | intFecha[];
+  }
 ) {
   const map = new Map();
   a.forEach(
@@ -53,14 +53,14 @@ export function arrayMergerByidProceso(
   return mergedArr;
 }
 
-export function arrayMergerByllaveProceso(
+export function arrayMergerByllaveProceso (
   {
     a,
     b,
   }: {
-  a: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intActuacion[];
-  b: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intActuacion[];
-}
+    a: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intActuacion[];
+    b: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intActuacion[];
+  }
 ) {
   const map = new Map();
   a.forEach(
@@ -95,44 +95,4 @@ export function arrayMergerByllaveProceso(
     )
   );
   return mergedArr;
-}
-
-export function newMerger(
-  {
-    a,
-    b,
-  }: {
-  a:
-    | intProceso[]
-    | monDemandado[]
-    | intFecha[]
-    | monNota[]
-    | intActuacion[]
-    | monCarpetaDemandado[];
-  b:
-    | intProceso[]
-    | monDemandado[]
-    | intFecha[]
-    | monNota[]
-    | intActuacion[]
-    | monCarpetaDemandado[];
-}
-) {
-  const arrNew = a.map(
-    (
-      c
-    ) => {
-      const f = b.filter(
-        (
-          d
-        ) => d.llaveProceso === c.llaveProceso
-      );
-      const ner = {
-        ...c,
-        f,
-      };
-      return ner;
-    }
-  );
-  return arrNew;
 }

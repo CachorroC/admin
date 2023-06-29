@@ -12,12 +12,12 @@ export interface intNotaFormValues {
 export interface intNota extends intNotaFormValues {
   llaveProceso: string;
   pathname: string;
-  fecha: Date;
+  fecha: string;
 }
 export interface idk extends WithId {
   llaveProceso: string;
   pathname: string;
-  fecha: Date;
+  fecha: string;
   nota: string;
   tareas: {
     tarea: string;
@@ -52,7 +52,7 @@ export interface intTarea {
 
 // Converts JSON strings to/from your types
 export class Convert {
-  public static toNota(
+  public static toNota (
     json: string
   ): Nota {
     return JSON.parse(
@@ -60,7 +60,7 @@ export class Convert {
     );
   }
 
-  public static notaToJson(
+  public static notaToJson (
     value: Nota
   ): string {
     return JSON.stringify(

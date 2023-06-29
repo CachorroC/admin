@@ -4,9 +4,9 @@ import { useSelectedLayoutSegment, usePathname } from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export default function Name(
+export const  Name = (
   { helper }: { helper?: string }
-) {
+)=> {
   const pathname = usePathname();
   const segment = useSelectedLayoutSegment();
   const today = new Date();
@@ -63,4 +63,4 @@ export default function Name(
       )}`}
     </h1>
   );
-}
+};

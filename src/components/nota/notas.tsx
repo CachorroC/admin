@@ -14,21 +14,7 @@ import { ButtonSkeleton } from '../navbar/ButtonSkeleton';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { getNotas, getNotasByllaveProceso } from '#@/lib/notas';
-export async function Name(
-  { llaveProceso }: { llaveProceso: string }
-) {
-  const proceso = await getCarpetasByllaveProceso(
-    {
-      llaveProceso: llaveProceso,
-    }
-  );
-  const nombre = proceso.map(
-    (
-      p
-    ) => p.Demandado.Nombre
-  ).toString();
-  return <h1 className={typography.headlineSmall}>{nombre}</h1>;
-}
+import {Name} from '#@/components/Headings/serverSideName';
 export function Nota(
   { nota }: { nota: monNota }
 ) {
@@ -70,16 +56,16 @@ export function Nota(
 }
 
 export async function Notas (
-  { llaveProceso }: { llaveProceso?: string } 
+  { llaveProceso }: { llaveProceso?: string }
 ) {
   if ( llaveProceso ) {
     const notas = await getNotasByllaveProceso(
-      { llaveProceso: llaveProceso } 
+      { llaveProceso: llaveProceso }
     );
     const NotasRow = notas.map(
       (
-        nota 
-      ) => <Nota nota={ nota } key={ nota._id } /> 
+        nota
+      ) => <Nota nota={ nota } key={ nota._id } />
     );
     return <div className={note.row}>{NotasRow}</div>;
   }

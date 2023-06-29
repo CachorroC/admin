@@ -4,7 +4,6 @@ import {
   getActuacionesByidProceso,
   getConsultaNumeroRadicion,
 } from '#@/lib/RamaJudicial';
-import { newMerger } from '#@/lib/arrayMerger';
 import { fixDemandado, fixFechas } from '#@/lib/fix';
 import layout from '#@/styles/scss/layout.module.scss';
 import { Fragment } from 'react';

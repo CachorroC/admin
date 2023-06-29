@@ -4,18 +4,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 80vw;
+  margin: 0 auto;
   z-index: 10;
-
-  height: 100vh;
+  height: 80vh;
 }
-
-/* The Modal (background) */
 .wrapper {
-  /* Hidden by default */
-
   width: 80qcw;
-  /* Full width */
   height: 80qch;
   z-index: 10;
 

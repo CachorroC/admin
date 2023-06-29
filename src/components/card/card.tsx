@@ -7,8 +7,8 @@ import card from '#@/components/card/card.module.scss';
 import { useModal } from '#@/app/modal-context';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { useNavigator } from '#@/app/search-context';
-import Nombre from '#@/components/Headings/nombre';
-import Name from '../Headings/nombre';
+import Nombre from '#@/components/Headings/clientSideName';
+import Name from '../Headings/clientSideName';
 export const Card = (
   {
     name,

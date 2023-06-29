@@ -1,5 +1,5 @@
 import searchbar from '#@/components/search/searchbar.module.scss';
-import Name from '../Headings/nombre';
+import Name from '../Headings/clientSideName';
 export default function LinkCardSkeleton() {
   return (
     <div className={searchbar.container}>

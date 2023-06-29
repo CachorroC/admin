@@ -1,18 +1,18 @@
 .container {
   container-name: note;
   container-type: inline-size;
-  border-radius: 2vmin;
 }
 .form,
-.nota {
+.nota,
+.note {
   display: flex;
   box-shadow: var(--dp2);
-  border-radius: 2vmin;;
+  border-radius: 2vmin;
+  padding: 2vmin;
   flex-grow: 1;
-  flex-flow: column nowrap;
+  flex-flow: row wrap;
   background-color: var(--surface-container);
-  padding: 2cqmin;
-  gap: 2cqmin;
+  gap: 10cqmin;
 
   sub {
     color: var(--primary);
@@ -65,7 +65,8 @@
   }
 }
 
-.textArea {
+.textArea,
+.tareas {
   background-color: var(--surface-variant);
   color: var(--on-surface-variant);
   box-shadow: var(--dp2) inset;
