@@ -1,0 +1,19 @@
+.container {
+  container-name: actuacion;
+  container-type: inline-size;
+  & > * {
+    width: 100%;
+  }
+}
+.card {
+  box-sizing: border-box;
+  padding: 2cqmin;
+  gap: 2cqmin;
+  border-radius: 2vmin;
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: var(--surface-container-highest);
+  color: var(--on-surface);
+  box-shadow: var(--dp3);
+}
