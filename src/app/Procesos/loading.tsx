@@ -15,5 +15,6 @@ export default function Loading() {
       <LinkCardSkeleton key='7' />
       <LinkCardSkeleton key='8' />
       <LinkCardSkeleton key='9' />
-    </> );
+    </>
+  );
 }

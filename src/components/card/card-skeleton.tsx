@@ -1,8 +1,6 @@
 import card from '#@/components/card/card.module.scss';
 import { ReactNode } from 'react';
-export default function CardSkeleton(
-  { children }: { children?: ReactNode }
-) {
+export default function CardSkeleton({ children }: { children?: ReactNode }) {
   return (
     <div className={card.container}>
       <div className={card.layout}>

@@ -10,7 +10,7 @@
   box-sizing: border-box;
   padding: 2cqmin;
   gap: 2cqmin;
-  border-radius: 2cqmin;
+  border-radius: 2vmin;
   text-align: center;
   display: flex;
   flex-flow: column nowrap;
@@ -34,15 +34,16 @@
   }
 }
 .notActive {
-  background-color: var(--surface-container);
+  background-color: var(--surface-container-highest);
   color: var(--on-surface);
   box-shadow: var(--dp3);
 }
 
 .isActive {
-  background-color: var(--primary-container);
-  color: var(--on-primary-container);
-  box-shadow: var(--dp8);
+  background-color: var(--surface-container-highest);
+  color: var(--on-secondary-container);
+  box-shadow: none;
+  border: 2px solid var(--outline-variant);
 }
 .sub {
   color: var(--primary);

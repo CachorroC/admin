@@ -28,7 +28,6 @@ export default function Loading() {
         <CardSkeleton key='d' />
         <CardSkeleton key='e' />
       </div>
-
     </div>
   );
 }

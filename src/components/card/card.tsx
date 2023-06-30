@@ -15,13 +15,19 @@ export const Card = (
     llaveProceso,
     idProceso,
     icon,
+    despacho,
+    fecha,
+    contenido,
   }: {
   name: string;
   path: string;
   children: ReactNode;
   llaveProceso?: string;
+  despacho?: string;
   idProceso?: number;
   icon?: string;
+  fecha?: string;
+  contenido?: string;
 }
 ) => {
   const [
@@ -54,27 +60,52 @@ export const Card = (
     pathname === `${path}/${llaveProceso}/${idProceso}` ||
     pathname === `${path}/${llaveProceso}` ||
     pathname === path;
+
+  const juzgado = despacho
+    ? despacho.replace(
+      / /g,
+      '-'
+    ).toLocaleLowerCase().slice(
+      0,
+      -1
+    )
+    : null;
+
   return (
     <div className={card.container}>
-      <div className={ card.notActive}>
+      <div className={isActive
+        ? card.isActive
+        : card.notActive}>
+        <h1 className={`${typography.titleMedium} ${card.title}`}>{name}</h1>
 
-        <div className={card.cardFront}>
-          <h1 className={typography.titleMedium}>{name}</h1>
-
+        <Link onClick={clickHandler} href={href} className={card.link}>
+          <span className={`material-symbols-outlined ${card.icon}`}>
+            {icon ?? 'open_in_new'}
+          </span>
+        </Link>
+        {contenido && (
+          <p className={`${typography.bodySmall} ${card.content}`}>
+            {contenido}
+          </p>
+        )}
+        {juzgado && (
           <Link
-            onClick={clickHandler}
-            href={href}
-            className={ card.link}
+            href={`https://ramajudicial.gov.co/web/${juzgado.replaceAll(
+              'á',
+              'a'
+            )}`}
           >
-            <span className={`material-symbols-outlined ${card.icon}`}>
-              {icon ?? 'open_in_new'}
-            </span>
+            {' '}
+            <p className={`${typography.bodySmall} ${card.content}`}>
+              {juzgado.replaceAll(
+                'á',
+                'a'
+              )}
+            </p>
           </Link>
-        </div>
-        <div className={card.cardBack}>
-          <Suspense fallback={<p>Loading...</p>}>{children}</Suspense>
-        </div>
+        )}
 
+        <Suspense fallback={<p>Loading...</p>}>{children}</Suspense>
       </div>
     </div>
   );

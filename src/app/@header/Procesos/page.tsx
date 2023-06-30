@@ -1,13 +1,9 @@
-import Drawer from '#@/components/navbar/drawer';
-import SearchOutputList from '#@/components/search/SearchProcesosOutput';
-import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-import { Suspense } from 'react';
+
 import Title from '#@/components/Headings/title';
-import typeface from '#@/components/typográficos/typeface.module.scss';
-import Header from '#@/components/navbar/Header';
-import { ButtonSkeleton } from '#@/components/navbar/ButtonSkeleton';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { fetchFechas } from '#@/lib/Actuaciones';
+import Drawer from '#@/components/navbar/drawer';
+import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 
 export default async function Page() {
   const procesos = await getCarpetas();
@@ -17,10 +13,10 @@ export default async function Page() {
 
   return (
     <>
-      <Suspense fallback={<ButtonSkeleton />}>
-        <Title />
-      </Suspense>
-
+      <Title />
+      <Drawer>
+        <SearchOutputList path='/Procesos' fechas={fechas} />
+      </Drawer>
     </>
   );
 }

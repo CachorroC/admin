@@ -8,184 +8,125 @@ import { Fragment, Suspense } from 'react';
 import typography from '#@/styles/fonts/typography.module.scss';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 import layout from '#@/styles/scss/layout.module.scss';
+import { fixDemandado } from '#@/lib/fix';
 
-async function Acts (
+async function Acts(
   { idProceso }: { idProceso: number }
 ) {
   const actuaciones = await getActuacionesByidProceso(
-    {idProceso: idProceso}
+    { idProceso: idProceso }
   );
   return (
     <>
-      {actuaciones.acts && actuaciones.acts.map(
-        (
-          act, i, arr
-        ) => {
-          const { actuacion, anotacion,idRegActuacion, llaveProceso, fechaActuacion } = act;
-          return (
-            <Card key={ idRegActuacion } name={ actuacion } path={ '/NuevaNota' } llaveProceso={ llaveProceso } idProceso={ idProceso }>
-              <p className={typography.bodymedium}>{anotacion ?? fechaActuacion}</p>
-            </Card>
-          );
-        }
-      )
-      }
+      {actuaciones.acts &&
+        actuaciones.acts.map(
+          (
+            act, i, arr
+          ) => {
+            const {
+              actuacion,
+              anotacion,
+              idRegActuacion,
+              llaveProceso,
+              fechaActuacion,
+            } = act;
+            return (
+              <Card
+                key={idRegActuacion}
+                name={actuacion}
+                path={'/NuevaNota'}
+                llaveProceso={llaveProceso}
+                idProceso={idProceso}
+              >
+                <p className={typography.bodymedium}>
+                  {anotacion ?? fechaActuacion}
+                </p>
+              </Card>
+            );
+          }
+        )}
     </>
   );
 }
 
 export default async function PageProcesosLeftllaveProceso(
   {
-    params: { llaveProceso },
+    params,
   }: {
   params: {
     llaveProceso: string;
   };
 }
 ) {
-  const Carpetas = await getCarpetasByllaveProceso(
+  const Carpetas = getCarpetasByllaveProceso(
     {
-      llaveProceso: llaveProceso,
+      llaveProceso: params.llaveProceso,
     }
   );
-  const Procesos = await getConsultaNumeroRadicion(
+  const Procesos = getConsultaNumeroRadicion(
     {
-      llaveProceso: llaveProceso,
+      llaveProceso: params.llaveProceso,
     }
   );
-  const cantidadProcesos = Procesos.length;
-  const cantidadCarpetas =Carpetas.length;
-
-  switch (cantidadCarpetas) {
+  // Wait for the promises to resolve
+  const [
+    carpetas,
+    procesos
+  ] = await Promise.all(
+    [
+      Carpetas,
+      Procesos
+    ]
+  );
+  const cantidadProcesos = procesos.length;
+  const cantidadCarpetas = carpetas.length;
+  const carpetasMap = carpetas.map(
+    (
+      carpeta, indexC, arrC
+    ) => {
+      const { idProceso, llaveProceso, _id, Demandado } = carpeta;
+      const { Tel, Nombre, Direccion, Email } = Demandado;
+      const { Fijo, Celular } = Tel;
+      return (
+        <Card name={Nombre} path='/Procesos' key={_id.toString()}>
+          <p>{Direccion}</p>
+        </Card>
+      );
+    }
+  );
+  const procesosMap = procesos.map(
+    (
+      proceso, indexP, arrP
+    ) => {
+      const { idProceso, llaveProceso, sujetosProcesales, despacho, esPrivado } =
+      proceso;
+      if (esPrivado) {
+        return null;
+      }
+      return (
+        <Card
+          name={fixDemandado(
+            sujetosProcesales
+          )}
+          path='/Procesos'
+          key={idProceso}
+          despacho={despacho}
+          llaveProceso={llaveProceso}
+          idProceso={idProceso}
+        >
+          <p className={typography.bodyMedium}>{despacho}</p>
+        </Card>
+      );
+    }
+  );
+  switch (cantidadProcesos) {
   case 0:
-    return (
-      <Fragment key={cantidadProcesos}>
-        <h1 className={typography.displayLarge}>Page</h1>
-        {Carpetas.map(
-          (
-            prc, i, arr
-          ) => {
-            const { idProceso, _id, Demandado } = prc;
-            return (
-              <Fragment key={_id.toString()}>
-                <div className={ layout.section }>
-                  <Acts key={idProceso} idProceso={idProceso} />
-                </div>
-                <Card
-                  key={_id.toString()}
-                  name={Demandado.Nombre}
-                  llaveProceso={prc.llaveProceso}
-                  idProceso={prc.idProceso}
-                  path={'/Procesos'}
-                >
-                  <span className='material-symbols-outlined'>
-                    {`counter_${cantidadCarpetas}`}
-                  </span>
-                </Card>
-              </Fragment>
-            );
-          }
-        )}
-      </Fragment>
-    );
+    return carpetasMap;
   case 1:
-    const { idProceso, sujetosProcesales, despacho } = Procesos[0];
-    return (
-      <Fragment key={cantidadProcesos}>
-        {Carpetas.map(
-          (
-            carp, index, arr
-          ) => {
-            const {  Demandado, _id } = carp;
-            return (
-              <Card
-                key={_id.toString()}
-                name={Demandado.Nombre}
-                path={'/Procesos'}
-                llaveProceso={llaveProceso}
-                idProceso={carp.idProceso}
-              >
-                <p>{ Demandado.Direccion }</p>
-                <span className='material-symbols-outlined'>
-                  {`counter_${cantidadCarpetas}`}
-                </span>
-              </Card>
-
-            );
-          }
-        )}
-        <h1 className={typography.displayLarge} key={cantidadProcesos}>Page</h1>
-        <div className={ layout.section }>
-
-          <Acts idProceso={idProceso} />
-
-        </div>
-
-      </Fragment>
-    );
+    return procesosMap ?? carpetasMap;
   case 2:
-    return (
-      <Fragment key={cantidadProcesos}>
-        <h1 className={typography.displayLarge} key={cantidadProcesos}>Page</h1>
-        {Carpetas.map(
-          (
-            carp, index, arr
-          ) => {
-            const { idProceso, Demandado, _id } = carp;
-            return (
-              <Fragment key={ _id.toString() }>
-
-                <Card
-                  key={_id.toString()}
-                  name={Demandado.Nombre}
-                  path={'/Procesos'}
-                  llaveProceso={llaveProceso}
-                  idProceso={idProceso}
-                > <span className='material-symbols-outlined'>
-                    {`counter_${cantidadCarpetas}`}
-                  </span>
-                  <p>{Demandado.Direccion}</p>
-                </Card>
-                <div className={ layout.section } >
-                  <Acts idProceso={ idProceso } />
-                </div>
-              </Fragment>
-            );
-          }
-        )}
-      </Fragment>
-    );
-
+    return procesosMap;
   default:
-    return (
-      <Fragment key={cantidadProcesos}>
-        <h1 className={typography.displayLarge} key={cantidadProcesos}>Page</h1>
-        {carpeta.map(
-          (
-            carp, index, arr
-          ) => {
-            const { idProceso, Demandado, _id } = carp;
-            return (
-              <Fragment key={_id.toString()}>
-                <Card
-                  key={_id.toString()}
-                  name={Demandado.Nombre}
-                  path={'/Procesos'}
-                  llaveProceso={llaveProceso}
-                  idProceso={idProceso}
-                >
-                  <p>{ Demandado.Direccion }</p>
-                  <span className='material-symbols-outlined'>
-                    {`counter_${cantidadCarpetas}`}
-                  </span>
-                </Card>
-                <Acts idProceso={idProceso} />
-              </Fragment>
-
-            );
-          }
-        )}
-      </Fragment>
-    );
+    return procesosMap ?? carpetasMap;
   }
 }

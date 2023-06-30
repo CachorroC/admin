@@ -26,7 +26,7 @@ export default function Header(
   );
   if (isDesktop || isBigDesktop) {
     return (
-      <div className={ layout.header }>
+      <div className={layout.header}>
         <Suspense fallback={<ButtonSkeleton />}>
           <HomeButton />
         </Suspense>

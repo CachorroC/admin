@@ -30,11 +30,11 @@
   align-self: center;
 }
 .notActive {
-  background-color: var(--surface-container);
+  background-color: var(--surface-container-highest);
   box-shadow: var(--dp1);
 }
 .isActive {
-  background-color: var(--surface-container-highest);
+  background-color: var(--primary-container);
   box-shadow: var(--dp2);
 }
 
@@ -216,6 +216,7 @@
   color: var(--on-surface);
   grid-area: inputSearchBar;
   border-radius: 1cqmin;
+  flex: 0 0 25;
   box-shadow: var(--dp1);
 
   &:focus {

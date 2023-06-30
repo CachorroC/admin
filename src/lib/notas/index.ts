@@ -6,87 +6,50 @@ import { cache } from 'react';
 
 const Collection = async () => {
   const client = await clientPromise;
-  if ( !client ) {
-    throw new Error(
-      'no hay cliente mongólico'
-    );
+  if (!client) {
+    throw new Error('no hay cliente mongólico');
   }
-  const db = client.db(
-    'RyS'
-  );
-  const notas = db.collection(
-    'Notas'
-  );
+  const db = client.db('RyS');
+  const notas = db.collection('Notas');
   return notas;
 };
 
-export async function getNotas () {
+export async function getNotas() {
   const collection = await Collection();
-  const notas = ( await collection.find(
-    {}
-  ).toArray() ) as unknown as monNota[];
+  const notas = (await collection.find({}).toArray()) as unknown as monNota[];
   return notas;
 }
 
-export async function getNotasByllaveProceso (
-  {
-    llaveProceso,
-  }: {
-    llaveProceso: string;
-  }
-) {
+export async function getNotasByllaveProceso({
+  llaveProceso,
+}: {
+  llaveProceso: string;
+}) {
   const collection = await Collection();
-  const notas = ( await collection.find(
-    {}
-  ).toArray() ) as unknown as monNota[];
-  const Notas = notas.filter(
-    (
-      nota
-    ) => nota.llaveProceso === llaveProceso
-  );
+  const notas = (await collection.find({}).toArray()) as unknown as monNota[];
+  const Notas = notas.filter((nota) => nota.llaveProceso === llaveProceso);
   return Notas;
 }
-export const getNotaById = cache(
-  async (
-    { _id }: { _id: string }
-  ) => {
-    const collection = await Collection();
-    const notasRaw = await collection.find(
-      {}
-    ).toArray();
-    const notas1 = JSON.stringify(
-      notasRaw
-    );
-    const notas = JSON.parse(
-      notas1
-    ) as monNota[];
-    const Notas = notas.filter(
-      (
-        nota
-      ) => nota._id.toString() === _id
-    );
-    return Notas;
-  }
-);
-export async function postNota (
-  { nota }: { nota: intNota }
-) {
+export const getNotaById = cache(async ({ _id }: { _id: string }) => {
   const collection = await Collection();
-  const outgoingRequest = await collection.insertOne(
-    nota
-  );
+  const notasRaw = await collection.find({}).toArray();
+  const notas1 = JSON.stringify(notasRaw);
+  const notas = JSON.parse(notas1) as monNota[];
+  const Notas = notas.filter((nota) => nota._id.toString() === _id);
+  return Notas;
+});
+export async function postNota({ nota }: { nota: intNota }) {
+  const collection = await Collection();
+  const outgoingRequest = await collection.insertOne(nota);
 
-  if ( !outgoingRequest.acknowledged ) {
-    return new NextResponse(
-      null,
-      {
-        status: 404,
-      }
-    );
+  if (!outgoingRequest.acknowledged) {
+    return new NextResponse(null, {
+      status: 404,
+    });
   }
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${ outgoingRequest.acknowledged }`
+      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
     ),
     {
       status: 200,

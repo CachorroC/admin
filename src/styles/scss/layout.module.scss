@@ -11,19 +11,24 @@ $MaxSW: 480px; //maximum sma width
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
+  background-color: var(--surface-container-high);
+  box-shadow: var(--dp2);
+  border-radius: 2vmin;
+  padding: 2vmin;
   align-content: stretch;
   grid-area: right;
-  overflow: scroll;
-
+  overflow: auto;
+  gap: 2vmin;
   & > * {
     flex: 1 0 auto;
-    margin: 10px;
   }
 }
 
 .name {
   display: flex;
   flex-flow: row nowrap;
+  padding: 2vmin;
+  gap: 2vmin;
   justify-content: space-between;
   align-items: stretch;
   grid-area: name;
@@ -34,15 +39,17 @@ $MaxSW: 480px; //maximum sma width
 
 .left {
   grid-area: left;
+  background-color: var(--surface-container);
+  box-shadow: var(--dp1);
+  border-radius: 2vmin;
   display: flex;
   flex-flow: row wrap;
   padding: 2vmin;
   gap: 2vmin;
-  box-shadow: var(--dp1);
   justify-content: space-between;
   align-items: stretch;
   align-content: stretch;
-  overflow: scroll;
+  overflow: auto;
   & > * {
     display: block;
     flex-grow: 1;
@@ -52,7 +59,11 @@ $MaxSW: 480px; //maximum sma width
     order: 0;
   }
 }
-
+.divission {
+  height: 100%;
+  width: 5px;
+  background-color: var(--oultine);
+}
 .link {
   background-color: var(--surface-variant);
   color: var(--on-surface-variant);
@@ -75,8 +86,8 @@ $MaxSW: 480px; //maximum sma width
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    background-color: var(--surface);
     grid-template-rows: repeat(12, 1fr);
-    gap: 1vmin;
     grid-auto-flow: row;
     grid-template-areas:
       'header header header header'
@@ -137,7 +148,6 @@ $MaxSW: 480px; //maximum sma width
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(7, 1fr);
     box-sizing: border-box;
-    gap: 1vmin;
     grid-auto-flow: row;
     grid-template-areas:
       'name name name name'
