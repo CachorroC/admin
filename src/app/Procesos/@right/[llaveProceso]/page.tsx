@@ -14,6 +14,7 @@ import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { getNotas, getNotasByllaveProceso } from '#@/lib/notas';
 import { NewNota } from '#@/components/nota/NuevaNota';
 import note from '#@/components/nota/note.module.scss';
+import { Notas } from '#@/components/nota/notas';
 async function Name(
   { llaveProceso }: { llaveProceso: string }
 ) {
@@ -89,7 +90,8 @@ export default async function PageProcesosRightllaveProceso(
   case 0:
     return (
       <>
-        <NewNota llaveProceso={params.llaveProceso} uri={`${getBaseUrl()}`} />
+        <NewNota llaveProceso={ params.llaveProceso } uri={ `${ getBaseUrl() }` } />
+        <Notas llaveProceso={params.llaveProceso}/>
         {notas.map(
           (
             prc, i, arr

@@ -1,4 +1,3 @@
-
 import Title from '#@/components/Headings/title';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { fetchFechas } from '#@/lib/Actuaciones';

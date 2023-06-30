@@ -9,6 +9,7 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 import layout from '#@/styles/scss/layout.module.scss';
 import { fixDemandado } from '#@/lib/fix';
+import { ActuacionCard } from '#@/components/card/ActuacionesCard';
 
 async function Acts(
   { idProceso }: { idProceso: number }
@@ -24,24 +25,12 @@ async function Acts(
             act, i, arr
           ) => {
             const {
-              actuacion,
-              anotacion,
+
               idRegActuacion,
-              llaveProceso,
-              fechaActuacion,
+
             } = act;
             return (
-              <Card
-                key={idRegActuacion}
-                name={actuacion}
-                path={'/NuevaNota'}
-                llaveProceso={llaveProceso}
-                idProceso={idProceso}
-              >
-                <p className={typography.bodymedium}>
-                  {anotacion ?? fechaActuacion}
-                </p>
-              </Card>
+              <ActuacionCard Actuacion={ act } key={idRegActuacion} />
             );
           }
         )}

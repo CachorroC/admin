@@ -31,7 +31,10 @@ export default async function Page() {
           <span className='material-symbols-outlined'>folder_open</span>
           <h1 className={typography.displayMedium}> Procesos</h1>
         </Link>
-        <Link className={layout.link} href={'/Demandados/NuevoProceso' as Route}>
+        <Link
+          className={layout.link}
+          href={'/Demandados/NuevoProceso' as Route}
+        >
           <span className='material-symbols-outlined'>add</span>
           <h1 className={typography.displayMedium}>NuevoProceso</h1>
         </Link>
