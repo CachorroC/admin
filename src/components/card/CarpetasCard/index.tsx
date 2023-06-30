@@ -2,6 +2,7 @@ import styles from './carpetas.module.scss';
 import { monCarpetaDemandado } from '#@/lib/types/demandados';
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
+import type { Route } from 'next';
 export const CarpetaCard = (
   { Carpeta }: { Carpeta: monCarpetaDemandado }
 ) => {
@@ -12,7 +13,7 @@ export const CarpetaCard = (
     <div className={ styles.container } key={_id.toString()}>
       <div className={ styles.card }>
         <h1 className={ `${ typography.titleMedium } ${ styles.title }` }>{ Nombre }</h1>
-        <Link className={styles.button} href={`/Procesos/${llaveProceso}/${idProceso}` }>
+        <Link className={styles.button} href={`/Procesos/${llaveProceso}/${idProceso}` as Route}>
           <span className={`material-symbols-outlined ${styles.icon}`}>folder_open</span>
         </Link>
         <p className={ styles.content }>{ Direccion }</p>
