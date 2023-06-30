@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* output: 'standalone', */
+  output: 'standalone',
   experimental: {
     appDir: true,
     typedRoutes: true,
-    serverComponentsExternalPackages: [
-      'mongodb'
-    ],
+    serverComponentsExternalPackages: ['mongodb'],
   },
 };
 
