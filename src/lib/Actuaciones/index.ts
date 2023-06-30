@@ -9,11 +9,13 @@ import {
 import { monDemandado } from '../types/mongodb';
 import { IntActuaciones, intConsultaActuaciones } from '../types/procesos';
 
-export async function getActuacionesByidProceso({
-  idProceso,
-}: {
+export async function getActuacionesByidProceso(
+  {
+    idProceso,
+  }: {
   idProceso: number;
-}) {
+}
+) {
   if (idProceso === 0) {
     const response: IntActuaciones = {
       idProceso: idProceso,
@@ -33,7 +35,11 @@ export async function getActuacionesByidProceso({
       const text = await request.text();
       const response: IntActuaciones = {
         idProceso: idProceso,
-        text: text ? JSON.parse(text) : '',
+        text: text
+          ? JSON.parse(
+            text
+          )
+          : '',
       };
       return response;
     }
@@ -54,11 +60,16 @@ export async function getActuacionesByidProceso({
     const text = await request.text();
     const response: IntActuaciones = {
       idProceso: idProceso,
-      text: JSON.parse(text),
+      text: JSON.parse(
+        text
+      ),
     };
     return response;
-  } catch {
-    (error: { message: string }) => {
+  }
+  catch {
+    (
+      error: { message: string }
+    ) => {
       const response: IntActuaciones = {
         idProceso: idProceso,
         text: {
@@ -79,30 +90,38 @@ export async function getActuacionesByidProceso({
   return response;
 }
 
-export async function fetchFechas({
-  procesos,
-}: {
+export async function fetchFechas(
+  {
+    procesos,
+  }: {
   procesos: monCarpetaDemandado[];
-}) {
+}
+) {
   const fechas: intFecha[] = [];
   for (let p = 0; p < procesos.length; p++) {
     const proceso = procesos[p];
-    const acts = await getActuacionesByidProceso({
-      idProceso: proceso.idProceso,
-    });
+    const acts = await getActuacionesByidProceso(
+      {
+        idProceso: proceso.idProceso,
+      }
+    );
     if (acts.acts) {
       const fecha = {
         ...proceso,
         fecha: acts.acts[0].fechaActuacion,
       };
-      fechas.push(fecha);
+      fechas.push(
+        fecha
+      );
     }
     if (!acts.acts) {
       const fecha = {
         ...proceso,
         fecha: null,
       };
-      fechas.push(fecha);
+      fechas.push(
+        fecha
+      );
     }
     if (p + 1 === procesos.length) {
       return fechas;
@@ -113,14 +132,18 @@ export async function fetchFechas({
   }
   return fechas;
 }
-export async function fetchFecha({
-  proceso,
-}: {
+export async function fetchFecha(
+  {
+    proceso,
+  }: {
   proceso: monCarpetaDemandado;
-}) {
-  const acts = await getActuacionesByidProceso({
-    idProceso: proceso.idProceso,
-  });
+}
+) {
+  const acts = await getActuacionesByidProceso(
+    {
+      idProceso: proceso.idProceso,
+    }
+  );
   if (acts.acts) {
     const fecha: intFecha = {
       ...proceso,

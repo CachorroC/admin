@@ -4,79 +4,102 @@ import { Fragment, Suspense } from 'react';
 import { getActuacionesByidProceso } from '#@/lib/Actuaciones';
 import { Card } from '#@/components/card/card';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-async function Name({ llaveProceso }: { llaveProceso: string }) {
-  const proceso = await getCarpetasByllaveProceso({
-    llaveProceso: llaveProceso,
-  });
-  const nombre = proceso.map((p) => p.Demandado.Nombre).toString();
+async function Name(
+  { llaveProceso }: { llaveProceso: string }
+) {
+  const proceso = await getCarpetasByllaveProceso(
+    {
+      llaveProceso: llaveProceso,
+    }
+  );
+  const nombre = proceso.map(
+    (
+      p
+    ) => p.Demandado.Nombre
+  ).toString();
   return <h3 className={typography.displayMedium}>{nombre}</h3>;
 }
-async function Acts({ idProceso }: { idProceso: number }) {
-  const actuaciones = await getActuacionesByidProceso({ idProceso: idProceso });
+async function Acts(
+  { idProceso }: { idProceso: number }
+) {
+  const actuaciones = await getActuacionesByidProceso(
+    { idProceso: idProceso }
+  );
   return (
     <>
       {actuaciones.acts &&
-        actuaciones.acts.map((act, i, arr) => {
-          const {
-            actuacion,
-            anotacion,
-            idRegActuacion,
-            llaveProceso,
-            fechaActuacion,
-          } = act;
-          return (
-            <Card
-              key={idRegActuacion}
-              name={actuacion}
-              path={'/NuevaNota'}
-              llaveProceso={llaveProceso}
-              idProceso={idProceso}
-            >
-              <p className={typography.bodymedium}>
-                {anotacion ?? fechaActuacion}
-              </p>
-            </Card>
-          );
-        })}
+        actuaciones.acts.map(
+          (
+            act, i, arr
+          ) => {
+            const {
+              actuacion,
+              anotacion,
+              idRegActuacion,
+              llaveProceso,
+              fechaActuacion,
+            } = act;
+            return (
+              <Card
+                key={idRegActuacion}
+                name={actuacion}
+                path={'/NuevaNota'}
+                llaveProceso={llaveProceso}
+                idProceso={idProceso}
+              >
+                <p className={typography.bodymedium}>
+                  {anotacion ?? fechaActuacion}
+                </p>
+              </Card>
+            );
+          }
+        )}
     </>
   );
 }
-export default async function DefaultProcesosllaveProceso({
-  params,
-}: {
+export default async function DefaultProcesosllaveProceso(
+  {
+    params,
+  }: {
   params: {
     llaveProceso: string;
   };
-}) {
-  const Carpetas = await getCarpetasByllaveProceso({
-    llaveProceso: params.llaveProceso,
-  });
+}
+) {
+  const Carpetas = await getCarpetasByllaveProceso(
+    {
+      llaveProceso: params.llaveProceso,
+    }
+  );
   const cantidadCarpetas = Carpetas.length;
 
   switch (cantidadCarpetas) {
-    case 0:
-      return <Name llaveProceso={params.llaveProceso} />;
-    case 1:
-      const { idProceso, llaveProceso, Demandado, _id } = Carpetas[0];
-      return (
-        <>
-          <Name llaveProceso={params.llaveProceso} />
-          <Card
-            key={_id.toString()}
-            name={Demandado.Nombre}
-            path={'/Procesos'}
-            llaveProceso={llaveProceso}
-            idProceso={idProceso}
-          >
-            <p>{Demandado.Direccion}</p>
-          </Card>
-        </>
-      );
-    case 2:
-      return (
-        <>
-          <Name llaveProceso={params.llaveProceso} />
-          {Carpetas.map((carp, index, arr) => {
+  case 0:
+    return <Name llaveProceso={params.llaveProceso} />;
+  case 1:
+    const { idProceso, llaveProceso, Demandado, _id } = Carpetas[0];
+    return (
+      <>
+        <Name llaveProceso={params.llaveProceso} />
+        <Card
+          key={_id.toString()}
+          name={Demandado.Nombre}
+          path={'/Procesos'}
+          llaveProceso={llaveProceso}
+          idProceso={idProceso}
+        >
+          <p>{Demandado.Direccion}</p>
+        </Card>
+      </>
+    );
+  case 2:
+    return (
+      <>
+        <Name llaveProceso={params.llaveProceso} />
+        {Carpetas.map(
+          (
+            carp, index, arr
+          ) => {
             const { idProceso, Demandado, _id } = carp;
             return (
               <Card
@@ -89,15 +112,19 @@ export default async function DefaultProcesosllaveProceso({
                 <p>{Demandado.Direccion}</p>
               </Card>
             );
-          })}
-        </>
-      );
+          }
+        )}
+      </>
+    );
 
-    default:
-      return (
-        <>
-          <Name llaveProceso={params.llaveProceso} />
-          {Carpetas.map((carp, index, arr) => {
+  default:
+    return (
+      <>
+        <Name llaveProceso={params.llaveProceso} />
+        {Carpetas.map(
+          (
+            carp, index, arr
+          ) => {
             const { idProceso, Demandado, _id } = carp;
             return (
               <Card
@@ -110,8 +137,9 @@ export default async function DefaultProcesosllaveProceso({
                 <p>{Demandado.Direccion}</p>
               </Card>
             );
-          })}
-        </>
-      );
+          }
+        )}
+      </>
+    );
   }
 }
