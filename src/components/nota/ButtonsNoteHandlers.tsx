@@ -1,6 +1,7 @@
 'use client';
 import note from '#@/components/nota/note.module.scss';
 import { intNota, monNota } from '#@/lib/types/notas';
+import type { Route } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 export function DeleteNoteButton(
@@ -80,7 +81,7 @@ export function EditNoteButton(
   return (
     <Link
       className={note.editButton}
-      href={`/Procesos/${nota.llaveProceso}/Editar?_id=${nota._id}`}
+      href={`/Procesos/${nota.llaveProceso}/Editar?_id=${nota._id}` as Route}
     >
       <span className='material-symbols-outlined'>edit</span>
     </Link>

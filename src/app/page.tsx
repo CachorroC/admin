@@ -7,6 +7,7 @@ import navbar from '#@/components/navbar/navbar.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { Suspense } from 'react';
+import type { Route } from 'next';
 
 export default async function Page() {
   const carpetas = await getCarpetas();
@@ -26,15 +27,15 @@ export default async function Page() {
       </div>
 
       <div className={layout.left}>
-        <Link className={layout.link} href={'/Procesos'}>
+        <Link className={layout.link} href={'/Procesos' as Route}>
           <span className='material-symbols-outlined'>folder_open</span>
           <h1 className={typography.displayMedium}> Procesos</h1>
         </Link>
-        <Link className={layout.link} href={'/Demandados/NuevoProceso'}>
+        <Link className={layout.link} href={'/Demandados/NuevoProceso' as Route}>
           <span className='material-symbols-outlined'>add</span>
           <h1 className={typography.displayMedium}>NuevoProceso</h1>
         </Link>
-        <Link className={layout.link} href={'/Demandados'}>
+        <Link className={layout.link} href={'/Demandados' as Route}>
           <span className='material-symbols-outlined'>person_pin</span>
           <h1 className={typography.displayMedium}> Demandados</h1>
         </Link>
