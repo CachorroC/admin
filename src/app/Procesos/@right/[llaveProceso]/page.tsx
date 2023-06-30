@@ -91,48 +91,7 @@ export default async function PageProcesosRightllaveProceso(
     return (
       <>
         <NewNota llaveProceso={ params.llaveProceso } uri={ `${ getBaseUrl() }` } />
-        <Notas llaveProceso={params.llaveProceso}/>
-        {notas.map(
-          (
-            prc, i, arr
-          ) => {
-            const { nota, tareas, _id, llaveProceso, pathname } = prc;
-            return (
-              <Fragment key={_id.toString()}>
-                <Card
-                  key={_id.toString()}
-                  name={nota}
-                  llaveProceso={llaveProceso}
-                  path={pathname}
-                >
-                  {tareas.map(
-                    (
-                      t, i, arr
-                    ) => {
-                      const { isDone, tarea, dueDate } = t;
-                      return (
-                        <div
-                          key={i}
-                          className={isDone
-                            ? note.tarea
-                            : note.tareaDone}
-                        >
-                          <p className={typography.bodyMedium}>{tarea}</p>
-                          <p className={typography.labelMedium}>
-                            {fixFechas(
-                              dueDate
-                            )}
-                          </p>
-                        </div>
-                      );
-                    }
-                  )}
-                  <span className='material-symbols-outlined'>note</span>
-                </Card>
-              </Fragment>
-            );
-          }
-        )}
+        <Notas llaveProceso={ params.llaveProceso } />
       </>
     );
   case 1:

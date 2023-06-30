@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   opacity: 1;
-  transition: width 1s opacity 2s;
+  transition: all 0.3s;
   display: grid;
   z-index: 5;
   grid-template-columns: repeat(5, 1fr);
@@ -37,8 +37,6 @@
   box-shadow: var(--dp16);
   text-align: center;
   padding: 2vmin;
-  overflow-y: scroll;
-  overflow-x: hidden;
 
   @media screen and (max-width: 1000px) {
     grid-template-rows: repeat(10, 1fr);
@@ -72,73 +70,66 @@
 }
 
 .sidenav {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-flow: column nowrap;
   grid-area: ProcesosLayoutList;
-  grid-template-rows: repeat(10, 1fr);
   gap: 2vmin;
-  justify-content: center;
-  align-content: flex-start;
-  justify-items: stretch;
   box-sizing: border-box;
   padding: 2vmin;
   box-shadow: var(--dp2);
-  background-color: var(--sf-2);
+  background-color: var(--surface-container-low);
   border-radius: 2vmin;
-  overflow: scroll;
-}
-
-.forwardButton {
-  grid-area: forwardButton;
-  background-color: var(--surface-container);
-  & > span {
-    color: var(--primary);
-    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  overflow: auto;
+  & > * {
+    width: 100%;
+    height: 50%;
   }
 }
 
-.backwardsButton {
-  background-color: var(--surface-container);
-  grid-area: backwardsButton;
-  & > span {
-    color: var(--primary);
-    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-  }
-}
-
-.drawerMenuButton {
-  grid-area: drawerMenuButton;
-  background-color: var(--primary-container);
-  & > span {
-    color: var(--on-primary-container);
-    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-  }
-}
-
-.homeButton {
-  grid-area: homeButton;
-  background-color: var(--primary-fixed);
-  & > span {
-    color: var(--on-primary-fixed);
-    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-  }
-}
-
-.button,
-.forwardButton,
-.backwardsButton,
-.drawerMenuButton,
-.homeButton {
+.button {
   border: none;
   box-shadow: var(--dp2);
   border-radius: 2vmin;
-  flex: 0 0 5%;
+  flex: 1 1 auto;
   display: flex;
   flex-flow: column nowrap;
   justify-items: center;
   align-items: center;
   justify-content: center;
   align-content: center;
+  transition: all 0.3s;
+  &Forward {
+    @extend .button;
+    grid-area: forwardButton;
+    background-color: var(--surface-container);
+    & > .icon {
+      color: var(--on-surface);
+    }
+  }
+  &Backwards {
+    @extend .button;
+    background-color: var(--surface-container);
+    grid-area: backwardsButton;
+    & > .icon {
+      color: var(--on-surface);
+    }
+  }
+  &DrawerMenu {
+    @extend .button;
+    grid-area: drawerMenuButton;
+    background-color: var(--primary-container);
+    & > .icon {
+      color: var(--on-primary-container);
+    }
+  }
+  &Home {
+    @extend .button;
+    grid-area: homeButton;
+    background-color: var(--primary);
+    & > .icon {
+      color: var(--on-primary);
+    }
+  }
 
   & > .ButtonTextHelper {
     display: none;
@@ -148,12 +139,12 @@
 
   &:hover,
   &:active {
-    background-color: var(--tertiary-container);
+    background-color: var(--primary-fixed);
     box-shadow: var(--dp8);
 
     & > span {
       font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 200, 'opsz' 24;
-      color: var(--tertiary);
+      color: var(--on-primary-fixed);
     }
   }
 }

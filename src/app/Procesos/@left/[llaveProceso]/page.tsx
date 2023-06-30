@@ -77,7 +77,6 @@ export default async function PageProcesosLeftllaveProceso(
     ) => (
       <Fragment key={carpeta._id.toString()}>
         <CarpetaCard Carpeta={ carpeta } />
-        <Acts idProceso={ carpeta.idProceso } />
       </Fragment>
     )
   );
@@ -94,9 +93,24 @@ export default async function PageProcesosLeftllaveProceso(
   );
   switch (cantidadProcesos) {
   case 0:
-    return carpetasMap;
+    return (
+      <>{
+        carpetas.map(
+          (
+            carpeta
+          ) => ( <CarpetaCard Carpeta={ carpeta } key={carpeta._id.toString()}/>    )
+        )
+      }</>
+    );
   case 1:
-    return procesosMap ?? carpetasMap;
+    return (
+      <>
+        <Suspense fallback={<p>loading</p>}>
+          {procesosMap}
+        </Suspense>
+
+      </>
+    );
   case 2:
     return procesosMap;
   default:

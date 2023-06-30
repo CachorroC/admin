@@ -26,8 +26,8 @@ export function DeleteNoteButton(
   }
 
   return (
-    <button className={note.deleteButton} onClick={deleteRequestHandler}>
-      <span className='material-symbols-outlined'>delete</span>
+    <button className={note.buttonDelete} onClick={deleteRequestHandler}>
+      <span className={`material-symbols-outlined ${note.icon}`}>delete</span>
     </button>
   );
 }
@@ -69,8 +69,8 @@ export function AddNoteButton(
   }
 
   return (
-    <button className={note.deleteButton} onClick={addRequestHandler}>
-      <span className='material-symbols-outlined'>delete</span>
+    <button className={note.buttonAdd} onClick={addRequestHandler}>
+      <span className={`material-symbols-outlined ${note.icon}`}>delete</span>
     </button>
   );
 }
@@ -80,10 +80,10 @@ export function EditNoteButton(
 ) {
   return (
     <Link
-      className={note.editButton}
+      className={note.buttonEdit}
       href={`/Procesos/${nota.llaveProceso}/Editar?_id=${nota._id}` as Route}
     >
-      <span className='material-symbols-outlined'>edit</span>
+      <span className={`material-symbols-outlined ${note.icon}`}>edit</span>
     </Link>
   );
 }

@@ -26,19 +26,20 @@ export const ProcesoCard = (
         <h1 className={`${typography.titleLarge} ${styles.title}`}>{fixDemandado(
           sujetosProcesales
         ) }</h1>
-        <Link href={`/Procesos/${llaveProceso}/${idProceso}` }>
-          <span className='material-symbols.outlined'>open_in_new</span>
+        <Link className={styles.button} href={`/Procesos/${llaveProceso}/${idProceso}` }>
+          <span className={`material-symbols-outlined ${styles.icon}`}>open_in_new</span>
         </Link>
-        <p>{ despacho }</p>
+        <p className={`${typography.bodyMedium} ${styles.content}`}>{ despacho }</p>
         {juzgado && (
           <Link
+            className={styles.button}
             href={`https://ramajudicial.gov.co/web/${juzgado.replaceAll(
               'á',
               'a'
             )}`}
           >
             {' '}
-            <p className={`${typography.bodySmall} ${styles.content}`}>
+            <p className={typography.bodySmall}>
               {juzgado.replaceAll(
                 'á',
                 'a'

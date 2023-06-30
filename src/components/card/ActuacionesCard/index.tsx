@@ -2,6 +2,7 @@ import { fixFechas } from '#@/lib/fix';
 import { intActuacion } from '#@/lib/types/procesos';
 import styles from './actuaciones.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
+import Link from 'next/link';
 
 export const ActuacionCard = (
   { Actuacion }: { Actuacion: intActuacion }
@@ -23,12 +24,16 @@ export const ActuacionCard = (
   return (
     <div className={ styles.container } key={ idRegActuacion }>
       <div className={ styles.card }>
-        <h1 className={typography.headlineMedium}>{ actuacion }</h1>
+        <h1 className={`${typography.titleMedium} ${styles.title}` }>{ actuacion }</h1>
         { anotacion && ( <p className={typography.bodyMedium}>{ anotacion }</p> ) }
-        <sub className={typography.labelSmall}>{ `${ consActuacion } de ${ cant }` }</sub>
-        <sup className={typography.labelMedium}>{fixFechas(
+        <sub className={ `${ typography.labelSmall } ${ styles.sub }` }>{ `${ consActuacion } de ${ cant }` }</sub>
+        <Link href={ `/Notas/NuevaNota/${ llaveProceso }` } className={ styles.button }>
+          <span className={`material-symbols-outlined ${styles.icon}`}>note_add</span>
+        </Link>
+        <sup className={`${typography.labelMedium} ${styles.date}`}>{fixFechas(
           fechaActuacion
-        )}</sup>
+        ) }</sup>
+
 
       </div>
 
@@ -38,12 +43,12 @@ export const ActuacionCard = (
 
 
 export const ActuacionesList = (
-  { Actuaciones }: { Actuaciones: intActuacion[] } 
+  { Actuaciones }: { Actuaciones: intActuacion[] }
 ) => (
   <>
     { Actuaciones.map(
       (
-        Actuacion, ind, arr 
+        Actuacion, ind, arr
       ) => {
         const { idRegActuacion } = Actuacion;
         return (

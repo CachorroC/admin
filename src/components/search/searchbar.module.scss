@@ -7,7 +7,6 @@
 }
 .isActive,
 .notActive {
-  height: 100cqmin;
   width: 100cqmin;
   box-sizing: border-box;
   align-items: stretch;
@@ -15,7 +14,7 @@
   justify-content: space-between;
   align-content: stretch;
   flex-flow: column nowrap;
-  padding: 2vmin;
+  padding: 5cqmin;
   gap: 5cqmin;
   border-radius: 2vmin;
   text-align: center;
@@ -216,7 +215,7 @@
   color: var(--on-surface);
   grid-area: inputSearchBar;
   border-radius: 1cqmin;
-  flex: 0 0 25;
+  flex: 2 0 auto;
   box-shadow: var(--dp1);
 
   &:focus {
