@@ -41,23 +41,6 @@ export interface Demandado {
 }
 
 // Converts JSON strings to/from your types
-export class Convert {
-  public static toIntCarpetaDemandado(
-    json: string
-  ): intCarpetaDemandado[] {
-    return JSON.parse(
-      json
-    );
-  }
-
-  public static intCarpetaDemandadoToJson(
-    value: intCarpetaDemandado[]
-  ): string {
-    return JSON.stringify(
-      value
-    );
-  }
-}
 
 export interface monCarpetaDemandado extends intCarpetaDemandado {
   _id: string;
@@ -65,4 +48,25 @@ export interface monCarpetaDemandado extends intCarpetaDemandado {
 
 export interface intFecha extends monCarpetaDemandado {
   fecha: string | null | undefined;
+}
+
+// To parse this data:
+//
+
+export class Convert {
+  public static toMonCarpetaDemandado(
+    json: string
+  ): monCarpetaDemandado[] {
+    return JSON.parse(
+      json
+    );
+  }
+
+  public static monCarpetaDemandadoToJson(
+    value: monCarpetaDemandado[]
+  ): string {
+    return JSON.stringify(
+      value
+    );
+  }
 }

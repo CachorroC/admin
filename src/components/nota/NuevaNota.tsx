@@ -101,17 +101,19 @@ export function NewNota(
       <form className={note.form} onSubmit={handleSubmit(
         onSubmit
       )}>
-        <label htmlFor={'nota'} className={note.label}>
-          <h1 className={typography.titleMedium}> Nota</h1>
-        </label>
-        <textarea
-          placeholder='agregue su nota'
-          className={note.textArea}
-          {...register(
-            'nota',
-            { required: true }
-          )}
-        />
+        <div className={ note.section }>
+          <label htmlFor={'nota'} className={note.label}>
+            <h1 className={typography.titleMedium}> Nota</h1>
+          </label>
+          <textarea
+            placeholder='agregue su nota'
+            className={note.textArea}
+            {...register(
+              'nota',
+              { required: true }
+            )}
+          />
+        </div>
         <div className={accordion.title} onClick={() => setIsActive(
           !isActive
         )}>
@@ -162,7 +164,9 @@ export function NewNota(
                         onClick={() => {
                           setValue(
                             `tareas.${index}.isDone`,
-                            !watchIsDone
+                            watchIsDone
+                              ? false
+                              : true
                           );
                         }}
                       >
@@ -190,7 +194,7 @@ export function NewNota(
                         )}
                       />
                     </div>
-                    <div className={note.section}>
+                    <div className={note.buttonsRow}>
                       <button
                         className={note.submitButton}
                         type='button'

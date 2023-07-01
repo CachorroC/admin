@@ -1,7 +1,7 @@
 import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
-import { monNota, idk, intNota } from '#@/lib/types/notas';
+import { monNota, intNota, ConvertNotas } from '#@/lib/types/notas';
 import { cache } from 'react';
 
 const Collection = async () => {
@@ -19,12 +19,24 @@ const Collection = async () => {
   );
   return notas;
 };
+const Transform = async () => {
+  const collection = await Collection();
+  const notasRaw = await collection.find(
+    {}
+  ).toArray();
+  const notasString = JSON.stringify(
+    notasRaw
+  );
+  const notas = ConvertNotas.toMonNota(
+    notasString
+  );
+
+  return notas;
+};
 
 export async function getNotas() {
-  const collection = await Collection();
-  const notas = (await collection.find(
-    {}
-  ).toArray()) as unknown as monNota[];
+  const notas = await Transform();
+
   return notas;
 }
 
@@ -35,10 +47,7 @@ export async function getNotasByllaveProceso(
   llaveProceso: string;
 }
 ) {
-  const collection = await Collection();
-  const notas = (await collection.find(
-    {}
-  ).toArray()) as unknown as monNota[];
+  const notas = await Transform();
   const Notas = notas.filter(
     (
       nota
@@ -50,20 +59,11 @@ export const getNotaById = cache(
   async (
     { _id }: { _id: string }
   ) => {
-    const collection = await Collection();
-    const notasRaw = await collection.find(
-      {}
-    ).toArray();
-    const notas1 = JSON.stringify(
-      notasRaw
-    );
-    const notas = JSON.parse(
-      notas1
-    ) as monNota[];
+    const notas = await Transform();
     const Notas = notas.filter(
       (
         nota
-      ) => nota._id.toString() === _id
+      ) => nota._id === _id
     );
     return Notas;
   }

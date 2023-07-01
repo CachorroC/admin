@@ -1,13 +1,4 @@
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import { fixFechas } from '#@/lib/fix';
-import { getBaseUrl } from '#@/lib/getBaseUrl';
-import { monNota } from '#@/lib/types/notas';
-import { Suspense } from 'react';
-import { ButtonSkeleton } from '../navbar/ButtonSkeleton';
-import { EditNoteButton, DeleteNoteButton } from '../nota/ButtonsNoteHandlers';
-import { AccordionRow } from '../nota/accordion';
-import typography from '#@/styles/fonts/typography.module.scss';
-import note from '#@/components/nota/note.module.scss';
 import typeface from '#@/styles/fonts/typeface.module.scss';
 
 export async function Name(
@@ -22,6 +13,6 @@ export async function Name(
     (
       p
     ) => p.Demandado.Nombre
-  ).toString();
-  return <h1 className={typeface.navbar}>{nombre}</h1>;
+  );
+  return <h1 className={typeface.navbar}>{nombre[0]}</h1>;
 }

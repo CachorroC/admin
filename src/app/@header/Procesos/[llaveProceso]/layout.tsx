@@ -1,10 +1,11 @@
 import 'server-only';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import Header from '#@/components/navbar/Header';
 import Drawer from '#@/components/navbar/drawer';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { fetchFechas } from '#@/lib/Actuaciones';
+import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 
 export default async function Layout(
   { children }: { children: ReactNode }
@@ -18,7 +19,9 @@ export default async function Layout(
     <Header>
       {children}
       <Drawer>
-        <SearchOutputList path='/Procesos' fechas={fechas} />
+        <Suspense fallback={<SearchOutputListSkeleton />}>
+          <SearchOutputList path='/Procesos' fechas={fechas} />
+        </Suspense>
       </Drawer>
     </Header>
   );

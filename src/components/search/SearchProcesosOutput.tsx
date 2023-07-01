@@ -76,11 +76,7 @@ export default function SearchOutputList(
         return;
       }
       rows.push(
-        <LinkCard path={path} proceso={proceso} key={_id.toString()}>
-          <sub className={typography.labelSmall}>
-            {`${index + 1} de ${array.length}`}
-          </sub>
-        </LinkCard>
+        <LinkCard path={path} proceso={proceso} key={_id}/>
       );
     }
   );

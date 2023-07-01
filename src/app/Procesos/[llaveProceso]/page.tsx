@@ -6,6 +6,8 @@ import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import { getConsultaNumeroRadicion } from '#@/lib/RamaJudicial';
 import { intProceso } from '#@/lib/types/procesos';
 import { arrayMergerByllaveProceso } from '#@/lib/arrayMerger';
+import box from '#@/styles/scss/box.module.scss';
+import { Name } from '#@/components/Headings/serverSideName';
 
 function DemandadoNameBadge(
   {
@@ -18,43 +20,25 @@ function DemandadoNameBadge(
 ) {
   const { llaveProceso, _id } = carpeta;
   if (proceso) {
-
     return (
       <Fragment key={proceso
         ? proceso.idProceso
-        : _id.toString()}>
+        : _id}>
         <Name llaveProceso={llaveProceso} />
         <p className={typography.bodySmall}>{proceso.despacho}</p>
-
-
 
         <CarpetaCard Carpeta={carpeta} />
       </Fragment>
     );
   }
   return (
-    <Fragment key={_id.toString()}>
+    <Fragment key={_id}>
       <Name llaveProceso={llaveProceso} />
       <CarpetaCard Carpeta={carpeta} />
     </Fragment>
   );
 }
-async function Name(
-  { llaveProceso }: { llaveProceso: string }
-) {
-  const proceso = await getCarpetasByllaveProceso(
-    {
-      llaveProceso: llaveProceso,
-    }
-  );
 
-  const nombre = proceso.map(
-    (
-      p
-    ) => p.Demandado.Nombre
-  );
-  return <h3 className={typography.displayMedium}>{nombre[0]}</h3>;
-}
 export default async function PageProcesosllaveProceso(
   {
     params,
@@ -74,12 +58,7 @@ export default async function PageProcesosllaveProceso(
       llaveProceso: params.llaveProceso,
     }
   );
-  const merged = arrayMergerByllaveProceso(
-    {
-      a: Procesos,
-      b: Carpetas,
-    }
-  );
+
   const cantidadCarpetas = Carpetas.length;
   return (
     <>
@@ -87,7 +66,7 @@ export default async function PageProcesosllaveProceso(
         (
           Carpeta, i
         ) => (
-          <Fragment key={Carpeta._id.toString()}>
+          <Fragment key={Carpeta._id}>
             {Procesos.map(
               (
                 Proceso, i
@@ -98,18 +77,11 @@ export default async function PageProcesosllaveProceso(
                   proceso={Proceso}
                 />
               )
-            ) }
-            <DemandadoNameBadge
-              carpeta={Carpeta}
-              key={Carpeta._id.toString()}
-
-            />
+            )}
+            <DemandadoNameBadge carpeta={Carpeta} key={Carpeta._id} />
           </Fragment>
         )
-      ) }
-      <p className={typography.bodyMedium}>{JSON.stringify(
-        merged
-      )}</p>
+      )}
     </>
   );
 }

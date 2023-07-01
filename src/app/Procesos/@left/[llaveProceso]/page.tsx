@@ -69,7 +69,7 @@ export default async function PageProcesosLeftllaveProceso(
     (
       carpeta
     ) => (
-      <Fragment key={carpeta._id.toString()}>
+      <Fragment key={carpeta._id}>
         <CarpetaCard Carpeta={carpeta} />
       </Fragment>
     )
@@ -91,7 +91,7 @@ export default async function PageProcesosLeftllaveProceso(
           (
             carpeta
           ) => (
-            <CarpetaCard Carpeta={carpeta} key={carpeta._id.toString()} />
+            <CarpetaCard Carpeta={carpeta} key={carpeta._id} />
           )
         )}
       </>

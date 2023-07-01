@@ -69,7 +69,7 @@ export const CardSearchList = (
       }
       rows.push(
         <Card
-          key={_id.toString()}
+          key={_id}
           name={Nombre}
           path='/Procesos'
           llaveProceso={llaveProceso}

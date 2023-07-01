@@ -70,5 +70,5 @@ export default function Drawer(
       </nav>
     );
   }
-  return null;
+  return <DrawerMenuButton />;
 }

@@ -220,14 +220,17 @@
   border: none;
   color: var(--on-surface);
   grid-area: inputSearchBar;
-  border-radius: 1cqmin;
+  border-radius: 10cqmin;
+  text-align: center;
   flex: 2 0 auto;
-  box-shadow: var(--dp1);
 
+  &:hover,
+  &:active,
   &:focus {
     border: 2px dashed var(--tertiary);
     background-color: var(--tertiary-container);
     color: var(--on-tertiary-container);
+    box-shadow: var(--dp4);
   }
 }
 

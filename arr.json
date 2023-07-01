@@ -1,0 +1,23 @@
+[
+  {
+    "idProceso": 112628300,
+    "idConexion": 262,
+    "llaveProceso": "11001400306820200102100",
+    "fechaProceso": "2020-10-09T00:00:00",
+    "fechaUltimaActuacion": "2023-06-29T00:00:00",
+    "despacho": "JUZGADO 068 CIVIL MUNICIPAL DE BOGOTÁ ",
+    "departamento": "BOGOTÁ",
+    "sujetosProcesales": "Demandante: BANCOLOMBIA S.A | Demandado: DIMOIN COLOMBIA SAS ",
+    "esPrivado": false,
+    "cantFilas": -1,
+    "_id": "64982e38a5c4bdf6f8dde7a9",
+    "Carpeta": 530,
+    "Demandado": {
+      "Id": 900520023,
+      "Nombre": "DIMOIN COLOMBIA S.A.S.",
+      "Tel": { "Fijo": 6708086 },
+      "Direccion": "AV BOYACA 63D - 26 OFICINA 103"
+    },
+    "Category": "Bancolombia"
+  }
+]

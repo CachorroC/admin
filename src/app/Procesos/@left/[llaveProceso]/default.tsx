@@ -79,11 +79,11 @@ export default async function DefaultProcesosLeftllaveProceso(
           ) => {
             const { idProceso, _id, Demandado } = prc;
             return (
-              <Fragment key={_id.toString()}>
+              <Fragment key={_id}>
                 <h1 className={typography.displayLarge}>Default</h1>
                 <Acts key={idProceso} idProceso={idProceso} />
                 <Card
-                  key={_id.toString()}
+                  key={_id}
                   name={Demandado.Nombre}
                   llaveProceso={prc.llaveProceso}
                   idProceso={prc.idProceso}
@@ -118,7 +118,7 @@ export default async function DefaultProcesosLeftllaveProceso(
             const { idProceso, Demandado, _id } = carp;
             return (
               <Card
-                key={_id.toString()}
+                key={_id}
                 name={Demandado.Nombre}
                 path={'/Procesos'}
                 llaveProceso={llaveProceso}
@@ -143,7 +143,7 @@ export default async function DefaultProcesosLeftllaveProceso(
             const { idProceso, Demandado, _id } = carp;
             return (
               <Card
-                key={_id.toString()}
+                key={_id}
                 name={Demandado.Nombre}
                 path={'/Procesos'}
                 llaveProceso={llaveProceso}

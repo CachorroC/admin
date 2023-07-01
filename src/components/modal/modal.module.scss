@@ -12,7 +12,7 @@
 }
 .wrapper {
   z-index: 10;
-
+  height: 100%;
   box-sizing: border-box;
 
   box-shadow: var(--dp24);
@@ -21,7 +21,14 @@
   grid-template-rows: repeat(6, 1fr);
   gap: 2vmin;
   padding: 2vmin;
-  display: flex;
+  display: grid;
+  grid-template-areas:
+    'forwardButton . backwardsButton'
+    'forwardButton . backwardsButton'
+    '. . .'
+    '. . .'
+    '. . .'
+    '. . .';
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: stretch;

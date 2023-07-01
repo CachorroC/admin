@@ -82,7 +82,7 @@ export default async function DefaultProcesosllaveProceso(
       <>
         <Name llaveProceso={params.llaveProceso} />
         <Card
-          key={_id.toString()}
+          key={_id}
           name={Demandado.Nombre}
           path={'/Procesos'}
           llaveProceso={llaveProceso}
@@ -103,7 +103,7 @@ export default async function DefaultProcesosllaveProceso(
             const { idProceso, Demandado, _id } = carp;
             return (
               <Card
-                key={_id.toString()}
+                key={_id}
                 name={Demandado.Nombre}
                 path={'/Procesos'}
                 llaveProceso={llaveProceso}
@@ -128,7 +128,7 @@ export default async function DefaultProcesosllaveProceso(
             const { idProceso, Demandado, _id } = carp;
             return (
               <Card
-                key={_id.toString()}
+                key={_id}
                 name={Demandado.Nombre}
                 path={'/Procesos'}
                 llaveProceso={llaveProceso}

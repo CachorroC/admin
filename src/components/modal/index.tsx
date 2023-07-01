@@ -1,16 +1,19 @@
 'use client';
 import { useCallback, useRef, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 import { useModal } from '#@/app/modal-context';
 import modal from '#@/components/modal/modal.module.scss';
 import { BackwardsButton, ForwardButton } from '../navbar/Buttons';
 import { useParams } from 'next/navigation';
+import { redirect } from 'next/navigation';
+import type { Route } from 'next';
 
 export default function Modal(
   { children }: { children: React.ReactNode }
 ) {
   const params = useParams();
+  const pathname = usePathname();
   const overlay = useRef(
     null
   );
@@ -22,6 +25,22 @@ export default function Modal(
     isOpen,
     setIsOpen
   ] = useModal();
+
+  const onEnter = useCallback(
+    () => {
+      setIsOpen(
+        false
+      );
+      router.push(
+pathname as Route
+      );
+    },
+    [
+      router,
+      pathname,
+      setIsOpen
+    ]
+  );
 
   const onDismiss = useCallback(
     () => {
@@ -47,10 +66,14 @@ export default function Modal(
         if (onDismiss) {
           onDismiss();
         }
+        if (onEnter) {
+          onEnter();
+        }
       }
     },
     [
       onDismiss,
+      onEnter,
       overlay,
       wrapper
     ]
@@ -63,9 +86,13 @@ export default function Modal(
       if (e.key === 'Escape') {
         onDismiss();
       }
+      if (e.key === 'Enter') {
+        onEnter();
+      }
     },
     [
-      onDismiss
+      onDismiss,
+      onEnter
     ]
   );
 

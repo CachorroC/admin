@@ -27,7 +27,7 @@ export default async function Default(
           (
             ntext, i
           ) => (
-            <Fragment key={ntext._id.toString()}>
+            <Fragment key={ntext._id}>
               <h1 key={i} className={typeface.title}>
                 {ntext.nota}
               </h1>

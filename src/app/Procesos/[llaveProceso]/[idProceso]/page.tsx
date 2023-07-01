@@ -4,6 +4,7 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { CardCarpeta } from '#@/components/card/cardCarpeta';
+import { CarpetaCard } from '#@/components/card/CarpetasCard';
 async function Name(
   { llaveProceso }: { llaveProceso: string }
 ) {
@@ -50,24 +51,8 @@ export default async function PageProcesosllaveProceso(
           const { Tel, Direccion, Nombre } = Demandado;
           const { Fijo, Celular } = Tel;
           return (
-            <Card
-              key={_id.toString()}
-              name={Demandado.Nombre}
-              path={'/Procesos'}
-              idProceso={idProceso}
-              llaveProceso={params.llaveProceso}
-            >
-              {Celular && (
-                <Link href={`tel:${Celular}`}>
-                  <span className='material-symbols-outlined'>phone_iphone</span>
-                </Link>
-              )}
-              {Fijo && (
-                <Link href={`tel:${Fijo}`}>
-                  <span className='material-symbols-outlined'>call</span>
-                </Link>
-              )}
-            </Card>
+            <CarpetaCard
+              key={ _id } Carpeta={carpeta }            />
           );
         }
       )}

@@ -2,7 +2,11 @@ import { cache } from 'react';
 import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
-import { monCarpetaDemandado, intCarpetaDemandado } from '../types/demandados';
+import {
+  monCarpetaDemandado,
+  intCarpetaDemandado,
+  Convert,
+} from '#@/lib/types/demandados';
 
 export const preload = (
   llaveProceso: string
@@ -23,10 +27,10 @@ const Collection = cache(
     const db = client.db(
       'RyS'
     );
-    const notas = db.collection(
+    const carpetas = db.collection(
       'Demandados'
     );
-    return notas;
+    return carpetas;
   }
 );
 
@@ -39,10 +43,10 @@ export const getCarpetas = cache(
     const carpetas1 = JSON.stringify(
       carpetasRaw
     );
-    const carpetas = JSON.parse(
+    const carps = Convert.toMonCarpetaDemandado(
       carpetas1
-    ) as monCarpetaDemandado[];
-    return carpetas;
+    );
+    return carps;
   }
 );
 export const getCarpetasByllaveProceso = cache(
@@ -50,11 +54,14 @@ export const getCarpetasByllaveProceso = cache(
     { llaveProceso }: { llaveProceso: string }
   ) => {
     const collection = await Collection();
-    const carpetas = (await collection
-      .find(
-        {}
+    const carpetasRaw = await collection.find(
+      {}
+    ).toArray();
+    const carpetas = Convert.toMonCarpetaDemandado(
+      JSON.stringify(
+        carpetasRaw
       )
-      .toArray()) as unknown as monCarpetaDemandado[];
+    );
     const Carpetas = carpetas.filter(
       (
         carpeta
@@ -68,17 +75,20 @@ export const getCarpetaById = cache(
     { _id }: { _id: string }
   ) => {
     const collection = await Collection();
-    const notas = (await collection
-      .find(
-        {}
+    const carpetasRaw = await collection.find(
+      {}
+    ).toArray();
+    const carpetas = Convert.toMonCarpetaDemandado(
+      JSON.stringify(
+        carpetasRaw
       )
-      .toArray()) as unknown as monCarpetaDemandado[];
-    const Notas = notas.filter(
-      (
-        nota
-      ) => nota._id.toString() === _id.toString()
     );
-    return Notas;
+    const Carpetas = carpetas.filter(
+      (
+        carpeta
+      ) => carpeta._id === _id
+    );
+    return Carpetas;
   }
 );
 export async function postCarpeta(

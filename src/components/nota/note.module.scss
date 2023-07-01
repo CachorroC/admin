@@ -1,53 +1,57 @@
 .container {
   container-name: note;
   container-type: inline-size;
-}
-.form,
-.nota,
-.note {
   display: flex;
-  height: 100%;
-  box-sizing: border-box;
   box-shadow: var(--dp2);
   border-radius: 2vmin;
-  padding: 2vmin;
   flex-grow: 1;
-  flex-flow: column wrap;
-  text-align: center;
-  background-color: var(--surface-container);
-  gap: 10cqmin;
+  flex-flow: column nowrap;
+  background-color: var(--surface-container-low);
 
-  sub {
-    color: var(--primary);
-  }
-
-  .buttonsRow {
+  .form,
+  .nota {
+    border-radius: 2vmin;
     display: flex;
-    flex-flow: row nowrap;
-  }
+    flex-flow: column nowrap;
+    padding: 2vmin;
+    gap: 2vmin;
 
-  .section {
-    gap: 2cqmin;
-    padding: 1cqmin;
-    display: flex;
-    flex-flow: row nowrap;
-
-    .label {
-      font-family: var(--font-poiret);
-      flex-grow: 1;
+    sub {
+      color: var(--primary);
+    }
+    .sup {
+      font-size: 0.8rem;
+      flex: 0 1 10%;
+      font-family: var(--raleway);
+    }
+    .buttonsRow {
+      display: flex;
+      flex-flow: row nowrap;
     }
 
-    .titleInput {
-      flex-grow: 2;
+    .section {
+      gap: 2vmin;
+      padding: 1vmin;
+      display: flex;
+      flex-flow: column wrap;
+
+      .label {
+        font-family: var(--font-poiret);
+        flex: 1 1 25%;
+      }
+
+      .titleInput {
+        flex: 2 0 50%;
+      }
     }
   }
 }
 
 .submitButton {
   border: none;
-  box-shadow: var(--dp2);
+  box-shadow: var(--dp5);
   border-radius: 2vmax;
-  flex-grow: 1;
+  flex: 1 0 25%;
   width: 20em;
   background-color: var(--secondary);
 
@@ -71,12 +75,10 @@
 .textArea {
   background-color: var(--surface-variant);
   color: var(--on-surface-variant);
-  box-shadow: var(--dp2) inset;
-  border: var(--outline);
-  border-radius: 2cqmin;
+  border-radius: 2vmin;
   resize: both;
   text-align: center;
-  padding: 2cqmin;
+  padding: 5cqmin;
   flex-grow: 3;
 
   &:focus {
@@ -84,50 +86,39 @@
   }
 }
 
-.tareas {
-  background-color: var(--surface-container-low);
-  color: var(--on-surface);
-  border-radius: 2cqmin;
-  text-align: center;
-  padding: 2cqmin;
-  flex-grow: 3;
+.deleteButton {
+  grid-area: deleteButton;
 }
+
+.addButton {
+  grid-area: addButton;
+}
+
+.HomeButton {
+  grid-area: HomeButton;
+}
+
 .button {
+  &Edit {
+    @extend .button;
+    grid-area: editButton;
+  }
+  &Delete {
+    @extend .button;
+    grid-area: deleteButton;
+  }
   border: none;
-  box-shadow: var(--dp1);
-  border-radius: 2cqmin;
+  box-shadow: var(--dp5);
+  border-radius: 2vmin;
   flex-grow: 1;
+  background-color: var(--secondary);
   display: flex;
   flex-flow: column nowrap;
   justify-items: center;
   align-items: center;
   justify-content: center;
   align-content: center;
-  &Delete {
-    @extend .button;
-    grid-area: deleteButton;
-    background-color: var(--secondary);
-    & > .icon {
-      color: var(--on-secondary);
-    }
-  }
-  &Edit {
-    @extend .button;
-    grid-area: editButton;
-    background-color: var(--primary-container);
 
-    & > .icon {
-      color: var(--on-primary-container);
-    }
-  }
-  &Add {
-    @extend .button;
-    grid-area: addButton;
-    background-color: var(--secondary);
-    & > .icon {
-      color: var(--on-secondary);
-    }
-  }
   & > .ButtonTextHelper {
     display: none;
     opacity: 0;
@@ -135,6 +126,7 @@
   }
 
   & > span {
+    color: var(--on-secondary);
     font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
   }
 
@@ -160,6 +152,8 @@
 
 .tareas {
   display: flex;
+  flex: 1 0 100%;
+  width: 100%;
   flex-flow: column nowrap;
 }
 

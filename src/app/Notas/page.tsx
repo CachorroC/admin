@@ -53,7 +53,7 @@ export default async function PageNotas() {
               ) => ff
             );
             return (
-              <div className={note.container} key={_id.toString()}>
+              <div className={note.container} key={_id}>
                 <div className={note.note}>
                   <Suspense
                     fallback={

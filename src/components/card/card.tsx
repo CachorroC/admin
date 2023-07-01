@@ -98,6 +98,7 @@ export const Card = (
             <span className={`material-symbols-outlined ${card.icon}`}>
               badge
             </span>
+            <span className={card.tooltiptext}>Perfil del Demandado</span>
           </Link>
           <Link
             className={isActive
@@ -113,6 +114,7 @@ export const Card = (
             <span className={`material-symbols-outlined ${card.icon}`}>
               add
             </span>
+            <span className={card.tooltiptext}>Agregar nota</span>
           </Link>
           <Link
             className={isActive
@@ -124,14 +126,16 @@ export const Card = (
             <span className={`${card.icon} material-symbols-outlined`}>
               file_open
             </span>
+            <span className={card.tooltiptext}>Actuaciones del proceso</span>
+          </Link>
+
+          <Link onClick={clickHandler} href={href} className={card.link}>
+            <span className={`material-symbols-outlined ${card.icon}`}>
+              {icon ?? 'open_in_new'}
+            </span>
+            <span className={card.tooltiptext}>abrir</span>
           </Link>
         </div>
-
-        <Link onClick={clickHandler} href={href} className={card.link}>
-          <span className={`material-symbols-outlined ${card.icon}`}>
-            {icon ?? 'open_in_new'}
-          </span>
-        </Link>
         {fecha && (
           <sub className={card.date}>{fecha
             ? fixFechas(
