@@ -90,8 +90,8 @@ export default async function PageProcesosRightllaveProceso(
   case 0:
     return (
       <>
-        <NewNota llaveProceso={ params.llaveProceso } uri={ `${ getBaseUrl() }` } />
-        <Notas llaveProceso={ params.llaveProceso } />
+        <NewNota llaveProceso={params.llaveProceso} uri={`${getBaseUrl()}`} />
+        <Notas llaveProceso={params.llaveProceso} />
       </>
     );
   case 1:

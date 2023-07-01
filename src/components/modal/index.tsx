@@ -5,10 +5,12 @@ import React from 'react';
 import { useModal } from '#@/app/modal-context';
 import modal from '#@/components/modal/modal.module.scss';
 import { BackwardsButton, ForwardButton } from '../navbar/Buttons';
+import { useParams } from 'next/navigation';
 
 export default function Modal(
   { children }: { children: React.ReactNode }
 ) {
+  const params = useParams();
   const overlay = useRef(
     null
   );
@@ -24,13 +26,16 @@ export default function Modal(
   const onDismiss = useCallback(
     () => {
       setIsOpen(
-        false
+        isOpen
+          ? false
+          : true
       );
       router.back();
     },
     [
       router,
-      setIsOpen
+      setIsOpen,
+      isOpen
     ]
   );
 

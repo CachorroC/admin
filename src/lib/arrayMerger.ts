@@ -58,8 +58,8 @@ export function arrayMergerByllaveProceso(
     a,
     b,
   }: {
-  a: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intActuacion[];
-  b: intProceso[] | monDemandado[] | intFecha[] | monNota[] | intActuacion[];
+  a: intProceso[];
+  b: monCarpetaDemandado[];
 }
 ) {
   const map = new Map();

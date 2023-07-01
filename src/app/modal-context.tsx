@@ -22,7 +22,7 @@ export function ModalProvider(
     isOpen,
     setIsOpen
   ] = useState(
-    false
+    true
   );
 
   return (

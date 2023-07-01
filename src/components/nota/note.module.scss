@@ -45,7 +45,7 @@
 
 .submitButton {
   border: none;
-  box-shadow: var(--dp5);
+  box-shadow: var(--dp2);
   border-radius: 2vmax;
   flex-grow: 1;
   width: 20em;
@@ -68,8 +68,7 @@
   }
 }
 
-.textArea,
-.tareas {
+.textArea {
   background-color: var(--surface-variant);
   color: var(--on-surface-variant);
   box-shadow: var(--dp2) inset;
@@ -85,9 +84,17 @@
   }
 }
 
+.tareas {
+  background-color: var(--surface-container-low);
+  color: var(--on-surface);
+  border-radius: 2cqmin;
+  text-align: center;
+  padding: 2cqmin;
+  flex-grow: 3;
+}
 .button {
   border: none;
-  box-shadow: var(--dp5);
+  box-shadow: var(--dp1);
   border-radius: 2cqmin;
   flex-grow: 1;
   display: flex;

@@ -77,27 +77,33 @@ export async function Notas(
     const notas = await getNotasByllaveProceso(
       { llaveProceso: llaveProceso }
     );
-    if ( notas.length === 0 ) {
+    if (notas.length === 0) {
       const nts = await getNotas();
       const NotasRow = nts.map(
         (
           nota
-        ) => <Nota nota={nota} key={nota._id} />
+        ) => (
+          <Nota nota={nota} key={nota._id.toString()} />
+        )
       );
-      return <div className={note.row}>{NotasRow}</div>;
+      return <>{NotasRow}</>;
     }
     const NotasRow = notas.map(
       (
         nota
-      ) => <Nota nota={nota} key={nota._id} />
+      ) => (
+        <Nota nota={nota} key={nota._id.toString()} />
+      )
     );
-    return <div className={note.row}>{NotasRow}</div>;
+    return <>{NotasRow}</>;
   }
   const notas = await getNotas();
   const NotasRow = notas.map(
     (
       nota
-    ) => <Nota nota={nota} key={nota._id} />
+    ) => (
+      <Nota nota={nota} key={nota._id.toString()} />
+    )
   );
-  return <div className={note.row}>{NotasRow}</div>;
+  return <>{NotasRow}</>;
 }

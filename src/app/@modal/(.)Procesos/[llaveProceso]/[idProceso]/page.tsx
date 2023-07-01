@@ -1,4 +1,4 @@
-import { arrayMergerByllaveProceso } from '#@/lib/arrayMerger';
+
 import { getNotasByllaveProceso } from '#@/lib/notas';
 import { getProcesosByllaveProceso } from '#@/lib/procesos';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
@@ -9,6 +9,7 @@ import { fixFechas } from '#@/lib/fix';
 import typography from '#@/styles/fonts/typography.module.scss';
 import layout from '#@/styles/scss/layout.module.scss';
 import Modal from '#@/components/modal';
+import { ActuacionCard } from '#@/components/card/ActuacionesCard';
 
 export default async function Page(
   {
@@ -34,18 +35,7 @@ export default async function Page(
           (
             actuacion, index, arr
           ) => (
-            <Card
-              key={actuacion.idRegActuacion}
-              name={actuacion.actuacion}
-              path={'/Procesos'}
-              llaveProceso={params.llaveProceso}
-              idProceso={params.idProceso}
-            >
-              <Name helper={fixFechas(
-                actuacion.fechaActuacion
-              )} />
-              <p className={typography.bodyMedium}>{actuacion.anotacion}</p>
-            </Card>
+            <ActuacionCard Actuacion={ actuacion } key={actuacion.idRegActuacion} />
           )
         )}
     </Modal>

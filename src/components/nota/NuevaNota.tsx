@@ -182,6 +182,7 @@ export function NewNota(
                       </label>
                       <input
                         type='date'
+                        className={note.textArea}
                         placeholder={`tareas.${index}.dueDate`}
                         {...register(
                           `tareas.${index}.dueDate`,

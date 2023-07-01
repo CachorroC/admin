@@ -163,8 +163,8 @@
   --surface-dim: var(--pal-neutral87);
   --surface-bright: var(--pal-neutral98);
 
-  --nav-background: var(--pal-neutral30);
-  --on-nav-background: var(--pal-primary90);
+  --on-nav-background: var(--pal-primary12);
+  --nav-background: var(--pal-primary94);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -218,8 +218,8 @@
     --surface-container-lowest: var(--pal-neutral4);
     --surface-dim: var(--pal-neutral6);
     --surface-bright: var(--pal-neutral24);
-    --nav-background: var(--pal-primary30);
-    --on-nav-background: var(--pal-primary90);
+    --on-nav-background: var(--pal-primary30);
+    --nav-background: var(--pal-primary90);
   }
 }
 

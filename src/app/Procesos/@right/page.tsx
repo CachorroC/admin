@@ -1,18 +1,16 @@
+import 'server-only';
+import NuevaNota from '#@/app/Notas/NuevaNota/page';
 import { Card } from '#@/components/card/card';
+import { NewNota } from '#@/components/nota/NuevaNota';
+import { Notas } from '#@/components/nota/notas';
+import { getBaseUrl } from '#@/lib/getBaseUrl';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default async function PageProcesosRight() {
   return (
     <>
-      <Card name={'Procesos'} path={'/Procesos'} icon='folder_open'>
-        <h1 className={typography.displayMedium}> Procesos</h1>
-      </Card>
-      <Card name={'Nueva Nota'} path={'/Demandados/NuevoProceso'} icon='add'>
-        <h1 className={typography.displayMedium}>NuevoProceso</h1>
-      </Card>
-      <Card name={'Demandados'} path={'/Demandados'} icon='person_pin'>
-        <h1 className={typography.displayMedium}> Demandados</h1>
-      </Card>
+      <NewNota llaveProceso={'Procesos'} uri={`${getBaseUrl()}`} />
+      <Notas />
     </>
   );
 }

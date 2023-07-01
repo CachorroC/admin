@@ -1,8 +1,11 @@
+import 'server-only';
 import { Suspense } from 'react';
-import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { fetchFechas } from '#@/lib/Actuaciones';
+import { getBaseUrl } from '#@/lib/getBaseUrl';
+import type { Route } from 'next';
+import { CardSearchList } from '#@/components/search/CardSearchList';
 export default async function DefaultProcesosLeft() {
   const carpetas = await getCarpetas();
   const fechas = await fetchFechas(
@@ -10,7 +13,11 @@ export default async function DefaultProcesosLeft() {
   );
   return (
     <Suspense fallback={<SearchOutputListSkeleton />}>
-      <SearchOutputList path={'/Procesos'} fechas={fechas} />
+      <CardSearchList
+        path={'/Procesos' as Route}
+        uri={`${getBaseUrl()}`}
+        Fechas={fechas}
+      />
     </Suspense>
   );
 }

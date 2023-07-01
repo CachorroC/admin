@@ -76,7 +76,7 @@ export const getCarpetaById = cache(
     const Notas = notas.filter(
       (
         nota
-      ) => nota._id === _id
+      ) => nota._id.toString() === _id.toString()
     );
     return Notas;
   }

@@ -22,7 +22,9 @@ export const ForwardButton = () => {
         );
       }}
     >
-      <span className={`material-symbols-outlined ${navbar.icon}`}>chevron_right</span>
+      <span className={`material-symbols-outlined ${navbar.icon}`}>
+        chevron_right
+      </span>
       <p className={navbar.ButtonTextHelper}>entrar</p>
     </button>
   );
@@ -32,19 +34,29 @@ export const BackwardsButton = () => {
     isNavOpen,
     setIsNavOpen
   ] = useNavigator();
+  const [
+    isOpen,
+    setIsOpen
+  ] = useModal();
   const router = useRouter();
+  const clickHandler = () => {
+    setIsNavOpen(
+      false
+    );
+    setIsOpen(
+      false
+    );
+    router.back();
+  };
   return (
     <button
       type='button'
       className={navbar.buttonBackwards}
-      onClick={() => {
-        setIsNavOpen(
-          false
-        );
-        router.back();
-      }}
+      onClick={clickHandler}
     >
-      <span className={`material-symbols-outlined ${navbar.icon}`}>chevron_left</span>
+      <span className={`material-symbols-outlined ${navbar.icon}`}>
+        chevron_left
+      </span>
       <p className={navbar.ButtonTextHelper}>atras</p>
     </button>
   );
@@ -64,7 +76,9 @@ export const DrawerMenuButton = () => {
           false
         )}
       >
-        <span className={`material-symbols-outlined ${navbar.icon}`}>close</span>
+        <span className={`material-symbols-outlined ${navbar.icon}`}>
+          close
+        </span>
         <p className={navbar.ButtonTextHelper}>cerrar</p>
       </button>
     );

@@ -47,9 +47,7 @@ export const LinkCard = (
 
   const href = (
     proceso.llaveProceso
-      ? idProceso === 0
-        ? `${path}/${proceso.llaveProceso}`
-        : `${path}/${proceso.llaveProceso}/${proceso.idProceso}`
+      ? `${path}/${proceso.llaveProceso}`
       : path
   ) as Route;
   const isActive =
@@ -90,7 +88,7 @@ export const LinkCard = (
     );
   }
   return (
-    <div className={searchbar.container}>
+    <Link className={searchbar.container} href={href}>
       <div className={isActive
         ? searchbar.isActive
         : searchbar.notActive}>
@@ -103,46 +101,7 @@ export const LinkCard = (
 
           {children}
         </div>
-
-        <div className={searchbar.links}>
-          <Link
-            className={isActive
-              ? searchbar.linkIsActive
-              : searchbar.link}
-            href={`${path}/${llaveProceso}` as Route}
-          >
-            <span className={`material-symbols-outlined ${searchbar.icon}`}>
-              badge
-            </span>
-          </Link>
-          <Link
-            className={isActive
-              ? searchbar.linkIsActive
-              : searchbar.link}
-            href={`/Notas/NuevaNota/${llaveProceso}`}
-            onClick={() => {
-              setIsOpen(
-                true
-              );
-            }}
-          >
-            <span className={`material-symbols-outlined ${searchbar.icon}`}>
-              add
-            </span>
-          </Link>
-          <Link
-            className={isActive
-              ? searchbar.linkIsActive
-              : searchbar.link}
-            onClick={clickHandler}
-            href={href}
-          >
-            <span className={`${searchbar.icon} material-symbols-outlined`}>
-              file_open
-            </span>
-          </Link>
-        </div>
       </div>
-    </div>
+    </Link>
   );
 };

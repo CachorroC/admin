@@ -26,14 +26,8 @@ async function Acts(
           (
             act, i, arr
           ) => {
-            const {
-
-              idRegActuacion,
-
-            } = act;
-            return (
-              <ActuacionCard Actuacion={ act } key={idRegActuacion} />
-            );
+            const { idRegActuacion } = act;
+            return <ActuacionCard Actuacion={act} key={idRegActuacion} />;
           }
         )}
     </>
@@ -76,7 +70,7 @@ export default async function PageProcesosLeftllaveProceso(
       carpeta
     ) => (
       <Fragment key={carpeta._id.toString()}>
-        <CarpetaCard Carpeta={ carpeta } />
+        <CarpetaCard Carpeta={carpeta} />
       </Fragment>
     )
   );
@@ -84,31 +78,28 @@ export default async function PageProcesosLeftllaveProceso(
     (
       proceso
     ) => (
-      <Fragment key={ proceso.idProceso } >
-        <ProcesoCard proceso={ proceso } />
-
-        <Acts idProceso={ proceso.idProceso } />
+      <Fragment key={proceso.idProceso}>
+        <Acts idProceso={proceso.idProceso} />
       </Fragment>
     )
   );
   switch (cantidadProcesos) {
   case 0:
     return (
-      <>{
-        carpetas.map(
+      <>
+        {carpetas.map(
           (
             carpeta
-          ) => ( <CarpetaCard Carpeta={ carpeta } key={carpeta._id.toString()}/>    )
-        )
-      }</>
+          ) => (
+            <CarpetaCard Carpeta={carpeta} key={carpeta._id.toString()} />
+          )
+        )}
+      </>
     );
   case 1:
     return (
       <>
-        <Suspense fallback={<p>loading</p>}>
-          {procesosMap}
-        </Suspense>
-
+        <Suspense fallback={<p>loading</p>}>{procesosMap}</Suspense>
       </>
     );
   case 2:

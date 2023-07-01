@@ -1,31 +1,52 @@
+'use client';
 import searchbar from '#@/components/search/searchbar.module.scss';
-import { Name } from '../Headings/clientSideName';
+import typography from '#@/styles/fonts/typography.module.scss';
 export default function LinkCardSkeleton() {
   return (
     <div className={searchbar.container}>
       <div className={searchbar.notActive}>
-        <Name helper='Cargando' />
-        <div className={searchbar.link}>
-          <span className={`${searchbar.icon} material-symbols-outlined`}>
-            file_open
-          </span>
-        </div>
-
+        <h1 className={typography.titleMedium}>Cargando </h1>
         <div className={searchbar.section}>
           <sub className={searchbar.date}>00-00-0000</sub>
         </div>
 
         <div className={searchbar.links}>
-          <div className={searchbar.link}>
+          <button
+            onClick={() => {
+              alert(
+                'cargando'
+              );
+            }}
+            className={searchbar.link}
+          >
             <span className={`material-symbols-outlined ${searchbar.icon}`}>
-              open_in_new
+              badge
             </span>
-          </div>
-          <div className={searchbar.link}>
+          </button>
+          <button
+            onClick={() => {
+              alert(
+                'cargando'
+              );
+            }}
+            className={searchbar.link}
+          >
             <span className={`material-symbols-outlined ${searchbar.icon}`}>
               add
             </span>
-          </div>
+          </button>
+          <button
+            onClick={() => {
+              alert(
+                'cargando'
+              );
+            }}
+            className={searchbar.link}
+          >
+            <span className={`material-symbols-outlined ${searchbar.icon}`}>
+              file_open
+            </span>
+          </button>
         </div>
       </div>
     </div>

@@ -30,11 +30,12 @@
 }
 .notActive {
   background-color: var(--surface-container-highest);
-  box-shadow: var(--dp1);
+  box-shadow: var(--dp2);
 }
 .isActive {
   background-color: var(--primary-container);
-  box-shadow: var(--dp2);
+  border: dashed solid 2px var(--outline-variant);
+  box-shadow: var(--dp4);
 }
 
 .section {
@@ -63,7 +64,7 @@
   border: none;
   box-shadow: var(--dp5);
 
-  border-radius: 2vmax;
+  border-radius: 2vmin;
   flex-grow: 1;
   background-color: var(--sf-3);
 
@@ -103,7 +104,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
-  border-radius: 1cqmin;
+  border-radius: 20cqmin;
 
   .name {
     font-family: var(--font-poiret);
@@ -164,7 +165,6 @@
 
 .link {
   background-color: var(--primary);
-
   color: var(--on-primary);
   box-shadow: var(--dp2);
 
@@ -198,6 +198,12 @@
   &:active {
     background-color: var(--sf-5);
     box-shadow: var(--dp8);
+  }
+}
+
+@container link (max-width:180px) {
+  .sub {
+    display: none;
   }
 }
 

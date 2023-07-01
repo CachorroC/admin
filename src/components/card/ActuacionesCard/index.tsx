@@ -22,38 +22,47 @@ export const ActuacionCard = (
     cant,
   } = Actuacion;
   return (
-    <div className={ styles.container } key={ idRegActuacion }>
-      <div className={ styles.card }>
-        <h1 className={`${typography.titleMedium} ${styles.title}` }>{ actuacion }</h1>
-        { anotacion && ( <p className={typography.bodyMedium}>{ anotacion }</p> ) }
-        <sub className={ `${ typography.labelSmall } ${ styles.sub }` }>{ `${ consActuacion } de ${ cant }` }</sub>
-        <Link href={ `/Notas/NuevaNota/${ llaveProceso }` } className={ styles.button }>
-          <span className={`material-symbols-outlined ${styles.icon}`}>note_add</span>
+    <div className={styles.container} key={idRegActuacion}>
+      <div className={styles.card}>
+        <h1 className={`${typography.titleMedium} ${styles.title}`}>
+          {actuacion}
+        </h1>
+        {anotacion && <p className={typography.bodyMedium}>{anotacion}</p>}
+        <sub
+          className={`${typography.labelSmall} ${styles.sub}`}
+        >{`${consActuacion} de ${cant}`}</sub>
+        <Link
+          href={`/Notas/NuevaNota/${llaveProceso}`}
+          className={styles.button}
+        >
+          <span className={`material-symbols-outlined ${styles.icon}`}>
+            note_add
+          </span>
         </Link>
-        <sup className={`${typography.labelMedium} ${styles.date}`}>{fixFechas(
-          fechaActuacion
-        ) }</sup>
-
-
+        <sup className={`${typography.labelMedium} ${styles.date}`}>
+          {fixFechas(
+            fechaActuacion
+          )}
+        </sup>
       </div>
-
     </div>
   );
 };
 
-
 export const ActuacionesList = (
-  { Actuaciones }: { Actuaciones: intActuacion[] }
+  {
+    Actuaciones,
+  }: {
+  Actuaciones: intActuacion[];
+}
 ) => (
   <>
-    { Actuaciones.map(
+    {Actuaciones.map(
       (
         Actuacion, ind, arr
       ) => {
         const { idRegActuacion } = Actuacion;
-        return (
-          <ActuacionCard Actuacion={ Actuacion } key={idRegActuacion} />
-        );
+        return <ActuacionCard Actuacion={Actuacion} key={idRegActuacion} />;
       }
     )}
   </>

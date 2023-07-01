@@ -1,23 +1,41 @@
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { Fragment, Suspense } from 'react';
-import { getActuacionesByidProceso } from '#@/lib/Actuaciones';
-import { Card } from '#@/components/card/card';
-import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-import Link from 'next/link';
-import card from '#@/components/card/card.module.scss';
 import { monCarpetaDemandado } from '#@/lib/types/demandados';
-import note from '#@/components/nota/note.module.scss';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
+import { getConsultaNumeroRadicion } from '#@/lib/RamaJudicial';
+import { intProceso } from '#@/lib/types/procesos';
+import { arrayMergerByllaveProceso } from '#@/lib/arrayMerger';
 
 function DemandadoNameBadge(
-  { carpeta }: { carpeta: monCarpetaDemandado }
+  {
+    carpeta,
+    proceso,
+  }: {
+  carpeta: monCarpetaDemandado;
+  proceso?: intProceso;
+}
 ) {
-  const {  llaveProceso, _id } = carpeta;
+  const { llaveProceso, _id } = carpeta;
+  if (proceso) {
+
+    return (
+      <Fragment key={proceso
+        ? proceso.idProceso
+        : _id.toString()}>
+        <Name llaveProceso={llaveProceso} />
+        <p className={typography.bodySmall}>{proceso.despacho}</p>
+
+
+
+        <CarpetaCard Carpeta={carpeta} />
+      </Fragment>
+    );
+  }
   return (
     <Fragment key={_id.toString()}>
-      <Name llaveProceso={ llaveProceso } />
-      <CarpetaCard Carpeta={ carpeta } />
+      <Name llaveProceso={llaveProceso} />
+      <CarpetaCard Carpeta={carpeta} />
     </Fragment>
   );
 }
@@ -29,6 +47,7 @@ async function Name(
       llaveProceso: llaveProceso,
     }
   );
+
   const nombre = proceso.map(
     (
       p
@@ -45,23 +64,52 @@ export default async function PageProcesosllaveProceso(
   };
 }
 ) {
+  const Procesos = await getConsultaNumeroRadicion(
+    {
+      llaveProceso: params.llaveProceso,
+    }
+  );
   const Carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: params.llaveProceso,
     }
   );
+  const merged = arrayMergerByllaveProceso(
+    {
+      a: Procesos,
+      b: Carpetas,
+    }
+  );
   const cantidadCarpetas = Carpetas.length;
   return (
     <>
-      {
-        Carpetas.map(
-          (
-            Carpeta
-          ) => (
-            <DemandadoNameBadge carpeta={Carpeta} key={Carpeta._id.toString()} />
-          )
+      {Carpetas.map(
+        (
+          Carpeta, i
+        ) => (
+          <Fragment key={Carpeta._id.toString()}>
+            {Procesos.map(
+              (
+                Proceso, i
+              ) => (
+                <DemandadoNameBadge
+                  carpeta={Carpeta}
+                  key={Proceso.idProceso}
+                  proceso={Proceso}
+                />
+              )
+            ) }
+            <DemandadoNameBadge
+              carpeta={Carpeta}
+              key={Carpeta._id.toString()}
+
+            />
+          </Fragment>
         )
-      }
+      ) }
+      <p className={typography.bodyMedium}>{JSON.stringify(
+        merged
+      )}</p>
     </>
   );
 }

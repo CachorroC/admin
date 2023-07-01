@@ -36,7 +36,8 @@
 .notActive {
   background-color: var(--surface-container-highest);
   color: var(--on-surface);
-  box-shadow: var(--dp3);
+  box-shadow: none;
+  border: 2px solid var(--outline);
 }
 
 .isActive {
