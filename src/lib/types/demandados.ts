@@ -12,7 +12,7 @@
 export interface intCarpetaDemandado {
   Avaluo?: Avaluo;
   Carpeta?: number;
-  Demanda: Demanda;
+  Demanda: intDemanda;
   Deudor: Deudor;
   EtapaProcesal?: EtapaProcesal;
   Liquidacion?: Liquidacion;
@@ -48,7 +48,7 @@ export interface Tel {
   Celular: number;
 }
 
-export interface Demanda {
+export interface intDemanda {
   Departamento: Departamento;
   Municipio: string;
   VencimientoPagare?: string;
@@ -298,14 +298,14 @@ export class ConvertCarpetas {
 
   public static toDemanda (
     json: string
-  ): Demanda {
+  ): intDemanda {
     return JSON.parse(
       json
     );
   }
 
   public static demandaToJson (
-    value: Demanda
+    value: intDemanda
   ): string {
     return JSON.stringify(
       value

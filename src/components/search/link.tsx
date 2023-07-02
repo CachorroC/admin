@@ -16,19 +16,27 @@ import { useModal } from '#@/app/modal-context';
 import { Name } from '../Headings/clientSideName';
 import { useRouter } from 'next/navigation';
 
-export const LinkCard = ({
-  path,
-  proceso,
-}: {
+export const LinkCard = (
+  {
+    path,
+    proceso,
+  }: {
   path: string;
   proceso: intFecha;
-}) => {
-  const [isOpen, setIsOpen] = useModal();
-  const { Demandado, fecha, llaveProceso, idProceso, _id } = proceso;
-  const { Nombre, Id, Direccion, Tel } = Demandado;
+}
+) => {
+  const [
+    isOpen,
+    setIsOpen
+  ] = useModal();
+  const { Deudor, fecha, llaveProceso, idProceso, _id } = proceso;
+  const { Nombre, Id, Direccion, Tel } = Deudor;
   const params = useParams();
   const pathname = usePathname();
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] = useNavigator();
 
   const href = (
     proceso.llaveProceso
@@ -47,12 +55,18 @@ export const LinkCard = ({
     <div className={searchbar.container} key={_id}>
       <Link
         href={href}
-        onClick={() => setIsNavOpen(false)}
-        className={isActive ? searchbar.isActive : searchbar.notActive}
+        onClick={() => setIsNavOpen(
+          false
+        )}
+        className={isActive
+          ? searchbar.isActive
+          : searchbar.notActive}
       >
         <Name helper={Nombre} />
 
-        <sub className={searchbar.date}>{fixFechas(fecha)}</sub>
+        <sub className={searchbar.date}>{fixFechas(
+          fecha
+        )}</sub>
       </Link>
     </div>
   );

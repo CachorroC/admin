@@ -9,7 +9,9 @@ import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputS
 
 async function ListDrawer() {
   const procesos = await getCarpetas();
-  const fechas = await fetchFechas({ procesos: procesos });
+  const fechas = await fetchFechas(
+    { procesos: procesos }
+  );
   return (
     <Drawer>
       <SearchOutputList path='/Procesos' fechas={fechas} />

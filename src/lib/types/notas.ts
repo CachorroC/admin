@@ -27,30 +27,54 @@ export interface monNota extends intNota {
 
 // Converts JSON strings to/from your types
 export class ConvertNotas {
-  public static toMonNota(json: string): monNota[] {
-    return JSON.parse(json);
+  public static toMonNota(
+    json: string
+  ): monNota[] {
+    return JSON.parse(
+      json
+    );
   }
 
-  public static monNotaToJson(value: monNota[]): string {
-    return JSON.stringify(value);
+  public static monNotaToJson(
+    value: monNota[]
+  ): string {
+    return JSON.stringify(
+      value
+    );
   }
 }
 
 // Converts JSON strings to/from your types
 export class ConvertNota {
-  public static toMonNota(json: string): monNota {
-    return JSON.parse(json);
+  public static toMonNota(
+    json: string
+  ): monNota {
+    return JSON.parse(
+      json
+    );
   }
 
-  public static monNotaToJson(value: monNota): string {
-    return JSON.stringify(value);
+  public static monNotaToJson(
+    value: monNota
+  ): string {
+    return JSON.stringify(
+      value
+    );
   }
 
-  public static toTarea(json: string): Tarea {
-    return JSON.parse(json);
+  public static toTarea(
+    json: string
+  ): Tarea {
+    return JSON.parse(
+      json
+    );
   }
 
-  public static tareaToJson(value: Tarea): string {
-    return JSON.stringify(value);
+  public static tareaToJson(
+    value: Tarea
+  ): string {
+    return JSON.stringify(
+      value
+    );
   }
 }

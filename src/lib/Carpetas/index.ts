@@ -8,73 +8,124 @@ import {
   ConvertCarpetas,
 } from '#@/lib/types/demandados';
 
-export const preload = (llaveProceso: string) => {
-  void getCarpetasByllaveProceso({ llaveProceso: llaveProceso });
+export const preload = (
+  llaveProceso: string
+) => {
+  void getCarpetasByllaveProceso(
+    { llaveProceso: llaveProceso }
+  );
 };
 
-const Collection = cache(async () => {
-  const client = await clientPromise;
-  if (!client) {
-    throw new Error('no hay cliente mongólico');
+const Collection = cache(
+  async () => {
+    const client = await clientPromise;
+    if (!client) {
+      throw new Error(
+        'no hay cliente mongólico'
+      );
+    }
+    const db = client.db(
+      'RyS'
+    );
+    const carpetas = db.collection(
+      'Demandados'
+    );
+    return carpetas;
   }
-  const db = client.db('RyS');
-  const carpetas = db.collection('Demandados');
-  return carpetas;
-});
+);
 const Transform = async () => {
   const collection = await Collection();
-  const carpetasRaw = await collection.find({}).toArray();
-  const notasString = JSON.stringify(carpetasRaw);
-  const carpetas = ConvertCarpetas.toMonCarpetaDemandado(notasString);
+  const carpetasRaw = await collection.find(
+    {}
+  ).toArray();
+  const notasString = JSON.stringify(
+    carpetasRaw
+  );
+  const carpetas = ConvertCarpetas.toMonCarpetaDemandado(
+    notasString
+  );
 
   return carpetas;
 };
 
-export const getCarpetas = cache(async () => {
-  const carpetas = await Transform();
-  return carpetas;
-});
+export const getCarpetas = cache(
+  async () => {
+    const carpetas = await Transform();
+    return carpetas;
+  }
+);
 export const getCarpetasByllaveProceso = cache(
-  async ({ llaveProceso }: { llaveProceso: string }) => {
+  async (
+    { llaveProceso }: { llaveProceso: string }
+  ) => {
     const collection = await Collection();
-    const carpetasRaw = await collection.find({}).toArray();
+    const carpetasRaw = await collection.find(
+      {}
+    ).toArray();
     const carpetas = ConvertCarpetas.toMonCarpetaDemandado(
-      JSON.stringify(carpetasRaw)
+      JSON.stringify(
+        carpetasRaw
+      )
     );
     const Carpetas = carpetas.filter(
-      (carpeta) => carpeta.llaveProceso === llaveProceso
+      (
+        carpeta
+      ) => carpeta.llaveProceso === llaveProceso
     );
     return Carpetas;
   }
 );
 
 export const getCarpetasByidProceso = cache(
-  async ({ idProceso }: { idProceso: number }) => {
+  async (
+    { idProceso }: { idProceso: number }
+  ) => {
     const carpetas = await Transform();
     const Carpetas = carpetas.filter(
-      (carpeta) => carpeta.idProceso === idProceso
+      (
+        carpeta
+      ) => carpeta.idProceso === idProceso
     );
     return Carpetas;
   }
 );
 
-export const getCarpetaById = cache(async ({ _id }: { _id: string }) => {
+export const getCarpetaById = cache(
+  async (
+    { _id }: { _id: string }
+  ) => {
+    const collection = await Collection();
+    const carpetasRaw = await collection.find(
+      {}
+    ).toArray();
+    const carpetas = ConvertCarpetas.toMonCarpetaDemandado(
+      JSON.stringify(
+        carpetasRaw
+      )
+    );
+    const Carpetas = carpetas.filter(
+      (
+        carpeta
+      ) => carpeta._id === _id
+    );
+    return Carpetas;
+  }
+);
+export async function postCarpeta(
+  { nota }: { nota: intCarpetaDemandado }
+) {
   const collection = await Collection();
-  const carpetasRaw = await collection.find({}).toArray();
-  const carpetas = ConvertCarpetas.toMonCarpetaDemandado(
-    JSON.stringify(carpetasRaw)
+  const outgoingRequest = await collection.insertOne(
+    nota
   );
-  const Carpetas = carpetas.filter((carpeta) => carpeta._id === _id);
-  return Carpetas;
-});
-export async function postCarpeta({ nota }: { nota: intCarpetaDemandado }) {
-  const collection = await Collection();
-  const outgoingRequest = await collection.insertOne(nota);
 
   if (!outgoingRequest.acknowledged) {
-    return new NextResponse(null, {
-      status: 404,
-    });
+    return new NextResponse(
+      null,
+      {
+        status: 404,
+      }
+    );
   }
   return new NextResponse(
     JSON.stringify(

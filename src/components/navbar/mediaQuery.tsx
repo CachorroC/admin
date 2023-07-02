@@ -1,12 +1,22 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-export default function useMedia(query: number) {
-  const [matches, setMatches] = useState(false);
-  useEffect(() => {
-    const mediaQueries = (query: number) => {
-      let media;
-      switch (query) {
+export default function useMedia(
+  query: number
+) {
+  const [
+    matches,
+    setMatches
+  ] = useState(
+    false
+  );
+  useEffect(
+    () => {
+      const mediaQueries = (
+        query: number
+      ) => {
+        let media;
+        switch (query) {
         case 0:
           media = '(max-width: 600px)';
           break;
@@ -22,26 +32,47 @@ export default function useMedia(query: number) {
           break;
         default:
           media = '';
+        }
+        return media;
+      };
+
+      const md = mediaQueries(
+        query
+      );
+      function handleMatchMedia() {
+        setMatches(
+          true
+        );
       }
-      return media;
-    };
+      function handleNoMatchMedia() {
+        setMatches(
+          false
+        );
+      }
 
-    const md = mediaQueries(query);
-    function handleMatchMedia() {
-      setMatches(true);
-    }
-    function handleNoMatchMedia() {
-      setMatches(false);
-    }
+      const media = window.matchMedia(
+        md
+      );
 
-    const media = window.matchMedia(md);
+      const listener = () => setMatches(
+        media.matches
+      );
+      listener();
 
-    const listener = () => setMatches(media.matches);
-    listener();
+      media.addEventListener(
+        'change',
+        listener
+      );
 
-    media.addEventListener('change', listener);
-
-    return () => media.removeEventListener('change', listener);
-  }, [matches, query]);
+      return () => media.removeEventListener(
+        'change',
+        listener
+      );
+    },
+    [
+      matches,
+      query
+    ]
+  );
   return matches;
 }

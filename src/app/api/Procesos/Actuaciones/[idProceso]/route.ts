@@ -19,18 +19,25 @@ export async function GET(
       const Response: IntActuaciones = {
         idProceso: params.idProceso,
         text: text
-          ? JSON.parse(text)
+          ? JSON.parse(
+            text
+          )
           : {
-              statusCode: req.status,
-              message: req.statusText,
-            },
+            statusCode: req.status,
+            message: req.statusText,
+          },
       };
-      return new NextResponse(JSON.stringify(Response), {
-        status: 200,
-        headers: {
-          'content-type': 'application/json',
-        },
-      });
+      return new NextResponse(
+        JSON.stringify(
+          Response
+        ),
+        {
+          status: 200,
+          headers: {
+            'content-type': 'application/json',
+          },
+        }
+      );
     }
     const res = (await req.json()) as intConsultaActuaciones;
     if (res.actuaciones) {
@@ -43,26 +50,41 @@ export async function GET(
         },
         acts: res.actuaciones,
       };
-      return new NextResponse(JSON.stringify(Response), {
-        status: 200,
-        headers: {
-          'content-type': 'application/json',
-        },
-      });
+      return new NextResponse(
+        JSON.stringify(
+          Response
+        ),
+        {
+          status: 200,
+          headers: {
+            'content-type': 'application/json',
+          },
+        }
+      );
     }
     const text = await req.text();
     const Response: IntActuaciones = {
       idProceso: params.idProceso,
-      text: JSON.parse(text),
+      text: JSON.parse(
+        text
+      ),
     };
-    return new NextResponse(JSON.stringify(Response), {
-      status: 200,
-      headers: {
-        'content-type': 'application/json',
-      },
-    });
-  } catch {
-    (error: unknown | any) => {
+    return new NextResponse(
+      JSON.stringify(
+        Response
+      ),
+      {
+        status: 200,
+        headers: {
+          'content-type': 'application/json',
+        },
+      }
+    );
+  }
+  catch {
+    (
+      error: unknown | any
+    ) => {
       const Response: IntActuaciones = {
         idProceso: params.idProceso,
         text: {
@@ -70,12 +92,17 @@ export async function GET(
           statusCode: 0,
         },
       };
-      return new NextResponse(JSON.stringify(Response), {
-        status: 200,
-        headers: {
-          'content-type': 'application/json',
-        },
-      });
+      return new NextResponse(
+        JSON.stringify(
+          Response
+        ),
+        {
+          status: 200,
+          headers: {
+            'content-type': 'application/json',
+          },
+        }
+      );
     };
   }
   const Response: IntActuaciones = {
@@ -85,10 +112,15 @@ export async function GET(
       statusCode: 0,
     },
   };
-  return new NextResponse(JSON.stringify(Response), {
-    status: 200,
-    headers: {
-      'content-type': 'application/json',
-    },
-  });
+  return new NextResponse(
+    JSON.stringify(
+      Response
+    ),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  );
 }

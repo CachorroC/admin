@@ -4,7 +4,9 @@ import styles from './actuaciones.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 
-export const ActuacionCard = ({ Actuacion }: { Actuacion: intActuacion }) => {
+export const ActuacionCard = (
+  { Actuacion }: { Actuacion: intActuacion }
+) => {
   const {
     idRegActuacion,
     llaveProceso,
@@ -38,22 +40,30 @@ export const ActuacionCard = ({ Actuacion }: { Actuacion: intActuacion }) => {
           </span>
         </Link>
         <sup className={`${typography.labelMedium} ${styles.date}`}>
-          {fixFechas(fechaActuacion)}
+          {fixFechas(
+            fechaActuacion
+          )}
         </sup>
       </div>
     </div>
   );
 };
 
-export const ActuacionesList = ({
-  Actuaciones,
-}: {
+export const ActuacionesList = (
+  {
+    Actuaciones,
+  }: {
   Actuaciones: intActuacion[];
-}) => (
+}
+) => (
   <>
-    {Actuaciones.map((Actuacion, ind, arr) => {
-      const { idRegActuacion } = Actuacion;
-      return <ActuacionCard Actuacion={Actuacion} key={idRegActuacion} />;
-    })}
+    {Actuaciones.map(
+      (
+        Actuacion, ind, arr
+      ) => {
+        const { idRegActuacion } = Actuacion;
+        return <ActuacionCard Actuacion={Actuacion} key={idRegActuacion} />;
+      }
+    )}
   </>
 );
