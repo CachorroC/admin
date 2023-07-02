@@ -9,18 +9,17 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { useNavigator } from '#@/app/search-context';
 import { fixFechas } from '#@/lib/fix';
 import { Name } from '#@/components/Headings/clientSideName';
-export const Card = (
-  {
-    name,
-    path,
-    children,
-    llaveProceso,
-    idProceso,
-    icon,
-    despacho,
-    fecha,
-    contenido,
-  }: {
+export const Card = ({
+  name,
+  path,
+  children,
+  llaveProceso,
+  idProceso,
+  icon,
+  despacho,
+  fecha,
+  contenido,
+}: {
   name: string;
   path: string;
   children: ReactNode;
@@ -30,23 +29,12 @@ export const Card = (
   icon?: string;
   fecha?: string | null;
   contenido?: string;
-}
-) => {
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] = useNavigator();
-  const [
-    isOpen,
-    setIsOpen
-  ] = useModal();
+}) => {
+  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [isOpen, setIsOpen] = useModal();
   const clickHandler = () => {
-    setIsNavOpen(
-      false
-    );
-    setIsOpen(
-      true
-    );
+    setIsNavOpen(false);
+    setIsOpen(true);
   };
   const pathname = usePathname();
 
@@ -64,35 +52,23 @@ export const Card = (
     pathname === path;
 
   const juzgado = despacho
-    ? despacho.replace(
-      / /g,
-      '-'
-    ).toLocaleLowerCase().slice(
-      0,
-      -1
-    )
+    ? despacho.replace(/ /g, '-').toLocaleLowerCase().slice(0, -1)
     : null;
 
   return (
     <div className={card.container}>
-      <div className={isActive
-        ? card.isActive
-        : card.notActive}>
+      <div className={isActive ? card.isActive : card.notActive}>
         <h1 className={`${typography.titleMedium} ${card.title}`}>{name}</h1>
         <Name helper={name} />
         <div className={card.section}>
-          <sub className={card.date}>{fixFechas(
-            fecha
-          )}</sub>
+          <sub className={card.date}>{fixFechas(fecha)}</sub>
 
           {children}
         </div>
 
         <div className={card.links}>
           <Link
-            className={isActive
-              ? card.linkIsActive
-              : card.link}
+            className={isActive ? card.linkIsActive : card.link}
             href={`${path}/${llaveProceso}` as Route}
           >
             <span className={`material-symbols-outlined ${card.icon}`}>
@@ -101,14 +77,10 @@ export const Card = (
             <span className={card.tooltiptext}>Perfil del Demandado</span>
           </Link>
           <Link
-            className={isActive
-              ? card.linkIsActive
-              : card.link}
+            className={isActive ? card.linkIsActive : card.link}
             href={`/Notas/NuevaNota/${llaveProceso}`}
             onClick={() => {
-              setIsOpen(
-                true
-              );
+              setIsOpen(true);
             }}
           >
             <span className={`material-symbols-outlined ${card.icon}`}>
@@ -117,9 +89,7 @@ export const Card = (
             <span className={card.tooltiptext}>Agregar nota</span>
           </Link>
           <Link
-            className={isActive
-              ? card.linkIsActive
-              : card.link}
+            className={isActive ? card.linkIsActive : card.link}
             onClick={clickHandler}
             href={href}
           >
@@ -137,11 +107,7 @@ export const Card = (
           </Link>
         </div>
         {fecha && (
-          <sub className={card.date}>{fecha
-            ? fixFechas(
-              fecha
-            )
-            : href}</sub>
+          <sub className={card.date}>{fecha ? fixFechas(fecha) : href}</sub>
         )}
         {contenido && (
           <p className={`${typography.bodySmall} ${card.content}`}>
@@ -157,10 +123,7 @@ export const Card = (
           >
             {' '}
             <p className={`${typography.bodySmall} ${card.content}`}>
-              {juzgado.replaceAll(
-                'á',
-                'a'
-              )}
+              {juzgado.replaceAll('á', 'a')}
             </p>
           </Link>
         )}

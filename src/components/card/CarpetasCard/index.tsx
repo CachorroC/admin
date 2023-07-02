@@ -6,9 +6,7 @@ import Link from 'next/link';
 import type { Route } from 'next';
 import { usePathname } from 'next/navigation';
 
-export const CarpetaCard = (
-  { Carpeta }: { Carpeta: monCarpetaDemandado }
-) => {
+export const CarpetaCard = ({ Carpeta }: { Carpeta: monCarpetaDemandado }) => {
   const pathname = usePathname();
 
   const { llaveProceso, idProceso, Demandado, Codeudor, _id } = Carpeta;
@@ -29,9 +27,7 @@ export const CarpetaCard = (
     pathname === path;
   return (
     <div className={styles.container} key={_id}>
-      <div className={isActive
-        ? styles.cardActive
-        : styles.cardInactive}>
+      <div className={isActive ? styles.cardActive : styles.cardInactive}>
         <h1 className={`${typography.titleMedium} ${styles.title}`}>
           {Nombre}
         </h1>

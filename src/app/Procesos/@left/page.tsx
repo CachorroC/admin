@@ -9,9 +9,7 @@ import type { Route } from 'next';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 export default async function PageProcesosLeft() {
   const carpetas = await getCarpetas();
-  const fechas = await fetchFechas(
-    { procesos: carpetas }
-  );
+  const fechas = await fetchFechas({ procesos: carpetas });
   return (
     <Suspense fallback={<SearchOutputListSkeleton />}>
       <CardSearchList

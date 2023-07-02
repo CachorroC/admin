@@ -9,21 +9,17 @@ import { arrayMergerByllaveProceso } from '#@/lib/arrayMerger';
 import box from '#@/styles/scss/box.module.scss';
 import { Name } from '#@/components/Headings/serverSideName';
 
-function DemandadoNameBadge(
-  {
-    carpeta,
-    proceso,
-  }: {
+function DemandadoNameBadge({
+  carpeta,
+  proceso,
+}: {
   carpeta: monCarpetaDemandado;
   proceso?: intProceso;
-}
-) {
+}) {
   const { llaveProceso, _id } = carpeta;
   if (proceso) {
     return (
-      <Fragment key={proceso
-        ? proceso.idProceso
-        : _id}>
+      <Fragment key={proceso ? proceso.idProceso : _id}>
         <Name llaveProceso={llaveProceso} />
         <p className={typography.bodySmall}>{proceso.despacho}</p>
 
@@ -39,49 +35,35 @@ function DemandadoNameBadge(
   );
 }
 
-export default async function PageProcesosllaveProceso(
-  {
-    params,
-  }: {
+export default async function PageProcesosllaveProceso({
+  params,
+}: {
   params: {
     llaveProceso: string;
   };
-}
-) {
-  const Procesos = await getConsultaNumeroRadicion(
-    {
-      llaveProceso: params.llaveProceso,
-    }
-  );
-  const Carpetas = await getCarpetasByllaveProceso(
-    {
-      llaveProceso: params.llaveProceso,
-    }
-  );
+}) {
+  const Procesos = await getConsultaNumeroRadicion({
+    llaveProceso: params.llaveProceso,
+  });
+  const Carpetas = await getCarpetasByllaveProceso({
+    llaveProceso: params.llaveProceso,
+  });
 
   const cantidadCarpetas = Carpetas.length;
   return (
     <>
-      {Carpetas.map(
-        (
-          Carpeta, i
-        ) => (
-          <Fragment key={Carpeta._id}>
-            {Procesos.map(
-              (
-                Proceso, i
-              ) => (
-                <DemandadoNameBadge
-                  carpeta={Carpeta}
-                  key={Proceso.idProceso}
-                  proceso={Proceso}
-                />
-              )
-            )}
-            <DemandadoNameBadge carpeta={Carpeta} key={Carpeta._id} />
-          </Fragment>
-        )
-      )}
+      {Carpetas.map((Carpeta, i) => (
+        <Fragment key={Carpeta._id}>
+          {Procesos.map((Proceso, i) => (
+            <DemandadoNameBadge
+              carpeta={Carpeta}
+              key={Proceso.idProceso}
+              proceso={Proceso}
+            />
+          ))}
+          <DemandadoNameBadge carpeta={Carpeta} key={Carpeta._id} />
+        </Fragment>
+      ))}
     </>
   );
 }

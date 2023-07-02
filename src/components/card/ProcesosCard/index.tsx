@@ -4,31 +4,21 @@ import Link from 'next/link';
 import styles from './procesos.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import type { Route } from 'next';
-export const ProcesoCard = (
-  { proceso }: { proceso: intProceso }
-) => {
+export const ProcesoCard = ({ proceso }: { proceso: intProceso }) => {
   const { idProceso, llaveProceso, sujetosProcesales, despacho, esPrivado } =
     proceso;
   if (esPrivado) {
     return null;
   }
   const juzgado = despacho
-    ? despacho.replace(
-      / /g,
-      '-'
-    ).toLocaleLowerCase().slice(
-      0,
-      -1
-    )
+    ? despacho.replace(/ /g, '-').toLocaleLowerCase().slice(0, -1)
     : null;
 
   return (
     <div className={styles.container}>
       <div className={styles.card}>
         <h1 className={`${typography.titleLarge} ${styles.title}`}>
-          {fixDemandado(
-            sujetosProcesales
-          )}
+          {fixDemandado(sujetosProcesales)}
         </h1>
         <Link
           className={styles.button}
@@ -51,10 +41,7 @@ export const ProcesoCard = (
           >
             {' '}
             <p className={typography.bodySmall}>
-              {juzgado.replaceAll(
-                'á',
-                'a'
-              )}
+              {juzgado.replaceAll('á', 'a')}
             </p>
           </Link>
         )}

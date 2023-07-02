@@ -5,27 +5,19 @@ import { ActuacionCard } from '#@/components/card/ActuacionesCard';
 import { ProcesoCard } from '#@/components/card/ProcesosCard';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 
-export default async function Page(
-  {
-    params,
-  }: {
+export default async function Page({
+  params,
+}: {
   params: { llaveProceso: string };
-}
-) {
-  const procesos = await getCarpetasByllaveProceso(
-    {
-      llaveProceso: params.llaveProceso,
-    }
-  );
+}) {
+  const procesos = await getCarpetasByllaveProceso({
+    llaveProceso: params.llaveProceso,
+  });
   return (
     <Modal>
-      {procesos.map(
-        (
-          carpeta, i, arr
-        ) => (
-          <CarpetaCard key={carpeta._id} Carpeta={carpeta} />
-        )
-      )}
+      {procesos.map((carpeta, i, arr) => (
+        <CarpetaCard key={carpeta._id} Carpeta={carpeta} />
+      ))}
     </Modal>
   );
 }

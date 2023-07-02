@@ -7,10 +7,7 @@ import { useNavigator } from '#@/app/search-context';
 import type { Route } from 'next';
 
 export const ForwardButton = () => {
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] = useNavigator();
+  const [isNavOpen, setIsNavOpen] = useNavigator();
   const router = useRouter();
   return (
     <button
@@ -18,9 +15,7 @@ export const ForwardButton = () => {
       className={navbar.buttonForward}
       onClick={() => {
         router.forward();
-        setIsNavOpen(
-          false
-        );
+        setIsNavOpen(false);
       }}
     >
       <span className={`material-symbols-outlined ${navbar.icon}`}>
@@ -31,22 +26,12 @@ export const ForwardButton = () => {
   );
 };
 export const BackwardsButton = () => {
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] = useNavigator();
-  const [
-    isOpen,
-    setIsOpen
-  ] = useModal();
+  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [isOpen, setIsOpen] = useModal();
   const router = useRouter();
   const clickHandler = () => {
-    setIsNavOpen(
-      false
-    );
-    setIsOpen(
-      false
-    );
+    setIsNavOpen(false);
+    setIsOpen(false);
     router.back();
   };
   return (
@@ -63,19 +48,14 @@ export const BackwardsButton = () => {
   );
 };
 export const DrawerMenuButton = () => {
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] = useNavigator();
+  const [isNavOpen, setIsNavOpen] = useNavigator();
 
   if (isNavOpen) {
     return (
       <button
         type='button'
         className={navbar.buttonDrawerMenu}
-        onClick={() => setIsNavOpen(
-          false
-        )}
+        onClick={() => setIsNavOpen(false)}
       >
         <span className={`material-symbols-outlined ${navbar.icon}`}>
           close
@@ -88,9 +68,7 @@ export const DrawerMenuButton = () => {
     <button
       type='button'
       className={navbar.buttonDrawerMenu}
-      onClick={() => setIsNavOpen(
-        true
-      )}
+      onClick={() => setIsNavOpen(true)}
     >
       <span className={`material-symbols-outlined ${navbar.icon}`}>menu</span>
       <p className={navbar.ButtonTextHelper}>abrir</p>
@@ -99,18 +77,13 @@ export const DrawerMenuButton = () => {
 };
 
 export const HomeButton = () => {
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] = useNavigator();
+  const [isNavOpen, setIsNavOpen] = useNavigator();
   return (
     <Link
       href={'/' as Route}
       className={navbar.buttonHome}
       onClick={() => {
-        setIsNavOpen(
-          false
-        );
+        setIsNavOpen(false);
       }}
     >
       <span className={`material-symbols-outlined ${navbar.icon}`}>home</span>
@@ -119,14 +92,9 @@ export const HomeButton = () => {
   );
 };
 export const ModalButton = () => {
-  const [
-    isOpen,
-    setIsOpen
-  ] = useModal();
+  const [isOpen, setIsOpen] = useModal();
   return (
-    <button className={navbar.buttonModal} onClick={() => setIsOpen(
-      true
-    )}>
+    <button className={navbar.buttonModal} onClick={() => setIsOpen(true)}>
       <span className={`material-symbols-outlined ${navbar.icon}`}>box</span>
     </button>
   );

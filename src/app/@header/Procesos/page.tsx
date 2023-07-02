@@ -9,9 +9,7 @@ import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputS
 
 export default async function Page() {
   const procesos = await getCarpetas();
-  const fechas = await fetchFechas(
-    { procesos: procesos }
-  );
+  const fechas = await fetchFechas({ procesos: procesos });
 
   return (
     <Header>
