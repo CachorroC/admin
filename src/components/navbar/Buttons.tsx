@@ -4,6 +4,7 @@ import navbar from '#@/components/navbar/navbar.module.scss';
 import Link from 'next/link';
 import { useModal } from '#@/app/modal-context';
 import { useNavigator } from '#@/app/search-context';
+import type { Route } from 'next';
 
 export const ForwardButton = () => {
   const [
@@ -104,7 +105,7 @@ export const HomeButton = () => {
   ] = useNavigator();
   return (
     <Link
-      href={'/'}
+      href={'/' as Route}
       className={navbar.buttonHome}
       onClick={() => {
         setIsNavOpen(

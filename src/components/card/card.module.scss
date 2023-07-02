@@ -89,6 +89,7 @@
 .links {
   display: flex;
   flex-flow: row wrap;
+  gap: 2cqmin;
   & > * {
     width: 48%;
   }

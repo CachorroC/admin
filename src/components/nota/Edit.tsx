@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation';
 import { intNota, intNotaFormValues, monNota } from '#@/lib/types/notas';
 import note from '#@/components/nota/note.module.scss';
 import { Fragment } from 'react';
+import typography from '#@/styles/fonts/typography.module.scss';
 
 export function Edit(
   { uri, nota }: { uri: string; nota: monNota }
@@ -76,21 +77,30 @@ export function Edit(
       <form className={note.form} onSubmit={handleSubmit(
         onSubmit
       )}>
-        <textarea
-          className={note.textArea}
-          defaultValue={nota.nota}
-          {...register(
-            'nota',
-            { required: true }
-          )}
-        />
+        <div className={note.section}>
+          <label
+            htmlFor={'nota'}
+            className={`${note.label} ${typography.titleMedium}`}
+          >
+            Nota
+          </label>
+
+          <textarea
+            className={note.textArea}
+            defaultValue={nota.nota}
+            {...register(
+              'nota',
+              { required: true }
+            )}
+          />
+        </div>
         {nota.tareas.map(
           (
             field, index
           ) => (
             <Fragment key={field.tarea}>
               <div className={note.section}>
-                <label htmlFor={`tareas.${index}.text`} className={note.label}>
+                <label htmlFor={`tareas.${index}.tarea`} className={note.label}>
                 Tarea:{' '}
                 </label>
                 <textarea

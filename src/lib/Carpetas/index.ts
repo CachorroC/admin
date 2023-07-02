@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 import {
   monCarpetaDemandado,
   intCarpetaDemandado,
-  Convert,
+  ConvertCarpetas,
 } from '#@/lib/types/demandados';
 
 export const preload = (
@@ -33,20 +33,25 @@ const Collection = cache(
     return carpetas;
   }
 );
+const Transform = async () => {
+  const collection = await Collection();
+  const carpetasRaw = await collection.find(
+    {}
+  ).toArray();
+  const notasString = JSON.stringify(
+    carpetasRaw
+  );
+  const carpetas = ConvertCarpetas.toMonCarpetaDemandado(
+    notasString
+  );
+
+  return carpetas;
+};
 
 export const getCarpetas = cache(
   async () => {
-    const collection = await Collection();
-    const carpetasRaw = await collection.find(
-      {}
-    ).toArray();
-    const carpetas1 = JSON.stringify(
-      carpetasRaw
-    );
-    const carps = Convert.toMonCarpetaDemandado(
-      carpetas1
-    );
-    return carps;
+    const carpetas = await Transform();
+    return carpetas;
   }
 );
 export const getCarpetasByllaveProceso = cache(
@@ -57,7 +62,7 @@ export const getCarpetasByllaveProceso = cache(
     const carpetasRaw = await collection.find(
       {}
     ).toArray();
-    const carpetas = Convert.toMonCarpetaDemandado(
+    const carpetas = ConvertCarpetas.toMonCarpetaDemandado(
       JSON.stringify(
         carpetasRaw
       )
@@ -70,6 +75,26 @@ export const getCarpetasByllaveProceso = cache(
     return Carpetas;
   }
 );
+
+export const getCarpetasByidProceso = cache(
+  async (
+    { idProceso }: { idProceso: number }
+  ) => {
+    const carpetas = await Transform();
+    const Carpetas = carpetas.filter(
+      (
+        carpeta
+      ) => {
+        if (idProceso === 0) {
+          return false;
+        }
+        return carpeta.idProceso === idProceso;
+      }
+    );
+    return Carpetas;
+  }
+);
+
 export const getCarpetaById = cache(
   async (
     { _id }: { _id: string }
@@ -78,7 +103,7 @@ export const getCarpetaById = cache(
     const carpetasRaw = await collection.find(
       {}
     ).toArray();
-    const carpetas = Convert.toMonCarpetaDemandado(
+    const carpetas = ConvertCarpetas.toMonCarpetaDemandado(
       JSON.stringify(
         carpetasRaw
       )

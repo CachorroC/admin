@@ -22,6 +22,7 @@ export default function InputSearchBar() {
     <input
       type='text'
       className={searchbar.input}
+      name='search'
       value={search}
       placeholder={isHome
         ? 'Buscar'

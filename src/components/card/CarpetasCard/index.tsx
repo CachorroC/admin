@@ -9,9 +9,7 @@ import { usePathname } from 'next/navigation';
 export const CarpetaCard = (
   { Carpeta }: { Carpeta: monCarpetaDemandado }
 ) => {
-
   const pathname = usePathname();
-
 
   const { llaveProceso, idProceso, Demandado, Codeudor, _id } = Carpeta;
   const { Nombre, Tel, Direccion, Email } = Demandado;
@@ -37,15 +35,11 @@ export const CarpetaCard = (
         <h1 className={`${typography.titleMedium} ${styles.title}`}>
           {Nombre}
         </h1>
-        <p className={ styles.content }>{ Direccion }</p>
-        <div className={ styles.links }>
-
-          <Link
-            className={styles.button}
-            href={href}
-          >
+        <p className={styles.content}>{Direccion}</p>
+        <div className={styles.links}>
+          <Link className={styles.button} href={href}>
             <span className={`material-symbols-outlined ${styles.icon}`}>
-            folder_open
+              folder_open
             </span>
             <span className={styles.tooltiptext}>Abrir</span>
           </Link>
@@ -53,7 +47,7 @@ export const CarpetaCard = (
           {Celular && (
             <Link className={styles.button} href={`tel:${Celular}`}>
               <span className={`material-symbols-outlined ${styles.icon}`}>
-              phone_iphone
+                phone_iphone
               </span>
               <span className={styles.tooltiptext}>Numero Celular</span>
             </Link>
@@ -61,7 +55,7 @@ export const CarpetaCard = (
           {Email && (
             <Link className={styles.button} href={`mailto:${Email}`}>
               <span className={`material-symbols-outlined ${styles.icon}`}>
-              forward_to_inbox
+                forward_to_inbox
               </span>
               <span className={styles.tooltiptext}>Email</span>
             </Link>
@@ -69,7 +63,7 @@ export const CarpetaCard = (
           {Fijo && (
             <Link className={styles.button} href={`tel:${Fijo}`}>
               <span className={`material-symbols-outlined ${styles.icon}`}>
-              call
+                call
               </span>
               <span className={styles.tooltiptext}>Numero Fijo</span>
             </Link>

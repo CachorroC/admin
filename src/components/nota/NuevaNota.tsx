@@ -101,12 +101,17 @@ export function NewNota(
       <form className={note.form} onSubmit={handleSubmit(
         onSubmit
       )}>
-        <div className={ note.section }>
-          <label htmlFor={'nota'} className={note.label}>
-            <h1 className={typography.titleMedium}> Nota</h1>
+        <div className={note.section}>
+          <label
+            htmlFor='nota'
+            className={`${note.label} ${typography.titleMedium}`}
+          >
+            Nota
           </label>
-          <textarea
+          <input
+            type='text'
             placeholder='agregue su nota'
+            id='nota'
             className={note.textArea}
             {...register(
               'nota',
@@ -137,12 +142,13 @@ export function NewNota(
                   <Fragment key={field.id}>
                     <div className={note.section}>
                       <label
-                        htmlFor={`tareas.${index}.text`}
+                        htmlFor={`tareas.${index}.tarea`}
                         className={note.label}
                       >
                       Tarea:{' '}
                       </label>
-                      <textarea
+                      <input
+                        type='text'
                         placeholder='tarea'
                         {...register(
                           `tareas.${index}.tarea`,

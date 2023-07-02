@@ -11,42 +11,22 @@ export default function LinkCardSkeleton() {
         </div>
 
         <div className={searchbar.links}>
-          <button
-            onClick={() => {
-              alert(
-                'cargando'
-              );
-            }}
-            className={searchbar.link}
-          >
+          <p className={searchbar.link}>
             <span className={`material-symbols-outlined ${searchbar.icon}`}>
               badge
             </span>
-          </button>
-          <button
-            onClick={() => {
-              alert(
-                'cargando'
-              );
-            }}
-            className={searchbar.link}
-          >
+          </p>
+          <p className={searchbar.link}>
             <span className={`material-symbols-outlined ${searchbar.icon}`}>
               add
             </span>
-          </button>
-          <button
-            onClick={() => {
-              alert(
-                'cargando'
-              );
-            }}
-            className={searchbar.link}
-          >
+          </p>
+          <p className={searchbar.link}>
+            {' '}
             <span className={`material-symbols-outlined ${searchbar.icon}`}>
               file_open
             </span>
-          </button>
+          </p>
         </div>
       </div>
     </div>

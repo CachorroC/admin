@@ -29,7 +29,7 @@ export const LinkCard = (
     isOpen,
     setIsOpen
   ] = useModal();
-  const { Demandado, fecha, llaveProceso, idProceso } = proceso;
+  const { Demandado, fecha, llaveProceso, idProceso, _id } = proceso;
   const { Nombre, Id, Direccion, Tel } = Demandado;
   const params = useParams();
   const pathname = usePathname();
@@ -42,35 +42,32 @@ export const LinkCard = (
     proceso.llaveProceso
       ? proceso.idProceso
         ? `${path}/${proceso.llaveProceso}/${proceso.idProceso}`
-        : `${ path }/${ proceso.llaveProceso }`
+        : `${path}/${proceso.llaveProceso}`
       : path
   ) as Route;
   const isActive =
     pathname === href ||
     pathname === `${path}/${llaveProceso}/${idProceso}` ||
-    pathname === `${ path }/${ llaveProceso }`;
+    pathname === `${path}/${llaveProceso}`;
   const router = useRouter();
 
   return (
-    <Link
-      href={href}
-      className={ searchbar.container }
-      onClick={()=> setIsNavOpen(
-        false
-      ) }
-    >
-      <div className={isActive
-        ? searchbar.isActive
-        : searchbar.notActive }
+    <div className={searchbar.container} key={_id}>
+      <Link
+        href={href}
+        onClick={() => setIsNavOpen(
+          false
+        )}
+        className={isActive
+          ? searchbar.isActive
+          : searchbar.notActive}
       >
         <Name helper={Nombre} />
 
-        <div className={searchbar.section}>
-          <sub className={searchbar.date}>{fixFechas(
-            fecha
-          )}</sub>
-        </div>
-      </div>
-    </Link>
+        <sub className={searchbar.date}>{fixFechas(
+          fecha
+        )}</sub>
+      </Link>
+    </div>
   );
 };

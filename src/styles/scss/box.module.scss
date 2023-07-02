@@ -10,39 +10,25 @@
   box-sizing: border-box;
   padding: 2vmin;
 
-  .container,
-  .grid,
-  .flex {
+  .container {
     background-color: var(--surface);
 
-    .container,
-    .grid,
-    .flex {
+    .container {
       background-color: var(--sf-1);
 
-      .container,
-      .grid,
-      .flex {
+      .container {
         background-color: var(--sf-2);
 
-        .container,
-        .grid,
-        .flex {
+        .container {
           background-color: var(--sf-3);
 
-          .container,
-          .grid,
-          .flex {
+          .container {
             background-color: var(--primary-container);
 
-            .container,
-            .grid,
-            .flex {
+            .container {
               background-color: var(--secondary-container);
 
-              .container,
-              .grid,
-              .flex {
+              .container {
                 background-color: var(--tertiary-container);
               }
             }

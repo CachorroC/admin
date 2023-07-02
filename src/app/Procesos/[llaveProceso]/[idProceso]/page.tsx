@@ -1,10 +1,12 @@
 import { Card } from '#@/components/card/card';
-import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
+import {
+  getCarpetasByidProceso,
+  getCarpetasByllaveProceso,
+} from '#@/lib/Carpetas';
 import typography from '#@/styles/fonts/typography.module.scss';
-import Link from 'next/link';
 import { Suspense } from 'react';
-import { CardCarpeta } from '#@/components/card/cardCarpeta';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
+import { toNameString } from '#@/lib/fix';
 async function Name(
   { llaveProceso }: { llaveProceso: string }
 ) {
@@ -18,7 +20,9 @@ async function Name(
       p
     ) => p.Demandado.Nombre
   ).toString();
-  return <h3 className={typography.displayMedium}>{nombre}</h3>;
+  return <h3 className={typography.displayMedium}>{toNameString(
+    nombre
+  )}</h3>;
 }
 
 export default async function PageProcesosllaveProceso(
@@ -27,12 +31,13 @@ export default async function PageProcesosllaveProceso(
   }: {
   params: {
     llaveProceso: string;
+    idProceso: number;
   };
 }
 ) {
-  const carpetas = await getCarpetasByllaveProceso(
+  const carpetas = await getCarpetasByidProceso(
     {
-      llaveProceso: params.llaveProceso,
+      idProceso: params.idProceso,
     }
   );
   return (
@@ -50,10 +55,7 @@ export default async function PageProcesosllaveProceso(
           const { Demandado, idProceso, _id } = carpeta;
           const { Tel, Direccion, Nombre } = Demandado;
           const { Fijo, Celular } = Tel;
-          return (
-            <CarpetaCard
-              key={ _id } Carpeta={carpeta }            />
-          );
+          return <CarpetaCard key={_id} Carpeta={carpeta} />;
         }
       )}
     </>

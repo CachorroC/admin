@@ -19,7 +19,7 @@ async function ListDrawer() {
   );
 }
 
-export default function Default() {
+export default async function Page() {
   return (
     <Header>
       <Title />

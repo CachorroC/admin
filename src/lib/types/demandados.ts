@@ -53,7 +53,7 @@ export interface intFecha extends monCarpetaDemandado {
 // To parse this data:
 //
 
-export class Convert {
+export class ConvertCarpetas {
   public static toMonCarpetaDemandado(
     json: string
   ): monCarpetaDemandado[] {

@@ -8,9 +8,9 @@
 
 .card {
   box-sizing: border-box;
-  padding: 2vmin;
-  gap: 5cqmin;
-  border-radius: 2vmin;
+  padding: 2cqmin;
+  gap: 2cqmin;
+  border-radius: 2cqmin;
   text-align: center;
   display: flex;
   flex-flow: row wrap;
@@ -20,13 +20,14 @@
   align-content: stretch;
   &Active {
     @extend .card;
-    background-color: var(--tertiary-container);
-    border: solid 1px var(--on-tertiary-container);
+    background-color: var(--surface-container-high);
+    border: solid 2px var(--outline-variant);
     color: var(--on-surface);
+    box-shadow: var(--dp6);
     & > .links {
       & > .button {
-        background-color: var(--secondary);
-        color: var(--on-secondary);
+        background-color: var(--tertiary-container);
+        color: var(--on-tertiary-container);
       }
     }
   }
@@ -34,7 +35,7 @@
     @extend .card;
     color: var(--on-surface);
     border: solid 1px var(--outline);
-    background-color: var(--surface-container-high);
+    background-color: var(--surface-container);
     & > .links {
       & > .button {
         background-color: var(--secondary-container);
@@ -52,13 +53,13 @@
     display: flex;
     width: 100%;
     flex-flow: row wrap;
-    gap: 5cqmin;
+    gap: 2vmin;
     .button {
       display: flex;
       flex-flow: column nowrap;
       position: relative;
-      border-radius: 2vmin;
-      padding: 5cqmin;
+      border-radius: 2cqmin;
+      padding: 2cqmin;
       flex: 1 0;
       & > .tooltiptext {
         visibility: hidden;
@@ -89,7 +90,7 @@
       & > .icon {
         margin: 0 auto;
         font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
 
       &:hover,

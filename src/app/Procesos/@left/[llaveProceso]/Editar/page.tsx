@@ -28,9 +28,6 @@ export default async function page(
             ntext, i
           ) => (
             <Fragment key={ntext._id}>
-              <h1 key={i} className={typeface.title}>
-                {ntext.nota}
-              </h1>
               <Edit uri={getBaseUrl()} nota={ntext} />
             </Fragment>
           )
