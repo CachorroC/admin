@@ -19,7 +19,7 @@ export const preload = (
 const Collection = cache(
   async () => {
     const client = await clientPromise;
-    if (!client) {
+    if ( !client ) {
       throw new Error(
         'no hay cliente mongólico'
       );
@@ -80,7 +80,15 @@ export const getCarpetasByidProceso = cache(
   async (
     { idProceso }: { idProceso: number }
   ) => {
-    const carpetas = await Transform();
+    const collection = await Collection();
+    const carpetasRaw = await collection.find(
+      {}
+    ).toArray();
+    const carpetas = ConvertCarpetas.toMonCarpetaDemandado(
+      JSON.stringify(
+        carpetasRaw
+      )
+    );
     const Carpetas = carpetas.filter(
       (
         carpeta
@@ -111,7 +119,7 @@ export const getCarpetaById = cache(
     return Carpetas;
   }
 );
-export async function postCarpeta(
+export async function postCarpeta (
   { nota }: { nota: intCarpetaDemandado }
 ) {
   const collection = await Collection();
@@ -119,7 +127,7 @@ export async function postCarpeta(
     nota
   );
 
-  if (!outgoingRequest.acknowledged) {
+  if ( !outgoingRequest.acknowledged ) {
     return new NextResponse(
       null,
       {
@@ -129,7 +137,7 @@ export async function postCarpeta(
   }
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
+      outgoingRequest.insertedId + `${ outgoingRequest.acknowledged }`
     ),
     {
       status: 200,
