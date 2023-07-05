@@ -62,7 +62,7 @@ export function NewNota(
       )
     );
     const postNewNote = await fetch(
-      `${uri}/api/Notas`,
+      '/api/Notas',
       {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
@@ -115,7 +115,7 @@ export function NewNota(
             )}
           />
         </div>
-        <button className={accordion.title} onClick={() => setIsActive(
+        <button className={accordion.title} type='button' onClick={() => setIsActive(
           !isActive
         )}>
           <span className='material-symbols-outlined'>

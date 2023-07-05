@@ -17,6 +17,7 @@ import { ModalProvider } from './modal-context';
 import { NoteProvider } from './notes-context';
 import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
+import { NoteSliderProvider } from './context/note-slider-context';
 
 const hostname = process.env.URL ?? process.env.NODE_ENV === 'development'
   ? 'beta.rsasesorjuridico.com'
@@ -138,17 +139,19 @@ export default function RootLayout(
       <body
         className={`${poiret.variable} ${raleway.variable} ${inter.variable} ${roboto.variable} ${josefina.variable} [ color-scheme: light dark ]`}
       >
-        <SearchProvider>
-          <ModalProvider>
-            <NoteProvider>
-              <div className={`${layout.container} ${typography.container}`}>
-                {modal}
-                {header}
-                {children}
-              </div>
-            </NoteProvider>
-          </ModalProvider>
-        </SearchProvider>
+        <NoteSliderProvider>
+          <SearchProvider>
+            <ModalProvider>
+              <NoteProvider>
+                <div className={`${layout.container} ${typography.container}`}>
+                  {modal}
+                  {header}
+                  {children}
+                </div>
+              </NoteProvider>
+            </ModalProvider>
+          </SearchProvider>
+        </NoteSliderProvider>
         <Script src='/service-worker.js' />
       </body>
     </html>

@@ -5,11 +5,15 @@ import { NewNota } from '#@/components/nota/NuevaNota';
 import { Notas } from '#@/components/nota/notas';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import typography from '#@/styles/fonts/typography.module.scss';
-import { NotasList } from '#@/components/nota/list';
+
+import { NotasList } from '#@/components/nota/list/notas-list';
+import { getNotas } from '#@/lib/notas';
 
 export default async function PageProcesosRight() {
+  const notas = await getNotas();
   return (
     <>
+      <NotasList notas={ notas } />
       <NewNota llaveProceso={'Procesos'} uri={`${getBaseUrl()}`} />
       <Notas />
 

@@ -1,5 +1,11 @@
-import typography from '#@/styles/fonts/typography.module.scss';
+import { getNotas } from '#@/lib/notas';
+import { NoteButtonsSlider } from '#@/components/nota/list/notas-list';
 
-export default async function PageProcesos() {
-  return <h1 className={typography.displayMedium}>Procesos</h1>;
+export default async function PageProcesos () {
+  const notas = await getNotas();
+  return (
+    <>
+      <NoteButtonsSlider notas={ notas } />
+    </>
+  );
 }
