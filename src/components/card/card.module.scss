@@ -14,7 +14,7 @@
   height: 100%;
   text-align: center;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: space-between;
   align-content: stretch;
   flex-wrap: wrap;
@@ -42,7 +42,6 @@
   background-color: var(--surface-container-highest);
   color: var(--on-surface);
   box-shadow: none;
-  border: 2px solid var(--outline);
 }
 
 .isActive {
@@ -53,6 +52,7 @@
 }
 .sub {
   color: var(--primary);
+  font-size: 0.5rem;
   font-family: var(--josefa);
 }
 
@@ -75,7 +75,7 @@
 .title {
   color: var(--primary);
   grid-area: title;
-  text-align: right;
+  text-align: center;
   font-family: var(--font-poiret);
 }
 
@@ -89,6 +89,7 @@
 .links {
   display: flex;
   flex-flow: row wrap;
+  grid-area: links;
   gap: 2cqmin;
   & > * {
     width: 48%;
@@ -234,4 +235,86 @@
 .error {
   background-color: var(--error-container);
   color: var(--on-error-container);
+}
+
+@container card (width < 100px) {
+  .isActive,
+  .notActive {
+    background-color: red;
+  }
+}
+
+@container card ( 100px < width < 200px) {
+  .isActive,
+  .notActive {
+    background-color: orange;
+  }
+}
+
+@container card ( 200px < width < 300px) {
+  .isActive,
+  .notActive {
+    background-color: yellow;
+  }
+}
+@container card ( 300px < width < 400px) {
+  .isActive,
+  .notActive {
+    padding: 1cqmin;
+
+    .link,
+    .linkIsActive {
+      flex: 1 0;
+    }
+  }
+  .links {
+    flex-flow: row nowrap;
+  }
+}
+@container card (300px < width < 320px) {
+  .isActive,
+  .notActive {
+    border: solid 5px red;
+  }
+}
+
+@container card (320px < width < 340px) {
+  .isActive,
+  .notActive {
+    border: solid 5px violet;
+  }
+}
+
+@container card (340px < width < 360px) {
+  .isActive,
+  .notActive {
+    border: solid 5px magenta;
+  }
+}
+
+@container card (360px < width < 380px) {
+  .isActive,
+  .notActive {
+    border: solid 5px cyan;
+  }
+}
+
+@container card (380px < width < 400px) {
+  .isActive,
+  .notActive {
+    flex-flow: row nowrap;
+  }
+}
+@container card ( 400px < width < 500px) {
+  .isActive,
+  .notActive {
+    background-color: blue;
+  }
+}
+
+@container card ( 500px < width < 600px) {
+  .isActive,
+  .notActive {
+    background-color: purple;
+  }
 }

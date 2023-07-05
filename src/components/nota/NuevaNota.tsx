@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { intNota, intNotaFormValues } from '#@/lib/types/notas';
 import note from '#@/components/nota/note.module.scss';
 import { Fragment, useState } from 'react';
-
 import accordion from './accordion.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
@@ -87,9 +86,6 @@ export function NewNota(
     );
     return responsePostNewNote;
   };
-  console.log(
-    errors
-  );
   const [
     isActive,
     setIsActive
@@ -119,7 +115,7 @@ export function NewNota(
             )}
           />
         </div>
-        <div className={accordion.title} onClick={() => setIsActive(
+        <button className={accordion.title} onClick={() => setIsActive(
           !isActive
         )}>
           <span className='material-symbols-outlined'>
@@ -127,8 +123,8 @@ export function NewNota(
               ? 'expand_less'
               : 'expand_more'}
           </span>
-          <h1 className={typography.titleSmall}>Tareas</h1>
-        </div>
+          <span className={typography.titleSmall}>Tareas</span>
+        </button>
         {isActive && (
           <div className={accordion.content}>
             {fields.map(
@@ -158,7 +154,7 @@ export function NewNota(
                         defaultValue={field.tarea}
                       />
                     </div>
-                    <div className={note.section}>
+                    <div className={note.section}>2
                       <p className={note.label}>
                         {watchIsDone
                           ? '¡ tarea completa !'

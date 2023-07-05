@@ -4,6 +4,7 @@ import { Card } from '#@/components/card/card';
 import { intFecha } from '#@/lib/types/demandados';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import card from '#@/components/card/card.module.scss';
+import { fixFechas } from '#@/lib/fix';
 export const CardSearchList = (
   {
     path,
@@ -76,7 +77,14 @@ export const CardSearchList = (
           idProceso={idProceso}
           fecha={fecha}
         >
-          <p className={card.content}>{`${i + 1} de ${arr.length}`}</p>
+          <p className={ card.sub }>{ `${ i + 1 } de ${ arr.length }` }</p>
+          {
+            fecha && (
+              <sub className={card.date}>{ fixFechas(
+                fecha
+              )}</sub>
+            )
+          }
         </Card>
       );
     }

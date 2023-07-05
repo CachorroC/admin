@@ -69,9 +69,6 @@ export function Edit(
     );
     return responsePostNewNote;
   };
-  console.log(
-    errors
-  );
   return (
     <div className={note.container}>
       <form className={note.form} onSubmit={handleSubmit(

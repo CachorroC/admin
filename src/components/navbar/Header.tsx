@@ -53,7 +53,6 @@ export default function Header(
         <Suspense fallback={<ButtonSkeleton />}>
           <HomeButton />
         </Suspense>
-        <DrawerMenuButton />
         <Suspense fallback={<sub className={typeface.title}>Loading</sub>}>
           {children}
         </Suspense>

@@ -31,7 +31,7 @@ const Total = (
   return <p>Total Amount: {total}</p>;
 };
 
-export default function App() {
+export default function Costos() {
   const {
     register,
     control,

@@ -81,7 +81,7 @@
   border-radius: 2vmin;
   overflow: auto;
   & > * {
-    width: 46%;
+    width: calc(50% - 2vmin);
   }
 }
 
@@ -156,8 +156,10 @@
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
+@media screen and (width <=600px) {
   .sidenav {
-    padding-top: 15px;
+    & > * {
+      width: 100%;
+    }
   }
 }

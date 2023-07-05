@@ -81,7 +81,6 @@ export interface Proceso {
 
 export enum Tipo {
   Hipotecario = 'HIPOTECARIO',
-  Hipotecaro = 'HIPOTECARO',
   Prendario = 'PRENDARIO',
   Singular = 'SINGULAR',
 }

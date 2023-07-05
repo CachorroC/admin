@@ -8,9 +8,12 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { Suspense } from 'react';
 import type { Route } from 'next';
+import { NotasList } from '#@/components/nota/list/notas-list';
+import { getNotas } from '#@/lib/notas';
 
 export default async function Page() {
   const carpetas = await getCarpetas();
+  const notas = await getNotas();
   const lyr = [
     'I met God Just for a minute Sat in His house, took a look around And saw I didn\'t fit in I tried love Gave me something to believe in Planning futures from the start, giving pieces of my heart Just to end up leaving',
     'Am I gonna die trying to find my happy ending ? And will I ever know what it\'s like To be fine without pretending that my',
@@ -25,6 +28,7 @@ export default async function Page() {
           <Title helper='R&S Asesores Jurídicos' />
         </Suspense>
       </div>
+      <NotasList notas={ notas } />
 
       <div className={layout.left}>
         <Link className={layout.link} href={'/Procesos' as Route}>

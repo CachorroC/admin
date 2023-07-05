@@ -7,7 +7,8 @@
 }
 .isActive,
 .notActive {
-  width: 100cqmin;
+  width: 100%;
+  height: 100%;
   box-sizing: border-box;
   align-items: stretch;
   display: flex;
@@ -29,7 +30,7 @@
     align-self: center;
   }
 }
-
+/*
 .notActive {
   &:link {
     background-color: var(--surface-container);
@@ -48,7 +49,7 @@
     background-color: var(--surface-container-highest);
     color: var(--primary);
   }
-}
+} */
 .isActive {
   &:link,
   &:visited {
@@ -113,5 +114,45 @@
       font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 200, 'opsz' 48;
       color: var(--secondary);
     }
+  }
+}
+
+@container link (width < 100px) {
+  .isActive,
+  .notActive {
+    background-color: red;
+  }
+}
+
+@container link ( 100px < width < 200px) {
+  .isActive,
+  .notActive {
+    background-color: orange;
+  }
+}
+
+@container link ( 200px < width < 300px) {
+  .isActive,
+  .notActive {
+    background-color: yellow;
+  }
+}
+@container link ( 300px < width < 400px) {
+  .isActive,
+  .notActive {
+    background-color: green;
+  }
+}
+@container link ( 400px < width < 500px) {
+  .isActive,
+  .notActive {
+    background-color: blue;
+  }
+}
+
+@container link ( 500px < width < 600px) {
+  .isActive,
+  .notActive {
+    background-color: purple;
   }
 }

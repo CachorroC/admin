@@ -170,15 +170,16 @@ $MaxSW: 480px; //maximum sma width
     grid-area: name;
     display: flex;
     flex-flow: row nowrap;
-    overflow-x: scroll;
   }
 
   .left {
     display: flex;
-    flex-flow: column wrap;
+    overflow: auto;
+    flex-flow: column nowrap;
     grid-area: left;
     & > * {
-      width: 33%;
+      width: 100%;
+      height: auto;
       box-sizing: border-box;
     }
   }

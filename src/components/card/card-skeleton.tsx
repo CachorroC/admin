@@ -1,21 +1,17 @@
 import card from '#@/components/card/card.module.scss';
-import { ReactNode } from 'react';
-export default function CardSkeleton(
-  { children }: { children?: ReactNode }
-) {
+import typography from '#@/styles/fonts/typography.module.scss';
+export default function CardSkeleton() {
   return (
     <div className={card.container}>
-      <div className={card.layout}>
-        <div className={card.top}>
-          <h2 className={card.title}>cargando</h2>
-        </div>
-        {children ?? (
-          <p className={card.content}>
-            Su contenido se está cargando, espere un momento
-          </p>
-        )}
+      <div className={card.notActive}>
+        <h1 className={`${typography.titleMedium} ${card.title}`}>cargando</h1>
 
-        <div className={card.bottom}>
+        <p className={card.content}>
+            Su contenido se está cargando, espere un momento
+        </p>
+
+
+        <div className={card.links}>
           <button className={card.link}>
             <span className={`${card.icon}  material-symbols-outlined`}>
               autorenew

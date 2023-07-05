@@ -25,7 +25,7 @@ export function AccordionRow(
   return (
     <div className={accordion.accordion}>
       <div className={accordion.item}>
-        <div className={accordion.title} onClick={() => setIsActive(
+        <button className={accordion.title} onClick={() => setIsActive(
           !isActive
         )}>
           <span className='material-symbols-outlined'>
@@ -33,7 +33,7 @@ export function AccordionRow(
               ? 'expand_less'
               : 'expand_more'}
           </span>
-        </div>
+        </button>
         {isActive && (
           <div className={accordion.content}>
             <h1 className={typography.titleMedium}>{tarea}</h1>
