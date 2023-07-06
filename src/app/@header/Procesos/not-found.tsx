@@ -2,7 +2,6 @@ import Title from '#@/components/Headings/title';
 import layout from '#@/styles/scss/layout.module.scss';
 
 export default function NotFound() {
-
   return (
     <div className={layout.body}>
       <div
@@ -23,5 +22,4 @@ export default function NotFound() {
       </div>
     </div>
   );
-
 }

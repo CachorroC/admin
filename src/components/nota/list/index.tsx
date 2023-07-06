@@ -51,102 +51,63 @@ const catList = [
 ];
 
 export function NotasList() {
+  const itemsRef = useRef(new Map());
 
-  const itemsRef = useRef ( new Map ());
-
-  function scrollToId(
-    itemId: number
-  ) {
-
-    const map = getMap ();
-    const node = map.get (
-      itemId
-    );
-    node.scrollIntoView (
-      {
-        behavior: 'smooth',
-        block   : 'nearest',
-        inline  : 'center',
-      }
-    );
-
+  function scrollToId(itemId: number) {
+    const map = getMap();
+    const node = map.get(itemId);
+    node.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center',
+    });
   }
 
   function getMap() {
-
     if (!itemsRef.current) {
-
       // Initialize the Map on first usage.
-      itemsRef.current = new Map ();
-
+      itemsRef.current = new Map();
     }
     return itemsRef.current;
-
   }
 
   return (
     <>
       <nav>
-        <button onClick={
-          () => scrollToId (
-            0
-          )
-        }>
+        <button onClick={() => scrollToId(0)}>
           Tom
         </button>
-        <button onClick={
-          () => scrollToId (
-            5
-          )
-        }>
+        <button onClick={() => scrollToId(5)}>
           Maru
         </button>
-        <button onClick={() => scrollToId (
-          9
-        )}>
+        <button onClick={() => scrollToId(9)}>
           Jellylorum
         </button>
       </nav>
       <div>
         <ul>
-          {catList.map (
-            (
-              cat
-            ) => (
-              <li
-                key={cat.id}
-                ref={(
-                  node
-                ) => {
+          {catList.map((cat) => (
+            <li
+              key={cat.id}
+              ref={(node) => {
+                const map = getMap();
 
-                  const map = getMap ();
+                if (node) {
+                  return map.set(cat.id, node);
+                }
 
-                  if (node) {
-
-                    return map.set (
-                      cat.id,
-                      node
-                    );
-
-                  }
-
-                  return map.delete (
-                    cat.id
-                  );
-
-                }}>
-                <Image
-                  src={cat.imageUrl}
-                  width={340}
-                  height={340}
-                  alt={'Cat #' + cat.id}
-                />
-              </li>
-            )
-          )}
+                return map.delete(cat.id);
+              }}>
+              <Image
+                src={cat.imageUrl}
+                width={340}
+                height={340}
+                alt={'Cat #' + cat.id}
+              />
+            </li>
+          ))}
         </ul>
       </div>
     </>
   );
-
 }

@@ -1,34 +1,22 @@
 'use client';
 import FormProvider from '#@/components/card/CarpetasCard/Context';
-import {FormCard,
+import {
+  FormCard,
   PersonalInfo,
   BillingInfo,
   ConfirmPurchase,
-  FormCompleted,} from '#@/components/card/CarpetasCard/form-Card';
+  FormCompleted,
+} from '#@/components/card/CarpetasCard/form-Card';
 import { useState } from 'react';
 
 export default function PageProcesosEditarLeft() {
-
-  const [
-    formStep,
-    setFormStep
-  ] = useState (
-    0
-  );
+  const [formStep, setFormStep] = useState(0);
 
   const nextFormStep = () =>
-    setFormStep (
-      (
-        currentStep
-      ) => currentStep + 1
-    );
+    setFormStep((currentStep) => currentStep + 1);
 
   const prevFormStep = () =>
-    setFormStep (
-      (
-        currentStep
-      ) => currentStep - 1
-    );
+    setFormStep((currentStep) => currentStep - 1);
   return (
     <FormProvider>
       <FormCard
@@ -57,5 +45,4 @@ export default function PageProcesosEditarLeft() {
       </FormCard>
     </FormProvider>
   );
-
 }

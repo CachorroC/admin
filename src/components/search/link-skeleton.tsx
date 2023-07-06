@@ -3,7 +3,6 @@ import searchbar from '#@/components/search/searchbar.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function LinkCardSkeleton() {
-
   return (
     <div className={searchbar.container}>
       <div className={searchbar.notActive}>
@@ -19,20 +18,20 @@ export default function LinkCardSkeleton() {
         <div className={searchbar.links}>
           <p className={searchbar.link}>
             <span
-              className={`material-symbols-outlined ${ searchbar.icon }`}>
+              className={`material-symbols-outlined ${searchbar.icon}`}>
               badge
             </span>
           </p>
           <p className={searchbar.link}>
             <span
-              className={`material-symbols-outlined ${ searchbar.icon }`}>
+              className={`material-symbols-outlined ${searchbar.icon}`}>
               add
             </span>
           </p>
           <p className={searchbar.link}>
             {' '}
             <span
-              className={`material-symbols-outlined ${ searchbar.icon }`}>
+              className={`material-symbols-outlined ${searchbar.icon}`}>
               file_open
             </span>
           </p>
@@ -40,5 +39,4 @@ export default function LinkCardSkeleton() {
       </div>
     </div>
   );
-
 }

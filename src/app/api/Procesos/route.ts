@@ -1,97 +1,70 @@
 import 'server-only';
-import {NextRequest,
-  NextResponse,} from 'next/server';
+import {
+  NextRequest,
+  NextResponse,
+} from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { monDemandado } from '#@/lib/types/mongodb';
 import { notFound } from 'next/navigation';
 
 const Collection = async () => {
-
   const client = await clientPromise;
 
   if (!client) {
-
-    throw new Error (
-      'no hay cliente mongólico'
-    );
-  
+    throw new Error('no hay cliente mongólico');
   }
-  const db = client.db (
-    'RyS'
-  );
-  const notas = await db.collection (
-    'Procesos'
-  );
+  const db = client.db('RyS');
+  const notas = await db.collection('Procesos');
   return notas;
-
 };
 
 export async function GET() {
-
-  const collection = await Collection ();
+  const collection = await Collection();
   const procesos = await collection
-    .find (
-      {
-      }
-    )
-    .toArray ();
+    .find({})
+    .toArray();
 
   if (!procesos.length) {
-
-    notFound ();
-  
+    notFound();
   }
-  return new NextResponse (
-    JSON.stringify (
-      procesos
-    ),
+  return new NextResponse(
+    JSON.stringify(procesos),
     {
-      status : 200,
+      status: 200,
       headers: {
         'content-type': 'application/json',
       },
     }
   );
-
 }
 
-export async function POST(
-  Request: NextRequest
-) {
-
-  const incomingRequest = await Request.json ();
-  const collection = await Collection ();
+export async function POST(Request: NextRequest) {
+  const incomingRequest = await Request.json();
+  const collection = await Collection();
   const outgoingRequest =
-    await collection.insertOne (
-      incomingRequest
-    );
+    await collection.insertOne(incomingRequest);
 
   if (outgoingRequest.acknowledged === false) {
-
-    return new NextResponse (
-      JSON.stringify (
-        {
-          Error:
+    return new NextResponse(
+      JSON.stringify({
+        Error:
           'server couldnt acknowledge the insert request',
-        }
-      ),
+      }),
       {
         status: 500,
       }
     );
-  
   }
-  return new NextResponse (
-    JSON.stringify (
+  return new NextResponse(
+    JSON.stringify(
       outgoingRequest.insertedId +
-        `${ outgoingRequest.acknowledged }`
+        `${outgoingRequest.acknowledged}`
     ),
     {
-      status : 200,
+      status: 200,
       headers: {
         'content-type': 'application/json',
       },
     }
   );
-
 }

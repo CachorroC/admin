@@ -16,18 +16,12 @@ function DemandadoNameBadge({
   carpeta: monCarpetaDemandado;
   proceso?: intProceso;
 }) {
-
-  const {
-    llaveProceso, _id
-  } = carpeta;
+  const { llaveProceso, _id } = carpeta;
 
   if (proceso) {
-
     return (
       <Fragment
-        key={proceso
-          ? proceso.idProceso
-          : _id}>
+        key={proceso ? proceso.idProceso : _id}>
         <Name llaveProceso={llaveProceso} />
         <p className={typography.bodySmall}>
           {proceso.despacho}
@@ -36,7 +30,6 @@ function DemandadoNameBadge({
         <CarpetaCard Carpeta={carpeta} />
       </Fragment>
     );
-  
   }
   return (
     <Fragment key={_id}>
@@ -44,7 +37,6 @@ function DemandadoNameBadge({
       <CarpetaCard Carpeta={carpeta} />
     </Fragment>
   );
-
 }
 
 export default async function PageProcesosllaveProceso({
@@ -54,13 +46,12 @@ export default async function PageProcesosllaveProceso({
     llaveProceso: string;
   };
 }) {
-
   const Procesos =
-    await getConsultaNumeroRadicion ({
+    await getConsultaNumeroRadicion({
       llaveProceso: params.llaveProceso,
     });
   const Carpetas =
-    await getCarpetasByllaveProceso ({
+    await getCarpetasByllaveProceso({
       llaveProceso: params.llaveProceso,
     });
 
@@ -68,36 +59,26 @@ export default async function PageProcesosllaveProceso({
   const cantidadProcesos = Procesos.length;
 
   if (cantidadProcesos === 0) {
-
     return (
-      <>{
-        Carpetas.map (
-          ( Carpeta) => (
-            <DemandadoNameBadge
-              carpeta={Carpeta}
-              key={Carpeta._id}
-            />
-          )
-        )
-      }</>
+      <>
+        {Carpetas.map((Carpeta) => (
+          <DemandadoNameBadge
+            carpeta={Carpeta}
+            key={Carpeta._id}
+          />
+        ))}
+      </>
     );
-  
   }
   return (
     <>
-      { Procesos.map (
-        (
-          Proceso,
-          i
-        ) => (
-          <DemandadoNameBadge
-            carpeta={Carpetas[ i ]}
-            key={Proceso.idProceso}
-            proceso={Proceso}
-          />
-        )
-      ) }
+      {Procesos.map((Proceso, i) => (
+        <DemandadoNameBadge
+          carpeta={Carpetas[i]}
+          key={Proceso.idProceso}
+          proceso={Proceso}
+        />
+      ))}
     </>
   );
-
 }

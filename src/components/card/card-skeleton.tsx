@@ -2,12 +2,11 @@ import card from '#@/components/card/card.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function CardSkeleton() {
-
   return (
     <div className={card.container}>
       <div className={card.notActive}>
         <h1
-          className={`${ typography.titleMedium } ${ card.title }`}>
+          className={`${typography.titleMedium} ${card.title}`}>
           cargando
         </h1>
 
@@ -19,7 +18,7 @@ export default function CardSkeleton() {
         <div className={card.links}>
           <button className={card.link}>
             <span
-              className={`${ card.icon }  material-symbols-outlined`}>
+              className={`${card.icon}  material-symbols-outlined`}>
               autorenew
             </span>
           </button>
@@ -27,5 +26,4 @@ export default function CardSkeleton() {
       </div>
     </div>
   );
-
 }

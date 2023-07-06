@@ -117,11 +117,8 @@
       margin: 0;
       grid-area: icon;
       color: var(--on-primary-container);
-      font-variation-settings:
-        'FILL' 0,
-        'wght' 300,
-        'GRAD' 0,
-        'opsz' 24;
+      font-variation-settings: 'FILL' 0,
+        'wght' 300, 'GRAD' 0, 'opsz' 24;
     }
   }
 
@@ -138,11 +135,8 @@
 
     .icon {
       color: var(--primary-container);
-      font-variation-settings:
-        'FILL' 1,
-        'wght' 500,
-        'GRAD' 200,
-        'opsz' 48;
+      font-variation-settings: 'FILL' 1,
+        'wght' 500, 'GRAD' 200, 'opsz' 48;
     }
   }
 
@@ -164,11 +158,8 @@
     margin: 0;
     grid-area: icon;
     color: var(--secondary);
-    font-variation-settings:
-      'FILL' 0,
-      'wght' 300,
-      'GRAD' 0,
-      'opsz' 24;
+    font-variation-settings: 'FILL' 0, 'wght' 300,
+      'GRAD' 0, 'opsz' 24;
   }
 
   &:hover,
@@ -184,11 +175,8 @@
     .icon {
       color: var(--tertiary-container);
 
-      font-variation-settings:
-        'FILL' 1,
-        'wght' 500,
-        'GRAD' 200,
-        'opsz' 48;
+      font-variation-settings: 'FILL' 1,
+        'wght' 500, 'GRAD' 200, 'opsz' 48;
     }
   }
 
@@ -241,11 +229,8 @@
     margin: 0;
     grid-area: icon;
     color: var(--on-tertiary-container);
-    font-variation-settings:
-      'FILL' 0,
-      'wght' 300,
-      'GRAD' 0,
-      'opsz' 24;
+    font-variation-settings: 'FILL' 0, 'wght' 300,
+      'GRAD' 0, 'opsz' 24;
 
     font-size: 1.5rem;
   }

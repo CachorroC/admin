@@ -2,7 +2,6 @@ import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function NotFound() {
-
   return (
     <div
       className={layout.name}
@@ -26,5 +25,4 @@ export default function NotFound() {
       </p>
     </div>
   );
-
 }

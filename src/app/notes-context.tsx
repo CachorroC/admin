@@ -1,62 +1,44 @@
 'use client';
 
-import {Dispatch,
+import {
+  Dispatch,
   ReactNode,
   createContext,
   useContext,
   useReducer,
-  useState,} from 'react';
+  useState,
+} from 'react';
 
 import { SetStateAction } from 'react';
 
 const NoteContext = createContext<
   | [boolean, Dispatch<SetStateAction<boolean>>]
   | null
-> (
-  null
-);
+>(null);
 
-export function NoteProvider(
-  {
-    children,
-  }: {
+export function NoteProvider({
+  children,
+}: {
   children: ReactNode;
-}
-) {
-
-  const [
-    isShowing,
-    setIsShowing
-  ] =
-    useState (
-      false
-    );
+}) {
+  const [isShowing, setIsShowing] =
+    useState(false);
   return (
     <NoteContext.Provider
-      value={[
-        isShowing,
-        setIsShowing
-      ]}>
+      value={[isShowing, setIsShowing]}>
       {children}
     </NoteContext.Provider>
   );
-
 }
 
 export function useNoter() {
-
-  const context = useContext (
-    NoteContext
-  );
+  const context = useContext(NoteContext);
 
   if (context === null) {
-
-    throw new Error (
+    throw new Error(
       'useModal must be used within NoteProvider'
     );
-  
   }
 
   return context;
-
 }

@@ -1,25 +1,23 @@
 'use client';
 
-import {useSelectedLayoutSegment,
-  usePathname,} from 'next/navigation';
+import {
+  useSelectedLayoutSegment,
+  usePathname,
+} from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export const Name = (
-  {
-    helper,
-  }: {
+export const Name = ({
+  helper,
+}: {
   helper?: string;
-}
-) => {
-
-  const pathname = usePathname ();
-  const segment = useSelectedLayoutSegment ();
-  const today = new Date ();
+}) => {
+  const pathname = usePathname();
+  const segment = useSelectedLayoutSegment();
+  const today = new Date();
   let day;
 
-  switch (today.getDay ()) {
-
+  switch (today.getDay()) {
     case 0:
       day = 'Mimingo';
       break;
@@ -40,7 +38,6 @@ export const Name = (
       break;
     case 6:
       day = 'Sábado';
-  
   }
   const days = [
     'mimingo',
@@ -67,11 +64,10 @@ export const Name = (
   ];
   return (
     <h1 className={typography.titleMedium}>
-      {helper?.toLocaleLowerCase () ??
-        `${ days[ today.getDay () ] }, ${ fixFechas (
-          today.toString ()
-        ) }`}
+      {helper?.toLocaleLowerCase() ??
+        `${days[today.getDay()]}, ${fixFechas(
+          today.toString()
+        )}`}
     </h1>
   );
-
 };

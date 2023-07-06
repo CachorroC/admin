@@ -3,7 +3,6 @@ import navbar from '#@/components/navbar/navbar.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function Loading() {
-
   return (
     <div className={layout.header}>
       <button className={navbar.button}>
@@ -31,5 +30,4 @@ export default function Loading() {
       </button>
     </div>
   );
-
 }

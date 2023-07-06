@@ -2,7 +2,6 @@
 import card from '#@/components/card/card.module.scss';
 
 export default function Error() {
-
   return (
     <div className={card.error}>
       <div className={card.layout}>
@@ -12,5 +11,4 @@ export default function Error() {
       </div>
     </div>
   );
-
 }

@@ -1,9 +1,11 @@
 'use client';
 import * as React from 'react';
-import {useForm,
+import {
+  useForm,
   useFieldArray,
   useWatch,
-  Control,} from 'react-hook-form';
+  Control,
+} from 'react-hook-form';
 
 type FormValues = {
   firstName: string;
@@ -16,21 +18,16 @@ type FormValues = {
 
 let renderCount = 0;
 
-const Total = (
-  {
-    control,
-  }: {
+const Total = ({
+  control,
+}: {
   control: Control<FormValues>;
-}
-) => {
-
-  const formValues = useWatch (
-    {
-      name: 'cart',
-      control,
-    }
-  );
-  const total = formValues.reduce (
+}) => {
+  const formValues = useWatch({
+    name: 'cart',
+    control,
+  });
+  const total = formValues.reduce(
     (acc, current) =>
       acc +
       (current.price || 0) *
@@ -38,139 +35,115 @@ const Total = (
     0
   );
   return <p>Total Amount: {total}</p>;
-
 };
 
 export default function Costos() {
-
   const {
     register,
     control,
     handleSubmit,
-    formState: {
-      errors 
+    formState: { errors },
+  } = useForm<FormValues>({
+    defaultValues: {
+      cart: [
+        {
+          name: 'test',
+          quantity: 1,
+          price: 23000,
+        },
+      ],
     },
-  } = useForm<FormValues> (
-    {
-      defaultValues: {
-        cart: [
-          {
-            name    : 'test',
-            quantity: 1,
-            price   : 23000,
-          },
-        ],
-      },
-      mode: 'onBlur',
-    }
-  );
-  const {
-    fields, append, remove 
-  } =
-    useFieldArray (
-      {
-        name: 'cart',
-        control,
-      }
-    );
-  const onSubmit = (
-    data: FormValues
-  ) =>
-    console.log (
-      data
-    );
+    mode: 'onBlur',
+  });
+  const { fields, append, remove } =
+    useFieldArray({
+      name: 'cart',
+      control,
+    });
+  const onSubmit = (data: FormValues) =>
+    console.log(data);
   renderCount++;
 
   return (
     <div>
-      <form onSubmit={handleSubmit (
-        onSubmit
-      )}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input
-          {...register (
-            'firstName'
-          )}
+          {...register('firstName')}
           placeholder='First Name'
         />
-        {fields.map (
-          (field, index) => (
-            <div key={field.id}>
-              <section
-                className={'section'}
-                key={field.id}>
-                <input
-                  placeholder='name'
-                  {...register (
-                  `cart.${ index }.name` as const,
+        {fields.map((field, index) => (
+          <div key={field.id}>
+            <section
+              className={'section'}
+              key={field.id}>
+              <input
+                placeholder='name'
+                {...register(
+                  `cart.${index}.name` as const,
                   {
                     required: true,
                   }
-                  )}
-                  className={
-                    errors?.cart?.[ index ]?.name
-                      ? 'error'
-                      : ''
-                  }
-                  defaultValue={field.name}
-                />
-                <input
-                  placeholder='quantity'
-                  type='number'
-                  {...register (
-                  `cart.${ index }.quantity` as const,
+                )}
+                className={
+                  errors?.cart?.[index]?.name
+                    ? 'error'
+                    : ''
+                }
+                defaultValue={field.name}
+              />
+              <input
+                placeholder='quantity'
+                type='number'
+                {...register(
+                  `cart.${index}.quantity` as const,
                   {
                     valueAsNumber: true,
-                    required     : true,
+                    required: true,
                   }
-                  )}
-                  className={
-                    errors?.cart?.[ index ]?.quantity
-                      ? 'error'
-                      : ''
-                  }
-                  defaultValue={field.quantity}
-                />
-                <input
-                  placeholder='value'
-                  type='number'
-                  {...register (
-                  `cart.${ index }.price` as const,
+                )}
+                className={
+                  errors?.cart?.[index]?.quantity
+                    ? 'error'
+                    : ''
+                }
+                defaultValue={field.quantity}
+              />
+              <input
+                placeholder='value'
+                type='number'
+                {...register(
+                  `cart.${index}.price` as const,
                   {
                     valueAsNumber: true,
-                    required     : true,
+                    required: true,
                   }
-                  )}
-                  className={
-                    errors?.cart?.[ index ]?.price
-                      ? 'error'
-                      : ''
-                  }
-                  defaultValue={field.price}
-                />
-                <button
-                  type='button'
-                  onClick={() => remove (
-                    index
-                  )}>
+                )}
+                className={
+                  errors?.cart?.[index]?.price
+                    ? 'error'
+                    : ''
+                }
+                defaultValue={field.price}
+              />
+              <button
+                type='button'
+                onClick={() => remove(index)}>
                 DELETE
-                </button>
-              </section>
-            </div>
-          )
-        )}
+              </button>
+            </section>
+          </div>
+        ))}
 
         <Total control={control} />
 
         <button
           type='button'
           onClick={() =>
-            append (
-              {
-                name    : '',
-                quantity: 0,
-                price   : 0,
-              }
-            )
+            append({
+              name: '',
+              quantity: 0,
+              price: 0,
+            })
           }>
           APPEND
         </button>
@@ -178,5 +151,4 @@ export default function Costos() {
       </form>
     </div>
   );
-
 }

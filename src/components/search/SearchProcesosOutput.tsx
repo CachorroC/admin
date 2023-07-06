@@ -1,8 +1,10 @@
 'use client';
 import { monDemandado } from '#@/lib/types/mongodb';
 import { intFecha } from '#@/lib/types/demandados';
-import {useSearch,
-  useNavigator,} from '#@/app/search-context';
+import {
+  useSearch,
+  useNavigator,
+} from '#@/app/search-context';
 import { LinkCard } from './link';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { fixFechas } from '#@/lib/fix';
@@ -13,107 +15,72 @@ import { usePathname } from 'next/navigation';
 import { Name } from '../Headings/clientSideName';
 import type { Route } from 'next';
 
-export default function SearchOutputList(
-  {
-    path,
-    fechas,
-  }: {
+export default function SearchOutputList({
+  path,
+  fechas,
+}: {
   path: string;
   fechas: intFecha[];
-}
-) {
-
-  const pathname = usePathname ();
-  const [
-    search,
-    setSearch
-  ] = useSearch ();
+}) {
+  const pathname = usePathname();
+  const [search, setSearch] = useSearch();
 
   const clickHandler = () => {
-
-    setIsNavOpen (
-      false
-    );
-  
+    setIsNavOpen(false);
   };
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] =
-    useNavigator ();
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
 
   const isActive = pathname === path;
   const href = path as Route;
 
   const rows: any[] = [];
 
-  const idk = [
-    ...fechas
-  ].sort (
-    (a, b) => {
-
-      if (!a.fecha || a.fecha === undefined) {
-
-        return 1;
-      
-      }
-
-      if (!b.fecha || b.fecha === undefined) {
-
-        return -1;
-      
-      }
-      let x = a.fecha.toLowerCase ();
-      let y = b.fecha.toLowerCase ();
-
-      if (x < y) {
-
-        return 1;
-      
-      }
-
-      if (x > y) {
-
-        return -1;
-      
-      }
-      return 0;
-    
+  const idk = [...fechas].sort((a, b) => {
+    if (!a.fecha || a.fecha === undefined) {
+      return 1;
     }
-  );
-  idk.forEach (
-    (proceso, index, array) => {
 
-      const {
-        idProceso,
-        llaveProceso,
-        Deudor,
-        fecha,
-        _id,
-      } = proceso;
-      const {
-        Nombre, Id, Tel, Direccion 
-      } = Deudor;
-
-      if (
-        Nombre.toLowerCase ().indexOf (
-          search.toLowerCase ()
-        ) === -1
-      ) {
-
-        return;
-      
-      }
-      rows.push (
-        <LinkCard
-          path={path}
-          proceso={proceso}
-          key={_id}
-        />
-      );
-    
+    if (!b.fecha || b.fecha === undefined) {
+      return -1;
     }
-  );
+    let x = a.fecha.toLowerCase();
+    let y = b.fecha.toLowerCase();
+
+    if (x < y) {
+      return 1;
+    }
+
+    if (x > y) {
+      return -1;
+    }
+    return 0;
+  });
+  idk.forEach((proceso, index, array) => {
+    const {
+      idProceso,
+      llaveProceso,
+      Deudor,
+      fecha,
+      _id,
+    } = proceso;
+    const { Nombre, Id, Tel, Direccion } = Deudor;
+
+    if (
+      Nombre.toLowerCase().indexOf(
+        search.toLowerCase()
+      ) === -1
+    ) {
+      return;
+    }
+    rows.push(
+      <LinkCard
+        path={path}
+        proceso={proceso}
+        key={_id}
+      />
+    );
+  });
 
   return (
     <>
@@ -128,8 +95,8 @@ export default function SearchOutputList(
 
           <div className={searchbar.section}>
             <sub className={searchbar.date}>
-              {fixFechas (
-                new Date ().toISOString ()
+              {fixFechas(
+                new Date().toISOString()
               )}
             </sub>
           </div>
@@ -143,7 +110,7 @@ export default function SearchOutputList(
               onClick={clickHandler}
               href={href}>
               <span
-                className={`${ searchbar.icon } material-symbols-outlined`}>
+                className={`${searchbar.icon} material-symbols-outlined`}>
                 file_open
               </span>
             </Link>
@@ -155,7 +122,7 @@ export default function SearchOutputList(
               }
               href='/Notas/NuevaNota'>
               <span
-                className={`material-symbols-outlined ${ searchbar.icon }`}>
+                className={`material-symbols-outlined ${searchbar.icon}`}>
                 add
               </span>
             </Link>
@@ -165,5 +132,4 @@ export default function SearchOutputList(
       {rows}
     </>
   );
-
 }

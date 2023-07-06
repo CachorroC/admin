@@ -4,227 +4,149 @@ import { useForm } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
 import { intCarpetaDemandado } from '#@/lib/types/demandados';
 
-export function NuevoProceso(
-  {
-    uri,
-  }: {
+export function NuevoProceso({
+  uri,
+}: {
   uri: string;
-}
-) {
-
+}) {
   const {
     register,
     handleSubmit,
-    formState: {
-      errors 
-    },
-  } = useForm<intCarpetaDemandado> ();
+    formState: { errors },
+  } = useForm<intCarpetaDemandado>();
 
   const onSubmit = async (
     data: intCarpetaDemandado
   ) => {
-
-    alert (
-      JSON.stringify (
-        data
-      )
-    );
-    const postNewNote = await fetch (
-      `${ uri }/api/Demandados`,
+    alert(JSON.stringify(data));
+    const postNewNote = await fetch(
+      `${uri}/api/Demandados`,
       {
-        method : 'POST',
+        method: 'POST',
         headers: {
           'content-type': 'application/json',
         },
-        body: JSON.stringify (
-          data
-        ),
+        body: JSON.stringify(data),
       }
-    ).then (
-      (
-        fullfilled
-      ) => {
-
-        alert (
-          fullfilled.status
-        );
-        return fullfilled;
-      
-      }
-    );
+    ).then((fullfilled) => {
+      alert(fullfilled.status);
+      return fullfilled;
+    });
     const responsePostNewNote =
-      await postNewNote.json ();
-    alert (
-      responsePostNewNote
-    );
+      await postNewNote.json();
+    alert(responsePostNewNote);
     return responsePostNewNote;
-  
   };
   return (
     <div className={form.container}>
       <form
         className={form.form}
-        onSubmit={handleSubmit (
-          onSubmit
-        )}>
+        onSubmit={handleSubmit(onSubmit)}>
         <input
           type='number'
           placeholder='Carpeta'
-          {...register (
-            'Carpeta',
-            {
-              required: true,
-            }
-          )}
+          {...register('Carpeta', {
+            required: true,
+          })}
         />
         <input
           type='number'
           placeholder='Deudor.Id'
-          {...register (
-            'Deudor.Id',
-            {
-              required: true,
-            }
-          )}
+          {...register('Deudor.Id', {
+            required: true,
+          })}
         />
         <input
           type='text'
           placeholder='Deudor.Nombre'
-          {...register (
-            'Deudor.Nombre',
-            {
-              required: true,
-            }
-          )}
+          {...register('Deudor.Nombre', {
+            required: true,
+          })}
         />
         <input
           type='text'
           placeholder='Deudor.Email'
-          {...register (
-            'Deudor.Email',
-            {
-              pattern: /^\S+@\S+$/i,
-            }
-          )}
+          {...register('Deudor.Email', {
+            pattern: /^\S+@\S+$/i,
+          })}
         />
         <input
           type='tel'
           placeholder='Deudor.Tel.Fijo'
-          {...register (
-            'Deudor.Tel.Fijo',
-            {
-              maxLength: 10,
-            }
-          )}
+          {...register('Deudor.Tel.Fijo', {
+            maxLength: 10,
+          })}
         />
         <input
           type='tel'
           placeholder='Deudor.Tel.Celular'
-          {...register (
-            'Deudor.Tel.Celular',
-            {
-              maxLength: 10,
-            }
-          )}
+          {...register('Deudor.Tel.Celular', {
+            maxLength: 10,
+          })}
         />
         <input
           type='text'
           placeholder='Deudor.Direccion'
-          {...register (
-            'Deudor.Direccion',
-            {
-            }
-          )}
+          {...register('Deudor.Direccion', {})}
         />
         <input
           type='number'
           placeholder='Codeudor.Cedula'
-          {...register (
-            'Codeudor.Id',
-            {
-            }
-          )}
+          {...register('Codeudor.Id', {})}
         />
         <input
           type='text'
           placeholder='Codeudor.Nombre'
-          {...register (
-            'Codeudor.Nombre',
-            {
-            }
-          )}
+          {...register('Codeudor.Nombre', {})}
         />
         <input
           type='tel'
           placeholder='Codeudor.Tel.Fijo'
-          {...register (
-            'Codeudor.Tel.Fijo',
-            {
-              maxLength: 10,
-            }
-          )}
+          {...register('Codeudor.Tel.Fijo', {
+            maxLength: 10,
+          })}
         />
         <input
           type='tel'
           placeholder='Codeudor.Tel.Celular'
-          {...register (
-            'Codeudor.Tel.Celular',
-            {
-              maxLength: 10,
-            }
-          )}
+          {...register('Codeudor.Tel.Celular', {
+            maxLength: 10,
+          })}
         />
         <input
           type='number'
           placeholder='idProceso'
-          {...register (
-            'idProceso',
-            {
-              required: true,
-            }
-          )}
+          {...register('idProceso', {
+            required: true,
+          })}
         />
         <input
           type='text'
           placeholder='llaveProceso'
-          {...register (
-            'llaveProceso',
-            {
-              minLength: 23,
-            }
-          )}
+          {...register('llaveProceso', {
+            minLength: 23,
+          })}
         />
         <input
           type='datetime'
           placeholder='Avaluo.Adjudicacion.Fecha'
-          {...register (
+          {...register(
             'Avaluo.Adjudicacion.Fecha',
-            {
-            }
+            {}
           )}
         />
         <input
           type='datetime'
           placeholder='Avaluo.Remate.Fecha'
-          {...register (
-            'Avaluo.Remate.Fecha',
-            {
-            }
-          )}
+          {...register('Avaluo.Remate.Fecha', {})}
         />
         <input
           type='number'
           placeholder='Avaluo.Valor'
-          {...register (
-            'Avaluo.Valor',
-            {
-            }
-          )}
+          {...register('Avaluo.Valor', {})}
         />
         <select
-          {...register (
-            'Demanda.Departamento'
-          )}>
+          {...register('Demanda.Departamento')}>
           <option value='Amazonas'>
             Amazonas
           </option>
@@ -324,54 +246,42 @@ export function NuevoProceso(
         <input
           type='text'
           placeholder='Demanda.Municipio'
-          {...register (
-            'Demanda.Municipio',
-            {
-            }
-          )}
+          {...register('Demanda.Municipio', {})}
         />
         <input
           type='datetime'
           placeholder='Demanda.VencimientoPagaré'
-          {...register (
+          {...register(
             'Demanda.VencimientoPagare',
-            {
-            }
+            {}
           )}
         />
         <input
           type='datetime'
           placeholder='Demanda.EntregaGarantiasAbogado'
-          {...register (
+          {...register(
             'Demanda.EntregadeGarantiasAbogado',
-            {
-            }
+            {}
           )}
         />
         <input
           type='text'
           placeholder='Demanda.Radicado'
-          {...register (
-            'Demanda.Radicado',
-            {
-              pattern:
+          {...register('Demanda.Radicado', {
+            pattern:
               /"\d\d\d\d\s+-\s+\d\d\d\d\d"/i,
-            }
-          )}
+          })}
         />
         <input
           type='number'
           placeholder='Demanda.CapitalAdeudado'
-          {...register (
+          {...register(
             'Demanda.CapitalAdeudado',
-            {
-            }
+            {}
           )}
         />
         <select
-          {...register (
-            'Demanda.Proceso.Tipo'
-          )}>
+          {...register('Demanda.Proceso.Tipo')}>
           <option value='HIPOTECARIO'>
             HIPOTECARIO
           </option>
@@ -385,199 +295,174 @@ export function NuevoProceso(
         <input
           type='text'
           placeholder='Demanda.Ubicacion.Juzgado'
-          {...register (
+          {...register(
             'Demanda.Ubicacion.Juzgado',
-            {
-            }
+            {}
           )}
         />
         <input
           type='text'
           placeholder='Demanda.Juzgado.Origen'
-          {...register (
+          {...register(
             'Demanda.Juzgado.Origen',
-            {
-            }
+            {}
           )}
         />
         <input
           type='text'
           placeholder='Demanda.Juzgado.Ejecucion'
-          {...register (
+          {...register(
             'Demanda.Juzgado.Ejecucion',
-            {
-            }
+            {}
           )}
         />
         <input
           type='text'
           placeholder='Demanda.Obligacion.1'
-          {...register (
+          {...register(
             'Demanda.Obligacion.1',
-            {
-            }
+            {}
           )}
         />
         <input
           type='text'
           placeholder='Demanda.Obligacion.2'
-          {...register (
+          {...register(
             'Demanda.Obligacion.2',
-            {
-            }
+            {}
           )}
         />
         <input
           type='text'
           placeholder='EtapaProcesal.Etapa'
-          {...register (
-            'EtapaProcesal.Etapa',
-            {
-            }
-          )}
+          {...register('EtapaProcesal.Etapa', {})}
         />
         <input
           type='datetime'
           placeholder='EtapaProcesal.Fecha.MandamientodePago'
-          {...register (
+          {...register(
             'EtapaProcesal.Fecha.MandamientodePago',
-            {
-            }
+            {}
           )}
         />
         <input
           type='datetime'
           placeholder='Liquidacion.Costas.FechaAprobacion'
-          {...register (
+          {...register(
             'Liquidacion.Costas.FechaAprobacion',
-            {
-            }
+            {}
           )}
         />
         <input
           type='number'
           placeholder='Liquidacion.Costas.Valor'
-          {...register (
+          {...register(
             'Liquidacion.Costas.Valor',
-            {
-            }
+            {}
           )}
         />
         <input
           type='datetime'
           placeholder='Liquidacion.Fecha.Aprobacion'
-          {...register (
+          {...register(
             'Liquidacion.Fecha.Aprobacion',
-            {
-            }
+            {}
           )}
         />
         <input
           type='datetime'
           placeholder='Liquidacion.Fecha.Presentacion'
-          {...register (
+          {...register(
             'Liquidacion.Fecha.Presentacion',
-            {
-            }
+            {}
           )}
         />
         <input
           type='datetime'
           placeholder='Liquidacion.Fecha.Solicitud'
-          {...register (
+          {...register(
             'Liquidacion.Fecha.Solicitud',
-            {
-            }
+            {}
           )}
         />
         <input
           type='datetime'
           placeholder='Liquidacion.Fecha.Sentencia'
-          {...register (
+          {...register(
             'Liquidacion.Fecha.Sentencia',
-            {
-            }
+            {}
           )}
         />
         <input
           type='text'
           placeholder='MedidasCautelares.Bienes'
-          {...register (
+          {...register(
             'MedidasCautelares.Bienes',
-            {
-            }
+            {}
           )}
         />
         <input
           type='text'
           placeholder='MedidasCautelares.MedidaSolicitada'
-          {...register (
+          {...register(
             'MedidasCautelares.MedidaSolicitada',
-            {
-            }
+            {}
           )}
         />
         <input
           type='text'
           placeholder='MedidasCautelares.extra'
-          {...register (
+          {...register(
             'MedidasCautelares.Extra',
-            {
-            }
+            {}
           )}
         />
         <input
           type='text'
           placeholder='MedidasCautelares.PlacaoNumeroMatricula'
-          {...register (
+          {...register(
             'MedidasCautelares.PlacaoNumeroMatricula',
-            {
-            }
+            {}
           )}
         />
         <input
           type='text'
           placeholder='MedidasCautelares.DescripcionMedida'
-          {...register (
+          {...register(
             'MedidasCautelares.DescripcionMedida',
-            {
-            }
+            {}
           )}
         />
         <input
           type='datetime'
           placeholder='MedidasCautelares.Fecha.Captura'
-          {...register (
+          {...register(
             'MedidasCautelares.Fecha.Captura',
-            {
-            }
+            {}
           )}
         />
         <input
           type='text'
           placeholder='MedidasCautelares.Fecha.Secuestro'
-          {...register (
+          {...register(
             'MedidasCautelares.Fecha.Secuestro',
-            {
-            }
+            {}
           )}
         />
         <input
           type='datetime'
           placeholder='MedidasCautelares.Fecha.DecretoSecuestrooCaptura'
-          {...register (
+          {...register(
             'MedidasCautelares.Fecha.DecretoSecuestrooCaptura',
-            {
-            }
+            {}
           )}
         />
         <input
           type='datetime'
           placeholder='MedidasCautelares.Fecha.SolicitudCapturaoSecuestro'
-          {...register (
+          {...register(
             'MedidasCautelares.Fecha.SolicitudCapturaoSecuestro',
-            {
-            }
+            {}
           )}
         />
 
@@ -585,5 +470,4 @@ export function NuevoProceso(
       </form>
     </div>
   );
-
 }

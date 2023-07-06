@@ -11,58 +11,43 @@ import Image from 'next/image';
 import Title from '../Headings/title';
 import { Name } from '../Headings/clientSideName';
 
-export const CardCarpeta = (
-  {
-    name,
-    path,
-    children,
-    llaveProceso,
-    idProceso,
-    icon,
-  }: {
+export const CardCarpeta = ({
+  name,
+  path,
+  children,
+  llaveProceso,
+  idProceso,
+  icon,
+}: {
   name: string;
   path: string;
   children: ReactNode;
   llaveProceso?: string;
   idProceso?: number;
   icon?: string;
-}
-) => {
-
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] =
-    useNavigator ();
-  const [
-    isOpen,
-    setIsOpen
-  ] = useModal ();
+}) => {
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
+  const [isOpen, setIsOpen] = useModal();
 
   const clickHandler = () => {
-
-    setIsNavOpen (
-      false
-    );
-    setIsOpen (
-      true
-    );
-  
+    setIsNavOpen(false);
+    setIsOpen(true);
   };
-  const pathname = usePathname ();
+  const pathname = usePathname();
 
   const href = (
     llaveProceso
       ? idProceso
-        ? `${ path }/${ llaveProceso }/${ idProceso }`
-        : `${ path }/${ llaveProceso }`
-      : `${ path }`
+        ? `${path}/${llaveProceso}/${idProceso}`
+        : `${path}/${llaveProceso}`
+      : `${path}`
   ) as Route;
   const isActive =
     pathname === href ||
     pathname ===
-      `${ path }/${ llaveProceso }/${ idProceso }` ||
-    pathname === `${ path }/${ llaveProceso }` ||
+      `${path}/${llaveProceso}/${idProceso}` ||
+    pathname === `${path}/${llaveProceso}` ||
     pathname === path;
   return (
     <div
@@ -83,5 +68,4 @@ export const CardCarpeta = (
       </div>
     </div>
   );
-
 };

@@ -6,32 +6,22 @@ import typeface from '#@/components/typográficos/typeface.module.scss';
 import note from '#@/components/nota/note.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export function AccordionRow(
-  {
-    tarea,
-    dueDate,
-    isDone,
-  }: {
+export function AccordionRow({
+  tarea,
+  dueDate,
+  isDone,
+}: {
   tarea: string;
   dueDate: string;
   isDone: boolean;
-}
-) {
-
-  const [
-    isActive,
-    setIsActive
-  ] = useState (
-    false
-  );
+}) {
+  const [isActive, setIsActive] = useState(false);
   return (
     <div className={accordion.accordion}>
       <div className={accordion.item}>
         <button
           className={accordion.title}
-          onClick={() => setIsActive (
-            !isActive
-          )}>
+          onClick={() => setIsActive(!isActive)}>
           <span className='material-symbols-outlined'>
             {isActive
               ? 'expand_less'
@@ -50,9 +40,9 @@ export function AccordionRow(
                   ? note.innactive
                   : note.active
               }>
-              {`fecha de entrega: ${ fixFechas (
-                dueDate.toString ()
-              ) }`}
+              {`fecha de entrega: ${fixFechas(
+                dueDate.toString()
+              )}`}
             </p>
             <span
               className={`${
@@ -69,5 +59,4 @@ export function AccordionRow(
       </div>
     </div>
   );
-
 }
