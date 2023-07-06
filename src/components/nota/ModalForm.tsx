@@ -14,6 +14,7 @@ export const ModalForm = (
   >;
 }
 ) => {
+
   const {
     register, reset, handleSubmit 
   } =
@@ -27,11 +28,13 @@ export const ModalForm = (
 
   React.useEffect (
     () => {
+
       reset (
         {
           mail,
         }
       );
+    
     },
     [
       reset,
@@ -42,9 +45,11 @@ export const ModalForm = (
   const onSubmit = (
     data: FormValues
   ) => {
+
     setModalFormData (
       data.mail
     );
+  
   };
 
   return (
@@ -64,4 +69,5 @@ export const ModalForm = (
       <input type='submit' />
     </form>
   );
+
 };

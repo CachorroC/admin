@@ -4,12 +4,15 @@ import { NextResponse } from 'next/server';
 export async function POST(
   request: Request
 ) {
+
   const client = await clientPromise;
 
   if (!client) {
+
     throw new Error (
       'no hay cliente mongólico'
     );
+  
   }
   const db = client.db (
     'RyS'
@@ -19,6 +22,7 @@ export async function POST(
   );
 
   try {
+
     const proceso = await request.json ();
     const result =
       await procesosCollection.insertOne (
@@ -26,12 +30,14 @@ export async function POST(
       );
 
     if (!result.acknowledged) {
+
       return new NextResponse (
         null,
         {
           status: 400,
         }
       );
+    
     }
     return new NextResponse (
       JSON.stringify (
@@ -43,8 +49,10 @@ export async function POST(
         status: 200,
       }
     );
+  
   }
   catch (error) {
+
     return new NextResponse (
       JSON.stringify (
         error
@@ -53,5 +61,7 @@ export async function POST(
         status: 505,
       }
     );
+  
   }
+
 }

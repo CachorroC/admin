@@ -11,6 +11,7 @@ export const ActuacionCard = (
   Actuacion: intActuacion;
 }
 ) => {
+
   const {
     idRegActuacion,
     llaveProceso,
@@ -58,6 +59,7 @@ export const ActuacionCard = (
       </div>
     </div>
   );
+
 };
 
 export const ActuacionesList = (
@@ -70,6 +72,7 @@ export const ActuacionesList = (
   <>
     {Actuaciones.map (
       (Actuacion, ind, arr) => {
+
         const {
           idRegActuacion 
         } = Actuacion;
@@ -79,6 +82,7 @@ export const ActuacionesList = (
             key={idRegActuacion}
           />
         );
+      
       }
     )}
   </>

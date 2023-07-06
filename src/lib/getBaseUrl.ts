@@ -12,6 +12,7 @@ const hostname =
 
 export const getBaseUrl = cache (
   () => {
+
     const uri =
     `https://${ hostname }` ??
     `http://localhost:${ basePort }`;
@@ -19,5 +20,6 @@ export const getBaseUrl = cache (
       uri
     );
     return uri;
+  
   }
 );

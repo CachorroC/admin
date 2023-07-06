@@ -23,6 +23,7 @@ export default function FormProvider(
   children: ReactNode;
 }
 ) {
+
   const [
     data,
     setData
@@ -35,25 +36,31 @@ export default function FormProvider(
     (
       values: {}
     ) => {
+
       setData (
         (
           prevValues
         ) => {
+
           return {
             ...prevValues,
             ...values,
           };
+        
         }
       );
+    
     },
     []
   );
   const contextValue = useMemo (
     () => {
+
       return {
         data,
         setFormValues,
       };
+    
     },
     [
       data,
@@ -66,17 +73,22 @@ export default function FormProvider(
       {children}
     </FormContext.Provider>
   );
+
 }
 
 export function useFormData() {
+
   const context = useContext (
     FormContext
   );
 
   if (context === null) {
+
     throw new Error (
       'useSearch must be used inside a SearchProvider'
     );
+  
   }
   return context;
+
 }

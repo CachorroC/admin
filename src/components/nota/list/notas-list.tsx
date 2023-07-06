@@ -13,21 +13,27 @@ export const NotasList = (
   notas: monNota[];
 }
 ) => {
+
   const linkRef = useRef (
     new Map ()
   );
 
   function getMap() {
+
     if (!linkRef.current) {
+
       // Initialize the Map on first usage.
       linkRef.current = new Map ();
+    
     }
     return linkRef.current;
+  
   }
 
   function scrollToId(
     notaId: string
   ) {
+
     const map = getMap ();
     const node = map.get (
       notaId
@@ -39,6 +45,7 @@ export const NotasList = (
         inline  : 'center',
       }
     );
+  
   }
   return (
     <div
@@ -50,6 +57,7 @@ export const NotasList = (
           (
             nt
           ) => {
+
             const {
               _id, nota 
             } = nt;
@@ -66,6 +74,7 @@ export const NotasList = (
                 <p>{nota}</p>
               </button>
             );
+          
           }
         )}
       </nav>
@@ -80,19 +89,25 @@ export const NotasList = (
               ref={(
                 node
               ) => {
+
                 const map = getMap ();
 
                 if (node) {
+
                   map.set (
                     nt._id,
                     node
                   );
+                
                 }
                 else {
+
                   map.delete (
                     nt._id
                   );
+                
                 }
+              
               }}>
               <Card
                 name={nt.nota}
@@ -107,4 +122,5 @@ export const NotasList = (
       </ul>
     </div>
   );
+
 };

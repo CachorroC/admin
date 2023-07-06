@@ -12,6 +12,7 @@ export default function LayoutProcesos(
   left: React.ReactNode;
 }
 ) {
+
   return (
     <div className={layout.body}>
       <div className={layout.name}>
@@ -21,4 +22,5 @@ export default function LayoutProcesos(
       <div className={layout.right}>{right}</div>
     </div>
   );
+
 }

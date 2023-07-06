@@ -10,6 +10,7 @@ export default async function Page(
   searchParams: { _id: string };
 }
 ) {
+
   const llaveProceso = params.llaveProceso;
   const _id = searchParams._id;
   const nota = await getNotaById (
@@ -22,8 +23,10 @@ export default async function Page(
       (
         nt
       ) => {
+
         const name = nt.nota;
         return name;
+      
       }
     )
     .toString ();
@@ -33,4 +36,5 @@ export default async function Page(
       {`Editar: ${ ntext }`}{' '}
     </h1>
   );
+
 }

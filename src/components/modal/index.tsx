@@ -20,6 +20,7 @@ export default function Modal(
   children: React.ReactNode;
 }
 ) {
+
   const params = useParams ();
   const pathname = usePathname ();
   const overlay = useRef (
@@ -36,12 +37,14 @@ export default function Modal(
 
   const onEnter = useCallback (
     () => {
+
       setIsOpen (
         false
       );
       router.push (
 pathname as Route
       );
+    
     },
     [
       router,
@@ -52,12 +55,14 @@ pathname as Route
 
   const onDismiss = useCallback (
     () => {
+
       setIsOpen (
         isOpen
           ? false
           : true
       );
       router.back ();
+    
     },
     [
       router,
@@ -70,18 +75,26 @@ pathname as Route
     (
       e: { target: undefined }
     ) => {
+
       if (
         e.target === overlay.current ||
         e.target === wrapper.current
       ) {
+
         if (onDismiss) {
+
           onDismiss ();
+        
         }
 
         if (onEnter) {
+
           onEnter ();
+        
         }
+      
       }
+    
     },
     [
       onDismiss,
@@ -95,13 +108,19 @@ pathname as Route
     (
       e: { key: string }
     ) => {
+
       if (e.key === 'Escape') {
+
         onDismiss ();
+      
       }
 
       if (e.key === 'Enter') {
+
         onEnter ();
+      
       }
+    
     },
     [
       onDismiss,
@@ -111,6 +130,7 @@ pathname as Route
 
   useEffect (
     () => {
+
       document.addEventListener (
         'keydown',
         onKeyDown
@@ -120,6 +140,7 @@ pathname as Route
           'keydown',
           onKeyDown
         );
+    
     },
     [
       onKeyDown
@@ -127,12 +148,15 @@ pathname as Route
   );
 
   if (isOpen) {
+
     return (
       <div
         ref={overlay}
         className={modal.modal}
         onClick={() => {
+
           onClick;
+        
         }}>
         <div
           ref={wrapper}
@@ -143,5 +167,7 @@ pathname as Route
         </div>
       </div>
     );
+  
   }
+
 }

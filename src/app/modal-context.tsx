@@ -21,6 +21,7 @@ export function ModalProvider(
   children: ReactNode;
 }
 ) {
+
   const [
     isOpen,
     setIsOpen
@@ -37,18 +38,23 @@ export function ModalProvider(
       {children}
     </ModalContext.Provider>
   );
+
 }
 
 export function useModal() {
+
   const context = useContext (
     ModalContext
   );
 
   if (context === undefined) {
+
     throw new Error (
       'useModal must be used within a ModalProvider'
     );
+  
   }
 
   return context;
+
 }

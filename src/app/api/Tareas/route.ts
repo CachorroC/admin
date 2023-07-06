@@ -5,12 +5,15 @@ import clientPromise from '#@/lib/mongodb';
 import { ObjectId } from 'mongodb';
 
 const Collection = async () => {
+
   const client = await clientPromise;
 
   if (!client) {
+
     throw new Error (
       'no hay cliente mongólico'
     );
+  
   }
   const db = client.db (
     'RyS'
@@ -19,11 +22,13 @@ const Collection = async () => {
     'Tareas'
   );
   return notas;
+
 };
 
 export async function GET(
   Request: NextRequest
 ) {
+
   const {
     searchParams 
   } = new URL (
@@ -32,9 +37,11 @@ export async function GET(
   const client = await clientPromise;
 
   if (!client) {
+
     throw new Error (
       'no hay cliente mongólico'
     );
+  
   }
   const db = client.db (
     'RyS'
@@ -50,15 +57,18 @@ export async function GET(
     .toArray ();
 
   if (!notas.length) {
+
     throw new Error (
       'no hay entradas en mongo'
     );
+  
   }
   const llaveProceso = searchParams.get (
     'llaveProceso'
   );
 
   if (llaveProceso) {
+
     const Tareas = notas.filter (
       (
         nota
@@ -75,6 +85,7 @@ export async function GET(
         },
       }
     );
+  
   }
 
   const _id = searchParams.get (
@@ -82,6 +93,7 @@ export async function GET(
   );
 
   if (_id) {
+
     const Nota = notas.find (
       (
         nota
@@ -98,6 +110,7 @@ export async function GET(
         },
       }
     );
+  
   }
   return new NextResponse (
     JSON.stringify (
@@ -110,11 +123,13 @@ export async function GET(
       },
     }
   );
+
 }
 
 export async function POST(
   request: NextRequest
 ) {
+
   const incomingRequest = await request.json ();
   const client = await Collection ();
   const outgoingRequest = await client.insertOne (
@@ -122,12 +137,14 @@ export async function POST(
   );
 
   if (!outgoingRequest.acknowledged) {
+
     return new NextResponse (
       null,
       {
         status: 404,
       }
     );
+  
   }
   return new NextResponse (
     JSON.stringify (
@@ -141,11 +158,13 @@ export async function POST(
       },
     }
   );
+
 }
 
 export async function PUT(
   Request: NextRequest
 ) {
+
   const updatedNote = await Request.json ();
   const notas = await Collection ();
 
@@ -159,6 +178,7 @@ export async function PUT(
   );
 
   if (id) {
+
     const query = {
       _id: new ObjectId (
         id
@@ -172,6 +192,7 @@ export async function PUT(
     );
 
     if (result.acknowledged) {
+
       return new NextResponse (
         `Successfully updated game with id ${ id }`,
         {
@@ -181,6 +202,7 @@ export async function PUT(
           },
         }
       );
+    
     }
     return new NextResponse (
       `the result was ${
@@ -195,6 +217,7 @@ export async function PUT(
         },
       }
     );
+  
   }
   return new NextResponse (
     null,
@@ -202,11 +225,13 @@ export async function PUT(
       status: 404,
     }
   );
+
 }
 
 export async function DELETE(
   Request: NextRequest
 ) {
+
   const notas = await Collection ();
   const {
     searchParams 
@@ -218,6 +243,7 @@ export async function DELETE(
   );
 
   if (id) {
+
     const query = {
       _id: new ObjectId (
         id
@@ -228,6 +254,7 @@ export async function DELETE(
     );
 
     if (Result.acknowledged) {
+
       const count = Result.deletedCount;
       const response = {
         isOk        : true,
@@ -245,9 +272,11 @@ export async function DELETE(
           },
         }
       );
+    
     }
 
     if (!Result.acknowledged) {
+
       return new NextResponse (
         JSON.stringify (
           `error 400 ${ id } not deleted`
@@ -256,6 +285,7 @@ export async function DELETE(
           status: 400,
         }
       );
+    
     }
     return new NextResponse (
       JSON.stringify (
@@ -265,5 +295,7 @@ export async function DELETE(
         status: 200,
       }
     );
+  
   }
+
 }

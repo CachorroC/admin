@@ -14,6 +14,7 @@ type FormValues = {
 };
 
 export default function Formulario() {
+
   const {
     register,
     handleSubmit,
@@ -122,4 +123,5 @@ export default function Formulario() {
       <input type='submit' />
     </form>
   );
+
 }

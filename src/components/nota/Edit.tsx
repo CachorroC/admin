@@ -22,6 +22,7 @@ export function Edit(
   nota: monNota;
 }
 ) {
+
   const {
     register,
     control,
@@ -46,6 +47,7 @@ export function Edit(
   > = async (
     data: intNotaFormValues
   ) => {
+
     const newData = {
       ...data,
       llaveProceso: nota.llaveProceso,
@@ -73,10 +75,12 @@ export function Edit(
       (
         fullfilled
       ) => {
+
         alert (
           fullfilled.status
         );
         return fullfilled;
+      
       }
     );
 
@@ -86,6 +90,7 @@ export function Edit(
       responsePostNewNote
     );
     return responsePostNewNote;
+  
   };
   return (
     <div className={note.container}>
@@ -212,10 +217,12 @@ export function Edit(
           <button
             type='button'
             onClick={() => {
+
               setValue (
                 'nota',
                 nota.nota
               );
+            
             }}>
             Set All Values
           </button>
@@ -223,4 +230,5 @@ export function Edit(
       </form>
     </div>
   );
+
 }

@@ -12,6 +12,7 @@ export const ProcesoCard = (
   proceso: intProceso;
 }
 ) => {
+
   const {
     idProceso,
     llaveProceso,
@@ -21,7 +22,9 @@ export const ProcesoCard = (
   } = proceso;
 
   if (esPrivado) {
+
     return null;
+  
   }
   const juzgado = despacho
     ? despacho
@@ -78,4 +81,5 @@ export const ProcesoCard = (
       </div>
     </div>
   );
+
 };

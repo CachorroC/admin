@@ -5,6 +5,7 @@ import {useNavigator,
   useSearch,} from '#@/app/search-context';
 
 export default function InputSearchBar() {
+
   const [
     search,
     setSearch
@@ -30,20 +31,25 @@ export default function InputSearchBar() {
         ? 'Buscar'
         : pathname}
       onBeforeInput={() => {
+
         pathname === '/' && setIsNavOpen (
           true
         );
+      
       }}
       onChange={(
         input
       ) => {
+
         setIsNavOpen (
           true
         );
         setSearch (
           input.target.value
         );
+      
       }}
     />
   );
+
 }

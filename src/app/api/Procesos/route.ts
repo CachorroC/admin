@@ -6,12 +6,15 @@ import { monDemandado } from '#@/lib/types/mongodb';
 import { notFound } from 'next/navigation';
 
 const Collection = async () => {
+
   const client = await clientPromise;
 
   if (!client) {
+
     throw new Error (
       'no hay cliente mongólico'
     );
+  
   }
   const db = client.db (
     'RyS'
@@ -20,9 +23,11 @@ const Collection = async () => {
     'Procesos'
   );
   return notas;
+
 };
 
 export async function GET() {
+
   const collection = await Collection ();
   const procesos = await collection
     .find (
@@ -32,7 +37,9 @@ export async function GET() {
     .toArray ();
 
   if (!procesos.length) {
+
     notFound ();
+  
   }
   return new NextResponse (
     JSON.stringify (
@@ -45,11 +52,13 @@ export async function GET() {
       },
     }
   );
+
 }
 
 export async function POST(
   Request: NextRequest
 ) {
+
   const incomingRequest = await Request.json ();
   const collection = await Collection ();
   const outgoingRequest =
@@ -58,6 +67,7 @@ export async function POST(
     );
 
   if (outgoingRequest.acknowledged === false) {
+
     return new NextResponse (
       JSON.stringify (
         {
@@ -69,6 +79,7 @@ export async function POST(
         status: 500,
       }
     );
+  
   }
   return new NextResponse (
     JSON.stringify (
@@ -82,4 +93,5 @@ export async function POST(
       },
     }
   );
+
 }

@@ -10,12 +10,15 @@ export default function Error(
     reset,
   }: any
 ) {
+
   React.useEffect (
     () => {
+
       console.log (
         'logging error:',
         error
       );
+    
     },
     [
       error
@@ -46,4 +49,5 @@ export default function Error(
       </button>
     </div>
   );
+
 }

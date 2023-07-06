@@ -25,6 +25,7 @@ export const LinkCard = (
   proceso: intFecha;
 }
 ) => {
+
   const [
     isOpen,
     setIsOpen
@@ -85,4 +86,5 @@ export const LinkCard = (
       </Link>
     </div>
   );
+
 };

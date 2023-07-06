@@ -13,6 +13,7 @@ async function Acts(
   idProceso: number;
 }
 ) {
+
   const actuaciones =
     await getActuacionesByidProceso (
       {
@@ -24,6 +25,7 @@ async function Acts(
       {actuaciones.acts &&
         actuaciones.acts.map (
           (act, i, arr) => {
+
             const {
               idRegActuacion 
             } = act;
@@ -33,10 +35,12 @@ async function Acts(
                 key={idRegActuacion}
               />
             );
+          
           }
         )}
     </>
   );
+
 }
 
 export default async function PageProcesosLeftllaveProceso(
@@ -48,6 +52,7 @@ export default async function PageProcesosLeftllaveProceso(
   };
 }
 ) {
+
   const Carpetas = getCarpetasByllaveProceso (
     {
       llaveProceso: params.llaveProceso,
@@ -90,6 +95,7 @@ export default async function PageProcesosLeftllaveProceso(
   );
 
   switch (cantidadProcesos) {
+
     case 0:
       return (
         <>
@@ -97,6 +103,7 @@ export default async function PageProcesosLeftllaveProceso(
             (
               carpeta
             ) => {
+
               let txt = '';
               return (
                 <CarpetaCard
@@ -104,6 +111,7 @@ export default async function PageProcesosLeftllaveProceso(
                   key={carpeta._id}
                 />
               );
+            
             }
           )}
         </>
@@ -120,5 +128,7 @@ export default async function PageProcesosLeftllaveProceso(
       return procesosMap;
     default:
       return procesosMap ?? carpetasMap;
+  
   }
+
 }

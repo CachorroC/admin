@@ -24,6 +24,7 @@ export function arrayMergerByidProceso(
     | intFecha[];
 }
 ) {
+
   const map = new Map ();
   a.forEach (
     (
@@ -58,6 +59,7 @@ export function arrayMergerByidProceso(
     )
   );
   return mergedArr;
+
 }
 
 export function arrayMergerByllaveProceso(
@@ -69,6 +71,7 @@ export function arrayMergerByllaveProceso(
   b: monCarpetaDemandado[];
 }
 ) {
+
   const map = new Map ();
   a.forEach (
     (
@@ -103,4 +106,5 @@ export function arrayMergerByllaveProceso(
     )
   );
   return mergedArr;
+
 }

@@ -10,6 +10,7 @@ export async function Name(
   llaveProceso: string;
 }
 ) {
+
   const proceso = await getCarpetasByllaveProceso (
     {
       llaveProceso: llaveProceso,
@@ -28,4 +29,5 @@ export async function Name(
       )}
     </h1>
   );
+
 }

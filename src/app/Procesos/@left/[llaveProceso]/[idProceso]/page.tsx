@@ -13,6 +13,7 @@ export default async function Page(
   };
 }
 ) {
+
   const actuaciones =
     await getActuacionesByidProceso (
       {
@@ -32,4 +33,5 @@ export default async function Page(
         )}
     </>
   );
+
 }

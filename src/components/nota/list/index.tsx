@@ -51,11 +51,13 @@ const catList = [
 ];
 
 export function NotasList() {
-  const itemsRef = useRef ();
+
+  const itemsRef = useRef ( new Map ());
 
   function scrollToId(
     itemId: number
   ) {
+
     const map = getMap ();
     const node = map.get (
       itemId
@@ -67,27 +69,36 @@ export function NotasList() {
         inline  : 'center',
       }
     );
+
   }
 
   function getMap() {
+
     if (!itemsRef.current) {
+
       // Initialize the Map on first usage.
       itemsRef.current = new Map ();
+
     }
     return itemsRef.current;
+
   }
 
   return (
     <>
       <nav>
-        <button onClick={() => scrollToId (
-          0
-        )}>
+        <button onClick={
+          () => scrollToId (
+            0
+          )
+        }>
           Tom
         </button>
-        <button onClick={() => scrollToId (
-          5
-        )}>
+        <button onClick={
+          () => scrollToId (
+            5
+          )
+        }>
           Maru
         </button>
         <button onClick={() => scrollToId (
@@ -107,18 +118,22 @@ export function NotasList() {
                 ref={(
                   node
                 ) => {
+
                   const map = getMap ();
 
                   if (node) {
+
                     return map.set (
                       cat.id,
                       node
                     );
+
                   }
 
                   return map.delete (
                     cat.id
                   );
+
                 }}>
                 <Image
                   src={cat.imageUrl}
@@ -133,4 +148,5 @@ export function NotasList() {
       </div>
     </>
   );
+
 }

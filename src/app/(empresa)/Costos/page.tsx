@@ -23,6 +23,7 @@ const Total = (
   control: Control<FormValues>;
 }
 ) => {
+
   const formValues = useWatch (
     {
       name: 'cart',
@@ -37,9 +38,11 @@ const Total = (
     0
   );
   return <p>Total Amount: {total}</p>;
+
 };
 
 export default function Costos() {
+
   const {
     register,
     control,
@@ -175,4 +178,5 @@ export default function Costos() {
       </form>
     </div>
   );
+
 }

@@ -12,6 +12,7 @@ async function Name(
   llaveProceso: string;
 }
 ) {
+
   const proceso = await getCarpetasByllaveProceso (
     {
       llaveProceso: llaveProceso,
@@ -29,6 +30,7 @@ async function Name(
       {nombre}
     </h3>
   );
+
 }
 
 async function Acts(
@@ -38,6 +40,7 @@ async function Acts(
   idProceso: number;
 }
 ) {
+
   const actuaciones =
     await getActuacionesByidProceso (
       {
@@ -53,6 +56,7 @@ async function Acts(
             i,
             arr
           ) => {
+
             const {
               actuacion,
               anotacion,
@@ -73,10 +77,12 @@ async function Acts(
                 </p>
               </Card>
             );
+          
           }
         )}
     </>
   );
+
 }
 
 export default async function DefaultProcesosllaveProceso(
@@ -88,6 +94,7 @@ export default async function DefaultProcesosllaveProceso(
   };
 }
 ) {
+
   const Carpetas =
     await getCarpetasByllaveProceso (
       {
@@ -97,6 +104,7 @@ export default async function DefaultProcesosllaveProceso(
   const cantidadCarpetas = Carpetas.length;
 
   switch (cantidadCarpetas) {
+
     case 0:
       return (
         <Name
@@ -137,6 +145,7 @@ export default async function DefaultProcesosllaveProceso(
               index,
               arr
             ) => {
+
               const {
                 idProceso,
                 Deudor, _id
@@ -152,6 +161,7 @@ export default async function DefaultProcesosllaveProceso(
                   <p>{Deudor.Direccion}</p>
                 </Card>
               );
+            
             }
           )}
         </>
@@ -165,6 +175,7 @@ export default async function DefaultProcesosllaveProceso(
           />
           {Carpetas.map (
             (carp, index, arr) => {
+
               const {
                 idProceso, Deudor, _id
               } =
@@ -179,9 +190,12 @@ export default async function DefaultProcesosllaveProceso(
                   <p>{Deudor.Direccion}</p>
                 </Card>
               );
+            
             }
           )}
         </>
       );
+  
   }
+
 }

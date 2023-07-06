@@ -2,6 +2,7 @@ import card from '#@/components/card/card.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function CardSkeleton() {
+
   return (
     <div className={card.container}>
       <div className={card.notActive}>
@@ -26,4 +27,5 @@ export default function CardSkeleton() {
       </div>
     </div>
   );
+
 }

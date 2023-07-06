@@ -8,6 +8,7 @@ import {FormCard,
 import { useState } from 'react';
 
 export default function PageProcesosEditarLeft() {
+
   const [
     formStep,
     setFormStep
@@ -56,4 +57,5 @@ export default function PageProcesosEditarLeft() {
       </FormCard>
     </FormProvider>
   );
+
 }

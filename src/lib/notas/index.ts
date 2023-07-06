@@ -7,12 +7,15 @@ import {monNota,
 import { cache } from 'react';
 
 const Collection = async () => {
+
   const client = await clientPromise;
 
   if (!client) {
+
     throw new Error (
       'no hay cliente mongólico'
     );
+  
   }
   const db = client.db (
     'RyS'
@@ -21,9 +24,11 @@ const Collection = async () => {
     'Notas'
   );
   return notas;
+
 };
 
 const Transform = async () => {
+
   const collection = await Collection ();
   const notasRaw = await collection
     .find (
@@ -40,12 +45,15 @@ const Transform = async () => {
     );
 
   return notas;
+
 };
 
 export async function getNotas() {
+
   const notas = await Transform ();
 
   return notas;
+
 }
 
 export async function getNotasByllaveProceso(
@@ -55,6 +63,7 @@ export async function getNotasByllaveProceso(
   llaveProceso: string;
 }
 ) {
+
   const notas = await Transform ();
   const Notas = notas.filter (
     (
@@ -62,6 +71,7 @@ export async function getNotasByllaveProceso(
     ) => nota.llaveProceso === llaveProceso
   );
   return Notas;
+
 }
 export const getNotaById = cache (
   async (
@@ -69,6 +79,7 @@ export const getNotaById = cache (
       _id 
     }: { _id: string }
   ) => {
+
     const notas = await Transform ();
     const Notas = notas.filter (
       (
@@ -76,6 +87,7 @@ export const getNotaById = cache (
       ) => nota._id === _id
     );
     return Notas;
+  
   }
 );
 
@@ -86,6 +98,7 @@ export async function postNota(
   nota: intNota;
 }
 ) {
+
   const collection = await Collection ();
   const outgoingRequest =
     await collection.insertOne (
@@ -93,12 +106,14 @@ export async function postNota(
     );
 
   if (!outgoingRequest.acknowledged) {
+
     return new NextResponse (
       null,
       {
         status: 404,
       }
     );
+  
   }
   return new NextResponse (
     JSON.stringify (
@@ -112,4 +127,5 @@ export async function postNota(
       },
     }
   );
+
 }

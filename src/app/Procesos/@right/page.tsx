@@ -10,6 +10,7 @@ import { NotasList } from '#@/components/nota/list/notas-list';
 import { getNotas } from '#@/lib/notas';
 
 export default async function PageProcesosRight() {
+
   const notas = await getNotas ();
   return (
     <>
@@ -21,4 +22,5 @@ export default async function PageProcesosRight() {
       <Notas />
     </>
   );
+
 }

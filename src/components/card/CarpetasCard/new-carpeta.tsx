@@ -11,6 +11,7 @@ export function NuevoProceso(
   uri: string;
 }
 ) {
+
   const {
     register,
     handleSubmit,
@@ -22,6 +23,7 @@ export function NuevoProceso(
   const onSubmit = async (
     data: intCarpetaDemandado
   ) => {
+
     alert (
       JSON.stringify (
         data
@@ -42,10 +44,12 @@ export function NuevoProceso(
       (
         fullfilled
       ) => {
+
         alert (
           fullfilled.status
         );
         return fullfilled;
+      
       }
     );
     const responsePostNewNote =
@@ -54,6 +58,7 @@ export function NuevoProceso(
       responsePostNewNote
     );
     return responsePostNewNote;
+  
   };
   return (
     <div className={form.container}>
@@ -580,4 +585,5 @@ export function NuevoProceso(
       </form>
     </div>
   );
+
 }

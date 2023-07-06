@@ -15,6 +15,7 @@ export const DemandaContainer = (
   demanda: intDemanda;
 }
 ) => {
+
   const {
     Departamento,
     Municipio,
@@ -57,6 +58,7 @@ export const DemandaContainer = (
       )}
     </div>
   );
+
 };
 
 export const CarpetaCard = (
@@ -66,6 +68,7 @@ export const CarpetaCard = (
   Carpeta: monCarpetaDemandado;
 }
 ) => {
+
   const pathname = usePathname ();
 
   const {
@@ -174,4 +177,5 @@ export const CarpetaCard = (
       </div>
     </>
   );
+
 };

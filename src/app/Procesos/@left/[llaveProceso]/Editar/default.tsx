@@ -14,6 +14,7 @@ export default async function Default(
   searchParams: { _id: string };
 }
 ) {
+
   const llaveProceso = params.llaveProceso;
   const _id = searchParams._id;
   const nota = await getNotaById (
@@ -43,4 +44,5 @@ export default async function Default(
       </div>
     </div>
   );
+
 }

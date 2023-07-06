@@ -42,6 +42,7 @@ export const FormCard = (
 );
 
 export const FormCompleted = () => {
+
   const {
     data 
   } = useFormData ();
@@ -55,6 +56,7 @@ export const FormCompleted = () => {
       )}</pre>
     </>
   );
+
 };
 
 export const PersonalInfo = (
@@ -66,6 +68,7 @@ export const PersonalInfo = (
   nextFormStep: () => void;
 }
 ) => {
+
   const {
     setFormValues 
   } = useFormData ();
@@ -87,10 +90,12 @@ export const PersonalInfo = (
   const onSubmit = (
     values: any
   ) => {
+
     setFormValues (
       values
     );
     nextFormStep ();
+  
   };
 
   return (
@@ -127,6 +132,7 @@ export const PersonalInfo = (
       </form>
     </div>
   );
+
 };
 
 export const ConfirmPurchase = (
@@ -138,6 +144,7 @@ export const ConfirmPurchase = (
   nextFormStep: () => void;
 }
 ) => {
+
   const {
     setFormValues 
   } = useFormData ();
@@ -159,10 +166,12 @@ export const ConfirmPurchase = (
   const onSubmit = (
     values: any
   ) => {
+
     setFormValues (
       values
     );
     nextFormStep ();
+  
   };
 
   return (
@@ -200,6 +209,7 @@ export const ConfirmPurchase = (
       </form>
     </div>
   );
+
 };
 
 export const BillingInfo = (
@@ -211,6 +221,7 @@ export const BillingInfo = (
   nextFormStep: () => void;
 }
 ) => {
+
   const {
     setFormValues 
   } = useFormData ();
@@ -232,10 +243,12 @@ export const BillingInfo = (
   const onSubmit = (
     values: any
   ) => {
+
     setFormValues (
       values
     );
     nextFormStep ();
+  
   };
 
   return (
@@ -272,4 +285,5 @@ export const BillingInfo = (
       </form>
     </div>
   );
+
 };

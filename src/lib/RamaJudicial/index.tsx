@@ -19,10 +19,12 @@ export const Juzgados = cache (
     procesos: monCarpetaDemandado[];
   }
   ) => {
+
     const rowPrc = [];
     const juzgados = await Promise.all (
       procesos.map (
         async (proceso, i) => {
+
           sleep (
             i * 500
           );
@@ -35,10 +37,12 @@ export const Juzgados = cache (
               llaveProceso={proceso.llaveProceso}
             />
           );
+        
         }
       )
     );
     return <>{juzgados}</>;
+  
   }
 );
 
@@ -49,23 +53,29 @@ export async function getConsultaNumeroRadicion(
   llaveProceso: string;
 }
 ) {
+
   const Request = await fetch (
     `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=false`
   );
 
   if (!Request.ok) {
+
     console.log (
       Request.text ()
     );
     return [];
+  
   }
   const res =
     (await Request.json ()) as intConsultaNumeroRadicacion;
 
   if (!res.procesos) {
+
     notFound ();
+  
   }
   return res.procesos;
+
 }
 
 export async function getActuacionesByidProceso(
@@ -75,13 +85,17 @@ export async function getActuacionesByidProceso(
   idProceso: number;
 }
 ) {
+
   if (idProceso === 0) {
+
     throw new Error (
       'error'
     );
+  
   }
 
   try {
+
     const request = await fetch (
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
       {
@@ -90,6 +104,7 @@ export async function getActuacionesByidProceso(
     );
 
     if (!request.ok) {
+
       const text = await request.text ();
       const response: IntActuaciones = {
         idProceso: idProceso,
@@ -100,12 +115,14 @@ export async function getActuacionesByidProceso(
           : '',
       };
       return response;
+    
     }
 
     const res =
       (await request.json ()) as intConsultaActuaciones;
 
     if (res.actuaciones) {
+
       const response: IntActuaciones = {
         idProceso: idProceso,
 
@@ -117,6 +134,7 @@ export async function getActuacionesByidProceso(
       };
 
       return response;
+    
     }
     const text = await request.text ();
     const response: IntActuaciones = {
@@ -127,8 +145,10 @@ export async function getActuacionesByidProceso(
     };
 
     return response;
+  
   }
   catch (err) {
+
     const response: IntActuaciones = {
       idProceso: idProceso,
       text     : {
@@ -138,7 +158,9 @@ export async function getActuacionesByidProceso(
     };
 
     return response;
+  
   }
+
 }
 
 export async function fetchFechas(
@@ -148,9 +170,11 @@ export async function fetchFechas(
   procesos: monCarpetaDemandado[];
 }
 ) {
+
   const fechas: intFecha[] = [];
 
   for (let p = 0; p < procesos.length; p++) {
+
     const proceso = procesos[ p ];
     const acts = await getActuacionesByidProceso (
       {
@@ -159,6 +183,7 @@ export async function fetchFechas(
     );
 
     if (acts.acts) {
+
       const fecha = {
         ...proceso,
         fecha: acts.acts[ 0 ].fechaActuacion,
@@ -166,9 +191,11 @@ export async function fetchFechas(
       fechas.push (
         fecha
       );
+    
     }
 
     if (!acts.acts) {
+
       const fecha = {
         ...proceso,
         fecha: acts.text.message,
@@ -176,17 +203,24 @@ export async function fetchFechas(
       fechas.push (
         fecha
       );
+    
     }
 
     if (p + 1 === procesos.length) {
+
       return fechas;
+    
     }
+  
   }
 
   if (fechas.length !== procesos.length) {
+
     return fechas;
+  
   }
   return fechas;
+
 }
 
 export async function fetchFecha(
@@ -196,6 +230,7 @@ export async function fetchFecha(
   proceso: monCarpetaDemandado;
 }
 ) {
+
   const acts = await getActuacionesByidProceso (
     {
       idProceso: proceso.idProceso,
@@ -203,11 +238,13 @@ export async function fetchFecha(
   );
 
   if (acts.acts) {
+
     const fecha: intFecha = {
       ...proceso,
       fecha: acts.acts[ 0 ].fechaActuacion,
     };
     return fecha;
+  
   }
 
   const fecha: intFecha = {
@@ -215,4 +252,5 @@ export async function fetchFecha(
     fecha: acts.text.message,
   };
   return fecha;
+
 }

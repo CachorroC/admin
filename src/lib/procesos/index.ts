@@ -6,12 +6,15 @@ import {intDemandado,
 import { cache } from 'react';
 
 const Collection = async () => {
+
   const client = await clientPromise;
 
   if (!client) {
+
     throw new Error (
       'no hay cliente mongólico'
     );
+  
   }
   const db = client.db (
     'RyS'
@@ -20,10 +23,12 @@ const Collection = async () => {
     'Procesos'
   );
   return procesos;
+
 };
 
 export const getProcesos = cache (
   async () => {
+
     const collection = await Collection ();
     const procesos = (await collection
       .find (
@@ -32,6 +37,7 @@ export const getProcesos = cache (
       )
       .toArray ()) as unknown as monDemandado[];
     return procesos;
+  
   }
 );
 export const getProcesosByllaveProceso = cache (
@@ -42,6 +48,7 @@ export const getProcesosByllaveProceso = cache (
     llaveProceso: string;
   }
   ) => {
+
     const collection = await Collection ();
     const procesos = (await collection
       .find (
@@ -56,6 +63,7 @@ export const getProcesosByllaveProceso = cache (
         proceso.llaveProceso === llaveProceso
     );
     return Procesos;
+  
   }
 );
 export const getProcesoById = cache (
@@ -64,6 +72,7 @@ export const getProcesoById = cache (
       _id 
     }: { _id: string }
   ) => {
+
     const collection = await Collection ();
     const procesos = (await collection
       .find (
@@ -77,6 +86,7 @@ export const getProcesoById = cache (
       ) => proceso._id.toString () === _id
     );
     return Procesos;
+  
   }
 );
 
@@ -87,6 +97,7 @@ export async function postProceso(
   proceso: intDemandado;
 }
 ) {
+
   const collection = await Collection ();
   const outgoingRequest =
     await collection.insertOne (
@@ -94,12 +105,14 @@ export async function postProceso(
     );
 
   if (!outgoingRequest.acknowledged) {
+
     return new NextResponse (
       null,
       {
         status: 404,
       }
     );
+  
   }
   return new NextResponse (
     JSON.stringify (
@@ -113,4 +126,5 @@ export async function postProceso(
       },
     }
   );
+
 }

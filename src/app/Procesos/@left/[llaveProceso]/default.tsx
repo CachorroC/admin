@@ -13,6 +13,7 @@ async function Acts(
   idProceso: number;
 }
 ) {
+
   const actuaciones =
     await getActuacionesByidProceso (
       {
@@ -24,6 +25,7 @@ async function Acts(
       {actuaciones.acts &&
         actuaciones.acts.map (
           (act, i, arr) => {
+
             const {
               actuacion,
               anotacion,
@@ -44,10 +46,12 @@ async function Acts(
                 </p>
               </Card>
             );
+          
           }
         )}
     </>
   );
+
 }
 
 export default async function DefaultProcesosLeftllaveProceso(
@@ -61,6 +65,7 @@ export default async function DefaultProcesosLeftllaveProceso(
   };
 }
 ) {
+
   const carpeta = await getCarpetasByllaveProceso (
     {
       llaveProceso: llaveProceso,
@@ -75,6 +80,7 @@ export default async function DefaultProcesosLeftllaveProceso(
   const cantidadProcesos = Procesos.length;
 
   switch (cantidadProcesos) {
+
     case 0:
       return (
         <Fragment key={llaveProceso}>
@@ -83,6 +89,7 @@ export default async function DefaultProcesosLeftllaveProceso(
           </h1>
           {carpeta.map (
             (prc, i, arr) => {
+
               const {
                 idProceso, _id, Deudor 
               } =
@@ -111,6 +118,7 @@ export default async function DefaultProcesosLeftllaveProceso(
                   </Card>
                 </Fragment>
               );
+            
             }
           )}
         </Fragment>
@@ -138,6 +146,7 @@ export default async function DefaultProcesosLeftllaveProceso(
           </h1>
           {carpeta.map (
             (carp, index, arr) => {
+
               const {
                 idProceso, Deudor, _id 
               } =
@@ -152,6 +161,7 @@ export default async function DefaultProcesosLeftllaveProceso(
                   <p>{Deudor.Direccion}</p>
                 </Card>
               );
+            
             }
           )}
         </>
@@ -165,6 +175,7 @@ export default async function DefaultProcesosLeftllaveProceso(
           </h1>
           {carpeta.map (
             (carp, index, arr) => {
+
               const {
                 idProceso, Deudor, _id 
               } =
@@ -179,9 +190,12 @@ export default async function DefaultProcesosLeftllaveProceso(
                   <p>{Deudor.Direccion}</p>
                 </Card>
               );
+            
             }
           )}
         </>
       );
+  
   }
+
 }

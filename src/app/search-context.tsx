@@ -29,6 +29,7 @@ export function SearchProvider(
   children: ReactNode;
 }
 ) {
+
   const level = useContext (
     LevelContext
   );
@@ -62,31 +63,40 @@ export function SearchProvider(
       </SearchContext.Provider>
     </LevelContext.Provider>
   );
+
 }
 
 export function useSearch() {
+
   const context = useContext (
     SearchContext
   );
 
   if (context === null) {
+
     throw new Error (
       'useSearch must be used inside a SearchProvider'
     );
+  
   }
   return context;
+
 }
 
 export function useNavigator() {
+
   const context = useContext (
     NavContext
   );
 
   if (context === undefined) {
+
     throw new Error (
       'useNavigator must be used within a NavProvider'
     );
+  
   }
 
   return context;
+
 }

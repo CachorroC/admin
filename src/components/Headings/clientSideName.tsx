@@ -12,12 +12,14 @@ export const Name = (
   helper?: string;
 }
 ) => {
+
   const pathname = usePathname ();
   const segment = useSelectedLayoutSegment ();
   const today = new Date ();
   let day;
 
   switch (today.getDay ()) {
+
     case 0:
       day = 'Mimingo';
       break;
@@ -38,6 +40,7 @@ export const Name = (
       break;
     case 6:
       day = 'Sábado';
+  
   }
   const days = [
     'mimingo',
@@ -70,4 +73,5 @@ export const Name = (
         ) }`}
     </h1>
   );
+
 };

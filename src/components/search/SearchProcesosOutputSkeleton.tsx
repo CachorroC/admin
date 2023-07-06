@@ -2,6 +2,7 @@ import LinkCardSkeleton from './link-skeleton';
 import { Fragment } from 'react';
 
 export default function SearchOutputListSkeleton() {
+
   return (
     <Fragment>
       <LinkCardSkeleton key={0} />
@@ -16,4 +17,5 @@ export default function SearchOutputListSkeleton() {
       <LinkCardSkeleton key={9} />
     </Fragment>
   );
+
 }

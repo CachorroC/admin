@@ -11,6 +11,7 @@ export default function NuevaNotallaveProceso(
   params: { llaveProceso: string };
 }
 ) {
+
   return (
     <div className={layout.body}>
       <div className={layout.left}>
@@ -26,4 +27,5 @@ export default function NuevaNotallaveProceso(
       </div>
     </div>
   );
+
 }

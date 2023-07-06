@@ -23,6 +23,7 @@ export function NoteProvider(
   children: ReactNode;
 }
 ) {
+
   const [
     isShowing,
     setIsShowing
@@ -39,18 +40,23 @@ export function NoteProvider(
       {children}
     </NoteContext.Provider>
   );
+
 }
 
 export function useNoter() {
+
   const context = useContext (
     NoteContext
   );
 
   if (context === null) {
+
     throw new Error (
       'useModal must be used within NoteProvider'
     );
+  
   }
 
   return context;
+
 }

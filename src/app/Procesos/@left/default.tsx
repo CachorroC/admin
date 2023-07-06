@@ -8,6 +8,7 @@ import type { Route } from 'next';
 import { CardSearchList } from '#@/components/search/CardSearchList';
 
 export default async function DefaultProcesosLeft() {
+
   const carpetas = await getCarpetas ();
   const fechas = await fetchFechas (
     {
@@ -24,4 +25,5 @@ export default async function DefaultProcesosLeft() {
       />
     </Suspense>
   );
+
 }

@@ -17,6 +17,7 @@ export function AccordionRow(
   isDone: boolean;
 }
 ) {
+
   const [
     isActive,
     setIsActive
@@ -68,4 +69,5 @@ export function AccordionRow(
       </div>
     </div>
   );
+
 }

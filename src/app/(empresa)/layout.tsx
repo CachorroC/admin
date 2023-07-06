@@ -8,7 +8,9 @@ export default function Layout(
   children: React.ReactNode;
 }
 ) {
+
   return (
     <div className={layout.body}>{children}</div>
   );
+
 }

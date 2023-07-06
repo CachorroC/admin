@@ -7,6 +7,7 @@ import { useNavigator } from '#@/app/search-context';
 import type { Route } from 'next';
 
 export const ForwardButton = () => {
+
   const [
     isNavOpen,
     setIsNavOpen
@@ -18,10 +19,12 @@ export const ForwardButton = () => {
       type='button'
       className={navbar.buttonForward}
       onClick={() => {
+
         router.forward ();
         setIsNavOpen (
           false
         );
+      
       }}>
       <span
         className={`material-symbols-outlined ${ navbar.icon }`}>
@@ -32,9 +35,11 @@ export const ForwardButton = () => {
       </p>
     </button>
   );
+
 };
 
 export const BackwardsButton = () => {
+
   const [
     isNavOpen,
     setIsNavOpen
@@ -47,6 +52,7 @@ export const BackwardsButton = () => {
   const router = useRouter ();
 
   const clickHandler = () => {
+
     setIsNavOpen (
       false
     );
@@ -54,6 +60,7 @@ export const BackwardsButton = () => {
       false
     );
     router.back ();
+  
   };
   return (
     <button
@@ -69,9 +76,11 @@ export const BackwardsButton = () => {
       </p>
     </button>
   );
+
 };
 
 export const DrawerMenuButton = () => {
+
   const [
     isNavOpen,
     setIsNavOpen
@@ -79,6 +88,7 @@ export const DrawerMenuButton = () => {
     useNavigator ();
 
   if (isNavOpen) {
+
     return (
       <button
         type='button'
@@ -95,6 +105,7 @@ export const DrawerMenuButton = () => {
         </p>
       </button>
     );
+  
   }
   return (
     <button
@@ -112,9 +123,11 @@ export const DrawerMenuButton = () => {
       </p>
     </button>
   );
+
 };
 
 export const HomeButton = () => {
+
   const [
     isNavOpen,
     setIsNavOpen
@@ -125,9 +138,11 @@ export const HomeButton = () => {
       href={'/' as Route}
       className={navbar.buttonHome}
       onClick={() => {
+
         setIsNavOpen (
           false
         );
+      
       }}>
       <span
         className={`material-symbols-outlined ${ navbar.icon }`}>
@@ -138,9 +153,11 @@ export const HomeButton = () => {
       </p>
     </Link>
   );
+
 };
 
 export const ModalButton = () => {
+
   const [
     isOpen,
     setIsOpen
@@ -157,4 +174,5 @@ export const ModalButton = () => {
       </span>
     </button>
   );
+
 };

@@ -1,12 +1,17 @@
 export function fixFechas(
   fecha: string | null | undefined
 ) {
+
   if (fecha === null) {
+
     return 'no hay fechas: null';
+  
   }
 
   if (fecha === undefined) {
+
     return 'no se ha definido el contenido';
+  
   }
   const date = new Date (
     fecha
@@ -29,11 +34,13 @@ export function fixFechas(
   const dia = date.getDate ();
   const ano = date.getFullYear ();
   return dia + ' de ' + month + ' de ' + ano;
+
 }
 
 function trimmer(
   sujetosProcesales: string
 ) {
+
   const locateDemandado =
     sujetosProcesales.search (
       /(demandado|causante)+:(?:\s*?|'\s*?')/gi
@@ -58,24 +65,33 @@ function trimmer(
         nombreOapellido: string,
         index: number
       ) => {
+
         if (index >= 5) {
+
           return '';
+        
         }
 
         if (nombreOapellido === '|') {
+
           return '';
+        
         }
 
         if (nombreOapellido.includes (
           's.a.s'
         )) {
+
           return '';
+        
         }
 
         if (nombreOapellido.includes (
           'sas'
         )) {
+
           return '';
+        
         }
 
         if (
@@ -83,7 +99,9 @@ function trimmer(
             '(emplazado)'
           )
         ) {
+
           return '';
+        
         }
         return nombreOapellido.replace (
           /^./,
@@ -91,6 +109,7 @@ function trimmer(
             str: string
           ) => str.toUpperCase ()
         );
+      
       }
     );
   const unifyDemandado =
@@ -98,11 +117,13 @@ function trimmer(
       ' '
     );
   return unifyDemandado;
+
 }
 
 export const fixDemandado = (
   sujetosProcesales: string
 ) => {
+
   const mySubString = 'Demandado';
 
   const count =
@@ -112,16 +133,20 @@ export const fixDemandado = (
     1;
 
   if (count === 1) {
+
     return trimmer (
       sujetosProcesales
     );
+  
   }
   return sujetosProcesales;
+
 };
 
 export const toNameString = (
   nameRaw: string
 ) => {
+
   const str = nameRaw.toLocaleLowerCase ();
 
   //split the above string into an array of strings
@@ -134,6 +159,7 @@ export const toNameString = (
   //loop through each element of the array and capitalize the first letter.
 
   for (var i = 0; i < arr.length; i++) {
+
     arr[ i ] =
       arr[ i ].charAt (
         0
@@ -141,6 +167,7 @@ export const toNameString = (
       arr[ i ].slice (
         1
       );
+  
   }
 
   //Join all the elements of the array back into a string
@@ -151,4 +178,5 @@ export const toNameString = (
   return str2;
 
   //Outptut: I Have Learned Something New Today
+
 };

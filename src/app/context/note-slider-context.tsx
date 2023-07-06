@@ -25,6 +25,7 @@ export function NoteSliderProvider(
   children: ReactNode;
 }
 ) {
+
   const [
     noteSliderMap,
     setNoteSliderMap
@@ -41,17 +42,22 @@ export function NoteSliderProvider(
       {children}
     </NoteSliderContext.Provider>
   );
+
 }
 
 export function useNoteSlider() {
+
   const context = useContext (
     NoteSliderContext
   );
 
   if (context === undefined) {
+
     throw new Error (
       'useNoteSlider should be used inside a NoteSliderProvider'
     );
+  
   }
   return context;
+
 }

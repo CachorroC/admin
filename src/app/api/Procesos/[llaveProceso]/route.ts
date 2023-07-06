@@ -12,6 +12,7 @@ export async function GET(
     params: { llaveProceso: string };
   }
 ) {
+
   const llaveProceso = params.llaveProceso;
   const {
     searchParams 
@@ -42,6 +43,7 @@ export async function GET(
   );
 
   if (delay) {
+
     await new Promise (
       (
         resolve
@@ -53,12 +55,14 @@ export async function GET(
           )
         )
     );
+  
   }
   const idProceso = searchParams.get (
     'idProceso'
   );
 
   if (idProceso) {
+
     const Procesos = procesos.find (
       (
         proceso
@@ -67,6 +71,7 @@ export async function GET(
     );
 
     if (!Procesos) {
+
       const num = parseInt (
         idProceso
       );
@@ -86,6 +91,7 @@ export async function GET(
           },
         }
       );
+    
     }
     return new NextResponse (
       JSON.stringify (
@@ -98,6 +104,7 @@ export async function GET(
         },
       }
     );
+  
   }
   return new NextResponse (
     JSON.stringify (
@@ -110,4 +117,5 @@ export async function GET(
       },
     }
   );
+
 }

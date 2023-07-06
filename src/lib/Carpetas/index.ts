@@ -9,21 +9,26 @@ import {monCarpetaDemandado,
 export const preload = (
   llaveProceso: string
 ) => {
+
   void getCarpetasByllaveProceso (
     {
       llaveProceso: llaveProceso,
     }
   );
+
 };
 
 const Collection = cache (
   async () => {
+
     const client = await clientPromise;
 
     if (!client) {
+
       throw new Error (
         'no hay cliente mongólico'
       );
+    
     }
     const db = client.db (
       'RyS'
@@ -32,10 +37,12 @@ const Collection = cache (
       'Demandados'
     );
     return carpetas;
+  
   }
 );
 
 const Transform = async () => {
+
   const collection = await Collection ();
   const carpetasRaw = await collection
     .find (
@@ -52,12 +59,15 @@ const Transform = async () => {
     );
 
   return carpetas;
+
 };
 
 export const getCarpetas = cache (
   async () => {
+
     const carpetas = await Transform ();
     return carpetas;
+  
   }
 );
 export const getCarpetasByllaveProceso = cache (
@@ -68,6 +78,7 @@ export const getCarpetasByllaveProceso = cache (
     llaveProceso: string;
   }
   ) => {
+
     const collection = await Collection ();
     const carpetasRaw = await collection
       .find (
@@ -88,6 +99,7 @@ export const getCarpetasByllaveProceso = cache (
         carpeta.llaveProceso === llaveProceso
     );
     return Carpetas;
+  
   }
 );
 
@@ -99,6 +111,7 @@ export const getCarpetasByidProceso = cache (
     idProceso: number;
   }
   ) => {
+
     const collection = await Collection ();
     const carpetasRaw = await collection
       .find (
@@ -118,6 +131,7 @@ export const getCarpetasByidProceso = cache (
       ) => carpeta.idProceso === idProceso
     );
     return Carpetas;
+  
   }
 );
 
@@ -127,6 +141,7 @@ export const getCarpetaById = cache (
       _id 
     }: { _id: string }
   ) => {
+
     const collection = await Collection ();
     const carpetasRaw = await collection
       .find (
@@ -146,6 +161,7 @@ export const getCarpetaById = cache (
       ) => carpeta._id === _id
     );
     return Carpetas;
+  
   }
 );
 
@@ -156,6 +172,7 @@ export async function postCarpeta(
   nota: intCarpetaDemandado;
 }
 ) {
+
   const collection = await Collection ();
   const outgoingRequest =
     await collection.insertOne (
@@ -163,12 +180,14 @@ export async function postCarpeta(
     );
 
   if (!outgoingRequest.acknowledged) {
+
     return new NextResponse (
       null,
       {
         status: 404,
       }
     );
+  
   }
   return new NextResponse (
     JSON.stringify (
@@ -182,4 +201,5 @@ export async function postCarpeta(
       },
     }
   );
+
 }

@@ -8,6 +8,7 @@ import { Suspense } from 'react';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 
 async function ListDrawer() {
+
   const procesos = await getCarpetas ();
   const fechas = await fetchFechas (
     {
@@ -22,9 +23,11 @@ async function ListDrawer() {
       />
     </Drawer>
   );
+
 }
 
 export default async function Page() {
+
   return (
     <Header>
       <Title />
@@ -34,4 +37,5 @@ export default async function Page() {
       </Suspense>
     </Header>
   );
+
 }

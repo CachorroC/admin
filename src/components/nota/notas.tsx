@@ -23,6 +23,7 @@ async function Name(
   llaveProceso: string;
 }
 ) {
+
   const proceso = await getCarpetasByllaveProceso (
     {
       llaveProceso: llaveProceso,
@@ -40,6 +41,7 @@ async function Name(
       {nombre}
     </h1>
   );
+
 }
 
 export function Nota(
@@ -53,6 +55,7 @@ export function Nota(
   arr: monNota[];
 }
 ) {
+
   return (
     <div
       className={note.container}
@@ -101,6 +104,7 @@ export function Nota(
       </div>
     </div>
   );
+
 }
 
 export async function Notas(
@@ -110,7 +114,9 @@ export async function Notas(
   llaveProceso?: string;
 }
 ) {
+
   if (llaveProceso) {
+
     const notas = await getNotasByllaveProceso (
       {
         llaveProceso: llaveProceso,
@@ -118,6 +124,7 @@ export async function Notas(
     );
 
     if (notas.length === 0) {
+
       const nts = await getNotas ();
       const NotasRow = nts.map (
         (nota, i, arr) => (
@@ -130,6 +137,7 @@ export async function Notas(
         )
       );
       return <>{NotasRow}</>;
+    
     }
     const NotasRow = notas.map (
       (nota, i, arr) => (
@@ -142,6 +150,7 @@ export async function Notas(
       )
     );
     return <>{NotasRow}</>;
+  
   }
   const notas = await getNotas ();
   const NotasRow = notas.map (
@@ -155,4 +164,5 @@ export async function Notas(
     )
   );
   return <>{NotasRow}</>;
+
 }

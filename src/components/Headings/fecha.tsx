@@ -9,6 +9,7 @@ export function Fecha(
   helper: string | null | undefined;
 }
 ) {
+
   return (
     <sub
       className={`${ typography.labelSmall } ${ card.date }`}>
@@ -17,4 +18,5 @@ export function Fecha(
       )}
     </sub>
   );
+
 }

@@ -1,6 +1,7 @@
 import card from '#@/components/card/card.module.scss';
 
 export default function Loading() {
+
   return (
     <div className={card.container}>
       <div className={card.layout}>
@@ -10,4 +11,5 @@ export default function Loading() {
       </div>
     </div>
   );
+
 }

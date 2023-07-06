@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import layout from '#@/styles/scss/layout.module.scss';
 
 export default function Install() {
+
   const [
     isInstalled,
     setIsInstalled
@@ -13,13 +14,16 @@ export default function Install() {
     );
   useEffect (
     () => {
+
       function handleScroll(
         e: any
       ) {
+
         console.log (
           window.scrollX,
           window.scrollY
         );
+      
       }
       window.addEventListener (
         'scroll',
@@ -27,6 +31,7 @@ export default function Install() {
       );
 
       if ('serviceWorker' in navigator) {
+
         console.log (
           'CLIENT: service worker registration in progress.'
         );
@@ -36,21 +41,28 @@ export default function Install() {
           )
           .then (
             function () {
+
               console.log (
                 'CLIENT: service worker registration complete.'
               );
+            
             },
             function () {
+
               console.log (
                 'CLIENT: service worker registration failure.'
               );
+            
             }
           );
+      
       }
       else {
+
         console.log (
           'CLIENT: service worker is not supported.'
         );
+      
       }
 
       return () =>
@@ -58,6 +70,7 @@ export default function Install() {
           'scroll',
           handleScroll
         );
+    
     },
     [
       setIsInstalled
@@ -67,15 +80,18 @@ export default function Install() {
     <button
       className={layout.installButton}
       onClick={() => {
+
         setIsInstalled (
           isInstalled
             ? false
             : true
         );
+      
       }}>
       <span className='material-symbols-outlined'>
         install
       </span>
     </button>
   );
+
 }

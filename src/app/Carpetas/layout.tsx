@@ -9,6 +9,7 @@ export default function LayoutCarpetas(
   children: ReactNode;
 }
 ) {
+
   return (
     <div className={layout.body}>
       <div className={layout.name}>
@@ -19,4 +20,5 @@ export default function LayoutCarpetas(
       {children}
     </div>
   );
+
 }

@@ -4,6 +4,7 @@ import CardSkeleton from '#@/components/card/card-skeleton';
 import LinkCardSkeleton from '#@/components/search/link-skeleton';
 
 export default function Loading() {
+
   return (
     <>
       <LinkCardSkeleton key='0' />
@@ -18,4 +19,5 @@ export default function Loading() {
       <LinkCardSkeleton key='9' />
     </>
   );
+
 }

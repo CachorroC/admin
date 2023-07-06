@@ -5,6 +5,7 @@ import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function NuevaCarpetaPage() {
+
   return (
     <div className={layout.left}>
       <h2 className={typography.titleLarge}>
@@ -13,4 +14,5 @@ export default function NuevaCarpetaPage() {
       <NuevoProceso uri={`${ getBaseUrl () }`} />
     </div>
   );
+
 }

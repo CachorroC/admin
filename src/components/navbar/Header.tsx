@@ -18,6 +18,7 @@ export default function Header(
   children: React.ReactNode;
 }
 ) {
+
   const isDesktop = useMedia (
     2
   );
@@ -29,6 +30,7 @@ export default function Header(
   );
 
   if (isDesktop || isBigDesktop) {
+
     return (
       <div className={layout.header}>
         <Suspense fallback={<ButtonSkeleton />}>
@@ -55,9 +57,11 @@ export default function Header(
         <DrawerMenuButton />
       </div>
     );
+  
   }
 
   if (isMobile) {
+
     return (
       <div className={layout.header}>
         <Suspense fallback={<ButtonSkeleton />}>
@@ -76,6 +80,7 @@ export default function Header(
         </Suspense>
       </div>
     );
+  
   }
   return (
     <div className={layout.header}>
@@ -103,4 +108,5 @@ export default function Header(
       <DrawerMenuButton />
     </div>
   );
+
 }

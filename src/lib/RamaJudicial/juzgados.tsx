@@ -11,12 +11,15 @@ export async function JuzgadosByllaveProceso(
   llaveProceso: string;
 }
 ) {
+
   try {
+
     const Request = await fetch (
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=false`
     );
 
     if (!Request.ok) {
+
       return (
         <CardCarpeta
           name={`${ Request.text () } error`}
@@ -25,23 +28,27 @@ export async function JuzgadosByllaveProceso(
           <p> Error </p>
         </CardCarpeta>
       );
+    
     }
     const res =
       (await Request.json ()) as intConsultaNumeroRadicacion;
 
     if (res.procesos.length === 0) {
+
       <CardCarpeta
         name={res.parametros.numero}
         path={'/Procesos'}
         llaveProceso={res.parametros.numero}>
         <p> No Hay Procesos </p>
       </CardCarpeta>;
+    
     }
     const procesos = res.procesos;
     const mapeandoProcesos = procesos.map (
       (
         Proceso
       ) => {
+
         const {
           llaveProceso,
           idProceso,
@@ -61,11 +68,14 @@ export async function JuzgadosByllaveProceso(
             <p>{`idProceso= ${ idProceso }`}</p>
           </CardCarpeta>
         );
+      
       }
     );
     return <>{mapeandoProcesos}</>;
+  
   }
   catch (err) {
+
     console.log (
       err
     );
@@ -80,5 +90,7 @@ export async function JuzgadosByllaveProceso(
         <p>{error}</p>
       </CardCarpeta>
     );
+  
   }
+
 }

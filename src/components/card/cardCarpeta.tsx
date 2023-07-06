@@ -28,6 +28,7 @@ export const CardCarpeta = (
   icon?: string;
 }
 ) => {
+
   const [
     isNavOpen,
     setIsNavOpen
@@ -39,12 +40,14 @@ export const CardCarpeta = (
   ] = useModal ();
 
   const clickHandler = () => {
+
     setIsNavOpen (
       false
     );
     setIsOpen (
       true
     );
+  
   };
   const pathname = usePathname ();
 
@@ -80,4 +83,5 @@ export const CardCarpeta = (
       </div>
     </div>
   );
+
 };

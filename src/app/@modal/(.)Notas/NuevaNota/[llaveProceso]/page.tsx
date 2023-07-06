@@ -12,6 +12,7 @@ export default function NuevaNotallaveProceso(
   params: { llaveProceso: string };
 }
 ) {
+
   return (
     <Modal>
       <NewNota
@@ -20,4 +21,5 @@ export default function NuevaNotallaveProceso(
       />
     </Modal>
   );
+
 }

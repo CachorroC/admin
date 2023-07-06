@@ -13,6 +13,7 @@ export default async function PageProcesosllaveProcesoidProceso(
   };
 }
 ) {
+
   const carpetas =
     await getCarpetasByllaveProceso (
       {
@@ -26,6 +27,7 @@ export default async function PageProcesosllaveProcesoidProceso(
         (
           carpeta
         ) => {
+
           const {
             _id 
           } = carpeta;
@@ -35,8 +37,10 @@ export default async function PageProcesosllaveProcesoidProceso(
               Carpeta={carpeta}
             />
           );
+        
         }
       )}
     </>
   );
+
 }

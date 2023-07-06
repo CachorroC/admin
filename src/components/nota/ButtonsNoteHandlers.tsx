@@ -15,7 +15,9 @@ export function DeleteNoteButton(
   uri: string;
 }
 ) {
+
   async function deleteRequestHandler() {
+
     const Request = await fetch (
       `${ uri }/api/Notas?_id=${ id }`,
       {
@@ -24,7 +26,9 @@ export function DeleteNoteButton(
     );
 
     if (!Request.ok) {
+
       return;
+    
     }
     const Response = await Request.json ();
     alert (
@@ -32,6 +36,7 @@ export function DeleteNoteButton(
         Response
       )
     );
+  
   }
 
   return (
@@ -44,6 +49,7 @@ export function DeleteNoteButton(
       </span>
     </button>
   );
+
 }
 
 export function AddNoteButton(
@@ -55,7 +61,9 @@ export function AddNoteButton(
   uri: string;
 }
 ) {
+
   async function addRequestHandler() {
+
     const Request = await fetch (
       `${ uri }/api/Notas`,
       {
@@ -71,15 +79,19 @@ export function AddNoteButton(
       (
         fullfilled
       ) => {
+
         alert (
           fullfilled.status
         );
         return fullfilled;
+      
       }
     );
 
     if (!Request.ok) {
+
       return;
+    
     }
     const Response = await Request.json ();
     alert (
@@ -87,6 +99,7 @@ export function AddNoteButton(
         Response
       )
     );
+  
   }
 
   return (
@@ -99,6 +112,7 @@ export function AddNoteButton(
       </span>
     </button>
   );
+
 }
 
 export function EditNoteButton(
@@ -108,6 +122,7 @@ export function EditNoteButton(
   nota: monNota;
 }
 ) {
+
   return (
     <Link
       className={note.buttonEdit}
@@ -120,4 +135,5 @@ export function EditNoteButton(
       </span>
     </Link>
   );
+
 }

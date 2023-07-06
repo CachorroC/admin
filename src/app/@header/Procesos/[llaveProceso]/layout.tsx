@@ -14,6 +14,7 @@ export default async function Layout(
   children: ReactNode;
 }
 ) {
+
   const procesos = await getCarpetas ();
   const fechas = await fetchFechas (
     {
@@ -35,4 +36,5 @@ export default async function Layout(
       </Drawer>
     </Header>
   );
+
 }

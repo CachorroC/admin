@@ -36,6 +36,7 @@ export const Card = (
   contenido?: string;
 }
 ) => {
+
   const [
     isNavOpen,
     setIsNavOpen
@@ -53,12 +54,14 @@ export const Card = (
   );
 
   const clickHandler = () => {
+
     setIsNavOpen (
       false
     );
     setIsOpen (
       true
     );
+  
   };
   const pathname = usePathname ();
   const isInProcesos = pathname === path;
@@ -93,9 +96,11 @@ export const Card = (
     <div
       className={card.container}
       onClick={() => {
+
         setHasLinks (
           !hasLinks
         );
+      
       }}>
       <div
         className={
@@ -137,9 +142,11 @@ export const Card = (
                   }
                   href={`/Notas/NuevaNota/${ llaveProceso }`}
                   onClick={() => {
+
                     setIsOpen (
                       true
                     );
+                  
                   }}>
                   <span
                     className={`material-symbols-outlined ${ card.icon }`}>
@@ -209,4 +216,5 @@ export const Card = (
       </div>
     </div>
   );
+
 };

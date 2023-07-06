@@ -21,6 +21,7 @@ export function NewNota(
   uri: string;
 }
 ) {
+
   const pathname = usePathname ();
   const {
     register,
@@ -60,6 +61,7 @@ export function NewNota(
   const onSubmit = async (
     data: intNotaFormValues
   ) => {
+
     const newData: intNota = {
       ...data,
       llaveProceso: llaveProceso,
@@ -86,10 +88,12 @@ export function NewNota(
       (
         fullfilled
       ) => {
+
         alert (
           fullfilled.status
         );
         return fullfilled;
+      
       }
     );
     const responsePostNewNote =
@@ -98,6 +102,7 @@ export function NewNota(
       responsePostNewNote
     );
     return responsePostNewNote;
+  
   };
   const [
     isActive,
@@ -150,6 +155,7 @@ export function NewNota(
           <div className={accordion.content}>
             {fields.map (
               (field, index) => {
+
                 const watchIsDone = watch (
                   `tareas.${ index }.isDone`
                 );
@@ -184,12 +190,14 @@ export function NewNota(
                         type='button'
                         className={note.button}
                         onClick={() => {
+
                           setValue (
                             `tareas.${ index }.isDone`,
                             watchIsDone
                               ? false
                               : true
                           );
+                        
                         }}>
                         <span className='material-symbols-outlined'>
                           {watchIsDone
@@ -254,6 +262,7 @@ export function NewNota(
                     </div>
                   </Fragment>
                 );
+              
               }
             )}
           </div>
@@ -270,4 +279,5 @@ export function NewNota(
       </form>
     </div>
   );
+
 }

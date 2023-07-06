@@ -24,6 +24,7 @@ async function Name(
   llaveProceso: string;
 }
 ) {
+
   const proceso = await getCarpetasByllaveProceso (
     {
       llaveProceso: llaveProceso,
@@ -41,6 +42,7 @@ async function Name(
       {nombre}
     </h3>
   );
+
 }
 
 async function Acts(
@@ -50,6 +52,7 @@ async function Acts(
   idProceso: number;
 }
 ) {
+
   const acts = await fetch (
     `${ getBaseUrl () }/api/Procesos/Actuaciones/${ idProceso }`
   );
@@ -83,6 +86,7 @@ async function Acts(
           )}
     </div>
   );
+
 }
 
 export default async function PageProcesosRightllaveProcesoidProceso(
@@ -94,6 +98,7 @@ export default async function PageProcesosRightllaveProcesoidProceso(
   };
 }
 ) {
+
   const carpeta = await getCarpetasByllaveProceso (
     {
       llaveProceso: params.llaveProceso,
@@ -109,6 +114,7 @@ export default async function PageProcesosRightllaveProcesoidProceso(
   const notas = await getNotas ();
 
   switch (cantidadNotas) {
+
     case 0:
       return (
         <>
@@ -156,5 +162,7 @@ export default async function PageProcesosRightllaveProcesoidProceso(
           />
         </>
       );
+  
   }
+
 }

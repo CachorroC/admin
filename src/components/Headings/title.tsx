@@ -13,6 +13,7 @@ export default function Title(
   helper?: string;
 }
 ) {
+
   const [
     isNavOpen,
     setIsNavOpen
@@ -24,6 +25,7 @@ export default function Title(
   let day;
 
   switch (today.getDay ()) {
+
     case 0:
       day = 'Mimingo';
       break;
@@ -44,6 +46,7 @@ export default function Title(
       break;
     case 6:
       day = 'Sábado';
+  
   }
   const days = [
     'mimingo',
@@ -81,4 +84,5 @@ export default function Title(
         ) }`}
     </h1>
   );
+
 }

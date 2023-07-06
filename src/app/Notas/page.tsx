@@ -19,6 +19,7 @@ async function renderName(
   llaveProceso: string;
 }
 ) {
+
   const carpetas =
     await getCarpetasByllaveProceso (
       {
@@ -27,6 +28,7 @@ async function renderName(
     );
   const names = carpetas.map (
     (carpeta, i, arr) => {
+
       const {
         Deudor 
       } = carpeta;
@@ -34,12 +36,15 @@ async function renderName(
         Nombre 
       } = Deudor;
       return Nombre;
+    
     }
   );
   return names.toString ();
+
 }
 
 export default async function PageNotas() {
+
   const notas = await getNotas ();
   return (
     <div className={layout.body}>
@@ -51,6 +56,7 @@ export default async function PageNotas() {
       <div className={layout.left}>
         {notas.map (
           (NotaM, index, arr) => {
+
             const {
               _id,
               llaveProceso,
@@ -67,9 +73,11 @@ export default async function PageNotas() {
                 arr={arr}
               />
             );
+          
           }
         )}
       </div>
     </div>
   );
+
 }

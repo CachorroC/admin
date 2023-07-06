@@ -20,6 +20,7 @@ export const CardSearchList = (
   Fechas: intFecha[];
 }
 ) => {
+
   const pathname = usePathname ();
   const router = useRouter ();
   const params = useParams ();
@@ -34,9 +35,11 @@ export const CardSearchList = (
     useNavigator ();
 
   const clickHandler = () => {
+
     setIsNavOpen (
       false
     );
+  
   };
   const rows: any[] = [];
 
@@ -44,28 +47,39 @@ export const CardSearchList = (
     ...Fechas
   ].sort (
     (a, b) => {
+
       if (!a.fecha || a.fecha === undefined) {
+
         return 1;
+      
       }
 
       if (!b.fecha || b.fecha === undefined) {
+
         return -1;
+      
       }
       let x = a.fecha.toLowerCase ();
       let y = b.fecha.toLowerCase ();
 
       if (x < y) {
+
         return 1;
+      
       }
 
       if (x > y) {
+
         return -1;
+      
       }
       return 0;
+    
     }
   );
   sortedFechas.forEach (
     (Fecha, i, arr) => {
+
       const {
         idProceso,
         llaveProceso,
@@ -83,7 +97,9 @@ export const CardSearchList = (
           search.toLowerCase ()
         ) === -1
       ) {
+
         return;
+      
       }
       rows.push (
         <Card
@@ -105,7 +121,9 @@ export const CardSearchList = (
           )}
         </Card>
       );
+    
     }
   );
   return <>{rows}</>;
+
 };

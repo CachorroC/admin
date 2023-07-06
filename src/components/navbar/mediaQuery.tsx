@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 export default function useMedia(
   query: number
 ) {
+
   const [
     matches,
     setMatches
@@ -12,12 +13,15 @@ export default function useMedia(
   );
   useEffect (
     () => {
+
       const mediaQueries = (
         query: number
       ) => {
+
         let media;
 
         switch (query) {
+
           case 0:
             media = '(max-width: 600px)';
             break;
@@ -35,8 +39,10 @@ export default function useMedia(
             break;
           default:
             media = '';
+        
         }
         return media;
+      
       };
 
       const md = mediaQueries (
@@ -44,15 +50,19 @@ export default function useMedia(
       );
 
       function handleMatchMedia() {
+
         setMatches (
           true
         );
+      
       }
 
       function handleNoMatchMedia() {
+
         setMatches (
           false
         );
+      
       }
 
       const media = window.matchMedia (
@@ -75,6 +85,7 @@ export default function useMedia(
           'change',
           listener
         );
+    
     },
     [
       matches,
@@ -82,4 +93,5 @@ export default function useMedia(
     ]
   );
   return matches;
+
 }

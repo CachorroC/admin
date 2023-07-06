@@ -9,6 +9,7 @@ import type { Route } from 'next';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 
 export default async function PageProcesosLeft() {
+
   const carpetas = await getCarpetas ();
   const fechas = await fetchFechas (
     {
@@ -25,4 +26,5 @@ export default async function PageProcesosLeft() {
       />
     </Suspense>
   );
+
 }

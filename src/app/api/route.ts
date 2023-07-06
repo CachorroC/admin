@@ -4,6 +4,7 @@ import {NextRequest,
 export async function GET(
   Request: NextRequest
 ) {
+
   const {
     host, searchParams, hostname, port 
   } =
@@ -26,4 +27,5 @@ export async function GET(
       },
     }
   );
+
 }

@@ -16,11 +16,13 @@ function DemandadoNameBadge({
   carpeta: monCarpetaDemandado;
   proceso?: intProceso;
 }) {
+
   const {
     llaveProceso, _id
   } = carpeta;
 
   if (proceso) {
+
     return (
       <Fragment
         key={proceso
@@ -34,6 +36,7 @@ function DemandadoNameBadge({
         <CarpetaCard Carpeta={carpeta} />
       </Fragment>
     );
+  
   }
   return (
     <Fragment key={_id}>
@@ -41,6 +44,7 @@ function DemandadoNameBadge({
       <CarpetaCard Carpeta={carpeta} />
     </Fragment>
   );
+
 }
 
 export default async function PageProcesosllaveProceso({
@@ -50,6 +54,7 @@ export default async function PageProcesosllaveProceso({
     llaveProceso: string;
   };
 }) {
+
   const Procesos =
     await getConsultaNumeroRadicion ({
       llaveProceso: params.llaveProceso,
@@ -63,6 +68,7 @@ export default async function PageProcesosllaveProceso({
   const cantidadProcesos = Procesos.length;
 
   if (cantidadProcesos === 0) {
+
     return (
       <>{
         Carpetas.map (
@@ -75,6 +81,7 @@ export default async function PageProcesosllaveProceso({
         )
       }</>
     );
+  
   }
   return (
     <>
@@ -92,4 +99,5 @@ export default async function PageProcesosllaveProceso({
       ) }
     </>
   );
+
 }

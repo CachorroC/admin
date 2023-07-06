@@ -21,6 +21,7 @@ export default function Drawer(
   children: ReactNode;
 }
 ) {
+
   const isDesktop = useMedia (
     2
   );
@@ -34,7 +35,9 @@ export default function Drawer(
     useNavigator ();
 
   if (isNavOpen) {
+
     if (isMobile) {
+
       return (
         <nav className={navbar.drawer}>
           <Suspense fallback={<ButtonSkeleton />}>
@@ -60,6 +63,7 @@ export default function Drawer(
           </div>
         </nav>
       );
+    
     }
     return (
       <nav className={navbar.drawer}>
@@ -77,6 +81,8 @@ export default function Drawer(
         </div>
       </nav>
     );
+  
   }
   return null;
+
 }

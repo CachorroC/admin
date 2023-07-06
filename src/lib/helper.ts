@@ -15,16 +15,20 @@ export const sleep = (
   );
 
 export const uri = async () => {
+
   const composeduri = await fetch (
     `${ getBaseUrl }/api`
   );
 
   if (!composeduri.ok) {
+
     throw new Error (
       'no pudimos pedir la uri'
     );
+  
   }
   const res =
     (await composeduri.json ()) as intUri;
   return res;
+
 };

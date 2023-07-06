@@ -22,6 +22,7 @@ export default function SearchOutputList(
   fechas: intFecha[];
 }
 ) {
+
   const pathname = usePathname ();
   const [
     search,
@@ -29,9 +30,11 @@ export default function SearchOutputList(
   ] = useSearch ();
 
   const clickHandler = () => {
+
     setIsNavOpen (
       false
     );
+  
   };
   const [
     isNavOpen,
@@ -48,28 +51,39 @@ export default function SearchOutputList(
     ...fechas
   ].sort (
     (a, b) => {
+
       if (!a.fecha || a.fecha === undefined) {
+
         return 1;
+      
       }
 
       if (!b.fecha || b.fecha === undefined) {
+
         return -1;
+      
       }
       let x = a.fecha.toLowerCase ();
       let y = b.fecha.toLowerCase ();
 
       if (x < y) {
+
         return 1;
+      
       }
 
       if (x > y) {
+
         return -1;
+      
       }
       return 0;
+    
     }
   );
   idk.forEach (
     (proceso, index, array) => {
+
       const {
         idProceso,
         llaveProceso,
@@ -86,7 +100,9 @@ export default function SearchOutputList(
           search.toLowerCase ()
         ) === -1
       ) {
+
         return;
+      
       }
       rows.push (
         <LinkCard
@@ -95,6 +111,7 @@ export default function SearchOutputList(
           key={_id}
         />
       );
+    
     }
   );
 
@@ -148,4 +165,5 @@ export default function SearchOutputList(
       {rows}
     </>
   );
+
 }

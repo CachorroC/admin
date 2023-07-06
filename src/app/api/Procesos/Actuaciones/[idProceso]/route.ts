@@ -10,7 +10,9 @@ export async function GET(
     params 
   }: { params: { idProceso: number } }
 ) {
+
   try {
+
     const req = await fetch (
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ params.idProceso }`,
       {
@@ -19,6 +21,7 @@ export async function GET(
     );
 
     if (!req.ok) {
+
       const text = await Request.text ();
 
       const Response: IntActuaciones = {
@@ -43,11 +46,13 @@ export async function GET(
           },
         }
       );
+    
     }
     const res =
       (await req.json ()) as intConsultaActuaciones;
 
     if (res.actuaciones) {
+
       const Response: IntActuaciones = {
         idProceso: params.idProceso,
 
@@ -68,6 +73,7 @@ export async function GET(
           },
         }
       );
+    
     }
     const text = await req.text ();
     const Response: IntActuaciones = {
@@ -87,11 +93,14 @@ export async function GET(
         },
       }
     );
+  
   }
   catch {
+
     (
       error: unknown | any
     ) => {
+
       const Response: IntActuaciones = {
         idProceso: params.idProceso,
         text     : {
@@ -110,7 +119,9 @@ export async function GET(
           },
         }
       );
+    
     };
+  
   }
   const Response: IntActuaciones = {
     idProceso: params.idProceso,
@@ -130,4 +141,5 @@ export async function GET(
       },
     }
   );
+
 }

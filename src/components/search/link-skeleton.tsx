@@ -3,6 +3,7 @@ import searchbar from '#@/components/search/searchbar.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function LinkCardSkeleton() {
+
   return (
     <div className={searchbar.container}>
       <div className={searchbar.notActive}>
@@ -39,4 +40,5 @@ export default function LinkCardSkeleton() {
       </div>
     </div>
   );
+
 }
