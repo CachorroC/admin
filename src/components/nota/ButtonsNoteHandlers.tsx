@@ -28,7 +28,7 @@ export function DeleteNoteButton(
     if (!Request.ok) {
 
       return;
-    
+
     }
     const Response = await Request.json ();
     alert (
@@ -36,7 +36,7 @@ export function DeleteNoteButton(
         Response
       )
     );
-  
+
   }
 
   return (
@@ -84,14 +84,14 @@ export function AddNoteButton(
           fullfilled.status
         );
         return fullfilled;
-      
+
       }
     );
 
     if (!Request.ok) {
 
       return;
-    
+
     }
     const Response = await Request.json ();
     alert (
@@ -99,7 +99,7 @@ export function AddNoteButton(
         Response
       )
     );
-  
+
   }
 
   return (

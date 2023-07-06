@@ -14,9 +14,7 @@ export const NotasList = (
 }
 ) => {
 
-  const linkRef = useRef (
-    new Map ()
-  );
+  const linkRef = useRef<Map<any,any>> ();
 
   function getMap() {
 
@@ -45,13 +43,10 @@ export const NotasList = (
         inline  : 'center',
       }
     );
-  
+
   }
   return (
-    <div
-      style={{
-        height: '100vh',
-      }}>
+    <>
       <nav>
         {notas.map (
           (
@@ -59,7 +54,7 @@ export const NotasList = (
           ) => {
 
             const {
-              _id, nota 
+              _id, nota
             } = nt;
             return (
               <button
@@ -74,7 +69,7 @@ export const NotasList = (
                 <p>{nota}</p>
               </button>
             );
-          
+
           }
         )}
       </nav>
@@ -83,7 +78,7 @@ export const NotasList = (
           (nt, i, arr) => (
             <li
               style={{
-                height: '100vh',
+                width: '100vw',
               }}
               key={nt._id}
               ref={(
@@ -98,16 +93,16 @@ export const NotasList = (
                     nt._id,
                     node
                   );
-                
+
                 }
                 else {
 
                   map.delete (
                     nt._id
                   );
-                
+
                 }
-              
+
               }}>
               <Card
                 name={nt.nota}
@@ -120,7 +115,7 @@ export const NotasList = (
           )
         )}
       </ul>
-    </div>
+    </>
   );
 
 };

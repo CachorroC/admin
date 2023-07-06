@@ -14,12 +14,12 @@ export default async function PageProcesosRight() {
   const notas = await getNotas ();
   return (
     <>
-      <NotasList notas={notas} />
       <NewNota
         llaveProceso={'Procesos'}
         uri={`${ getBaseUrl () }`}
       />
       <Notas />
+      <NotasList notas={notas} />
     </>
   );
 

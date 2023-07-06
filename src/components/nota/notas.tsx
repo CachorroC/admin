@@ -61,21 +61,25 @@ export function Nota(
       className={note.container}
       key={notaRaw._id}>
       <div className={note.nota}>
-        <sup className={note.sup}>{`${
-          i + 1
-        }`}</sup>
+        <sup className={ note.sup }>{
+          `${ i + 1 }`
+        }</sup>
 
         <Name
           llaveProceso={notaRaw.llaveProceso}
         />
-        <p
-          className={`${ typography.bodySmall } ${ note.textArea }`}>{`Nota: ${ notaRaw.nota }`}</p>
-        <sub
-          className={`${ typography.labelSmall } ${ note.fecha }`}>
-          {fixFechas (
-            notaRaw.fecha.toString ()
-          )}
-        </sub>
+        <p className={
+          `${ typography.bodySmall } ${ note.textArea }`
+        }>{
+            `Nota: ${ notaRaw.nota }`
+          }</p>
+        <sub className={
+          `${ typography.labelSmall } ${ note.fecha }`
+        }>{
+            fixFechas (
+              notaRaw.fecha.toString ()
+            )
+          } </sub>
         <div className={note.buttonsRow}>
           <Suspense fallback={<ButtonSkeleton />}>
             <EditNoteButton nota={notaRaw} />
@@ -137,7 +141,7 @@ export async function Notas(
         )
       );
       return <>{NotasRow}</>;
-    
+
     }
     const NotasRow = notas.map (
       (nota, i, arr) => (
@@ -150,7 +154,7 @@ export async function Notas(
       )
     );
     return <>{NotasRow}</>;
-  
+
   }
   const notas = await getNotas ();
   const NotasRow = notas.map (
