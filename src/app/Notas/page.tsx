@@ -5,23 +5,31 @@ import note from '#@/components/nota/note.module.scss';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { Fragment, Suspense } from 'react';
 import {DeleteNoteButton,
-  EditNoteButton,} from '#@/components/nota/ButtonsNoteHandlers';
+  EditNoteButton} from '#@/components/nota/ButtonsNoteHandlers';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { fixFechas } from '#@/lib/fix';
 import Link from 'next/link';
 import type { Route } from 'next';
 import { Nota } from '../../components/nota/notas';
-async function renderName({llaveProceso,}: {
+async function renderName({
+  llaveProceso
+}: {
   llaveProceso: string;
 }) {
   const carpetas =
-    await getCarpetasByllaveProceso ({llaveProceso: llaveProceso,});
+    await getCarpetasByllaveProceso ({
+      llaveProceso: llaveProceso
+    });
 
   const names = carpetas.map (
     (carpeta, i, arr) => {
-      const { Deudor } = carpeta;
+      const {
+        Deudor 
+      } = carpeta;
 
-      const { Nombre } = Deudor;
+      const {
+        Nombre 
+      } = Deudor;
       return Nombre;
     }
   );
@@ -32,16 +40,12 @@ export default async function PageNotas() {
   const notas = await getNotas ();
   return (
     <div className={layout.body}>
-      {' '}
       <div className={layout.name}>
-        {' '}
         <h1 className={typography.displayMedium}>
-          {' '}
-          Notas{' '}
-        </h1>{' '}
-      </div>{' '}
+          Notas
+        </h1>
+      </div>
       <div className={layout.left}>
-        {' '}
         {notas.map ((NotaM, index, arr) => {
           const {
             _id,
@@ -49,7 +53,7 @@ export default async function PageNotas() {
             nota,
             pathname,
             tareas,
-            fecha,
+            fecha
           } = NotaM;
           return (
             <Nota
@@ -59,8 +63,8 @@ export default async function PageNotas() {
               arr={arr}
             />
           );
-        })}{' '}
-      </div>{' '}
+        })}
+      </div>
     </div>
   );
 }

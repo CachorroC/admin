@@ -50,7 +50,7 @@ export interface intDemanda {
 }
 
 export enum Departamento {
-  Cundinamarca = 'CUNDINAMARCA',
+  Cundinamarca = 'CUNDINAMARCA'
 }
 
 export interface Juzgado {
@@ -70,7 +70,7 @@ export interface Proceso {
 export enum Tipo {
   Hipotecario = 'HIPOTECARIO',
   Prendario = 'PRENDARIO',
-  Singular = 'SINGULAR',
+  Singular = 'SINGULAR'
 }
 
 export interface Ubicacion {

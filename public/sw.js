@@ -17,7 +17,9 @@ self.addEventListener (
         await cache.add (
           new Request (
             OFFLINE_URL,
-            {cache: 'reload',}
+            {
+              cache: 'reload'
+            }
           )
         );
       }) ()

@@ -6,7 +6,9 @@ import { Card } from '#@/components/card/card';
 import { useNoteSlider } from '#@/app/context/note-slider-context';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export const NotasList = ({notas,}: {
+export const NotasList = ({
+  notas,
+}: {
   notas: monNota[];
 }) => {
   const linkRef = useRef<Map<any, any>> ();
@@ -33,7 +35,7 @@ export const NotasList = ({notas,}: {
       <nav>
         {notas.map ((nt) => {
           const {
-            _id, nota 
+            _id, nota
           } = nt;
           return (
             <button
@@ -51,7 +53,9 @@ export const NotasList = ({notas,}: {
       <ul>
         {notas.map ((nt, i, arr) => (
           <li
-            style={{ width: '100vw' }}
+            style={{
+              width: '100vw' 
+            }}
             key={nt._id}
             ref={(node) => {
               const map = getMap ();

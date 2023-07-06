@@ -17,7 +17,7 @@ export const CardCarpeta = ({
   children,
   llaveProceso,
   idProceso,
-  icon,
+  icon
 }: {
   name: string;
   path: string;
@@ -65,21 +65,16 @@ export const CardCarpeta = ({
           ? carpeta.cardIsActive
           : carpeta.card
       }>
-      {' '}
       <div className={carpeta.cardInner}>
-        {' '}
         <div className={carpeta.cardFront}>
-          {' '}
-          <Name helper={name} />{' '}
-        </div>{' '}
+          <Name helper={name} />
+        </div>
         <div className={carpeta.cardBack}>
-          {' '}
           <Suspense fallback={<p>Loading...</p>}>
-            {' '}
-            {children}{' '}
-          </Suspense>{' '}
-        </div>{' '}
-      </div>{' '}
+            {children}
+          </Suspense>
+        </div>
+      </div>
     </div>
   );
 };

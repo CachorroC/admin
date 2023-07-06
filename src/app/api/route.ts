@@ -1,5 +1,5 @@
 import {NextRequest,
-  NextResponse,} from 'next/server';
+  NextResponse} from 'next/server';
 
 export async function GET(Request: NextRequest) {
   const {
@@ -11,11 +11,13 @@ export async function GET(Request: NextRequest) {
       host        : host,
       searchParams: searchParams,
       port        : port,
-      hostname    : hostname,
+      hostname    : hostname
     }),
     {
       status : 200,
-      headers: {'content-type': 'application/json',},
+      headers: {
+        'content-type': 'application/json'
+      }
     }
   );
 }

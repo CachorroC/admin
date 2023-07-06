@@ -10,16 +10,17 @@ import { CardSearchList } from '#@/components/search/CardSearchList';
 export default async function DefaultProcesosLeft() {
   const carpetas = await getCarpetas ();
 
-  const fechas = await fetchFechas ({procesos: carpetas,});
+  const fechas = await fetchFechas ({
+    procesos: carpetas
+  });
   return (
     <Suspense
       fallback={<SearchOutputListSkeleton />}>
-      {' '}
       <CardSearchList
         path={'/Procesos' as Route}
         uri={`${ getBaseUrl () }`}
         Fechas={fechas}
-      />{' '}
+      />
     </Suspense>
   );
 }

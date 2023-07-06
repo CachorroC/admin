@@ -2,7 +2,7 @@
 import { monDemandado } from '#@/lib/types/mongodb';
 import { intFecha } from '#@/lib/types/demandados';
 import {useSearch,
-  useNavigator,} from '#@/app/search-context';
+  useNavigator} from '#@/app/search-context';
 import { LinkCard } from './link';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { fixFechas } from '#@/lib/fix';
@@ -15,7 +15,7 @@ import type { Route } from 'next';
 
 export default function SearchOutputList({
   path,
-  fechas,
+  fechas
 }: {
   path: string;
   fechas: intFecha[];
@@ -68,7 +68,7 @@ export default function SearchOutputList({
       llaveProceso,
       Deudor,
       fecha,
-      _id,
+      _id
     } = proceso;
 
     const {
@@ -91,28 +91,22 @@ export default function SearchOutputList({
   });
   return (
     <>
-      {' '}
       <div className={searchbar.container}>
-        {' '}
         <div
           className={
             isActive
               ? searchbar.isActive
               : searchbar.notActive
           }>
-          {' '}
-          <Name helper={path} />{' '}
+          <Name helper={path} />
           <div className={searchbar.section}>
-            {' '}
             <sub className={searchbar.date}>
-              {' '}
               {fixFechas (
                 new Date ().toISOString ()
-              )}{' '}
-            </sub>{' '}
-          </div>{' '}
+              )}
+            </sub>
+          </div>
           <div className={searchbar.links}>
-            {' '}
             <Link
               className={
                 isActive
@@ -121,13 +115,11 @@ export default function SearchOutputList({
               }
               onClick={clickHandler}
               href={href}>
-              {' '}
               <span
                 className={`${ searchbar.icon } material-symbols-outlined`}>
-                {' '}
-                file_open{' '}
-              </span>{' '}
-            </Link>{' '}
+                file_open
+              </span>
+            </Link>
             <Link
               className={
                 isActive
@@ -135,17 +127,15 @@ export default function SearchOutputList({
                   : searchbar.link
               }
               href='/Notas/NuevaNota'>
-              {' '}
               <span
                 className={`material-symbols-outlined ${ searchbar.icon }`}>
-                {' '}
-                add{' '}
-              </span>{' '}
-            </Link>{' '}
-          </div>{' '}
-        </div>{' '}
-      </div>{' '}
-      {rows}{' '}
+                add
+              </span>
+            </Link>
+          </div>
+        </div>
+      </div>
+      {rows}
     </>
   );
 }

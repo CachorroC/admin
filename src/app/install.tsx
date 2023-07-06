@@ -64,11 +64,9 @@ export default function Install() {
             : true
         );
       }}>
-      {' '}
       <span className='material-symbols-outlined'>
-        {' '}
-        install{' '}
-      </span>{' '}
+        install
+      </span>
     </button>
   );
 }

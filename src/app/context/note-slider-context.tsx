@@ -5,7 +5,7 @@ import {Dispatch,
   createContext,
   useContext,
   useRef,
-  useState,} from 'react';
+  useState} from 'react';
 
 const notasMap = new Map ();
 
@@ -17,7 +17,9 @@ const NoteSliderContext = createContext<
   | undefined
 > (undefined);
 
-export function NoteSliderProvider({children,}: {
+export function NoteSliderProvider({
+  children
+}: {
   children: ReactNode;
 }) {
   const [
@@ -31,8 +33,7 @@ export function NoteSliderProvider({children,}: {
         noteSliderMap,
         setNoteSliderMap
       ]}>
-      {' '}
-      {children}{' '}
+      {children}
     </NoteSliderContext.Provider>
   );
 }

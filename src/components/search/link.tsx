@@ -3,12 +3,12 @@ import Link from 'next/link';
 import {useSelectedLayoutSegment,
   usePathname,
   useSelectedLayoutSegments,
-  useParams,} from 'next/navigation';
+  useParams} from 'next/navigation';
 import type { Route } from 'next';
 import searchbar from '#@/components/search/searchbar.module.scss';
 import {ReactNode,
   Fragment,
-  useCallback,} from 'react';
+  useCallback} from 'react';
 import { intFecha } from '#@/lib/types/demandados';
 import { fixFechas } from '#@/lib/fix';
 import { useNavigator } from '#@/app/search-context';
@@ -18,7 +18,7 @@ import { useRouter } from 'next/navigation';
 
 export const LinkCard = ({
   path,
-  proceso,
+  proceso
 }: {
   path: string;
   proceso: intFecha;
@@ -33,7 +33,7 @@ export const LinkCard = ({
     fecha,
     llaveProceso,
     idProceso,
-    _id,
+    _id
   } = proceso;
 
   const {
@@ -69,7 +69,6 @@ export const LinkCard = ({
     <div
       className={searchbar.container}
       key={_id}>
-      {' '}
       <Link
         href={href}
         onClick={() => setIsNavOpen (false)}
@@ -78,13 +77,11 @@ export const LinkCard = ({
             ? searchbar.isActive
             : searchbar.notActive
         }>
-        {' '}
-        <Name helper={Nombre} />{' '}
+        <Name helper={Nombre} />
         <sub className={searchbar.date}>
-          {' '}
-          {fixFechas (fecha)}{' '}
-        </sub>{' '}
-      </Link>{' '}
+          {fixFechas (fecha)}
+        </sub>
+      </Link>
     </div>
   );
 };

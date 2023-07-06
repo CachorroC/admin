@@ -22,7 +22,7 @@ export function fixFechas(
     'septiembre',
     'octubre',
     'noviembre',
-    'diciembre',
+    'diciembre'
   ];
 
   const month = months[ date.getMonth () ];
@@ -58,6 +58,7 @@ function trimmer(sujetosProcesales: string) {
         if (index >= 5) {
           return '';
         }
+
         if (nombreOapellido === '|') {
           return '';
         }
@@ -92,6 +93,7 @@ export const fixDemandado = (
   const count =
     sujetosProcesales.split (mySubString).length -
     1;
+
   if (count === 1) {
     return trimmer (sujetosProcesales);
   }

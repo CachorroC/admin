@@ -7,7 +7,10 @@
     ],
     "array-bracket-spacing": ["error", "always"],
     "array-callback-return": "error",
-    "array-element-newline": ["error", "always"],
+    "array-element-newline": [
+      "error",
+      { "multiline": true, "minItems": 1 }
+    ],
     "arrow-body-style": [
       "error",
       "as-needed",
@@ -68,19 +71,10 @@
     "object-curly-newline": [
       "error",
       {
-        "ExportDeclaration": {
-          "multiline": true,
-          "minProperties": 2
-        },
+        "ExportDeclaration": "always",
         "ImportDeclaration": "never",
-        "ObjectExpression": {
-          "multiline": true,
-          "minProperties": 2
-        },
-        "ObjectPattern": {
-          "multiline": true,
-          "minProperties": 2
-        }
+        "ObjectExpression": "always",
+        "ObjectPattern": "always"
       }
     ],
     "object-property-newline": "error",

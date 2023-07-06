@@ -1,10 +1,12 @@
 'use client';
 import {useSelectedLayoutSegment,
-  usePathname,} from 'next/navigation';
+  usePathname} from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export const Name = ({helper,}: {
+export const Name = ({
+  helper
+}: {
   helper?: string;
 }) => {
   const pathname = usePathname ();
@@ -43,7 +45,7 @@ export const Name = ({helper,}: {
     'Miercoles',
     'Jueves',
     'Viernes',
-    'Sabado',
+    'Sabado'
   ];
 
   const months = [
@@ -58,15 +60,14 @@ export const Name = ({helper,}: {
     'septiembre',
     'octubre',
     'noviembre',
-    'diciembre ',
+    'diciembre '
   ];
   return (
     <h1 className={typography.titleMedium}>
-      {' '}
       {helper?.toLocaleLowerCase () ??
         `${ days[ today.getDay () ] }, ${ fixFechas (
           today.toString ()
-        ) }`}{' '}
+        ) }`}
     </h1>
   );
 };

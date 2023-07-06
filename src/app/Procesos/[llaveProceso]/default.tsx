@@ -4,11 +4,15 @@ import { Fragment, Suspense } from 'react';
 import { getActuacionesByidProceso } from '#@/lib/Actuaciones';
 import { Card } from '#@/components/card/card';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-async function Name({llaveProceso,}: {
+async function Name({
+  llaveProceso
+}: {
   llaveProceso: string;
 }) {
   const proceso = await getCarpetasByllaveProceso (
-    { llaveProceso: llaveProceso }
+    {
+      llaveProceso: llaveProceso
+    }
   );
 
   const nombre = proceso
@@ -16,19 +20,21 @@ async function Name({llaveProceso,}: {
     .toString ();
   return (
     <h3 className={typography.displayMedium}>
-      {' '}
-      {nombre}{' '}
+      {nombre}
     </h3>
   );
 }
-async function Acts({idProceso,}: {
+async function Acts({
+  idProceso
+}: {
   idProceso: number;
 }) {
   const actuaciones =
-    await getActuacionesByidProceso ({idProceso: idProceso,});
+    await getActuacionesByidProceso ({
+      idProceso: idProceso
+    });
   return (
     <>
-      {' '}
       {actuaciones.acts &&
         actuaciones.acts.map ((act, i, arr) => {
           const {
@@ -36,7 +42,7 @@ async function Acts({idProceso,}: {
             anotacion,
             idRegActuacion,
             llaveProceso,
-            fechaActuacion,
+            fechaActuacion
           } = act;
           return (
             <Card
@@ -45,24 +51,26 @@ async function Acts({idProceso,}: {
               path={'/NuevaNota'}
               llaveProceso={llaveProceso}
               idProceso={idProceso}>
-              {' '}
               <p
                 className={typography.bodymedium}>
-                {' '}
-                {anotacion ?? fechaActuacion}{' '}
-              </p>{' '}
+                {anotacion ?? fechaActuacion}
+              </p>
             </Card>
           );
-        })}{' '}
+        })}
     </>
   );
 }
 
-export default async function DefaultProcesosllaveProceso({params,}: {
+export default async function DefaultProcesosllaveProceso({
+  params
+}: {
   params: { llaveProceso: string };
 }) {
   const Carpetas =
-    await getCarpetasByllaveProceso ({llaveProceso: params.llaveProceso,});
+    await getCarpetasByllaveProceso ({
+      llaveProceso: params.llaveProceso
+    });
 
   const cantidadCarpetas = Carpetas.length;
   switch (cantidadCarpetas) {
@@ -77,32 +85,29 @@ export default async function DefaultProcesosllaveProceso({params,}: {
         idProceso,
         llaveProceso,
         Deudor,
-        _id,
+        _id
       } = Carpetas[ 0 ];
       return (
         <>
-          {' '}
           <Name
             llaveProceso={params.llaveProceso}
-          />{' '}
+          />
           <Card
             key={_id}
             name={Deudor.Nombre}
             path={'/Procesos'}
             llaveProceso={llaveProceso}
             idProceso={idProceso}>
-            {' '}
-            <p>{Deudor.Direccion}</p>{' '}
-          </Card>{' '}
+            <p>{Deudor.Direccion}</p>
+          </Card>
         </>
       );
     case 2:
       return (
         <>
-          {' '}
           <Name
             llaveProceso={params.llaveProceso}
-          />{' '}
+          />
           {Carpetas.map ((carp, index, arr) => {
             const {
               idProceso, Deudor, _id 
@@ -115,20 +120,18 @@ export default async function DefaultProcesosllaveProceso({params,}: {
                 path={'/Procesos'}
                 llaveProceso={llaveProceso}
                 idProceso={idProceso}>
-                {' '}
-                <p>{Deudor.Direccion}</p>{' '}
+                <p>{Deudor.Direccion}</p>
               </Card>
             );
-          })}{' '}
+          })}
         </>
       );
     default:
       return (
         <>
-          {' '}
           <Name
             llaveProceso={params.llaveProceso}
-          />{' '}
+          />
           {Carpetas.map ((carp, index, arr) => {
             const {
               idProceso, Deudor, _id 
@@ -141,11 +144,10 @@ export default async function DefaultProcesosllaveProceso({params,}: {
                 path={'/Procesos'}
                 llaveProceso={llaveProceso}
                 idProceso={idProceso}>
-                {' '}
-                <p>{Deudor.Direccion}</p>{' '}
+                <p>{Deudor.Direccion}</p>
               </Card>
             );
-          })}{' '}
+          })}
         </>
       );
   }

@@ -21,20 +21,26 @@ export async function POST(request: Request) {
     if (!result.acknowledged) {
       return new NextResponse (
         null,
-        {status: 400,}
+        {
+          status: 400
+        }
       );
     }
     return new NextResponse (
       JSON.stringify (
         JSON.stringify (result.insertedId)
       ),
-      { status: 200 }
+      {
+        status: 200
+      }
     );
   }
   catch (error) {
     return new NextResponse (
       JSON.stringify (error),
-      { status: 505 }
+      {
+        status: 505
+      }
     );
   }
 }

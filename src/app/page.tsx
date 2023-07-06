@@ -1,9 +1,7 @@
-import { Card } from '#@/components/card/card';
+
 import Title from '#@/components/Headings/title';
 import layout from '#@/styles/scss/layout.module.scss';
 import Link from 'next/link';
-import Install from './install';
-import navbar from '#@/components/navbar/navbar.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { Suspense } from 'react';
@@ -21,145 +19,145 @@ export default async function Page() {
   ];
   return (
     <div className={layout.body}>
-      {' '}
+
       <div className={layout.name}>
-        {' '}
+
         <Suspense>
-          {' '}
-          <Title helper='R&S Asesores Jurídicos' />{' '}
-        </Suspense>{' '}
-      </div>{' '}
+
+          <Title helper='R&S Asesores Jurídicos' />
+        </Suspense>
+      </div>
       <div className={layout.left}>
-        {' '}
+
         <Link
           className={layout.link}
           href={'/Procesos' as Route}>
-          {' '}
+
           <span className='material-symbols-outlined'>
-            {' '}
-            folder_open{' '}
-          </span>{' '}
+
+            folder_open
+          </span>
           <h1
             className={typography.displayMedium}>
-            {' '}
-            Procesos{' '}
-          </h1>{' '}
-        </Link>{' '}
+
+            Procesos
+          </h1>
+        </Link>
         <Link
           className={layout.link}
           href={'/Notas' as Route}>
-          {' '}
+
           <span className='material-symbols-outlined'>
-            {' '}
-            folder_open{' '}
-          </span>{' '}
+
+            folder_open
+          </span>
           <h1
             className={typography.displayMedium}>
-            {' '}
-            Notas{' '}
-          </h1>{' '}
-        </Link>{' '}
+
+            Notas
+          </h1>
+        </Link>
         <Link
           className={layout.link}
           href={'/api' as Route}>
-          {' '}
+
           <span className='material-symbols-outlined'>
-            {' '}
-            folder_open{' '}
-          </span>{' '}
+
+            folder_open
+          </span>
           <h1
             className={typography.displayMedium}>
-            {' '}
-            api{' '}
-          </h1>{' '}
-        </Link>{' '}
+
+            api
+          </h1>
+        </Link>
         <Link
           className={layout.link}
           href={'/Notas/NuevaNota' as Route}>
-          {' '}
+
           <span className='material-symbols-outlined'>
-            {' '}
-            folder_open{' '}
-          </span>{' '}
+
+            folder_open
+          </span>
           <h1
             className={typography.displayMedium}>
-            {' '}
-            Nueva Nota{' '}
-          </h1>{' '}
-        </Link>{' '}
+
+            Nueva Nota
+          </h1>
+        </Link>
         <Link
           className={layout.link}
           href={'/Costos' as Route}>
-          {' '}
+
           <span className='material-symbols-outlined'>
-            {' '}
-            folder_open{' '}
-          </span>{' '}
+
+            folder_open
+          </span>
           <h1
             className={typography.displayMedium}>
-            {' '}
-            Costos{' '}
-          </h1>{' '}
-        </Link>{' '}
+
+            Costos
+          </h1>
+        </Link>
         <Link
           className={layout.link}
           href={'/Contacto' as Route}>
-          {' '}
+
           <span className='material-symbols-outlined'>
-            {' '}
-            folder_open{' '}
-          </span>{' '}
+
+            folder_open
+          </span>
           <h1
             className={typography.displayMedium}>
-            {' '}
-            Contacto{' '}
-          </h1>{' '}
-        </Link>{' '}
+
+            Contacto
+          </h1>
+        </Link>
         <Link
           className={layout.link}
           href={'/QuienesSomos' as Route}>
-          {' '}
+
           <span className='material-symbols-outlined'>
-            {' '}
-            folder_open{' '}
-          </span>{' '}
+
+            folder_open
+          </span>
           <h1
             className={typography.displayMedium}>
-            {' '}
-            Quienes Somos{' '}
-          </h1>{' '}
-        </Link>{' '}
+
+            Quienes Somos
+          </h1>
+        </Link>
         <Link
           className={layout.link}
           href={
             '/Demandados/NuevoProceso' as Route
           }>
-          {' '}
+
           <span className='material-symbols-outlined'>
-            {' '}
-            add{' '}
-          </span>{' '}
+
+            add
+          </span>
           <h1
             className={typography.displayMedium}>
-            {' '}
-            NuevoProceso{' '}
-          </h1>{' '}
-        </Link>{' '}
+
+            NuevoProceso
+          </h1>
+        </Link>
         <Link
           className={layout.link}
           href={'/Demandados' as Route}>
-          {' '}
+
           <span className='material-symbols-outlined'>
-            {' '}
-            person_pin{' '}
-          </span>{' '}
+
+            person_pin
+          </span>
           <h1
             className={typography.displayMedium}>
-            {' '}
-            Demandados{' '}
-          </h1>{' '}
-        </Link>{' '}
-      </div>{' '}
+
+            Demandados
+          </h1>
+        </Link>
+      </div>
     </div>
   );
 }

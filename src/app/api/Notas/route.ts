@@ -1,10 +1,10 @@
 import 'server-only';
 import {NextRequest,
-  NextResponse,} from 'next/server';
+  NextResponse} from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { monDemandado } from '#@/lib/types/mongodb';
 import {ConvertNotas,
-  intNota,} from '#@/lib/types/notas';
+  intNota} from '#@/lib/types/notas';
 import { ObjectId } from 'mongodb';
 import { cache } from 'react';
 
@@ -24,7 +24,8 @@ const Transform = cache (async () => {
   const collection = await Collection ();
 
   const notasRaw = await collection
-    .find ({})
+    .find ({
+    })
     .toArray ();
 
   const notasString = JSON.stringify (notasRaw);
@@ -35,7 +36,9 @@ const Transform = cache (async () => {
 });
 
 export async function GET(Request: NextRequest) {
-  const { searchParams } = new URL (Request.url);
+  const {
+    searchParams 
+  } = new URL (Request.url);
 
   const client = await clientPromise;
   if (!client) {
@@ -46,7 +49,8 @@ export async function GET(Request: NextRequest) {
 
   const notas = await db
     .collection ('Notas')
-    .find ({})
+    .find ({
+    })
     .toArray ();
   if (!notas.length) {
     throw new Error ('no hay entradas en mongo');
@@ -63,7 +67,9 @@ export async function GET(Request: NextRequest) {
       JSON.stringify (Notas),
       {
         status : 200,
-        headers: {'content-type': 'application/json',},
+        headers: {
+          'content-type': 'application/json'
+        }
       }
     );
   }
@@ -77,7 +83,9 @@ export async function GET(Request: NextRequest) {
       JSON.stringify (Nota),
       {
         status : 200,
-        headers: {'content-type': 'application/json',},
+        headers: {
+          'content-type': 'application/json'
+        }
       }
     );
   }
@@ -85,7 +93,9 @@ export async function GET(Request: NextRequest) {
     JSON.stringify (notas),
     {
       status : 200,
-      headers: {'content-type': 'application/json',},
+      headers: {
+        'content-type': 'application/json'
+      }
     }
   );
 }
@@ -100,7 +110,9 @@ export async function POST(request: NextRequest) {
   if (!outgoingRequest.acknowledged) {
     return new NextResponse (
       null,
-      {status: 404,}
+      {
+        status: 404
+      }
     );
   }
   return new NextResponse (
@@ -110,7 +122,9 @@ export async function POST(request: NextRequest) {
     ),
     {
       status : 200,
-      headers: {'content-type': 'application/json',},
+      headers: {
+        'content-type': 'application/json'
+      }
     }
   );
 }
@@ -120,22 +134,30 @@ export async function PUT(Request: NextRequest) {
 
   const updatedNote = await Request.json ();
 
-  const { searchParams } = new URL (Request.url);
+  const {
+    searchParams 
+  } = new URL (Request.url);
 
   const id = searchParams.get ('id');
   if (id) {
-    const query = { _id: new ObjectId (id) };
+    const query = {
+      _id: new ObjectId (id)
+    };
 
     const result = await collection.updateOne (
       query,
-      { $set: updatedNote }
+      {
+        $set: updatedNote
+      }
     );
     if (result.acknowledged) {
       return new NextResponse (
         `Successfully updated game with id ${ id }`,
         {
           status : 200,
-          headers: {'content-type': 'text/html',},
+          headers: {
+            'content-type': 'text/html'
+          }
         }
       );
     }
@@ -147,13 +169,17 @@ export async function PUT(Request: NextRequest) {
       } with ${ result.modifiedCount.toString () }`,
       {
         status : 200,
-        headers: { 'content-type': 'text/html' },
+        headers: {
+          'content-type': 'text/html'
+        }
       }
     );
   }
   return new NextResponse (
     null,
-    { status: 404 }
+    {
+      status: 404
+    }
   );
 }
 
@@ -162,11 +188,15 @@ export async function DELETE(
 ) {
   const notas = await Collection ();
 
-  const { searchParams } = new URL (Request.url);
+  const {
+    searchParams 
+  } = new URL (Request.url);
 
   const id = searchParams.get ('_id');
   if (id) {
-    const query = { _id: new ObjectId (id) };
+    const query = {
+      _id: new ObjectId (id)
+    };
 
     const Result = await notas.deleteOne (query);
     if (Result.acknowledged) {
@@ -175,13 +205,15 @@ export async function DELETE(
       const response = {
         isOk        : true,
         deletedCount: count,
-        deletedId   : id,
+        deletedId   : id
       };
       return new NextResponse (
         JSON.stringify (response),
         {
           status : 202,
-          headers: {'content-type': 'application/json',},
+          headers: {
+            'content-type': 'application/json'
+          }
         }
       );
     }
@@ -190,12 +222,16 @@ export async function DELETE(
         JSON.stringify (
           `error 400 ${ id } not deleted`
         ),
-        { status: 400 }
+        {
+          status: 400
+        }
       );
     }
     return new NextResponse (
       JSON.stringify (Result),
-      { status: 200 }
+      {
+        status: 200
+      }
     );
   }
 }

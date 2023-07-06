@@ -4,7 +4,9 @@ import { intConsultaNumeroRadicacion } from '../types/procesos';
 import { fixDemandado } from '../fix';
 import { CardCarpeta } from '#@/components/card/cardCarpeta';
 
-export async function JuzgadosByllaveProceso({llaveProceso,}: {
+export async function JuzgadosByllaveProceso({
+  llaveProceso
+}: {
   llaveProceso: string;
 }) {
   try {
@@ -17,8 +19,7 @@ export async function JuzgadosByllaveProceso({llaveProceso,}: {
           name={`${ Request.text () } error`}
           path={'/Procesos'}
           llaveProceso={llaveProceso}>
-          {' '}
-          <p> Error </p>{' '}
+          <p> Error </p>
         </CardCarpeta>
       );
     }
@@ -30,8 +31,7 @@ export async function JuzgadosByllaveProceso({llaveProceso,}: {
         name={res.parametros.numero}
         path={'/Procesos'}
         llaveProceso={res.parametros.numero}>
-        {' '}
-        <p> No Hay Procesos </p>{' '}
+        <p> No Hay Procesos </p>
       </CardCarpeta>;
     }
 
@@ -43,7 +43,7 @@ export async function JuzgadosByllaveProceso({llaveProceso,}: {
           llaveProceso,
           idProceso,
           sujetosProcesales,
-          despacho,
+          despacho
         } = Proceso;
         return (
           <CardCarpeta
@@ -52,9 +52,8 @@ export async function JuzgadosByllaveProceso({llaveProceso,}: {
             path={'/Procesos'}
             llaveProceso={llaveProceso}
             idProceso={idProceso}>
-            {' '}
-            <p>{despacho}</p>{' '}
-            <p>{`idProceso= ${ idProceso }`}</p>{' '}
+            <p>{despacho}</p>
+            <p>{`idProceso= ${ idProceso }`}</p>
           </CardCarpeta>
         );
       }
@@ -70,8 +69,7 @@ export async function JuzgadosByllaveProceso({llaveProceso,}: {
         name={error}
         path={'/Procesos'}
         llaveProceso={llaveProceso}>
-        {' '}
-        <p>{error}</p>{' '}
+        <p>{error}</p>
       </CardCarpeta>
     );
   }

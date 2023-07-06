@@ -1,6 +1,6 @@
 import 'server-only';
 import {NextRequest,
-  NextResponse,} from 'next/server';
+  NextResponse} from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { monDemandado } from '#@/lib/types/mongodb';
 import { notFound } from 'next/navigation';
@@ -21,7 +21,8 @@ export async function GET() {
   const collection = await Collection ();
 
   const procesos = await collection
-    .find ({})
+    .find ({
+    })
     .toArray ();
   if (!procesos.length) {
     notFound ();
@@ -30,7 +31,9 @@ export async function GET() {
     JSON.stringify (procesos),
     {
       status : 200,
-      headers: {'content-type': 'application/json',},
+      headers: {
+        'content-type': 'application/json'
+      }
     }
   );
 }
@@ -46,9 +49,11 @@ export async function POST(Request: NextRequest) {
     return new NextResponse (
       JSON.stringify ({
         Error:
-          'server couldnt acknowledge the insert request',
+          'server couldnt acknowledge the insert request'
       }),
-      { status: 500 }
+      {
+        status: 500
+      }
     );
   }
   return new NextResponse (
@@ -58,7 +63,9 @@ export async function POST(Request: NextRequest) {
     ),
     {
       status : 200,
-      headers: {'content-type': 'application/json',},
+      headers: {
+        'content-type': 'application/json'
+      }
     }
   );
 }

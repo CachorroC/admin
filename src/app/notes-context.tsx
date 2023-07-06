@@ -4,7 +4,7 @@ import {Dispatch,
   createContext,
   useContext,
   useReducer,
-  useState,} from 'react';
+  useState} from 'react';
 import { SetStateAction } from 'react';
 
 const NoteContext = createContext<
@@ -12,7 +12,9 @@ const NoteContext = createContext<
   | null
 > (null);
 
-export function NoteProvider({children,}: {
+export function NoteProvider({
+  children
+}: {
   children: ReactNode;
 }) {
   const [
@@ -26,8 +28,7 @@ export function NoteProvider({children,}: {
         isShowing,
         setIsShowing
       ]}>
-      {' '}
-      {children}{' '}
+      {children}
     </NoteContext.Provider>
   );
 }

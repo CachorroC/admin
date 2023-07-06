@@ -1,20 +1,26 @@
 import {getCarpetas,
-  getCarpetasByllaveProceso,} from '#@/lib/Carpetas';
+  getCarpetasByllaveProceso} from '#@/lib/Carpetas';
 import {getActuacionesByidProceso,
-  getConsultaNumeroRadicion,} from '#@/lib/RamaJudicial';
+  getConsultaNumeroRadicion} from '#@/lib/RamaJudicial';
 import { Fragment, Suspense } from 'react';
 import { ActuacionCard } from '#@/components/card/ActuacionesCard';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
-async function Acts({idProceso,}: {
+async function Acts({
+  idProceso
+}: {
   idProceso: number;
 }) {
   const actuaciones =
-    await getActuacionesByidProceso ({idProceso: idProceso,});
+    await getActuacionesByidProceso ({
+      idProceso: idProceso
+    });
   return (
     <>
       {actuaciones.acts &&
         actuaciones.acts.map ((act, i, arr) => {
-          const { idRegActuacion } = act;
+          const {
+            idRegActuacion 
+          } = act;
           return (
             <ActuacionCard
               Actuacion={act}
@@ -26,21 +32,27 @@ async function Acts({idProceso,}: {
   );
 }
 
-export default async function PageProcesosLeftllaveProceso({params,}: {
+export default async function PageProcesosLeftllaveProceso({
+  params
+}: {
   params: {
     llaveProceso: string;
   };
 }) {
-  const Carpetas = getCarpetasByllaveProceso ({llaveProceso: params.llaveProceso,});
+  const Carpetas = getCarpetasByllaveProceso ({
+    llaveProceso: params.llaveProceso
+  });
 
-  const Procesos = getConsultaNumeroRadicion ({llaveProceso: params.llaveProceso,}); // Wait for the promises to resolve
+  const Procesos = getConsultaNumeroRadicion ({
+    llaveProceso: params.llaveProceso
+  }); // Wait for the promises to resolve
 
   const [
     carpetas,
     procesos
   ] = await Promise.all ([
     Carpetas,
-    Procesos,
+    Procesos
   ]);
 
   const cantidadProcesos = procesos.length;

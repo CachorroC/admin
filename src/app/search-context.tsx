@@ -4,7 +4,7 @@ import {Dispatch,
   SetStateAction,
   createContext,
   useContext,
-  useState,} from 'react';
+  useState} from 'react';
 
 const SearchContext = createContext<
   | [string, Dispatch<SetStateAction<string>>]
@@ -18,7 +18,9 @@ const NavContext = createContext<
 
 export const LevelContext = createContext (0);
 
-export function SearchProvider({children,}: {
+export function SearchProvider({
+  children
+}: {
   children: ReactNode;
 }) {
   const level = useContext (LevelContext);
@@ -35,22 +37,19 @@ export function SearchProvider({children,}: {
     useState (false);
   return (
     <LevelContext.Provider value={level + 1}>
-      {' '}
       <SearchContext.Provider
         value={[
           search,
           setSearch
         ]}>
-        {' '}
         <NavContext.Provider
           value={[
             isNavOpen,
             setIsNavOpen
           ]}>
-          {' '}
-          {children}{' '}
-        </NavContext.Provider>{' '}
-      </SearchContext.Provider>{' '}
+          {children}
+        </NavContext.Provider>
+      </SearchContext.Provider>
     </LevelContext.Provider>
   );
 }

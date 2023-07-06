@@ -1,19 +1,21 @@
 'use client';
 import {useCallback,
   useRef,
-  useEffect,} from 'react';
+  useEffect} from 'react';
 import {usePathname,
-  useRouter,} from 'next/navigation';
+  useRouter} from 'next/navigation';
 import React from 'react';
 import { useModal } from '#@/app/modal-context';
 import modal from '#@/components/modal/modal.module.scss';
 import {BackwardsButton,
-  ForwardButton,} from '../navbar/Buttons';
+  ForwardButton} from '../navbar/Buttons';
 import { useParams } from 'next/navigation';
 import { redirect } from 'next/navigation';
 import type { Route } from 'next';
 
-export default function Modal({children,}: {
+export default function Modal({
+  children
+}: {
   children: React.ReactNode;
 }) {
   const params = useParams ();
@@ -117,14 +119,12 @@ export default function Modal({children,}: {
         onClick={() => {
           onClick;
         }}>
-        {' '}
         <div
           ref={wrapper}
           className={modal.wrapper}>
-          {' '}
-          <ForwardButton /> {children}{' '}
-          <BackwardsButton />{' '}
-        </div>{' '}
+          <ForwardButton /> {children}
+          <BackwardsButton />
+        </div>
       </div>
     );
   }

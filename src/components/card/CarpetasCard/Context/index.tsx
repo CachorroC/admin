@@ -5,7 +5,7 @@ import {useState,
   SetStateAction,
   Dispatch,
   useMemo,
-  useCallback,} from 'react';
+  useCallback} from 'react';
 type vals = {
   data: {};
   setFormValues: (values: any) => void;
@@ -14,20 +14,23 @@ type vals = {
 export const FormContext =
   createContext<vals | null> (null);
 
-export default function FormProvider({children,}: {
+export default function FormProvider({
+  children
+}: {
   children: ReactNode;
 }) {
   const [
     data,
     setData
-  ] = useState ({});
+  ] = useState ({
+  });
 
   const setFormValues = useCallback (
     (values: {}) => {
       setData ((prevValues) => {
         return {
           ...prevValues,
-          ...values,
+          ...values
         };
       });
     },
@@ -38,7 +41,7 @@ export default function FormProvider({children,}: {
     () => {
       return {
         data,
-        setFormValues,
+        setFormValues
       };
     },
     [
@@ -48,8 +51,7 @@ export default function FormProvider({children,}: {
   );
   return (
     <FormContext.Provider value={contextValue}>
-      {' '}
-      {children}{' '}
+      {children}
     </FormContext.Provider>
   );
 }

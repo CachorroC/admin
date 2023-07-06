@@ -7,7 +7,7 @@ import {inter,
   josefina,
   poiret,
   raleway,
-  roboto,} from '#@/styles/fonts/fonts';
+  roboto} from '#@/styles/fonts/fonts';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { ReactNode } from 'react';
 import { SearchProvider } from './search-context';
@@ -36,31 +36,34 @@ export const metadata: Metadata = {
     'JavaScript'
   ],
   authors: [
-    { name: 'cam' },
+    {
+      name: 'cam'
+    },
     {
       name: 'Cachorro Cami',
-      url : `https://${ hostname }`,
-    },
+      url : `https://${ hostname }`
+    }
   ],
   colorScheme: 'light dark',
   themeColor : [
     {
       media: '(prefers-color-scheme: light)',
-      color: '#bb152c',
+      color: '#bb152c'
     },
     {
       media: '(prefers-color-scheme: dark)',
-      color: '#ab2a64',
-    },
+      color: '#ab2a64'
+    }
   ],
-  creator        : 'Cachorro Cami',
-  manifest       : `https://${ hostname }/manifest.webmanifest`,
-  publisher      : 'CachorroC',
-  alternates     : {},
+  creator   : 'Cachorro Cami',
+  manifest  : `https://${ hostname }/manifest.webmanifest`,
+  publisher : 'CachorroC',
+  alternates: {
+  },
   formatDetection: {
     email    : false,
     address  : false,
-    telephone: false,
+    telephone: false
   },
   openGraph: {
     title: 'R&S Asesoría Jurídica',
@@ -72,32 +75,34 @@ export const metadata: Metadata = {
       {
         url   : `https://${ hostname }/splash_screens/12.9__iPad_Pro_portrait.png`,
         width : 800,
-        height: 600,
+        height: 600
       },
       {
         url   : `https://${ hostname }/splash_screens/8.3__iPad_Mini_landscape.png`,
         width : 1800,
         height: 1600,
-        alt   : 'My custom alt',
-      },
+        alt   : 'My custom alt'
+      }
     ],
     locale: 'es-CO',
-    type  : 'website',
+    type  : 'website'
   },
   icons: {
     icon: [
-      { url: '/icons/favicon.png' },
+      {
+        url: '/icons/favicon.png'
+      },
       new URL (
         '/favicon.svg',
         `https://${ hostname }`
-      ),
+      )
     ],
     shortcut: '/safari-pinned-tab.svg',
     apple   : '/icons/apple-touch-icon.png',
     other   : {
       rel: 'apple-touch-icon-precomposed',
-      url: '/icons/apple-touch-icon-precomposed.png',
-    },
+      url: '/icons/apple-touch-icon-precomposed.png'
+    }
   },
   appleWebApp: {
     title         : 'Apple Web App',
@@ -107,22 +112,22 @@ export const metadata: Metadata = {
       {
         url: '/icons/android-chrome-512x512.png',
         media:
-          '(device-width: 768px) and (device-height: 1024px)',
-      },
-    ],
+          '(device-width: 768px) and (device-height: 1024px)'
+      }
+    ]
   },
   appLinks: {
     web: {
       url            : `https://${ hostname }`,
-      should_fallback: true,
-    },
-  },
+      should_fallback: true
+    }
+  }
 };
 
 export default function RootLayout({
   children,
   modal,
-  header,
+  header
 }: {
   children: ReactNode;
   modal: ReactNode;
@@ -130,29 +135,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      {' '}
       <body
         className={`${ poiret.variable } ${ raleway.variable } ${ inter.variable } ${ roboto.variable } ${ josefina.variable } [ color-scheme: light dark ]`}>
-        {' '}
         <NoteSliderProvider>
-          {' '}
           <SearchProvider>
-            {' '}
             <ModalProvider>
-              {' '}
               <NoteProvider>
-                {' '}
                 <div
                   className={`${ layout.container } ${ typography.container }`}>
-                  {' '}
-                  {modal} {header} {children}{' '}
-                </div>{' '}
-              </NoteProvider>{' '}
-            </ModalProvider>{' '}
-          </SearchProvider>{' '}
-        </NoteSliderProvider>{' '}
-        <Script src='/service-worker.js' />{' '}
-      </body>{' '}
+                  {modal} {header} {children}
+                </div>
+              </NoteProvider>
+            </ModalProvider>
+          </SearchProvider>
+        </NoteSliderProvider>
+        <Script src='/service-worker.js' />
+      </body>
     </html>
   );
 }

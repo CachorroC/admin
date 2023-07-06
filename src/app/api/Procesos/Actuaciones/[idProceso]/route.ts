@@ -1,17 +1,21 @@
 import 'server-only';
 import {NextRequest,
-  NextResponse,} from 'next/server';
+  NextResponse} from 'next/server';
 import {IntActuaciones,
-  intConsultaActuaciones,} from '#@/lib/types/procesos';
+  intConsultaActuaciones} from '#@/lib/types/procesos';
 
 export async function GET(
   Request: NextRequest,
-  { params }: { params: { idProceso: number } }
+  {
+    params 
+  }: { params: { idProceso: number } }
 ) {
   try {
     const req = await fetch (
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ params.idProceso }`,
-      { mode: 'cors' }
+      {
+        mode: 'cors'
+      }
     );
     if (!req.ok) {
       const text = await Request.text ();
@@ -22,14 +26,16 @@ export async function GET(
           ? JSON.parse (text)
           : {
               statusCode: req.status,
-              message   : req.statusText,
-            },
+              message   : req.statusText
+            }
       };
       return new NextResponse (
         JSON.stringify (Response),
         {
           status : 200,
-          headers: {'content-type': 'application/json',},
+          headers: {
+            'content-type': 'application/json'
+          }
         }
       );
     }
@@ -41,15 +47,17 @@ export async function GET(
         idProceso: params.idProceso,
         text     : {
           statusCode: req.status,
-          message   : req.statusText,
+          message   : req.statusText
         },
-        acts: res.actuaciones,
+        acts: res.actuaciones
       };
       return new NextResponse (
         JSON.stringify (Response),
         {
           status : 200,
-          headers: {'content-type': 'application/json',},
+          headers: {
+            'content-type': 'application/json'
+          }
         }
       );
     }
@@ -58,13 +66,15 @@ export async function GET(
 
     const Response: IntActuaciones = {
       idProceso: params.idProceso,
-      text     : JSON.parse (text),
+      text     : JSON.parse (text)
     };
     return new NextResponse (
       JSON.stringify (Response),
       {
         status : 200,
-        headers: {'content-type': 'application/json',},
+        headers: {
+          'content-type': 'application/json'
+        }
       }
     );
   }
@@ -74,14 +84,16 @@ export async function GET(
         idProceso: params.idProceso,
         text     : {
           message   : error.message ?? 'error',
-          statusCode: 0,
-        },
+          statusCode: 0
+        }
       };
       return new NextResponse (
         JSON.stringify (Response),
         {
           status : 200,
-          headers: {'content-type': 'application/json',},
+          headers: {
+            'content-type': 'application/json'
+          }
         }
       );
     };
@@ -91,14 +103,16 @@ export async function GET(
     idProceso: params.idProceso,
     text     : {
       message   : 'error final',
-      statusCode: 0,
-    },
+      statusCode: 0
+    }
   };
   return new NextResponse (
     JSON.stringify (Response),
     {
       status : 200,
-      headers: {'content-type': 'application/json',},
+      headers: {
+        'content-type': 'application/json'
+      }
     }
   );
 }

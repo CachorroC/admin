@@ -1,18 +1,21 @@
 import { Card } from '#@/components/card/card';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import {getActuacionesByidProceso,
-  getConsultaNumeroRadicion,} from '#@/lib/RamaJudicial';
+  getConsultaNumeroRadicion} from '#@/lib/RamaJudicial';
 import { Fragment, Suspense } from 'react';
 import typography from '#@/styles/fonts/typography.module.scss';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-async function Acts({idProceso,}: {
+async function Acts({
+  idProceso
+}: {
   idProceso: number;
 }) {
   const actuaciones =
-    await getActuacionesByidProceso ({idProceso: idProceso,});
+    await getActuacionesByidProceso ({
+      idProceso: idProceso
+    });
   return (
     <>
-      {' '}
       {actuaciones.acts &&
         actuaciones.acts.map ((act, i, arr) => {
           const {
@@ -20,7 +23,7 @@ async function Acts({idProceso,}: {
             anotacion,
             idRegActuacion,
             llaveProceso,
-            fechaActuacion,
+            fechaActuacion
           } = act;
           return (
             <Card
@@ -29,39 +32,43 @@ async function Acts({idProceso,}: {
               path={'/NuevaNota'}
               llaveProceso={llaveProceso}
               idProceso={idProceso}>
-              {' '}
               <p
                 className={typography.bodymedium}>
-                {' '}
-                {anotacion ?? fechaActuacion}{' '}
-              </p>{' '}
+                {anotacion ?? fechaActuacion}
+              </p>
             </Card>
           );
-        })}{' '}
+        })}
     </>
   );
 }
 
-export default async function DefaultProcesosLeftllaveProceso({params: { llaveProceso },}: {
+export default async function DefaultProcesosLeftllaveProceso({
+  params: {
+    llaveProceso 
+  }
+}: {
   params: { llaveProceso: string };
 }) {
   const carpeta = await getCarpetasByllaveProceso (
-    { llaveProceso: llaveProceso }
+    {
+      llaveProceso: llaveProceso
+    }
   );
 
   const Procesos =
-    await getConsultaNumeroRadicion ({llaveProceso: llaveProceso,});
+    await getConsultaNumeroRadicion ({
+      llaveProceso: llaveProceso
+    });
 
   const cantidadProcesos = Procesos.length;
   switch (cantidadProcesos) {
     case 0:
       return (
         <Fragment key={llaveProceso}>
-          {' '}
           <h1 className={typography.displayLarge}>
-            {' '}
-            Default{' '}
-          </h1>{' '}
+            Default
+          </h1>
           {carpeta.map ((prc, i, arr) => {
             const {
               idProceso, _id, Deudor 
@@ -69,60 +76,52 @@ export default async function DefaultProcesosLeftllaveProceso({params: { llavePr
               prc;
             return (
               <Fragment key={_id}>
-                {' '}
                 <h1
                   className={
                     typography.displayLarge
                   }>
-                  {' '}
-                  Default{' '}
-                </h1>{' '}
+                  Default
+                </h1>
                 <Acts
                   key={idProceso}
                   idProceso={idProceso}
-                />{' '}
+                />
                 <Card
                   key={_id}
                   name={Deudor.Nombre}
                   llaveProceso={prc.llaveProceso}
                   idProceso={prc.idProceso}
                   path={'/Procesos'}>
-                  {' '}
                   <span className='material-symbols-outlined'>
-                    {' '}
-                    clock_loader_30{' '}
-                  </span>{' '}
-                </Card>{' '}
+                    clock_loader_30
+                  </span>
+                </Card>
               </Fragment>
             );
-          })}{' '}
+          })}
         </Fragment>
       );
     case 1:
       const {
         idProceso,
         sujetosProcesales,
-        despacho,
+        despacho
       } = Procesos[ 0 ];
       return (
         <Suspense
           fallback={<SearchOutputListSkeleton />}>
-          {' '}
           <h1 className={typography.displayLarge}>
-            {' '}
-            Default{' '}
-          </h1>{' '}
-          <Acts idProceso={idProceso} />{' '}
+            Default
+          </h1>
+          <Acts idProceso={idProceso} />
         </Suspense>
       );
     case 2:
       return (
         <>
-          {' '}
           <h1 className={typography.displayLarge}>
-            {' '}
-            Default{' '}
-          </h1>{' '}
+            Default
+          </h1>
           {carpeta.map ((carp, index, arr) => {
             const {
               idProceso, Deudor, _id 
@@ -135,21 +134,18 @@ export default async function DefaultProcesosLeftllaveProceso({params: { llavePr
                 path={'/Procesos'}
                 llaveProceso={llaveProceso}
                 idProceso={idProceso}>
-                {' '}
-                <p>{Deudor.Direccion}</p>{' '}
+                <p>{Deudor.Direccion}</p>
               </Card>
             );
-          })}{' '}
+          })}
         </>
       );
     default:
       return (
         <>
-          {' '}
           <h1 className={typography.displayLarge}>
-            {' '}
-            Default Default{' '}
-          </h1>{' '}
+            Default Default
+          </h1>
           {carpeta.map ((carp, index, arr) => {
             const {
               idProceso, Deudor, _id 
@@ -162,11 +158,10 @@ export default async function DefaultProcesosLeftllaveProceso({params: { llavePr
                 path={'/Procesos'}
                 llaveProceso={llaveProceso}
                 idProceso={idProceso}>
-                {' '}
-                <p>{Deudor.Direccion}</p>{' '}
+                <p>{Deudor.Direccion}</p>
               </Card>
             );
-          })}{' '}
+          })}
         </>
       );
   }

@@ -1,7 +1,7 @@
 import { intConsultaNumeroRadicacion } from './types/procesos';
 import {intProceso,
   intActuacion,
-  IntActuaciones,} from '#@/lib/types/procesos';
+  IntActuaciones} from '#@/lib/types/procesos';
 import { monDemandado } from './types/mongodb';
 import { monNota } from '#@/lib/types/notas';
 import { monCarpetaDemandado } from './types/demandados';
@@ -9,7 +9,7 @@ import { intFecha } from '#@/lib/types/demandados';
 
 export function arrayMergerByidProceso({
   a,
-  b,
+  b
 }: {
   a:
     | intProceso[]
@@ -33,7 +33,7 @@ export function arrayMergerByidProceso({
       item.idProceso,
       {
         ...map.get (item.idProceso),
-        ...item,
+        ...item
       }
     ));
 
@@ -44,7 +44,7 @@ export function arrayMergerByidProceso({
 
 export function arrayMergerByllaveProceso({
   a,
-  b,
+  b
 }: {
   a: intProceso[];
   b: monCarpetaDemandado[];
@@ -60,7 +60,7 @@ export function arrayMergerByllaveProceso({
       item.llaveProceso,
       {
         ...map.get (item.llaveProceso),
-        ...item,
+        ...item
       }
     ));
 

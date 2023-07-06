@@ -2,7 +2,7 @@ import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
 import {intDemandado,
-  monDemandado,} from '../types/mongodb';
+  monDemandado} from '../types/mongodb';
 import { cache } from 'react';
 
 const Collection = async () => {
@@ -21,19 +21,23 @@ export const getProcesos = cache (async () => {
   const collection = await Collection ();
 
   const procesos = (await collection
-    .find ({})
+    .find ({
+    })
     .toArray ()) as unknown as monDemandado[];
   return procesos;
 });
 
 export const getProcesosByllaveProceso = cache (
-  async ({llaveProceso,}: {
+  async ({
+    llaveProceso
+  }: {
     llaveProceso: string;
   }) => {
     const collection = await Collection ();
 
     const procesos = (await collection
-      .find ({})
+      .find ({
+      })
       .toArray ()) as unknown as monDemandado[];
 
     const Procesos = procesos.filter (
@@ -45,11 +49,14 @@ export const getProcesosByllaveProceso = cache (
 );
 
 export const getProcesoById = cache (
-  async ({ _id }: { _id: string }) => {
+  async ({
+    _id 
+  }: { _id: string }) => {
     const collection = await Collection ();
 
     const procesos = (await collection
-      .find ({})
+      .find ({
+      })
       .toArray ()) as unknown as monDemandado[];
 
     const Procesos = procesos.filter (
@@ -59,7 +66,9 @@ export const getProcesoById = cache (
   }
 );
 
-export async function postProceso({proceso,}: {
+export async function postProceso({
+  proceso
+}: {
   proceso: intDemandado;
 }) {
   const collection = await Collection ();
@@ -69,7 +78,9 @@ export async function postProceso({proceso,}: {
   if (!outgoingRequest.acknowledged) {
     return new NextResponse (
       null,
-      {status: 404,}
+      {
+        status: 404
+      }
     );
   }
   return new NextResponse (
@@ -79,7 +90,9 @@ export async function postProceso({proceso,}: {
     ),
     {
       status : 200,
-      headers: {'content-type': 'application/json',},
+      headers: {
+        'content-type': 'application/json'
+      }
     }
   );
 }

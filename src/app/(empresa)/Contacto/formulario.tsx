@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import {useForm,
-  SubmitHandler,} from 'react-hook-form';
+  SubmitHandler} from 'react-hook-form';
 type FormValues = {
   Nombres: string;
   Apellidos: string;
@@ -16,7 +16,9 @@ export default function Formulario() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {
+      errors 
+    }
   } = useForm<FormValues> ();
 
   const onSubmit: SubmitHandler<FormValues> = (
@@ -24,7 +26,6 @@ export default function Formulario() {
   ) => alert (JSON.stringify (data));
   return (
     <form onSubmit={handleSubmit (onSubmit)}>
-      {' '}
       <input
         type='text'
         placeholder='Nombres'
@@ -32,10 +33,10 @@ export default function Formulario() {
           'Nombres',
           {
             required : true,
-            maxLength: 80,
+            maxLength: 80
           }
         )}
-      />{' '}
+      />
       <input
         type='text'
         placeholder='Apellidos'
@@ -43,10 +44,10 @@ export default function Formulario() {
           'Apellidos',
           {
             required : true,
-            maxLength: 100,
+            maxLength: 100
           }
         )}
-      />{' '}
+      />
       <input
         type='text'
         placeholder='Email'
@@ -54,10 +55,10 @@ export default function Formulario() {
           'Email',
           {
             required: true,
-            pattern : /^\S+@\S+$/i,
+            pattern : /^\S+@\S+$/i
           }
         )}
-      />{' '}
+      />
       <input
         type='tel'
         placeholder='Télefono'
@@ -66,44 +67,50 @@ export default function Formulario() {
           {
             required : true,
             maxLength: 10,
-            minLength: 10,
+            minLength: 10
           }
         )}
-      />{' '}
+      />
       <select
         {...register (
           'Title',
-          {required: true,}
+          {
+            required: true
+          }
         )}>
-        {' '}
-        <option value='Mr'>Mr</option>{' '}
-        <option value='Mrs'>Mrs</option>{' '}
-        <option value='Miss'>Miss</option>{' '}
-        <option value='Dr'>Dr</option>{' '}
-      </select>{' '}
+        <option value='Mr'>Mr</option>
+        <option value='Mrs'>Mrs</option>
+        <option value='Miss'>Miss</option>
+        <option value='Dr'>Dr</option>
+      </select>
       <input
         {...register (
           'RecibirInfo',
-          {required: true,}
+          {
+            required: true
+          }
         )}
         type='radio'
         value='Yes'
-      />{' '}
+      />
       <input
         {...register (
           'RecibirInfo',
-          {required: true,}
+          {
+            required: true
+          }
         )}
         type='radio'
         value='No'
-      />{' '}
+      />
       <textarea
         {...register (
           'Comentarios',
-          {}
+          {
+          }
         )}
-      />{' '}
-      <input type='submit' />{' '}
+      />
+      <input type='submit' />
     </form>
   );
 }

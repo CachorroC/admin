@@ -4,7 +4,9 @@ import layout from '#@/styles/scss/layout.module.scss';
 import { getNotas } from '#@/lib/notas';
 import { Notas } from '#@/components/nota/notas';
 
-export default function NuevaNotallaveProceso({params,}: {
+export default function NuevaNotallaveProceso({
+  params
+}: {
   params: { llaveProceso: string };
 }) {
   return (

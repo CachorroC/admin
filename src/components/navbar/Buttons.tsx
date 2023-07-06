@@ -22,16 +22,13 @@ export const ForwardButton = () => {
         router.forward ();
         setIsNavOpen (false);
       }}>
-      {' '}
       <span
         className={`material-symbols-outlined ${ navbar.icon }`}>
-        {' '}
-        chevron_right{' '}
-      </span>{' '}
+        chevron_right
+      </span>
       <p className={navbar.ButtonTextHelper}>
-        {' '}
-        entrar{' '}
-      </p>{' '}
+        entrar
+      </p>
     </button>
   );
 };
@@ -60,16 +57,13 @@ export const BackwardsButton = () => {
       type='button'
       className={navbar.buttonBackwards}
       onClick={clickHandler}>
-      {' '}
       <span
         className={`material-symbols-outlined ${ navbar.icon }`}>
-        {' '}
-        chevron_left{' '}
-      </span>{' '}
+        chevron_left
+      </span>
       <p className={navbar.ButtonTextHelper}>
-        {' '}
-        atras{' '}
-      </p>{' '}
+        atras
+      </p>
     </button>
   );
 };
@@ -86,16 +80,13 @@ export const DrawerMenuButton = () => {
         type='button'
         className={navbar.buttonDrawerMenu}
         onClick={() => setIsNavOpen (false)}>
-        {' '}
         <span
           className={`material-symbols-outlined ${ navbar.icon }`}>
-          {' '}
-          close{' '}
-        </span>{' '}
+          close
+        </span>
         <p className={navbar.ButtonTextHelper}>
-          {' '}
-          cerrar{' '}
-        </p>{' '}
+          cerrar
+        </p>
       </button>
     );
   }
@@ -104,16 +95,13 @@ export const DrawerMenuButton = () => {
       type='button'
       className={navbar.buttonDrawerMenu}
       onClick={() => setIsNavOpen (true)}>
-      {' '}
       <span
         className={`material-symbols-outlined ${ navbar.icon }`}>
-        {' '}
-        menu{' '}
-      </span>{' '}
+        menu
+      </span>
       <p className={navbar.ButtonTextHelper}>
-        {' '}
-        abrir{' '}
-      </p>{' '}
+        abrir
+      </p>
     </button>
   );
 };
@@ -131,16 +119,13 @@ export const HomeButton = () => {
       onClick={() => {
         setIsNavOpen (false);
       }}>
-      {' '}
       <span
         className={`material-symbols-outlined ${ navbar.icon }`}>
-        {' '}
-        home{' '}
-      </span>{' '}
+        home
+      </span>
       <p className={navbar.ButtonTextHelper}>
-        {' '}
-        inicio{' '}
-      </p>{' '}
+        inicio
+      </p>
     </Link>
   );
 };
@@ -154,12 +139,10 @@ export const ModalButton = () => {
     <button
       className={navbar.buttonModal}
       onClick={() => setIsOpen (true)}>
-      {' '}
       <span
         className={`material-symbols-outlined ${ navbar.icon }`}>
-        {' '}
-        box{' '}
-      </span>{' '}
+        box
+      </span>
     </button>
   );
 };

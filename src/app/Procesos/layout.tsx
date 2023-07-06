@@ -4,7 +4,7 @@ import React from 'react';
 export default function LayoutProcesos({
   children,
   right,
-  left,
+  left
 }: {
   children: React.ReactNode;
   right: React.ReactNode;
@@ -12,13 +12,11 @@ export default function LayoutProcesos({
 }) {
   return (
     <div className={layout.body}>
-      {' '}
       <div className={layout.name}>
-        {' '}
-        {children}{' '}
-      </div>{' '}
-      <div className={layout.left}>{left}</div>{' '}
-      <div className={layout.right}>{right}</div>{' '}
+        {children}
+      </div>
+      <div className={layout.left}>{left}</div>
+      <div className={layout.right}>{right}</div>
     </div>
   );
 }

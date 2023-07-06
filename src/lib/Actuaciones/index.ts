@@ -2,12 +2,14 @@ import 'server-only';
 import {Codeudor,
   intCarpetaDemandado,
   intFecha,
-  monCarpetaDemandado,} from '../types/demandados';
+  monCarpetaDemandado} from '../types/demandados';
 import { monDemandado } from '../types/mongodb';
 import {IntActuaciones,
-  intConsultaActuaciones,} from '../types/procesos';
+  intConsultaActuaciones} from '../types/procesos';
 
-export async function getActuacionesByidProceso({idProceso,}: {
+export async function getActuacionesByidProceso({
+  idProceso
+}: {
   idProceso: number;
 }) {
   if (idProceso === 0) {
@@ -16,8 +18,8 @@ export async function getActuacionesByidProceso({idProceso,}: {
       text     : {
         statusCode: 0,
         message:
-          'no existe el idProceso de este proceso;',
-      },
+          'no existe el idProceso de este proceso;'
+      }
     };
     return response;
   }
@@ -25,7 +27,9 @@ export async function getActuacionesByidProceso({idProceso,}: {
   try {
     const request = await fetch (
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
-      { cache: 'no-store' }
+      {
+        cache: 'no-store'
+      }
     );
 
     if (!request.ok) {
@@ -35,7 +39,7 @@ export async function getActuacionesByidProceso({idProceso,}: {
         idProceso: idProceso,
         text     : text
           ? JSON.parse (text)
-          : '',
+          : ''
       };
       return response;
     }
@@ -49,9 +53,9 @@ export async function getActuacionesByidProceso({idProceso,}: {
 
         text: {
           statusCode: request.status,
-          message   : request.statusText,
+          message   : request.statusText
         },
-        acts: res.actuaciones,
+        acts: res.actuaciones
       };
       return response;
     }
@@ -60,7 +64,7 @@ export async function getActuacionesByidProceso({idProceso,}: {
 
     const response: IntActuaciones = {
       idProceso: idProceso,
-      text     : JSON.parse (text),
+      text     : JSON.parse (text)
     };
     return response;
   }
@@ -70,8 +74,8 @@ export async function getActuacionesByidProceso({idProceso,}: {
         idProceso: idProceso,
         text     : {
           message   : error.message ?? 'error',
-          statusCode: 0,
-        },
+          statusCode: 0
+        }
       };
       return response;
     };
@@ -81,13 +85,15 @@ export async function getActuacionesByidProceso({idProceso,}: {
     idProceso: idProceso,
     text     : {
       message   : 'error final',
-      statusCode: 0,
-    },
+      statusCode: 0
+    }
   };
   return response;
 }
 
-export async function fetchFechas({procesos,}: {
+export async function fetchFechas({
+  procesos
+}: {
   procesos: monCarpetaDemandado[];
 }) {
   const fechas: intFecha[] = [];
@@ -95,12 +101,14 @@ export async function fetchFechas({procesos,}: {
   for (let p = 0; p < procesos.length; p++) {
     const proceso = procesos[ p ];
 
-    const acts = await getActuacionesByidProceso ({idProceso: proceso.idProceso,});
+    const acts = await getActuacionesByidProceso ({
+      idProceso: proceso.idProceso
+    });
 
     if (acts.acts) {
       const fecha = {
         ...proceso,
-        fecha: acts.acts[ 0 ].fechaActuacion,
+        fecha: acts.acts[ 0 ].fechaActuacion
       };
       fechas.push (fecha);
     }
@@ -108,7 +116,7 @@ export async function fetchFechas({procesos,}: {
     if (!acts.acts) {
       const fecha = {
         ...proceso,
-        fecha: null,
+        fecha: null
       };
       fechas.push (fecha);
     }
@@ -124,22 +132,26 @@ export async function fetchFechas({procesos,}: {
   return fechas;
 }
 
-export async function fetchFecha({proceso,}: {
+export async function fetchFecha({
+  proceso
+}: {
   proceso: monCarpetaDemandado;
 }) {
-  const acts = await getActuacionesByidProceso ({idProceso: proceso.idProceso,});
+  const acts = await getActuacionesByidProceso ({
+    idProceso: proceso.idProceso
+  });
 
   if (acts.acts) {
     const fecha: intFecha = {
       ...proceso,
-      fecha: acts.acts[ 0 ].fechaActuacion,
+      fecha: acts.acts[ 0 ].fechaActuacion
     };
     return fecha;
   }
 
   const fecha: intFecha = {
     ...proceso,
-    fecha: undefined,
+    fecha: undefined
   };
   return fecha;
 }

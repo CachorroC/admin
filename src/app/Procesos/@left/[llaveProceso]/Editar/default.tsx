@@ -7,7 +7,7 @@ import { Fragment } from 'react';
 
 export default async function Default({
   params,
-  searchParams,
+  searchParams
 }: {
   params: { llaveProceso: string };
   searchParams: { _id: string };
@@ -16,28 +16,26 @@ export default async function Default({
 
   const _id = searchParams._id;
 
-  const nota = await getNotaById ({ _id: _id });
+  const nota = await getNotaById ({
+    _id: _id
+  });
   return (
     <div className={note.container}>
-      {' '}
       <div className={note.note}>
-        {' '}
         {nota.map ((ntext, i) => (
           <Fragment key={ntext._id}>
-            {' '}
             <h1
               key={i}
               className={typeface.title}>
-              {' '}
-              {ntext.nota}{' '}
-            </h1>{' '}
+              {ntext.nota}
+            </h1>
             <Edit
               uri={getBaseUrl ()}
               nota={ntext}
-            />{' '}
+            />
           </Fragment>
-        ))}{' '}
-      </div>{' '}
+        ))}
+      </div>
     </div>
   );
 }

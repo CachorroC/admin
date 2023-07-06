@@ -1,12 +1,14 @@
 'use client';
 import { useNavigator } from '#@/app/search-context';
 import {usePathname,
-  useSelectedLayoutSegment,} from 'next/navigation';
+  useSelectedLayoutSegment} from 'next/navigation';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { fixFechas } from '#@/lib/fix';
 import typeface from '#@/styles/fonts/typeface.module.scss';
 
-export default function Title({helper,}: {
+export default function Title({
+  helper
+}: {
   helper?: string;
 }) {
   const [
@@ -51,7 +53,7 @@ export default function Title({helper,}: {
     'Miercoles',
     'Jueves',
     'Viernes',
-    'Sabado',
+    'Sabado'
   ];
 
   const months = [
@@ -66,7 +68,7 @@ export default function Title({helper,}: {
     'septiembre',
     'octubre',
     'noviembre',
-    'diciembre ',
+    'diciembre '
   ];
   return (
     <h1
@@ -75,11 +77,10 @@ export default function Title({helper,}: {
           ? typeface.drawer
           : typeface.navbar
       }`}>
-      {' '}
       {helper ??
         `${ days[ today.getDay () ] }, ${ fixFechas (
           today.toString ()
-        ) }`}{' '}
+        ) }`}
     </h1>
   );
 }

@@ -6,48 +6,48 @@ const catList = [
   {
     id: 1,
     imageUrl:
-      'https://placekitten.com/250/200?image=1',
+      'https://placekitten.com/250/200?image=1'
   },
   {
     id: 2,
     imageUrl:
-      'https://placekitten.com/250/200?image=2',
+      'https://placekitten.com/250/200?image=2'
   },
   {
     id: 3,
     imageUrl:
-      'https://placekitten.com/250/200?image=3',
+      'https://placekitten.com/250/200?image=3'
   },
   {
     id: 4,
     imageUrl:
-      'https://placekitten.com/250/200?image=4',
+      'https://placekitten.com/250/200?image=4'
   },
   {
     id: 5,
     imageUrl:
-      'https://placekitten.com/250/200?image=5',
+      'https://placekitten.com/250/200?image=5'
   },
   {
     id: 6,
     imageUrl:
-      'https://placekitten.com/250/200?image=6',
+      'https://placekitten.com/250/200?image=6'
   },
   {
     id: 7,
     imageUrl:
-      'https://placekitten.com/250/200?image=7',
+      'https://placekitten.com/250/200?image=7'
   },
   {
     id: 8,
     imageUrl:
-      'https://placekitten.com/250/200?image=8',
+      'https://placekitten.com/250/200?image=8'
   },
   {
     id: 9,
     imageUrl:
-      'https://placekitten.com/250/200?image=9',
-  },
+      'https://placekitten.com/250/200?image=9'
+  }
 ];
 
 export function NotasList() {
@@ -60,7 +60,7 @@ export function NotasList() {
     node.scrollIntoView ({
       behavior: 'smooth',
       block   : 'nearest',
-      inline  : 'center',
+      inline  : 'center'
     });
   }
 

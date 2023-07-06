@@ -1,14 +1,14 @@
 'use client';
 import note from '#@/components/nota/note.module.scss';
 import {intNota,
-  monNota,} from '#@/lib/types/notas';
+  monNota} from '#@/lib/types/notas';
 import type { Route } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export function DeleteNoteButton({
   id,
-  uri,
+  uri
 }: {
   id: string;
   uri: string;
@@ -16,7 +16,9 @@ export function DeleteNoteButton({
   async function deleteRequestHandler() {
     const Request = await fetch (
       `${ uri }/api/Notas?_id=${ id }`,
-      { method: 'DELETE' }
+      {
+        method: 'DELETE'
+      }
     );
     if (!Request.ok) {
       return;
@@ -29,19 +31,17 @@ export function DeleteNoteButton({
     <button
       className={note.buttonDelete}
       onClick={deleteRequestHandler}>
-      {' '}
       <span
         className={`material-symbols-outlined ${ note.icon }`}>
-        {' '}
-        delete{' '}
-      </span>{' '}
+        delete
+      </span>
     </button>
   );
 }
 
 export function AddNoteButton({
   nota,
-  uri,
+  uri
 }: {
   nota: intNota;
   uri: string;
@@ -51,8 +51,10 @@ export function AddNoteButton({
       `${ uri }/api/Notas`,
       {
         method : 'POST',
-        headers: {'content-type': 'application/json',},
-        body   : JSON.stringify (nota),
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify (nota)
       }
     ).then ((fullfilled) => {
       alert (fullfilled.status);
@@ -69,17 +71,17 @@ export function AddNoteButton({
     <button
       className={note.buttonAdd}
       onClick={addRequestHandler}>
-      {' '}
       <span
         className={`material-symbols-outlined ${ note.icon }`}>
-        {' '}
-        delete{' '}
-      </span>{' '}
+        delete
+      </span>
     </button>
   );
 }
 
-export function EditNoteButton({nota,}: {
+export function EditNoteButton({
+  nota
+}: {
   nota: monNota;
 }) {
   return (
@@ -88,12 +90,10 @@ export function EditNoteButton({nota,}: {
       href={
         `/Procesos/${ nota.llaveProceso }/Editar?_id=${ nota._id }` as Route
       }>
-      {' '}
       <span
         className={`material-symbols-outlined ${ note.icon }`}>
-        {' '}
-        edit{' '}
-      </span>{' '}
+        edit
+      </span>
     </Link>
   );
 }

@@ -1,23 +1,28 @@
 import 'server-only';
 import {NextRequest,
-  NextResponse,} from 'next/server';
+  NextResponse} from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { monDemandado } from '#@/lib/types/mongodb';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { llaveProceso: string } }
+  {
+    params 
+  }: { params: { llaveProceso: string } }
 ) {
   const llaveProceso = params.llaveProceso;
 
-  const { searchParams } = new URL (request.url);
+  const {
+    searchParams 
+  } = new URL (request.url);
 
   const client = await clientPromise;
 
   const procesos = (await client
     .db ('RyS')
     .collection ('Procesos')
-    .find ({})
+    .find ({
+    })
     .toArray ()) as unknown as monDemandado[];
 
   const delay = searchParams.get ('delay');
@@ -46,13 +51,15 @@ export async function GET(
       const noProc = {
         idProceso        : num,
         llaveProceso     : params.llaveProceso,
-        sujetosProcesales: 'no existe',
+        sujetosProcesales: 'no existe'
       };
       return new NextResponse (
         JSON.stringify (noProc),
         {
           status : 200,
-          headers: {'content-type': 'application/json',},
+          headers: {
+            'content-type': 'application/json'
+          }
         }
       );
     }
@@ -60,7 +67,9 @@ export async function GET(
       JSON.stringify (Procesos),
       {
         status : 200,
-        headers: {'content-type': 'application/json',},
+        headers: {
+          'content-type': 'application/json'
+        }
       }
     );
   }
@@ -68,7 +77,9 @@ export async function GET(
     JSON.stringify (Procesos),
     {
       status : 200,
-      headers: {'content-type': 'application/json',},
+      headers: {
+        'content-type': 'application/json'
+      }
     }
   );
 }

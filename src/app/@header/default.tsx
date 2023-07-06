@@ -9,14 +9,15 @@ import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputS
 async function ListDrawer() {
   const procesos = await getCarpetas ();
 
-  const fechas = await fetchFechas ({procesos: procesos,});
+  const fechas = await fetchFechas ({
+    procesos: procesos
+  });
   return (
     <Drawer>
-      {' '}
       <SearchOutputList
         path='/Procesos'
         fechas={fechas}
-      />{' '}
+      />
     </Drawer>
   );
 }
@@ -24,13 +25,11 @@ async function ListDrawer() {
 export default function Default() {
   return (
     <Header>
-      {' '}
-      <Title />{' '}
+      <Title />
       <Suspense
         fallback={<SearchOutputListSkeleton />}>
-        {' '}
-        <ListDrawer />{' '}
-      </Suspense>{' '}
+        <ListDrawer />
+      </Suspense>
     </Header>
   );
 }

@@ -2,7 +2,7 @@ import {Poiret_One,
   Inter,
   Raleway,
   Josefin_Sans,
-  Roboto,} from 'next/font/google';
+  Roboto} from 'next/font/google';
 import localFont from 'next/font/local';
 
 // define your variable fonts
@@ -11,21 +11,21 @@ const inter = Inter ({
     'latin-ext',
     'latin'
   ],
-  variable: '--inter',
+  variable: '--inter'
 });
 
 const josefina = Josefin_Sans ({
   subsets: [
     'latin'
   ],
-  variable: '--josefa',
+  variable: '--josefa'
 });
 
 const raleway = Raleway ({
   subsets: [
     'latin'
   ],
-  variable: '--raleway',
+  variable: '--raleway'
 });
 
 const roboto = Roboto ({
@@ -39,8 +39,8 @@ const roboto = Roboto ({
     '400',
     '500',
     '700',
-    '900',
-  ],
+    '900'
+  ]
 });
 
 const poiret = Poiret_One ({
@@ -49,7 +49,7 @@ const poiret = Poiret_One ({
   subsets : [
     'latin',
     'latin-ext'
-  ],
+  ]
 });
 
 export {
@@ -57,5 +57,5 @@ export {
   raleway,
   roboto,
   poiret,
-  josefina,
+  josefina
 };

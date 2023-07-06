@@ -6,7 +6,7 @@ import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function Error({
   error,
-  reset,
+  reset
 }: any) {
   React.useEffect (
     () => {
@@ -26,11 +26,13 @@ export default function Error({
         className={layout.name}
         style={{
           backgroundColor:
-            'var(--error-container)',
+            'var(--error-container)'
         }}>
         <h2
           className={typography.displayLarge}
-          style={{color: 'var(--on-error-container)',}}>
+          style={{
+            color: 'var(--on-error-container)'
+          }}>
           Error
         </h2>
         <p className={typography.bodyLarge}>

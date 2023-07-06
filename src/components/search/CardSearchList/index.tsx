@@ -1,18 +1,18 @@
 'use client';
 import {useNavigator,
-  useSearch,} from '#@/app/search-context';
+  useSearch} from '#@/app/search-context';
 import { Card } from '#@/components/card/card';
 import { intFecha } from '#@/lib/types/demandados';
 import {useParams,
   usePathname,
-  useRouter,} from 'next/navigation';
+  useRouter} from 'next/navigation';
 import card from '#@/components/card/card.module.scss';
 import { fixFechas } from '#@/lib/fix';
 
 export const CardSearchList = ({
   path,
   uri,
-  Fechas,
+  Fechas
 }: {
   path: string;
   uri: string;
@@ -68,7 +68,7 @@ export const CardSearchList = ({
       llaveProceso,
       Deudor,
       fecha,
-      _id,
+      _id
     } = Fecha;
 
     const {
@@ -90,16 +90,14 @@ export const CardSearchList = ({
         llaveProceso={llaveProceso}
         idProceso={idProceso}
         fecha={fecha}>
-        {' '}
         <p className={card.sub}>{`${ i + 1 } de ${
           arr.length
-        }`}</p>{' '}
+        }`}</p>
         {fecha && (
           <sub className={card.date}>
-            {' '}
-            {fixFechas (fecha)}{' '}
+            {fixFechas (fecha)}
           </sub>
-        )}{' '}
+        )}
       </Card>
     );
   });

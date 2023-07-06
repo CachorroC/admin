@@ -3,7 +3,7 @@ import * as React from 'react';
 import {useForm,
   useFieldArray,
   useWatch,
-  Control,} from 'react-hook-form';
+  Control} from 'react-hook-form';
 type FormValues = {
   firstName: string;
   cart: {
@@ -14,12 +14,14 @@ type FormValues = {
 };
 let renderCount = 0;
 
-const Total = ({control,}: {
+const Total = ({
+  control
+}: {
   control: Control<FormValues>;
 }) => {
   const formValues = useWatch ({
     name: 'cart',
-    control,
+    control
   });
 
   const total = formValues.reduce (
@@ -37,18 +39,20 @@ export default function Costos() {
     register,
     control,
     handleSubmit,
-    formState: { errors },
+    formState: {
+      errors 
+    }
   } = useForm<FormValues> ({
     defaultValues: {
       cart: [
         {
           name    : 'test',
           quantity: 1,
-          price   : 23000,
-        },
-      ],
+          price   : 23000
+        }
+      ]
     },
-    mode: 'onBlur',
+    mode: 'onBlur'
   });
 
   const {
@@ -56,7 +60,7 @@ export default function Costos() {
   } =
     useFieldArray ({
       name: 'cart',
-      control,
+      control
     });
 
   const onSubmit = (data: FormValues) =>
@@ -64,25 +68,23 @@ export default function Costos() {
   renderCount++;
   return (
     <div>
-      {' '}
       <form onSubmit={handleSubmit (onSubmit)}>
-        {' '}
         <input
           {...register ('firstName')}
           placeholder='First Name'
-        />{' '}
+        />
         {fields.map ((field, index) => (
           <div key={field.id}>
-            {' '}
             <section
               className={'section'}
               key={field.id}>
-              {' '}
               <input
                 placeholder='name'
                 {...register (
                   `cart.${ index }.name` as const,
-                  { required: true }
+                  {
+                    required: true
+                  }
                 )}
                 className={
                   errors?.cart?.[ index ]?.name
@@ -90,7 +92,7 @@ export default function Costos() {
                     : ''
                 }
                 defaultValue={field.name}
-              />{' '}
+              />
               <input
                 placeholder='quantity'
                 type='number'
@@ -98,7 +100,7 @@ export default function Costos() {
                   `cart.${ index }.quantity` as const,
                   {
                     valueAsNumber: true,
-                    required     : true,
+                    required     : true
                   }
                 )}
                 className={
@@ -107,7 +109,7 @@ export default function Costos() {
                     : ''
                 }
                 defaultValue={field.quantity}
-              />{' '}
+              />
               <input
                 placeholder='value'
                 type='number'
@@ -115,7 +117,7 @@ export default function Costos() {
                   `cart.${ index }.price` as const,
                   {
                     valueAsNumber: true,
-                    required     : true,
+                    required     : true
                   }
                 )}
                 className={
@@ -124,31 +126,29 @@ export default function Costos() {
                     : ''
                 }
                 defaultValue={field.price}
-              />{' '}
+              />
               <button
                 type='button'
                 onClick={() => remove (index)}>
-                {' '}
-                DELETE{' '}
-              </button>{' '}
-            </section>{' '}
+                DELETE
+              </button>
+            </section>
           </div>
-        ))}{' '}
-        <Total control={control} />{' '}
+        ))}
+        <Total control={control} />
         <button
           type='button'
           onClick={() =>
             append ({
               name    : '',
               quantity: 0,
-              price   : 0,
+              price   : 0
             })
           }>
-          {' '}
-          APPEND{' '}
-        </button>{' '}
-        <input type='submit' />{' '}
-      </form>{' '}
+          APPEND
+        </button>
+        <input type='submit' />
+      </form>
     </div>
   );
 }

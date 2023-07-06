@@ -3,10 +3,10 @@ import * as React from 'react';
 import {useForm,
   useFieldArray,
   useWatch,
-  Control,} from 'react-hook-form';
+  Control} from 'react-hook-form';
 import { usePathname } from 'next/navigation';
 import {intNota,
-  intNotaFormValues,} from '#@/lib/types/notas';
+  intNotaFormValues} from '#@/lib/types/notas';
 import note from '#@/components/nota/note.module.scss';
 import { Fragment, useState } from 'react';
 import accordion from './accordion.module.scss';
@@ -14,7 +14,7 @@ import typography from '#@/styles/fonts/typography.module.scss';
 
 export function NewNota({
   llaveProceso,
-  uri,
+  uri
 }: {
   llaveProceso: string;
   uri: string;
@@ -27,7 +27,9 @@ export function NewNota({
     control,
     setValue,
     handleSubmit,
-    formState: { errors },
+    formState: {
+      errors 
+    }
   } = useForm<intNotaFormValues> ({
     defaultValues: {
       nota  : '',
@@ -35,11 +37,11 @@ export function NewNota({
         {
           tarea  : '',
           isDone : false,
-          dueDate: new Date ().toISOString (),
-        },
-      ],
+          dueDate: new Date ().toISOString ()
+        }
+      ]
     },
-    mode: 'onBlur',
+    mode: 'onBlur'
   });
 
   const {
@@ -47,7 +49,7 @@ export function NewNota({
   } =
     useFieldArray ({
       name: 'tareas',
-      control,
+      control
     });
 
   const onSubmit = async (
@@ -57,7 +59,7 @@ export function NewNota({
       ...data,
       llaveProceso: llaveProceso,
       pathname    : pathname,
-      fecha       : new Date ().toString (),
+      fecha       : new Date ().toString ()
     };
     alert (JSON.stringify (newData));
 
@@ -65,8 +67,10 @@ export function NewNota({
       '/api/Notas',
       {
         method : 'POST',
-        headers: {'content-type': 'application/json',},
-        body   : JSON.stringify (newData),
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify (newData)
       }
     ).then ((fullfilled) => {
       alert (fullfilled.status);
@@ -85,19 +89,15 @@ export function NewNota({
   ] = useState (false);
   return (
     <div className={note.container}>
-      {' '}
       <form
         className={note.form}
         onSubmit={handleSubmit (onSubmit)}>
-        {' '}
         <div className={note.section}>
-          {' '}
           <label
             htmlFor='nota'
             className={`${ note.label } ${ typography.titleMedium }`}>
-            {' '}
-            Nota{' '}
-          </label>{' '}
+            Nota
+          </label>
           <input
             type='text'
             placeholder='agregue su nota'
@@ -105,64 +105,58 @@ export function NewNota({
             className={note.textArea}
             {...register (
               'nota',
-              {required: true,}
+              {
+                required: true
+              }
             )}
-          />{' '}
-        </div>{' '}
+          />
+        </div>
         <button
           className={accordion.title}
           type='button'
           onClick={() => setIsActive (!isActive)}>
-          {' '}
           <span className='material-symbols-outlined'>
-            {' '}
             {isActive
               ? 'expand_less'
-              : 'expand_more'}{' '}
-          </span>{' '}
+              : 'expand_more'}
+          </span>
           <span className={typography.titleSmall}>
-            {' '}
-            Tareas{' '}
-          </span>{' '}
-        </button>{' '}
+            Tareas
+          </span>
+        </button>
         {isActive && (
           <div className={accordion.content}>
-            {' '}
             {fields.map ((field, index) => {
               const watchIsDone = watch (
                 `tareas.${ index }.isDone`
               );
               return (
                 <Fragment key={field.id}>
-                  {' '}
                   <div className={note.section}>
-                    {' '}
                     <label
                       htmlFor={`tareas.${ index }.tarea`}
                       className={note.label}>
-                      {' '}
-                      Tarea:{' '}
-                    </label>{' '}
+                      Tarea:
+                    </label>
                     <input
                       type='text'
                       placeholder='tarea'
                       {...register (
                         `tareas.${ index }.tarea`,
-                        {}
+                        {
+                        }
                       )}
                       className={note.textArea}
                       defaultValue={field.tarea}
-                    />{' '}
-                  </div>{' '}
+                    />
+                  </div>
                   <div className={note.section}>
-                    {' '}
-                    2{' '}
+                    2
                     <p className={note.label}>
-                      {' '}
                       {watchIsDone
                         ? '¡ tarea completa !'
-                        : '¿ completar tarea ?'}{' '}
-                    </p>{' '}
+                        : '¿ completar tarea ?'}
+                    </p>
                     <button
                       type='button'
                       className={note.button}
@@ -174,36 +168,32 @@ export function NewNota({
                             : true
                         );
                       }}>
-                      {' '}
                       <span className='material-symbols-outlined'>
-                        {' '}
                         {watchIsDone
                           ? 'check_box'
-                          : 'check_box_outline_blank'}{' '}
-                      </span>{' '}
-                    </button>{' '}
-                  </div>{' '}
+                          : 'check_box_outline_blank'}
+                      </span>
+                    </button>
+                  </div>
                   <div className={note.section}>
-                    {' '}
                     <label
                       htmlFor={`tareas.${ index }.dueDate`}
                       className={note.label}>
-                      {' '}
-                      Para cuándo es?:{' '}
-                    </label>{' '}
+                      Para cuándo es?:
+                    </label>
                     <input
                       type='date'
                       className={note.textArea}
                       placeholder={`tareas.${ index }.dueDate`}
                       {...register (
                         `tareas.${ index }.dueDate`,
-                        {}
+                        {
+                        }
                       )}
-                    />{' '}
-                  </div>{' '}
+                    />
+                  </div>
                   <div
                     className={note.buttonsRow}>
-                    {' '}
                     <button
                       className={
                         note.submitButton
@@ -212,12 +202,10 @@ export function NewNota({
                       onClick={() =>
                         remove (index)
                       }>
-                      {' '}
                       <span className='material-symbols-outlined'>
-                        {' '}
-                        remove{' '}
-                      </span>{' '}
-                    </button>{' '}
+                        remove
+                      </span>
+                    </button>
                     <button
                       type='button'
                       className={
@@ -228,34 +216,29 @@ export function NewNota({
                           tarea : '',
                           isDone: false,
                           dueDate:
-                            new Date ().toISOString (),
+                            new Date ().toISOString ()
                         })
                       }>
-                      {' '}
                       <span className='material-symbols-outlined'>
-                        {' '}
-                        add{' '}
-                      </span>{' '}
-                    </button>{' '}
-                  </div>{' '}
+                        add
+                      </span>
+                    </button>
+                  </div>
                 </Fragment>
               );
-            })}{' '}
+            })}
           </div>
-        )}{' '}
+        )}
         <div className={note.section}>
-          {' '}
           <button
             type='submit'
             className={note.submitButton}>
-            {' '}
             <span className='material-symbols-outlined'>
-              {' '}
-              send{' '}
-            </span>{' '}
-          </button>{' '}
-        </div>{' '}
-      </form>{' '}
+              send
+            </span>
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

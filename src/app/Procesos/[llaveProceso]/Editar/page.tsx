@@ -3,7 +3,7 @@ import typeface from '#@/styles/fonts/typeface.module.scss';
 
 export default async function Page({
   params,
-  searchParams,
+  searchParams
 }: {
   params: { llaveProceso: string };
   searchParams: { _id: string };
@@ -12,7 +12,9 @@ export default async function Page({
 
   const _id = searchParams._id;
 
-  const nota = await getNotaById ({ _id: _id });
+  const nota = await getNotaById ({
+    _id: _id
+  });
 
   const ntext = nota
     .map ((nt) => {
@@ -22,8 +24,7 @@ export default async function Page({
     .toString ();
   return (
     <h1 className={typeface.title}>
-      {' '}
-      {`Editar: ${ ntext }`}{' '}
+      {`Editar: ${ ntext }`}
     </h1>
   );
 }

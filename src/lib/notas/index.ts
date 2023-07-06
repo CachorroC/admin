@@ -3,7 +3,7 @@ import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
 import {monNota,
   intNota,
-  ConvertNotas,} from '#@/lib/types/notas';
+  ConvertNotas} from '#@/lib/types/notas';
 import { cache } from 'react';
 
 const Collection = async () => {
@@ -22,7 +22,8 @@ const Transform = async () => {
   const collection = await Collection ();
 
   const notasRaw = await collection
-    .find ({})
+    .find ({
+    })
     .toArray ();
 
   const notasString = JSON.stringify (notasRaw);
@@ -37,7 +38,9 @@ export async function getNotas() {
   return notas;
 }
 
-export async function getNotasByllaveProceso({llaveProceso,}: {
+export async function getNotasByllaveProceso({
+  llaveProceso
+}: {
   llaveProceso: string;
 }) {
   const notas = await Transform ();
@@ -49,7 +52,9 @@ export async function getNotasByllaveProceso({llaveProceso,}: {
 }
 
 export const getNotaById = cache (
-  async ({ _id }: { _id: string }) => {
+  async ({
+    _id 
+  }: { _id: string }) => {
     const notas = await Transform ();
 
     const Notas = notas.filter (
@@ -59,7 +64,9 @@ export const getNotaById = cache (
   }
 );
 
-export async function postNota({nota,}: {
+export async function postNota({
+  nota
+}: {
   nota: intNota;
 }) {
   const collection = await Collection ();
@@ -69,7 +76,9 @@ export async function postNota({nota,}: {
   if (!outgoingRequest.acknowledged) {
     return new NextResponse (
       null,
-      {status: 404,}
+      {
+        status: 404
+      }
     );
   }
   return new NextResponse (
@@ -79,7 +88,9 @@ export async function postNota({nota,}: {
     ),
     {
       status : 200,
-      headers: {'content-type': 'application/json',},
+      headers: {
+        'content-type': 'application/json'
+      }
     }
   );
 }

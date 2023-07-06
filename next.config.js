@@ -6,18 +6,18 @@
         {
           protocol: 'https',
           hostname: 'placekitten.com',
-          pathname: '/250/200?image=**',
-        },
+          pathname: '/250/200?image=**'
+        }
       ],
       domains: [
         'placekitten.com'
-      ],
+      ]
     },
     experimental: {
       typedRoutes                     : true,
       serverComponentsExternalPackages: [
-        'mongodb',
-      ],
-    },
+        'mongodb'
+      ]
+    }
   };
 module.exports = nextConfig;

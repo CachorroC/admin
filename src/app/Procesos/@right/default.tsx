@@ -5,12 +5,11 @@ import { getBaseUrl } from '#@/lib/getBaseUrl';
 export default async function DefaultProcesosRight() {
   return (
     <>
-      {' '}
       <NewNota
         llaveProceso={'Procesos'}
         uri={`${ getBaseUrl () }`}
-      />{' '}
-      <Notas />{' '}
+      />
+      <Notas />
     </>
   );
 }

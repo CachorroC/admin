@@ -8,11 +8,12 @@ import { cache } from 'react';
 import { sleep } from '#@/lib/helper';
 import {intFecha,
   monCarpetaDemandado,} from '../types/demandados';
-import { Card } from '#@/components/card/card';
 import { JuzgadosByllaveProceso } from '#@/lib/RamaJudicial/juzgados';
 
 export const Juzgados = cache (
-  async ({procesos,}: {
+  async ({
+    procesos,
+  }: {
     procesos: monCarpetaDemandado[];
   }) => {
     const rowPrc = [];
@@ -33,7 +34,9 @@ export const Juzgados = cache (
   }
 );
 
-export async function getConsultaNumeroRadicion({llaveProceso,}: {
+export async function getConsultaNumeroRadicion({
+  llaveProceso,
+}: {
   llaveProceso: string;
 }) {
   const Request = await fetch (
@@ -52,7 +55,9 @@ export async function getConsultaNumeroRadicion({llaveProceso,}: {
   return res.procesos;
 }
 
-export async function getActuacionesByidProceso({idProceso,}: {
+export async function getActuacionesByidProceso({
+  idProceso,
+}: {
   idProceso: number;
 }) {
   if (idProceso === 0) {
@@ -62,7 +67,9 @@ export async function getActuacionesByidProceso({idProceso,}: {
   try {
     const request = await fetch (
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
-      { cache: 'no-store' }
+      {
+        cache: 'no-store'
+      }
     );
     if (!request.ok) {
       const text = await request.text ();
@@ -110,14 +117,18 @@ export async function getActuacionesByidProceso({idProceso,}: {
   }
 }
 
-export async function fetchFechas({procesos,}: {
+export async function fetchFechas({
+  procesos,
+}: {
   procesos: monCarpetaDemandado[];
 }) {
   const fechas: intFecha[] = [];
   for (let p = 0; p < procesos.length; p++) {
     const proceso = procesos[ p ];
 
-    const acts = await getActuacionesByidProceso ({idProceso: proceso.idProceso,});
+    const acts = await getActuacionesByidProceso ({
+      idProceso: proceso.idProceso,
+    });
     if (acts.acts) {
       const fecha = {
         ...proceso,
@@ -142,10 +153,14 @@ export async function fetchFechas({procesos,}: {
   return fechas;
 }
 
-export async function fetchFecha({proceso,}: {
+export async function fetchFecha({
+  proceso,
+}: {
   proceso: monCarpetaDemandado;
 }) {
-  const acts = await getActuacionesByidProceso ({idProceso: proceso.idProceso,});
+  const acts = await getActuacionesByidProceso ({
+    idProceso: proceso.idProceso,
+  });
   if (acts.acts) {
     const fecha: intFecha = {
       ...proceso,

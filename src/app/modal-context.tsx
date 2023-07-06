@@ -4,14 +4,16 @@ import {Dispatch,
   createContext,
   useContext,
   useState,
-  SetStateAction,} from 'react';
+  SetStateAction} from 'react';
 
 const ModalContext = createContext<
   | [boolean, Dispatch<SetStateAction<boolean>>]
   | undefined
 > (undefined);
 
-export function ModalProvider({children,}: {
+export function ModalProvider({
+  children
+}: {
   children: ReactNode;
 }) {
   const [
@@ -24,8 +26,7 @@ export function ModalProvider({children,}: {
         isOpen,
         setIsOpen
       ]}>
-      {' '}
-      {children}{' '}
+      {children}
     </ModalContext.Provider>
   );
 }

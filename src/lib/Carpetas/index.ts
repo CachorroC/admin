@@ -4,10 +4,12 @@ import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
 import {monCarpetaDemandado,
   intCarpetaDemandado,
-  ConvertCarpetas,} from '#@/lib/types/demandados';
+  ConvertCarpetas} from '#@/lib/types/demandados';
 
 export const preload = (llaveProceso: string) => {
-  void getCarpetasByllaveProceso ({llaveProceso: llaveProceso,});
+  void getCarpetasByllaveProceso ({
+    llaveProceso: llaveProceso
+  });
 };
 
 const Collection = cache (async () => {
@@ -26,7 +28,8 @@ const Transform = async () => {
   const collection = await Collection ();
 
   const carpetasRaw = await collection
-    .find ({})
+    .find ({
+    })
     .toArray ();
 
   const notasString = JSON.stringify (carpetasRaw);
@@ -44,13 +47,16 @@ export const getCarpetas = cache (async () => {
 });
 
 export const getCarpetasByllaveProceso = cache (
-  async ({llaveProceso,}: {
+  async ({
+    llaveProceso
+  }: {
     llaveProceso: string;
   }) => {
     const collection = await Collection ();
 
     const carpetasRaw = await collection
-      .find ({})
+      .find ({
+      })
       .toArray ();
 
     const carpetas =
@@ -67,13 +73,16 @@ export const getCarpetasByllaveProceso = cache (
 );
 
 export const getCarpetasByidProceso = cache (
-  async ({idProceso,}: {
+  async ({
+    idProceso
+  }: {
     idProceso: number;
   }) => {
     const collection = await Collection ();
 
     const carpetasRaw = await collection
-      .find ({})
+      .find ({
+      })
       .toArray ();
 
     const carpetas =
@@ -89,11 +98,14 @@ export const getCarpetasByidProceso = cache (
 );
 
 export const getCarpetaById = cache (
-  async ({ _id }: { _id: string }) => {
+  async ({
+    _id 
+  }: { _id: string }) => {
     const collection = await Collection ();
 
     const carpetasRaw = await collection
-      .find ({})
+      .find ({
+      })
       .toArray ();
 
     const carpetas =
@@ -108,7 +120,9 @@ export const getCarpetaById = cache (
   }
 );
 
-export async function postCarpeta({nota,}: {
+export async function postCarpeta({
+  nota
+}: {
   nota: intCarpetaDemandado;
 }) {
   const collection = await Collection ();
@@ -118,7 +132,9 @@ export async function postCarpeta({nota,}: {
   if (!outgoingRequest.acknowledged) {
     return new NextResponse (
       null,
-      {status: 404,}
+      {
+        status: 404
+      }
     );
   }
   return new NextResponse (
@@ -128,7 +144,9 @@ export async function postCarpeta({nota,}: {
     ),
     {
       status : 200,
-      headers: {'content-type': 'application/json',},
+      headers: {
+        'content-type': 'application/json'
+      }
     }
   );
 }
