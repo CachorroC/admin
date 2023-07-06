@@ -5,12 +5,15 @@ export default async function Page(
   {
     params,
   }: {
-  params: { llaveProceso: string; idProceso: number };
+  params: {
+    llaveProceso: string;
+    idProceso: number;
+  };
 }
 ) {
-    return (
-      <>
-        <Title />
-      </>
-    );
+  return (
+    <>
+      <Title />
+    </>
+  );
 }

@@ -7,22 +7,24 @@ export const sleep = (
   new Promise (
     (
       resolve
-    ) => setTimeout (
-      resolve,
-      ms
-    )
+    ) =>
+      setTimeout (
+        resolve,
+        ms
+      )
   );
 
 export const uri = async () => {
-    const composeduri = await fetch (
-      `${ getBaseUrl }/api`
-    );
+  const composeduri = await fetch (
+    `${ getBaseUrl }/api`
+  );
 
-    if (!composeduri.ok) {
-      throw new Error (
-        'no pudimos pedir la uri'
-      );
-    }
-    const res = (await composeduri.json ()) as intUri;
-    return res;
+  if (!composeduri.ok) {
+    throw new Error (
+      'no pudimos pedir la uri'
+    );
+  }
+  const res =
+    (await composeduri.json ()) as intUri;
+  return res;
 };

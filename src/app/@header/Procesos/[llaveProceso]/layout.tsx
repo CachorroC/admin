@@ -9,27 +9,30 @@ import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputS
 
 export default async function Layout(
   {
-    children 
-  }: { children: ReactNode }
+    children,
+  }: {
+  children: ReactNode;
+}
 ) {
-    const procesos = await getCarpetas ();
-    const fechas = await fetchFechas (
-      {
-        procesos: procesos,
-      }
-    );
+  const procesos = await getCarpetas ();
+  const fechas = await fetchFechas (
+    {
+      procesos: procesos,
+    }
+  );
 
-    return (
-      <Header>
-        {children}
-        <Drawer>
-          <Suspense fallback={<SearchOutputListSkeleton />}>
-            <SearchOutputList
-              path='/Procesos'
-              fechas={fechas}
-            />
-          </Suspense>
-        </Drawer>
-      </Header>
-    );
+  return (
+    <Header>
+      {children}
+      <Drawer>
+        <Suspense
+          fallback={<SearchOutputListSkeleton />}>
+          <SearchOutputList
+            path='/Procesos'
+            fechas={fechas}
+          />
+        </Suspense>
+      </Drawer>
+    </Header>
+  );
 }

@@ -44,7 +44,7 @@ const roboto = Roboto (
       '400',
       '500',
       '700',
-      '900'
+      '900',
     ],
   }
 );
@@ -60,5 +60,9 @@ const poiret = Poiret_One (
 );
 
 export {
-  inter, raleway, roboto, poiret, josefina 
+  inter,
+  raleway,
+  roboto,
+  poiret,
+  josefina,
 };

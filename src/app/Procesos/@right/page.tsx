@@ -10,15 +10,15 @@ import { NotasList } from '#@/components/nota/list/notas-list';
 import { getNotas } from '#@/lib/notas';
 
 export default async function PageProcesosRight() {
-    const notas = await getNotas ();
-    return (
-      <>
-        <NotasList notas={notas} />
-        <NewNota
-          llaveProceso={'Procesos'}
-          uri={`${ getBaseUrl () }`}
-        />
-        <Notas />
-      </>
-    );
+  const notas = await getNotas ();
+  return (
+    <>
+      <NotasList notas={notas} />
+      <NewNota
+        llaveProceso={'Procesos'}
+        uri={`${ getBaseUrl () }`}
+      />
+      <Notas />
+    </>
+  );
 }

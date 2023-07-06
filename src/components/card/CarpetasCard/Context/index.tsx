@@ -7,68 +7,76 @@ import {useState,
   useMemo,
   useCallback,} from 'react';
 
-type vals = { data: {}; setFormValues: (values: any) => void };
-export const FormContext = createContext<vals | null> (
-  null
-);
+type vals = {
+  data: {};
+  setFormValues: (values: any) => void;
+};
+export const FormContext =
+  createContext<vals | null> (
+    null
+  );
 
 export default function FormProvider(
   {
-    children 
-  }: { children: ReactNode }
+    children,
+  }: {
+  children: ReactNode;
+}
 ) {
-    const [
-      data,
-      setData
-    ] = useState (
-      {
-      }
-    );
+  const [
+    data,
+    setData
+  ] = useState (
+    {
+    }
+  );
 
-    const setFormValues = useCallback (
-      (
-        values: {}
-      ) => {
-          setData (
-            (
-              prevValues
-            ) => {
-                return {
-                  ...prevValues,
-                  ...values,
-                };
-            }
-          );
-      },
-      []
-    );
-    const contextValue = useMemo (
-      () => {
+  const setFormValues = useCallback (
+    (
+      values: {}
+    ) => {
+      setData (
+        (
+          prevValues
+        ) => {
           return {
-            data,
-            setFormValues,
+            ...prevValues,
+            ...values,
           };
-      },
-      [
+        }
+      );
+    },
+    []
+  );
+  const contextValue = useMemo (
+    () => {
+      return {
         data,
-        setFormValues
-      ]
-    );
+        setFormValues,
+      };
+    },
+    [
+      data,
+      setFormValues
+    ]
+  );
 
-    return (
-      <FormContext.Provider value={contextValue}>{children}</FormContext.Provider>
-    );
+  return (
+    <FormContext.Provider value={contextValue}>
+      {children}
+    </FormContext.Provider>
+  );
 }
 
 export function useFormData() {
-    const context = useContext (
-      FormContext
-    );
+  const context = useContext (
+    FormContext
+  );
 
-    if (context === null) {
-      throw new Error (
-        'useSearch must be used inside a SearchProvider'
-      );
-    }
-    return context;
+  if (context === null) {
+    throw new Error (
+      'useSearch must be used inside a SearchProvider'
+    );
+  }
+  return context;
 }

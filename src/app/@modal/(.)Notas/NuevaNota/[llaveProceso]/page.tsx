@@ -12,12 +12,12 @@ export default function NuevaNotallaveProceso(
   params: { llaveProceso: string };
 }
 ) {
-    return (
-      <Modal>
-        <NewNota
-          llaveProceso={''}
-          uri={`${ getBaseUrl () }`}
-        />
-      </Modal>
-    );
+  return (
+    <Modal>
+      <NewNota
+        llaveProceso={''}
+        uri={`${ getBaseUrl () }`}
+      />
+    </Modal>
+  );
 }

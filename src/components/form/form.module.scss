@@ -5,7 +5,9 @@
   box-shadow: var(--dp2);
   border-radius: 2vmin;
   flex-flow: column nowrap;
-  background-color: var(--surface-container-lowest);
+  background-color: var(
+    --surface-container-lowest
+  );
 
   .form,
   .nota {
@@ -76,7 +78,9 @@
 }
 
 .textArea {
-  background-color: var(--surface-container-highest);
+  background-color: var(
+    --surface-container-highest
+  );
   color: var(--on-surface);
   box-shadow: var(--dp2);
   border: solid 2px var(--outline);
@@ -91,7 +95,9 @@
   }
 
   &:focus {
-    background-color: var(--surface-container-lowest);
+    background-color: var(
+      --surface-container-lowest
+    );
   }
 }
 

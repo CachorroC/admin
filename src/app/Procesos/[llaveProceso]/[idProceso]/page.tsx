@@ -13,29 +13,30 @@ export default async function PageProcesosllaveProcesoidProceso(
   };
 }
 ) {
-    const carpetas = await getCarpetasByllaveProceso (
+  const carpetas =
+    await getCarpetasByllaveProceso (
       {
         llaveProceso: params.llaveProceso,
       }
     );
-    return (
-      <>
-        <Name llaveProceso={params.llaveProceso} />
-        {carpetas.map (
-          (
-            carpeta
-          ) => {
-              const {
-                _id 
-              } = carpeta;
-              return (
-                <CarpetaCard
-                  key={_id}
-                  Carpeta={carpeta}
-                />
-              );
-          }
-        )}
-      </>
-    );
+  return (
+    <>
+      <Name llaveProceso={params.llaveProceso} />
+      {carpetas.map (
+        (
+          carpeta
+        ) => {
+          const {
+            _id 
+          } = carpeta;
+          return (
+            <CarpetaCard
+              key={_id}
+              Carpeta={carpeta}
+            />
+          );
+        }
+      )}
+    </>
+  );
 }

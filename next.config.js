@@ -10,17 +10,13 @@ const nextConfig = {
         pathname: '/250/200?image=**',
       },
     ],
-    domains: [
-      'placekitten.com'
-    ],
+    domains: ['placekitten.com'],
   },
   experimental: {
-    appDir     : true,
+    appDir: true,
     typedRoutes: true,
 
-    serverComponentsExternalPackages: [
-      'mongodb'
-    ],
+    serverComponentsExternalPackages: ['mongodb'],
   },
 };
 

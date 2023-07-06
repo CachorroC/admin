@@ -4,15 +4,19 @@ import { ReactNode } from 'react';
 
 export default function LayoutCarpetas(
   {
-    children 
-  }: { children: ReactNode }
+    children,
+  }: {
+  children: ReactNode;
+}
 ) {
-    return (
-      <div className={layout.body}>
-        <div className={layout.name}>
-          <h1 className={typography.displaySmall}>Carpetas</h1>
-        </div>
-        {children}
+  return (
+    <div className={layout.body}>
+      <div className={layout.name}>
+        <h1 className={typography.displaySmall}>
+          Carpetas
+        </h1>
       </div>
-    );
+      {children}
+    </div>
+  );
 }

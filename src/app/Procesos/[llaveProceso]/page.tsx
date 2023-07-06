@@ -9,91 +9,87 @@ import { arrayMergerByllaveProceso } from '#@/lib/arrayMerger';
 import box from '#@/styles/scss/box.module.scss';
 import { Name } from '#@/components/Headings/serverSideName';
 
-function DemandadoNameBadge(
-  {
-    carpeta,
-    proceso,
-  }: {
+function DemandadoNameBadge({
+  carpeta,
+  proceso,
+}: {
   carpeta: monCarpetaDemandado;
   proceso?: intProceso;
-}
-) {
-    const {
-      llaveProceso, _id 
-    } = carpeta;
+}) {
+  const {
+    llaveProceso, _id
+  } = carpeta;
 
-    if (proceso) {
-      return (
-        <Fragment key={proceso
+  if (proceso) {
+    return (
+      <Fragment
+        key={proceso
           ? proceso.idProceso
           : _id}>
-          <Name llaveProceso={llaveProceso} />
-          <p className={typography.bodySmall}>{proceso.despacho}</p>
-
-          <CarpetaCard Carpeta={carpeta} />
-        </Fragment>
-      );
-    }
-    return (
-      <Fragment key={_id}>
         <Name llaveProceso={llaveProceso} />
+        <p className={typography.bodySmall}>
+          {proceso.despacho}
+        </p>
+
         <CarpetaCard Carpeta={carpeta} />
       </Fragment>
     );
+  }
+  return (
+    <Fragment key={_id}>
+      <Name llaveProceso={llaveProceso} />
+      <CarpetaCard Carpeta={carpeta} />
+    </Fragment>
+  );
 }
 
-export default async function PageProcesosllaveProceso(
-  {
-    params,
-  }: {
+export default async function PageProcesosllaveProceso({
+  params,
+}: {
   params: {
     llaveProceso: string;
   };
-}
-) {
-    const Procesos = await getConsultaNumeroRadicion (
-      {
-        llaveProceso: params.llaveProceso,
-      }
-    );
-    const Carpetas = await getCarpetasByllaveProceso (
-      {
-        llaveProceso: params.llaveProceso,
-      }
-    );
+}) {
+  const Procesos =
+    await getConsultaNumeroRadicion ({
+      llaveProceso: params.llaveProceso,
+    });
+  const Carpetas =
+    await getCarpetasByllaveProceso ({
+      llaveProceso: params.llaveProceso,
+    });
 
-    const cantidadCarpetas = Carpetas.length;
-    const cantidadProcesos = Procesos.length;
+  const cantidadCarpetas = Carpetas.length;
+  const cantidadProcesos = Procesos.length;
 
-    if (cantidadProcesos === 0) {
-      return (
-        <>
-          {Carpetas.map (
-            (
-              Carpeta, i
-            ) => (
-              <DemandadoNameBadge
-                carpeta={Carpeta}
-                key={Carpeta._id}
-              />
-            )
-          )}
-        </>
-      );
-    }
+  if (cantidadProcesos === 0) {
     return (
-      <>
-        {Procesos.map (
-          (
-            Proceso, i
-          ) => (
+      <>{
+        Carpetas.map (
+          ( Carpeta) => (
             <DemandadoNameBadge
-              carpeta={Carpetas[ i ]}
-              key={Proceso.idProceso}
-              proceso={Proceso}
+              carpeta={Carpeta}
+              key={Carpeta._id}
             />
           )
-        )}
-      </>
+        )
+      }</>
     );
+  }
+  return (
+    <>
+      { Procesos.map (
+        (
+          Proceso,
+          i
+        ) => (
+          <DemandadoNameBadge
+            carpeta={Carpetas[ i ]}
+            key={Proceso.idProceso}
+            proceso={Proceso}
+          />
+        )
+      ) }
+    </>
+  );
 }

@@ -6,44 +6,48 @@ import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function Error(
   {
-    error, reset 
+    error,
+    reset,
   }: any
 ) {
-    React.useEffect (
-      () => {
-          console.log (
-            'logging error:',
-            error
-          );
-      },
-      [
+  React.useEffect (
+    () => {
+      console.log (
+        'logging error:',
         error
-      ]
-    );
+      );
+    },
+    [
+      error
+    ]
+  );
 
-    return (
-      <div className={layout.body}>
-        <div
-          className={layout.name}
+  return (
+    <div className={layout.body}>
+      <div
+        className={layout.name}
+        style={{
+          backgroundColor:
+            'var(--error-container)',
+        }}>
+        <h2
+          className={typography.displayLarge}
           style={{
-            backgroundColor: 'var(--error-container)',
+            color: 'var(--on-error-container)',
           }}>
-          <h2
-            className={typography.displayLarge}
-            style={{
-              color: 'var(--on-error-container)',
-            }}>
           Error
-          </h2>
-          <p className={typography.bodyLarge}>{error?.message}</p>
-        </div>
-        <div className={layout.right}>
-          <button
-            onClick={() => reset ()}
-            className={layout.button}>
-          Try Again
-          </button>
-        </div>
+        </h2>
+        <p className={typography.bodyLarge}>
+          {error?.message}
+        </p>
       </div>
-    );
+      <div className={layout.right}>
+        <button
+          onClick={() => reset ()}
+          className={layout.button}>
+          Try Again
+        </button>
+      </div>
+    </div>
+  );
 }

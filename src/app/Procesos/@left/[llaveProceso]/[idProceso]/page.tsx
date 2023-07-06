@@ -7,27 +7,29 @@ export default async function Page(
   {
     params,
   }: {
-  params: { llaveProceso: string; idProceso: number };
+  params: {
+    llaveProceso: string;
+    idProceso: number;
+  };
 }
 ) {
-    const actuaciones = await getActuacionesByidProceso (
+  const actuaciones =
+    await getActuacionesByidProceso (
       {
         idProceso: params.idProceso,
       }
     );
-    return (
-      <>
-        {actuaciones.acts &&
+  return (
+    <>
+      {actuaciones.acts &&
         actuaciones.acts.map (
-          (
-            actuacion, index, arr
-          ) => (
+          (actuacion, index, arr) => (
             <ActuacionCard
               Actuacion={actuacion}
               key={index}
             />
           )
         )}
-      </>
-    );
+    </>
+  );
 }

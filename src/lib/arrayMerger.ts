@@ -12,43 +12,52 @@ export function arrayMergerByidProceso(
     a,
     b,
   }: {
-  a: intProceso[] | IntActuaciones[] | monDemandado[] | intFecha[];
-  b: intProceso[] | IntActuaciones[] | monDemandado[] | intFecha[];
+  a:
+    | intProceso[]
+    | IntActuaciones[]
+    | monDemandado[]
+    | intFecha[];
+  b:
+    | intProceso[]
+    | IntActuaciones[]
+    | monDemandado[]
+    | intFecha[];
 }
 ) {
-    const map = new Map ();
-    a.forEach (
-      (
-        item
-      ) => map.set (
+  const map = new Map ();
+  a.forEach (
+    (
+      item
+    ) =>
+      map.set (
         item.idProceso,
         item
       )
-    );
-    b.forEach (
-      (
-        item
-      ) =>
-        map.set (
-          item.idProceso,
-          {
-            ...map.get (
-              item.idProceso
-            ),
-            ...item,
-          }
-        ),
-    );
-    const mergedArr = Array.from (
-      map.values ()
-    );
-
-    console.log (
-      JSON.stringify (
-        mergedArr
+  );
+  b.forEach (
+    (
+      item
+    ) =>
+      map.set (
+        item.idProceso,
+        {
+          ...map.get (
+            item.idProceso
+          ),
+          ...item,
+        }
       )
-    );
-    return mergedArr;
+  );
+  const mergedArr = Array.from (
+    map.values ()
+  );
+
+  console.log (
+    JSON.stringify (
+      mergedArr
+    )
+  );
+  return mergedArr;
 }
 
 export function arrayMergerByllaveProceso(
@@ -60,37 +69,38 @@ export function arrayMergerByllaveProceso(
   b: monCarpetaDemandado[];
 }
 ) {
-    const map = new Map ();
-    a.forEach (
-      (
-        item
-      ) => map.set (
+  const map = new Map ();
+  a.forEach (
+    (
+      item
+    ) =>
+      map.set (
         item.llaveProceso,
         item
       )
-    );
-    b.forEach (
-      (
-        item
-      ) =>
-        map.set (
-          item.llaveProceso,
-          {
-            ...map.get (
-              item.llaveProceso
-            ),
-            ...item,
-          }
-        ),
-    );
-    const mergedArr = Array.from (
-      map.values ()
-    );
-
-    console.log (
-      JSON.stringify (
-        mergedArr
+  );
+  b.forEach (
+    (
+      item
+    ) =>
+      map.set (
+        item.llaveProceso,
+        {
+          ...map.get (
+            item.llaveProceso
+          ),
+          ...item,
+        }
       )
-    );
-    return mergedArr;
+  );
+  const mergedArr = Array.from (
+    map.values ()
+  );
+
+  console.log (
+    JSON.stringify (
+      mergedArr
+    )
+  );
+  return mergedArr;
 }

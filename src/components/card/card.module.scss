@@ -28,7 +28,9 @@
   }
 
   .cardFront {
-    background-color: var(--surface-container-highest);
+    background-color: var(
+      --surface-container-highest
+    );
     color: var(--on-surface-variant);
   }
 
@@ -39,13 +41,17 @@
   }
 }
 .notActive {
-  background-color: var(--surface-container-highest);
+  background-color: var(
+    --surface-container-highest
+  );
   color: var(--on-surface);
   box-shadow: none;
 }
 
 .isActive {
-  background-color: var(--surface-container-highest);
+  background-color: var(
+    --surface-container-highest
+  );
   color: var(--on-secondary-container);
   box-shadow: none;
   border: 2px solid var(--outline-variant);
@@ -227,7 +233,8 @@
       margin-left: -5px;
       border-width: 5px;
       border-style: solid;
-      border-color: #555 transparent transparent transparent;
+      border-color: #555 transparent transparent
+        transparent;
     }
   }
   & > .icon {

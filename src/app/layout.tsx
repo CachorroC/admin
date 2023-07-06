@@ -18,7 +18,8 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { NoteSliderProvider } from './context/note-slider-context';
 
 const hostname =
-  process.env.URL ?? process.env.NODE_ENV === 'development'
+  process.env.URL ??
+  process.env.NODE_ENV === 'development'
     ? 'beta.rsasesorjuridico.com'
     : 'app.rsasesorjuridico.com';
 
@@ -67,11 +68,12 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title      : 'R&S Asesoría Jurídica',
-    description: 'The React Framework for the Web',
-    url        : `https://${ hostname }`,
-    siteName   : 'Next.js',
-    images     : [
+    title: 'R&S Asesoría Jurídica',
+    description:
+      'The React Framework for the Web',
+    url     : `https://${ hostname }`,
+    siteName: 'Next.js',
+    images  : [
       {
         url   : `https://${ hostname }/splash_screens/12.9__iPad_Pro_portrait.png`,
         width : 800,
@@ -110,8 +112,9 @@ export const metadata: Metadata = {
     startupImage  : [
       '/icons/mstile-310x310.png',
       {
-        url  : '/icons/android-chrome-512x512.png',
-        media: '(device-width: 768px) and (device-height: 1024px)',
+        url: '/icons/android-chrome-512x512.png',
+        media:
+          '(device-width: 768px) and (device-height: 1024px)',
       },
     ],
   },
@@ -134,25 +137,26 @@ export default function RootLayout(
   header: ReactNode;
 }
 ) {
-    return (
-      <html lang='en'>
-        <body
-          className={`${ poiret.variable } ${ raleway.variable } ${ inter.variable } ${ roboto.variable } ${ josefina.variable } [ color-scheme: light dark ]`}>
-          <NoteSliderProvider>
-            <SearchProvider>
-              <ModalProvider>
-                <NoteProvider>
-                  <div className={`${ layout.container } ${ typography.container }`}>
-                    {modal}
-                    {header}
-                    {children}
-                  </div>
-                </NoteProvider>
-              </ModalProvider>
-            </SearchProvider>
-          </NoteSliderProvider>
-          <Script src='/service-worker.js' />
-        </body>
-      </html>
-    );
+  return (
+    <html lang='en'>
+      <body
+        className={`${ poiret.variable } ${ raleway.variable } ${ inter.variable } ${ roboto.variable } ${ josefina.variable } [ color-scheme: light dark ]`}>
+        <NoteSliderProvider>
+          <SearchProvider>
+            <ModalProvider>
+              <NoteProvider>
+                <div
+                  className={`${ layout.container } ${ typography.container }`}>
+                  {modal}
+                  {header}
+                  {children}
+                </div>
+              </NoteProvider>
+            </ModalProvider>
+          </SearchProvider>
+        </NoteSliderProvider>
+        <Script src='/service-worker.js' />
+      </body>
+    </html>
+  );
 }

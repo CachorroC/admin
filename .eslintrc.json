@@ -4,19 +4,12 @@
     "array-bracket-newline": [
       "error",
       {
-        "minItems": 1,
-        "multiline": true
+        "minItems": 1
       }
     ],
     "array-bracket-spacing": ["error", "always"],
     "array-callback-return": "error",
-    "array-element-newline": [
-      "error",
-      {
-        "minItems": 1,
-        "multiline": true
-      }
-    ],
+    "array-element-newline": ["error", "always"],
     "arrow-body-style": [
       "error",
       "as-needed",
@@ -24,30 +17,23 @@
         "requireReturnForObjectLiteral": true
       }
     ],
-    "brace-style": [
+    "brace-style": ["error", "stroustrup"],
+    "computed-property-spacing": [
       "error",
-      "stroustrup",
-      {
-        "allowSingleLine": true
-      }
+      "always"
     ],
-    "computed-property-spacing": ["error", "always"],
     "consistent-return": "error",
     "curly": "error",
     "func-call-spacing": ["error", "always"],
-    "function-call-argument-newline": ["error", "always"],
-    "padding-line-between-statements": [
+    "function-call-argument-newline": [
       "error",
-      { "blankLine": "always", "prev": "*", "next": ["block-like", "block"] }
+      "always"
     ],
     "function-paren-newline": [
       "error",
-      {
-        "minItems": 1
-      }
+      "multiline-arguments"
     ],
     "getter-return": "error",
-    "key-spacing": ["error", { "align": "colon" }],
     "indent": [
       "error",
       2,
@@ -56,18 +42,24 @@
         "CallExpression": {
           "arguments": "first"
         },
-        "offsetTernaryExpressions": true,
         "FunctionDeclaration": {
-          "body": 2,
+          "body": 1,
           "parameters": "first"
         },
         "FunctionExpression": {
-          "body": 2,
+          "body": 1,
           "parameters": "first"
         },
         "ObjectExpression": "first",
-        "SwitchCase": 2,
-        "VariableDeclarator": "first"
+        "SwitchCase": 1,
+        "VariableDeclarator": "first",
+        "offsetTernaryExpressions": true
+      }
+    ],
+    "key-spacing": [
+      "error",
+      {
+        "align": "colon"
       }
     ],
     "linebreak-style": ["error", "unix"],
@@ -91,9 +83,17 @@
       }
     ],
     "object-property-newline": "error",
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "next": ["block-like", "block"],
+        "prev": "*"
+      }
+    ],
     "quotes": ["error", "single"],
     "semi": "error",
-    "template-tag-spacing": ["error", "always"],
-    "template-curly-spacing": ["error", "always"]
+    "template-curly-spacing": ["error", "always"],
+    "template-tag-spacing": ["error", "always"]
   }
 }

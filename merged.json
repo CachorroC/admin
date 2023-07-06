@@ -14,8 +14,13 @@
       "Departamento": "CUNDINAMARCA",
       "EtapaProcesal": "EMPLAZAMIENTO",
       "Fechas": {
-        "291": { "AportaNotificacion": "11-07-2018" },
-        "292": { "AportaNotificacion": "11-07-2018", "Resultado": true },
+        "291": {
+          "AportaNotificacion": "11-07-2018"
+        },
+        "292": {
+          "AportaNotificacion": "11-07-2018",
+          "Resultado": true
+        },
         "AutoNotificacion": "11-07-2018",
         "Captura": 43315,
         "EntregaDeGarantíasAbogado": 42866,
@@ -68,7 +73,10 @@
   {
     "_id": "649547493cea831a54254890",
     "Carpeta": 86,
-    "Codeudor": { "Id": 1015435620, "Nombre": "JESICA PAOLA GUZMAN OSPINA" },
+    "Codeudor": {
+      "Id": 1015435620,
+      "Nombre": "JESICA PAOLA GUZMAN OSPINA"
+    },
     "Demandado": {
       "Direccion": "CARRERA 95 # 138 - 58",
       "Email": "orduzcrit2@hotmail.com",
@@ -86,7 +94,10 @@
           "Recibido": 43436,
           "Resultado": true
         },
-        "292": { "AportaNotificacion": "18-07-2018", "Resultado": true },
+        "292": {
+          "AportaNotificacion": "18-07-2018",
+          "Resultado": true
+        },
         "AutoNotificacion": 43490,
         "EntregaDeGarantíasAbogado": 0,
         "MandamientoDePago": 42926,
@@ -155,8 +166,13 @@
       "Departamento": "CUNDINAMARCA",
       "EtapaProcesal": "EJECUCIÓN",
       "Fechas": {
-        "291": { "AportaNotificacion": "17-05-2018" },
-        "292": { "AportaNotificacion": "17-05-2018", "Resultado": true },
+        "291": {
+          "AportaNotificacion": "17-05-2018"
+        },
+        "292": {
+          "AportaNotificacion": "17-05-2018",
+          "Resultado": true
+        },
         "AutoNotificacion": 43298,
         "EntregaDeGarantíasAbogado": 42898,
         "MandamientoDePago": 43046,
@@ -218,7 +234,10 @@
           "Recibido": "12-12-2017",
           "Resultado": true
         },
-        "292": { "AportaNotificacion": "12-12-2017", "Resultado": true },
+        "292": {
+          "AportaNotificacion": "12-12-2017",
+          "Resultado": true
+        },
         "AprobacionLiquidacionCredito": 43313,
         "AutoNotificacion": 43140,
         "EntregaDeGarantíasAbogado": 42951,
@@ -269,7 +288,10 @@
       "Email": "darnelly-74@hotmail.com",
       "Id": 52189873,
       "Nombre": "DARNELLY HERNANDEZ MARTINEZ",
-      "Tel": { "Celular": 3144189224, "Fijo": 4530972 }
+      "Tel": {
+        "Celular": 3144189224,
+        "Fijo": 4530972
+      }
     },
     "Proceso": {
       "CapitalAdeudado": "14795920,94",
@@ -281,7 +303,10 @@
           "Recibido": "20-06-2018",
           "Resultado": true
         },
-        "292": { "AportaNotificacion": "20-06-2018", "Resultado": true },
+        "292": {
+          "AportaNotificacion": "20-06-2018",
+          "Resultado": true
+        },
         "AutoNotificacion": "22-06-2018",
         "EntregaDeGarantíasAbogado": 42969,
         "MandamientoDePago": 42996,
@@ -358,7 +383,10 @@
           "Recibido": 43137,
           "Resultado": true
         },
-        "292": { "AportaNotificacion": "06-06-18", "Resultado": true },
+        "292": {
+          "AportaNotificacion": "06-06-18",
+          "Resultado": true
+        },
         "AprobacionLiquidacionCredito": 43294,
         "AutoNotificacion": 43273,
         "EntregaDeGarantíasAbogado": 42948,
@@ -377,7 +405,10 @@
       "MedidasCautelares": {
         "Bienes": "BANCOS",
         "DescripcionMedida": "PEDIR EMBARGO Y SECUESTRO VEHICULO PROPIEDAD DEL DEUDOR",
-        "Fechas": { "Oficio": 42984, "OrdenaMedidasCautelares": 42983 },
+        "Fechas": {
+          "Oficio": 42984,
+          "OrdenaMedidasCautelares": 42983
+        },
         "MedidaSolicitada": "EMBARGO DE DINEROS EN BANCOS",
         "NumeroOficio": "17-2849",
         "PlacaoMatricula": "SLJ234",
@@ -413,7 +444,10 @@
       "Email": "fanor.diaz@gmail.com",
       "Id": 79853115,
       "Nombre": "FANOR DIAZ AGUDELO",
-      "Tel": { "Celular": 3212406193, "Fijo": 8060271 }
+      "Tel": {
+        "Celular": 3212406193,
+        "Fijo": 8060271
+      }
     },
     "Proceso": {
       "CapitalAdeudado": "27603820,51",
@@ -425,7 +459,10 @@
           "Recibido": 43137,
           "Resultado": true
         },
-        "292": { "AportaNotificacion": "06-02-18", "Resultado": true },
+        "292": {
+          "AportaNotificacion": "06-02-18",
+          "Resultado": true
+        },
         "AutoNotificacion": 43227,
         "EntregaDeGarantíasAbogado": 42984,
         "MandamientoDePago": 42999,
@@ -490,7 +527,10 @@
       "Email": "natis-rolita@hotmail.con",
       "Id": 35506033,
       "Nombre": "LUZ DARY PUERTA JARAMILLO",
-      "Tel": { "Celular": 3103430010, "Fijo": 4357832 }
+      "Tel": {
+        "Celular": 3103430010,
+        "Fijo": 4357832
+      }
     },
     "Proceso": {
       "CapitalAdeudado": 12347548,
@@ -546,15 +586,24 @@
     "Codeudor": {
       "Direccion": "DG 3B No. 0-78 ESTE",
       "Id": [41759787, 39710157],
-      "Nombre": ["CARMELINA AGUILAR", "ANA LUCIA AGUILAR"],
-      "Tel": { "Celular": 3107627120, "Fijo": 3204613419 }
+      "Nombre": [
+        "CARMELINA AGUILAR",
+        "ANA LUCIA AGUILAR"
+      ],
+      "Tel": {
+        "Celular": 3107627120,
+        "Fijo": 3204613419
+      }
     },
     "Demandado": {
       "Direccion": "CALLE 2 C No 62 - 20",
       "Email": "maifren_13@yahoo.es",
       "Id": 19255260,
       "Nombre": "MATIAS HUMBERTO AVILA AGUILAR",
-      "Tel": { "Celular": 3125024008, "Fijo": 4170527 }
+      "Tel": {
+        "Celular": 3125024008,
+        "Fijo": 4170527
+      }
     },
     "Proceso": {
       "CapitalAdeudado": "66362958,51",
@@ -625,7 +674,10 @@
       "Email": "ars.09@hotmail.com",
       "Id": 1032383389,
       "Nombre": "ANDERSON REVELO SANTOS",
-      "Tel": { "Celular": 3118526428, "Fijo": 4725511 }
+      "Tel": {
+        "Celular": 3118526428,
+        "Fijo": 4725511
+      }
     },
     "Proceso": {
       "CapitalAdeudado": "12249598,34",
@@ -637,7 +689,10 @@
           "Recibido": "30-01-2018",
           "Resultado": true
         },
-        "292": { "AportaNotificacion": "30-01-2018", "Resultado": true },
+        "292": {
+          "AportaNotificacion": "30-01-2018",
+          "Resultado": true
+        },
         "AprobacionCostas": 700000,
         "AprobacionLiquidacionCredito": 43266,
         "AutoNotificacion": 43154,
@@ -810,7 +865,10 @@
       },
       "MedidasCautelares": {
         "Bienes": "APTO 101 TORRE 20",
-        "Fechas": { "Oficio": 43313, "OrdenaMedidasCautelares": 43063 },
+        "Fechas": {
+          "Oficio": 43313,
+          "OrdenaMedidasCautelares": 43063
+        },
         "MedidaSolicitada": "EMBARGO DE INMUEBLE",
         "NumeroOficio": 8469,
         "PlacaoMatricula": "051-162001",
@@ -840,7 +898,10 @@
       "Email": "arthurlingo64@hotmail.com",
       "Id": 79396995,
       "Nombre": "ARTURO LINCE GOMEZ",
-      "Tel": { "Celular": 31088445603, "Fijo": 4244358 }
+      "Tel": {
+        "Celular": 31088445603,
+        "Fijo": 4244358
+      }
     },
     "Proceso": {
       "CapitalAdeudado": "22592582,91",
@@ -919,7 +980,10 @@
       "Email": "andibarracosta@gmail.com",
       "Id": 900545720,
       "Nombre": "CREAS SOLUCIONES S.A.S",
-      "Tel": { "Celular": 3107982028, "Fijo": 8626344 }
+      "Tel": {
+        "Celular": 3107982028,
+        "Fijo": 8626344
+      }
     },
     "Proceso": {
       "CapitalAdeudado": 11949471,
@@ -931,7 +995,10 @@
           "Recibido": "18-05-2018",
           "Resultado": false
         },
-        "292": { "AportaNotificacion": "18-05-2018", "Resultado": true },
+        "292": {
+          "AportaNotificacion": "18-05-2018",
+          "Resultado": true
+        },
         "AutoNotificacion": "18-05-2018",
         "EntregaDeGarantíasAbogado": 43146,
         "MandamientoDePago": 43181,
@@ -947,7 +1014,10 @@
       },
       "MedidasCautelares": {
         "Bienes": "BANCOS",
-        "Fechas": { "Oficio": 43192, "OrdenaMedidasCautelares": 43181 },
+        "Fechas": {
+          "Oficio": 43192,
+          "OrdenaMedidasCautelares": 43181
+        },
         "MedidaSolicitada": "EMBARGO DE DINEROS EN BANCOS",
         "NumeroOficio": 747,
         "RespuestaEmbargo": false
@@ -1007,7 +1077,10 @@
       },
       "MedidasCautelares": {
         "Bienes": "PREDIO RURAL",
-        "Fechas": { "Oficio": 43599, "OrdenaMedidasCautelares": 43599 },
+        "Fechas": {
+          "Oficio": 43599,
+          "OrdenaMedidasCautelares": 43599
+        },
         "MedidaSolicitada": "EMBARGO DE INMUEBLE",
         "NumeroOficio": 937,
         "PlacaoMatricula": "372-19300",
@@ -1159,7 +1232,10 @@
         "Tipo": "CERTIMAIL"
       },
       "NumeroRadicado": "2018 - 00602",
-      "Obligacion": { "1": "AUDIOPRESTAMO", "2": 5491570347356810 },
+      "Obligacion": {
+        "1": "AUDIOPRESTAMO",
+        "2": 5491570347356810
+      },
       "Tipo": "SINGULAR"
     },
     "idProceso": 7,
@@ -1187,7 +1263,10 @@
       "Departamento": "CUNDINAMARCA",
       "EtapaProcesal": "EJECUCIÓN",
       "Fechas": {
-        "291": { "AportaNotificacion": "18-02-2020", "Recibido": "18-02-2020" },
+        "291": {
+          "AportaNotificacion": "18-02-2020",
+          "Recibido": "18-02-2020"
+        },
         "292": { "Resultado": true },
         "EntregaDeGarantíasAbogado": "08-10-2018",
         "MandamientoDePago": "31-07-2019",
@@ -1258,7 +1337,10 @@
       },
       "MedidasCautelares": {
         "Bienes": "APTO 503",
-        "Fechas": { "Oficio": "w", "OrdenaMedidasCautelares": "28-01-2019" },
+        "Fechas": {
+          "Oficio": "w",
+          "OrdenaMedidasCautelares": "28-01-2019"
+        },
         "MedidaSolicitada": "EMBARGO INMUEBLES",
         "NumeroOficio": 162,
         "PlacaoMatricula": "50N - 20288831",
@@ -1291,14 +1373,20 @@
       "Email": "yadelcis@hotmail.com",
       "Id": 51813018,
       "Nombre": "SANDRA LEONOR PAEZ MURCIA",
-      "Tel": { "Celular": 3134386087, "Fijo": 6139147 }
+      "Tel": {
+        "Celular": 3134386087,
+        "Fijo": 6139147
+      }
     },
     "Proceso": {
       "CapitalAdeudado": 35608653,
       "Departamento": "CUNDINAMARCA",
       "EtapaProcesal": "EJECUCION",
       "Fechas": {
-        "291": { "Recibido": 44369, "Resultado": true },
+        "291": {
+          "Recibido": 44369,
+          "Resultado": true
+        },
         "EntregaDeGarantíasAbogado": 44111,
         "PresentacionDemanda": 44111
       },
@@ -1307,7 +1395,10 @@
         "Origen": "42 CM",
         "UbicacionActual": "HMM PISO 13"
       },
-      "Notificaciones": { "Certimail": true, "Fisico": true },
+      "Notificaciones": {
+        "Certimail": true,
+        "Fisico": true
+      },
       "NumeroRadicado": "2020 - 00535",
       "Obligacion": {
         "1": 2020084294,
@@ -1340,14 +1431,19 @@
       "CapitalAdeudado": 15324570,
       "Departamento": "CUNDINAMARCA",
       "EtapaProcesal": "NOTIFICACION",
-      "Fechas": { "EntregaDeGarantíasAbogado": 44079 },
+      "Fechas": {
+        "EntregaDeGarantíasAbogado": 44079
+      },
       "Juzgado": {
         "Ciudad": "BOGOTA",
         "Origen": "50 PCYCM- 68 CM",
         "UbicacionActual": "HMM PISO 15"
       },
       "NumeroRadicado": "2020-1021",
-      "Obligacion": { "1": 65886140334, "2": 4594260446916180 },
+      "Obligacion": {
+        "1": 65886140334,
+        "2": 4594260446916180
+      },
       "Tipo": "SINGULAR"
     },
     "idProceso": 0,
@@ -1386,7 +1482,10 @@
         "UbicacionActual": "SOACHA"
       },
       "NumeroRadicado": "2018 - 00060",
-      "Obligacion": { "1": 1680097436, "2": 148653 },
+      "Obligacion": {
+        "1": 1680097436,
+        "2": 148653
+      },
       "Tipo": "HIPOTECARIO"
     },
     "idProceso": 98,

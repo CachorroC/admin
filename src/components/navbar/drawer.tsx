@@ -16,60 +16,67 @@ import { ButtonSkeleton } from './ButtonSkeleton';
 
 export default function Drawer(
   {
-    children 
-  }: { children: ReactNode }
+    children,
+  }: {
+  children: ReactNode;
+}
 ) {
-    const isDesktop = useMedia (
-      2
-    );
-    const isMobile = useMedia (
-      0
-    );
-    const [
-      isNavOpen,
-      setIsNavOpen
-    ] = useNavigator ();
+  const isDesktop = useMedia (
+    2
+  );
+  const isMobile = useMedia (
+    0
+  );
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] =
+    useNavigator ();
 
-    if (isNavOpen) {
-      if (isMobile) {
-        return (
-          <nav className={navbar.drawer}>
-            <Suspense fallback={<ButtonSkeleton />}>
-              <DrawerMenuButton />
-            </Suspense>
-            <Suspense fallback={<ButtonSkeleton />}>
-              <Title />
-            </Suspense>
-            <Suspense fallback={<ButtonSkeleton />}>
-              <ForwardButton />
-            </Suspense>
-            <Suspense fallback={<ButtonSkeleton />}>
-              <BackwardsButton />
-            </Suspense>
-            <Suspense fallback={<ButtonSkeleton />}>
-              <InputSearchBar />
-            </Suspense>
-            <Suspense fallback={<ButtonSkeleton />}>
-              <HomeButton />
-            </Suspense>
-            <div className={navbar.sidenav}>{children}</div>
-          </nav>
-        );
-      }
+  if (isNavOpen) {
+    if (isMobile) {
       return (
         <nav className={navbar.drawer}>
-          <Suspense fallback={<ButtonSkeleton />}>
-            <InputSearchBar />
-          </Suspense>
           <Suspense fallback={<ButtonSkeleton />}>
             <DrawerMenuButton />
           </Suspense>
           <Suspense fallback={<ButtonSkeleton />}>
             <Title />
           </Suspense>
-          <div className={navbar.sidenav}>{children}</div>
+          <Suspense fallback={<ButtonSkeleton />}>
+            <ForwardButton />
+          </Suspense>
+          <Suspense fallback={<ButtonSkeleton />}>
+            <BackwardsButton />
+          </Suspense>
+          <Suspense fallback={<ButtonSkeleton />}>
+            <InputSearchBar />
+          </Suspense>
+          <Suspense fallback={<ButtonSkeleton />}>
+            <HomeButton />
+          </Suspense>
+          <div className={navbar.sidenav}>
+            {children}
+          </div>
         </nav>
       );
     }
-    return null;
+    return (
+      <nav className={navbar.drawer}>
+        <Suspense fallback={<ButtonSkeleton />}>
+          <InputSearchBar />
+        </Suspense>
+        <Suspense fallback={<ButtonSkeleton />}>
+          <DrawerMenuButton />
+        </Suspense>
+        <Suspense fallback={<ButtonSkeleton />}>
+          <Title />
+        </Suspense>
+        <div className={navbar.sidenav}>
+          {children}
+        </div>
+      </nav>
+    );
+  }
+  return null;
 }

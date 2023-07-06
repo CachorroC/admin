@@ -21,14 +21,21 @@
       "Email": "yess_Id@hotmail.com",
       "Nombre": "yesid albeiro ramos",
       "Direccion": "CARRERA 77B No. 68B - 19 BARRIO SANTA HELENITA",
-      "Tel": { "Fijo": 3193905254, "Celular": 3212337597 }
+      "Tel": {
+        "Fijo": 3193905254,
+        "Celular": 3212337597
+      }
     },
     "EtapaProcesal": {
       "Etapa": "EMPLAZAMIENTO",
-      "Fecha": { "MandamientodePago": "2017-06-02" }
+      "Fecha": {
+        "MandamientodePago": "2017-06-02"
+      }
     },
     "Liquidacion": {
-      "Costas": { "FechaAprobacion": "1999-01-01" },
+      "Costas": {
+        "FechaAprobacion": "1999-01-01"
+      },
       "Fecha": { "Aprobacion": "1999-01-01" }
     },
     "MedidasCautelares": {
@@ -47,11 +54,18 @@
       "RespuestaEmbargo": true
     },
     "Notificaciones": {
-      "291": { "AportaNotificacion": "2018-07-11" },
-      "292": { "AportaNotificacion": "2018-07-11" },
+      "291": {
+        "AportaNotificacion": "2018-07-11"
+      },
+      "292": {
+        "AportaNotificacion": "2018-07-11"
+      },
       "AutoNotificado": "11/07/2018"
     },
-    "SuspencionProceso": { "TerminoSuspencion": "N/A", "Fecha": "1999-01-01" },
+    "SuspencionProceso": {
+      "TerminoSuspencion": "N/A",
+      "Fecha": "1999-01-01"
+    },
     "Terminacion": {
       "Causal": "N/A",
       "Fecha": {
@@ -84,14 +98,21 @@
       "Email": "yess_Id@hotmail.com",
       "Nombre": "yesid albeiro ramos",
       "Direccion": "CARRERA 77B No. 68B - 19 BARRIO SANTA HELENITA",
-      "Tel": { "Fijo": 3193905254, "Celular": 3212337597 }
+      "Tel": {
+        "Fijo": 3193905254,
+        "Celular": 3212337597
+      }
     },
     "EtapaProcesal": {
       "Etapa": "EMPLAZAMIENTO",
-      "Fecha": { "MandamientodePago": "2017-06-02" }
+      "Fecha": {
+        "MandamientodePago": "2017-06-02"
+      }
     },
     "Liquidacion": {
-      "Costas": { "FechaAprobacion": "1999-01-01" },
+      "Costas": {
+        "FechaAprobacion": "1999-01-01"
+      },
       "Fecha": { "Aprobacion": "1999-01-01" }
     },
     "MedidasCautelares": {
@@ -110,11 +131,18 @@
       "RespuestaEmbargo": true
     },
     "Notificaciones": {
-      "291": { "AportaNotificacion": "2018-07-11" },
-      "292": { "AportaNotificacion": "2018-07-11" },
+      "291": {
+        "AportaNotificacion": "2018-07-11"
+      },
+      "292": {
+        "AportaNotificacion": "2018-07-11"
+      },
       "AutoNotificado": "11/07/2018"
     },
-    "SuspencionProceso": { "TerminoSuspencion": "N/A", "Fecha": "1999-01-01" },
+    "SuspencionProceso": {
+      "TerminoSuspencion": "N/A",
+      "Fecha": "1999-01-01"
+    },
     "Terminacion": {
       "Causal": "N/A",
       "Fecha": {
@@ -128,7 +156,10 @@
   {
     "_id": "64a176a81c64811d4de3490a",
     "Carpeta": 86,
-    "Codeudor": { "Id": 1015435620, "Nombre": "JESICA PAOLA GUZMAN OSPINA" },
+    "Codeudor": {
+      "Id": 1015435620,
+      "Nombre": "JESICA PAOLA GUZMAN OSPINA"
+    },
     "Demanda": {
       "Departamento": "CUNDINAMARCA",
       "Municipio": "BOGOTA",
@@ -136,9 +167,14 @@
       "Radicado": "2017 - 00836",
       "EntregadeGarantiasAbogado": "1899-12-30",
       "CapitalAdeudado": "$ 26.515.333",
-      "Juzgado": { "Origen": "34 CM", "Ejecucion": "12 CME" },
+      "Juzgado": {
+        "Origen": "34 CM",
+        "Ejecucion": "12 CME"
+      },
       "Proceso": { "Tipo": "PRENDARIO" },
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 1032432802,
@@ -155,13 +191,18 @@
     },
     "MedidasCautelares": {
       "Bienes": "VEHICULO",
-      "Fecha": { "SolicitudCapturaoSecuestro": "2019-04-11" },
+      "Fecha": {
+        "SolicitudCapturaoSecuestro": "2019-04-11"
+      },
       "MedidaSolicitada": "VEHICULO",
       "DescripcionMedida": "VEHICULO",
       "PlacaoNumeroMatricula": "UBK-333",
       "FechaRadicaccion": "2018-08-24",
       "FechaOrdena": "2017-07-10",
-      "Oficio": { "Numero": 1355, "Fecha": "2017-07-17" },
+      "Oficio": {
+        "Numero": 1355,
+        "Fecha": "2017-07-17"
+      },
       "Oficios": { "FechaRetiro": "2017-08-24" },
       "RespuestaEmbargo": true
     },
@@ -171,7 +212,10 @@
         "AportaNotificacion": "2018-07-18",
         "Resultado": true
       },
-      "292": { "AportaNotificacion": "2018-07-18", "Resultado": true },
+      "292": {
+        "AportaNotificacion": "2018-07-18",
+        "Resultado": true
+      },
       "AutoNotificado": "2019-01-25",
       "Certimail": false,
       "Fisico": true,
@@ -183,7 +227,10 @@
   {
     "_id": "64a176a81c64811d4de3490b",
     "Carpeta": 86,
-    "Codeudor": { "Id": 1015435620, "Nombre": "JESICA PAOLA GUZMAN OSPINA" },
+    "Codeudor": {
+      "Id": 1015435620,
+      "Nombre": "JESICA PAOLA GUZMAN OSPINA"
+    },
     "Demanda": {
       "Departamento": "CUNDINAMARCA",
       "Municipio": "BOGOTA",
@@ -191,9 +238,14 @@
       "Radicado": "2017 - 00836",
       "EntregadeGarantiasAbogado": "1899-12-30",
       "CapitalAdeudado": "$ 26.515.333",
-      "Juzgado": { "Origen": "34 CM", "Ejecucion": "12 CME" },
+      "Juzgado": {
+        "Origen": "34 CM",
+        "Ejecucion": "12 CME"
+      },
       "Proceso": { "Tipo": "PRENDARIO" },
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 1032432802,
@@ -210,13 +262,18 @@
     },
     "MedidasCautelares": {
       "Bienes": "VEHICULO",
-      "Fecha": { "SolicitudCapturaoSecuestro": "2019-04-11" },
+      "Fecha": {
+        "SolicitudCapturaoSecuestro": "2019-04-11"
+      },
       "MedidaSolicitada": "VEHICULO",
       "DescripcionMedida": "VEHICULO",
       "PlacaoNumeroMatricula": "UBK-333",
       "FechaRadicaccion": "2018-08-24",
       "FechaOrdena": "2017-07-10",
-      "Oficio": { "Numero": 1355, "Fecha": "2017-07-17" },
+      "Oficio": {
+        "Numero": 1355,
+        "Fecha": "2017-07-17"
+      },
       "Oficios": { "FechaRetiro": "2017-08-24" },
       "RespuestaEmbargo": true
     },
@@ -226,7 +283,10 @@
         "AportaNotificacion": "2018-07-18",
         "Resultado": true
       },
-      "292": { "AportaNotificacion": "2018-07-18", "Resultado": true },
+      "292": {
+        "AportaNotificacion": "2018-07-18",
+        "Resultado": true
+      },
       "AutoNotificado": "2019-01-25",
       "Certimail": false,
       "Fisico": true,
@@ -264,7 +324,10 @@
       }
     },
     "Liquidacion": {
-      "Fecha": { "Presentacion": "2018-11-26", "Solicitud": "2018-09-04" }
+      "Fecha": {
+        "Presentacion": "2018-11-26",
+        "Solicitud": "2018-09-04"
+      }
     },
     "MedidasCautelares": {
       "DescripcionMedida": "RETENCION DINEROS",
@@ -272,12 +335,20 @@
       "Bienes": "BANCOS",
       "FechaRadicaccion": "2023-02-02",
       "FechaOrdena": "2017-11-07",
-      "Oficio": { "Numero": 1461, "Fecha": "2017-11-15" },
+      "Oficio": {
+        "Numero": 1461,
+        "Fecha": "2017-11-15"
+      },
       "RespuestaEmbargo": true
     },
     "Notificaciones": {
-      "291": { "AportaNotificacion": "2018-05-17" },
-      "292": { "AportaNotificacion": "2018-05-17", "Resultado": true },
+      "291": {
+        "AportaNotificacion": "2018-05-17"
+      },
+      "292": {
+        "AportaNotificacion": "2018-05-17",
+        "Resultado": true
+      },
       "Tipo": "CORREO",
       "AutoNotificado": "2018-07-17"
     },
@@ -328,7 +399,10 @@
       "Bienes": "BANCOS",
       "FechaOrdena": "2017-09-08",
       "FechaRadicaccion": "06/2018",
-      "Oficio": { "Numero": 1181, "Fecha": "2017-09-15" },
+      "Oficio": {
+        "Numero": 1181,
+        "Fecha": "2017-09-15"
+      },
       "Oficios": { "FechaRetiro": "2018-09-15" },
       "PlacaoNumeroMatricula": "051-130616"
     },
@@ -338,7 +412,10 @@
         "Recibo": "2017-12-12",
         "Resultado": true
       },
-      "292": { "AportaNotificacion": "2017-12-12", "Resultado": true },
+      "292": {
+        "AportaNotificacion": "2017-12-12",
+        "Resultado": true
+      },
       "AutoNotificado": "2018-02-09",
       "Certimail": true,
       "Fisico": false,
@@ -356,17 +433,25 @@
       "VencimientoPagare": "2026-03-10",
       "EntregadeGarantiasAbogado": "2017-08-22",
       "CapitalAdeudado": "$ 14.795.921",
-      "Juzgado": { "Origen": "25 CM", "Ejecucion": "18 CME" },
+      "Juzgado": {
+        "Origen": "25 CM",
+        "Ejecucion": "18 CME"
+      },
       "Proceso": { "Tipo": "HIPOTECARIO" },
       "Radicado": "2017 - 00903",
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 52189873,
       "Email": "darnelly-74@hotmail.com",
       "Nombre": "darnelly hernandez martinez",
       "Direccion": "CALLE 74G # 80 - 58 SUR",
-      "Tel": { "Fijo": 4530972, "Celular": 3144189224 }
+      "Tel": {
+        "Fijo": 4530972,
+        "Celular": 3144189224
+      }
     },
     "EtapaProcesal": {
       "Etapa": "EJECUCIÓN",
@@ -376,16 +461,24 @@
       }
     },
     "Liquidacion": {
-      "Fecha": { "Presentacion": "2019-01-11", "Sentencia": "2018-06-22" }
+      "Fecha": {
+        "Presentacion": "2019-01-11",
+        "Sentencia": "2018-06-22"
+      }
     },
     "MedidasCautelares": {
       "Bienes": "INMUEBLE APTO 504",
       "DescripcionMedida": "INMUEBLE  CARRERA 88 C N° 62-65 SUR",
-      "Fecha": { "SolicitudCapturaoSecuestro": "2018-03-22" },
+      "Fecha": {
+        "SolicitudCapturaoSecuestro": "2018-03-22"
+      },
       "MedidaSolicitada": "EMBARGO DE INMUEBLE",
       "FechaRadicaccion": "2018-01-28",
       "FechaOrdena": "2017-09-18",
-      "Oficio": { "Numero": 3781, "Fecha": "2017-09-25" },
+      "Oficio": {
+        "Numero": 3781,
+        "Fecha": "2017-09-25"
+      },
       "PlacaoNumeroMatricula": "50S-40552545",
       "RespuestaEmbargo": true
     },
@@ -395,7 +488,10 @@
         "Recibo": "2018-06-20",
         "Resultado": true
       },
-      "292": { "AportaNotificacion": "2018-06-20", "Resultado": true },
+      "292": {
+        "AportaNotificacion": "2018-06-20",
+        "Resultado": true
+      },
       "AutoNotificado": "2018-06-22",
       "Certimail": true,
       "Fisico": false,
@@ -416,10 +512,15 @@
       "VencimientoPagare": "2019-11-03",
       "EntregadeGarantiasAbogado": "2017-08-01",
       "CapitalAdeudado": "$ 25.833.335",
-      "Juzgado": { "Ejecucion": "17 CME", "Origen": "1 CM" },
+      "Juzgado": {
+        "Ejecucion": "17 CME",
+        "Origen": "1 CM"
+      },
       "Proceso": { "Tipo": "SINGULAR" },
       "Radicado": "2017 - 01001",
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 11185630,
@@ -447,7 +548,10 @@
       "MedidaSolicitada": "EMBARGO DE DINEROS EN BANCOS",
       "Bienes": "BANCOS",
       "FechaOrdena": "2017-09-05",
-      "Oficio": { "Fecha": "2017-09-06", "Numero": "17-2849" },
+      "Oficio": {
+        "Fecha": "2017-09-06",
+        "Numero": "17-2849"
+      },
       "RespuestaEmbargo": false
     },
     "Notificaciones": {
@@ -456,7 +560,10 @@
         "Recibo": "2018-02-06",
         "Resultado": true
       },
-      "292": { "AportaNotificacion": "2018-06-06", "Resultado": true },
+      "292": {
+        "AportaNotificacion": "2018-06-06",
+        "Resultado": true
+      },
       "AutoNotificado": "2018-06-22",
       "Certimail": true,
       "Fisico": false,
@@ -474,17 +581,25 @@
       "EntregadeGarantiasAbogado": "2017-09-06",
       "VencimientoPagare": "2017-02-14",
       "CapitalAdeudado": "$ 27.603.821",
-      "Juzgado": { "Origen": "8 CM", "Ejecucion": "6 CME" },
+      "Juzgado": {
+        "Origen": "8 CM",
+        "Ejecucion": "6 CME"
+      },
       "Proceso": { "Tipo": "HIPOTECARIO" },
       "Radicado": "2017 - 01134",
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 79853115,
       "Email": "fanor.diaz@gmail.com",
       "Nombre": "fanor diaz agudelo",
       "Direccion": "DIAGONAL 56 BIS 84 A 10 SUR TR 1",
-      "Tel": { "Fijo": 8060271, "Celular": 3212406193 }
+      "Tel": {
+        "Fijo": 8060271,
+        "Celular": 3212406193
+      }
     },
     "EtapaProcesal": {
       "Etapa": "EJECUCIÓN",
@@ -506,7 +621,10 @@
       "DescripcionMedida": "APARTAMENTO 502 INT. 17 CONJUNTO RESIDNCIAL ALONDRA  P.H.  DIAGONAL 56 BIS SUR N° 84 A -20",
       "FechaRadicaccion": "2018-05-15",
       "FechaOrdena": "2017-09-21",
-      "Oficio": { "Numero": 2746, "Fecha": "2017-10-04" },
+      "Oficio": {
+        "Numero": 2746,
+        "Fecha": "2017-10-04"
+      },
       "Oficios": { "FechaRetiro": "2017-10-04" },
       "PlacaoNumeroMatricula": "50S-40590187",
       "RespuestaEmbargo": true
@@ -517,7 +635,10 @@
         "Recibo": "2018-02-06",
         "Resultado": true
       },
-      "292": { "AportaNotificacion": "2018-02-06", "Resultado": true },
+      "292": {
+        "AportaNotificacion": "2018-02-06",
+        "Resultado": true
+      },
       "AutoNotificado": "2018-05-07",
       "Certimail": true,
       "Fisico": false,
@@ -540,17 +661,25 @@
       "VencimientoPagare": "2019-03-18",
       "EntregadeGarantiasAbogado": "2017-09-28",
       "CapitalAdeudado": "$ 12.347.548",
-      "Juzgado": { "Origen": "37 CM", "Ejecucion": "11 CME" },
+      "Juzgado": {
+        "Origen": "37 CM",
+        "Ejecucion": "11 CME"
+      },
       "Proceso": { "Tipo": "SINGULAR" },
       "Radicado": "2017 - 01391",
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 35506033,
       "Email": "natis-rolita@hotmail.con",
       "Nombre": "luz dary puerta jaramillo",
       "Direccion": "CARRERA  101  No 71 B - 53",
-      "Tel": { "Fijo": 4357832, "Celular": 3103430010 }
+      "Tel": {
+        "Fijo": 4357832,
+        "Celular": 3103430010
+      }
     },
     "EtapaProcesal": {
       "Etapa": "EJECUCIÓN",
@@ -585,7 +714,10 @@
       "Direccion": "DG 3B No. 0-78 ESTE",
       "Nombre": "CARMELINA AGUILAR  //  ANA LUCIA AGUILAR",
       "Id": "41759787 // 39710157",
-      "Tel": { "Fijo": 3107627120, "Celular": 3204613419 }
+      "Tel": {
+        "Fijo": 3107627120,
+        "Celular": 3204613419
+      }
     },
     "Demanda": {
       "Departamento": "CUNDINAMARCA",
@@ -593,17 +725,25 @@
       "VencimientoPagare": "2024-05-05",
       "EntregadeGarantiasAbogado": "2017-09-21",
       "CapitalAdeudado": "$ 66.362.959",
-      "Juzgado": { "Origen": "15 CM", "Ejecucion": "11 CME" },
+      "Juzgado": {
+        "Origen": "15 CM",
+        "Ejecucion": "11 CME"
+      },
       "Proceso": { "Tipo": "HIPOTECARIO" },
       "Radicado": "2017 - 01394",
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 19255260,
       "Nombre": "matias humberto avila aguilar",
       "Email": "maifren_13@yahoo.es",
       "Direccion": "CALLE 2 C No 62 - 20",
-      "Tel": { "Fijo": 4170527, "Celular": 3125024008 }
+      "Tel": {
+        "Fijo": 4170527,
+        "Celular": 3125024008
+      }
     },
     "EtapaProcesal": {
       "Etapa": "EJECUCIÓN",
@@ -617,7 +757,10 @@
       "Bienes": "CASA",
       "FechaRadicaccion": "2018-03-12",
       "FechaOrdena": "2017-11-08",
-      "Oficio": { "Numero": 284, "Fecha": "2018-02-16" },
+      "Oficio": {
+        "Numero": 284,
+        "Fecha": "2018-02-16"
+      },
       "Oficios": { "FechaRetiro": "2018-02-16" },
       "PlacaoNumeroMatricula": "50C-643759",
       "RespuestaEmbargo": false
@@ -654,20 +797,28 @@
       "EntregadeGarantiasAbogado": "2017-09-19",
       "Radicado": "2017 - 00974",
       "CapitalAdeudado": "$ 12.249.598",
-      "Juzgado": { "Origen": "48 CM", "Ejecucion": "7 CME" },
+      "Juzgado": {
+        "Origen": "48 CM",
+        "Ejecucion": "7 CME"
+      },
       "Obligacion": {
         "1": "320088443  / 377813441863587",
         "2": 4513070212799642
       },
       "Proceso": { "Tipo": "SINGULAR" },
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 1032383389,
       "Direccion": "CALLE 64 SUR  No 85 B - 40  APARTAMENTO  104",
       "Email": "ars.09@hotmail.com",
       "Nombre": "anderson revelo santos",
-      "Tel": { "Fijo": 4725511, "Celular": 3118526428 }
+      "Tel": {
+        "Fijo": 4725511,
+        "Celular": 3118526428
+      }
     },
     "EtapaProcesal": {
       "Etapa": "EJECUCIÓN",
@@ -689,7 +840,10 @@
       "Bienes": "APTO 104 TORRE 4",
       "FechaRadicaccion": "2018-01-31",
       "FechaOrdena": "2017-11-03",
-      "Oficio": { "Numero": 799, "Fecha": "2017-12-01" },
+      "Oficio": {
+        "Numero": 799,
+        "Fecha": "2017-12-01"
+      },
       "PlacaoNumeroMatricula": "50S-40606676",
       "RespuestaEmbargo": false
     },
@@ -699,7 +853,10 @@
         "Recibo": "2018-01-30",
         "Resultado": true
       },
-      "292": { "AportaNotificacion": "2018-01-30", "Resultado": true },
+      "292": {
+        "AportaNotificacion": "2018-01-30",
+        "Resultado": true
+      },
       "AutoNotificado": "2018-02-23",
       "Certimail": true,
       "Fisico": false,
@@ -710,7 +867,9 @@
   },
   {
     "_id": "64a176a81c64811d4de34914",
-    "Avaluo": { "Valor": "VALIDAR COMO IRRECUPERABLE" },
+    "Avaluo": {
+      "Valor": "VALIDAR COMO IRRECUPERABLE"
+    },
     "Carpeta": 306,
     "Demanda": {
       "Departamento": "CUNDINAMARCA",
@@ -719,13 +878,18 @@
       "EntregadeGarantiasAbogado": "2017-10-04",
       "Radicado": "2017 - 01532",
       "CapitalAdeudado": "$ 40.406.421",
-      "Juzgado": { "Origen": "21 CM", "Ejecucion": "15 CME" },
+      "Juzgado": {
+        "Origen": "21 CM",
+        "Ejecucion": "15 CME"
+      },
       "Obligacion": {
         "1": "1740086734 4513073749673967",
         "2": 5303719549810730
       },
       "Proceso": { "Tipo": "SINGULAR" },
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 79388145,
@@ -747,7 +911,10 @@
       "DescripcionMedida": "CAMIONETA PUBLICO// ENVIO DERECHO DE PETICION PARA REGISTRAR LA MEDIDA",
       "FechaOrdena": "2017-11-30",
       "FechaRadicaccion": "2017-11-30",
-      "Oficio": { "Numero": 4273, "Fecha": "2017-11-08" },
+      "Oficio": {
+        "Numero": 4273,
+        "Fecha": "2017-11-08"
+      },
       "Oficios": { "FechaRetiro": "2017-11-30" },
       "RespuestaEmbargo": false
     },
@@ -772,7 +939,9 @@
   },
   {
     "_id": "64a176a81c64811d4de34915",
-    "Avaluo": { "Valor": "VALIDAR COMO IRRECUPERABLE" },
+    "Avaluo": {
+      "Valor": "VALIDAR COMO IRRECUPERABLE"
+    },
     "Carpeta": 306,
     "Demanda": {
       "Departamento": "CUNDINAMARCA",
@@ -781,13 +950,18 @@
       "EntregadeGarantiasAbogado": "2017-10-04",
       "Radicado": "2017 - 01532",
       "CapitalAdeudado": "$ 40.406.421",
-      "Juzgado": { "Origen": "21 CM", "Ejecucion": "15 CME" },
+      "Juzgado": {
+        "Origen": "21 CM",
+        "Ejecucion": "15 CME"
+      },
       "Obligacion": {
         "1": "1740086734 4513073749673967",
         "2": 5303719549810730
       },
       "Proceso": { "Tipo": "SINGULAR" },
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 79388145,
@@ -809,7 +983,10 @@
       "DescripcionMedida": "CAMIONETA PUBLICO// ENVIO DERECHO DE PETICION PARA REGISTRAR LA MEDIDA",
       "FechaOrdena": "2017-11-30",
       "FechaRadicaccion": "2017-11-30",
-      "Oficio": { "Numero": 4273, "Fecha": "2017-11-08" },
+      "Oficio": {
+        "Numero": 4273,
+        "Fecha": "2017-11-08"
+      },
       "Oficios": { "FechaRetiro": "2017-11-30" },
       "RespuestaEmbargo": false
     },
@@ -847,7 +1024,9 @@
       },
       "Proceso": { "Tipo": "HIPOTECARIO" },
       "Radicado": "2017 - 00323",
-      "Ubicacion": { "Juzgado": "REMATE DEL INMUEBLE" }
+      "Ubicacion": {
+        "Juzgado": "REMATE DEL INMUEBLE"
+      }
     },
     "Deudor": {
       "Id": 8799171,
@@ -863,13 +1042,19 @@
       }
     },
     "Liquidacion": {
-      "Fecha": { "Solicitud": "2018-11-13", "Sentencia": "2018-11-06" }
+      "Fecha": {
+        "Solicitud": "2018-11-13",
+        "Sentencia": "2018-11-06"
+      }
     },
     "MedidasCautelares": {
       "MedidaSolicitada": "EMBARGO DE INMUEBLE",
       "Bienes": "APTO 101 TORRE 20",
       "FechaOrdena": "2017-11-24",
-      "Oficio": { "Numero": 8469, "Fecha": "2018-08-01" },
+      "Oficio": {
+        "Numero": 8469,
+        "Fecha": "2018-08-01"
+      },
       "PlacaoNumeroMatricula": "051-162001",
       "RespuestaEmbargo": true
     },
@@ -897,17 +1082,25 @@
       "VencimientoPagare": "2021-01-27",
       "EntregadeGarantiasAbogado": "2018-02-15",
       "CapitalAdeudado": "$ 22.592.583",
-      "Juzgado": { "Origen": "21 CM", "Ejecucion": "13 CME" },
+      "Juzgado": {
+        "Origen": "21 CM",
+        "Ejecucion": "13 CME"
+      },
       "Proceso": { "Tipo": "HIPOTECARIO" },
       "Radicado": "2018 - 00236",
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 79396995,
       "Direccion": "CALLE 12 A No 71 B - 60",
       "Nombre": "arturo lince gomez",
       "Email": "arthurlingo64@hotmail.com",
-      "Tel": { "Fijo": 4244358, "Celular": 31088445603 }
+      "Tel": {
+        "Fijo": 4244358,
+        "Celular": 31088445603
+      }
     },
     "EtapaProcesal": {
       "Etapa": "EJECUCIÓN",
@@ -917,7 +1110,10 @@
       }
     },
     "Liquidacion": {
-      "Costas": { "Valor": 20, "FechaAprobacion": "2018-07-11" },
+      "Costas": {
+        "Valor": 20,
+        "FechaAprobacion": "2018-07-11"
+      },
       "Fecha": {
         "Sentencia": "2018-09-25",
         "Aprobacion": "2018-08-27",
@@ -926,11 +1122,16 @@
     },
     "MedidasCautelares": {
       "Bienes": "CASA 176",
-      "Fecha": { "DecretoSecuestrooCaptura": "2018-08-27" },
+      "Fecha": {
+        "DecretoSecuestrooCaptura": "2018-08-27"
+      },
       "MedidaSolicitada": "EMBARGO DE INMUEBLE",
       "FechaOrdena": "20108-03-01",
       "FechaRadicaccion": "2018-06-28",
-      "Oficio": { "Numero": 832, "Fecha": "2018-03-09" },
+      "Oficio": {
+        "Numero": 832,
+        "Fecha": "2018-03-09"
+      },
       "Oficios": { "FechaRetiro": "2018-03-09" },
       "PlacaoNumeroMatricula": "50C-1645938",
       "RespuestaEmbargo": true
@@ -964,17 +1165,25 @@
       "VencimientoPagare": "2018-06-20",
       "EntregadeGarantiasAbogado": "2018-02-15",
       "CapitalAdeudado": "$ 11.949.471",
-      "Juzgado": { "Origen": "56 CM", "Ejecucion": "7 CME" },
+      "Juzgado": {
+        "Origen": "56 CM",
+        "Ejecucion": "7 CME"
+      },
       "Proceso": { "Tipo": "SINGULAR" },
       "Radicado": "2018 - 00221",
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 900545720,
       "Nombre": "creas soluciones s.a.s",
       "Direccion": "CARRERA 50 1# 47 - 50 INT 1 APTO 101",
       "Email": "andibarracosta@gmail.com",
-      "Tel": { "Fijo": 8626344, "Celular": 3107982028 }
+      "Tel": {
+        "Fijo": 8626344,
+        "Celular": 3107982028
+      }
     },
     "EtapaProcesal": {
       "Etapa": "EJECUCIÓN",
@@ -983,12 +1192,17 @@
         "PresentacionDemanda": "2018-02-28"
       }
     },
-    "Liquidacion": { "Fecha": { "Sentencia": "2018-06-07" } },
+    "Liquidacion": {
+      "Fecha": { "Sentencia": "2018-06-07" }
+    },
     "MedidasCautelares": {
       "MedidaSolicitada": "EMBARGO DE DINEROS EN BANCOS",
       "Bienes": "BANCOS",
       "FechaOrdena": "2018-03-22",
-      "Oficio": { "Numero": 747, "Fecha": "2018-04-02" },
+      "Oficio": {
+        "Numero": 747,
+        "Fecha": "2018-04-02"
+      },
       "RespuestaEmbargo": false
     },
     "Notificaciones": {
@@ -997,7 +1211,10 @@
         "Recibo": "2018-05-18",
         "Resultado": true
       },
-      "292": { "AportaNotificacion": "2018-05-18", "Resultado": true },
+      "292": {
+        "AportaNotificacion": "2018-05-18",
+        "Resultado": true
+      },
       "AutoNotificado": "2018-05-18",
       "Certimail": true,
       "Fisico": false,
@@ -1040,7 +1257,10 @@
       "Bienes": "PREDIO RURAL",
       "MedidaSolicitada": "EMBARGO DE INMUEBLE",
       "FechaOrdena": "2019-05-14",
-      "Oficio": { "Numero": 937, "Fecha": "2019-05-14" },
+      "Oficio": {
+        "Numero": 937,
+        "Fecha": "2019-05-14"
+      },
       "PlacaoNumeroMatricula": "372-19300",
       "RespuestaEmbargo": false
     },
@@ -1093,7 +1313,10 @@
       "Bienes": "PREDIO RURAL",
       "MedidaSolicitada": "EMBARGO DE INMUEBLE",
       "FechaOrdena": "2019-05-14",
-      "Oficio": { "Numero": 937, "Fecha": "2019-05-14" },
+      "Oficio": {
+        "Numero": 937,
+        "Fecha": "2019-05-14"
+      },
       "PlacaoNumeroMatricula": "372-19300",
       "RespuestaEmbargo": false
     },
@@ -1122,13 +1345,18 @@
       "EntregadeGarantiasAbogado": "2018-09-03",
       "Radicado": "2018 - 00785",
       "CapitalAdeudado": "$ 18.100.699",
-      "Juzgado": { "Origen": "8 PCYCM", "Ejecucion": "5 CME" },
+      "Juzgado": {
+        "Origen": "8 PCYCM",
+        "Ejecucion": "5 CME"
+      },
       "Obligacion": {
         "1": "AUDIOPRESTAMO",
         "2": "0377816345049476 // 4513070259455355 // 5303720114305077"
       },
       "Proceso": { "Tipo": "SINGULAR" },
-      "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+      "Ubicacion": {
+        "Juzgado": "JUZGADOS EJECUCION"
+      }
     },
     "Deudor": {
       "Id": 51987570,
@@ -1147,7 +1375,10 @@
       "MedidaSolicitada": "EMBARGO DE INMUEBLE",
       "Bienes": "APTO 231",
       "FechaOrdena": "2018-11-20",
-      "Oficio": { "Numero": 2288, "Fecha": "2018-11-20" },
+      "Oficio": {
+        "Numero": 2288,
+        "Fecha": "2018-11-20"
+      },
       "PlacaoNumeroMatricula": "50N - 20247423",
       "RespuestaEmbargo": false
     },
@@ -1174,7 +1405,10 @@
       "VencimientoPagare": "2021-09-14",
       "EntregadeGarantiasAbogado": "2018-09-18",
       "CapitalAdeudado": "$ 27.373.832",
-      "Obligacion": { "1": "AUDIOPRESTAMO", "2": 5491570347356810 },
+      "Obligacion": {
+        "1": "AUDIOPRESTAMO",
+        "2": 5491570347356810
+      },
       "Proceso": { "Tipo": "SINGULAR" },
       "Radicado": "2018 - 00602",
       "Ubicacion": { "Juzgado": "CHIA" }
@@ -1197,7 +1431,10 @@
       "MedidaSolicitada": "EMBARGO DE INMUEBLE",
       "Bienes": "CASA",
       "FechaOrdena": "2018-10-22",
-      "Oficio": { "Fecha": "2019-02-11", "Numero": "1939-2018" },
+      "Oficio": {
+        "Fecha": "2019-02-11",
+        "Numero": "1939-2018"
+      },
       "RespuestaEmbargo": true
     },
     "Notificaciones": {
@@ -1254,10 +1491,16 @@
       "MedidaSolicitada": "EMBARGO DE INMUEBLE",
       "Bienes": "APTO 504",
       "FechaOrdena": "2020-02-13",
-      "Oficio": { "Numero": 422, "Fecha": "2020-02-13" }
+      "Oficio": {
+        "Numero": 422,
+        "Fecha": "2020-02-13"
+      }
     },
     "Notificaciones": {
-      "291": { "AportaNotificacion": "2020-02-18", "Recibo": "2020-02-18" },
+      "291": {
+        "AportaNotificacion": "2020-02-18",
+        "Recibo": "2020-02-18"
+      },
       "292": { "Resultado": true },
       "Certimail": true,
       "Fisico": false,
@@ -1339,14 +1582,22 @@
       "Email": "yadelcis@hotmail.com",
       "Nombre": "sandra leonor paez murcia",
       "Direccion": "KR 81 No. 127 A - 46 CONJUNTO MONTE AZUL BOGOTA",
-      "Tel": { "Fijo": 6139147, "Celular": 3134386087 }
+      "Tel": {
+        "Fijo": 6139147,
+        "Celular": 3134386087
+      }
     },
     "EtapaProcesal": {
       "Etapa": "EJECUCION",
-      "Fecha": { "PresentacionDemanda": "2020-10-07" }
+      "Fecha": {
+        "PresentacionDemanda": "2020-10-07"
+      }
     },
     "Notificaciones": {
-      "291": { "Recibo": "2021-06-22", "Resultado": true },
+      "291": {
+        "Recibo": "2021-06-22",
+        "Resultado": true
+      },
       "Certimail": true,
       "Fisico": true
     },
@@ -1363,7 +1614,10 @@
       "EntregadeGarantiasAbogado": "2020-09-05",
       "CapitalAdeudado": "$ 15.324.570",
       "Juzgado": { "Origen": "50 PCYCM/ 68 CM" },
-      "Obligacion": { "1": 65886140334, "2": 4594260446916180 },
+      "Obligacion": {
+        "1": 65886140334,
+        "2": 4594260446916180
+      },
       "Proceso": { "Tipo": "SINGULAR" },
       "Ubicacion": { "Juzgado": "HMM PISO 15" }
     },
@@ -1386,7 +1640,10 @@
       "Radicado": "2018 - 00060",
       "EntregadeGarantiasAbogado": "2017-11-14",
       "CapitalAdeudado": "$ 56.987.693",
-      "Obligacion": { "1": 1680097436, "2": 148653 },
+      "Obligacion": {
+        "1": 1680097436,
+        "2": 148653
+      },
       "Proceso": { "Tipo": "HIPOTECARIO" },
       "Ubicacion": { "Juzgado": "SOACHA" }
     },
@@ -1407,9 +1664,13 @@
       "Departamento": "CUNDINAMARCA",
       "Proceso": { "Tipo": "SINGULAR" },
       "Radicado": "2023 - 763",
-      "Ubicacion": { "Juzgado": "CIVIL MUNICIPAL" }
+      "Ubicacion": {
+        "Juzgado": "CIVIL MUNICIPAL"
+      }
     },
-    "Deudor": { "Nombre": "pedro jonathan ramirez gomez" },
+    "Deudor": {
+      "Nombre": "pedro jonathan ramirez gomez"
+    },
     "idProceso": 404,
     "llaveProceso": "00000000000000000000000"
   }

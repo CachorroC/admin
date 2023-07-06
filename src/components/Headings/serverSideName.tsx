@@ -5,24 +5,27 @@ import typography from '#@/styles/fonts/typography.module.scss';
 
 export async function Name(
   {
-    llaveProceso 
-  }: { llaveProceso: string }
+    llaveProceso,
+  }: {
+  llaveProceso: string;
+}
 ) {
-    const proceso = await getCarpetasByllaveProceso (
-      {
-        llaveProceso: llaveProceso,
-      }
-    );
-    const nombre = proceso.map (
-      (
-        p
-      ) => p.Deudor.Nombre
-    );
-    return (
-      <h1 className={`${ typeface.navbar } ${ typography.displayMedium }`}>
-        {toNameString (
-          nombre[ 0 ]
-        )}
-      </h1>
-    );
+  const proceso = await getCarpetasByllaveProceso (
+    {
+      llaveProceso: llaveProceso,
+    }
+  );
+  const nombre = proceso.map (
+    (
+      p
+    ) => p.Deudor.Nombre
+  );
+  return (
+    <h1
+      className={`${ typeface.navbar } ${ typography.displayMedium }`}>
+      {toNameString (
+        nombre[ 0 ]
+      )}
+    </h1>
+  );
 }

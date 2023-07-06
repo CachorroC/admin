@@ -20,13 +20,17 @@
   align-content: stretch;
   &Active {
     @extend .card;
-    background-color: var(--surface-container-high);
+    background-color: var(
+      --surface-container-high
+    );
     border: solid 2px var(--outline-variant);
     color: var(--on-surface);
     box-shadow: var(--dp6);
     & > .links {
       & > .button {
-        background-color: var(--tertiary-container);
+        background-color: var(
+          --tertiary-container
+        );
         color: var(--on-tertiary-container);
       }
     }
@@ -38,7 +42,9 @@
     background-color: var(--surface-container);
     & > .links {
       & > .button {
-        background-color: var(--secondary-container);
+        background-color: var(
+          --secondary-container
+        );
         color: var(--on-secondary-container);
       }
     }
@@ -84,7 +90,8 @@
           margin-left: -5px;
           border-width: 5px;
           border-style: solid;
-          border-color: #555 transparent transparent transparent;
+          border-color: #555 transparent
+            transparent transparent;
         }
       }
       & > .icon {
