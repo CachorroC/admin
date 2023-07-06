@@ -11,70 +11,74 @@ export async function JuzgadosByllaveProceso(
   llaveProceso: string;
 }
 ) {
-  try {
-    const Request = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`,
-    );
-    if (!Request.ok) {
-      return (
-        <CardCarpeta
-          name={`${Request.text()} error`}
-          path={'/Procesos'}
-          llaveProceso={llaveProceso}
-        >
-          <p> Error </p>
-        </CardCarpeta>
+    try {
+      const Request = await fetch (
+        `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=false`,
       );
-    }
-    const res = (await Request.json()) as intConsultaNumeroRadicacion;
-    if (res.procesos.length === 0) {
-      <CardCarpeta
-        name={res.parametros.numero}
-        path={'/Procesos'}
-        llaveProceso={res.parametros.numero}
-      >
-        <p> No Hay Procesos </p>
-      </CardCarpeta>;
-    }
-    const procesos = res.procesos;
-    const mapeandoProcesos = procesos.map(
-      (
-        Proceso
-      ) => {
-        const { llaveProceso, idProceso, sujetosProcesales, despacho } = Proceso;
+
+      if (!Request.ok) {
         return (
           <CardCarpeta
-            key={idProceso}
-            name={fixDemandado(
-              sujetosProcesales
-            )}
+            name={`${ Request.text () } error`}
             path={'/Procesos'}
             llaveProceso={llaveProceso}
-            idProceso={idProceso}
           >
-            <p>{despacho}</p>
-            <p>{`idProceso= ${idProceso}`}</p>
+            <p> Error </p>
           </CardCarpeta>
         );
       }
-    );
-    return <>{mapeandoProcesos}</>;
-  }
-  catch (err) {
-    console.log(
-      err
-    );
-    const error = JSON.stringify(
-      err
-    );
-    return (
-      <CardCarpeta
-        name={error}
-        path={'/Procesos'}
-        llaveProceso={llaveProceso}
-      >
-        <p>{error}</p>
-      </CardCarpeta>
-    );
-  }
+      const res = (await Request.json ()) as intConsultaNumeroRadicacion;
+
+      if (res.procesos.length === 0) {
+        <CardCarpeta
+          name={res.parametros.numero}
+          path={'/Procesos'}
+          llaveProceso={res.parametros.numero}
+        >
+          <p> No Hay Procesos </p>
+        </CardCarpeta>;
+      }
+      const procesos = res.procesos;
+      const mapeandoProcesos = procesos.map (
+        (
+          Proceso
+        ) => {
+            const {
+              llaveProceso, idProceso, sujetosProcesales, despacho 
+            } = Proceso;
+            return (
+              <CardCarpeta
+                key={idProceso}
+                name={fixDemandado (
+                  sujetosProcesales
+                )}
+                path={'/Procesos'}
+                llaveProceso={llaveProceso}
+                idProceso={idProceso}
+              >
+                <p>{despacho}</p>
+                <p>{`idProceso= ${ idProceso }`}</p>
+              </CardCarpeta>
+            );
+        }
+      );
+      return <>{mapeandoProcesos}</>;
+    }
+    catch (err) {
+      console.log (
+        err
+      );
+      const error = JSON.stringify (
+        err
+      );
+      return (
+        <CardCarpeta
+          name={error}
+          path={'/Procesos'}
+          llaveProceso={llaveProceso}
+        >
+          <p>{error}</p>
+        </CardCarpeta>
+      );
+    }
 }

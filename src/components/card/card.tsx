@@ -33,151 +33,152 @@ export const Card = (
   contenido?: string;
 }
 ) => {
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] = useNavigator();
-  const [
-    isOpen,
-    setIsOpen
-  ] = useModal();
-  const [
-    hasLinks,
-    setHasLinks
-  ] = useState(
-    false
-  );
-  const clickHandler = () => {
-    setIsNavOpen(
+    const [
+      isNavOpen,
+      setIsNavOpen
+    ] = useNavigator ();
+    const [
+      isOpen,
+      setIsOpen
+    ] = useModal ();
+    const [
+      hasLinks,
+      setHasLinks
+    ] = useState (
       false
     );
-    setIsOpen(
-      true
-    );
-  };
-  const pathname = usePathname();
-  const isInProcesos = pathname === path;
 
-  const href = (
+    const clickHandler = () => {
+        setIsNavOpen (
+          false
+        );
+        setIsOpen (
+          true
+        );
+    };
+    const pathname = usePathname ();
+    const isInProcesos = pathname === path;
+
+    const href = (
     llaveProceso
       ? idProceso
-        ? `${path}/${llaveProceso}/${idProceso}`
-        : `${path}/${llaveProceso}`
-      : `${path}`
+        ? `${ path }/${ llaveProceso }/${ idProceso }`
+        : `${ path }/${ llaveProceso }`
+      : `${ path }`
   ) as Route;
-  const isActive =
+    const isActive =
     pathname === href ||
-    pathname === `${path}/${llaveProceso}/${idProceso}` ||
-    pathname === `${path}/${llaveProceso}`;
+    pathname === `${ path }/${ llaveProceso }/${ idProceso }` ||
+    pathname === `${ path }/${ llaveProceso }`;
 
-  const juzgado = despacho
-    ? despacho.replace(
-      / /g,
-      '-'
-    ).toLocaleLowerCase().slice(
-      0,
-      -1
-    )
-    : null;
+    const juzgado = despacho
+      ? despacho.replace (
+        / /g,
+        '-'
+      ).toLocaleLowerCase ().slice (
+        0,
+        -1
+      )
+      : null;
 
-  return (
-    <div
-      className={card.container}
-      onClick={() => {
-        setHasLinks(
-          !hasLinks
-        );
-      }}
-    >
-      <div className={isActive
-        ? card.isActive
-        : card.notActive}>
-        <h1 className={`${typography.titleMedium} ${card.title}`}>
-          {toNameString(
-            name
-          )}
-        </h1>
-        {hasLinks
-          ? (
-            <div className={card.links}>
-              <Link
-                className={isActive
-                  ? card.linkIsActive
-                  : card.link}
-                href={`${path}/${llaveProceso}` as Route}
-              >
-                <span className={`material-symbols-outlined ${card.icon}`}>
+    return (
+      <div
+        className={card.container}
+        onClick={() => {
+            setHasLinks (
+              !hasLinks
+            );
+        }}
+      >
+        <div className={isActive
+          ? card.isActive
+          : card.notActive}>
+          <h1 className={`${ typography.titleMedium } ${ card.title }`}>
+            {toNameString (
+              name
+            )}
+          </h1>
+          {hasLinks
+            ? (
+                <div className={card.links}>
+                  <Link
+                    className={isActive
+                      ? card.linkIsActive
+                      : card.link}
+                    href={`${ path }/${ llaveProceso }` as Route}
+                  >
+                    <span className={`material-symbols-outlined ${ card.icon }`}>
                 badge
-                </span>
-                <span className={card.tooltiptext}>Perfil del Demandado</span>
-              </Link>
-              <Link
-                className={isActive
-                  ? card.linkIsActive
-                  : card.link}
-                href={`/Notas/NuevaNota/${llaveProceso}`}
-                onClick={() => {
-                  setIsOpen(
-                    true
-                  );
-                }}
-              >
-                <span className={`material-symbols-outlined ${card.icon}`}>
+                    </span>
+                    <span className={card.tooltiptext}>Perfil del Demandado</span>
+                  </Link>
+                  <Link
+                    className={isActive
+                      ? card.linkIsActive
+                      : card.link}
+                    href={`/Notas/NuevaNota/${ llaveProceso }`}
+                    onClick={() => {
+                        setIsOpen (
+                          true
+                        );
+                    }}
+                  >
+                    <span className={`material-symbols-outlined ${ card.icon }`}>
                 add
-                </span>
-                <span className={card.tooltiptext}>Agregar nota</span>
-              </Link>
-              <Link
-                className={isActive
-                  ? card.linkIsActive
-                  : card.link}
-                onClick={clickHandler}
-                href={href}
-              >
-                <span className={`${card.icon} material-symbols-outlined`}>
+                    </span>
+                    <span className={card.tooltiptext}>Agregar nota</span>
+                  </Link>
+                  <Link
+                    className={isActive
+                      ? card.linkIsActive
+                      : card.link}
+                    onClick={clickHandler}
+                    href={href}
+                  >
+                    <span className={`${ card.icon } material-symbols-outlined`}>
                 file_open
-                </span>
-                <span className={card.tooltiptext}>Actuaciones del proceso</span>
-              </Link>
+                    </span>
+                    <span className={card.tooltiptext}>Actuaciones del proceso</span>
+                  </Link>
 
-              <Link
-                onClick={clickHandler}
-                href={href}
-                className={card.link}
-              >
-                <span className={`material-symbols-outlined ${card.icon}`}>
-                  {icon ?? 'open_in_new'}
-                </span>
-                <span className={card.tooltiptext}>abrir</span>
-              </Link>
-            </div>
-          )
-          : (
-            children
-          )}
-
-        {contenido && (
-          <p className={`${typography.bodySmall} ${card.content}`}>
-            {contenido}
-          </p>
-        )}
-        {juzgado && (
-          <Link
-            href={`https://ramajudicial.gov.co/web/${juzgado.replaceAll(
-              'á',
-              'a',
-            )}`}
-          >
-            {' '}
-            <p className={`${typography.bodySmall} ${card.content}`}>
-              {juzgado.replaceAll(
-                'á',
-                'a'
+                  <Link
+                    onClick={clickHandler}
+                    href={href}
+                    className={card.link}
+                  >
+                    <span className={`material-symbols-outlined ${ card.icon }`}>
+                      {icon ?? 'open_in_new'}
+                    </span>
+                    <span className={card.tooltiptext}>abrir</span>
+                  </Link>
+                </div>
+              )
+            : (
+                children
               )}
+
+          {contenido && (
+            <p className={`${ typography.bodySmall } ${ card.content }`}>
+              {contenido}
             </p>
-          </Link>
-        )}
+          )}
+          {juzgado && (
+            <Link
+              href={`https://ramajudicial.gov.co/web/${ juzgado.replaceAll (
+                'á',
+                'a',
+              ) }`}
+            >
+              {' '}
+              <p className={`${ typography.bodySmall } ${ card.content }`}>
+                {juzgado.replaceAll (
+                  'á',
+                  'a'
+                )}
+              </p>
+            </Link>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
 };

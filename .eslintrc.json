@@ -1,10 +1,22 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "array-bracket-newline": ["error", { "multiline": true, "minItems": 1 }],
-    "array-element-newline": ["error", { "multiline": true, "minItems": 1 }],
+    "array-bracket-newline": [
+      "error",
+      {
+        "minItems": 1,
+        "multiline": true
+      }
+    ],
     "array-bracket-spacing": ["error", "always"],
     "array-callback-return": "error",
+    "array-element-newline": [
+      "error",
+      {
+        "minItems": 1,
+        "multiline": true
+      }
+    ],
     "arrow-body-style": [
       "error",
       "as-needed",
@@ -12,10 +24,22 @@
         "requireReturnForObjectLiteral": true
       }
     ],
-    "brace-style": ["error", "stroustrup"],
+    "brace-style": [
+      "error",
+      "stroustrup",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "computed-property-spacing": ["error", "always"],
     "consistent-return": "error",
     "curly": "error",
+    "func-call-spacing": ["error", "always"],
     "function-call-argument-newline": ["error", "always"],
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": ["block-like", "block"] }
+    ],
     "function-paren-newline": [
       "error",
       {
@@ -23,15 +47,33 @@
       }
     ],
     "getter-return": "error",
+    "key-spacing": ["error", { "align": "colon" }],
     "indent": [
       "error",
       2,
-      { "FunctionDeclaration": { "parameters": "first" } }
+      {
+        "ArrayExpression": "first",
+        "CallExpression": {
+          "arguments": "first"
+        },
+        "offsetTernaryExpressions": true,
+        "FunctionDeclaration": {
+          "body": 2,
+          "parameters": "first"
+        },
+        "FunctionExpression": {
+          "body": 2,
+          "parameters": "first"
+        },
+        "ObjectExpression": "first",
+        "SwitchCase": 2,
+        "VariableDeclarator": "first"
+      }
     ],
     "linebreak-style": ["error", "unix"],
     "multiline-ternary": ["error", "always"],
-    "no-dupe-else-if": "error",
     "no-dupe-args": "error",
+    "no-dupe-else-if": "error",
     "no-else-return": [
       "error",
       {
@@ -39,9 +81,19 @@
       }
     ],
     "no-unreachable": "error",
+    "object-curly-newline": [
+      "error",
+      {
+        "ExportDeclaration": "always",
+        "ImportDeclaration": "never",
+        "ObjectExpression": "always",
+        "ObjectPattern": "always"
+      }
+    ],
     "object-property-newline": "error",
-    "template-tag-spacing": ["error", "always"],
     "quotes": ["error", "single"],
-    "semi": "error"
+    "semi": "error",
+    "template-tag-spacing": ["error", "always"],
+    "template-curly-spacing": ["error", "always"]
   }
 }

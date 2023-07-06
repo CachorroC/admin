@@ -9,12 +9,12 @@ const hostname =
     ? 'beta.rsasesorjuridico.com'
     : 'app.rsasesorjuridico.com');
 
-export const getBaseUrl = cache(
+export const getBaseUrl = cache (
   () => {
-    const uri = `https://${hostname}` ?? `http://localhost:${basePort}`;
-    console.log(
-      uri
-    );
-    return uri;
+      const uri = `https://${ hostname }` ?? `http://localhost:${ basePort }`;
+      console.log (
+        uri
+      );
+      return uri;
   }
 );

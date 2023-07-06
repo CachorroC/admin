@@ -10,6 +10,7 @@ import { useNavigator } from '#@/app/search-context';
 import Image from 'next/image';
 import Title from '../Headings/title';
 import { Name } from '../Headings/clientSideName';
+
 export const CardCarpeta = (
   {
     name,
@@ -27,48 +28,49 @@ export const CardCarpeta = (
   icon?: string;
 }
 ) => {
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] = useNavigator();
-  const [
-    isOpen,
-    setIsOpen
-  ] = useModal();
-  const clickHandler = () => {
-    setIsNavOpen(
-      false
-    );
-    setIsOpen(
-      true
-    );
-  };
-  const pathname = usePathname();
+    const [
+      isNavOpen,
+      setIsNavOpen
+    ] = useNavigator ();
+    const [
+      isOpen,
+      setIsOpen
+    ] = useModal ();
 
-  const href = (
+    const clickHandler = () => {
+        setIsNavOpen (
+          false
+        );
+        setIsOpen (
+          true
+        );
+    };
+    const pathname = usePathname ();
+
+    const href = (
     llaveProceso
       ? idProceso
-        ? `${path}/${llaveProceso}/${idProceso}`
-        : `${path}/${llaveProceso}`
-      : `${path}`
+        ? `${ path }/${ llaveProceso }/${ idProceso }`
+        : `${ path }/${ llaveProceso }`
+      : `${ path }`
   ) as Route;
-  const isActive =
+    const isActive =
     pathname === href ||
-    pathname === `${path}/${llaveProceso}/${idProceso}` ||
-    pathname === `${path}/${llaveProceso}` ||
+    pathname === `${ path }/${ llaveProceso }/${ idProceso }` ||
+    pathname === `${ path }/${ llaveProceso }` ||
     pathname === path;
-  return (
-    <div className={isActive
-      ? carpeta.cardIsActive
-      : carpeta.card}>
-      <div className={carpeta.cardInner}>
-        <div className={carpeta.cardFront}>
-          <Name helper={name} />
-        </div>
-        <div className={carpeta.cardBack}>
-          <Suspense fallback={<p>Loading...</p>}>{children}</Suspense>
+    return (
+      <div className={isActive
+        ? carpeta.cardIsActive
+        : carpeta.card}>
+        <div className={carpeta.cardInner}>
+          <div className={carpeta.cardFront}>
+            <Name helper={name} />
+          </div>
+          <div className={carpeta.cardBack}>
+            <Suspense fallback={<p>Loading...</p>}>{children}</Suspense>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
 };

@@ -8,9 +8,9 @@ export default async function Page(
   params: { llaveProceso: string; idProceso: number };
 }
 ) {
-  return (
-    <>
-      <Title />
-    </>
-  );
+    return (
+      <>
+        <Title />
+      </>
+    );
 }

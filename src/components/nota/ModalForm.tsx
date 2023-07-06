@@ -12,49 +12,53 @@ export const ModalForm = (
   setModalFormData: React.Dispatch<React.SetStateAction<string>>;
 }
 ) => {
-  const { register, reset, handleSubmit } = useForm<FormValues>(
-    {
-      defaultValues: {
-        mail,
-      },
-    }
-  );
-
-  React.useEffect(
-    () => {
-      reset(
-        {
+    const {
+      register, reset, handleSubmit 
+    } = useForm<FormValues> (
+      {
+        defaultValues: {
           mail,
-        }
-      );
-    },
-    [
-      reset,
-      mail
-    ]
-  );
-
-  const onSubmit = (
-    data: FormValues
-  ) => {
-    setModalFormData(
-      data.mail
+        },
+      }
     );
-  };
 
-  return (
-    <form onSubmit={handleSubmit(
-      onSubmit
-    )}>
-      <h2>Modal</h2>
-      <input
-        placeholder='mail'
-        {...register(
-          'mail',
-          { required: true }
-        )}
-      />
-      <input type='submit' />
-    </form>
-  );
+    React.useEffect (
+      () => {
+          reset (
+            {
+              mail,
+            }
+          );
+      },
+      [
+        reset,
+        mail
+      ]
+    );
+
+    const onSubmit = (
+      data: FormValues
+    ) => {
+        setModalFormData (
+          data.mail
+        );
+    };
+
+    return (
+      <form onSubmit={handleSubmit (
+        onSubmit
+      )}>
+        <h2>Modal</h2>
+        <input
+          placeholder='mail'
+          {...register (
+            'mail',
+            {
+              required: true 
+            }
+          )}
+        />
+        <input type='submit' />
+      </form>
+    );
 };

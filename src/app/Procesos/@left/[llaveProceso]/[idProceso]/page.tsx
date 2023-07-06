@@ -10,15 +10,15 @@ export default async function Page(
   params: { llaveProceso: string; idProceso: number };
 }
 ) {
-  const actuaciones = await getActuacionesByidProceso(
-    {
-      idProceso: params.idProceso,
-    }
-  );
-  return (
-    <>
-      {actuaciones.acts &&
-        actuaciones.acts.map(
+    const actuaciones = await getActuacionesByidProceso (
+      {
+        idProceso: params.idProceso,
+      }
+    );
+    return (
+      <>
+        {actuaciones.acts &&
+        actuaciones.acts.map (
           (
             actuacion, index, arr
           ) => (
@@ -28,6 +28,6 @@ export default async function Page(
             />
           )
         )}
-    </>
-  );
+      </>
+    );
 }

@@ -7,18 +7,21 @@ import { fetchFechas } from '#@/lib/Actuaciones';
 import { CardSearchList } from '#@/components/search/CardSearchList';
 import type { Route } from 'next';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
+
 export default async function PageProcesosLeft() {
-  const carpetas = await getCarpetas();
-  const fechas = await fetchFechas(
-    { procesos: carpetas }
-  );
-  return (
-    <Suspense fallback={<SearchOutputListSkeleton />}>
-      <CardSearchList
-        path={'/Procesos' as Route}
-        uri={`${getBaseUrl()}`}
-        Fechas={fechas}
-      />
-    </Suspense>
-  );
+    const carpetas = await getCarpetas ();
+    const fechas = await fetchFechas (
+      {
+        procesos: carpetas 
+      }
+    );
+    return (
+      <Suspense fallback={<SearchOutputListSkeleton />}>
+        <CardSearchList
+          path={'/Procesos' as Route}
+          uri={`${ getBaseUrl () }`}
+          Fechas={fechas}
+        />
+      </Suspense>
+    );
 }
