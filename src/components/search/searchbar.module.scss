@@ -19,7 +19,6 @@
   gap: 5cqmin;
   border-radius: 2vmin;
   text-align: center;
-
   .date {
     grid-area: date;
     background-color: var(--surface);
@@ -29,27 +28,7 @@
     border-radius: 2cqmin;
     align-self: center;
   }
-}
-/*
-.notActive {
-  &:link {
-    background-color: var(--surface-container);
-    color: var(--on-surface);
-  }
-  &:visited {
-    background-color: var(--surface-container-lowest);
-    color: var(--on-surface-variant);
-  }
-  &:hover {
-    background-color: var(--surface-container-high);
-    color: var(--on-surface);
-    box-shadow: var(--dp8);
-  }
-  &:active {
-    background-color: var(--surface-container-highest);
-    color: var(--primary);
-  }
-} */
+} /*.notActive {  &:link {    background-color: var(--surface-container);    color: var(--on-surface);  }  &:visited {    background-color: var(--surface-container-lowest);    color: var(--on-surface-variant);  }  &:hover {    background-color: var(--surface-container-high);    color: var(--on-surface);    box-shadow: var(--dp8);  }  &:active {    background-color: var(--surface-container-highest);    color: var(--primary);  }} */
 .isActive {
   &:link,
   &:visited {
@@ -64,7 +43,6 @@
     color: var(--on-primary-container);
   }
 }
-
 .input {
   background-color: var(
     --surface-container-lowest
@@ -75,7 +53,6 @@
   border-radius: 10cqmin;
   text-align: center;
   flex: 2 0 auto;
-
   &:hover,
   &:active,
   &:focus {
@@ -85,35 +62,29 @@
     box-shadow: var(--dp4);
   }
 }
-
 .inputForm {
   padding: 1cqmin;
   box-sizing: border-box;
   grid-area: InputSearchBar;
   background-color: var(--tertiary-container);
   box-shadow: var(--dp3);
-
   & > .icon {
     font-variation-settings: 'FILL' 0, 'wght' 200,
       'GRAD' 0, 'opsz' 24;
     color: var(--secondary);
   }
-
   &:link {
     background-color: var(--sf-3);
     color: var(--on-surface);
   }
-
   &:visited {
     background-color: var(--sf-2);
     color: var(--on-surface-variant);
   }
-
   &:hover {
     background-color: var(--sf-5);
     color: var(--primary);
     border: 3px solid var(--outline);
-
     & > .icon {
       font-variation-settings: 'FILL' 1,
         'wght' 600, 'GRAD' 200, 'opsz' 48;
@@ -121,21 +92,18 @@
     }
   }
 }
-
 @container link (width < 100px) {
   .isActive,
   .notActive {
     background-color: red;
   }
 }
-
 @container link ( 100px < width < 200px) {
   .isActive,
   .notActive {
     background-color: orange;
   }
 }
-
 @container link ( 200px < width < 300px) {
   .isActive,
   .notActive {
@@ -154,7 +122,6 @@
     background-color: blue;
   }
 }
-
 @container link ( 500px < width < 600px) {
   .isActive,
   .notActive {

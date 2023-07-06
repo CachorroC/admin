@@ -5,7 +5,6 @@
     width: 100%;
   }
 }
-
 .card {
   box-sizing: border-box;
   box-shadow: var(--dp3);
@@ -17,7 +16,6 @@
   flex-flow: row wrap;
   background-color: var(--secondary-container);
   color: var(--on-secondary-container);
-
   .title {
     color: var(--secondary);
     text-align: right;

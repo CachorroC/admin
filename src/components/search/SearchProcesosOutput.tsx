@@ -1,10 +1,8 @@
 'use client';
 import { monDemandado } from '#@/lib/types/mongodb';
 import { intFecha } from '#@/lib/types/demandados';
-import {
-  useSearch,
-  useNavigator,
-} from '#@/app/search-context';
+import {useSearch,
+  useNavigator,} from '#@/app/search-context';
 import { LinkCard } from './link';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { fixFechas } from '#@/lib/fix';
@@ -22,41 +20,49 @@ export default function SearchOutputList({
   path: string;
   fechas: intFecha[];
 }) {
-  const pathname = usePathname();
-  const [search, setSearch] = useSearch();
+  const pathname = usePathname ();
+
+  const [
+    search,
+    setSearch
+  ] = useSearch ();
 
   const clickHandler = () => {
-    setIsNavOpen(false);
+    setIsNavOpen (false);
   };
-  const [isNavOpen, setIsNavOpen] =
-    useNavigator();
+
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] =
+    useNavigator ();
 
   const isActive = pathname === path;
+
   const href = path as Route;
 
   const rows: any[] = [];
 
-  const idk = [...fechas].sort((a, b) => {
+  const idk = [
+    ...fechas
+  ].sort ((a, b) => {
     if (!a.fecha || a.fecha === undefined) {
       return 1;
     }
-
     if (!b.fecha || b.fecha === undefined) {
       return -1;
     }
-    let x = a.fecha.toLowerCase();
-    let y = b.fecha.toLowerCase();
-
+    let x = a.fecha.toLowerCase ();
+    let y = b.fecha.toLowerCase ();
     if (x < y) {
       return 1;
     }
-
     if (x > y) {
       return -1;
     }
     return 0;
   });
-  idk.forEach((proceso, index, array) => {
+  idk.forEach ((proceso, index, array) => {
     const {
       idProceso,
       llaveProceso,
@@ -64,16 +70,18 @@ export default function SearchOutputList({
       fecha,
       _id,
     } = proceso;
-    const { Nombre, Id, Tel, Direccion } = Deudor;
 
+    const {
+      Nombre, Id, Tel, Direccion 
+    } = Deudor;
     if (
-      Nombre.toLowerCase().indexOf(
-        search.toLowerCase()
+      Nombre.toLowerCase ().indexOf (
+        search.toLowerCase ()
       ) === -1
     ) {
       return;
     }
-    rows.push(
+    rows.push (
       <LinkCard
         path={path}
         proceso={proceso}
@@ -81,26 +89,30 @@ export default function SearchOutputList({
       />
     );
   });
-
   return (
     <>
+      {' '}
       <div className={searchbar.container}>
+        {' '}
         <div
           className={
             isActive
               ? searchbar.isActive
               : searchbar.notActive
           }>
-          <Name helper={path} />
-
+          {' '}
+          <Name helper={path} />{' '}
           <div className={searchbar.section}>
+            {' '}
             <sub className={searchbar.date}>
-              {fixFechas(
-                new Date().toISOString()
-              )}
-            </sub>
-          </div>
+              {' '}
+              {fixFechas (
+                new Date ().toISOString ()
+              )}{' '}
+            </sub>{' '}
+          </div>{' '}
           <div className={searchbar.links}>
+            {' '}
             <Link
               className={
                 isActive
@@ -109,11 +121,13 @@ export default function SearchOutputList({
               }
               onClick={clickHandler}
               href={href}>
+              {' '}
               <span
-                className={`${searchbar.icon} material-symbols-outlined`}>
-                file_open
-              </span>
-            </Link>
+                className={`${ searchbar.icon } material-symbols-outlined`}>
+                {' '}
+                file_open{' '}
+              </span>{' '}
+            </Link>{' '}
             <Link
               className={
                 isActive
@@ -121,15 +135,17 @@ export default function SearchOutputList({
                   : searchbar.link
               }
               href='/Notas/NuevaNota'>
+              {' '}
               <span
-                className={`material-symbols-outlined ${searchbar.icon}`}>
-                add
-              </span>
-            </Link>
-          </div>
-        </div>
-      </div>
-      {rows}
+                className={`material-symbols-outlined ${ searchbar.icon }`}>
+                {' '}
+                add{' '}
+              </span>{' '}
+            </Link>{' '}
+          </div>{' '}
+        </div>{' '}
+      </div>{' '}
+      {rows}{' '}
     </>
   );
 }

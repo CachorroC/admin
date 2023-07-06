@@ -1,30 +1,39 @@
-import {
-  Poiret_One,
+import {Poiret_One,
   Inter,
   Raleway,
   Josefin_Sans,
-  Roboto,
-} from 'next/font/google';
+  Roboto,} from 'next/font/google';
 import localFont from 'next/font/local';
 
 // define your variable fonts
-const inter = Inter({
-  subsets: ['latin-ext', 'latin'],
+const inter = Inter ({
+  subsets: [
+    'latin-ext',
+    'latin'
+  ],
   variable: '--inter',
 });
-const josefina = Josefin_Sans({
-  subsets: ['latin'],
+
+const josefina = Josefin_Sans ({
+  subsets: [
+    'latin'
+  ],
   variable: '--josefa',
 });
 
-const raleway = Raleway({
-  subsets: ['latin'],
+const raleway = Raleway ({
+  subsets: [
+    'latin'
+  ],
   variable: '--raleway',
 });
-const roboto = Roboto({
-  subsets: ['latin'],
+
+const roboto = Roboto ({
+  subsets: [
+    'latin'
+  ],
   variable: '--roboto',
-  weight: [
+  weight  : [
     '100',
     '300',
     '400',
@@ -33,10 +42,14 @@ const roboto = Roboto({
     '900',
   ],
 });
-const poiret = Poiret_One({
-  weight: '400',
+
+const poiret = Poiret_One ({
+  weight  : '400',
   variable: '--font-poiret',
-  subsets: ['latin', 'latin-ext'],
+  subsets : [
+    'latin',
+    'latin-ext'
+  ],
 });
 
 export {

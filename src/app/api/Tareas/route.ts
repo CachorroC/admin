@@ -1,196 +1,184 @@
 import 'server-only';
-import {
-  NextRequest,
-  NextResponse,
-} from 'next/server';
+import {NextRequest,
+  NextResponse,} from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { ObjectId } from 'mongodb';
 
 const Collection = async () => {
   const client = await clientPromise;
-
   if (!client) {
-    throw new Error('no hay cliente mongólico');
+    throw new Error ('no hay cliente mongólico');
   }
-  const db = client.db('RyS');
-  const notas = db.collection('Tareas');
+
+  const db = client.db ('RyS');
+
+  const notas = db.collection ('Tareas');
   return notas;
 };
 
 export async function GET(Request: NextRequest) {
-  const { searchParams } = new URL(Request.url);
+  const { searchParams } = new URL (Request.url);
+
   const client = await clientPromise;
-
   if (!client) {
-    throw new Error('no hay cliente mongólico');
+    throw new Error ('no hay cliente mongólico');
   }
-  const db = client.db('RyS');
-  const notas = await db
-    .collection('Tareas')
-    .find({})
-    .toArray();
 
+  const db = client.db ('RyS');
+
+  const notas = await db
+    .collection ('Tareas')
+    .find ({})
+    .toArray ();
   if (!notas.length) {
-    throw new Error('no hay entradas en mongo');
+    throw new Error ('no hay entradas en mongo');
   }
-  const llaveProceso = searchParams.get(
+
+  const llaveProceso = searchParams.get (
     'llaveProceso'
   );
-
   if (llaveProceso) {
-    const Tareas = notas.filter(
+    const Tareas = notas.filter (
       (nota) => nota.llaveProceso === llaveProceso
     );
-    return new NextResponse(
-      JSON.stringify(Tareas),
+    return new NextResponse (
+      JSON.stringify (Tareas),
       {
-        status: 200,
-        headers: {
-          'content-type': 'application/json',
-        },
+        status : 200,
+        headers: {'content-type': 'application/json',},
       }
     );
   }
 
-  const _id = searchParams.get('_id');
-
+  const _id = searchParams.get ('_id');
   if (_id) {
-    const Nota = notas.find(
-      (nota) => nota._id.toString() === _id
+    const Nota = notas.find (
+      (nota) => nota._id.toString () === _id
     );
-    return new NextResponse(
-      JSON.stringify(Nota),
+    return new NextResponse (
+      JSON.stringify (Nota),
       {
-        status: 200,
-        headers: {
-          'content-type': 'application/json',
-        },
+        status : 200,
+        headers: {'content-type': 'application/json',},
       }
     );
   }
-  return new NextResponse(JSON.stringify(notas), {
-    status: 200,
-    headers: {
-      'content-type': 'application/json',
-    },
-  });
+  return new NextResponse (
+    JSON.stringify (notas),
+    {
+      status : 200,
+      headers: {'content-type': 'application/json',},
+    }
+  );
 }
 
 export async function POST(request: NextRequest) {
-  const incomingRequest = await request.json();
-  const client = await Collection();
-  const outgoingRequest = await client.insertOne(
+  const incomingRequest = await request.json ();
+
+  const client = await Collection ();
+
+  const outgoingRequest = await client.insertOne (
     incomingRequest
   );
-
   if (!outgoingRequest.acknowledged) {
-    return new NextResponse(null, {
-      status: 404,
-    });
+    return new NextResponse (
+      null,
+      {status: 404,}
+    );
   }
-  return new NextResponse(
-    JSON.stringify(
+  return new NextResponse (
+    JSON.stringify (
       outgoingRequest.insertedId +
-        `${outgoingRequest.acknowledged}`
+        `${ outgoingRequest.acknowledged }`
     ),
     {
-      status: 200,
-      headers: {
-        'content-type': 'application/json',
-      },
+      status : 200,
+      headers: {'content-type': 'application/json',},
     }
   );
 }
 
 export async function PUT(Request: NextRequest) {
-  const updatedNote = await Request.json();
-  const notas = await Collection();
+  const updatedNote = await Request.json ();
 
-  const { searchParams } = new URL(Request.url);
-  const id = searchParams.get('id');
+  const notas = await Collection ();
 
+  const { searchParams } = new URL (Request.url);
+
+  const id = searchParams.get ('id');
   if (id) {
-    const query = {
-      _id: new ObjectId(id),
-    };
-    const result = await notas.updateOne(query, {
-      $set: updatedNote,
-    });
+    const query = { _id: new ObjectId (id) };
 
+    const result = await notas.updateOne (
+      query,
+      {$set: updatedNote,}
+    );
     if (result.acknowledged) {
-      return new NextResponse(
-        `Successfully updated game with id ${id}`,
+      return new NextResponse (
+        `Successfully updated game with id ${ id }`,
         {
-          status: 200,
-          headers: {
-            'content-type': 'text/html',
-          },
+          status : 200,
+          headers: {'content-type': 'text/html',},
         }
       );
     }
-    return new NextResponse(
+    return new NextResponse (
       `the result was ${
-        result.acknowledged ? 'true' : 'false'
-      } with ${result.modifiedCount.toString()}`,
+        result.acknowledged
+          ? 'true'
+          : 'false'
+      } with ${ result.modifiedCount.toString () }`,
       {
-        status: 200,
-        headers: {
-          'content-type': 'text/html',
-        },
+        status : 200,
+        headers: { 'content-type': 'text/html' },
       }
     );
   }
-  return new NextResponse(null, {
-    status: 404,
-  });
+  return new NextResponse (
+    null,
+    { status: 404 }
+  );
 }
 
 export async function DELETE(
   Request: NextRequest
 ) {
-  const notas = await Collection();
-  const { searchParams } = new URL(Request.url);
-  const id = searchParams.get('_id');
+  const notas = await Collection ();
 
+  const { searchParams } = new URL (Request.url);
+
+  const id = searchParams.get ('_id');
   if (id) {
-    const query = {
-      _id: new ObjectId(id),
-    };
-    const Result = await notas.deleteOne(query);
+    const query = { _id: new ObjectId (id) };
 
+    const Result = await notas.deleteOne (query);
     if (Result.acknowledged) {
       const count = Result.deletedCount;
-      const response = {
-        isOk: true,
-        deletedCount: count,
-        deletedId: id,
-      };
-      return new NextResponse(
-        JSON.stringify(response),
-        {
-          status: 202,
-          headers: {
-            'content-type': 'application/json',
-          },
-        }
-      );
-    }
 
-    if (!Result.acknowledged) {
-      return new NextResponse(
-        JSON.stringify(
-          `error 400 ${id} not deleted`
-        ),
+      const response = {
+        isOk        : true,
+        deletedCount: count,
+        deletedId   : id,
+      };
+      return new NextResponse (
+        JSON.stringify (response),
         {
-          status: 400,
+          status : 202,
+          headers: {'content-type': 'application/json',},
         }
       );
     }
-    return new NextResponse(
-      JSON.stringify(Result),
-      {
-        status: 200,
-      }
+    if (!Result.acknowledged) {
+      return new NextResponse (
+        JSON.stringify (
+          `error 400 ${ id } not deleted`
+        ),
+        { status: 400 }
+      );
+    }
+    return new NextResponse (
+      JSON.stringify (Result),
+      { status: 200 }
     );
   }
 }

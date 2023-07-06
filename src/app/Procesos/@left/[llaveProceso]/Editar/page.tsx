@@ -13,23 +13,25 @@ export default async function page({
   searchParams: { _id: string };
 }) {
   const llaveProceso = params.llaveProceso;
-  const _id = searchParams._id;
-  const nota = await getNotaById({
-    _id: _id,
-  });
 
+  const _id = searchParams._id;
+
+  const nota = await getNotaById ({ _id: _id });
   return (
     <div className={note.container}>
+      {' '}
       <div className={note.note}>
-        {nota.map((ntext, i) => (
+        {' '}
+        {nota.map ((ntext, i) => (
           <Fragment key={ntext._id}>
+            {' '}
             <Edit
-              uri={getBaseUrl()}
+              uri={getBaseUrl ()}
               nota={ntext}
-            />
+            />{' '}
           </Fragment>
-        ))}
-      </div>
+        ))}{' '}
+      </div>{' '}
     </div>
   );
 }

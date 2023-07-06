@@ -1,18 +1,14 @@
 'use client';
 import styles from './carpetas.module.scss';
-import {
-  intDemanda,
-  monCarpetaDemandado,
-} from '#@/lib/types/demandados';
+import {intDemanda,
+  monCarpetaDemandado,} from '#@/lib/types/demandados';
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 import type { Route } from 'next';
 import { usePathname } from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
 
-export const DemandaContainer = ({
-  demanda,
-}: {
+export const DemandaContainer = ({demanda,}: {
   demanda: intDemanda;
 }) => {
   const {
@@ -29,38 +25,43 @@ export const DemandaContainer = ({
   } = demanda;
   return (
     <div className={styles.section}>
+      {' '}
       <h1 className={typography.headlineMedium}>
-        {Radicado}
-      </h1>
+        {' '}
+        {Radicado}{' '}
+      </h1>{' '}
       <h2
         className={
           typography.titleMedium
-        }>{`${Departamento}: ${Municipio}`}</h2>
+        }>{`${ Departamento }: ${ Municipio }`}</h2>{' '}
       {VencimientoPagare && (
         <p className={typography.labelMedium}>
-          {fixFechas(VencimientoPagare)}
+          {' '}
+          {fixFechas (VencimientoPagare)}{' '}
         </p>
-      )}
+      )}{' '}
       {EntregadeGarantiasAbogado && (
         <p className={typography.labelSmall}>
-          {fixFechas(EntregadeGarantiasAbogado)}
+          {' '}
+          {fixFechas (
+            EntregadeGarantiasAbogado
+          )}{' '}
         </p>
-      )}
+      )}{' '}
       {CapitalAdeudado && (
         <p className={typography.labelSmall}>
-          {CapitalAdeudado}
+          {' '}
+          {CapitalAdeudado}{' '}
         </p>
-      )}
+      )}{' '}
     </div>
   );
 };
 
-export const CarpetaCard = ({
-  Carpeta,
-}: {
+export const CarpetaCard = ({Carpeta,}: {
   Carpeta: monCarpetaDemandado;
 }) => {
-  const pathname = usePathname();
+  const pathname = usePathname ();
 
   const {
     llaveProceso,
@@ -69,101 +70,123 @@ export const CarpetaCard = ({
     _id,
     Demanda,
   } = Carpeta;
-  const { Nombre, Tel, Direccion, Email } =
+
+  const {
+    Nombre, Tel, Direccion, Email 
+  } =
     Deudor;
 
   const path = '/Procesos';
+
   const href = (
     llaveProceso
       ? idProceso
-        ? `${path}/${llaveProceso}/${idProceso}`
-        : `${path}/${llaveProceso}`
-      : `${path}`
+        ? `${ path }/${ llaveProceso }/${ idProceso }`
+        : `${ path }/${ llaveProceso }`
+      : `${ path }`
   ) as Route;
+
   const isActive =
     pathname === href ||
     pathname ===
-      `${path}/${llaveProceso}/${idProceso}` ||
-    pathname === `${path}/${llaveProceso}` ||
+      `${ path }/${ llaveProceso }/${ idProceso }` ||
+    pathname === `${ path }/${ llaveProceso }` ||
     pathname === path;
   return (
     <>
-      <DemandaContainer demanda={Demanda} />
+      {' '}
+      <DemandaContainer demanda={Demanda} />{' '}
       <div
         className={styles.container}
         key={_id}>
+        {' '}
         <div
           className={
             isActive
               ? styles.cardActive
               : styles.cardInactive
           }>
+          {' '}
           <h1
-            className={`${typography.titleMedium} ${styles.title}`}>
-            {Nombre}
-          </h1>
+            className={`${ typography.titleMedium } ${ styles.title }`}>
+            {' '}
+            {Nombre}{' '}
+          </h1>{' '}
           <p className={styles.content}>
-            {Direccion}
-          </p>
+            {' '}
+            {Direccion}{' '}
+          </p>{' '}
           <div className={styles.links}>
+            {' '}
             <Link
               className={styles.button}
               href={href}>
+              {' '}
               <span
-                className={`material-symbols-outlined ${styles.icon}`}>
-                folder_open
-              </span>
+                className={`material-symbols-outlined ${ styles.icon }`}>
+                {' '}
+                folder_open{' '}
+              </span>{' '}
               <span
                 className={styles.tooltiptext}>
-                Abrir
-              </span>
-            </Link>
-
+                {' '}
+                Abrir{' '}
+              </span>{' '}
+            </Link>{' '}
             {Tel && Tel.Celular && (
               <Link
                 className={styles.button}
-                href={`tel:${Tel.Celular}`}>
+                href={`tel:${ Tel.Celular }`}>
+                {' '}
                 <span
-                  className={`material-symbols-outlined ${styles.icon}`}>
-                  phone_iphone
-                </span>
+                  className={`material-symbols-outlined ${ styles.icon }`}>
+                  {' '}
+                  phone_iphone{' '}
+                </span>{' '}
                 <span
                   className={styles.tooltiptext}>
-                  Numero Celular
-                </span>
+                  {' '}
+                  Numero Celular{' '}
+                </span>{' '}
               </Link>
-            )}
+            )}{' '}
             {Email && (
               <Link
                 className={styles.button}
-                href={`mailto:${Email}`}>
+                href={`mailto:${ Email }`}>
+                {' '}
                 <span
-                  className={`material-symbols-outlined ${styles.icon}`}>
-                  forward_to_inbox
-                </span>
+                  className={`material-symbols-outlined ${ styles.icon }`}>
+                  {' '}
+                  forward_to_inbox{' '}
+                </span>{' '}
                 <span
                   className={styles.tooltiptext}>
-                  Email
-                </span>
+                  {' '}
+                  Email{' '}
+                </span>{' '}
               </Link>
-            )}
+            )}{' '}
             {Tel && Tel.Fijo && (
               <Link
                 className={styles.button}
-                href={`tel:${Tel.Fijo}`}>
+                href={`tel:${ Tel.Fijo }`}>
+                {' '}
                 <span
-                  className={`material-symbols-outlined ${styles.icon}`}>
-                  call
-                </span>
+                  className={`material-symbols-outlined ${ styles.icon }`}>
+                  {' '}
+                  call{' '}
+                </span>{' '}
                 <span
                   className={styles.tooltiptext}>
-                  Numero Fijo
-                </span>
+                  {' '}
+                  Numero Fijo{' '}
+                </span>{' '}
               </Link>
-            )}
-          </div>
-        </div>
-      </div>
+            )}{' '}
+          </div>{' '}
+        </div>{' '}
+      </div>{' '}
     </>
   );
 };

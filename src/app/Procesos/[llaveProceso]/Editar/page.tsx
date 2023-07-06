@@ -9,20 +9,21 @@ export default async function Page({
   searchParams: { _id: string };
 }) {
   const llaveProceso = params.llaveProceso;
+
   const _id = searchParams._id;
-  const nota = await getNotaById({
-    _id: _id,
-  });
+
+  const nota = await getNotaById ({ _id: _id });
+
   const ntext = nota
-    .map((nt) => {
+    .map ((nt) => {
       const name = nt.nota;
       return name;
     })
-    .toString();
+    .toString ();
   return (
     <h1 className={typeface.title}>
       {' '}
-      {`Editar: ${ntext}`}{' '}
+      {`Editar: ${ ntext }`}{' '}
     </h1>
   );
 }

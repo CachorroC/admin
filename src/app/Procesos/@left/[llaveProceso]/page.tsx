@@ -1,28 +1,19 @@
-import {
-  getCarpetas,
-  getCarpetasByllaveProceso,
-} from '#@/lib/Carpetas';
-import {
-  getActuacionesByidProceso,
-  getConsultaNumeroRadicion,
-} from '#@/lib/RamaJudicial';
+import {getCarpetas,
+  getCarpetasByllaveProceso,} from '#@/lib/Carpetas';
+import {getActuacionesByidProceso,
+  getConsultaNumeroRadicion,} from '#@/lib/RamaJudicial';
 import { Fragment, Suspense } from 'react';
 import { ActuacionCard } from '#@/components/card/ActuacionesCard';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
-
-async function Acts({
-  idProceso,
-}: {
+async function Acts({idProceso,}: {
   idProceso: number;
 }) {
   const actuaciones =
-    await getActuacionesByidProceso({
-      idProceso: idProceso,
-    });
+    await getActuacionesByidProceso ({idProceso: idProceso,});
   return (
     <>
       {actuaciones.acts &&
-        actuaciones.acts.map((act, i, arr) => {
+        actuaciones.acts.map ((act, i, arr) => {
           const { idRegActuacion } = act;
           return (
             <ActuacionCard
@@ -35,42 +26,43 @@ async function Acts({
   );
 }
 
-export default async function PageProcesosLeftllaveProceso({
-  params,
-}: {
+export default async function PageProcesosLeftllaveProceso({params,}: {
   params: {
     llaveProceso: string;
   };
 }) {
-  const Carpetas = getCarpetasByllaveProceso({
-    llaveProceso: params.llaveProceso,
-  });
-  const Procesos = getConsultaNumeroRadicion({
-    llaveProceso: params.llaveProceso,
-  });
-  // Wait for the promises to resolve
-  const [carpetas, procesos] = await Promise.all([
+  const Carpetas = getCarpetasByllaveProceso ({llaveProceso: params.llaveProceso,});
+
+  const Procesos = getConsultaNumeroRadicion ({llaveProceso: params.llaveProceso,}); // Wait for the promises to resolve
+
+  const [
+    carpetas,
+    procesos
+  ] = await Promise.all ([
     Carpetas,
     Procesos,
   ]);
+
   const cantidadProcesos = procesos.length;
+
   const cantidadCarpetas = carpetas.length;
-  const carpetasMap = carpetas.map((carpeta) => (
+
+  const carpetasMap = carpetas.map ((carpeta) => (
     <Fragment key={carpeta._id}>
       <CarpetaCard Carpeta={carpeta} />
     </Fragment>
   ));
-  const procesosMap = procesos.map((proceso) => (
+
+  const procesosMap = procesos.map ((proceso) => (
     <Fragment key={proceso.idProceso}>
       <Acts idProceso={proceso.idProceso} />
     </Fragment>
   ));
-
   switch (cantidadProcesos) {
     case 0:
       return (
         <>
-          {carpetas.map((carpeta) => {
+          {carpetas.map ((carpeta) => {
             let txt = '';
             return (
               <CarpetaCard

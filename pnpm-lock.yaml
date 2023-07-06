@@ -306,10 +306,10 @@ packages:
       fastq: 1.15.0
     dev: false
 
-  /@pkgr/utils@2.4.1:
+  /@pkgr/utils@2.4.2:
     resolution:
       {
-        integrity: sha512-JOqwkgFEyi+OROIyq7l4Jy28h/WwhDnG/cPkXG2Z1iFbubB6jsHW1NDvmyOzTBxHr3yg68YGirmh1JUgMqa+9w==,
+        integrity: sha512-POgTXhjrTfbTV63DiFXav4lBHiICLKKwDeaKn9Nphwj7WH6m0hMMCaJkMyRWjgtPFyRKRVoMXXjczsTQRDEhYw==,
       }
     engines:
       { node: ^12.20.0 || ^14.18.0 || >=16.0.0 }
@@ -3205,7 +3205,7 @@ packages:
       }
     engines: { node: ^14.18.0 || >=16.0.0 }
     dependencies:
-      '@pkgr/utils': 2.4.1
+      '@pkgr/utils': 2.4.2
       tslib: 2.6.0
     dev: false
 

@@ -8,9 +8,17 @@ export default function Error({
   error,
   reset,
 }: any) {
-  React.useEffect(() => {
-    console.log('logging error:', error);
-  }, [error]);
+  React.useEffect (
+    () => {
+      console.log (
+        'logging error:',
+        error
+      );
+    },
+    [
+      error
+    ]
+  );
 
   return (
     <div className={layout.body}>
@@ -22,9 +30,7 @@ export default function Error({
         }}>
         <h2
           className={typography.displayLarge}
-          style={{
-            color: 'var(--on-error-container)',
-          }}>
+          style={{color: 'var(--on-error-container)',}}>
           Error
         </h2>
         <p className={typography.bodyLarge}>
@@ -33,7 +39,7 @@ export default function Error({
       </div>
       <div className={layout.right}>
         <button
-          onClick={() => reset()}
+          onClick={() => reset ()}
           className={layout.button}>
           Try Again
         </button>

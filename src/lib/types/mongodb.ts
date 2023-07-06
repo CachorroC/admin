@@ -1,5 +1,4 @@
 import { MongoClient, WithId } from 'mongodb';
-
 declare global {
   var _mongoClientPromise: Promise<MongoClient>;
 }
@@ -9,6 +8,7 @@ export interface intDemandado {
   sujetosProcesales: string;
   idProceso: number;
 }
+
 export interface monDemandado
   extends WithId<Document> {
   llaveProceso: string;

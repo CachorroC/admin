@@ -14,7 +14,6 @@
   z-index: 10;
   height: 100%;
   box-sizing: border-box;
-
   box-shadow: var(--dp24);
   background-color: var(--primary-container);
   grid-template-columns: repeat(3, 1fr);
@@ -22,13 +21,7 @@
   gap: 2vmin;
   padding: 2vmin;
   display: grid;
-  grid-template-areas:
-    'forwardButton . backwardsButton'
-    'forwardButton . backwardsButton'
-    '. . .'
-    '. . .'
-    '. . .'
-    '. . .';
+  grid-template-areas: 'forwardButton . backwardsButton' 'forwardButton . backwardsButton' '. . .' '. . .' '. . .' '. . .';
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: stretch;
@@ -42,7 +35,6 @@
     align-self: stretch;
     order: 0;
   }
-
   .content {
     position: relative;
     background-color: #fefefe;
@@ -54,17 +46,14 @@
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
-
     .header {
       padding: 2px 16px;
       background-color: #5cb85c;
       color: white;
-
       & > span {
         color: white;
         font-weight: bold;
       }
-
       &:hover,
       &:active {
         & > span {
@@ -74,40 +63,31 @@
         }
       }
     }
-
     .body {
       padding: 2px 16px;
     }
-
     .footer {
       padding: 2px 16px;
       background-color: #5cb85c;
       color: white;
     }
   }
-}
-
-/* Modal Content */
-
-/* Add Animation */
+} /* Modal Content */ /* Add Animation */
 @-webkit-keyframes animatetop {
   from {
     top: -300px;
     opacity: 0;
   }
-
   to {
     top: 0;
     opacity: 1;
   }
 }
-
 @keyframes animatetop {
   from {
     top: -300px;
     opacity: 0;
   }
-
   to {
     top: 0;
     opacity: 1;

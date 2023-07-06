@@ -9,10 +9,7 @@
       "name": "Demandados",
       "url": "/Demandados"
     },
-    {
-      "name": "Nueva Nota",
-      "url": "/NuevaNota"
-    }
+    { "name": "Nueva Nota", "url": "/NuevaNota" }
   ],
   "scope": "/",
   "icons": [
@@ -46,7 +43,6 @@
       "type": "image/png",
       "purpose": "any maskable"
     },
-
     {
       "src": "icons/favicon-194x194.png",
       "sizes": "194x194",

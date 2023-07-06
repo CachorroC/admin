@@ -6,7 +6,8 @@ import LinkCardSkeleton from '#@/components/search/link-skeleton';
 export default function Loading() {
   return (
     <h1 className={typography.displayMedium}>
-      Loading
+      {' '}
+      Loading{' '}
     </h1>
   );
 }

@@ -13,28 +13,31 @@ export default async function Default({
   searchParams: { _id: string };
 }) {
   const llaveProceso = params.llaveProceso;
-  const _id = searchParams._id;
-  const nota = await getNotaById({
-    _id: _id,
-  });
 
+  const _id = searchParams._id;
+
+  const nota = await getNotaById ({ _id: _id });
   return (
     <div className={note.container}>
+      {' '}
       <div className={note.note}>
-        {nota.map((ntext, i) => (
+        {' '}
+        {nota.map ((ntext, i) => (
           <Fragment key={ntext._id}>
+            {' '}
             <h1
               key={i}
               className={typeface.title}>
-              {ntext.nota}
-            </h1>
+              {' '}
+              {ntext.nota}{' '}
+            </h1>{' '}
             <Edit
-              uri={getBaseUrl()}
+              uri={getBaseUrl ()}
               nota={ntext}
-            />
+            />{' '}
           </Fragment>
-        ))}
-      </div>
+        ))}{' '}
+      </div>{' '}
     </div>
   );
 }

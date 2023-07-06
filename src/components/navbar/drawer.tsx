@@ -7,67 +7,80 @@ import InputSearchBar from '#@/components/search/InputSearchBar';
 import useMedia from './mediaQuery';
 import typeface from '#@/components/typográficos/typeface.module.scss';
 import SearchOutputListSkeleton from '../search/SearchProcesosOutputSkeleton';
-import {
-  BackwardsButton,
+import {BackwardsButton,
   DrawerMenuButton,
   ForwardButton,
-  HomeButton,
-} from './Buttons';
+  HomeButton,} from './Buttons';
 import Title from '#@/components/Headings/title';
 import { ButtonSkeleton } from './ButtonSkeleton';
 
-export default function Drawer({
-  children,
-}: {
+export default function Drawer({children,}: {
   children: ReactNode;
 }) {
-  const isDesktop = useMedia(2);
-  const isMobile = useMedia(0);
-  const [isNavOpen, setIsNavOpen] =
-    useNavigator();
+  const isDesktop = useMedia (2);
 
+  const isMobile = useMedia (0);
+
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] =
+    useNavigator ();
   if (isNavOpen) {
     if (isMobile) {
       return (
         <nav className={navbar.drawer}>
+          {' '}
           <Suspense fallback={<ButtonSkeleton />}>
-            <DrawerMenuButton />
-          </Suspense>
+            {' '}
+            <DrawerMenuButton />{' '}
+          </Suspense>{' '}
           <Suspense fallback={<ButtonSkeleton />}>
-            <Title />
-          </Suspense>
+            {' '}
+            <Title />{' '}
+          </Suspense>{' '}
           <Suspense fallback={<ButtonSkeleton />}>
-            <ForwardButton />
-          </Suspense>
+            {' '}
+            <ForwardButton />{' '}
+          </Suspense>{' '}
           <Suspense fallback={<ButtonSkeleton />}>
-            <BackwardsButton />
-          </Suspense>
+            {' '}
+            <BackwardsButton />{' '}
+          </Suspense>{' '}
           <Suspense fallback={<ButtonSkeleton />}>
-            <InputSearchBar />
-          </Suspense>
+            {' '}
+            <InputSearchBar />{' '}
+          </Suspense>{' '}
           <Suspense fallback={<ButtonSkeleton />}>
-            <HomeButton />
-          </Suspense>
+            {' '}
+            <HomeButton />{' '}
+          </Suspense>{' '}
           <div className={navbar.sidenav}>
-            {children}
-          </div>
+            {' '}
+            {children}{' '}
+          </div>{' '}
         </nav>
       );
     }
     return (
       <nav className={navbar.drawer}>
+        {' '}
         <Suspense fallback={<ButtonSkeleton />}>
-          <InputSearchBar />
-        </Suspense>
+          {' '}
+          <InputSearchBar />{' '}
+        </Suspense>{' '}
         <Suspense fallback={<ButtonSkeleton />}>
-          <DrawerMenuButton />
-        </Suspense>
+          {' '}
+          <DrawerMenuButton />{' '}
+        </Suspense>{' '}
         <Suspense fallback={<ButtonSkeleton />}>
-          <Title />
-        </Suspense>
+          {' '}
+          <Title />{' '}
+        </Suspense>{' '}
         <div className={navbar.sidenav}>
-          {children}
-        </div>
+          {' '}
+          {children}{' '}
+        </div>{' '}
       </nav>
     );
   }

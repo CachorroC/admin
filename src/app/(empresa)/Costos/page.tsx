@@ -1,12 +1,9 @@
 'use client';
 import * as React from 'react';
-import {
-  useForm,
+import {useForm,
   useFieldArray,
   useWatch,
-  Control,
-} from 'react-hook-form';
-
+  Control,} from 'react-hook-form';
 type FormValues = {
   firstName: string;
   cart: {
@@ -15,19 +12,17 @@ type FormValues = {
     quantity: number;
   }[];
 };
-
 let renderCount = 0;
 
-const Total = ({
-  control,
-}: {
+const Total = ({control,}: {
   control: Control<FormValues>;
 }) => {
-  const formValues = useWatch({
+  const formValues = useWatch ({
     name: 'cart',
     control,
   });
-  const total = formValues.reduce(
+
+  const total = formValues.reduce (
     (acc, current) =>
       acc +
       (current.price || 0) *
@@ -43,112 +38,117 @@ export default function Costos() {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({
+  } = useForm<FormValues> ({
     defaultValues: {
       cart: [
         {
-          name: 'test',
+          name    : 'test',
           quantity: 1,
-          price: 23000,
+          price   : 23000,
         },
       ],
     },
     mode: 'onBlur',
   });
-  const { fields, append, remove } =
-    useFieldArray({
+
+  const {
+    fields, append, remove 
+  } =
+    useFieldArray ({
       name: 'cart',
       control,
     });
-  const onSubmit = (data: FormValues) =>
-    console.log(data);
-  renderCount++;
 
+  const onSubmit = (data: FormValues) =>
+    console.log (data);
+  renderCount++;
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      {' '}
+      <form onSubmit={handleSubmit (onSubmit)}>
+        {' '}
         <input
-          {...register('firstName')}
+          {...register ('firstName')}
           placeholder='First Name'
-        />
-        {fields.map((field, index) => (
+        />{' '}
+        {fields.map ((field, index) => (
           <div key={field.id}>
+            {' '}
             <section
               className={'section'}
               key={field.id}>
+              {' '}
               <input
                 placeholder='name'
-                {...register(
-                  `cart.${index}.name` as const,
-                  {
-                    required: true,
-                  }
+                {...register (
+                  `cart.${ index }.name` as const,
+                  { required: true }
                 )}
                 className={
-                  errors?.cart?.[index]?.name
+                  errors?.cart?.[ index ]?.name
                     ? 'error'
                     : ''
                 }
                 defaultValue={field.name}
-              />
+              />{' '}
               <input
                 placeholder='quantity'
                 type='number'
-                {...register(
-                  `cart.${index}.quantity` as const,
+                {...register (
+                  `cart.${ index }.quantity` as const,
                   {
                     valueAsNumber: true,
-                    required: true,
+                    required     : true,
                   }
                 )}
                 className={
-                  errors?.cart?.[index]?.quantity
+                  errors?.cart?.[ index ]?.quantity
                     ? 'error'
                     : ''
                 }
                 defaultValue={field.quantity}
-              />
+              />{' '}
               <input
                 placeholder='value'
                 type='number'
-                {...register(
-                  `cart.${index}.price` as const,
+                {...register (
+                  `cart.${ index }.price` as const,
                   {
                     valueAsNumber: true,
-                    required: true,
+                    required     : true,
                   }
                 )}
                 className={
-                  errors?.cart?.[index]?.price
+                  errors?.cart?.[ index ]?.price
                     ? 'error'
                     : ''
                 }
                 defaultValue={field.price}
-              />
+              />{' '}
               <button
                 type='button'
-                onClick={() => remove(index)}>
-                DELETE
-              </button>
-            </section>
+                onClick={() => remove (index)}>
+                {' '}
+                DELETE{' '}
+              </button>{' '}
+            </section>{' '}
           </div>
-        ))}
-
-        <Total control={control} />
-
+        ))}{' '}
+        <Total control={control} />{' '}
         <button
           type='button'
           onClick={() =>
-            append({
-              name: '',
+            append ({
+              name    : '',
               quantity: 0,
-              price: 0,
+              price   : 0,
             })
           }>
-          APPEND
-        </button>
-        <input type='submit' />
-      </form>
+          {' '}
+          APPEND{' '}
+        </button>{' '}
+        <input type='submit' />{' '}
+      </form>{' '}
     </div>
   );
 }

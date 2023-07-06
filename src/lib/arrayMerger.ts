@@ -1,9 +1,7 @@
 import { intConsultaNumeroRadicacion } from './types/procesos';
-import {
-  intProceso,
+import {intProceso,
   intActuacion,
-  IntActuaciones,
-} from '#@/lib/types/procesos';
+  IntActuaciones,} from '#@/lib/types/procesos';
 import { monDemandado } from './types/mongodb';
 import { monNota } from '#@/lib/types/notas';
 import { monCarpetaDemandado } from './types/demandados';
@@ -24,19 +22,23 @@ export function arrayMergerByidProceso({
     | monDemandado[]
     | intFecha[];
 }) {
-  const map = new Map();
-  a.forEach((item) =>
-    map.set(item.idProceso, item)
-  );
-  b.forEach((item) =>
-    map.set(item.idProceso, {
-      ...map.get(item.idProceso),
-      ...item,
-    })
-  );
-  const mergedArr = Array.from(map.values());
+  const map = new Map ();
+  a.forEach ((item) =>
+    map.set (
+      item.idProceso,
+      item
+    ));
+  b.forEach ((item) =>
+    map.set (
+      item.idProceso,
+      {
+        ...map.get (item.idProceso),
+        ...item,
+      }
+    ));
 
-  console.log(JSON.stringify(mergedArr));
+  const mergedArr = Array.from (map.values ());
+  console.log (JSON.stringify (mergedArr));
   return mergedArr;
 }
 
@@ -47,18 +49,22 @@ export function arrayMergerByllaveProceso({
   a: intProceso[];
   b: monCarpetaDemandado[];
 }) {
-  const map = new Map();
-  a.forEach((item) =>
-    map.set(item.llaveProceso, item)
-  );
-  b.forEach((item) =>
-    map.set(item.llaveProceso, {
-      ...map.get(item.llaveProceso),
-      ...item,
-    })
-  );
-  const mergedArr = Array.from(map.values());
+  const map = new Map ();
+  a.forEach ((item) =>
+    map.set (
+      item.llaveProceso,
+      item
+    ));
+  b.forEach ((item) =>
+    map.set (
+      item.llaveProceso,
+      {
+        ...map.get (item.llaveProceso),
+        ...item,
+      }
+    ));
 
-  console.log(JSON.stringify(mergedArr));
+  const mergedArr = Array.from (map.values ());
+  console.log (JSON.stringify (mergedArr));
   return mergedArr;
 }

@@ -8,32 +8,38 @@ export default function Error({
   error,
   reset,
 }: any) {
-  React.useEffect(() => {
-    console.log('logging error:', error);
-  }, [error]);
-
+  React.useEffect (
+    () => {
+      console.log (
+        'logging error:',
+        error
+      );
+    },
+    [
+      error
+    ]
+  );
   return (
     <div className={layout.header}>
+      {' '}
       <h1
         className={typography.displayLarge}
-        style={{
-          color: 'var(--error)',
-        }}>
-        Error
-      </h1>
+        style={{ color: 'var(--error)' }}>
+        {' '}
+        Error{' '}
+      </h1>{' '}
       <p
         className={typography.bodyLarge}
-        style={{
-          color: 'var(--on-surface-container)',
-        }}>
-        {error?.message}
-      </p>
-
+        style={{color: 'var(--on-surface-container)',}}>
+        {' '}
+        {error?.message}{' '}
+      </p>{' '}
       <button
-        onClick={() => reset()}
+        onClick={() => reset ()}
         className={layout.button}>
-        Try Again
-      </button>
+        {' '}
+        Try Again{' '}
+      </button>{' '}
     </div>
   );
 }

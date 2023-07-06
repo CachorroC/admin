@@ -1,26 +1,27 @@
 'use client';
 import { useNavigator } from '#@/app/search-context';
-import {
-  usePathname,
-  useSelectedLayoutSegment,
-} from 'next/navigation';
+import {usePathname,
+  useSelectedLayoutSegment,} from 'next/navigation';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { fixFechas } from '#@/lib/fix';
 import typeface from '#@/styles/fonts/typeface.module.scss';
 
-export default function Title({
-  helper,
-}: {
+export default function Title({helper,}: {
   helper?: string;
 }) {
-  const [isNavOpen, setIsNavOpen] =
-    useNavigator();
-  const pathname = usePathname();
-  const segment = useSelectedLayoutSegment();
-  const today = new Date();
-  let day;
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] =
+    useNavigator ();
 
-  switch (today.getDay()) {
+  const pathname = usePathname ();
+
+  const segment = useSelectedLayoutSegment ();
+
+  const today = new Date ();
+  let day;
+  switch (today.getDay ()) {
     case 0:
       day = 'Mimingo';
       break;
@@ -42,6 +43,7 @@ export default function Title({
     case 6:
       day = 'Sábado';
   }
+
   const days = [
     'mimingo',
     'Lunes',
@@ -51,6 +53,7 @@ export default function Title({
     'Viernes',
     'Sabado',
   ];
+
   const months = [
     'enero',
     'febrero',
@@ -67,15 +70,16 @@ export default function Title({
   ];
   return (
     <h1
-      className={`${typography.titleMedium}  ${
+      className={`${ typography.titleMedium }  ${
         isNavOpen
           ? typeface.drawer
           : typeface.navbar
       }`}>
+      {' '}
       {helper ??
-        `${days[today.getDay()]}, ${fixFechas(
-          today.toString()
-        )}`}
+        `${ days[ today.getDay () ] }, ${ fixFechas (
+          today.toString ()
+        ) }`}{' '}
     </h1>
   );
 }

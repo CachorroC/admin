@@ -8,7 +8,6 @@ import { intProceso } from '#@/lib/types/procesos';
 import { arrayMergerByllaveProceso } from '#@/lib/arrayMerger';
 import box from '#@/styles/scss/box.module.scss';
 import { Name } from '#@/components/Headings/serverSideName';
-
 function DemandadoNameBadge({
   carpeta,
   proceso,
@@ -16,69 +15,69 @@ function DemandadoNameBadge({
   carpeta: monCarpetaDemandado;
   proceso?: intProceso;
 }) {
-  const { llaveProceso, _id } = carpeta;
-
+  const {
+    llaveProceso, _id 
+  } = carpeta;
   if (proceso) {
     return (
       <Fragment
-        key={proceso ? proceso.idProceso : _id}>
-        <Name llaveProceso={llaveProceso} />
+        key={proceso
+          ? proceso.idProceso
+          : _id}>
+        {' '}
+        <Name llaveProceso={llaveProceso} />{' '}
         <p className={typography.bodySmall}>
-          {proceso.despacho}
-        </p>
-
-        <CarpetaCard Carpeta={carpeta} />
+          {' '}
+          {proceso.despacho}{' '}
+        </p>{' '}
+        <CarpetaCard Carpeta={carpeta} />{' '}
       </Fragment>
     );
   }
   return (
     <Fragment key={_id}>
-      <Name llaveProceso={llaveProceso} />
-      <CarpetaCard Carpeta={carpeta} />
+      {' '}
+      <Name llaveProceso={llaveProceso} />{' '}
+      <CarpetaCard Carpeta={carpeta} />{' '}
     </Fragment>
   );
 }
 
-export default async function PageProcesosllaveProceso({
-  params,
-}: {
-  params: {
-    llaveProceso: string;
-  };
+export default async function PageProcesosllaveProceso({params,}: {
+  params: { llaveProceso: string };
 }) {
   const Procesos =
-    await getConsultaNumeroRadicion({
-      llaveProceso: params.llaveProceso,
-    });
+    await getConsultaNumeroRadicion ({llaveProceso: params.llaveProceso,});
+
   const Carpetas =
-    await getCarpetasByllaveProceso({
-      llaveProceso: params.llaveProceso,
-    });
+    await getCarpetasByllaveProceso ({llaveProceso: params.llaveProceso,});
 
   const cantidadCarpetas = Carpetas.length;
-  const cantidadProcesos = Procesos.length;
 
+  const cantidadProcesos = Procesos.length;
   if (cantidadProcesos === 0) {
     return (
       <>
-        {Carpetas.map((Carpeta) => (
+        {' '}
+        {Carpetas.map ((Carpeta) => (
           <DemandadoNameBadge
             carpeta={Carpeta}
             key={Carpeta._id}
           />
-        ))}
+        ))}{' '}
       </>
     );
   }
   return (
     <>
-      {Procesos.map((Proceso, i) => (
+      {' '}
+      {Procesos.map ((Proceso, i) => (
         <DemandadoNameBadge
-          carpeta={Carpetas[i]}
+          carpeta={Carpetas[ i ]}
           key={Proceso.idProceso}
           proceso={Proceso}
         />
-      ))}
+      ))}{' '}
     </>
   );
 }

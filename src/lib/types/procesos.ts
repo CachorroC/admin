@@ -66,9 +66,6 @@ export interface intErrorActuacion {
 
 export interface IntActuaciones {
   idProceso: number;
-  text: {
-    statusCode: number;
-    message: string;
-  };
+  text: { statusCode: number; message: string };
   acts?: intActuacion[];
 }

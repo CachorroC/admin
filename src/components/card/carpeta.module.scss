@@ -10,12 +10,10 @@
   & > * {
     width: 100%;
   }
-
   .cardInner {
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-
     .cardFront,
     .cardBack {
       position: absolute;
@@ -27,15 +25,12 @@
       -webkit-backface-visibility: hidden; /* Safari */
       backface-visibility: hidden;
     }
-
     .cardFront {
       background-color: var(
         --surface-container-highest
       );
       color: var(--on-surface-variant);
-    }
-
-    /* Style the back side */
+    } /* Style the back side */
     .cardBack {
       background-color: var(
         --secondary-container
@@ -44,26 +39,17 @@
       transform: rotateY(180deg);
     }
   }
-
   &:hover .cardInner {
     transform: rotateY(180deg);
   }
 }
-
 .card {
   background-color: var(--surface-container);
   color: var(--on-surface);
   box-shadow: var(--dp3);
 }
-
 .cardIsActive {
   background-color: var(--primary-container);
   color: var(--on-primary-container);
   box-shadow: var(--dp8);
-}
-
-/* This container is needed to position the front and back side */
-
-/* Position the front and back side */
-
-/* Style the front side (fallback if image is missing) */
+} /* This container is needed to position the front and back side */ /* Position the front and back side */ /* Style the front side (fallback if image is missing) */

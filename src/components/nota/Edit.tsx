@@ -1,18 +1,14 @@
 'use client';
 import * as React from 'react';
-import {
-  useForm,
+import {useForm,
   useFieldArray,
   useWatch,
   Control,
-  SubmitHandler,
-} from 'react-hook-form';
+  SubmitHandler,} from 'react-hook-form';
 import { usePathname } from 'next/navigation';
-import {
-  intNota,
+import {intNota,
   intNotaFormValues,
-  monNota,
-} from '#@/lib/types/notas';
+  monNota,} from '#@/lib/types/notas';
 import note from '#@/components/nota/note.module.scss';
 import { Fragment } from 'react';
 import typography from '#@/styles/fonts/typography.module.scss';
@@ -30,9 +26,12 @@ export function Edit({
     setValue,
     handleSubmit,
     formState: { errors },
-  } = useForm<intNotaFormValues>();
-  const { fields, append, remove } =
-    useFieldArray({
+  } = useForm<intNotaFormValues> ();
+
+  const {
+    fields, append, remove 
+  } =
+    useFieldArray ({
       name: 'tareas',
       control,
     });
@@ -43,147 +42,165 @@ export function Edit({
     const newData = {
       ...data,
       llaveProceso: nota.llaveProceso,
-      pathname: nota.pathname,
-      fecha: nota.fecha,
+      pathname    : nota.pathname,
+      fecha       : nota.fecha,
     };
-    alert(JSON.stringify(newData));
+    alert (JSON.stringify (newData));
 
-    const postNewNote = await fetch(
-      `${uri}/api/Notas?id=${nota._id}`,
+    const postNewNote = await fetch (
+      `${ uri }/api/Notas?id=${ nota._id }`,
       {
-        method: 'PUT',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(newData),
+        method : 'PUT',
+        headers: {'content-type': 'application/json',},
+        body   : JSON.stringify (newData),
       }
-    ).then((fullfilled) => {
-      alert(fullfilled.status);
+    ).then ((fullfilled) => {
+      alert (fullfilled.status);
       return fullfilled;
     });
 
     const responsePostNewNote =
-      await postNewNote.json();
-    alert(responsePostNewNote);
+      await postNewNote.json ();
+    alert (responsePostNewNote);
     return responsePostNewNote;
   };
   return (
     <div className={note.container}>
+      {' '}
       <form
         className={note.form}
-        onSubmit={handleSubmit(onSubmit)}>
+        onSubmit={handleSubmit (onSubmit)}>
+        {' '}
         <div className={note.section}>
+          {' '}
           <label
             htmlFor={'nota'}
-            className={`${note.label} ${typography.titleMedium}`}>
-            Nota
-          </label>
-
+            className={`${ note.label } ${ typography.titleMedium }`}>
+            {' '}
+            Nota{' '}
+          </label>{' '}
           <textarea
             className={note.textArea}
             defaultValue={nota.nota}
-            {...register('nota', {
-              required: true,
-            })}
-          />
-        </div>
-        {nota.tareas.map((field, index) => (
+            {...register (
+              'nota',
+              {required: true,}
+            )}
+          />{' '}
+        </div>{' '}
+        {nota.tareas.map ((field, index) => (
           <Fragment key={field.tarea}>
+            {' '}
             <div className={note.section}>
+              {' '}
               <label
-                htmlFor={`tareas.${index}.tarea`}
+                htmlFor={`tareas.${ index }.tarea`}
                 className={note.label}>
+                {' '}
                 Tarea:{' '}
-              </label>
+              </label>{' '}
               <textarea
                 placeholder='tarea'
-                {...register(
-                  `tareas.${index}.tarea` as const,
+                {...register (
+                  `tareas.${ index }.tarea` as const,
                   {}
                 )}
                 className={note.textArea}
                 defaultValue={field.tarea}
-              />
-            </div>
+              />{' '}
+            </div>{' '}
             <div className={note.section}>
+              {' '}
               <label
-                htmlFor={`tareas.${index}.isDone`}
+                htmlFor={`tareas.${ index }.isDone`}
                 className={note.label}>
-                ¿Tarea completa?
-              </label>
+                {' '}
+                ¿Tarea completa?{' '}
+              </label>{' '}
               <input
                 defaultChecked={field.isDone}
                 type='checkbox'
-                {...register(
-                  `tareas.${index}.isDone` as const,
+                {...register (
+                  `tareas.${ index }.isDone` as const,
                   {}
                 )}
                 className={note.checkbox}
-              />
-            </div>
+              />{' '}
+            </div>{' '}
             <div className={note.section}>
+              {' '}
               <label
-                htmlFor={`tareas.${index}.dueDate`}
+                htmlFor={`tareas.${ index }.dueDate`}
                 className={note.label}>
+                {' '}
                 Para cuándo es?:{' '}
-              </label>
+              </label>{' '}
               <input
                 type='date'
                 defaultValue={field.dueDate}
-                placeholder={`tareas.${index}.dueDate`}
-                {...register(
-                  `tareas.${index}.dueDate`,
+                placeholder={`tareas.${ index }.dueDate`}
+                {...register (
+                  `tareas.${ index }.dueDate`,
                   {}
                 )}
-              />
-            </div>
-
+              />{' '}
+            </div>{' '}
             <div className={note.section}>
+              {' '}
               <button
                 className={note.submitButton}
                 type='button'
-                onClick={() => remove(index)}>
+                onClick={() => remove (index)}>
+                {' '}
                 <span className='material-symbols-outlined'>
-                  remove
-                </span>
-              </button>
-
+                  {' '}
+                  remove{' '}
+                </span>{' '}
+              </button>{' '}
               <button
                 type='button'
                 className={note.submitButton}
                 onClick={() =>
-                  append({
-                    tarea: '',
+                  append ({
+                    tarea : '',
                     isDone: false,
                     dueDate:
-                      new Date().toISOString(),
+                      new Date ().toISOString (),
                   })
                 }>
+                {' '}
                 <span className='material-symbols-outlined'>
-                  add
-                </span>
-              </button>
-            </div>
+                  {' '}
+                  add{' '}
+                </span>{' '}
+              </button>{' '}
+            </div>{' '}
           </Fragment>
-        ))}
-
+        ))}{' '}
         <div className={note.section}>
+          {' '}
           <button
             type='submit'
             className={note.submitButton}>
+            {' '}
             <span className='material-symbols-outlined'>
-              send
-            </span>
-          </button>
+              {' '}
+              send{' '}
+            </span>{' '}
+          </button>{' '}
           <button
             type='button'
             onClick={() => {
-              setValue('nota', nota.nota);
+              setValue (
+                'nota',
+                nota.nota
+              );
             }}>
-            Set All Values
-          </button>
-        </div>
-      </form>
+            {' '}
+            Set All Values{' '}
+          </button>{' '}
+        </div>{' '}
+      </form>{' '}
     </div>
   );
 }

@@ -26,28 +26,37 @@ export const CardCarpeta = ({
   idProceso?: number;
   icon?: string;
 }) => {
-  const [isNavOpen, setIsNavOpen] =
-    useNavigator();
-  const [isOpen, setIsOpen] = useModal();
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] =
+    useNavigator ();
+
+  const [
+    isOpen,
+    setIsOpen
+  ] = useModal ();
 
   const clickHandler = () => {
-    setIsNavOpen(false);
-    setIsOpen(true);
+    setIsNavOpen (false);
+    setIsOpen (true);
   };
-  const pathname = usePathname();
+
+  const pathname = usePathname ();
 
   const href = (
     llaveProceso
       ? idProceso
-        ? `${path}/${llaveProceso}/${idProceso}`
-        : `${path}/${llaveProceso}`
-      : `${path}`
+        ? `${ path }/${ llaveProceso }/${ idProceso }`
+        : `${ path }/${ llaveProceso }`
+      : `${ path }`
   ) as Route;
+
   const isActive =
     pathname === href ||
     pathname ===
-      `${path}/${llaveProceso}/${idProceso}` ||
-    pathname === `${path}/${llaveProceso}` ||
+      `${ path }/${ llaveProceso }/${ idProceso }` ||
+    pathname === `${ path }/${ llaveProceso }` ||
     pathname === path;
   return (
     <div
@@ -56,16 +65,21 @@ export const CardCarpeta = ({
           ? carpeta.cardIsActive
           : carpeta.card
       }>
+      {' '}
       <div className={carpeta.cardInner}>
+        {' '}
         <div className={carpeta.cardFront}>
-          <Name helper={name} />
-        </div>
+          {' '}
+          <Name helper={name} />{' '}
+        </div>{' '}
         <div className={carpeta.cardBack}>
+          {' '}
           <Suspense fallback={<p>Loading...</p>}>
-            {children}
-          </Suspense>
-        </div>
-      </div>
+            {' '}
+            {children}{' '}
+          </Suspense>{' '}
+        </div>{' '}
+      </div>{' '}
     </div>
   );
 };

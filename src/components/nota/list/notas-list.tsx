@@ -6,40 +6,40 @@ import { Card } from '#@/components/card/card';
 import { useNoteSlider } from '#@/app/context/note-slider-context';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export const NotasList = ({
-  notas,
-}: {
+export const NotasList = ({notas,}: {
   notas: monNota[];
 }) => {
-  const linkRef = useRef<Map<any, any>>();
+  const linkRef = useRef<Map<any, any>> ();
 
   function getMap() {
     if (!linkRef.current) {
-      // Initialize the Map on first usage.
-      linkRef.current = new Map();
+      linkRef.current = new Map ();
     }
     return linkRef.current;
   }
 
   function scrollToId(notaId: string) {
-    const map = getMap();
-    const node = map.get(notaId);
-    node.scrollIntoView({
+    const map = getMap ();
+
+    const node = map.get (notaId);
+    node.scrollIntoView ({
       behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center',
+      block   : 'nearest',
+      inline  : 'center',
     });
   }
   return (
     <>
       <nav>
-        {notas.map((nt) => {
-          const { _id, nota } = nt;
+        {notas.map ((nt) => {
+          const {
+            _id, nota 
+          } = nt;
           return (
             <button
               key={_id}
               type='button'
-              onClick={() => scrollToId(_id)}>
+              onClick={() => scrollToId (_id)}>
               <span className='material-symbols-outlined'>
                 open_in_new
               </span>
@@ -49,19 +49,21 @@ export const NotasList = ({
         })}
       </nav>
       <ul>
-        {notas.map((nt, i, arr) => (
+        {notas.map ((nt, i, arr) => (
           <li
-            style={{
-              width: '100vw',
-            }}
+            style={{ width: '100vw' }}
             key={nt._id}
             ref={(node) => {
-              const map = getMap();
+              const map = getMap ();
 
               if (node) {
-                map.set(nt._id, node);
-              } else {
-                map.delete(nt._id);
+                map.set (
+                  nt._id,
+                  node
+                );
+              }
+              else {
+                map.delete (nt._id);
               }
             }}>
             <Card
