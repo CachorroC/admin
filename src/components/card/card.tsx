@@ -88,8 +88,7 @@ export const Card = (
             setHasLinks (
               !hasLinks
             );
-        }}
-      >
+        }}>
         <div className={isActive
           ? card.isActive
           : card.notActive}>
@@ -105,8 +104,7 @@ export const Card = (
                     className={isActive
                       ? card.linkIsActive
                       : card.link}
-                    href={`${ path }/${ llaveProceso }` as Route}
-                  >
+                    href={`${ path }/${ llaveProceso }` as Route}>
                     <span className={`material-symbols-outlined ${ card.icon }`}>
                 badge
                     </span>
@@ -121,8 +119,7 @@ export const Card = (
                         setIsOpen (
                           true
                         );
-                    }}
-                  >
+                    }}>
                     <span className={`material-symbols-outlined ${ card.icon }`}>
                 add
                     </span>
@@ -133,8 +130,7 @@ export const Card = (
                       ? card.linkIsActive
                       : card.link}
                     onClick={clickHandler}
-                    href={href}
-                  >
+                    href={href}>
                     <span className={`${ card.icon } material-symbols-outlined`}>
                 file_open
                     </span>
@@ -144,8 +140,7 @@ export const Card = (
                   <Link
                     onClick={clickHandler}
                     href={href}
-                    className={card.link}
-                  >
+                    className={card.link}>
                     <span className={`material-symbols-outlined ${ card.icon }`}>
                       {icon ?? 'open_in_new'}
                     </span>
@@ -167,8 +162,7 @@ export const Card = (
               href={`https://ramajudicial.gov.co/web/${ juzgado.replaceAll (
                 'á',
                 'a',
-              ) }`}
-            >
+              ) }`}>
               {' '}
               <p className={`${ typography.bodySmall } ${ card.content }`}>
                 {juzgado.replaceAll (

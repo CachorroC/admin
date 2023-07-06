@@ -30,8 +30,7 @@ export default function PageProcesosEditarLeft() {
       <FormProvider>
         <FormCard
           currentStep={formStep}
-          prevFormStep={prevFormStep}
-        >
+          prevFormStep={prevFormStep}>
           {formStep >= 0 && (
             <PersonalInfo
               formStep={formStep}

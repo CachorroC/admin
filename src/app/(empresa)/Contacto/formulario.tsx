@@ -78,12 +78,13 @@ export default function Formulario() {
             }
           )}
         />
-        <select {...register (
-          'Title',
-          {
-            required: true 
-          }
-        )}>
+        <select
+          {...register (
+            'Title',
+            {
+              required: true,
+            }
+          )}>
           <option value='Mr'>Mr</option>
           <option value='Mrs'>Mrs</option>
           <option value='Miss'>Miss</option>
@@ -94,7 +95,7 @@ export default function Formulario() {
           {...register (
             'RecibirInfo',
             {
-              required: true 
+              required: true,
             }
           )}
           type='radio'
@@ -104,7 +105,7 @@ export default function Formulario() {
           {...register (
             'RecibirInfo',
             {
-              required: true 
+              required: true,
             }
           )}
           type='radio'

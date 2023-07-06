@@ -21,8 +21,7 @@ export const ForwardButton = () => {
             setIsNavOpen (
               false
             );
-        }}
-      >
+        }}>
         <span className={`material-symbols-outlined ${ navbar.icon }`}>
         chevron_right
         </span>
@@ -55,8 +54,7 @@ export const BackwardsButton = () => {
       <button
         type='button'
         className={navbar.buttonBackwards}
-        onClick={clickHandler}
-      >
+        onClick={clickHandler}>
         <span className={`material-symbols-outlined ${ navbar.icon }`}>
         chevron_left
         </span>
@@ -78,8 +76,7 @@ export const DrawerMenuButton = () => {
           className={navbar.buttonDrawerMenu}
           onClick={() => setIsNavOpen (
             false
-          )}
-        >
+          )}>
           <span className={`material-symbols-outlined ${ navbar.icon }`}>
           close
           </span>
@@ -93,8 +90,7 @@ export const DrawerMenuButton = () => {
         className={navbar.buttonDrawerMenu}
         onClick={() => setIsNavOpen (
           true
-        )}
-      >
+        )}>
         <span className={`material-symbols-outlined ${ navbar.icon }`}>menu</span>
         <p className={navbar.ButtonTextHelper}>abrir</p>
       </button>
@@ -114,8 +110,7 @@ export const HomeButton = () => {
             setIsNavOpen (
               false
             );
-        }}
-      >
+        }}>
         <span className={`material-symbols-outlined ${ navbar.icon }`}>home</span>
         <p className={navbar.ButtonTextHelper}>inicio</p>
       </Link>
@@ -132,8 +127,7 @@ export const ModalButton = () => {
         className={navbar.buttonModal}
         onClick={() => setIsOpen (
           true
-        )}
-      >
+        )}>
         <span className={`material-symbols-outlined ${ navbar.icon }`}>box</span>
       </button>
     );

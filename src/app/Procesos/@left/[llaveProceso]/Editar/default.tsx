@@ -18,7 +18,7 @@ export default async function Default(
     const _id = searchParams._id;
     const nota = await getNotaById (
       {
-        _id: _id 
+        _id: _id,
       }
     );
 
@@ -32,8 +32,7 @@ export default async function Default(
               <Fragment key={ntext._id}>
                 <h1
                   key={i}
-                  className={typeface.title}
-                >
+                  className={typeface.title}>
                   {ntext.nota}
                 </h1>
                 <Edit

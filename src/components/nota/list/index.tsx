@@ -104,8 +104,7 @@ export function NotasList() {
                       return map.delete (
                         cat.id
                       );
-                  }}
-                >
+                  }}>
                   <Image
                     src={cat.imageUrl}
                     width={340}

@@ -12,7 +12,7 @@ async function Acts(
 ) {
     const actuaciones = await getActuacionesByidProceso (
       {
-        idProceso: idProceso 
+        idProceso: idProceso,
       }
     );
     return (

@@ -30,8 +30,7 @@ export function AccordionRow(
             className={accordion.title}
             onClick={() => setIsActive (
               !isActive
-            )}
-          >
+            )}>
             <span className='material-symbols-outlined'>
               {isActive
                 ? 'expand_less'
@@ -53,8 +52,7 @@ export function AccordionRow(
                   isDone
                     ? note.innactive
                     : note.active
-                } material-symbols-outlined`}
-              >
+                } material-symbols-outlined`}>
                 {isDone
                   ? 'assignment_turned_in'
                   : 'assignment_late'}

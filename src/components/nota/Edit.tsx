@@ -13,7 +13,7 @@ import typography from '#@/styles/fonts/typography.module.scss';
 
 export function Edit(
   {
-    uri, nota
+    uri, nota 
   }: { uri: string; nota: monNota }
 ) {
     const {
@@ -22,11 +22,11 @@ export function Edit(
       setValue,
       handleSubmit,
       formState: {
-        errors
+        errors 
       },
     } = useForm<intNotaFormValues> ();
     const {
-      fields, append, remove
+      fields, append, remove 
     } = useFieldArray (
       {
         name: 'tareas',
@@ -54,7 +54,7 @@ export function Edit(
           {
             method : 'PUT',
             headers: {
-              'content-type': 'application/json'
+              'content-type': 'application/json',
             },
             body: JSON.stringify (
               newData
@@ -83,13 +83,11 @@ export function Edit(
           className={note.form}
           onSubmit={handleSubmit (
             onSubmit
-          )}
-        >
+          )}>
           <div className={note.section}>
             <label
               htmlFor={'nota'}
-              className={`${ note.label } ${ typography.titleMedium }`}
-            >
+              className={`${ note.label } ${ typography.titleMedium }`}>
             Nota
             </label>
 
@@ -99,7 +97,7 @@ export function Edit(
               {...register (
                 'nota',
                 {
-                  required: true
+                  required: true,
                 }
               )}
             />
@@ -112,8 +110,7 @@ export function Edit(
                 <div className={note.section}>
                   <label
                     htmlFor={`tareas.${ index }.tarea`}
-                    className={note.label}
-                  >
+                    className={note.label}>
                 Tarea:{' '}
                   </label>
                   <textarea
@@ -130,8 +127,7 @@ export function Edit(
                 <div className={note.section}>
                   <label
                     htmlFor={`tareas.${ index }.isDone`}
-                    className={note.label}
-                  >
+                    className={note.label}>
                 ¿Tarea completa?
                   </label>
                   <input
@@ -148,8 +144,7 @@ export function Edit(
                 <div className={note.section}>
                   <label
                     htmlFor={`tareas.${ index }.dueDate`}
-                    className={note.label}
-                  >
+                    className={note.label}>
                 Para cuándo es?:{' '}
                   </label>
                   <input
@@ -170,8 +165,7 @@ export function Edit(
                     type='button'
                     onClick={() => remove (
                       index
-                    )}
-                  >
+                    )}>
                     <span className='material-symbols-outlined'>remove</span>
                   </button>
 
@@ -186,8 +180,7 @@ export function Edit(
                           dueDate: new Date ().toISOString (),
                         }
                       )
-                    }
-                  >
+                    }>
                     <span className='material-symbols-outlined'>add</span>
                   </button>
                 </div>
@@ -198,8 +191,7 @@ export function Edit(
           <div className={note.section}>
             <button
               type='submit'
-              className={note.submitButton}
-            >
+              className={note.submitButton}>
               <span className='material-symbols-outlined'>send</span>
             </button>
             <button
@@ -209,8 +201,7 @@ export function Edit(
                     'nota',
                     nota.nota
                   );
-              }}
-            >
+              }}>
             Set All Values
             </button>
           </div>

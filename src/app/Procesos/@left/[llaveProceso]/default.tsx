@@ -13,7 +13,7 @@ async function Acts(
 ) {
     const actuaciones = await getActuacionesByidProceso (
       {
-        idProceso: idProceso 
+        idProceso: idProceso,
       }
     );
     return (
@@ -36,8 +36,7 @@ async function Acts(
                   name={actuacion}
                   path={'/NuevaNota'}
                   llaveProceso={llaveProceso}
-                  idProceso={idProceso}
-                >
+                  idProceso={idProceso}>
                   <p className={typography.bodymedium}>
                     {anotacion ?? fechaActuacion}
                   </p>
@@ -96,8 +95,7 @@ export default async function DefaultProcesosLeftllaveProceso(
                           name={Deudor.Nombre}
                           llaveProceso={prc.llaveProceso}
                           idProceso={prc.idProceso}
-                          path={'/Procesos'}
-                        >
+                          path={'/Procesos'}>
                           <span className='material-symbols-outlined'>
                     clock_loader_30
                           </span>
@@ -135,8 +133,7 @@ export default async function DefaultProcesosLeftllaveProceso(
                         name={Deudor.Nombre}
                         path={'/Procesos'}
                         llaveProceso={llaveProceso}
-                        idProceso={idProceso}
-                      >
+                        idProceso={idProceso}>
                         <p>{Deudor.Direccion}</p>
                       </Card>
                     );
@@ -162,8 +159,7 @@ export default async function DefaultProcesosLeftllaveProceso(
                         name={Deudor.Nombre}
                         path={'/Procesos'}
                         llaveProceso={llaveProceso}
-                        idProceso={idProceso}
-                      >
+                        idProceso={idProceso}>
                         <p>{Deudor.Direccion}</p>
                       </Card>
                     );

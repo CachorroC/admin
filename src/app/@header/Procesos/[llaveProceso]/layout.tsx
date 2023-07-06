@@ -15,7 +15,7 @@ export default async function Layout(
     const procesos = await getCarpetas ();
     const fechas = await fetchFechas (
       {
-        procesos: procesos 
+        procesos: procesos,
       }
     );
 

@@ -30,7 +30,7 @@ export function NuevoProceso(
           {
             method : 'POST',
             headers: {
-              'content-type': 'application/json' 
+              'content-type': 'application/json',
             },
             body: JSON.stringify (
               data
@@ -58,15 +58,14 @@ export function NuevoProceso(
           className={form.form}
           onSubmit={handleSubmit (
             onSubmit
-          )}
-        >
+          )}>
           <input
             type='number'
             placeholder='Carpeta'
             {...register (
               'Carpeta',
               {
-                required: true 
+                required: true,
               }
             )}
           />
@@ -76,7 +75,7 @@ export function NuevoProceso(
             {...register (
               'Deudor.Id',
               {
-                required: true 
+                required: true,
               }
             )}
           />
@@ -86,7 +85,7 @@ export function NuevoProceso(
             {...register (
               'Deudor.Nombre',
               {
-                required: true 
+                required: true,
               }
             )}
           />
@@ -96,7 +95,7 @@ export function NuevoProceso(
             {...register (
               'Deudor.Email',
               {
-                pattern: /^\S+@\S+$/i 
+                pattern: /^\S+@\S+$/i,
               }
             )}
           />
@@ -106,7 +105,7 @@ export function NuevoProceso(
             {...register (
               'Deudor.Tel.Fijo',
               {
-                maxLength: 10 
+                maxLength: 10,
               }
             )}
           />
@@ -116,7 +115,7 @@ export function NuevoProceso(
             {...register (
               'Deudor.Tel.Celular',
               {
-                maxLength: 10 
+                maxLength: 10,
               }
             )}
           />
@@ -153,7 +152,7 @@ export function NuevoProceso(
             {...register (
               'Codeudor.Tel.Fijo',
               {
-                maxLength: 10 
+                maxLength: 10,
               }
             )}
           />
@@ -163,7 +162,7 @@ export function NuevoProceso(
             {...register (
               'Codeudor.Tel.Celular',
               {
-                maxLength: 10 
+                maxLength: 10,
               }
             )}
           />
@@ -173,7 +172,7 @@ export function NuevoProceso(
             {...register (
               'idProceso',
               {
-                required: true 
+                required: true,
               }
             )}
           />
@@ -183,7 +182,7 @@ export function NuevoProceso(
             {...register (
               'llaveProceso',
               {
-                minLength: 23 
+                minLength: 23,
               }
             )}
           />

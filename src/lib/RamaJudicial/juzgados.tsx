@@ -21,8 +21,7 @@ export async function JuzgadosByllaveProceso(
           <CardCarpeta
             name={`${ Request.text () } error`}
             path={'/Procesos'}
-            llaveProceso={llaveProceso}
-          >
+            llaveProceso={llaveProceso}>
             <p> Error </p>
           </CardCarpeta>
         );
@@ -33,8 +32,7 @@ export async function JuzgadosByllaveProceso(
         <CardCarpeta
           name={res.parametros.numero}
           path={'/Procesos'}
-          llaveProceso={res.parametros.numero}
-        >
+          llaveProceso={res.parametros.numero}>
           <p> No Hay Procesos </p>
         </CardCarpeta>;
       }
@@ -54,8 +52,7 @@ export async function JuzgadosByllaveProceso(
                 )}
                 path={'/Procesos'}
                 llaveProceso={llaveProceso}
-                idProceso={idProceso}
-              >
+                idProceso={idProceso}>
                 <p>{despacho}</p>
                 <p>{`idProceso= ${ idProceso }`}</p>
               </CardCarpeta>
@@ -75,8 +72,7 @@ export async function JuzgadosByllaveProceso(
         <CardCarpeta
           name={error}
           path={'/Procesos'}
-          llaveProceso={llaveProceso}
-        >
+          llaveProceso={llaveProceso}>
           <p>{error}</p>
         </CardCarpeta>
       );

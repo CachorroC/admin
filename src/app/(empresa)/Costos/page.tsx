@@ -88,8 +88,7 @@ export default function Costos() {
               <div key={field.id}>
                 <section
                   className={'section'}
-                  key={field.id}
-                >
+                  key={field.id}>
                   <input
                     placeholder='name'
                     {...register (
@@ -137,8 +136,7 @@ export default function Costos() {
                     type='button'
                     onClick={() => remove (
                       index
-                    )}
-                  >
+                    )}>
                 DELETE
                   </button>
                 </section>
@@ -158,8 +156,7 @@ export default function Costos() {
                   price   : 0,
                 }
               )
-            }
-          >
+            }>
           APPEND
           </button>
           <input type='submit' />

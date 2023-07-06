@@ -70,8 +70,7 @@ export default function Title(
           isNavOpen
             ? typeface.drawer
             : typeface.navbar
-        }`}
-      >
+        }`}>
         {helper ?? `${ days[ today.getDay () ] }, ${ fixFechas (
           today.toString ()
         ) }`}

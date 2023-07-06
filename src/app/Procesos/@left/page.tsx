@@ -12,7 +12,7 @@ export default async function PageProcesosLeft() {
     const carpetas = await getCarpetas ();
     const fechas = await fetchFechas (
       {
-        procesos: carpetas 
+        procesos: carpetas,
       }
     );
     return (

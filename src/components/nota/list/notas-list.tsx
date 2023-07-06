@@ -8,20 +8,20 @@ import typography from '#@/styles/fonts/typography.module.scss';
 
 export const NotasList = (
   {
-    notas
+    notas 
   }: { notas: monNota[] }
 ) => {
     const linkRef = useRef<Map<any, any>> ();
 
-    function getMap () {
-        if ( !linkRef.current ) {
+    function getMap() {
+        if (!linkRef.current) {
           // Initialize the Map on first usage.
           linkRef.current = new Map ();
         }
         return linkRef.current;
     }
 
-    function scrollToId (
+    function scrollToId(
       notaId: string
     ) {
         const map = getMap ();
@@ -38,53 +38,47 @@ export const NotasList = (
     }
     return (
       <div
-        style={
-          {
-            height: '100vh',
-          }
-        }
-      >
+        style={{
+          height: '100vh',
+        }}>
         <nav>
-          {
-            notas.map (
-              (
-                nt
-              ) => {
-                  const {
-                    _id, nota
-                  } = nt;
-                  return (
-                    <button
-                      key={ _id }
-                      type='button'
-                      onClick={ () => scrollToId (
-                        _id
-                      ) }
-                    >
-                      <span className='material-symbols-outlined'>open_in_new</span>
-                      <p>{ nota }</p>
-                    </button>
-                  );
-              }
-            )
-          }
+          {notas.map (
+            (
+              nt
+            ) => {
+                const {
+                  _id, nota 
+                } = nt;
+                return (
+                  <button
+                    key={_id}
+                    type='button'
+                    onClick={() => scrollToId (
+                      _id
+                    )}>
+                    <span className='material-symbols-outlined'>open_in_new</span>
+                    <p>{nota}</p>
+                  </button>
+                );
+            }
+          )}
         </nav>
         <ul>
-          { notas.map (
+          {notas.map (
             (
               nt, i, arr
             ) => (
               <li
-                style={ {
-                  height: '100vh'
-                } }
-                key={ nt._id }
-                ref={ (
+                style={{
+                  height: '100vh',
+                }}
+                key={nt._id}
+                ref={(
                   node
                 ) => {
                     const map = getMap ();
 
-                    if ( node ) {
+                    if (node) {
                       map.set (
                         nt._id,
                         node
@@ -95,17 +89,15 @@ export const NotasList = (
                         nt._id
                       );
                     }
-                } }
-              >
+                }}>
                 <Card
-                  name={ nt.nota }
-                  path={ '/Notas' }
-                >
+                  name={nt.nota}
+                  path={'/Notas'}>
                   <span className='material-symbols-outlined'>note</span>
                 </Card>
               </li>
             )
-          ) }
+          )}
         </ul>
       </div>
     );

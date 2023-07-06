@@ -162,7 +162,7 @@ export async function PUT(
       const result = await notas.updateOne (
         query,
         {
-          $set: updatedNote 
+          $set: updatedNote,
         }
       );
 
@@ -172,7 +172,7 @@ export async function PUT(
           {
             status : 200,
             headers: {
-              'content-type': 'text/html' 
+              'content-type': 'text/html',
             },
           }
         );

@@ -137,8 +137,7 @@ export default function RootLayout(
     return (
       <html lang='en'>
         <body
-          className={`${ poiret.variable } ${ raleway.variable } ${ inter.variable } ${ roboto.variable } ${ josefina.variable } [ color-scheme: light dark ]`}
-        >
+          className={`${ poiret.variable } ${ raleway.variable } ${ inter.variable } ${ roboto.variable } ${ josefina.variable } [ color-scheme: light dark ]`}>
           <NoteSliderProvider>
             <SearchProvider>
               <ModalProvider>

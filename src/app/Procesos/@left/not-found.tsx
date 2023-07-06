@@ -6,23 +6,20 @@ export default function NotFound() {
       <div
         className={layout.left}
         style={{
-          backgroundColor: 'var(--error-container)' 
-        }}
-      >
+          backgroundColor: 'var(--error-container)',
+        }}>
         <h1
           className={typography.displayLarge}
           style={{
-            color: 'var(--on-error-container)' 
-          }}
-        >
+            color: 'var(--on-error-container)',
+          }}>
         ¿Perdido?
         </h1>
         <p
           className={typography.bodyLarge}
           style={{
-            color: 'var(--on-error-container)' 
-          }}
-        >
+            color: 'var(--on-error-container)',
+          }}>
         No pudimos resolver la consulta que realizaste. No existe el recurso{' '}
         </p>
       </div>

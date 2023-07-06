@@ -11,7 +11,7 @@ export const preload = (
 ) => {
     void getCarpetasByllaveProceso (
       {
-        llaveProceso: llaveProceso 
+        llaveProceso: llaveProceso,
       }
     );
 };

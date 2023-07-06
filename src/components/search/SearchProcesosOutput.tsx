@@ -115,8 +115,7 @@ export default function SearchOutputList(
                   ? searchbar.linkIsActive
                   : searchbar.link}
                 onClick={clickHandler}
-                href={href}
-              >
+                href={href}>
                 <span className={`${ searchbar.icon } material-symbols-outlined`}>
                 file_open
                 </span>
@@ -125,8 +124,7 @@ export default function SearchOutputList(
                 className={isActive
                   ? searchbar.linkIsActive
                   : searchbar.link}
-                href='/Notas/NuevaNota'
-              >
+                href='/Notas/NuevaNota'>
                 <span className={`material-symbols-outlined ${ searchbar.icon }`}>
                 add
                 </span>

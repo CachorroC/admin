@@ -27,8 +27,7 @@ export const FormCard = (
           <button
             className={styles.back}
             onClick={prevFormStep}
-            type='button'
-          >
+            type='button'>
             back
           </button>
         )}
@@ -175,7 +174,7 @@ export const ConfirmPurchase = (
                 {...register (
                   'checkbox',
                   {
-                    required: true 
+                    required: true,
                   }
                 )}
               />
@@ -244,7 +243,7 @@ export const BillingInfo = (
               {...register (
                 'address',
                 {
-                  required: true 
+                  required: true,
                 }
               )}
             />

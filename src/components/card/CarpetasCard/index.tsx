@@ -28,8 +28,9 @@ export const DemandaContainer = (
       <div className={styles.section}>
         <h1 className={typography.headlineMedium}>{Radicado}</h1>
         <h2
-          className={typography.titleMedium}
-        >{`${ Departamento }: ${ Municipio }`}</h2>
+          className={
+            typography.titleMedium
+          }>{`${ Departamento }: ${ Municipio }`}</h2>
         {VencimientoPagare && (
           <p className={typography.labelMedium}>{fixFechas (
             VencimientoPagare
@@ -81,8 +82,7 @@ export const CarpetaCard = (
         <DemandaContainer demanda={Demanda} />
         <div
           className={styles.container}
-          key={_id}
-        >
+          key={_id}>
           <div className={isActive
             ? styles.cardActive
             : styles.cardInactive}>
@@ -93,8 +93,7 @@ export const CarpetaCard = (
             <div className={styles.links}>
               <Link
                 className={styles.button}
-                href={href}
-              >
+                href={href}>
                 <span className={`material-symbols-outlined ${ styles.icon }`}>
                 folder_open
                 </span>
@@ -104,8 +103,7 @@ export const CarpetaCard = (
               {Tel && Tel.Celular && (
                 <Link
                   className={styles.button}
-                  href={`tel:${ Tel.Celular }`}
-                >
+                  href={`tel:${ Tel.Celular }`}>
                   <span className={`material-symbols-outlined ${ styles.icon }`}>
                   phone_iphone
                   </span>
@@ -115,8 +113,7 @@ export const CarpetaCard = (
               {Email && (
                 <Link
                   className={styles.button}
-                  href={`mailto:${ Email }`}
-                >
+                  href={`mailto:${ Email }`}>
                   <span className={`material-symbols-outlined ${ styles.icon }`}>
                   forward_to_inbox
                   </span>
@@ -126,8 +123,7 @@ export const CarpetaCard = (
               {Tel && Tel.Fijo && (
                 <Link
                   className={styles.button}
-                  href={`tel:${ Tel.Fijo }`}
-                >
+                  href={`tel:${ Tel.Fijo }`}>
                   <span className={`material-symbols-outlined ${ styles.icon }`}>
                   call
                   </span>

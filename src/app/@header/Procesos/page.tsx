@@ -11,7 +11,7 @@ export default async function Page() {
     const procesos = await getCarpetas ();
     const fechas = await fetchFechas (
       {
-        procesos: procesos 
+        procesos: procesos,
       }
     );
 

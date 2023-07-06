@@ -11,7 +11,7 @@ export default async function DefaultProcesosLeft() {
     const carpetas = await getCarpetas ();
     const fechas = await fetchFechas (
       {
-        procesos: carpetas 
+        procesos: carpetas,
       }
     );
     return (

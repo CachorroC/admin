@@ -38,8 +38,7 @@ export const ProcesoCard = (
           </h1>
           <Link
             className={styles.button}
-            href={`/Procesos/${ llaveProceso }/${ idProceso }` as Route}
-          >
+            href={`/Procesos/${ llaveProceso }/${ idProceso }` as Route}>
             <span className={`material-symbols-outlined ${ styles.icon }`}>
             open_in_new
             </span>
@@ -53,8 +52,7 @@ export const ProcesoCard = (
               href={`https://ramajudicial.gov.co/web/${ juzgado.replaceAll (
                 'á',
                 'a',
-              ) }`}
-            >
+              ) }`}>
               {' '}
               <p className={typography.bodySmall}>
                 {juzgado.replaceAll (

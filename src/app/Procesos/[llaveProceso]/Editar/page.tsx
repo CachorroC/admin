@@ -14,7 +14,7 @@ export default async function Page(
     const _id = searchParams._id;
     const nota = await getNotaById (
       {
-        _id: _id 
+        _id: _id,
       }
     );
     const ntext = nota

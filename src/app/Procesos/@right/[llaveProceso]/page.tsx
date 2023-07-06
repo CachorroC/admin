@@ -45,8 +45,7 @@ async function Acts(
     return (
       <div
         className={box.container}
-        key={idProceso}
-      >
+        key={idProceso}>
         <h1 className={typography.titleLarge}>{res.text.message}</h1>
         <p className={typography.bodyMedium}>{res.text.statusCode.toString ()}</p>
         {res.acts

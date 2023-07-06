@@ -56,8 +56,7 @@ export const LinkCard = (
     return (
       <div
         className={searchbar.container}
-        key={_id}
-      >
+        key={_id}>
         <Link
           href={href}
           onClick={() => setIsNavOpen (
@@ -65,8 +64,7 @@ export const LinkCard = (
           )}
           className={isActive
             ? searchbar.isActive
-            : searchbar.notActive}
-        >
+            : searchbar.notActive}>
           <Name helper={Nombre} />
 
           <sub className={searchbar.date}>{fixFechas (

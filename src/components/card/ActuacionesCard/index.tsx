@@ -26,20 +26,17 @@ export const ActuacionCard = (
     return (
       <div
         className={styles.container}
-        key={idRegActuacion}
-      >
+        key={idRegActuacion}>
         <div className={styles.card}>
           <h1 className={`${ typography.titleMedium } ${ styles.title }`}>
             {actuacion}
           </h1>
           {anotacion && <p className={typography.bodyMedium}>{anotacion}</p>}
           <sub
-            className={`${ typography.labelSmall } ${ styles.sub }`}
-          >{`${ consActuacion } de ${ cant }`}</sub>
+            className={`${ typography.labelSmall } ${ styles.sub }`}>{`${ consActuacion } de ${ cant }`}</sub>
           <Link
             href={`/Notas/NuevaNota/${ llaveProceso }`}
-            className={styles.button}
-          >
+            className={styles.button}>
             <span className={`material-symbols-outlined ${ styles.icon }`}>
             note_add
             </span>

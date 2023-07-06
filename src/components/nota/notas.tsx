@@ -46,15 +46,13 @@ export function Nota(
     return (
       <div
         className={note.container}
-        key={notaRaw._id}
-      >
+        key={notaRaw._id}>
         <div className={note.nota}>
           <sup className={note.sup}>{`${ i + 1 }`}</sup>
 
           <Name llaveProceso={notaRaw.llaveProceso} />
           <p
-            className={`${ typography.bodySmall } ${ note.textArea }`}
-          >{`Nota: ${ notaRaw.nota }`}</p>
+            className={`${ typography.bodySmall } ${ note.textArea }`}>{`Nota: ${ notaRaw.nota }`}</p>
           <sub className={`${ typography.labelSmall } ${ note.fecha }`}>
             {fixFechas (
               notaRaw.fecha.toString ()
@@ -98,7 +96,7 @@ export async function Notas(
     if (llaveProceso) {
       const notas = await getNotasByllaveProceso (
         {
-          llaveProceso: llaveProceso 
+          llaveProceso: llaveProceso,
         }
       );
 

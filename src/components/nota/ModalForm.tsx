@@ -54,7 +54,7 @@ export const ModalForm = (
           {...register (
             'mail',
             {
-              required: true 
+              required: true,
             }
           )}
         />

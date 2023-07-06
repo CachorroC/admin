@@ -71,7 +71,7 @@ export function NewNota(
           {
             method : 'POST',
             headers: {
-              'content-type': 'application/json' 
+              'content-type': 'application/json',
             },
             body: JSON.stringify (
               newData
@@ -105,13 +105,11 @@ export function NewNota(
           className={note.form}
           onSubmit={handleSubmit (
             onSubmit
-          )}
-        >
+          )}>
           <div className={note.section}>
             <label
               htmlFor='nota'
-              className={`${ note.label } ${ typography.titleMedium }`}
-            >
+              className={`${ note.label } ${ typography.titleMedium }`}>
             Nota
             </label>
             <input
@@ -122,7 +120,7 @@ export function NewNota(
               {...register (
                 'nota',
                 {
-                  required: true 
+                  required: true,
                 }
               )}
             />
@@ -132,8 +130,7 @@ export function NewNota(
             type='button'
             onClick={() => setIsActive (
               !isActive
-            )}
-          >
+            )}>
             <span className='material-symbols-outlined'>
               {isActive
                 ? 'expand_less'
@@ -155,8 +152,7 @@ export function NewNota(
                         <div className={note.section}>
                           <label
                             htmlFor={`tareas.${ index }.tarea`}
-                            className={note.label}
-                          >
+                            className={note.label}>
                       Tarea:{' '}
                           </label>
                           <input
@@ -188,8 +184,7 @@ export function NewNota(
                                     ? false
                                     : true,
                                 );
-                            }}
-                          >
+                            }}>
                             <span className='material-symbols-outlined'>
                               {watchIsDone
                                 ? 'check_box'
@@ -200,8 +195,7 @@ export function NewNota(
                         <div className={note.section}>
                           <label
                             htmlFor={`tareas.${ index }.dueDate`}
-                            className={note.label}
-                          >
+                            className={note.label}>
                       Para cuándo es?:{' '}
                           </label>
                           <input
@@ -221,8 +215,7 @@ export function NewNota(
                             type='button'
                             onClick={() => remove (
                               index
-                            )}
-                          >
+                            )}>
                             <span className='material-symbols-outlined'>remove</span>
                           </button>
 
@@ -237,8 +230,7 @@ export function NewNota(
                                   dueDate: new Date ().toISOString (),
                                 }
                               )
-                            }
-                          >
+                            }>
                             <span className='material-symbols-outlined'>add</span>
                           </button>
                         </div>
@@ -251,8 +243,7 @@ export function NewNota(
           <div className={note.section}>
             <button
               type='submit'
-              className={note.submitButton}
-            >
+              className={note.submitButton}>
               <span className='material-symbols-outlined'>send</span>
             </button>
           </div>
