@@ -77,15 +77,11 @@ export const CardSearchList = (
           idProceso={idProceso}
           fecha={fecha}
         >
-          <p className={ card.sub }>{ `${ i + 1 } de ${ arr.length }` }</p>
-          {
-            fecha && (
-              <sub className={card.date}>{ fixFechas(
-                fecha
-              )}</sub>
-            )
-          }
-        </Card>
+          <p className={card.sub}>{`${i + 1} de ${arr.length}`}</p>
+          {fecha && <sub className={card.date}>{fixFechas(
+            fecha
+          )}</sub>}
+        </Card>,
       );
     }
   );

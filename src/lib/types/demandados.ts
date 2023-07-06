@@ -25,7 +25,6 @@ export interface intCarpetaDemandado {
   Codeudor?: Codeudor;
 }
 
-
 export interface Avaluo {
   Adjudicacion?: Adjudicacion;
   Remate?: Adjudicacion;
@@ -199,7 +198,7 @@ export interface intFecha extends monCarpetaDemandado {
 //
 
 export class ConvertCarpetas {
-  public static toMonCarpetaDemandado (
+  public static toMonCarpetaDemandado(
     json: string
   ): monCarpetaDemandado[] {
     return JSON.parse(
@@ -207,15 +206,15 @@ export class ConvertCarpetas {
     );
   }
 
-  public static monCarpetaDemandadoToJson (
-    value: monCarpetaDemandado[]
+  public static monCarpetaDemandadoToJson(
+    value: monCarpetaDemandado[],
   ): string {
     return JSON.stringify(
       value
     );
   }
 
-  public static toMonCarpeta (
+  public static toMonCarpeta(
     json: string
   ): monCarpetaDemandado {
     return JSON.parse(
@@ -223,7 +222,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static monCarpetaToJson (
+  public static monCarpetaToJson(
     value: monCarpetaDemandado
   ): string {
     return JSON.stringify(
@@ -231,7 +230,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toAvaluo (
+  public static toAvaluo(
     json: string
   ): Avaluo {
     return JSON.parse(
@@ -239,7 +238,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static avaluoToJson (
+  public static avaluoToJson(
     value: Avaluo
   ): string {
     return JSON.stringify(
@@ -247,7 +246,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toAdjudicacion (
+  public static toAdjudicacion(
     json: string
   ): Adjudicacion {
     return JSON.parse(
@@ -255,7 +254,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static adjudicacionToJson (
+  public static adjudicacionToJson(
     value: Adjudicacion
   ): string {
     return JSON.stringify(
@@ -263,7 +262,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toCodeudor (
+  public static toCodeudor(
     json: string
   ): Codeudor {
     return JSON.parse(
@@ -271,7 +270,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static codeudorToJson (
+  public static codeudorToJson(
     value: Codeudor
   ): string {
     return JSON.stringify(
@@ -279,7 +278,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toTel (
+  public static toTel(
     json: string
   ): Tel {
     return JSON.parse(
@@ -287,7 +286,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static telToJson (
+  public static telToJson(
     value: Tel
   ): string {
     return JSON.stringify(
@@ -295,7 +294,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toDemanda (
+  public static toDemanda(
     json: string
   ): intDemanda {
     return JSON.parse(
@@ -303,7 +302,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static demandaToJson (
+  public static demandaToJson(
     value: intDemanda
   ): string {
     return JSON.stringify(
@@ -311,7 +310,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toJuzgado (
+  public static toJuzgado(
     json: string
   ): Juzgado {
     return JSON.parse(
@@ -319,7 +318,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static juzgadoToJson (
+  public static juzgadoToJson(
     value: Juzgado
   ): string {
     return JSON.stringify(
@@ -327,7 +326,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toObligacion (
+  public static toObligacion(
     json: string
   ): Obligacion {
     return JSON.parse(
@@ -335,7 +334,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static obligacionToJson (
+  public static obligacionToJson(
     value: Obligacion
   ): string {
     return JSON.stringify(
@@ -343,7 +342,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toProceso (
+  public static toProceso(
     json: string
   ): Proceso {
     return JSON.parse(
@@ -351,7 +350,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static procesoToJson (
+  public static procesoToJson(
     value: Proceso
   ): string {
     return JSON.stringify(
@@ -359,7 +358,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toUbicacion (
+  public static toUbicacion(
     json: string
   ): Ubicacion {
     return JSON.parse(
@@ -367,7 +366,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static ubicacionToJson (
+  public static ubicacionToJson(
     value: Ubicacion
   ): string {
     return JSON.stringify(
@@ -375,7 +374,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toDeudor (
+  public static toDeudor(
     json: string
   ): Deudor {
     return JSON.parse(
@@ -383,7 +382,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static deudorToJson (
+  public static deudorToJson(
     value: Deudor
   ): string {
     return JSON.stringify(
@@ -391,7 +390,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toEtapaProcesal (
+  public static toEtapaProcesal(
     json: string
   ): EtapaProcesal {
     return JSON.parse(
@@ -399,7 +398,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static etapaProcesalToJson (
+  public static etapaProcesalToJson(
     value: EtapaProcesal
   ): string {
     return JSON.stringify(
@@ -407,7 +406,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toEtapaProcesalFecha (
+  public static toEtapaProcesalFecha(
     json: string
   ): EtapaProcesalFecha {
     return JSON.parse(
@@ -415,7 +414,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static etapaProcesalFechaToJson (
+  public static etapaProcesalFechaToJson(
     value: EtapaProcesalFecha
   ): string {
     return JSON.stringify(
@@ -423,7 +422,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toLiquidacion (
+  public static toLiquidacion(
     json: string
   ): Liquidacion {
     return JSON.parse(
@@ -431,7 +430,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static liquidacionToJson (
+  public static liquidacionToJson(
     value: Liquidacion
   ): string {
     return JSON.stringify(
@@ -439,7 +438,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toCostas (
+  public static toCostas(
     json: string
   ): Costas {
     return JSON.parse(
@@ -447,7 +446,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static costasToJson (
+  public static costasToJson(
     value: Costas
   ): string {
     return JSON.stringify(
@@ -455,7 +454,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toLiquidacionFecha (
+  public static toLiquidacionFecha(
     json: string
   ): LiquidacionFecha {
     return JSON.parse(
@@ -463,7 +462,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static liquidacionFechaToJson (
+  public static liquidacionFechaToJson(
     value: LiquidacionFecha
   ): string {
     return JSON.stringify(
@@ -471,7 +470,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toMedidasCautelares (
+  public static toMedidasCautelares(
     json: string
   ): MedidasCautelares {
     return JSON.parse(
@@ -479,7 +478,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static medidasCautelaresToJson (
+  public static medidasCautelaresToJson(
     value: MedidasCautelares
   ): string {
     return JSON.stringify(
@@ -487,7 +486,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toMedidasCautelaresFecha (
+  public static toMedidasCautelaresFecha(
     json: string
   ): MedidasCautelaresFecha {
     return JSON.parse(
@@ -495,15 +494,15 @@ export class ConvertCarpetas {
     );
   }
 
-  public static medidasCautelaresFechaToJson (
-    value: MedidasCautelaresFecha
+  public static medidasCautelaresFechaToJson(
+    value: MedidasCautelaresFecha,
   ): string {
     return JSON.stringify(
       value
     );
   }
 
-  public static toOficio (
+  public static toOficio(
     json: string
   ): Oficio {
     return JSON.parse(
@@ -511,7 +510,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static oficioToJson (
+  public static oficioToJson(
     value: Oficio
   ): string {
     return JSON.stringify(
@@ -519,7 +518,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toOficios (
+  public static toOficios(
     json: string
   ): Oficios {
     return JSON.parse(
@@ -527,7 +526,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static oficiosToJson (
+  public static oficiosToJson(
     value: Oficios
   ): string {
     return JSON.stringify(
@@ -535,7 +534,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toNotificaciones (
+  public static toNotificaciones(
     json: string
   ): Notificaciones {
     return JSON.parse(
@@ -543,7 +542,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static notificacionesToJson (
+  public static notificacionesToJson(
     value: Notificaciones
   ): string {
     return JSON.stringify(
@@ -551,7 +550,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toThe291 (
+  public static toThe291(
     json: string
   ): The291 {
     return JSON.parse(
@@ -559,7 +558,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static the291ToJson (
+  public static the291ToJson(
     value: The291
   ): string {
     return JSON.stringify(
@@ -567,7 +566,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toSuspencionProceso (
+  public static toSuspencionProceso(
     json: string
   ): SuspencionProceso {
     return JSON.parse(
@@ -575,7 +574,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static suspencionProcesoToJson (
+  public static suspencionProcesoToJson(
     value: SuspencionProceso
   ): string {
     return JSON.stringify(
@@ -583,7 +582,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toTerminacion (
+  public static toTerminacion(
     json: string
   ): Terminacion {
     return JSON.parse(
@@ -591,7 +590,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static terminacionToJson (
+  public static terminacionToJson(
     value: Terminacion
   ): string {
     return JSON.stringify(
@@ -599,7 +598,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static toTerminacionFecha (
+  public static toTerminacionFecha(
     json: string
   ): TerminacionFecha {
     return JSON.parse(
@@ -607,7 +606,7 @@ export class ConvertCarpetas {
     );
   }
 
-  public static terminacionFechaToJson (
+  public static terminacionFechaToJson(
     value: TerminacionFecha
   ): string {
     return JSON.stringify(

@@ -115,9 +115,13 @@ export function NewNota(
             )}
           />
         </div>
-        <button className={accordion.title} type='button' onClick={() => setIsActive(
-          !isActive
-        )}>
+        <button
+          className={accordion.title}
+          type='button'
+          onClick={() => setIsActive(
+            !isActive
+          )}
+        >
           <span className='material-symbols-outlined'>
             {isActive
               ? 'expand_less'
@@ -154,7 +158,8 @@ export function NewNota(
                         defaultValue={field.tarea}
                       />
                     </div>
-                    <div className={note.section}>2
+                    <div className={note.section}>
+                    2
                       <p className={note.label}>
                         {watchIsDone
                           ? '¡ tarea completa !'
@@ -168,7 +173,7 @@ export function NewNota(
                             `tareas.${index}.isDone`,
                             watchIsDone
                               ? false
-                              : true
+                              : true,
                           );
                         }}
                       >

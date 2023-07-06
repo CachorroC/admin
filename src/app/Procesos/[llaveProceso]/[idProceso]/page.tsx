@@ -1,6 +1,6 @@
-
 import {
-  getCarpetasByidProceso, getCarpetasByllaveProceso,
+  getCarpetasByidProceso,
+  getCarpetasByllaveProceso,
 } from '#@/lib/Carpetas';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import { Name } from '#@/components/Headings/serverSideName';
@@ -16,7 +16,9 @@ export default async function PageProcesosllaveProcesoidProceso(
 }
 ) {
   const carpetas = await getCarpetasByllaveProceso(
-    {llaveProceso: params.llaveProceso}
+    {
+      llaveProceso: params.llaveProceso,
+    }
   );
   return (
     <>
@@ -25,7 +27,7 @@ export default async function PageProcesosllaveProcesoidProceso(
         (
           carpeta
         ) => {
-          const {  _id } = carpeta;
+          const { _id } = carpeta;
           return <CarpetaCard key={_id} Carpeta={carpeta} />;
         }
       )}

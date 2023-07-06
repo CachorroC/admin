@@ -1,9 +1,15 @@
 'use client';
 import FormProvider from '#@/components/card/CarpetasCard/Context';
-import { FormCard, PersonalInfo, BillingInfo, ConfirmPurchase, FormCompleted } from '#@/components/card/CarpetasCard/form-Card';
+import {
+  FormCard,
+  PersonalInfo,
+  BillingInfo,
+  ConfirmPurchase,
+  FormCompleted,
+} from '#@/components/card/CarpetasCard/form-Card';
 import { useState } from 'react';
 
-export default function PageProcesosEditarLeft () {
+export default function PageProcesosEditarLeft() {
   const [
     formStep,
     setFormStep

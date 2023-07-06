@@ -40,7 +40,7 @@ export default function Install() {
             console.log(
               'CLIENT: service worker registration failure.'
             );
-          }
+          },
         );
       }
       else {

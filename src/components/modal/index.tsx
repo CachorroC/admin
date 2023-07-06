@@ -76,7 +76,7 @@ pathname as Route
       onEnter,
       overlay,
       wrapper
-    ]
+    ],
   );
 
   const onKeyDown = useCallback(
@@ -93,7 +93,7 @@ pathname as Route
     [
       onDismiss,
       onEnter
-    ]
+    ],
   );
 
   useEffect(

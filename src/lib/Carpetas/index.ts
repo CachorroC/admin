@@ -19,7 +19,7 @@ export const preload = (
 const Collection = cache(
   async () => {
     const client = await clientPromise;
-    if ( !client ) {
+    if (!client) {
       throw new Error(
         'no hay cliente mongólico'
       );
@@ -65,15 +65,15 @@ export const getCarpetasByllaveProceso = cache(
     const carpetas = ConvertCarpetas.toMonCarpetaDemandado(
       JSON.stringify(
         carpetasRaw
-      )
+      ),
     );
     const Carpetas = carpetas.filter(
       (
         carpeta
-      ) => carpeta.llaveProceso === llaveProceso
+      ) => carpeta.llaveProceso === llaveProceso,
     );
     return Carpetas;
-  }
+  },
 );
 
 export const getCarpetasByidProceso = cache(
@@ -87,15 +87,15 @@ export const getCarpetasByidProceso = cache(
     const carpetas = ConvertCarpetas.toMonCarpetaDemandado(
       JSON.stringify(
         carpetasRaw
-      )
+      ),
     );
     const Carpetas = carpetas.filter(
       (
         carpeta
-      ) => carpeta.idProceso === idProceso
+      ) => carpeta.idProceso === idProceso,
     );
     return Carpetas;
-  }
+  },
 );
 
 export const getCarpetaById = cache(
@@ -109,7 +109,7 @@ export const getCarpetaById = cache(
     const carpetas = ConvertCarpetas.toMonCarpetaDemandado(
       JSON.stringify(
         carpetasRaw
-      )
+      ),
     );
     const Carpetas = carpetas.filter(
       (
@@ -119,7 +119,7 @@ export const getCarpetaById = cache(
     return Carpetas;
   }
 );
-export async function postCarpeta (
+export async function postCarpeta(
   { nota }: { nota: intCarpetaDemandado }
 ) {
   const collection = await Collection();
@@ -127,7 +127,7 @@ export async function postCarpeta (
     nota
   );
 
-  if ( !outgoingRequest.acknowledged ) {
+  if (!outgoingRequest.acknowledged) {
     return new NextResponse(
       null,
       {
@@ -137,13 +137,13 @@ export async function postCarpeta (
   }
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${ outgoingRequest.acknowledged }`
+      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`,
     ),
     {
       status: 200,
       headers: {
         'content-type': 'application/json',
       },
-    }
+    },
   );
 }

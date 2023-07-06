@@ -7,9 +7,8 @@ export default function CardSkeleton() {
         <h1 className={`${typography.titleMedium} ${card.title}`}>cargando</h1>
 
         <p className={card.content}>
-            Su contenido se está cargando, espere un momento
+          Su contenido se está cargando, espere un momento
         </p>
-
 
         <div className={card.links}>
           <button className={card.link}>

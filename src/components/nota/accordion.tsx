@@ -25,9 +25,12 @@ export function AccordionRow(
   return (
     <div className={accordion.accordion}>
       <div className={accordion.item}>
-        <button className={accordion.title} onClick={() => setIsActive(
-          !isActive
-        )}>
+        <button
+          className={accordion.title}
+          onClick={() => setIsActive(
+            !isActive
+          )}
+        >
           <span className='material-symbols-outlined'>
             {isActive
               ? 'expand_less'

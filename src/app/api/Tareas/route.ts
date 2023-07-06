@@ -119,14 +119,14 @@ export async function POST(
   }
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
+      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`,
     ),
     {
       status: 200,
       headers: {
         'content-type': 'application/json',
       },
-    }
+    },
   );
 }
 
@@ -172,7 +172,7 @@ export async function PUT(
         headers: {
           'content-type': 'text/html',
         },
-      }
+      },
     );
   }
   return new NextResponse(

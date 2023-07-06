@@ -41,7 +41,7 @@ self.addEventListener(
             { cache: 'reload' }
           )
         );
-      })()
+      })(),
     );
     // Force the waiting service worker to become the active service worker.
     self.skipWaiting();
@@ -60,7 +60,7 @@ self.addEventListener(
         if ('navigationPreload' in self.registration) {
           await self.registration.navigationPreload.enable();
         }
-      })()
+      })(),
     );
 
     // Tell the active service worker to take control of the page immediately.
@@ -109,7 +109,7 @@ self.addEventListener(
             );
             return cachedResponse;
           }
-        })()
+        })(),
       );
     }
 

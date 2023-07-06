@@ -23,9 +23,9 @@ self.addEventListener(
             {
               cache: 'reload',
             }
-          )
+          ),
         );
-      })()
+      })(),
     );
 
     self.skipWaiting();
@@ -47,7 +47,7 @@ self.addEventListener(
         if ('navigationPreload' in self.registration) {
           await self.registration.navigationPreload.enable();
         }
-      })()
+      })(),
     );
 
     // Tell the active service worker to take control of the page immediately.
@@ -78,7 +78,7 @@ self.addEventListener(
           catch (error) {
             console.log(
               '[Service Worker] Fetch failed; returning offline page instead.',
-              error
+              error,
             );
 
             const cache = await caches.open(
@@ -89,7 +89,7 @@ self.addEventListener(
             );
             return cachedResponse;
           }
-        })()
+        })(),
       );
     }
   }

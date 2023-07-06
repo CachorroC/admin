@@ -30,7 +30,7 @@ export function Edit(
     }
   );
   const onSubmit: SubmitHandler<intNotaFormValues> = async (
-    data: intNotaFormValues
+    data: intNotaFormValues,
   ) => {
     const newData = {
       ...data,

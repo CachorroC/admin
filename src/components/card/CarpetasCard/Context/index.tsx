@@ -1,15 +1,21 @@
-import { useState, createContext, useContext, ReactNode, SetStateAction, Dispatch, useMemo, useCallback } from 'react';
+import {
+  useState,
+  createContext,
+  useContext,
+  ReactNode,
+  SetStateAction,
+  Dispatch,
+  useMemo,
+  useCallback,
+} from 'react';
 
-
-
-type vals = { data: {}; setFormValues: (values: any) => void; }
-export const FormContext = createContext<
-vals | null>(
+type vals = { data: {}; setFormValues: (values: any) => void };
+export const FormContext = createContext<vals | null>(
   null
 );
 
 export default function FormProvider(
-  { children }: {children: ReactNode}
+  { children }: { children: ReactNode }
 ) {
   const [
     data,
@@ -39,7 +45,7 @@ export default function FormProvider(
     () => {
       return {
         data,
-        setFormValues
+        setFormValues,
       };
     },
     [
@@ -49,14 +55,12 @@ export default function FormProvider(
   );
 
   return (
-    <FormContext.Provider value={contextValue}>
-      {children}
-    </FormContext.Provider>
+    <FormContext.Provider value={contextValue}>{children}</FormContext.Provider>
   );
 }
 
-export function useFormData () {
-  const context =  useContext(
+export function useFormData() {
+  const context = useContext(
     FormContext
   );
   if (context === null) {

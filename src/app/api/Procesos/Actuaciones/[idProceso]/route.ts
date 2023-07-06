@@ -4,14 +4,14 @@ import { IntActuaciones, intConsultaActuaciones } from '#@/lib/types/procesos';
 
 export async function GET(
   Request: NextRequest,
-  { params }: { params: { idProceso: number } }
+  { params }: { params: { idProceso: number } },
 ) {
   try {
     const req = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${params.idProceso}`,
       {
         mode: 'cors',
-      }
+      },
     );
     if (!req.ok) {
       const text = await Request.text();

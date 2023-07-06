@@ -2,60 +2,46 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 
-
 const catList = [
   {
     id: 1,
-    imageUrl: 'https://placekitten.com/250/200?image=1'
-
-  }
-  ,
+    imageUrl: 'https://placekitten.com/250/200?image=1',
+  },
   {
     id: 2,
-    imageUrl: 'https://placekitten.com/250/200?image=2'
-
+    imageUrl: 'https://placekitten.com/250/200?image=2',
   },
   {
     id: 3,
-    imageUrl: 'https://placekitten.com/250/200?image=3'
-
+    imageUrl: 'https://placekitten.com/250/200?image=3',
   },
   {
     id: 4,
-    imageUrl: 'https://placekitten.com/250/200?image=4'
-
+    imageUrl: 'https://placekitten.com/250/200?image=4',
   },
   {
     id: 5,
-    imageUrl: 'https://placekitten.com/250/200?image=5'
-
+    imageUrl: 'https://placekitten.com/250/200?image=5',
   },
   {
     id: 6,
-    imageUrl: 'https://placekitten.com/250/200?image=6'
-
+    imageUrl: 'https://placekitten.com/250/200?image=6',
   },
   {
     id: 7,
-    imageUrl: 'https://placekitten.com/250/200?image=7'
-
-  }
-  , {
+    imageUrl: 'https://placekitten.com/250/200?image=7',
+  },
+  {
     id: 8,
-    imageUrl: 'https://placekitten.com/250/200?image=8'
-
-  } ,
+    imageUrl: 'https://placekitten.com/250/200?image=8',
+  },
   {
     id: 9,
-    imageUrl: 'https://placekitten.com/250/200?image=9'
-
-  }
-
+    imageUrl: 'https://placekitten.com/250/200?image=9',
+  },
 ];
 
-
-
-export function  NotasList(){
+export function NotasList() {
   const itemsRef = useRef();
   function scrollToId(
     itemId: number
@@ -68,7 +54,7 @@ export function  NotasList(){
       {
         behavior: 'smooth',
         block: 'nearest',
-        inline: 'center'
+        inline: 'center',
       }
     );
   }
@@ -85,48 +71,41 @@ export function  NotasList(){
       <nav>
         <button onClick={() => scrollToId(
           0
-        )}>
-          Tom
-        </button>
+        )}>Tom</button>
         <button onClick={() => scrollToId(
           5
-        )}>
-          Maru
-        </button>
+        )}>Maru</button>
         <button onClick={() => scrollToId(
           9
-        )}>
-          Jellylorum
-        </button>
+        )}>Jellylorum</button>
       </nav>
       <div>
         <ul>
           {catList.map(
-            cat => (
+            (
+              cat
+            ) => (
               <li
                 key={cat.id}
-                ref={
-                  (
-                    node
-                  ) => {
-                    const map = getMap();
-                    if (node) {
-                      return map.set(
-                        cat.id,
-                        node
-                      );
-                    }
-
-                    return map.delete(
-                      cat.id
+                ref={(
+                  node
+                ) => {
+                  const map = getMap();
+                  if (node) {
+                    return map.set(
+                      cat.id,
+                      node
                     );
-
                   }
-                }
+
+                  return map.delete(
+                    cat.id
+                  );
+                }}
               >
                 <Image
-                  src={ cat.imageUrl }
-                  width={ 340 }
+                  src={cat.imageUrl}
+                  width={340}
                   height={340}
                   alt={'Cat #' + cat.id}
                 />
@@ -137,4 +116,4 @@ export function  NotasList(){
       </div>
     </>
   );
-};
+}

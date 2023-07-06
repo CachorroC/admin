@@ -68,7 +68,7 @@ export const Card = (
   const isActive =
     pathname === href ||
     pathname === `${path}/${llaveProceso}/${idProceso}` ||
-    pathname === `${ path }/${ llaveProceso }` ;
+    pathname === `${path}/${llaveProceso}`;
 
   const juzgado = despacho
     ? despacho.replace(
@@ -81,22 +81,25 @@ export const Card = (
     : null;
 
   return (
-    <div className={ card.container } onClick={ ( ) => {
-
-      setHasLinks(
-        !hasLinks
-      );
-
-    }}>
+    <div
+      className={card.container}
+      onClick={() => {
+        setHasLinks(
+          !hasLinks
+        );
+      }}
+    >
       <div className={isActive
         ? card.isActive
         : card.notActive}>
-        <h1 className={`${typography.titleMedium} ${card.title}`}>{toNameString(
-          name
-        ) }</h1>
-        { hasLinks
-          ?  (
-            <div className={ card.links }>
+        <h1 className={`${typography.titleMedium} ${card.title}`}>
+          {toNameString(
+            name
+          )}
+        </h1>
+        {hasLinks
+          ? (
+            <div className={card.links}>
               <Link
                 className={isActive
                   ? card.linkIsActive
@@ -104,7 +107,7 @@ export const Card = (
                 href={`${path}/${llaveProceso}` as Route}
               >
                 <span className={`material-symbols-outlined ${card.icon}`}>
-              badge
+                badge
                 </span>
                 <span className={card.tooltiptext}>Perfil del Demandado</span>
               </Link>
@@ -120,7 +123,7 @@ export const Card = (
                 }}
               >
                 <span className={`material-symbols-outlined ${card.icon}`}>
-              add
+                add
                 </span>
                 <span className={card.tooltiptext}>Agregar nota</span>
               </Link>
@@ -132,7 +135,7 @@ export const Card = (
                 href={href}
               >
                 <span className={`${card.icon} material-symbols-outlined`}>
-              file_open
+                file_open
                 </span>
                 <span className={card.tooltiptext}>Actuaciones del proceso</span>
               </Link>
@@ -143,8 +146,11 @@ export const Card = (
                 </span>
                 <span className={card.tooltiptext}>abrir</span>
               </Link>
-            </div>)
-          : children}
+            </div>
+          )
+          : (
+            children
+          )}
 
         {contenido && (
           <p className={`${typography.bodySmall} ${card.content}`}>
@@ -155,7 +161,7 @@ export const Card = (
           <Link
             href={`https://ramajudicial.gov.co/web/${juzgado.replaceAll(
               'á',
-              'a'
+              'a',
             )}`}
           >
             {' '}

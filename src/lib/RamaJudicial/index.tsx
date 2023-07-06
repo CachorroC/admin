@@ -35,10 +35,10 @@ export const Juzgados = cache(
             />
           );
         }
-      )
+      ),
     );
     return <>{juzgados}</>;
-  }
+  },
 );
 export async function getConsultaNumeroRadicion(
   {
@@ -48,7 +48,7 @@ export async function getConsultaNumeroRadicion(
 }
 ) {
   const Request = await fetch(
-    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`
+    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`,
   );
   if (!Request.ok) {
     console.log(
@@ -78,7 +78,7 @@ export async function getActuacionesByidProceso(
   try {
     const request = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${idProceso}`,
-      { cache: 'no-store' }
+      { cache: 'no-store' },
     );
     if (!request.ok) {
       const text = await request.text();

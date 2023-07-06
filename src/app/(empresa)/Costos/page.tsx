@@ -26,7 +26,7 @@ const Total = (
     (
       acc, current
     ) => acc + (current.price || 0) * (current.quantity || 0),
-    0
+    0,
   );
   return <p>Total Amount: {total}</p>;
 };

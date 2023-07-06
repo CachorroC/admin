@@ -9,19 +9,23 @@ export interface FormValues {
   address: string;
 }
 
-export const FormCard= (
-  { children, currentStep, prevFormStep }: { children: ReactNode; currentStep: number;  prevFormStep: () => void;}
-)=> (
+export const FormCard = (
+  {
+    children,
+    currentStep,
+    prevFormStep,
+  }: {
+  children: ReactNode;
+  currentStep: number;
+  prevFormStep: () => void;
+}
+) => (
   <div className={styles.formCard}>
     {currentStep < 3 && (
       <>
         {currentStep > 0 && (
-          <button
-            className={styles.back}
-            onClick={prevFormStep}
-            type="button"
-          >
-              back
+          <button className={styles.back} onClick={prevFormStep} type='button'>
+            back
           </button>
         )}
 
@@ -32,8 +36,7 @@ export const FormCard= (
   </div>
 );
 
-
-export const FormCompleted = ()=> {
+export const FormCompleted = () => {
   const { data } = useFormData();
 
   return (
@@ -47,11 +50,15 @@ export const FormCompleted = ()=> {
   );
 };
 
-
-
 export const PersonalInfo = (
-  { formStep, nextFormStep }: { formStep: number;   nextFormStep: () => void;}
-)=> {
+  {
+    formStep,
+    nextFormStep,
+  }: {
+  formStep: number;
+  nextFormStep: () => void;
+}
+) => {
   const { setFormValues } = useFormData();
 
   const {
@@ -62,8 +69,7 @@ export const PersonalInfo = (
     {
       defaultValues: {
         email: 'admin@example.com',
-
-      }
+      },
     }
   );
 
@@ -86,10 +92,10 @@ export const PersonalInfo = (
         onSubmit
       )}>
         <div className={styles.formRow}>
-          <label htmlFor="email">Email</label>
+          <label htmlFor='email'>Email</label>
           <input
-            type="email"
-            id="email"
+            type='email'
+            id='email'
             {...register(
               'email',
               {
@@ -101,15 +107,21 @@ export const PersonalInfo = (
             <p className={styles.errorText}>Email is required</p>
           )}
         </div>
-        <button type="submit">Next</button>
+        <button type='submit'>Next</button>
       </form>
     </div>
   );
 };
 
 export const ConfirmPurchase = (
-  { formStep, nextFormStep } :{ formStep: number;   nextFormStep: () => void;}
-)=> {
+  {
+    formStep,
+    nextFormStep,
+  }: {
+  formStep: number;
+  nextFormStep: () => void;
+}
+) => {
   const { setFormValues } = useFormData();
 
   const {
@@ -119,8 +131,8 @@ export const ConfirmPurchase = (
   } = useForm(
     {
       defaultValues: {
-        checkbox: false
-      }
+        checkbox: false,
+      },
     }
   );
 
@@ -143,9 +155,9 @@ export const ConfirmPurchase = (
         onSubmit
       )}>
         <div className={styles.formRow}>
-          <label htmlFor="checkbox">
+          <label htmlFor='checkbox'>
             <input
-              type="checkbox"
+              type='checkbox'
               {...register(
                 'checkbox',
                 { required: true }
@@ -163,10 +175,15 @@ export const ConfirmPurchase = (
   );
 };
 
-
-export const  BillingInfo = (
-  { formStep, nextFormStep }: { formStep: number;  nextFormStep: () => void; }
-)=>  {
+export const BillingInfo = (
+  {
+    formStep,
+    nextFormStep,
+  }: {
+  formStep: number;
+  nextFormStep: () => void;
+}
+) => {
   const { setFormValues } = useFormData();
 
   const {
@@ -176,8 +193,8 @@ export const  BillingInfo = (
   } = useForm(
     {
       defaultValues: {
-        address: 'calle 12c # 6 - 21'
-      }
+        address: 'calle 12c # 6 - 21',
+      },
     }
   );
 
@@ -200,10 +217,10 @@ export const  BillingInfo = (
         onSubmit
       )}>
         <div className={styles.formRow}>
-          <label htmlFor="address">Address</label>
+          <label htmlFor='address'>Address</label>
           <input
-            type="address"
-            id="address"
+            type='address'
+            id='address'
             {...register(
               'address',
               { required: true }

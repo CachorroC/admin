@@ -61,7 +61,7 @@ export default async function PageProcesosllaveProceso(
 
   const cantidadCarpetas = Carpetas.length;
   const cantidadProcesos = Procesos.length;
-  if ( cantidadProcesos === 0 ) {
+  if (cantidadProcesos === 0) {
     return (
       <>
         {Carpetas.map(
@@ -69,12 +69,10 @@ export default async function PageProcesosllaveProceso(
             Carpeta, i
           ) => (
             <DemandadoNameBadge carpeta={Carpeta} key={Carpeta._id} />
-
           )
         )}
       </>
     );
-
   }
   return (
     <>
@@ -82,13 +80,11 @@ export default async function PageProcesosllaveProceso(
         (
           Proceso, i
         ) => (
-
           <DemandadoNameBadge
             carpeta={Carpetas[i]}
             key={Proceso.idProceso}
             proceso={Proceso}
           />
-
         )
       )}
     </>

@@ -34,7 +34,7 @@ async function Acts(
   { idProceso }: { idProceso: number }
 ) {
   const acts = await fetch(
-    `${getBaseUrl()}/api/Procesos/Actuaciones/${idProceso}`
+    `${getBaseUrl()}/api/Procesos/Actuaciones/${idProceso}`,
   );
   const res = (await acts.json()) as IntActuaciones;
 

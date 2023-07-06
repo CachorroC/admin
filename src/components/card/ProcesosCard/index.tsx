@@ -46,7 +46,7 @@ export const ProcesoCard = (
             className={styles.button}
             href={`https://ramajudicial.gov.co/web/${juzgado.replaceAll(
               'á',
-              'a'
+              'a',
             )}`}
           >
             {' '}

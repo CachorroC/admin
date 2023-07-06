@@ -20,6 +20,6 @@ export async function GET(
       headers: {
         'content-type': 'application/json',
       },
-    }
+    },
   );
 }

@@ -5,7 +5,7 @@ import { ObjectId } from 'mongodb';
 
 const Collection = async () => {
   const client = await clientPromise;
-  if ( !client ) {
+  if (!client) {
     throw new Error(
       'no hay cliente mongólico'
     );
@@ -19,7 +19,7 @@ const Collection = async () => {
   return notas;
 };
 
-export async function GET (
+export async function GET(
   Request: NextRequest
 ) {
   const { searchParams } = new URL(
@@ -29,7 +29,7 @@ export async function GET (
   const notas = await collection.find(
     {}
   ).toArray();
-  if ( !notas.length ) {
+  if (!notas.length) {
     throw new Error(
       'no hay entradas en mongo'
     );
@@ -37,11 +37,11 @@ export async function GET (
   const llaveProceso = searchParams.get(
     'llaveProceso'
   );
-  if ( llaveProceso ) {
+  if (llaveProceso) {
     const Demandados = notas.filter(
       (
         nota
-      ) => nota.llaveProceso === llaveProceso
+      ) => nota.llaveProceso === llaveProceso,
     );
     return new NextResponse(
       JSON.stringify(
@@ -59,7 +59,7 @@ export async function GET (
   const _id = searchParams.get(
     '_id'
   );
-  if ( _id ) {
+  if (_id) {
     const Nota = notas.find(
       (
         nota
@@ -90,7 +90,7 @@ export async function GET (
   );
 }
 
-export async function POST (
+export async function POST(
   request: NextRequest
 ) {
   const incomingRequest = await request.json();
@@ -99,26 +99,25 @@ export async function POST (
     incomingRequest
   );
 
-  if ( !outgoingRequest.acknowledged ) {
-
+  if (!outgoingRequest.acknowledged) {
     throw new Error(
-      `${ outgoingRequest.acknowledged }`
+      `${outgoingRequest.acknowledged}`
     );
   }
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${ outgoingRequest.acknowledged }`
+      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`,
     ),
     {
       status: 200,
       headers: {
         'content-type': 'application/json',
       },
-    }
+    },
   );
 }
 
-export async function PUT (
+export async function PUT(
   Request: NextRequest
 ) {
   const updatedNote = await Request.json();
@@ -130,7 +129,7 @@ export async function PUT (
   const id = searchParams.get(
     'id'
   );
-  if ( id ) {
+  if (id) {
     const query = {
       _id: new ObjectId(
         id
@@ -140,9 +139,9 @@ export async function PUT (
       query,
       { $set: updatedNote }
     );
-    if ( result.acknowledged ) {
+    if (result.acknowledged) {
       return new NextResponse(
-        `Successfully updated game with id ${ id }`,
+        `Successfully updated game with id ${id}`,
         {
           status: 200,
           headers: { 'content-type': 'text/html' },
@@ -150,16 +149,17 @@ export async function PUT (
       );
     }
     return new NextResponse(
-      `the result was ${ result.acknowledged
-        ? 'true'
-        : 'false'
-      } with ${ result.modifiedCount.toString() }`,
+      `the result was ${
+        result.acknowledged
+          ? 'true'
+          : 'false'
+      } with ${result.modifiedCount.toString()}`,
       {
         status: 200,
         headers: {
           'content-type': 'text/html',
         },
-      }
+      },
     );
   }
   return new NextResponse(
@@ -170,7 +170,7 @@ export async function PUT (
   );
 }
 
-export async function DELETE (
+export async function DELETE(
   Request: NextRequest
 ) {
   const notas = await Collection();
@@ -180,7 +180,7 @@ export async function DELETE (
   const id = searchParams.get(
     '_id'
   );
-  if ( id ) {
+  if (id) {
     const query = {
       _id: new ObjectId(
         id
@@ -189,7 +189,7 @@ export async function DELETE (
     const Result = await notas.deleteOne(
       query
     );
-    if ( Result.acknowledged ) {
+    if (Result.acknowledged) {
       const count = Result.deletedCount;
       const response = {
         isOk: true,
@@ -208,10 +208,10 @@ export async function DELETE (
         }
       );
     }
-    if ( !Result.acknowledged ) {
+    if (!Result.acknowledged) {
       return new NextResponse(
         JSON.stringify(
-          `error 400 ${ id } not deleted`
+          `error 400 ${id} not deleted`
         ),
         {
           status: 400,

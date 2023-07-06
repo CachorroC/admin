@@ -6,130 +6,83 @@ import { Card } from '#@/components/card/card';
 import { useNoteSlider } from '#@/app/context/note-slider-context';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-const notaMap = new Map();
-export const  NoteButtonsSlider  = (
-  {notas}: {notas: monNota[]}
+export const NotasList = (
+  { notas }: { notas: monNota[] }
 ) => {
-  const [
-    noteSliderMap,
-    setNoteSliderMap
-  ] = useNoteSlider();
-  function scrollToId (
+  const linkRef = useRef<Map<any, any>>();
+  function getMap() {
+    if (!linkRef.current) {
+      // Initialize the Map on first usage.
+      linkRef.current = new Map();
+    }
+    return linkRef.current;
+  }
+  function scrollToId(
     notaId: string
   ) {
-    const node = noteSliderMap.get(
+    const map = getMap();
+    const node = map.get(
       notaId
     );
     node.scrollIntoView(
       {
         behavior: 'smooth',
         block: 'nearest',
-        inline: 'center'
+        inline: 'center',
       }
     );
   }
-
   return (
     <>
-
-      {
-        notas.map(
+      <nav>
+        {notas.map(
           (
             nt
           ) => {
             const { _id, nota } = nt;
             return (
-              <button key={ _id } onClick={
-                () => scrollToId(
-                  _id
-                )
-              }>
+              <button key={_id} type='button' onClick={() => scrollToId(
+                _id
+              )}>
                 <span className='material-symbols-outlined'>open_in_new</span>
                 <p>{nota}</p>
               </button>
             );
           }
-        )
-      }
-
-    </>
-  );
-};
-
-export const NotasList = (
-  {notas} : {notas: monNota[]}
-) => {
-
-
-  const [
-    noteSliderMap,
-    setNoteSliderMap
-  ] = useNoteSlider();
-  notas.forEach(
-    (
-      nota, i, arr
-    ) => {
-      const { _id} = nota;
-      setNoteSliderMap(
-        new Map(
-          noteSliderMap.set(
-            _id,
-            nota
-          )
-        )
-      );
-    }
-  );
-  return (
-    <>
-
+        )}
+      </nav>
       <ul>
         {notas.map(
           (
             nt, i, arr
           ) => (
             <li
-              style={{height: '100vh'}}
+              style={{ height: '100vh' }}
               key={nt._id}
-              ref={
-                (
-                  node
-                ) => {
-                  if ( node ) {
-                    notaMap.set(
-                      nt._id,
-                      node
-                    );
-                    return setNoteSliderMap(
-                      new Map(
-                        noteSliderMap.set(
-                          nt._id,
-                          node
-                        )
-                      )
-                    );
-                  }
-                  notaMap.delete(
+              ref={(
+                node
+              ) => {
+                const map = getMap();
+                if (node) {
+                  map.set(
+                    nt._id,
+                    node
+                  );
+                }
+                else {
+                  map.delete(
                     nt._id
                   );
-                  return setNoteSliderMap(
-                    new Map(
-                      notaMap
-                    )
-                  );
-
                 }
-              }
+              }}
             >
-              <Card name={ nt.nota } path={ '/Notas' }>
+              <Card name={nt.nota} path={'/Notas'}>
                 <span className='material-symbols-outlined'>note</span>
-
               </Card>
             </li>
           )
         )}
       </ul>
-
     </>
   );
 };

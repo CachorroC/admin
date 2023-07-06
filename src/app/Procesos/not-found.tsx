@@ -3,7 +3,6 @@ import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function NotFound() {
   return (
-
     <div
       className={layout.name}
       style={{ backgroundColor: 'var(--error-container)' }}
@@ -12,15 +11,14 @@ export default function NotFound() {
         className={typography.displayLarge}
         style={{ color: 'var(--on-error-container)' }}
       >
-          ¿Perdido?
+        ¿Perdido?
       </h1>
       <p
         className={typography.bodyLarge}
         style={{ color: 'var(--on-error-container)' }}
       >
-          No pudimos resolver la consulta que realizaste. No existe el recurso{' '}
+        No pudimos resolver la consulta que realizaste. No existe el recurso{' '}
       </p>
     </div>
-
   );
 }

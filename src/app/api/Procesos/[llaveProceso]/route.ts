@@ -9,7 +9,7 @@ export async function GET(
     params,
   }: {
     params: { llaveProceso: string };
-  }
+  },
 ) {
   const llaveProceso = params.llaveProceso;
   const { searchParams } = new URL(
@@ -33,7 +33,7 @@ export async function GET(
   const Procesos = procesos.filter(
     (
       proceso
-    ) => proceso.llaveProceso === llaveProceso
+    ) => proceso.llaveProceso === llaveProceso,
   );
   if (delay) {
     await new Promise(
@@ -54,7 +54,7 @@ export async function GET(
     const Procesos = procesos.find(
       (
         proceso
-      ) => proceso.idProceso.toString() === idProceso
+      ) => proceso.idProceso.toString() === idProceso,
     );
     if (!Procesos) {
       const num = parseInt(

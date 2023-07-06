@@ -39,7 +39,7 @@ export function arrayMergerByidProceso(
           ),
           ...item,
         }
-      )
+      ),
   );
   const mergedArr = Array.from(
     map.values()
@@ -83,7 +83,7 @@ export function arrayMergerByllaveProceso(
           ),
           ...item,
         }
-      )
+      ),
   );
   const mergedArr = Array.from(
     map.values()

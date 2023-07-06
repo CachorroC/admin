@@ -1,4 +1,3 @@
-
 import { getCarpetas, getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import {
   getActuacionesByidProceso,
@@ -87,9 +86,7 @@ export default async function PageProcesosLeftllaveProceso(
             carpeta
           ) => {
             let txt = '';
-            return(
-              <CarpetaCard Carpeta={carpeta} key={carpeta._id} />
-            );
+            return <CarpetaCard Carpeta={carpeta} key={carpeta._id} />;
           }
         )}
       </>

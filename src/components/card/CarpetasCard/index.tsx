@@ -8,39 +8,50 @@ import { usePathname } from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
 
 export const DemandaContainer = (
-  {demanda} : {demanda: intDemanda}
+  { demanda }: { demanda: intDemanda }
 ) => {
-  const { Departamento, Municipio, VencimientoPagare, EntregadeGarantiasAbogado, Radicado, CapitalAdeudado, Proceso,Ubicacion, Juzgado, Obligacion } = demanda;
+  const {
+    Departamento,
+    Municipio,
+    VencimientoPagare,
+    EntregadeGarantiasAbogado,
+    Radicado,
+    CapitalAdeudado,
+    Proceso,
+    Ubicacion,
+    Juzgado,
+    Obligacion,
+  } = demanda;
   return (
-    <div className={ styles.section }>
-      <h1 className={ typography.headlineMedium }>{ Radicado }</h1>
-      <h2 className={typography.titleMedium}>{`${Departamento}: ${Municipio}`}</h2>
-      { VencimientoPagare && (
+    <div className={styles.section}>
+      <h1 className={typography.headlineMedium}>{Radicado}</h1>
+      <h2
+        className={typography.titleMedium}
+      >{`${Departamento}: ${Municipio}`}</h2>
+      {VencimientoPagare && (
         <p className={typography.labelMedium}>{fixFechas(
           VencimientoPagare
         )}</p>
-      ) }
-      { EntregadeGarantiasAbogado && (
-        <p className={typography.labelSmall}>{fixFechas(
-          EntregadeGarantiasAbogado
-        )}</p>
-      ) }
-      { CapitalAdeudado && (
-        <p className={typography.labelSmall}>{
-          CapitalAdeudado
-        }</p>
-      ) }
-
+      )}
+      {EntregadeGarantiasAbogado && (
+        <p className={typography.labelSmall}>
+          {fixFechas(
+            EntregadeGarantiasAbogado
+          )}
+        </p>
+      )}
+      {CapitalAdeudado && (
+        <p className={typography.labelSmall}>{CapitalAdeudado}</p>
+      )}
     </div>
   );
-
 };
 export const CarpetaCard = (
   { Carpeta }: { Carpeta: monCarpetaDemandado }
 ) => {
   const pathname = usePathname();
 
-  const { llaveProceso, idProceso, Deudor,  _id , Demanda} = Carpeta;
+  const { llaveProceso, idProceso, Deudor, _id, Demanda } = Carpeta;
   const { Nombre, Tel, Direccion, Email } = Deudor;
 
   const path = '/Procesos';
@@ -58,7 +69,7 @@ export const CarpetaCard = (
     pathname === path;
   return (
     <>
-      <DemandaContainer demanda={ Demanda } />
+      <DemandaContainer demanda={Demanda} />
       <div className={styles.container} key={_id}>
         <div className={isActive
           ? styles.cardActive
@@ -70,7 +81,7 @@ export const CarpetaCard = (
           <div className={styles.links}>
             <Link className={styles.button} href={href}>
               <span className={`material-symbols-outlined ${styles.icon}`}>
-              folder_open
+                folder_open
               </span>
               <span className={styles.tooltiptext}>Abrir</span>
             </Link>
@@ -78,7 +89,7 @@ export const CarpetaCard = (
             {Tel && Tel.Celular && (
               <Link className={styles.button} href={`tel:${Tel.Celular}`}>
                 <span className={`material-symbols-outlined ${styles.icon}`}>
-                phone_iphone
+                  phone_iphone
                 </span>
                 <span className={styles.tooltiptext}>Numero Celular</span>
               </Link>
@@ -86,7 +97,7 @@ export const CarpetaCard = (
             {Email && (
               <Link className={styles.button} href={`mailto:${Email}`}>
                 <span className={`material-symbols-outlined ${styles.icon}`}>
-                forward_to_inbox
+                  forward_to_inbox
                 </span>
                 <span className={styles.tooltiptext}>Email</span>
               </Link>
@@ -94,7 +105,7 @@ export const CarpetaCard = (
             {Tel && Tel.Fijo && (
               <Link className={styles.button} href={`tel:${Tel.Fijo}`}>
                 <span className={`material-symbols-outlined ${styles.icon}`}>
-                call
+                  call
                 </span>
                 <span className={styles.tooltiptext}>Numero Fijo</span>
               </Link>

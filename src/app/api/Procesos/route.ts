@@ -58,18 +58,18 @@ export async function POST(
       ),
       {
         status: 500,
-      }
+      },
     );
   }
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
+      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`,
     ),
     {
       status: 200,
       headers: {
         'content-type': 'application/json',
       },
-    }
+    },
   );
 }
