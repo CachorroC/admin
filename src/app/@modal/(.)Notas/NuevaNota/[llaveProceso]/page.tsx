@@ -13,7 +13,10 @@ export default function NuevaNotallaveProceso(
 ) {
   return (
     <Modal>
-      <NewNota llaveProceso={''} uri={`${getBaseUrl()}`} />
+      <NewNota
+        llaveProceso={''}
+        uri={`${getBaseUrl()}`}
+      />
     </Modal>
   );
 }

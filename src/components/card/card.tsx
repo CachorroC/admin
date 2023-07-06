@@ -140,7 +140,11 @@ export const Card = (
                 <span className={card.tooltiptext}>Actuaciones del proceso</span>
               </Link>
 
-              <Link onClick={clickHandler} href={href} className={card.link}>
+              <Link
+                onClick={clickHandler}
+                href={href}
+                className={card.link}
+              >
                 <span className={`material-symbols-outlined ${card.icon}`}>
                   {icon ?? 'open_in_new'}
                 </span>

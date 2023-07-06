@@ -14,7 +14,10 @@ export default async function PageProcesosRight() {
   return (
     <>
       <NotasList notas={notas} />
-      <NewNota llaveProceso={'Procesos'} uri={`${getBaseUrl()}`} />
+      <NewNota
+        llaveProceso={'Procesos'}
+        uri={`${getBaseUrl()}`}
+      />
       <Notas />
     </>
   );

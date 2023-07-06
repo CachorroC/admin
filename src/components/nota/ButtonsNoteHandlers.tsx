@@ -26,7 +26,10 @@ export function DeleteNoteButton(
   }
 
   return (
-    <button className={note.buttonDelete} onClick={deleteRequestHandler}>
+    <button
+      className={note.buttonDelete}
+      onClick={deleteRequestHandler}
+    >
       <span className={`material-symbols-outlined ${note.icon}`}>delete</span>
     </button>
   );
@@ -69,7 +72,10 @@ export function AddNoteButton(
   }
 
   return (
-    <button className={note.buttonAdd} onClick={addRequestHandler}>
+    <button
+      className={note.buttonAdd}
+      onClick={addRequestHandler}
+    >
       <span className={`material-symbols-outlined ${note.icon}`}>delete</span>
     </button>
   );

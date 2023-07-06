@@ -81,7 +81,10 @@ export default async function DefaultProcesosLeftllaveProceso(
             return (
               <Fragment key={_id}>
                 <h1 className={typography.displayLarge}>Default</h1>
-                <Acts key={idProceso} idProceso={idProceso} />
+                <Acts
+                  key={idProceso}
+                  idProceso={idProceso}
+                />
                 <Card
                   key={_id}
                   name={Deudor.Nombre}

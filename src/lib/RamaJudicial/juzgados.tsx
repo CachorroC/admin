@@ -68,7 +68,11 @@ export async function JuzgadosByllaveProceso(
       err
     );
     return (
-      <CardCarpeta name={error} path={'/Procesos'} llaveProceso={llaveProceso}>
+      <CardCarpeta
+        name={error}
+        path={'/Procesos'}
+        llaveProceso={llaveProceso}
+      >
         <p>{error}</p>
       </CardCarpeta>
     );

@@ -27,31 +27,52 @@ export default async function Page() {
       </div>
 
       <div className={layout.left}>
-        <Link className={layout.link} href={'/Procesos' as Route}>
+        <Link
+          className={layout.link}
+          href={'/Procesos' as Route}
+        >
           <span className='material-symbols-outlined'>folder_open</span>
           <h1 className={typography.displayMedium}> Procesos</h1>
         </Link>
-        <Link className={layout.link} href={'/Notas' as Route}>
+        <Link
+          className={layout.link}
+          href={'/Notas' as Route}
+        >
           <span className='material-symbols-outlined'>folder_open</span>
           <h1 className={typography.displayMedium}>Notas</h1>
         </Link>
-        <Link className={layout.link} href={'/api' as Route}>
+        <Link
+          className={layout.link}
+          href={'/api' as Route}
+        >
           <span className='material-symbols-outlined'>folder_open</span>
           <h1 className={typography.displayMedium}>api</h1>
         </Link>
-        <Link className={layout.link} href={'/Notas/NuevaNota' as Route}>
+        <Link
+          className={layout.link}
+          href={'/Notas/NuevaNota' as Route}
+        >
           <span className='material-symbols-outlined'>folder_open</span>
           <h1 className={typography.displayMedium}>Nueva Nota</h1>
         </Link>
-        <Link className={layout.link} href={'/Costos' as Route}>
+        <Link
+          className={layout.link}
+          href={'/Costos' as Route}
+        >
           <span className='material-symbols-outlined'>folder_open</span>
           <h1 className={typography.displayMedium}>Costos</h1>
         </Link>
-        <Link className={layout.link} href={'/Contacto' as Route}>
+        <Link
+          className={layout.link}
+          href={'/Contacto' as Route}
+        >
           <span className='material-symbols-outlined'>folder_open</span>
           <h1 className={typography.displayMedium}>Contacto</h1>
         </Link>
-        <Link className={layout.link} href={'/QuienesSomos' as Route}>
+        <Link
+          className={layout.link}
+          href={'/QuienesSomos' as Route}
+        >
           <span className='material-symbols-outlined'>folder_open</span>
           <h1 className={typography.displayMedium}>Quienes Somos</h1>
         </Link>
@@ -62,7 +83,10 @@ export default async function Page() {
           <span className='material-symbols-outlined'>add</span>
           <h1 className={typography.displayMedium}>NuevoProceso</h1>
         </Link>
-        <Link className={layout.link} href={'/Demandados' as Route}>
+        <Link
+          className={layout.link}
+          href={'/Demandados' as Route}
+        >
           <span className='material-symbols-outlined'>person_pin</span>
           <h1 className={typography.displayMedium}> Demandados</h1>
         </Link>

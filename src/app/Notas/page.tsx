@@ -46,7 +46,14 @@ export default async function PageNotas() {
             NotaM, index, arr
           ) => {
             const { _id, llaveProceso, nota, pathname, tareas, fecha } = NotaM;
-            return <Nota notaRaw={NotaM} i={index} key={_id} arr={arr} />;
+            return (
+              <Nota
+                notaRaw={NotaM}
+                i={index}
+                key={_id}
+                arr={arr}
+              />
+            );
           }
         )}
       </div>

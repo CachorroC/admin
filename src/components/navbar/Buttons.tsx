@@ -124,9 +124,12 @@ export const ModalButton = () => {
     setIsOpen
   ] = useModal();
   return (
-    <button className={navbar.buttonModal} onClick={() => setIsOpen(
-      true
-    )}>
+    <button
+      className={navbar.buttonModal}
+      onClick={() => setIsOpen(
+        true
+      )}
+    >
       <span className={`material-symbols-outlined ${navbar.icon}`}>box</span>
     </button>
   );

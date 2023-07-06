@@ -14,7 +14,10 @@ async function ListDrawer() {
   );
   return (
     <Drawer>
-      <SearchOutputList path='/Procesos' fechas={fechas} />
+      <SearchOutputList
+        path='/Procesos'
+        fechas={fechas}
+      />
     </Drawer>
   );
 }

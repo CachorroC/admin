@@ -21,7 +21,10 @@ export default function Error(
 
   return (
     <div className={layout.header}>
-      <h1 className={typography.displayLarge} style={{ color: 'var(--error)' }}>
+      <h1
+        className={typography.displayLarge}
+        style={{ color: 'var(--error)' }}
+      >
         Error
       </h1>
       <p
@@ -31,7 +34,10 @@ export default function Error(
         {error?.message}
       </p>
 
-      <button onClick={() => reset()} className={layout.button}>
+      <button
+        onClick={() => reset()}
+        className={layout.button}
+      >
         Try Again
       </button>
     </div>

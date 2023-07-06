@@ -120,7 +120,10 @@ pathname as Route
           onClick;
         }}
       >
-        <div ref={wrapper} className={modal.wrapper}>
+        <div
+          ref={wrapper}
+          className={modal.wrapper}
+        >
           <ForwardButton />
           {children}
           <BackwardsButton />

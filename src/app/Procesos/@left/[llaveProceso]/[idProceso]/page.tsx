@@ -22,7 +22,10 @@ export default async function Page(
           (
             actuacion, index, arr
           ) => (
-            <ActuacionCard Actuacion={actuacion} key={index} />
+            <ActuacionCard
+              Actuacion={actuacion}
+              key={index}
+            />
           )
         )}
     </>

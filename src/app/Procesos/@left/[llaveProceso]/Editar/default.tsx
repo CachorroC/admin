@@ -28,10 +28,16 @@ export default async function Default(
             ntext, i
           ) => (
             <Fragment key={ntext._id}>
-              <h1 key={i} className={typeface.title}>
+              <h1
+                key={i}
+                className={typeface.title}
+              >
                 {ntext.nota}
               </h1>
-              <Edit uri={getBaseUrl()} nota={ntext} />
+              <Edit
+                uri={getBaseUrl()}
+                nota={ntext}
+              />
             </Fragment>
           )
         )}

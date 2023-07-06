@@ -21,7 +21,12 @@ async function Acts(
             act, i, arr
           ) => {
             const { idRegActuacion } = act;
-            return <ActuacionCard Actuacion={act} key={idRegActuacion} />;
+            return (
+              <ActuacionCard
+                Actuacion={act}
+                key={idRegActuacion}
+              />
+            );
           }
         )}
     </>
@@ -86,7 +91,12 @@ export default async function PageProcesosLeftllaveProceso(
             carpeta
           ) => {
             let txt = '';
-            return <CarpetaCard Carpeta={carpeta} key={carpeta._id} />;
+            return (
+              <CarpetaCard
+                Carpeta={carpeta}
+                key={carpeta._id}
+              />
+            );
           }
         )}
       </>

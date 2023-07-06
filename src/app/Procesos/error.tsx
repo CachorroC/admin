@@ -34,7 +34,10 @@ export default function Error(
         <p className={typography.bodyLarge}>{error?.message}</p>
       </div>
       <div className={layout.right}>
-        <button onClick={() => reset()} className={layout.button}>
+        <button
+          onClick={() => reset()}
+          className={layout.button}
+        >
           Try Again
         </button>
       </div>

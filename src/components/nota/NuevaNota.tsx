@@ -94,9 +94,12 @@ export function NewNota(
   );
   return (
     <div className={note.container}>
-      <form className={note.form} onSubmit={handleSubmit(
-        onSubmit
-      )}>
+      <form
+        className={note.form}
+        onSubmit={handleSubmit(
+          onSubmit
+        )}
+      >
         <div className={note.section}>
           <label
             htmlFor='nota'
@@ -235,7 +238,10 @@ export function NewNota(
           </div>
         )}
         <div className={note.section}>
-          <button type='submit' className={note.submitButton}>
+          <button
+            type='submit'
+            className={note.submitButton}
+          >
             <span className='material-symbols-outlined'>send</span>
           </button>
         </div>

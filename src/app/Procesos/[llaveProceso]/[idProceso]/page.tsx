@@ -28,7 +28,12 @@ export default async function PageProcesosllaveProcesoidProceso(
           carpeta
         ) => {
           const { _id } = carpeta;
-          return <CarpetaCard key={_id} Carpeta={carpeta} />;
+          return (
+            <CarpetaCard
+              key={_id}
+              Carpeta={carpeta}
+            />
+          );
         }
       )}
     </>

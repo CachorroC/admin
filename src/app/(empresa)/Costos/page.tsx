@@ -69,15 +69,21 @@ export default function Costos() {
       <form onSubmit={handleSubmit(
         onSubmit
       )}>
-        <input {...register(
-          'firstName'
-        )} placeholder='First Name' />
+        <input
+          {...register(
+            'firstName'
+          )}
+          placeholder='First Name'
+        />
         {fields.map(
           (
             field, index
           ) => (
             <div key={field.id}>
-              <section className={'section'} key={field.id}>
+              <section
+                className={'section'}
+                key={field.id}
+              >
                 <input
                   placeholder='name'
                   {...register(
@@ -121,9 +127,12 @@ export default function Costos() {
                     : ''}
                   defaultValue={field.price}
                 />
-                <button type='button' onClick={() => remove(
-                  index
-                )}>
+                <button
+                  type='button'
+                  onClick={() => remove(
+                    index
+                  )}
+                >
                 DELETE
                 </button>
               </section>

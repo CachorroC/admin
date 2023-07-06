@@ -52,7 +52,10 @@ export const LinkCard = (
   const router = useRouter();
 
   return (
-    <div className={searchbar.container} key={_id}>
+    <div
+      className={searchbar.container}
+      key={_id}
+    >
       <Link
         href={href}
         onClick={() => setIsNavOpen(

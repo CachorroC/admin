@@ -71,9 +71,12 @@ export function Edit(
   };
   return (
     <div className={note.container}>
-      <form className={note.form} onSubmit={handleSubmit(
-        onSubmit
-      )}>
+      <form
+        className={note.form}
+        onSubmit={handleSubmit(
+          onSubmit
+        )}
+      >
         <div className={note.section}>
           <label
             htmlFor={'nota'}
@@ -97,7 +100,10 @@ export function Edit(
           ) => (
             <Fragment key={field.tarea}>
               <div className={note.section}>
-                <label htmlFor={`tareas.${index}.tarea`} className={note.label}>
+                <label
+                  htmlFor={`tareas.${index}.tarea`}
+                  className={note.label}
+                >
                 Tarea:{' '}
                 </label>
                 <textarea
@@ -111,7 +117,10 @@ export function Edit(
                 />
               </div>
               <div className={note.section}>
-                <label htmlFor={`tareas.${index}.isDone`} className={note.label}>
+                <label
+                  htmlFor={`tareas.${index}.isDone`}
+                  className={note.label}
+                >
                 ¿Tarea completa?
                 </label>
                 <input
@@ -125,7 +134,10 @@ export function Edit(
                 />
               </div>
               <div className={note.section}>
-                <label htmlFor={`tareas.${index}.dueDate`} className={note.label}>
+                <label
+                  htmlFor={`tareas.${index}.dueDate`}
+                  className={note.label}
+                >
                 Para cuándo es?:{' '}
                 </label>
                 <input
@@ -171,7 +183,10 @@ export function Edit(
         )}
 
         <div className={note.section}>
-          <button type='submit' className={note.submitButton}>
+          <button
+            type='submit'
+            className={note.submitButton}
+          >
             <span className='material-symbols-outlined'>send</span>
           </button>
           <button

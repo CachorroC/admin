@@ -76,7 +76,11 @@ export default function SearchOutputList(
         return;
       }
       rows.push(
-        <LinkCard path={path} proceso={proceso} key={_id} />
+        <LinkCard
+          path={path}
+          proceso={proceso}
+          key={_id}
+        />,
       );
     }
   );

@@ -68,7 +68,10 @@ export default async function PageProcesosllaveProceso(
           (
             Carpeta, i
           ) => (
-            <DemandadoNameBadge carpeta={Carpeta} key={Carpeta._id} />
+            <DemandadoNameBadge
+              carpeta={Carpeta}
+              key={Carpeta._id}
+            />
           )
         )}
       </>

@@ -39,7 +39,10 @@ async function Acts(
   const res = (await acts.json()) as IntActuaciones;
 
   return (
-    <div className={box.container} key={idProceso}>
+    <div
+      className={box.container}
+      key={idProceso}
+    >
       <h1 className={typography.titleLarge}>{res.text.message}</h1>
       <p className={typography.bodyMedium}>{res.text.statusCode.toString()}</p>
       {res.acts
@@ -84,21 +87,30 @@ export default async function PageProcesosRightllaveProcesoidProceso(
   case 0:
     return (
       <>
-        <NewNota llaveProceso={params.llaveProceso} uri={`${getBaseUrl()}`} />
+        <NewNota
+          llaveProceso={params.llaveProceso}
+          uri={`${getBaseUrl()}`}
+        />
         <Notas />
       </>
     );
   case 1:
     return (
       <>
-        <NewNota llaveProceso={params.llaveProceso} uri={`${getBaseUrl()}`} />
+        <NewNota
+          llaveProceso={params.llaveProceso}
+          uri={`${getBaseUrl()}`}
+        />
         <Notas llaveProceso={params.llaveProceso} />
       </>
     );
   case 2:
     return (
       <>
-        <NewNota llaveProceso={params.llaveProceso} uri={`${getBaseUrl()}`} />
+        <NewNota
+          llaveProceso={params.llaveProceso}
+          uri={`${getBaseUrl()}`}
+        />
         <Notas llaveProceso={params.llaveProceso} />
       </>
     );
@@ -106,7 +118,10 @@ export default async function PageProcesosRightllaveProcesoidProceso(
   default:
     return (
       <>
-        <NewNota llaveProceso={params.llaveProceso} uri={`${getBaseUrl()}`} />
+        <NewNota
+          llaveProceso={params.llaveProceso}
+          uri={`${getBaseUrl()}`}
+        />
         <Notas llaveProceso={params.llaveProceso} />
       </>
     );

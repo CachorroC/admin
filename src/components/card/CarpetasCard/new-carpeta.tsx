@@ -48,9 +48,12 @@ export function NuevoProceso(
   };
   return (
     <div className={form.container}>
-      <form className={form.form} onSubmit={handleSubmit(
-        onSubmit
-      )}>
+      <form
+        className={form.form}
+        onSubmit={handleSubmit(
+          onSubmit
+        )}
+      >
         <input
           type='number'
           placeholder='Carpeta'

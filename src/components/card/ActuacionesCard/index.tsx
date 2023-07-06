@@ -22,7 +22,10 @@ export const ActuacionCard = (
     cant,
   } = Actuacion;
   return (
-    <div className={styles.container} key={idRegActuacion}>
+    <div
+      className={styles.container}
+      key={idRegActuacion}
+    >
       <div className={styles.card}>
         <h1 className={`${typography.titleMedium} ${styles.title}`}>
           {actuacion}
@@ -62,7 +65,12 @@ export const ActuacionesList = (
         Actuacion, ind, arr
       ) => {
         const { idRegActuacion } = Actuacion;
-        return <ActuacionCard Actuacion={Actuacion} key={idRegActuacion} />;
+        return (
+          <ActuacionCard
+            Actuacion={Actuacion}
+            key={idRegActuacion}
+          />
+        );
       }
     )}
   </>

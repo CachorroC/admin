@@ -43,7 +43,10 @@ export function Nota(
 }
 ) {
   return (
-    <div className={note.container} key={notaRaw._id}>
+    <div
+      className={note.container}
+      key={notaRaw._id}
+    >
       <div className={note.nota}>
         <sup className={note.sup}>{`${i + 1}`}</sup>
 
@@ -61,7 +64,10 @@ export function Nota(
             <EditNoteButton nota={notaRaw} />
           </Suspense>
           <Suspense fallback={<ButtonSkeleton />}>
-            <DeleteNoteButton id={notaRaw._id} uri={`${getBaseUrl()}`} />
+            <DeleteNoteButton
+              id={notaRaw._id}
+              uri={`${getBaseUrl()}`}
+            />
           </Suspense>
         </div>
         <div className={note.tareas}>
@@ -96,7 +102,12 @@ export async function Notas(
         (
           nota, i, arr
         ) => (
-          <Nota notaRaw={nota} i={i} arr={arr} key={nota._id} />
+          <Nota
+            notaRaw={nota}
+            i={i}
+            arr={arr}
+            key={nota._id}
+          />
         )
       );
       return <>{NotasRow}</>;
@@ -105,7 +116,12 @@ export async function Notas(
       (
         nota, i, arr
       ) => (
-        <Nota notaRaw={nota} i={i} arr={arr} key={nota._id} />
+        <Nota
+          notaRaw={nota}
+          i={i}
+          arr={arr}
+          key={nota._id}
+        />
       )
     );
     return <>{NotasRow}</>;
@@ -115,7 +131,12 @@ export async function Notas(
     (
       nota, i, arr
     ) => (
-      <Nota notaRaw={nota} i={i} arr={arr} key={nota._id} />
+      <Nota
+        notaRaw={nota}
+        i={i}
+        arr={arr}
+        key={nota._id}
+      />
     )
   );
   return <>{NotasRow}</>;

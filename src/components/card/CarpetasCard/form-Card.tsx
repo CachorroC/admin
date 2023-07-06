@@ -24,7 +24,11 @@ export const FormCard = (
     {currentStep < 3 && (
       <>
         {currentStep > 0 && (
-          <button className={styles.back} onClick={prevFormStep} type='button'>
+          <button
+            className={styles.back}
+            onClick={prevFormStep}
+            type='button'
+          >
             back
           </button>
         )}

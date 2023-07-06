@@ -20,7 +20,10 @@ export default async function Layout(
       {children}
       <Drawer>
         <Suspense fallback={<SearchOutputListSkeleton />}>
-          <SearchOutputList path='/Procesos' fechas={fechas} />
+          <SearchOutputList
+            path='/Procesos'
+            fechas={fechas}
+          />
         </Suspense>
       </Drawer>
     </Header>

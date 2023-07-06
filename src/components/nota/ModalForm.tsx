@@ -47,10 +47,13 @@ export const ModalForm = (
       onSubmit
     )}>
       <h2>Modal</h2>
-      <input placeholder='mail' {...register(
-        'mail',
-        { required: true }
-      )} />
+      <input
+        placeholder='mail'
+        {...register(
+          'mail',
+          { required: true }
+        )}
+      />
       <input type='submit' />
     </form>
   );

@@ -70,7 +70,10 @@ export const CarpetaCard = (
   return (
     <>
       <DemandaContainer demanda={Demanda} />
-      <div className={styles.container} key={_id}>
+      <div
+        className={styles.container}
+        key={_id}
+      >
         <div className={isActive
           ? styles.cardActive
           : styles.cardInactive}>
@@ -79,7 +82,10 @@ export const CarpetaCard = (
           </h1>
           <p className={styles.content}>{Direccion}</p>
           <div className={styles.links}>
-            <Link className={styles.button} href={href}>
+            <Link
+              className={styles.button}
+              href={href}
+            >
               <span className={`material-symbols-outlined ${styles.icon}`}>
                 folder_open
               </span>
@@ -87,7 +93,10 @@ export const CarpetaCard = (
             </Link>
 
             {Tel && Tel.Celular && (
-              <Link className={styles.button} href={`tel:${Tel.Celular}`}>
+              <Link
+                className={styles.button}
+                href={`tel:${Tel.Celular}`}
+              >
                 <span className={`material-symbols-outlined ${styles.icon}`}>
                   phone_iphone
                 </span>
@@ -95,7 +104,10 @@ export const CarpetaCard = (
               </Link>
             )}
             {Email && (
-              <Link className={styles.button} href={`mailto:${Email}`}>
+              <Link
+                className={styles.button}
+                href={`mailto:${Email}`}
+              >
                 <span className={`material-symbols-outlined ${styles.icon}`}>
                   forward_to_inbox
                 </span>
@@ -103,7 +115,10 @@ export const CarpetaCard = (
               </Link>
             )}
             {Tel && Tel.Fijo && (
-              <Link className={styles.button} href={`tel:${Tel.Fijo}`}>
+              <Link
+                className={styles.button}
+                href={`tel:${Tel.Fijo}`}
+              >
                 <span className={`material-symbols-outlined ${styles.icon}`}>
                   call
                 </span>

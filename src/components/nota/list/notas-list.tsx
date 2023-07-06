@@ -33,7 +33,11 @@ export const NotasList = (
     );
   }
   return (
-    <>
+    <div
+      style={{
+        height: '100vh',
+      }}
+    >
       <nav>
         {notas.map(
           (
@@ -41,9 +45,13 @@ export const NotasList = (
           ) => {
             const { _id, nota } = nt;
             return (
-              <button key={_id} type='button' onClick={() => scrollToId(
-                _id
-              )}>
+              <button
+                key={_id}
+                type='button'
+                onClick={() => scrollToId(
+                  _id
+                )}
+              >
                 <span className='material-symbols-outlined'>open_in_new</span>
                 <p>{nota}</p>
               </button>
@@ -76,13 +84,16 @@ export const NotasList = (
                 }
               }}
             >
-              <Card name={nt.nota} path={'/Notas'}>
+              <Card
+                name={nt.nota}
+                path={'/Notas'}
+              >
                 <span className='material-symbols-outlined'>note</span>
               </Card>
             </li>
           )
         )}
       </ul>
-    </>
+    </div>
   );
 };
