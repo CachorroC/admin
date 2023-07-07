@@ -16,7 +16,7 @@
       "as-needed",
       { "requireReturnForObjectLiteral": true }
     ],
-    "brace-style": ["error", "stroustrup"],
+    "brace-style": ["error", "st"],
     "computed-property-spacing": [
       "error",
       "always"
@@ -30,7 +30,7 @@
     ],
     "function-paren-newline": [
       "error",
-      "multiline-arguments"
+      { "minItems": 1 }
     ],
     "getter-return": "error",
     "indent": [

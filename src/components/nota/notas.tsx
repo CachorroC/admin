@@ -50,7 +50,6 @@ export function Nota({
           <Suspense fallback={<ButtonSkeleton />}>
             <DeleteNoteButton
               id={notaRaw._id}
-              uri={`${ getBaseUrl () }`}
             />
           </Suspense>
         </div>

@@ -1,15 +1,7 @@
 import { getNotas } from '#@/lib/notas';
 import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
-import note from '#@/components/nota/note.module.scss';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import { Fragment, Suspense } from 'react';
-import {DeleteNoteButton,
-  EditNoteButton} from '#@/components/nota/ButtonsNoteHandlers';
-import { getBaseUrl } from '#@/lib/getBaseUrl';
-import { fixFechas } from '#@/lib/fix';
-import Link from 'next/link';
-import type { Route } from 'next';
 import { Nota } from '../../components/nota/notas';
 async function renderName({
   llaveProceso
@@ -24,11 +16,11 @@ async function renderName({
   const names = carpetas.map (
     (carpeta, i, arr) => {
       const {
-        Deudor 
+        Deudor
       } = carpeta;
 
       const {
-        Nombre 
+        Nombre
       } = Deudor;
       return Nombre;
     }

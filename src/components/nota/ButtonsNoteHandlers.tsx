@@ -4,18 +4,15 @@ import {intNota,
   monNota} from '#@/lib/types/notas';
 import type { Route } from 'next';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 export function DeleteNoteButton({
   id,
-  uri
 }: {
   id: string;
-  uri: string;
 }) {
   async function deleteRequestHandler() {
     const Request = await fetch (
-      `${ uri }/api/Notas?_id=${ id }`,
+      `/api/Notas?_id=${ id }`,
       {
         method: 'DELETE'
       }
@@ -25,7 +22,9 @@ export function DeleteNoteButton({
     }
 
     const Response = await Request.json ();
-    alert (JSON.stringify (Response));
+    alert (
+      JSON.stringify ( Response ) 
+    );
   }
   return (
     <button
