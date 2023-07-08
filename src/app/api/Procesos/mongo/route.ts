@@ -1,13 +1,19 @@
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
 
-export async function POST(request: Request) {
+export async function POST(
+  request: Request
+) {
   const client = await clientPromise;
   if (!client) {
-    throw new Error ('no hay cliente mongólico');
+    throw new Error (
+      'no hay cliente mongólico'
+    );
   }
 
-  const db = client.db ('RyS');
+  const db = client.db (
+    'RyS'
+  );
 
   const procesosCollection = await db.collection (
     'Procesos'
@@ -17,7 +23,9 @@ export async function POST(request: Request) {
     const proceso = await request.json ();
 
     const result =
-      await procesosCollection.insertOne (proceso);
+      await procesosCollection.insertOne (
+        proceso
+      );
     if (!result.acknowledged) {
       return new NextResponse (
         null,
@@ -26,9 +34,12 @@ export async function POST(request: Request) {
         }
       );
     }
+
     return new NextResponse (
       JSON.stringify (
-        JSON.stringify (result.insertedId)
+        JSON.stringify (
+          result.insertedId
+        )
       ),
       {
         status: 200
@@ -37,7 +48,9 @@ export async function POST(request: Request) {
   }
   catch (error) {
     return new NextResponse (
-      JSON.stringify (error),
+      JSON.stringify (
+        error
+      ),
       {
         status: 505
       }

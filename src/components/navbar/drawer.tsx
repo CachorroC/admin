@@ -14,14 +14,20 @@ import {BackwardsButton,
 import Title from '#@/components/Headings/title';
 import { ButtonSkeleton } from './ButtonSkeleton';
 
-export default function Drawer({
-  children
-}: {
+export default function Drawer(
+  {
+    children
+  }: {
   children: ReactNode;
-}) {
-  const isDesktop = useMedia (2);
+}
+) {
+  const isDesktop = useMedia (
+    2
+  );
 
-  const isMobile = useMedia (0);
+  const isMobile = useMedia (
+    0
+  );
 
   const [
     isNavOpen,
@@ -56,6 +62,7 @@ export default function Drawer({
         </nav>
       );
     }
+
     return (
       <nav className={navbar.drawer}>
         <Suspense fallback={<ButtonSkeleton />}>

@@ -5,10 +5,14 @@ const CACHE_NAME = 'offline';
 const OFFLINE_URL = 'offline.html';
 self.addEventListener (
   'install',
-  (event) => {
+  (
+    event
+  ) => {
     event.waitUntil (
       (async () => {
-        const cache = await caches.open (CACHE_NAME);
+        const cache = await caches.open (
+          CACHE_NAME
+        );
         await cache.add (
           new Request (
             OFFLINE_URL,
@@ -24,7 +28,9 @@ self.addEventListener (
 );
 self.addEventListener (
   'activate',
-  (event) => {
+  (
+    event
+  ) => {
     event.waitUntil (
       (async () => {
         if (
@@ -39,7 +45,9 @@ self.addEventListener (
 );
 self.addEventListener (
   'fetch',
-  (event) => {
+  (
+    event
+  ) => {
     if (event.request.mode === 'navigate') {
       event.respondWith (
         (async () => {
@@ -66,7 +74,9 @@ self.addEventListener (
             );
 
             const cachedResponse =
-            await cache.match (OFFLINE_URL);
+            await cache.match (
+              OFFLINE_URL
+            );
             return cachedResponse;
           }
         }) ()

@@ -16,11 +16,13 @@ import {getNotas,
 import { NewNota } from '#@/components/nota/NuevaNota';
 import note from '#@/components/nota/note.module.scss';
 import { Notas } from '#@/components/nota/notas';
-async function Name({
-  llaveProceso
-}: {
+async function Name(
+  {
+    llaveProceso
+  }: {
   llaveProceso: string;
-}) {
+}
+) {
   const proceso = await getCarpetasByllaveProceso (
     {
       llaveProceso: llaveProceso
@@ -28,7 +30,13 @@ async function Name({
   );
 
   const nombre = proceso
-    .map ((p) => p.Deudor.Nombre)
+    .map (
+      (
+        p
+      ) => {
+        return p.Deudor.Nombre;
+      }
+    )
     .toString ();
   return (
     <h3 className={typography.displayMedium}>
@@ -36,11 +44,13 @@ async function Name({
     </h3>
   );
 }
-async function Acts({
-  idProceso
-}: {
+async function Acts(
+  {
+    idProceso
+  }: {
   idProceso: number;
-}) {
+}
+) {
   const acts = await fetch (
     `${ getBaseUrl () }/api/Procesos/Actuaciones/${ idProceso }`
   );
@@ -76,11 +86,13 @@ async function Acts({
   );
 }
 
-export default async function PageProcesosRightllaveProcesoidProceso({
-  params
-}: {
+export default async function PageProcesosRightllaveProcesoidProceso(
+  {
+    params
+  }: {
   params: { llaveProceso: string };
-}) {
+}
+) {
   const carpeta = await getCarpetasByllaveProceso (
     {
       llaveProceso: params.llaveProceso
@@ -88,59 +100,61 @@ export default async function PageProcesosRightllaveProcesoidProceso({
   );
 
   const notasllaveProceso =
-    await getNotasByllaveProceso ({
-      llaveProceso: params.llaveProceso
-    });
+    await getNotasByllaveProceso (
+      {
+        llaveProceso: params.llaveProceso
+      }
+    );
 
   const cantidadNotas = notasllaveProceso.length;
 
   const notas = await getNotas ();
   switch (cantidadNotas) {
-    case 0:
-      return (
-        <>
-          <NewNota
-            llaveProceso={params.llaveProceso}
-            uri={`${ getBaseUrl () }`}
-          />
-          <Notas />
-        </>
-      );
-    case 1:
-      return (
-        <>
-          <NewNota
-            llaveProceso={params.llaveProceso}
-            uri={`${ getBaseUrl () }`}
-          />
-          <Notas
-            llaveProceso={params.llaveProceso}
-          />
-        </>
-      );
-    case 2:
-      return (
-        <>
-          <NewNota
-            llaveProceso={params.llaveProceso}
-            uri={`${ getBaseUrl () }`}
-          />
-          <Notas
-            llaveProceso={params.llaveProceso}
-          />
-        </>
-      );
-    default:
-      return (
-        <>
-          <NewNota
-            llaveProceso={params.llaveProceso}
-            uri={`${ getBaseUrl () }`}
-          />
-          <Notas
-            llaveProceso={params.llaveProceso}
-          />
-        </>
-      );
+      case 0:
+        return (
+          <>
+            <NewNota
+              llaveProceso={params.llaveProceso}
+              uri={`${ getBaseUrl () }`}
+            />
+            <Notas />
+          </>
+        );
+      case 1:
+        return (
+          <>
+            <NewNota
+              llaveProceso={params.llaveProceso}
+              uri={`${ getBaseUrl () }`}
+            />
+            <Notas
+              llaveProceso={params.llaveProceso}
+            />
+          </>
+        );
+      case 2:
+        return (
+          <>
+            <NewNota
+              llaveProceso={params.llaveProceso}
+              uri={`${ getBaseUrl () }`}
+            />
+            <Notas
+              llaveProceso={params.llaveProceso}
+            />
+          </>
+        );
+      default:
+        return (
+          <>
+            <NewNota
+              llaveProceso={params.llaveProceso}
+              uri={`${ getBaseUrl () }`}
+            />
+            <Notas
+              llaveProceso={params.llaveProceso}
+            />
+          </>
+        );
   }
 }

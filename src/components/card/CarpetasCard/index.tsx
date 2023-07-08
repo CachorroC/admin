@@ -8,11 +8,13 @@ import type { Route } from 'next';
 import { usePathname } from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
 
-export const DemandaContainer = ({
-  demanda
-}: {
+export const DemandaContainer = (
+  {
+    demanda
+  }: {
   demanda: intDemanda;
-}) => {
+}
+) => {
   const {
     Departamento,
     Municipio,
@@ -36,12 +38,16 @@ export const DemandaContainer = ({
         }>{`${ Departamento }: ${ Municipio }`}</h2>
       {VencimientoPagare && (
         <p className={typography.labelMedium}>
-          {fixFechas (VencimientoPagare)}
+          {fixFechas (
+            VencimientoPagare
+          )}
         </p>
       )}
       {EntregadeGarantiasAbogado && (
         <p className={typography.labelSmall}>
-          {fixFechas (EntregadeGarantiasAbogado)}
+          {fixFechas (
+            EntregadeGarantiasAbogado
+          )}
         </p>
       )}
       {CapitalAdeudado && (
@@ -53,11 +59,13 @@ export const DemandaContainer = ({
   );
 };
 
-export const CarpetaCard = ({
-  Carpeta
-}: {
+export const CarpetaCard = (
+  {
+    Carpeta
+  }: {
   Carpeta: monCarpetaDemandado;
-}) => {
+}
+) => {
   const pathname = usePathname ();
 
   const {

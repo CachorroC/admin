@@ -10,9 +10,13 @@ export default function Page() {
   return (
     <>
       <div className={layout.main}>
-        {lrs.map ((lr, i) => (
-          <p key={i}>{lr}</p>
-        ))}
+        {lrs.map (
+          (
+            lr, i
+          ) => {
+            return <p key={i}>{lr}</p>;
+          }
+        )}
       </div>
     </>
   );

@@ -4,11 +4,13 @@ import { intConsultaNumeroRadicacion } from '../types/procesos';
 import { fixDemandado } from '../fix';
 import { CardCarpeta } from '#@/components/card/cardCarpeta';
 
-export async function JuzgadosByllaveProceso({
-  llaveProceso
-}: {
+export async function JuzgadosByllaveProceso(
+  {
+    llaveProceso
+  }: {
   llaveProceso: string;
-}) {
+}
+) {
   try {
     const Request = await fetch (
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=false`
@@ -38,7 +40,9 @@ export async function JuzgadosByllaveProceso({
     const procesos = res.procesos;
 
     const mapeandoProcesos = procesos.map (
-      (Proceso) => {
+      (
+        Proceso
+      ) => {
         const {
           llaveProceso,
           idProceso,
@@ -48,7 +52,9 @@ export async function JuzgadosByllaveProceso({
         return (
           <CardCarpeta
             key={idProceso}
-            name={fixDemandado (sujetosProcesales)}
+            name={fixDemandado (
+              sujetosProcesales
+            )}
             path={'/Procesos'}
             llaveProceso={llaveProceso}
             idProceso={idProceso}>
@@ -61,9 +67,13 @@ export async function JuzgadosByllaveProceso({
     return <>{mapeandoProcesos}</>;
   }
   catch (err) {
-    console.log (err);
+    console.log (
+      err
+    );
 
-    const error = JSON.stringify (err);
+    const error = JSON.stringify (
+      err
+    );
     return (
       <CardCarpeta
         name={error}

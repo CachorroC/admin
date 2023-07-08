@@ -14,10 +14,14 @@ const hostname =
     ? 'beta.rsasesorjuridico.com'
     : 'app.rsasesorjuridico.com');
 
-export const getBaseUrl = cache (() => {
-  const uri =
+export const getBaseUrl = cache (
+  () => {
+    const uri =
     `https://${ hostname }` ??
     `http://localhost:${ basePort }`;
-  console.log (uri);
-  return uri;
-});
+    console.log (
+      uri
+    );
+    return uri;
+  }
+);

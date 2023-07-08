@@ -6,11 +6,13 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { fixFechas } from '#@/lib/fix';
 import typeface from '#@/styles/fonts/typeface.module.scss';
 
-export default function Title({
-  helper
-}: {
+export default function Title(
+  {
+    helper
+  }: {
   helper?: string;
-}) {
+}
+) {
   const [
     isNavOpen,
     setIsNavOpen
@@ -24,26 +26,26 @@ export default function Title({
   const today = new Date ();
   let day;
   switch (today.getDay ()) {
-    case 0:
-      day = 'Mimingo';
-      break;
-    case 1:
-      day = 'Lunes';
-      break;
-    case 2:
-      day = 'Martes';
-      break;
-    case 3:
-      day = 'Miércoles';
-      break;
-    case 4:
-      day = 'Jueves';
-      break;
-    case 5:
-      day = 'Viernes';
-      break;
-    case 6:
-      day = 'Sábado';
+      case 0:
+        day = 'Mimingo';
+        break;
+      case 1:
+        day = 'Lunes';
+        break;
+      case 2:
+        day = 'Martes';
+        break;
+      case 3:
+        day = 'Miércoles';
+        break;
+      case 4:
+        day = 'Jueves';
+        break;
+      case 5:
+        day = 'Viernes';
+        break;
+      case 6:
+        day = 'Sábado';
   }
 
   const days = [

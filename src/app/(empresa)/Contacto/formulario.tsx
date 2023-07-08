@@ -23,9 +23,17 @@ export default function Formulario() {
 
   const onSubmit: SubmitHandler<FormValues> = (
     data
-  ) => alert (JSON.stringify (data));
+  ) => {
+    return alert (
+      JSON.stringify (
+        data
+      )
+    );
+  };
   return (
-    <form onSubmit={handleSubmit (onSubmit)}>
+    <form onSubmit={handleSubmit (
+      onSubmit
+    )}>
       <input
         type='text'
         placeholder='Nombres'

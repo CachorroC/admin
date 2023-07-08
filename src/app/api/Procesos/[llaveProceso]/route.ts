@@ -14,39 +14,68 @@ export async function GET(
 
   const {
     searchParams 
-  } = new URL (request.url);
+  } = new URL (
+    request.url
+  );
 
   const client = await clientPromise;
 
   const procesos = (await client
-    .db ('RyS')
-    .collection ('Procesos')
-    .find ({
-    })
+    .db (
+      'RyS'
+    )
+    .collection (
+      'Procesos'
+    )
+    .find (
+      {
+      }
+    )
     .toArray ()) as unknown as monDemandado[];
 
-  const delay = searchParams.get ('delay');
+  const delay = searchParams.get (
+    'delay'
+  );
 
   const Procesos = procesos.filter (
-    (proceso) =>
-      proceso.llaveProceso === llaveProceso
+    (
+      proceso
+    ) => {
+      return proceso.llaveProceso === llaveProceso;
+    }
   );
   if (delay) {
-    await new Promise ((resolve) =>
-      setTimeout (
-        resolve,
-        Number (delay)
-      ));
+    await new Promise (
+      (
+        resolve
+      ) => {
+        return setTimeout (
+          resolve,
+          Number (
+            delay
+          )
+        );
+      }
+    );
   }
 
-  const idProceso = searchParams.get ('idProceso');
+  const idProceso = searchParams.get (
+    'idProceso'
+  );
   if (idProceso) {
     const Procesos = procesos.find (
-      (proceso) =>
-        proceso.idProceso.toString () === idProceso
+      (
+        proceso
+      ) => {
+        return (
+          proceso.idProceso.toString () === idProceso
+        );
+      }
     );
     if (!Procesos) {
-      const num = parseInt (idProceso);
+      const num = parseInt (
+        idProceso
+      );
 
       const noProc = {
         idProceso        : num,
@@ -54,7 +83,9 @@ export async function GET(
         sujetosProcesales: 'no existe'
       };
       return new NextResponse (
-        JSON.stringify (noProc),
+        JSON.stringify (
+          noProc
+        ),
         {
           status : 200,
           headers: {
@@ -64,7 +95,9 @@ export async function GET(
       );
     }
     return new NextResponse (
-      JSON.stringify (Procesos),
+      JSON.stringify (
+        Procesos
+      ),
       {
         status : 200,
         headers: {
@@ -74,7 +107,9 @@ export async function GET(
     );
   }
   return new NextResponse (
-    JSON.stringify (Procesos),
+    JSON.stringify (
+      Procesos
+    ),
     {
       status : 200,
       headers: {

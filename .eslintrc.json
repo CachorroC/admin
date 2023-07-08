@@ -11,12 +11,8 @@
       "error",
       { "multiline": true, "minItems": 1 }
     ],
-    "arrow-body-style": [
-      "error",
-      "as-needed",
-      { "requireReturnForObjectLiteral": true }
-    ],
-    "brace-style": ["error", "st"],
+    "arrow-body-style": ["error", "always"],
+    "brace-style": ["error", "stroustrup"],
     "computed-property-spacing": [
       "error",
       "always"
@@ -50,8 +46,8 @@
           "parameters": "first"
         },
         "ObjectExpression": "first",
-        "SwitchCase": 1,
-        "VariableDeclarator": "first",
+        "SwitchCase": 2,
+        "VariableDeclarator": 2,
         "offsetTernaryExpressions": true
       }
     ],

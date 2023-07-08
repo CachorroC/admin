@@ -5,11 +5,13 @@ import {intNota,
 import type { Route } from 'next';
 import Link from 'next/link';
 
-export function DeleteNoteButton({
-  id,
-}: {
+export function DeleteNoteButton(
+  {
+    id
+  }: {
   id: string;
-}) {
+}
+) {
   async function deleteRequestHandler() {
     const Request = await fetch (
       `/api/Notas?_id=${ id }`,
@@ -23,7 +25,9 @@ export function DeleteNoteButton({
 
     const Response = await Request.json ();
     alert (
-      JSON.stringify ( Response ) 
+      JSON.stringify (
+        Response
+      )
     );
   }
   return (
@@ -38,13 +42,15 @@ export function DeleteNoteButton({
   );
 }
 
-export function AddNoteButton({
-  nota,
-  uri
-}: {
+export function AddNoteButton(
+  {
+    nota,
+    uri
+  }: {
   nota: intNota;
   uri: string;
-}) {
+}
+) {
   async function addRequestHandler() {
     const Request = await fetch (
       `${ uri }/api/Notas`,
@@ -53,18 +59,30 @@ export function AddNoteButton({
         headers: {
           'content-type': 'application/json'
         },
-        body: JSON.stringify (nota)
+        body: JSON.stringify (
+          nota
+        )
       }
-    ).then ((fullfilled) => {
-      alert (fullfilled.status);
-      return fullfilled;
-    });
+    ).then (
+      (
+        fullfilled
+      ) => {
+        alert (
+          fullfilled.status
+        );
+        return fullfilled;
+      }
+    );
     if (!Request.ok) {
       return;
     }
 
     const Response = await Request.json ();
-    alert (JSON.stringify (Response));
+    alert (
+      JSON.stringify (
+        Response
+      )
+    );
   }
   return (
     <button
@@ -78,11 +96,13 @@ export function AddNoteButton({
   );
 }
 
-export function EditNoteButton({
-  nota
-}: {
+export function EditNoteButton(
+  {
+    nota
+  }: {
   nota: monNota;
-}) {
+}
+) {
   return (
     <Link
       className={note.buttonEdit}

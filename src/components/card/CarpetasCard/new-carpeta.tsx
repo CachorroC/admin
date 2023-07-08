@@ -4,11 +4,13 @@ import { useForm } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
 import { intCarpetaDemandado } from '#@/lib/types/demandados';
 
-export function NuevoProceso({
-  uri
-}: {
+export function NuevoProceso(
+  {
+    uri
+  }: {
   uri: string;
-}) {
+}
+) {
   const {
     register,
     handleSubmit,
@@ -20,7 +22,11 @@ export function NuevoProceso({
   const onSubmit = async (
     data: intCarpetaDemandado
   ) => {
-    alert (JSON.stringify (data));
+    alert (
+      JSON.stringify (
+        data
+      )
+    );
 
     const postNewNote = await fetch (
       `${ uri }/api/Demandados`,
@@ -29,23 +35,35 @@ export function NuevoProceso({
         headers: {
           'content-type': 'application/json'
         },
-        body: JSON.stringify (data)
+        body: JSON.stringify (
+          data
+        )
       }
-    ).then ((fullfilled) => {
-      alert (fullfilled.status);
-      return fullfilled;
-    });
+    ).then (
+      (
+        fullfilled
+      ) => {
+        alert (
+          fullfilled.status
+        );
+        return fullfilled;
+      }
+    );
 
     const responsePostNewNote =
       await postNewNote.json ();
-    alert (responsePostNewNote);
+    alert (
+      responsePostNewNote
+    );
     return responsePostNewNote;
   };
   return (
     <div className={form.container}>
       <form
         className={form.form}
-        onSubmit={handleSubmit (onSubmit)}>
+        onSubmit={handleSubmit (
+          onSubmit
+        )}>
         <input
           type='number'
           placeholder='Carpeta'
@@ -201,7 +219,9 @@ export function NuevoProceso({
           )}
         />
         <select
-          {...register ('Demanda.Departamento')}>
+          {...register (
+            'Demanda.Departamento'
+          )}>
           <option value='Amazonas'>
             Amazonas
           </option>
@@ -314,7 +334,9 @@ export function NuevoProceso({
           )}
         />
         <select
-          {...register ('Demanda.Proceso.Tipo')}>
+          {...register (
+            'Demanda.Proceso.Tipo'
+          )}>
           <option value='HIPOTECARIO'>
             HIPOTECARIO
           </option>

@@ -42,9 +42,9 @@
     & > .links {
       & > .button {
         background-color: var(
-          --secondary-container
+          --surface-container-highest
         );
-        color: var(--on-secondary-container);
+        color: var(--on-surface);
       }
     }
   }

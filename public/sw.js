@@ -4,8 +4,12 @@ const OFFLINE_URL = 'offline.html';
 
 self.addEventListener (
   'install',
-  function (event) {
-    console.log ('[ServiceWorker] Install');
+  function (
+    event
+  ) {
+    console.log (
+      '[ServiceWorker] Install'
+    );
 
     event.waitUntil (
       (async () => {
@@ -31,12 +35,16 @@ self.addEventListener (
 
 self.addEventListener (
   'activate',
-  (event) => {
-    console.log ('[ServiceWorker] Activate');
+  (
+    event
+  ) => {
+    console.log (
+      '[ServiceWorker] Activate'
+    );
     event.waitUntil (
       (async () => {
-        // Enable navigation preload if it's supported.
-        // See https://developers.google.com/web/updates/2017/02/navigation-preload
+      // Enable navigation preload if it's supported.
+      // See https://developers.google.com/web/updates/2017/02/navigation-preload
         if (
           'navigationPreload' in self.registration
         ) {
@@ -52,8 +60,10 @@ self.addEventListener (
 
 self.addEventListener (
   'fetch',
-  function (event) {
-    // console.log('[Service Worker] Fetch', event.request.url);
+  function (
+    event
+  ) {
+  // console.log('[Service Worker] Fetch', event.request.url);
     if (event.request.mode === 'navigate') {
       event.respondWith (
         (async () => {
@@ -81,7 +91,9 @@ self.addEventListener (
             );
 
             const cachedResponse =
-            await cache.match (OFFLINE_URL);
+            await cache.match (
+              OFFLINE_URL
+            );
             return cachedResponse;
           }
         }) ()

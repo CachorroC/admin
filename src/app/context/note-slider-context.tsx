@@ -15,18 +15,24 @@ const NoteSliderContext = createContext<
       Dispatch<SetStateAction<Map<any, any>>>
     ]
   | undefined
-> (undefined);
+> (
+  undefined
+);
 
-export function NoteSliderProvider({
-  children
-}: {
+export function NoteSliderProvider(
+  {
+    children
+  }: {
   children: ReactNode;
-}) {
+}
+) {
   const [
     noteSliderMap,
     setNoteSliderMap
   ] =
-    useState (new Map ());
+    useState (
+      new Map ()
+    );
   return (
     <NoteSliderContext.Provider
       value={[
@@ -39,11 +45,14 @@ export function NoteSliderProvider({
 }
 
 export function useNoteSlider() {
-  const context = useContext (NoteSliderContext);
+  const context = useContext (
+    NoteSliderContext
+  );
   if (context === undefined) {
     throw new Error (
       'useNoteSlider should be used inside a NoteSliderProvider'
     );
   }
+
   return context;
 }

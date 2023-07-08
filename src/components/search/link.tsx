@@ -16,13 +16,15 @@ import { useModal } from '#@/app/modal-context';
 import { Name } from '../Headings/clientSideName';
 import { useRouter } from 'next/navigation';
 
-export const LinkCard = ({
-  path,
-  proceso
-}: {
+export const LinkCard = (
+  {
+    path,
+    proceso
+  }: {
   path: string;
   proceso: intFecha;
-}) => {
+}
+) => {
   const [
     isOpen,
     setIsOpen
@@ -71,7 +73,11 @@ export const LinkCard = ({
       key={_id}>
       <Link
         href={href}
-        onClick={() => setIsNavOpen (false)}
+        onClick={() => {
+          return setIsNavOpen (
+            false
+          );
+        }}
         className={
           isActive
             ? searchbar.isActive
@@ -79,7 +85,9 @@ export const LinkCard = ({
         }>
         <Name helper={Nombre} />
         <sub className={searchbar.date}>
-          {fixFechas (fecha)}
+          {fixFechas (
+            fecha
+          )}
         </sub>
       </Link>
     </div>

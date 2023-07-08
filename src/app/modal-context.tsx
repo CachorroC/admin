@@ -9,17 +9,23 @@ import {Dispatch,
 const ModalContext = createContext<
   | [boolean, Dispatch<SetStateAction<boolean>>]
   | undefined
-> (undefined);
+> (
+  undefined
+);
 
-export function ModalProvider({
-  children
-}: {
+export function ModalProvider(
+  {
+    children
+  }: {
   children: ReactNode;
-}) {
+}
+) {
   const [
     isOpen,
     setIsOpen
-  ] = useState (true);
+  ] = useState (
+    true
+  );
   return (
     <ModalContext.Provider
       value={[
@@ -32,11 +38,14 @@ export function ModalProvider({
 }
 
 export function useModal() {
-  const context = useContext (ModalContext);
+  const context = useContext (
+    ModalContext
+  );
   if (context === undefined) {
     throw new Error (
       'useModal must be used within a ModalProvider'
     );
   }
+
   return context;
 }

@@ -13,17 +13,18 @@ import {fixFechas,
   toNameString} from '#@/lib/fix';
 import { Name } from '#@/components/Headings/clientSideName';
 
-export const Card = ({
-  name,
-  path,
-  children,
-  llaveProceso,
-  idProceso,
-  icon,
-  despacho,
-  fecha,
-  contenido
-}: {
+export const Card = (
+  {
+    name,
+    path,
+    children,
+    llaveProceso,
+    idProceso,
+    icon,
+    despacho,
+    fecha,
+    contenido
+  }: {
   name: string;
   path: string;
   children: ReactNode;
@@ -33,7 +34,8 @@ export const Card = ({
   icon?: string;
   fecha?: string | null;
   contenido?: string;
-}) => {
+}
+) => {
   const [
     isNavOpen,
     setIsNavOpen
@@ -48,11 +50,17 @@ export const Card = ({
   const [
     hasLinks,
     setHasLinks
-  ] = useState (false);
+  ] = useState (
+    false
+  );
 
   const clickHandler = () => {
-    setIsNavOpen (false);
-    setIsOpen (true);
+    setIsNavOpen (
+      false
+    );
+    setIsOpen (
+      true
+    );
   };
 
   const pathname = usePathname ();
@@ -89,7 +97,9 @@ export const Card = ({
     <div
       className={card.container}
       onClick={() => {
-        setHasLinks (!hasLinks);
+        setHasLinks (
+          !hasLinks
+        );
       }}>
       <div
         className={
@@ -99,7 +109,9 @@ export const Card = ({
         }>
         <h1
           className={`${ typography.titleMedium } ${ card.title }`}>
-          {toNameString (name)}
+          {toNameString (
+            name
+          )}
         </h1>
         {hasLinks
           ? (
@@ -129,7 +141,9 @@ export const Card = ({
                   }
                   href={`/Notas/NuevaNota/${ llaveProceso }`}
                   onClick={() => {
-                    setIsOpen (true);
+                    setIsOpen (
+                      true
+                    );
                   }}>
                   <span
                     className={`material-symbols-outlined ${ card.icon }`}>

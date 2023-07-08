@@ -11,16 +11,24 @@ import Drawer from './drawer';
 import { ButtonSkeleton } from './ButtonSkeleton';
 import typeface from '#@/styles/fonts/typeface.module.scss';
 
-export default function Header({
-  children
-}: {
+export default function Header(
+  {
+    children
+  }: {
   children: React.ReactNode;
-}) {
-  const isDesktop = useMedia (2);
+}
+) {
+  const isDesktop = useMedia (
+    2
+  );
 
-  const isMobile = useMedia (0);
+  const isMobile = useMedia (
+    0
+  );
 
-  const isBigDesktop = useMedia (3);
+  const isBigDesktop = useMedia (
+    3
+  );
   if (isDesktop || isBigDesktop) {
     return (
       <div className={layout.header}>
@@ -48,6 +56,7 @@ export default function Header({
       </div>
     );
   }
+
   if (isMobile) {
     return (
       <div className={layout.header}>
@@ -68,6 +77,7 @@ export default function Header({
       </div>
     );
   }
+
   return (
     <div className={layout.header}>
       <Suspense fallback={<ButtonSkeleton />}>

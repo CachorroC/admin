@@ -9,13 +9,12 @@ export default async function PageProcesosRight() {
   const notas = await getNotas ();
   return (
     <>
-
       <NewNota
         llaveProceso={'Procesos'}
         uri={`${ getBaseUrl () }`}
       />
       <Notas />
-      <NotasList notas={ notas } />
+      <NotasList notas={notas} />
     </>
   );
 }

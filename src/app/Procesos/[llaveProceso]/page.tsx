@@ -8,13 +8,15 @@ import { intProceso } from '#@/lib/types/procesos';
 import { arrayMergerByllaveProceso } from '#@/lib/arrayMerger';
 import box from '#@/styles/scss/box.module.scss';
 import { Name } from '#@/components/Headings/serverSideName';
-function DemandadoNameBadge({
-  carpeta,
-  proceso
-}: {
+function DemandadoNameBadge(
+  {
+    carpeta,
+    proceso
+  }: {
   carpeta: monCarpetaDemandado;
   proceso?: intProceso;
-}) {
+}
+) {
   const {
     llaveProceso, _id 
   } = carpeta;
@@ -32,6 +34,7 @@ function DemandadoNameBadge({
       </Fragment>
     );
   }
+
   return (
     <Fragment key={_id}>
       <Name llaveProceso={llaveProceso} />
@@ -40,20 +43,26 @@ function DemandadoNameBadge({
   );
 }
 
-export default async function PageProcesosllaveProceso({
-  params
-}: {
+export default async function PageProcesosllaveProceso(
+  {
+    params
+  }: {
   params: { llaveProceso: string };
-}) {
+}
+) {
   const Procesos =
-    await getConsultaNumeroRadicion ({
-      llaveProceso: params.llaveProceso
-    });
+    await getConsultaNumeroRadicion (
+      {
+        llaveProceso: params.llaveProceso
+      }
+    );
 
   const Carpetas =
-    await getCarpetasByllaveProceso ({
-      llaveProceso: params.llaveProceso
-    });
+    await getCarpetasByllaveProceso (
+      {
+        llaveProceso: params.llaveProceso
+      }
+    );
 
   const cantidadCarpetas = Carpetas.length;
 
@@ -61,24 +70,37 @@ export default async function PageProcesosllaveProceso({
   if (cantidadProcesos === 0) {
     return (
       <>
-        {Carpetas.map ((Carpeta) => (
-          <DemandadoNameBadge
-            carpeta={Carpeta}
-            key={Carpeta._id}
-          />
-        ))}
+        {Carpetas.map (
+          (
+            Carpeta
+          ) => {
+            return (
+              <DemandadoNameBadge
+                carpeta={Carpeta}
+                key={Carpeta._id}
+              />
+            );
+          }
+        )}
       </>
     );
   }
+
   return (
     <>
-      {Procesos.map ((Proceso, i) => (
-        <DemandadoNameBadge
-          carpeta={Carpetas[ i ]}
-          key={Proceso.idProceso}
-          proceso={Proceso}
-        />
-      ))}
+      {Procesos.map (
+        (
+          Proceso, i
+        ) => {
+          return (
+            <DemandadoNameBadge
+              carpeta={Carpetas[ i ]}
+              key={Proceso.idProceso}
+              proceso={Proceso}
+            />
+          );
+        }
+      )}
     </>
   );
 }

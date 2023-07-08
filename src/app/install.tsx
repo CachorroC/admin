@@ -7,10 +7,14 @@ export default function Install() {
     isInstalled,
     setIsInstalled
   ] =
-    useState (false);
+    useState (
+      false
+    );
   useEffect (
     () => {
-      function handleScroll(e: any) {
+      function handleScroll(
+        e: any
+      ) {
         console.log (
           window.scrollX,
           window.scrollY
@@ -25,7 +29,9 @@ export default function Install() {
           'CLIENT: service worker registration in progress.'
         );
         navigator.serviceWorker
-          .register ('/service-worker.js')
+          .register (
+            '/service-worker.js'
+          )
           .then (
             function () {
               console.log (
@@ -44,11 +50,13 @@ export default function Install() {
           'CLIENT: service worker is not supported.'
         );
       }
-      return () =>
-        window.removeEventListener (
+
+      return () => {
+        return window.removeEventListener (
           'scroll',
           handleScroll
         );
+      };
     },
     [
       setIsInstalled

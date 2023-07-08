@@ -23,14 +23,18 @@ export async function GET(
       const Response: IntActuaciones = {
         idProceso: params.idProceso,
         text     : text
-          ? JSON.parse (text)
+          ? JSON.parse (
+            text
+          )
           : {
               statusCode: req.status,
               message   : req.statusText
             }
       };
       return new NextResponse (
-        JSON.stringify (Response),
+        JSON.stringify (
+          Response
+        ),
         {
           status : 200,
           headers: {
@@ -52,7 +56,9 @@ export async function GET(
         acts: res.actuaciones
       };
       return new NextResponse (
-        JSON.stringify (Response),
+        JSON.stringify (
+          Response
+        ),
         {
           status : 200,
           headers: {
@@ -66,10 +72,14 @@ export async function GET(
 
     const Response: IntActuaciones = {
       idProceso: params.idProceso,
-      text     : JSON.parse (text)
+      text     : JSON.parse (
+        text
+      )
     };
     return new NextResponse (
-      JSON.stringify (Response),
+      JSON.stringify (
+        Response
+      ),
       {
         status : 200,
         headers: {
@@ -79,7 +89,9 @@ export async function GET(
     );
   }
   catch {
-    (error: unknown | any) => {
+    (
+      error: unknown | any
+    ) => {
       const Response: IntActuaciones = {
         idProceso: params.idProceso,
         text     : {
@@ -88,7 +100,9 @@ export async function GET(
         }
       };
       return new NextResponse (
-        JSON.stringify (Response),
+        JSON.stringify (
+          Response
+        ),
         {
           status : 200,
           headers: {
@@ -107,7 +121,9 @@ export async function GET(
     }
   };
   return new NextResponse (
-    JSON.stringify (Response),
+    JSON.stringify (
+      Response
+    ),
     {
       status : 200,
       headers: {

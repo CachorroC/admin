@@ -3,11 +3,13 @@ import { toNameString } from '#@/lib/fix';
 import typeface from '#@/styles/fonts/typeface.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export async function Name({
-  llaveProceso
-}: {
+export async function Name(
+  {
+    llaveProceso
+  }: {
   llaveProceso: string;
-}) {
+}
+) {
   const proceso = await getCarpetasByllaveProceso (
     {
       llaveProceso: llaveProceso
@@ -15,16 +17,20 @@ export async function Name({
   );
 
   const nombre = proceso.map (
-    (p) => p.Deudor.Nombre
+    (
+      p
+    ) => {
+      return p.Deudor.Nombre;
+    }
   );
 
   const isEmptyArray = nombre.length === 0;
   return (
     <h1
       className={`${ typeface.navbar } ${ typography.displayMedium }`}>
-      {isEmptyArray
-        ?  'sin nombre'
-        :toNameString (nombre[ 0 ])}
+      { toNameString (
+        nombre[ 0 ]
+      )}
     </h1>
   );
 }

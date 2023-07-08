@@ -3,24 +3,30 @@ import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { Nota } from '../../components/nota/notas';
-async function renderName({
-  llaveProceso
-}: {
+async function renderName(
+  {
+    llaveProceso
+  }: {
   llaveProceso: string;
-}) {
+}
+) {
   const carpetas =
-    await getCarpetasByllaveProceso ({
-      llaveProceso: llaveProceso
-    });
+    await getCarpetasByllaveProceso (
+      {
+        llaveProceso: llaveProceso
+      }
+    );
 
   const names = carpetas.map (
-    (carpeta, i, arr) => {
+    (
+      carpeta, i, arr
+    ) => {
       const {
-        Deudor
+        Deudor 
       } = carpeta;
 
       const {
-        Nombre
+        Nombre 
       } = Deudor;
       return Nombre;
     }
@@ -38,24 +44,28 @@ export default async function PageNotas() {
         </h1>
       </div>
       <div className={layout.left}>
-        {notas.map ((NotaM, index, arr) => {
-          const {
-            _id,
-            llaveProceso,
-            nota,
-            pathname,
-            tareas,
-            fecha
-          } = NotaM;
-          return (
-            <Nota
-              notaRaw={NotaM}
-              i={index}
-              key={_id}
-              arr={arr}
-            />
-          );
-        })}
+        {notas.map (
+          (
+            NotaM, index, arr
+          ) => {
+            const {
+              _id,
+              llaveProceso,
+              nota,
+              pathname,
+              tareas,
+              fecha
+            } = NotaM;
+            return (
+              <Nota
+                notaRaw={NotaM}
+                i={index}
+                key={_id}
+                arr={arr}
+              />
+            );
+          }
+        )}
       </div>
     </div>
   );

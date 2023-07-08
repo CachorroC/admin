@@ -8,52 +8,82 @@ import {ConvertNotas,
 import { ObjectId } from 'mongodb';
 import { cache } from 'react';
 
-const Collection = cache (async () => {
-  const client = await clientPromise;
-  if (!client) {
-    throw new Error ('no hay cliente mongólico');
+const Collection = cache (
+  async () => {
+    const client = await clientPromise;
+    if (!client) {
+      throw new Error (
+        'no hay cliente mongólico'
+      );
+    }
+
+    const db = client.db (
+      'RyS'
+    );
+
+    const notas = db.collection (
+      'Notas'
+    );
+    return notas;
   }
+);
 
-  const db = client.db ('RyS');
+const Transform = cache (
+  async () => {
+    const collection = await Collection ();
 
-  const notas = db.collection ('Notas');
-  return notas;
-});
+    const notasRaw = await collection
+      .find (
+        {
+        }
+      )
+      .toArray ();
 
-const Transform = cache (async () => {
-  const collection = await Collection ();
+    const notasString = JSON.stringify (
+      notasRaw
+    );
 
-  const notasRaw = await collection
-    .find ({
-    })
-    .toArray ();
+    const notas =
+    ConvertNotas.toMonNota (
+      notasString
+    );
+    return notas;
+  }
+);
 
-  const notasString = JSON.stringify (notasRaw);
-
-  const notas =
-    ConvertNotas.toMonNota (notasString);
-  return notas;
-});
-
-export async function GET(Request: NextRequest) {
+export async function GET(
+  Request: NextRequest
+) {
   const {
     searchParams 
-  } = new URL (Request.url);
+  } = new URL (
+    Request.url
+  );
 
   const client = await clientPromise;
   if (!client) {
-    throw new Error ('no hay cliente mongólico');
+    throw new Error (
+      'no hay cliente mongólico'
+    );
   }
 
-  const db = client.db ('RyS');
+  const db = client.db (
+    'RyS'
+  );
 
   const notas = await db
-    .collection ('Notas')
-    .find ({
-    })
+    .collection (
+      'Notas'
+    )
+    .find (
+      {
+      }
+    )
     .toArray ();
   if (!notas.length) {
-    throw new Error ('no hay entradas en mongo');
+    throw new Error (
+      'no hay entradas en mongo'
+    );
   }
 
   const llaveProceso = searchParams.get (
@@ -61,10 +91,16 @@ export async function GET(Request: NextRequest) {
   );
   if (llaveProceso) {
     const Notas = notas.filter (
-      (nota) => nota.llaveProceso === llaveProceso
+      (
+        nota
+      ) => {
+        return nota.llaveProceso === llaveProceso;
+      }
     );
     return new NextResponse (
-      JSON.stringify (Notas),
+      JSON.stringify (
+        Notas
+      ),
       {
         status : 200,
         headers: {
@@ -74,13 +110,21 @@ export async function GET(Request: NextRequest) {
     );
   }
 
-  const _id = searchParams.get ('_id');
+  const _id = searchParams.get (
+    '_id'
+  );
   if (_id) {
     const Nota = notas.find (
-      (nota) => nota._id.toString () === _id
+      (
+        nota
+      ) => {
+        return nota._id.toString () === _id;
+      }
     );
     return new NextResponse (
-      JSON.stringify (Nota),
+      JSON.stringify (
+        Nota
+      ),
       {
         status : 200,
         headers: {
@@ -90,7 +134,9 @@ export async function GET(Request: NextRequest) {
     );
   }
   return new NextResponse (
-    JSON.stringify (notas),
+    JSON.stringify (
+      notas
+    ),
     {
       status : 200,
       headers: {
@@ -100,13 +146,17 @@ export async function GET(Request: NextRequest) {
   );
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(
+  request: NextRequest
+) {
   const incomingRequest = await request.json ();
 
   const collection = await Collection ();
 
   const outgoingRequest =
-    await collection.insertOne (incomingRequest);
+    await collection.insertOne (
+      incomingRequest
+    );
   if (!outgoingRequest.acknowledged) {
     return new NextResponse (
       null,
@@ -115,6 +165,7 @@ export async function POST(request: NextRequest) {
       }
     );
   }
+
   return new NextResponse (
     JSON.stringify (
       outgoingRequest.insertedId +
@@ -129,19 +180,27 @@ export async function POST(request: NextRequest) {
   );
 }
 
-export async function PUT(Request: NextRequest) {
+export async function PUT(
+  Request: NextRequest
+) {
   const collection = await Collection ();
 
   const updatedNote = await Request.json ();
 
   const {
     searchParams 
-  } = new URL (Request.url);
+  } = new URL (
+    Request.url
+  );
 
-  const id = searchParams.get ('id');
+  const id = searchParams.get (
+    'id'
+  );
   if (id) {
     const query = {
-      _id: new ObjectId (id)
+      _id: new ObjectId (
+        id
+      )
     };
 
     const result = await collection.updateOne (
@@ -161,6 +220,7 @@ export async function PUT(Request: NextRequest) {
         }
       );
     }
+
     return new NextResponse (
       `the result was ${
         result.acknowledged
@@ -190,15 +250,23 @@ export async function DELETE(
 
   const {
     searchParams 
-  } = new URL (Request.url);
+  } = new URL (
+    Request.url
+  );
 
-  const id = searchParams.get ('_id');
+  const id = searchParams.get (
+    '_id'
+  );
   if (id) {
     const query = {
-      _id: new ObjectId (id)
+      _id: new ObjectId (
+        id
+      )
     };
 
-    const Result = await notas.deleteOne (query);
+    const Result = await notas.deleteOne (
+      query
+    );
     if (Result.acknowledged) {
       const count = Result.deletedCount;
 
@@ -208,7 +276,9 @@ export async function DELETE(
         deletedId   : id
       };
       return new NextResponse (
-        JSON.stringify (response),
+        JSON.stringify (
+          response
+        ),
         {
           status : 202,
           headers: {
@@ -227,8 +297,11 @@ export async function DELETE(
         }
       );
     }
+
     return new NextResponse (
-      JSON.stringify (Result),
+      JSON.stringify (
+        Result
+      ),
       {
         status: 200
       }

@@ -20,7 +20,9 @@ export const ForwardButton = () => {
       className={navbar.buttonForward}
       onClick={() => {
         router.forward ();
-        setIsNavOpen (false);
+        setIsNavOpen (
+          false
+        );
       }}>
       <span
         className={`material-symbols-outlined ${ navbar.icon }`}>
@@ -48,8 +50,12 @@ export const BackwardsButton = () => {
   const router = useRouter ();
 
   const clickHandler = () => {
-    setIsNavOpen (false);
-    setIsOpen (false);
+    setIsNavOpen (
+      false
+    );
+    setIsOpen (
+      false
+    );
     router.back ();
   };
   return (
@@ -79,7 +85,11 @@ export const DrawerMenuButton = () => {
       <button
         type='button'
         className={navbar.buttonDrawerMenu}
-        onClick={() => setIsNavOpen (false)}>
+        onClick={() => {
+          return setIsNavOpen (
+            false
+          );
+        }}>
         <span
           className={`material-symbols-outlined ${ navbar.icon }`}>
           close
@@ -90,11 +100,16 @@ export const DrawerMenuButton = () => {
       </button>
     );
   }
+
   return (
     <button
       type='button'
       className={navbar.buttonDrawerMenu}
-      onClick={() => setIsNavOpen (true)}>
+      onClick={() => {
+        return setIsNavOpen (
+          true
+        );
+      }}>
       <span
         className={`material-symbols-outlined ${ navbar.icon }`}>
         menu
@@ -117,7 +132,9 @@ export const HomeButton = () => {
       href={'/' as Route}
       className={navbar.buttonHome}
       onClick={() => {
-        setIsNavOpen (false);
+        setIsNavOpen (
+          false
+        );
       }}>
       <span
         className={`material-symbols-outlined ${ navbar.icon }`}>
@@ -138,7 +155,11 @@ export const ModalButton = () => {
   return (
     <button
       className={navbar.buttonModal}
-      onClick={() => setIsOpen (true)}>
+      onClick={() => {
+        return setIsOpen (
+          true
+        );
+      }}>
       <span
         className={`material-symbols-outlined ${ navbar.icon }`}>
         box

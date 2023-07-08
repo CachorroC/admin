@@ -7,16 +7,20 @@ import { getCarpetas } from '#@/lib/Carpetas';
 import { fetchFechas } from '#@/lib/Actuaciones';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 
-export default async function Layout({
-  children
-}: {
+export default async function Layout(
+  {
+    children
+  }: {
   children: ReactNode;
-}) {
+}
+) {
   const procesos = await getCarpetas ();
 
-  const fechas = await fetchFechas ({
-    procesos: procesos
-  });
+  const fechas = await fetchFechas (
+    {
+      procesos: procesos
+    }
+  );
   return (
     <Header>
       {children}

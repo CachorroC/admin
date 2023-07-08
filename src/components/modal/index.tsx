@@ -13,18 +13,24 @@ import { useParams } from 'next/navigation';
 import { redirect } from 'next/navigation';
 import type { Route } from 'next';
 
-export default function Modal({
-  children
-}: {
+export default function Modal(
+  {
+    children
+  }: {
   children: React.ReactNode;
-}) {
+}
+) {
   const params = useParams ();
 
   const pathname = usePathname ();
 
-  const overlay = useRef (null);
+  const overlay = useRef (
+    null
+  );
 
-  const wrapper = useRef (null);
+  const wrapper = useRef (
+    null
+  );
 
   const router = useRouter ();
 
@@ -35,8 +41,12 @@ export default function Modal({
 
   const onEnter = useCallback (
     () => {
-      setIsOpen (false);
-      router.push (pathname as Route);
+      setIsOpen (
+        false
+      );
+      router.push (
+pathname as Route
+      );
     },
     [
       router,
@@ -47,9 +57,11 @@ export default function Modal({
 
   const onDismiss = useCallback (
     () => {
-      setIsOpen (isOpen
-        ? false
-        : true);
+      setIsOpen (
+        isOpen
+          ? false
+          : true
+      );
       router.back ();
     },
     [
@@ -60,7 +72,9 @@ export default function Modal({
   );
 
   const onClick = useCallback (
-    (e: { target: undefined }) => {
+    (
+      e: { target: undefined }
+    ) => {
       if (
         e.target === overlay.current ||
         e.target === wrapper.current
@@ -68,6 +82,7 @@ export default function Modal({
         if (onDismiss) {
           onDismiss ();
         }
+
         if (onEnter) {
           onEnter ();
         }
@@ -82,10 +97,13 @@ export default function Modal({
   );
 
   const onKeyDown = useCallback (
-    (e: { key: string }) => {
+    (
+      e: { key: string }
+    ) => {
       if (e.key === 'Escape') {
         onDismiss ();
       }
+
       if (e.key === 'Enter') {
         onEnter ();
       }
@@ -101,11 +119,12 @@ export default function Modal({
         'keydown',
         onKeyDown
       );
-      return () =>
-        document.removeEventListener (
+      return () => {
+        return document.removeEventListener (
           'keydown',
           onKeyDown
         );
+      };
     },
     [
       onKeyDown

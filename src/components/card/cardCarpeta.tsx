@@ -11,21 +11,23 @@ import Image from 'next/image';
 import Title from '../Headings/title';
 import { Name } from '../Headings/clientSideName';
 
-export const CardCarpeta = ({
-  name,
-  path,
-  children,
-  llaveProceso,
-  idProceso,
-  icon
-}: {
+export const CardCarpeta = (
+  {
+    name,
+    path,
+    children,
+    llaveProceso,
+    idProceso,
+    icon
+  }: {
   name: string;
   path: string;
   children: ReactNode;
   llaveProceso?: string;
   idProceso?: number;
   icon?: string;
-}) => {
+}
+) => {
   const [
     isNavOpen,
     setIsNavOpen
@@ -38,8 +40,12 @@ export const CardCarpeta = ({
   ] = useModal ();
 
   const clickHandler = () => {
-    setIsNavOpen (false);
-    setIsOpen (true);
+    setIsNavOpen (
+      false
+    );
+    setIsOpen (
+      true
+    );
   };
 
   const pathname = usePathname ();

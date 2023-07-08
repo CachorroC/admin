@@ -4,10 +4,12 @@ import React from 'react';
 import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export default function Error({
-  error,
-  reset
-}: any) {
+export default function Error(
+  {
+    error,
+    reset
+  }: any
+) {
   React.useEffect (
     () => {
       console.log (
@@ -41,7 +43,9 @@ export default function Error({
       </div>
       <div className={layout.right}>
         <button
-          onClick={() => reset ()}
+          onClick={() => {
+            return reset ();
+          }}
           className={layout.button}>
           Try Again
         </button>

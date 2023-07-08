@@ -5,11 +5,13 @@ import styles from './procesos.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import type { Route } from 'next';
 
-export const ProcesoCard = ({
-  proceso
-}: {
+export const ProcesoCard = (
+  {
+    proceso
+  }: {
   proceso: intProceso;
-}) => {
+}
+) => {
   const {
     idProceso,
     llaveProceso,
@@ -38,7 +40,9 @@ export const ProcesoCard = ({
       <div className={styles.card}>
         <h1
           className={`${ typography.titleLarge } ${ styles.title }`}>
-          {fixDemandado (sujetosProcesales)}
+          {fixDemandado (
+            sujetosProcesales
+          )}
         </h1>
         <Link
           className={styles.button}
