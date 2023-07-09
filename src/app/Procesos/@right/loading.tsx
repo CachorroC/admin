@@ -5,12 +5,6 @@ import LinkCardSkeleton from '#@/components/search/link-skeleton';
 
 export default function Loading() {
   return (
-    <>
-      <CardSkeleton key='a' />
-      <CardSkeleton key='b' />
-      <CardSkeleton key='c' />
-      <CardSkeleton key='d' />
-      <CardSkeleton key='e' />
-    </>
+    <div className={layout.loader}></div>
   );
 }

@@ -6,6 +6,7 @@ import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { fetchFechas } from '#@/lib/Actuaciones';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
+import { Loader } from '#@/components/Loader';
 
 export default async function Layout(
   {
@@ -26,7 +27,7 @@ export default async function Layout(
       {children}
       <Drawer>
         <Suspense
-          fallback={<SearchOutputListSkeleton />}>
+          fallback={<Loader />}>
           <SearchOutputList
             path='/Procesos'
             fechas={fechas}

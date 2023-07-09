@@ -13,8 +13,8 @@ export default async function PageProcesosRight() {
         llaveProceso={'Procesos'}
         uri={`${ getBaseUrl () }`}
       />
-      <Notas />
       <NotasList notas={notas} />
+      <Notas />
     </>
   );
 }

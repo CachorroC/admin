@@ -1,6 +1,5 @@
 :root {
-  --md-source: #7aa4dd;
-  /* primary */
+  --md-source: #7aa4dd; /* primary */
   --pal-primary0: #000000;
   --pal-primary4: #000f22;
   --pal-primary5: #001127;
@@ -27,8 +26,7 @@
   --pal-primary96: #eff4ff;
   --pal-primary98: #f8f9ff;
   --pal-primary99: #fdfcff;
-  --pal-primary100: #ffffff;
-  /* secondary */
+  --pal-primary100: #ffffff; /* secondary */
   --pal-secondary0: #000000;
   --pal-secondary4: #040f1d;
   --pal-secondary5: #061120;
@@ -55,8 +53,7 @@
   --pal-secondary96: #eff4ff;
   --pal-secondary98: #f8f9ff;
   --pal-secondary99: #fdfcff;
-  --pal-secondary100: #ffffff;
-  /* tertiary */
+  --pal-secondary100: #ffffff; /* tertiary */
   --pal-tertiary0: #000000;
   --pal-tertiary4: #180622;
   --pal-tertiary5: #1b0925;
@@ -83,8 +80,7 @@
   --pal-tertiary96: #feefff;
   --pal-tertiary98: #fff7fc;
   --pal-tertiary99: #fffbff;
-  --pal-tertiary100: #ffffff;
-  /* neutral */
+  --pal-tertiary100: #ffffff; /* neutral */
   --pal-neutral0: #000000;
   --pal-neutral4: #0d0e11;
   --pal-neutral5: #0f1114;
@@ -111,8 +107,7 @@
   --pal-neutral96: #f4f3f7;
   --pal-neutral98: #faf9fd;
   --pal-neutral99: #fdfcff;
-  --pal-neutral100: #ffffff;
-  /* neutral-variant */
+  --pal-neutral100: #ffffff; /* neutral-variant */
   --pal-neutral-variant0: #000000;
   --pal-neutral-variant4: #0a0e15;
   --pal-neutral-variant5: #0d1117;
@@ -139,8 +134,7 @@
   --pal-neutral-variant96: #f1f3fd;
   --pal-neutral-variant98: #f8f9ff;
   --pal-neutral-variant99: #fdfcff;
-  --pal-neutral-variant100: #ffffff;
-  /* error */
+  --pal-neutral-variant100: #ffffff; /* error */
   --pal-error0: #000000;
   --pal-error4: #280001;
   --pal-error5: #2d0001;
@@ -167,71 +161,7 @@
   --pal-error96: #fff0ee;
   --pal-error98: #fff8f7;
   --pal-error99: #fffbff;
-  --pal-error100: #ffffff;
-  /* light */
-  /* light */
-  /*--secondary-light: var(--pal-secondary40);
-  --on-secondary-light: var(--pal-secondary100);
-  --secondary-container-light: var(--pal-secondary90);
-  --on-secondary-container-light: var(--pal-secondary10);
-  --tertiary-light: var(--pal-tertiary40);
-  --on-tertiary-light: var(--pal-primary100);
-  --tertiary-container-light: var(--pal-tertiary90);
-  --on-tertiary-container-light: var(--pal-tertiary10);
-  --primary-light: var(--pal-primary40);
-  --on-primary-light: var(--pal-primary100);
-  --primary-container-light: var(--pal-primary90);
-  --on-primary-container-light: var(--pal-primary10);
-  --error-light: var(--pal-error40);
-  --error-container-light: var(--pal-error90);
-  --on-error-light: var(--pal-secondary100);
-  --on-error-container-light: var(--pal-error10);
-  --background-light: var(--pal-neutral99);
-  --on-background-light: var(--pal-neutral10);
-  --surface-light: var(--pal-neutral95);
-  --on-surface-light: var(--pal-neutral10);
-  --surface-variant-light: var(--pal-neutral-variant90);
-  --on-surface-variant-light: var(--pal-neutral-variant30);
-  --outline-light: var(--pal-neutral-variant50);
-  --inverse-on-surface-light: var(--pal-neutral95);
-  --inverse-surface-light: var(--pal-neutral20);
-  --inverse-secondary-light: var(--pal-secondary80);
-  --shadow-light: var(--pal-neutral0);
-  --surface-tint-light: var(--pal-secondary40);
-  --outline-variant-light: var(--pal-neutral-variant80);
-  --scrim-light: var(--pal-neutral0); */
-  /* dark */
-  /* --secondary: var(--pal-secondary80);
-  --on-secondary: var(--pal-secondary20);
-  --secondary-container: var(--pal-secondary30);
-  --on-secondary-container: var(--pal-secondary90);
-  --tertiary: var(--pal-tertiary80);
-  --on-tertiary: var(--pal-tertiary20);
-  --tertiary-container: var(--pal-tertiary30);
-  --on-tertiary-container: var(--pal-tertiary90);
-  --primary: var(--pal-primary80);
-  --on-primary: var(--pal-primary20);
-  --primary-container: var(--pal-primary30);
-  --on-primary-container: var(--pal-primary90);
-  --error: var(--pal-error80);
-  --error-container: var(--pal-error30);
-  --on-error: var(--pal-error20);
-  --on-error-container: var(--pal-error90);
-  --background: var(--pal-neutral0);
-  --on-background: var(--pal-neutral90);
-  --surface: var(--pal-neutral10);
-  --on-surface: var(--pal-neutral90);
-  --surface-variant: var(--pal-neutral-variant30);
-  --on-surface-variant: var(--pal-neutral-variant80);
-  --outline: var(--pal-neutral-variant60);
-  --inverse-on-surface: var(--pal-neutral10);
-  --inverse-surface: var(--pal-neutral90);
-  --inverse-secondary: var(--pal-secondary40);
-  --shadow: var(--pal-neutral0);
-  --surface-tint: var(--pal-secondary80);
-  --outline-variant: var(--pal-neutral-variant30);
-  --scrim: var(--pal-neutral0); */
-  /* Custom Colors */
+  --pal-error100: #ffffff; /* light */ /* light */ /*--secondary-light: var(--pal-secondary40);  --on-secondary-light: var(--pal-secondary100);  --secondary-container-light: var(--pal-secondary90);  --on-secondary-container-light: var(--pal-secondary10);  --tertiary-light: var(--pal-tertiary40);  --on-tertiary-light: var(--pal-primary100);  --tertiary-container-light: var(--pal-tertiary90);  --on-tertiary-container-light: var(--pal-tertiary10);  --primary-light: var(--pal-primary40);  --on-primary-light: var(--pal-primary100);  --primary-container-light: var(--pal-primary90);  --on-primary-container-light: var(--pal-primary10);  --error-light: var(--pal-error40);  --error-container-light: var(--pal-error90);  --on-error-light: var(--pal-secondary100);  --on-error-container-light: var(--pal-error10);  --background-light: var(--pal-neutral99);  --on-background-light: var(--pal-neutral10);  --surface-light: var(--pal-neutral95);  --on-surface-light: var(--pal-neutral10);  --surface-variant-light: var(--pal-neutral-variant90);  --on-surface-variant-light: var(--pal-neutral-variant30);  --outline-light: var(--pal-neutral-variant50);  --inverse-on-surface-light: var(--pal-neutral95);  --inverse-surface-light: var(--pal-neutral20);  --inverse-secondary-light: var(--pal-secondary80);  --shadow-light: var(--pal-neutral0);  --surface-tint-light: var(--pal-secondary40);  --outline-variant-light: var(--pal-neutral-variant80);  --scrim-light: var(--pal-neutral0); */ /* dark */ /* --secondary: var(--pal-secondary80);  --on-secondary: var(--pal-secondary20);  --secondary-container: var(--pal-secondary30);  --on-secondary-container: var(--pal-secondary90);  --tertiary: var(--pal-tertiary80);  --on-tertiary: var(--pal-tertiary20);  --tertiary-container: var(--pal-tertiary30);  --on-tertiary-container: var(--pal-tertiary90);  --primary: var(--pal-primary80);  --on-primary: var(--pal-primary20);  --primary-container: var(--pal-primary30);  --on-primary-container: var(--pal-primary90);  --error: var(--pal-error80);  --error-container: var(--pal-error30);  --on-error: var(--pal-error20);  --on-error-container: var(--pal-error90);  --background: var(--pal-neutral0);  --on-background: var(--pal-neutral90);  --surface: var(--pal-neutral10);  --on-surface: var(--pal-neutral90);  --surface-variant: var(--pal-neutral-variant30);  --on-surface-variant: var(--pal-neutral-variant80);  --outline: var(--pal-neutral-variant60);  --inverse-on-surface: var(--pal-neutral10);  --inverse-surface: var(--pal-neutral90);  --inverse-secondary: var(--pal-secondary40);  --shadow: var(--pal-neutral0);  --surface-tint: var(--pal-secondary80);  --outline-variant: var(--pal-neutral-variant30);  --scrim: var(--pal-neutral0); */ /* Custom Colors */
   --md-custom-color-Custom-Color-1: #008471;
   --dp0: 0px 0px 0px 0px rgba(0, 0, 0, 0);
   --dp1: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),

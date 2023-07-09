@@ -24,7 +24,7 @@ export function Nota(
 }
 ) {
   const {
-    _id, nota, tareas, fecha
+    _id, nota, tareas, fecha 
   } = notaRaw;
   return (
     <div
@@ -34,7 +34,8 @@ export function Nota(
         <sup className={note.sup}>{`${
           i + 1
         }`}</sup>
-        <Name key={_id}
+        <Name
+          key={_id}
           llaveProceso={notaRaw.llaveProceso}
         />
         <p
@@ -47,10 +48,16 @@ export function Nota(
         </sub>
         <div className={note.buttonsRow}>
           <Suspense fallback={<ButtonSkeleton />}>
-            <EditNoteButton key={_id} nota={notaRaw} />
+            <EditNoteButton
+              key={_id}
+              nota={notaRaw}
+            />
           </Suspense>
           <Suspense fallback={<ButtonSkeleton />}>
-            <DeleteNoteButton key={_id} id={_id} />
+            <DeleteNoteButton
+              key={_id}
+              id={_id}
+            />
           </Suspense>
         </div>
         <div className={note.tareas}>

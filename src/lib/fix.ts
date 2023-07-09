@@ -47,7 +47,7 @@ function trimmer(
     .slice (
       locateDemandado + 10
     )
-    .toLocaleLowerCase ();
+    .toLowerCase ();
 
   const trimDemandado = extractDemandado.replace (
     /^\s+|\s+$/gm,
@@ -131,9 +131,13 @@ export const fixDemandado = (
 };
 
 export const toNameString = (
-  nameRaw: string
+  {
+    nameRaw
+  }: {
+  nameRaw: string;
+}
 ) => {
-  const str = nameRaw.toLocaleLowerCase ();
+  const str = nameRaw.toLowerCase ();
 
   const arr = str.split (
     ' '

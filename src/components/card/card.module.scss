@@ -8,7 +8,7 @@
 .isActive,
 .notActive {
   box-sizing: border-box;
-  padding: 5cqmin;
+  padding: 2vmin;
   gap: 5cqmin;
   border-radius: 2vmin;
   height: 100%;
@@ -169,7 +169,7 @@
 .linkIsActive {
   grid-area: link;
   border-radius: 10cqmin;
-  padding: 2cqmin;
+  padding: 2vmin;
   flex: 1 0 48%;
   position: relative;
   & > .tooltiptext {
@@ -240,7 +240,6 @@
 @container card ( 300px < width < 400px) {
   .isActive,
   .notActive {
-    padding: 1cqmin;
     .link,
     .linkIsActive {
       flex: 1 0;
@@ -278,12 +277,6 @@
   .isActive,
   .notActive {
     flex-flow: row nowrap;
-  }
-}
-@container card ( 400px < width < 500px) {
-  .isActive,
-  .notActive {
-    background-color: blue;
   }
 }
 @container card ( 500px < width < 600px) {

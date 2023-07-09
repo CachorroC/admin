@@ -6,6 +6,7 @@ import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 import Header from '#@/components/navbar/Header';
 import { Suspense } from 'react';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
+import { Loader } from '#@/components/Loader/index';
 
 export default async function Page() {
   const procesos = await getCarpetas ();
@@ -18,12 +19,12 @@ export default async function Page() {
 
   return (
     <Header>
-      <Suspense fallback={<p>loading</p>}>
+      <Suspense fallback={<Loader />}>
         <Title />
       </Suspense>
       <Drawer>
         <Suspense
-          fallback={<SearchOutputListSkeleton />}>
+          fallback={<Loader />}>
           <SearchOutputList
             path='/Procesos'
             fechas={fechas}

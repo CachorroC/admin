@@ -9,12 +9,10 @@
           pathname: '/250/200?image=**'
         }
       ],
-      domains: [
-        'placekitten.com'
-      ]
+      domains: ['placekitten.com']
     },
     experimental: {
-      typedRoutes                     : true,
+      typedRoutes: true,
       serverComponentsExternalPackages: [
         'mongodb'
       ]

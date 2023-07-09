@@ -7,6 +7,43 @@ import { monDemandado } from '../types/mongodb';
 import {IntActuaciones,
   intConsultaActuaciones} from '../types/procesos';
 
+export async function getActuaciones(
+  idProceso: number
+) {
+  if (idProceso === 0) {
+    return [];
+  }
+
+  try {
+    const request = await fetch (
+      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
+      {
+        cache: 'no-store'
+      }
+    );
+    if (!request.ok) {
+      return [];
+    }
+
+    const res =
+      (await request.json ()) as intConsultaActuaciones;
+    if (!res.actuaciones) {
+      return [];
+    }
+    return res.actuaciones;
+  }
+  catch {
+    (
+      error: { message: string }
+    ) => {
+      console.log (
+        error.message ?? 'error'
+      );
+    };
+    return [];
+  }
+}
+
 export async function getActuacionesByidProceso(
   {
     idProceso
@@ -111,23 +148,20 @@ export async function fetchFechas(
   for (let p = 0; p < procesos.length; p++) {
     const proceso = procesos[ p ];
 
-    const acts = await getActuacionesByidProceso (
-      {
-        idProceso: proceso.idProceso
-      }
+    const acts = await getActuaciones (
+      proceso.idProceso
     );
-
-    if (acts.acts) {
+    if (acts.length > 0) {
       const fecha = {
         ...proceso,
-        fecha: acts.acts[ 0 ].fechaActuacion
+        fecha: acts[ 0 ].fechaActuacion
       };
       fechas.push (
         fecha
       );
     }
 
-    if (!acts.acts) {
+    if (acts.length === 0) {
       const fecha = {
         ...proceso,
         fecha: null

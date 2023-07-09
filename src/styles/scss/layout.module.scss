@@ -60,7 +60,7 @@ $MaxSW: 480px; //maximum sma width
     display: block;
     flex-grow: 1;
     flex-shrink: 1;
-    flex-basis: 31%;
+    flex-basis: calc(50% - 2vmin);
     align-self: stretch;
     order: 0;
   }
@@ -267,5 +267,28 @@ $MaxSW: 480px; //maximum sma width
       width: 1800px;
       margin: 0 auto;
     }
+  }
+}
+
+.loader {
+  border: 16px solid var(--outline); /* Light grey */
+  border-top: 16px solid var(--tertiary); /* Blue */
+  border-radius: 50%;
+  width: 10vw;
+  height: 10vw;
+  box-sizing: border-box;
+  animation: spin 2s linear infinite;
+  & > .loader {
+    border: 16px solid var(--outline-variant); /* Light grey */
+    border-top: 16px solid var(--secondary); /* Blue */
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

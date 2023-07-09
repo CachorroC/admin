@@ -32,7 +32,7 @@ async function Name(
     )
     .toString ();
   return (
-    <h3 className={typography.displayMedium}>
+    <h3 key={llaveProceso} className={typography.displayMedium}>
       {nombre}
     </h3>
   );
@@ -116,6 +116,7 @@ export default async function PageProcesosRightllaveProceso(
         return (
           <>
             <NewNota
+              key={params.llaveProceso}
               llaveProceso={params.llaveProceso}
               uri={`${ getBaseUrl () }`}
             />
@@ -126,6 +127,7 @@ export default async function PageProcesosRightllaveProceso(
         return (
           <>
             <NewNota
+              key={params.llaveProceso}
               llaveProceso={params.llaveProceso}
               uri={`${ getBaseUrl () }`}
             />
@@ -138,6 +140,7 @@ export default async function PageProcesosRightllaveProceso(
         return (
           <>
             <NewNota
+              key={params.llaveProceso}
               llaveProceso={params.llaveProceso}
               uri={`${ getBaseUrl () }`}
             />
@@ -150,6 +153,7 @@ export default async function PageProcesosRightllaveProceso(
         return (
           <>
             <NewNota
+              key={params.llaveProceso}
               llaveProceso={params.llaveProceso}
               uri={`${ getBaseUrl () }`}
             />

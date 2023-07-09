@@ -9,8 +9,7 @@ export default async function Page(
 }
 ) {
   return (
-    <>
-      <Title />
-    </>
+
+    <Title key={params.llaveProceso}/>
   );
 }

@@ -110,7 +110,9 @@ export const Card = (
         <h1
           className={`${ typography.titleMedium } ${ card.title }`}>
           {toNameString (
-            name
+            {
+              nameRaw: name
+            }
           )}
         </h1>
         {hasLinks

@@ -6,6 +6,7 @@ import { fetchFechas } from '#@/lib/Actuaciones';
 import { CardSearchList } from '#@/components/search/CardSearchList';
 import type { Route } from 'next';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
+import { Loader } from '#@/components/Loader';
 
 export default async function PageProcesosLeft() {
   const carpetas = await getCarpetas ();
@@ -17,7 +18,7 @@ export default async function PageProcesosLeft() {
   );
   return (
     <Suspense
-      fallback={<SearchOutputListSkeleton />}>
+      fallback={<Loader />}>
       <CardSearchList
         path={'/Procesos' as Route}
         uri={`${ getBaseUrl () }`}

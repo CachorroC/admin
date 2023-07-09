@@ -1,3 +1,4 @@
+import 'server-only';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { toNameString } from '#@/lib/fix';
 import typeface from '#@/styles/fonts/typeface.module.scss';
@@ -28,8 +29,16 @@ export async function Name(
   return (
     <h1
       className={`${ typeface.navbar } ${ typography.displayMedium }`}>
-      { toNameString (
-        nombre[ 0 ]
+      {nombre.map (
+        (
+          n
+        ) => {
+          return toNameString (
+            {
+              nameRaw: n
+            }
+          );
+        }
       )}
     </h1>
   );

@@ -5,6 +5,7 @@ import {getActuacionesByidProceso,
 import { Fragment, Suspense } from 'react';
 import { ActuacionCard } from '#@/components/card/ActuacionesCard';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
+import { Loader } from '#@/components/Loader/index';
 async function Acts(
   {
     idProceso
@@ -26,7 +27,7 @@ async function Acts(
             act, i, arr
           ) => {
             const {
-              idRegActuacion 
+              idRegActuacion
             } = act;
             return (
               <ActuacionCard
@@ -120,7 +121,7 @@ export default async function PageProcesosLeftllaveProceso(
       case 1:
         return (
           <>
-            <Suspense fallback={<p>loading</p>}>
+            <Suspense fallback={<Loader />}>
               {procesosMap}
             </Suspense>
           </>
