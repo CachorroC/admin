@@ -1,29 +1,12 @@
-import 'server-only';
 import { Suspense } from 'react';
-import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-import { getCarpetas } from '#@/lib/Carpetas';
-import { fetchFechas } from '#@/lib/Actuaciones';
-import { CardSearchList } from '#@/components/search/CardSearchList';
-import type { Route } from 'next';
-import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { Loader } from '#@/components/Loader';
+import { ListCardCarpetasNFechas } from '#@/components/card/CarpetasCard/list';
 
-export default async function PageProcesosLeft() {
-  const carpetas = await getCarpetas ();
-
-  const fechas = await fetchFechas (
-    {
-      procesos: carpetas
-    }
-  );
+export default function PageProcesosLeft() {
   return (
     <Suspense
       fallback={<Loader />}>
-      <CardSearchList
-        path={'/Procesos' as Route}
-        uri={`${ getBaseUrl () }`}
-        Fechas={fechas}
-      />
+      <ListCardCarpetasNFechas />
     </Suspense>
   );
 }

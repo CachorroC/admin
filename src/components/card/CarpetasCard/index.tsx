@@ -5,8 +5,9 @@ import {intDemanda,
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 import type { Route } from 'next';
-import { usePathname } from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
+import { Loader } from '#@/components/Loader';
+import { ReactNode, useState, useEffect, Fragment } from 'react';
 
 export const DemandaContainer = (
   {
@@ -59,14 +60,20 @@ export const DemandaContainer = (
   );
 };
 
+
 export const CarpetaCard = (
   {
-    Carpeta
+    Carpeta, children
   }: {
-  Carpeta: monCarpetaDemandado;
+  Carpeta: monCarpetaDemandado; children: ReactNode
 }
 ) => {
-  const pathname = usePathname ();
+  const [
+    didMount,
+    setDidMount
+  ] = useState (
+    false
+  );
 
   const {
     llaveProceso,
@@ -77,7 +84,7 @@ export const CarpetaCard = (
   } = Carpeta;
 
   const {
-    Nombre, Tel, Direccion, Email 
+    Nombre, Tel, Direccion, Email
   } =
     Deudor;
 
@@ -91,89 +98,94 @@ export const CarpetaCard = (
       : `${ path }`
   ) as Route;
 
-  const isActive =
-    pathname === href ||
-    pathname ===
-      `${ path }/${ llaveProceso }/${ idProceso }` ||
-    pathname === `${ path }/${ llaveProceso }` ||
-    pathname === path;
-  return (
-    <>
-      <DemandaContainer demanda={Demanda} />
-      <div
-        className={styles.container}
-        key={_id}>
+  useEffect (
+    () => {
+      setDidMount (
+        true
+      );
+    },
+    []
+  );
+
+  if (didMount) {
+    return (
+      <Fragment key={_id}>
+        <DemandaContainer key ={_id} demanda={Demanda} />
         <div
-          className={
-            isActive
-              ? styles.cardActive
-              : styles.cardInactive
-          }>
-          <h1
-            className={`${ typography.titleMedium } ${ styles.title }`}>
-            {Nombre}
-          </h1>
-          <p className={styles.content}>
-            {Direccion}
-          </p>
-          <div className={styles.links}>
-            <Link
-              className={styles.button}
-              href={href}>
-              <span
-                className={`material-symbols-outlined ${ styles.icon }`}>
+          className={styles.container}
+          key={_id}>
+          <div className={styles.cardInactive}>
+            <h1
+              className={`${ typography.titleMedium } ${ styles.title }`}>
+              {Nombre}
+            </h1>
+            <p className={styles.content}>
+              {Direccion ?? 'sin direccion'}
+            </p>
+            {children}
+            <div className={styles.links}>
+              <Link
+                className={styles.button}
+                href={href}>
+                <span
+                  className={`material-symbols-outlined ${ styles.icon }`}>
                 folder_open
-              </span>
-              <span
-                className={styles.tooltiptext}>
+                </span>
+                <span
+                  className={styles.tooltiptext}>
                 Abrir
-              </span>
-            </Link>
-            {Tel && Tel.Celular && (
-              <Link
-                className={styles.button}
-                href={`tel:${ Tel.Celular }`}>
-                <span
-                  className={`material-symbols-outlined ${ styles.icon }`}>
+                </span>
+              </Link>
+              {Tel && Tel.Celular && (
+                <Link
+                  className={styles.button}
+                  href={`tel:${ Tel.Celular }`}>
+                  <span
+                    className={`material-symbols-outlined ${ styles.icon }`}>
                   phone_iphone
-                </span>
-                <span
-                  className={styles.tooltiptext}>
+                  </span>
+                  <span
+                    className={styles.tooltiptext}>
                   Numero Celular
-                </span>
-              </Link>
-            )}
-            {Email && (
-              <Link
-                className={styles.button}
-                href={`mailto:${ Email }`}>
-                <span
-                  className={`material-symbols-outlined ${ styles.icon }`}>
+                  </span>
+                </Link>
+              )}
+              {Email && (
+                <Link
+                  className={styles.button}
+                  href={`mailto:${ Email }`}>
+                  <span
+                    className={`material-symbols-outlined ${ styles.icon }`}>
                   forward_to_inbox
-                </span>
-                <span
-                  className={styles.tooltiptext}>
+                  </span>
+                  <span
+                    className={styles.tooltiptext}>
                   Email
-                </span>
-              </Link>
-            )}
-            {Tel && Tel.Fijo && (
-              <Link
-                className={styles.button}
-                href={`tel:${ Tel.Fijo }`}>
-                <span
-                  className={`material-symbols-outlined ${ styles.icon }`}>
+                  </span>
+                </Link>
+              )}
+              {Tel && Tel.Fijo && (
+                <Link
+                  className={styles.button}
+                  href={`tel:${ Tel.Fijo }`}>
+                  <span
+                    className={`material-symbols-outlined ${ styles.icon }`}>
                   call
-                </span>
-                <span
-                  className={styles.tooltiptext}>
+                  </span>
+                  <span
+                    className={styles.tooltiptext}>
                   Numero Fijo
-                </span>
-              </Link>
-            )}
+                  </span>
+                </Link>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      </Fragment>
+    );
+  }
+  return (
+    <Loader />
   );
+
 };

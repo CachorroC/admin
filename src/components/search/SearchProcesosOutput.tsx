@@ -120,7 +120,7 @@ export default function SearchOutputList(
       } = proceso;
 
       const {
-        Nombre, Id, Tel, Direccion 
+        Nombre, Id, Tel, Direccion
       } = Deudor;
       if (
         Nombre.toLowerCase ().indexOf (
