@@ -10,7 +10,7 @@ export default function NuevaCarpetaPage() {
       <h2 className={typography.titleLarge}>
         Nueva carpeta
       </h2>
-      <NuevoProceso uri={`${ getBaseUrl () }`} />
+      <NuevoProceso uri={`${getBaseUrl()}`} />
     </div>
   );
 }

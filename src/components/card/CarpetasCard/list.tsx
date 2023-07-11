@@ -1,51 +1,52 @@
 import 'server-only';
-import {getCarpetaById,
-  getCarpetas} from '#@/lib/Carpetas';
+import {
+  getCarpetaById,
+  getCarpetas
+} from '#@/lib/Carpetas';
 import { fixFechas } from '#@/lib/fix';
-import type {Demanda,
-  monCarpetaDemandado} from '#@/lib/types/demandados';
+import type {
+  Demanda,
+  monCarpetaDemandado
+} from '#@/lib/types/demandados';
 import Link from 'next/link';
-import {Fragment,
+import {
+  Fragment,
   ReactNode,
   Suspense,
   useEffect,
-  useState} from 'react';
+  useState
+} from 'react';
 import styles from './carpetas.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getActuaciones } from '#@/lib/Actuaciones';
 import { Loader } from '#@/components/Loader';
 import type { Route } from 'next';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
+import { getBaseUrl } from '#@/lib/getBaseUrl';
 
-const Fecha = async (
-  {
-    idProceso
-  }: {
+const Fecha = async ({
+  idProceso
+}: {
   idProceso: number;
-}
-) => {
-  const acts = await getActuaciones (
-    idProceso
-  );
+}) => {
+  const acts = await getActuaciones(idProceso);
+
   if (acts.length === 0) {
     return null;
   }
+
   return (
     <div className={styles.date}>
-      {fixFechas (
-        acts[ 0 ].fechaActuacion
-      )}
+      {fixFechas(acts[0].fechaActuacion)}
     </div>
   );
 };
 
-export const DemandaContainer = (
-  {
-    demanda
-  }: {
+export const DemandaContainer = ({
+  demanda
+}: {
   demanda: Demanda;
-}
-) => {
+}) => {
   const {
     Departamento,
     Municipio,
@@ -58,6 +59,7 @@ export const DemandaContainer = (
     Juzgado,
     Obligacion
   } = demanda;
+
   return (
     <div className={styles.section}>
       <h1 className={typography.headlineMedium}>
@@ -66,19 +68,15 @@ export const DemandaContainer = (
       <h2
         className={
           typography.titleMedium
-        }>{`${ Departamento }: ${ Municipio }`}</h2>
+        }>{`${Departamento}: ${Municipio}`}</h2>
       {VencimientoPagare && (
         <p className={typography.labelMedium}>
-          {fixFechas (
-            VencimientoPagare
-          )}
+          {fixFechas(VencimientoPagare)}
         </p>
       )}
       {EntregadeGarantiasAbogado && (
         <p className={typography.labelSmall}>
-          {fixFechas (
-            EntregadeGarantiasAbogado
-          )}
+          {fixFechas(EntregadeGarantiasAbogado)}
         </p>
       )}
       {CapitalAdeudado && (
@@ -91,27 +89,29 @@ export const DemandaContainer = (
 };
 
 export async function ListCardCarpetasNFechas() {
-  const carpetas = await getCarpetas ();
+  const req = await fetch(
+    `${getBaseUrl()}/api/Carpetas`
+  );
+
+  const carpetas =
+    (await req.json()) as monCarpetaDemandado[];
+
   return (
     <>
-      {carpetas.map (
-        (
-          carpeta, index, arr
-        ) => {
-          return (
-            <CarpetaCard
-              Carpeta={carpeta}
-              key={carpeta._id}>
-              <Suspense fallback={<Loader />}>
-                <Fecha
-                  key={carpeta._id + 'fecha'}
-                  idProceso={carpeta.idProceso}
-                />
-              </Suspense>
-            </CarpetaCard>
-          );
-        }
-      )}
+      {carpetas.map((carpeta, index, arr) => {
+        return (
+          <CarpetaCard
+            Carpeta={carpeta}
+            key={carpeta._id}>
+            <Suspense fallback={<Loader />}>
+              <Fecha
+                key={carpeta._id + 'fecha'}
+                idProceso={carpeta.idProceso}
+              />
+            </Suspense>
+          </CarpetaCard>
+        );
+      })}
     </>
   );
 }

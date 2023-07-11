@@ -7,33 +7,27 @@ import InputSearchBar from '#@/components/search/InputSearchBar';
 import useMedia from './mediaQuery';
 import typeface from '#@/components/typográficos/typeface.module.scss';
 import SearchOutputListSkeleton from '../search/SearchProcesosOutputSkeleton';
-import {BackwardsButton,
+import {
+  BackwardsButton,
   DrawerMenuButton,
   ForwardButton,
-  HomeButton} from './Buttons';
+  HomeButton
+} from './Buttons';
 import Title from '#@/components/Headings/title';
 import { ButtonSkeleton } from './ButtonSkeleton';
 
-export default function Drawer(
-  {
-    children
-  }: {
+export default function Drawer({
+  children
+}: {
   children: ReactNode;
-}
-) {
-  const isDesktop = useMedia (
-    2
-  );
+}) {
+  const isDesktop = useMedia(2);
 
-  const isMobile = useMedia (
-    0
-  );
+  const isMobile = useMedia(0);
 
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] =
-    useNavigator ();
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
+
   if (isNavOpen) {
     if (isMobile) {
       return (
@@ -80,5 +74,6 @@ export default function Drawer(
       </nav>
     );
   }
+
   return null;
 }

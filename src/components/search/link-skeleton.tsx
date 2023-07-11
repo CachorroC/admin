@@ -17,19 +17,19 @@ export default function LinkCardSkeleton() {
         <div className={searchbar.links}>
           <p className={searchbar.link}>
             <span
-              className={`material-symbols-outlined ${ searchbar.icon }`}>
+              className={`material-symbols-outlined ${searchbar.icon}`}>
               badge
             </span>
           </p>
           <p className={searchbar.link}>
             <span
-              className={`material-symbols-outlined ${ searchbar.icon }`}>
+              className={`material-symbols-outlined ${searchbar.icon}`}>
               add
             </span>
           </p>
           <p className={searchbar.link}>
             <span
-              className={`material-symbols-outlined ${ searchbar.icon }`}>
+              className={`material-symbols-outlined ${searchbar.icon}`}>
               file_open
             </span>
           </p>

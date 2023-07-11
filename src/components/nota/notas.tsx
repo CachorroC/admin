@@ -3,29 +3,30 @@ import { monNota } from '#@/lib/types/notas';
 import note from '#@/components/nota/note.module.scss';
 import { fixFechas } from '#@/lib/fix';
 import { Suspense } from 'react';
-import {EditNoteButton,
-  DeleteNoteButton} from '#@/components/nota/ButtonsNoteHandlers';
+import {
+  EditNoteButton,
+  DeleteNoteButton
+} from '#@/components/nota/ButtonsNoteHandlers';
 import { AccordionRow } from '#@/components/nota/accordion';
 import { ButtonSkeleton } from '../navbar/ButtonSkeleton';
 import typography from '#@/styles/fonts/typography.module.scss';
-import {getNotas,
-  getNotasByllaveProceso} from '#@/lib/notas';
+import {
+  getNotas,
+  getNotasByllaveProceso
+} from '#@/lib/notas';
 import { Name } from '#@/components/Headings/serverSideName';
 
-export function Nota(
-  {
-    notaRaw,
-    i,
-    arr
-  }: {
+export function Nota({
+  notaRaw,
+  i,
+  arr
+}: {
   notaRaw: monNota;
   i: number;
   arr: monNota[];
-}
-) {
-  const {
-    _id, nota, tareas, fecha 
-  } = notaRaw;
+}) {
+  const { _id, nota, tareas, fecha } = notaRaw;
+
   return (
     <div
       className={note.container}
@@ -39,12 +40,10 @@ export function Nota(
           llaveProceso={notaRaw.llaveProceso}
         />
         <p
-          className={`${ typography.bodySmall } ${ note.textArea }`}>{`Nota: ${ nota }`}</p>
+          className={`${typography.bodySmall} ${note.textArea}`}>{`Nota: ${nota}`}</p>
         <sub
-          className={`${ typography.labelSmall } ${ note.fecha }`}>
-          {fixFechas (
-            fecha.toString ()
-          )}
+          className={`${typography.labelSmall} ${note.fecha}`}>
+          {fixFechas(fecha.toString())}
         </sub>
         <div className={note.buttonsRow}>
           <Suspense fallback={<ButtonSkeleton />}>
@@ -61,63 +60,36 @@ export function Nota(
           </Suspense>
         </div>
         <div className={note.tareas}>
-          {tareas.map (
-            (
-              tr
-            ) => {
-              return (
-                <AccordionRow
-                  tarea={tr.tarea}
-                  key={tr.tarea}
-                  dueDate={tr.dueDate}
-                  isDone={tr.isDone}
-                />
-              );
-            }
-          )}
+          {tareas.map((tr) => {
+            return (
+              <AccordionRow
+                tarea={tr.tarea}
+                key={tr.tarea}
+                dueDate={tr.dueDate}
+                isDone={tr.isDone}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
   );
 }
 
-export async function Notas(
-  {
-    llaveProceso
-  }: {
+export async function Notas({
+  llaveProceso
+}: {
   llaveProceso?: string;
-}
-) {
+}) {
   if (llaveProceso) {
-    const notas = await getNotasByllaveProceso (
-      {
-        llaveProceso: llaveProceso
-      }
-    );
+    const notas = await getNotasByllaveProceso({
+      llaveProceso: llaveProceso
+    });
+
     if (notas.length === 0) {
-      const nts = await getNotas ();
+      const nts = await getNotas();
 
-      const NotasRow = nts.map (
-        (
-          nota, i, arr
-        ) => {
-          return (
-            <Nota
-              notaRaw={nota}
-              i={i}
-              arr={arr}
-              key={nota._id}
-            />
-          );
-        }
-      );
-      return <>{NotasRow}</>;
-    }
-
-    const NotasRow = notas.map (
-      (
-        nota, i, arr
-      ) => {
+      const NotasRow = nts.map((nota, i, arr) => {
         return (
           <Nota
             notaRaw={nota}
@@ -126,17 +98,12 @@ export async function Notas(
             key={nota._id}
           />
         );
-      }
-    );
-    return <>{NotasRow}</>;
-  }
+      });
 
-  const notas = await getNotas ();
+      return <>{NotasRow}</>;
+    }
 
-  const NotasRow = notas.map (
-    (
-      nota, i, arr
-    ) => {
+    const NotasRow = notas.map((nota, i, arr) => {
       return (
         <Nota
           notaRaw={nota}
@@ -145,7 +112,22 @@ export async function Notas(
           key={nota._id}
         />
       );
-    }
-  );
+    });
+
+    return <>{NotasRow}</>;
+  }
+  const notas = await getNotas();
+
+  const NotasRow = notas.map((nota, i, arr) => {
+    return (
+      <Nota
+        notaRaw={nota}
+        i={i}
+        arr={arr}
+        key={nota._id}
+      />
+    );
+  });
+
   return <>{NotasRow}</>;
 }

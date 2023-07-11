@@ -3,32 +3,27 @@ import layout from '#@/styles/scss/layout.module.scss';
 import useMedia from './mediaQuery';
 import InputSearchBar from '#@/components/search/InputSearchBar';
 import { Suspense } from 'react';
-import {BackwardsButton,
+import {
+  BackwardsButton,
   DrawerMenuButton,
   ForwardButton,
-  HomeButton} from './Buttons';
+  HomeButton
+} from './Buttons';
 import Drawer from './drawer';
 import { ButtonSkeleton } from './ButtonSkeleton';
 import typeface from '#@/styles/fonts/typeface.module.scss';
 
-export default function Header(
-  {
-    children
-  }: {
+export default function Header({
+  children
+}: {
   children: React.ReactNode;
-}
-) {
-  const isDesktop = useMedia (
-    2
-  );
+}) {
+  const isDesktop = useMedia(2);
 
-  const isMobile = useMedia (
-    0
-  );
+  const isMobile = useMedia(0);
 
-  const isBigDesktop = useMedia (
-    3
-  );
+  const isBigDesktop = useMedia(3);
+
   if (isDesktop || isBigDesktop) {
     return (
       <div className={layout.header}>

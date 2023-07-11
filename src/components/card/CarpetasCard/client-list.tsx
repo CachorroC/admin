@@ -1,83 +1,81 @@
-import {intFecha,
-  monCarpetaDemandado} from '#@/lib/types/demandados';
+import {
+  intFecha,
+  monCarpetaDemandado
+} from '#@/lib/types/demandados';
 
 import { fixFechas } from '#@/lib/fix';
 import styles from './carpetas.module.scss';
 import type { Route } from 'next';
-import {Fragment,
+import {
+  Fragment,
   ReactNode,
-  Suspense} from 'react';
+  Suspense
+} from 'react';
 import { Loader } from '#@/components/Loader';
 import { getActuaciones } from '#@/lib/Actuaciones';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { DemandaContainer } from '.';
 import Link from 'next/link';
-import {getCarpetaById,
+import {
+  getCarpetaById,
   getCarpetas,
-  getCarpetasByllaveProceso} from '#@/lib/Carpetas';
+  getCarpetasByllaveProceso
+} from '#@/lib/Carpetas';
 
-async function Fecha(
-  {
-    idProceso
-  }: {
+async function Fecha({
+  idProceso
+}: {
   idProceso: number;
-}
-) {
-  const actuaciones = await getActuaciones (
+}) {
+  const actuaciones = await getActuaciones(
     idProceso
   );
+
   if (
     idProceso === 0 ||
     actuaciones.length === 0
   ) {
     return null;
   }
+
   return (
     <div className={styles.date}>
       <p className={typography.labelSmall}>
-        {fixFechas (
-          actuaciones[ 0 ].fechaActuacion
-        )}
+        {fixFechas(actuaciones[0].fechaActuacion)}
       </p>
     </div>
   );
 }
 
 export async function ListCardCarpetasNFechasServer() {
-  const carpetas = await getCarpetas ();
+  const carpetas = await getCarpetas();
 
   return (
     <>
-      {carpetas.map (
-        (
-          carpeta, index, arr
-        ) => {
-          return (
-            <CarpetaCard
-              Carpeta={carpeta}
-              key={carpeta._id}>
-              <Suspense fallback={<Loader />}>
-                <Fecha
-                  idProceso={carpeta.idProceso}
-                />
-              </Suspense>
-            </CarpetaCard>
-          );
-        }
-      )}
+      {carpetas.map((carpeta, index, arr) => {
+        return (
+          <CarpetaCard
+            Carpeta={carpeta}
+            key={carpeta._id}>
+            <Suspense fallback={<Loader />}>
+              <Fecha
+                idProceso={carpeta.idProceso}
+              />
+            </Suspense>
+          </CarpetaCard>
+        );
+      })}
     </>
   );
 }
 
-const CarpetaCard = async (
-  {
-    Carpeta,
-    children
-  }: {
+const CarpetaCard = async ({
+  Carpeta,
+  children
+}: {
   Carpeta: monCarpetaDemandado;
   children: ReactNode;
-}
-) => {
+}) => {
   const {
     llaveProceso,
     idProceso,
@@ -86,19 +84,16 @@ const CarpetaCard = async (
     Demanda
   } = Carpeta;
 
-  const {
-    Nombre, Tel, Direccion, Email 
-  } =
+  const { Nombre, Tel, Direccion, Email } =
     Deudor;
-
   const path = '/Procesos';
 
   const href = (
     llaveProceso
       ? idProceso
-        ? `${ path }/${ llaveProceso }/${ idProceso }`
-        : `${ path }/${ llaveProceso }`
-      : `${ path }`
+        ? `${path}/${llaveProceso}/${idProceso}`
+        : `${path}/${llaveProceso}`
+      : `${path}`
   ) as Route;
 
   return (
@@ -109,7 +104,7 @@ const CarpetaCard = async (
         key={_id}>
         <div className={styles.cardInactive}>
           <h1
-            className={`${ typography.titleMedium } ${ styles.title }`}>
+            className={`${typography.titleMedium} ${styles.title}`}>
             {Nombre}
           </h1>
           <p className={styles.content}>
@@ -120,7 +115,7 @@ const CarpetaCard = async (
               className={styles.button}
               href={href}>
               <span
-                className={`material-symbols-outlined ${ styles.icon }`}>
+                className={`material-symbols-outlined ${styles.icon}`}>
                 folder_open
               </span>
               <span
@@ -132,9 +127,9 @@ const CarpetaCard = async (
             {Tel && Tel.Celular && (
               <Link
                 className={styles.button}
-                href={`tel:${ Tel.Celular }`}>
+                href={`tel:${Tel.Celular}`}>
                 <span
-                  className={`material-symbols-outlined ${ styles.icon }`}>
+                  className={`material-symbols-outlined ${styles.icon}`}>
                   phone_iphone
                 </span>
                 <span
@@ -146,9 +141,9 @@ const CarpetaCard = async (
             {Email && (
               <Link
                 className={styles.button}
-                href={`mailto:${ Email }`}>
+                href={`mailto:${Email}`}>
                 <span
-                  className={`material-symbols-outlined ${ styles.icon }`}>
+                  className={`material-symbols-outlined ${styles.icon}`}>
                   forward_to_inbox
                 </span>
                 <span
@@ -160,9 +155,9 @@ const CarpetaCard = async (
             {Tel && Tel.Fijo && (
               <Link
                 className={styles.button}
-                href={`tel:${ Tel.Fijo }`}>
+                href={`tel:${Tel.Fijo}`}>
                 <span
-                  className={`material-symbols-outlined ${ styles.icon }`}>
+                  className={`material-symbols-outlined ${styles.icon}`}>
                   call
                 </span>
                 <span

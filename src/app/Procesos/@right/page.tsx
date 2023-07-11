@@ -11,18 +11,15 @@ import { Suspense } from 'react';
 import { Loader } from '#@/components/Loader';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 
-async function Fechs(
-  {
-    procesos
-  }: {
+async function Fechs({
+  procesos
+}: {
   procesos: monCarpetaDemandado[];
-}
-) {
-  const fechas = await fetchFechas (
-    {
-      procesos: procesos
-    }
-  );
+}) {
+  const fechas = await fetchFechas({
+    procesos: procesos
+  });
+
   return (
     <SearchOutputList
       path={'/Procesos'}
@@ -32,17 +29,26 @@ async function Fechs(
 }
 
 export default async function PageProcesosRight() {
-  const notas = await getNotas ();
+  const req = await fetch(
+    `${getBaseUrl()}/api/Carpetas`
+  );
 
-  const procesos = await getCarpetas ();
+  const carpetas =
+    (await req.json()) as monCarpetaDemandado[];
+  const notas = await getNotas();
+  const procesos = await getCarpetas();
+
   return (
     <>
       <Suspense fallback={<Loader />}>
         <Fechs procesos={procesos} />
       </Suspense>
+      <Suspense fallback={<Loader />}>
+        <Fechs procesos={carpetas} />
+      </Suspense>
       <NewNota
         llaveProceso={'Procesos'}
-        uri={`${ getBaseUrl () }`}
+        uri={`${getBaseUrl()}`}
       />
       <NotasList notas={notas} />
     </>

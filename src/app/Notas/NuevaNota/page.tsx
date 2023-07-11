@@ -10,7 +10,7 @@ export default function NuevaNota() {
       <div className={layout.left}>
         <NewNota
           llaveProceso={''}
-          uri={`${ getBaseUrl () }`}
+          uri={`${getBaseUrl()}`}
         />
       </div>
       <div className={layout.right}>

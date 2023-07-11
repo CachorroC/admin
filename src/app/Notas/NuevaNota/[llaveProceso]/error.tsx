@@ -4,23 +4,13 @@ import React from 'react';
 import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export default function Error(
-  {
-    error,
-    reset
-  }: any
-) {
-  React.useEffect (
-    () => {
-      console.log (
-        'logging error:',
-        error
-      );
-    },
-    [
-      error
-    ]
-  );
+export default function Error({
+  error,
+  reset
+}: any) {
+  React.useEffect(() => {
+    console.log('logging error:', error);
+  }, [error]);
 
   return (
     <div className={layout.body}>
@@ -44,7 +34,7 @@ export default function Error(
       <div className={layout.right}>
         <button
           onClick={() => {
-            return reset ();
+            return reset();
           }}
           className={layout.button}>
           Try Again

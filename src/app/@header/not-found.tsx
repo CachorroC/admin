@@ -12,9 +12,7 @@ export default function NotFound() {
       }}>
       <h1
         className={typography.displayLarge}
-        style={{
-          color: 'var(--primary)'
-        }}>
+        style={{ color: 'var(--primary)' }}>
         ¿Perdido?
       </h1>
       <p

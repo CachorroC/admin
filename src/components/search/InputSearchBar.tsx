@@ -1,49 +1,33 @@
 'use client';
 import { usePathname } from 'next/navigation';
 import searchbar from '#@/components/search/searchbar.module.scss';
-import {useNavigator,
-  useSearch} from '#@/app/search-context';
+import {
+  useNavigator,
+  useSearch
+} from '#@/app/search-context';
 
 export default function InputSearchBar() {
-  const [
-    search,
-    setSearch
-  ] = useSearch ();
+  const [search, setSearch] = useSearch();
 
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] =
-    useNavigator ();
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
+  const pathname = usePathname();
 
-  const pathname = usePathname ();
+  const isHome = pathname === '/' ? true : false;
 
-  const isHome = pathname === '/'
-    ? true
-    : false;
   return (
     <input
       type='text'
       className={searchbar.input}
       name='search'
       value={search}
-      placeholder={isHome
-        ? 'Buscar'
-        : pathname}
+      placeholder={isHome ? 'Buscar' : pathname}
       onBeforeInput={() => {
-        pathname === '/' && setIsNavOpen (
-          true
-        );
+        pathname === '/' && setIsNavOpen(true);
       }}
-      onChange={(
-        input
-      ) => {
-        setIsNavOpen (
-          true
-        );
-        setSearch (
-          input.target.value
-        );
+      onChange={(input) => {
+        setIsNavOpen(true);
+        setSearch(input.target.value);
       }}
     />
   );

@@ -1,135 +1,93 @@
 'use client';
-import {useCallback,
+import {
+  useCallback,
   useRef,
-  useEffect} from 'react';
-import {usePathname,
-  useRouter} from 'next/navigation';
+  useEffect
+} from 'react';
+import {
+  usePathname,
+  useRouter
+} from 'next/navigation';
 import React from 'react';
 import { useModal } from '#@/app/modal-context';
 import modal from '#@/components/modal/modal.module.scss';
-import {BackwardsButton,
-  ForwardButton} from '../navbar/Buttons';
+import {
+  BackwardsButton,
+  ForwardButton
+} from '../navbar/Buttons';
 import { useParams } from 'next/navigation';
 import { redirect } from 'next/navigation';
 import type { Route } from 'next';
 
-export default function Modal(
-  {
-    children
-  }: {
+export default function Modal({
+  children
+}: {
   children: React.ReactNode;
-}
-) {
-  const params = useParams ();
+}) {
+  const params = useParams();
+  const pathname = usePathname();
 
-  const pathname = usePathname ();
+  const overlay = useRef(null);
 
-  const overlay = useRef (
-    null
-  );
+  const wrapper = useRef(null);
+  const router = useRouter();
 
-  const wrapper = useRef (
-    null
-  );
+  const [isOpen, setIsOpen] = useModal();
 
-  const router = useRouter ();
+  const onEnter = useCallback(() => {
+    setIsOpen(false);
+    router.push(pathname as Route);
+  }, [router, pathname, setIsOpen]);
 
-  const [
-    isOpen,
-    setIsOpen
-  ] = useModal ();
+  const onDismiss = useCallback(() => {
+    setIsOpen(isOpen ? false : true);
+    router.back();
+  }, [router, setIsOpen, isOpen]);
 
-  const onEnter = useCallback (
-    () => {
-      setIsOpen (
-        false
-      );
-      router.push (
-pathname as Route
-      );
-    },
-    [
-      router,
-      pathname,
-      setIsOpen
-    ]
-  );
-
-  const onDismiss = useCallback (
-    () => {
-      setIsOpen (
-        isOpen
-          ? false
-          : true
-      );
-      router.back ();
-    },
-    [
-      router,
-      setIsOpen,
-      isOpen
-    ]
-  );
-
-  const onClick = useCallback (
-    (
-      e: { target: undefined }
-    ) => {
+  const onClick = useCallback(
+    (e: { target: undefined }) => {
       if (
         e.target === overlay.current ||
         e.target === wrapper.current
       ) {
         if (onDismiss) {
-          onDismiss ();
+          onDismiss();
         }
 
         if (onEnter) {
-          onEnter ();
+          onEnter();
         }
       }
     },
-    [
-      onDismiss,
-      onEnter,
-      overlay,
-      wrapper
-    ]
+    [onDismiss, onEnter, overlay, wrapper]
   );
 
-  const onKeyDown = useCallback (
-    (
-      e: { key: string }
-    ) => {
+  const onKeyDown = useCallback(
+    (e: { key: string }) => {
       if (e.key === 'Escape') {
-        onDismiss ();
+        onDismiss();
       }
 
       if (e.key === 'Enter') {
-        onEnter ();
+        onEnter();
       }
     },
-    [
-      onDismiss,
-      onEnter
-    ]
+    [onDismiss, onEnter]
   );
-  useEffect (
-    () => {
-      document.addEventListener (
+  useEffect(() => {
+    document.addEventListener(
+      'keydown',
+      onKeyDown
+    );
+
+    return () => {
+      return document.removeEventListener(
         'keydown',
         onKeyDown
       );
-      return () => {
-        return document.removeEventListener (
-          'keydown',
-          onKeyDown
-        );
-      };
-    },
-    [
-      onKeyDown
-    ]
-  );
+    };
+  }, [onKeyDown]);
+
   if (isOpen) {
     return (
       <div

@@ -7,7 +7,7 @@ export default async function DefaultProcesosRight() {
     <>
       <NewNota
         llaveProceso={'Procesos'}
-        uri={`${ getBaseUrl () }`}
+        uri={`${getBaseUrl()}`}
       />
       <Notas />
     </>

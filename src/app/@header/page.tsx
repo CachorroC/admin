@@ -6,14 +6,14 @@ import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 import Header from '#@/components/navbar/Header';
 import { Suspense } from 'react';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-async function ListDrawer() {
-  const procesos = await getCarpetas ();
 
-  const fechas = await fetchFechas (
-    {
-      procesos: procesos
-    }
-  );
+async function ListDrawer() {
+  const procesos = await getCarpetas();
+
+  const fechas = await fetchFechas({
+    procesos: procesos
+  });
+
   return (
     <Drawer>
       <SearchOutputList

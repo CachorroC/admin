@@ -1,32 +1,23 @@
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { intUri } from '../lib/types/mongodb';
 
-export const sleep = (
-  ms: number
-) => {
-  return new Promise (
-    (
-      resolve
-    ) => {
-      return setTimeout (
-        resolve,
-        ms
-      );
-    }
-  );
+export const sleep = (ms: number) => {
+  return new Promise((resolve) => {
+    return setTimeout(resolve, ms);
+  });
 };
 
 export const uri = async () => {
-  const composeduri = await fetch (
-    `${ getBaseUrl }/api`
+  const composeduri = await fetch(
+    `${getBaseUrl}/api`
   );
+
   if (!composeduri.ok) {
-    throw new Error (
-      'no pudimos pedir la uri'
-    );
+    throw new Error('no pudimos pedir la uri');
   }
 
   const res =
-    (await composeduri.json ()) as intUri;
+    (await composeduri.json()) as intUri;
+
   return res;
 };

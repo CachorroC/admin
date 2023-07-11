@@ -1,14 +1,18 @@
 'use client';
 import Link from 'next/link';
-import {useSelectedLayoutSegment,
+import {
+  useSelectedLayoutSegment,
   usePathname,
   useSelectedLayoutSegments,
-  useParams} from 'next/navigation';
+  useParams
+} from 'next/navigation';
 import type { Route } from 'next';
 import searchbar from '#@/components/search/searchbar.module.scss';
-import {ReactNode,
+import {
+  ReactNode,
   Fragment,
-  useCallback} from 'react';
+  useCallback
+} from 'react';
 import { intFecha } from '#@/lib/types/demandados';
 import { fixFechas } from '#@/lib/fix';
 import { useNavigator } from '#@/app/search-context';
@@ -16,19 +20,14 @@ import { useModal } from '#@/app/modal-context';
 import { Name } from '../Headings/clientSideName';
 import { useRouter } from 'next/navigation';
 
-export const LinkCard = (
-  {
-    path,
-    proceso
-  }: {
+export const LinkCard = ({
+  path,
+  proceso
+}: {
   path: string;
   proceso: intFecha;
-}
-) => {
-  const [
-    isOpen,
-    setIsOpen
-  ] = useModal ();
+}) => {
+  const [isOpen, setIsOpen] = useModal();
 
   const {
     Deudor,
@@ -38,35 +37,28 @@ export const LinkCard = (
     _id
   } = proceso;
 
-  const {
-    Nombre, Id, Direccion, Tel 
-  } = Deudor;
+  const { Nombre, Id, Direccion, Tel } = Deudor;
+  const params = useParams();
+  const pathname = usePathname();
 
-  const params = useParams ();
-
-  const pathname = usePathname ();
-
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] =
-    useNavigator ();
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
 
   const href = (
     proceso.llaveProceso
       ? proceso.idProceso
-        ? `${ path }/${ proceso.llaveProceso }/${ proceso.idProceso }`
-        : `${ path }/${ proceso.llaveProceso }`
+        ? `${path}/${proceso.llaveProceso}/${proceso.idProceso}`
+        : `${path}/${proceso.llaveProceso}`
       : path
   ) as Route;
 
   const isActive =
     pathname === href ||
     pathname ===
-      `${ path }/${ llaveProceso }/${ idProceso }` ||
-    pathname === `${ path }/${ llaveProceso }`;
+      `${path}/${llaveProceso}/${idProceso}` ||
+    pathname === `${path}/${llaveProceso}`;
+  const router = useRouter();
 
-  const router = useRouter ();
   return (
     <div
       className={searchbar.container}
@@ -74,9 +66,7 @@ export const LinkCard = (
       <Link
         href={href}
         onClick={() => {
-          return setIsNavOpen (
-            false
-          );
+          return setIsNavOpen(false);
         }}
         className={
           isActive
@@ -85,9 +75,7 @@ export const LinkCard = (
         }>
         <Name helper={Nombre} />
         <sub className={searchbar.date}>
-          {fixFechas (
-            fecha
-          )}
+          {fixFechas(fecha)}
         </sub>
       </Link>
     </div>

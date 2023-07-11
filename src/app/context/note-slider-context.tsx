@@ -1,13 +1,14 @@
 'use client';
-import {Dispatch,
+import {
+  Dispatch,
   ReactNode,
   SetStateAction,
   createContext,
   useContext,
   useRef,
-  useState} from 'react';
-
-const notasMap = new Map ();
+  useState
+} from 'react';
+const notasMap = new Map();
 
 const NoteSliderContext = createContext<
   | [
@@ -15,41 +16,29 @@ const NoteSliderContext = createContext<
       Dispatch<SetStateAction<Map<any, any>>>
     ]
   | undefined
-> (
-  undefined
-);
+>(undefined);
 
-export function NoteSliderProvider(
-  {
-    children
-  }: {
+export function NoteSliderProvider({
+  children
+}: {
   children: ReactNode;
-}
-) {
-  const [
-    noteSliderMap,
-    setNoteSliderMap
-  ] =
-    useState (
-      new Map ()
-    );
+}) {
+  const [noteSliderMap, setNoteSliderMap] =
+    useState(new Map());
+
   return (
     <NoteSliderContext.Provider
-      value={[
-        noteSliderMap,
-        setNoteSliderMap
-      ]}>
+      value={[noteSliderMap, setNoteSliderMap]}>
       {children}
     </NoteSliderContext.Provider>
   );
 }
 
 export function useNoteSlider() {
-  const context = useContext (
-    NoteSliderContext
-  );
+  const context = useContext(NoteSliderContext);
+
   if (context === undefined) {
-    throw new Error (
+    throw new Error(
       'useNoteSlider should be used inside a NoteSliderProvider'
     );
   }

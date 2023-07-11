@@ -1,115 +1,76 @@
 import { getActuaciones } from '#@/lib/Actuaciones';
-import { getCarpetas } from '#@/lib/Carpetas';
-import { getBaseUrl } from '#@/lib/getBaseUrl';
 import clientPromise from '#@/lib/mongodb';
-import {  IntCarpetaDemandado, monCarpetaDemandado} from '#@/lib/types/demandados';
-import { intActuacion } from '#@/lib/types/procesos';
+import {
+  IntCarpetaDemandado,
+  monCarpetaDemandado
+} from '#@/lib/types/demandados';
 import { NextResponse } from 'next/server';
-
+import { ObjectId } from 'mongodb';
+import { UltimaActuacion } from '../../../lib/types/demandados';
 
 const Collection = async () => {
   const client = await clientPromise;
+
   if (!client) {
-    throw new Error (
-      'no hay cliente mongólico'
-    );
+    throw new Error('no hay cliente mongólico');
   }
 
-  const db = client.db (
-    'RyS'
-  );
+  const db = client.db('RyS');
 
   const demandados =
-    db.collection <IntCarpetaDemandado> (
+    db.collection<IntCarpetaDemandado>(
       'Demandados'
     );
+
   return demandados;
 };
 
-
-export async function GET () {
-  const collection = await Collection ();
+export async function GET() {
+  const collection = await Collection();
 
   const carpetas = await collection
-    .find (
-      {
+    .find({})
+    .toArray();
+  console.log(carpetas);
+  const carpetasMap: monCarpetaDemandado[] = [];
+  carpetas.forEach((carpeta, index, arr) => {
+    setTimeout(async () => {
+      const actuaciones = await getActuaciones(
+        carpeta.idProceso
+      );
+
+      if (actuaciones.length >= 1) {
+        const carpetaWithActuacion = {
+          ...carpeta,
+          _id: carpeta._id.toString(),
+          ultimaActuacion: actuaciones[0]
+        };
+        carpetasMap.push(carpetaWithActuacion);
       }
-    )
-    .toArray ();
-  console.log (
-    carpetas
-  );
 
-  const carpetasMap = new Map ();
-
-  const carpetasWithFechaArray: unknown[]  = [];
-
-  const carpetasWithFechaMap = new Map ();
-
-
-  carpetas.forEach (
-    (
-      carpeta
-    ) => {
-      return carpetasMap.set (
-        carpeta._id,
-        carpeta
-      );
-    }
-  );
-  for (const carp of carpetasMap) {
-    const [
-      _id,
-      carpeta
-    ] = carp;
-
-    const actuaciones = await getActuaciones (
-      carpeta.idProceso
-    );
-    if (
-      carpeta.idProceso === 0 ||
-      actuaciones.length === 0
-    ) {
-      carpetasWithFechaArray.push (
-        carpeta
-      );
-      carpetasWithFechaMap.set (
-        _id,
-        carpeta
-      );
-    }
-
-    const carpetaWithActuacion = {
-      ...carpeta,
-      ultimaActuacion: actuaciones[ 0 ]
-    };
-    carpetasWithFechaArray.push (
-      carpetaWithActuacion
-    );
-    carpetasWithFechaMap.set (
-      _id,
-      carpetaWithActuacion
-    );
-
-    const updateCarpeta = await collection.findOneAndUpdate (
-      {
-        _id: _id
-      },
-      {
-        $set: carpetaWithActuacion
+      if (
+        carpeta.idProceso === 0 ||
+        carpeta.idProceso === 404 ||
+        actuaciones.length === 0
+      ) {
+        const carpetaWithoutActuacion = {
+          ...carpeta,
+          _id: carpeta._id.toString(),
+          UltimaActuacion: null
+        };
+        carpetasMap.push(carpetaWithoutActuacion);
       }
-    );
-    console.log (
-      updateCarpeta.value
-    );
-    updateCarpeta;
-  }
-  return new NextResponse (
-    JSON.stringify (
-      carpetasWithFechaArray
-    ),
+    }, index * 1000);
+
+    if (index === carpetasMap.length - 1) {
+      const isLastIteration = true;
+    }
+  });
+
+  return new NextResponse(
+    JSON.stringify(carpetasMap),
     {
-      status : 200,
+      status: 200,
       headers: {
         'content-type': 'application/json'
       }

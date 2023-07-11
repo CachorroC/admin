@@ -1,11 +1,11 @@
 import { getActuaciones } from '#@/lib/Actuaciones';
 import { monCarpetaDemandado } from '#@/lib/types/demandados';
-import {NextRequest,
-  NextResponse} from 'next/server';
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server';
 
-export async function POST(
-  Request: NextRequest
-) {
+export async function POST(Request: NextRequest) {
   /*   const {
     searchParams
   } = new URL (
@@ -15,48 +15,34 @@ export async function POST(
   const mapIncomingCarpetas: Map<
     string,
     monCarpetaDemandado
-  > = new Map ();
-
-  const mapActuacionesByIdCarpeta = new Map ();
+  > = new Map();
+  const mapActuacionesByIdCarpeta = new Map();
 
   const incomingRequest =
-    (await Request.json ()) as monCarpetaDemandado[];
+    (await Request.json()) as monCarpetaDemandado[];
 
-  incomingRequest.forEach (
-    (
+  incomingRequest.forEach((carpetaIncoming) => {
+    return mapIncomingCarpetas.set(
+      carpetaIncoming._id,
       carpetaIncoming
-    ) => {
-      return mapIncomingCarpetas.set (
-        carpetaIncoming._id,
-        carpetaIncoming
-      );
-    }
-  );
+    );
+  });
 
-  console.log (
-    mapIncomingCarpetas
-  );
-  mapIncomingCarpetas.forEach (
-    (
-      carpeta, id, mapa
-    ) => {
-      const {
-        idProceso, llaveProceso, _id 
-      } =
+  console.log(mapIncomingCarpetas);
+  mapIncomingCarpetas.forEach(
+    (carpeta, id, mapa) => {
+      const { idProceso, llaveProceso, _id } =
         carpeta;
 
-      const actuaciones = getActuaciones (
+      const actuaciones = getActuaciones(
         idProceso
-      ).then (
-        (
+      ).then((fullfilled) => {
+        return mapActuacionesByIdCarpeta.set(
+          _id,
           fullfilled
-        ) => {
-          return mapActuacionesByIdCarpeta.set (
-            _id,
-            fullfilled
-          );
-        }
-      );
+        );
+      });
+
       return actuaciones;
     }
   );
