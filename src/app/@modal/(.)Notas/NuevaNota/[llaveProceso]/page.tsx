@@ -5,17 +5,17 @@ import { getNotas } from '#@/lib/notas';
 import { Notas } from '#@/components/nota/notas';
 import Modal from '#@/components/modal';
 
-export default function NuevaNotallaveProceso({
-  params
-}: {
+export default function NuevaNotallaveProceso(
+  { params }: {
   params: { llaveProceso: string };
-}) {
-  return (
-    <Modal>
-      <NewNota
-        llaveProceso={''}
-        uri={`${getBaseUrl()}`}
-      />
-    </Modal>
-  );
+} 
+) {
+    return (
+      <Modal>
+        <NewNota
+          llaveProceso={''}
+          uri={`${ getBaseUrl() }`}
+        />
+      </Modal>
+    );
 }

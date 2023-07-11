@@ -2,136 +2,165 @@ import { cache } from 'react';
 import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
-import {
-  monCarpetaDemandado,
-  IntCarpetaDemandado,
-  ConvertCarpetas
-} from '#@/lib/types/demandados';
+import { monCarpetaDemandado,
+         IntCarpetaDemandado,
+         ConvertCarpetas } from '#@/lib/types/demandados';
 
-export const preload = (llaveProceso: string) => {
-  void getCarpetasByllaveProceso({
-    llaveProceso: llaveProceso
-  });
+export const preload = (
+  llaveProceso: string 
+) => {
+    void getCarpetasByllaveProceso(
+      { llaveProceso: llaveProceso } 
+    );
 };
 
-const Collection = cache(async () => {
-  const client = await clientPromise;
+const Collection = cache(
+  async () => {
+      const client = await clientPromise;
 
-  if (!client) {
-    throw new Error('no hay cliente mongólico');
-  }
+      if ( !client ) {
+        throw new Error(
+          'no hay cliente mongólico' 
+        );
+      }
 
-  const db = client.db('RyS');
+      const db = client.db(
+        'RyS' 
+      );
 
-  const carpetas =
-    db.collection<IntCarpetaDemandado>(
+      const carpetas
+    = db.collection<IntCarpetaDemandado>(
       'Demandados'
     );
 
-  return carpetas;
-});
+      return carpetas;
+  } 
+);
 
-export const getCarpetas = cache(async () => {
-  const carpetasMap: monCarpetaDemandado[] = [];
-  const collection = await Collection();
+export const getCarpetas = cache(
+  async () => {
+      const carpetasMap: monCarpetaDemandado[] = [];
+      const collection = await Collection();
 
-  const carpetasRaw = await collection
-    .find({})
-    .toArray();
+      const carpetasRaw = await collection
+        .find(
+          {} 
+        )
+        .toArray();
 
-  carpetasRaw.forEach((carpeta, index, arr) => {
-    console.log(carpeta._id);
+      carpetasRaw.forEach(
+        (
+          carpeta, index, arr 
+        ) => {
+            console.log(
+              carpeta._id 
+            );
 
-    const carpetaToMongo: monCarpetaDemandado = {
-      ...carpeta,
-      _id: carpeta._id.toString()
-    };
+            const carpetaToMongo: monCarpetaDemandado = {
+              ...carpeta,
+              _id: carpeta._id.toString()
+            };
 
-    return carpetasMap.push(carpetaToMongo);
-  });
-  console.log(carpetasMap);
+            return carpetasMap.push(
+              carpetaToMongo 
+            );
+        } 
+      );
+      console.log(
+        carpetasMap 
+      );
 
-  return carpetasMap;
-});
+      return carpetasMap;
+  } 
+);
 
 export const getCarpetasByllaveProceso = cache(
-  async ({
-    llaveProceso
-  }: {
+  async (
+    { llaveProceso }: {
     llaveProceso: string;
-  }) => {
-    const carpetas = await getCarpetas();
+  } 
+  ) => {
+      const carpetas = await getCarpetas();
 
-    const Carpetas = carpetas.filter(
-      (carpeta) => {
-        return (
-          carpeta.llaveProceso === llaveProceso
-        );
-      }
-    );
+      const Carpetas = carpetas.filter(
+        (
+          carpeta 
+        ) => {
+            return (
+              carpeta.llaveProceso === llaveProceso
+            );
+        }
+      );
 
-    return Carpetas;
+      return Carpetas;
   }
 );
 
 export const getCarpetasByidProceso = cache(
-  async ({
-    idProceso
-  }: {
+  async (
+    { idProceso }: {
     idProceso: number;
-  }) => {
-    const carpetas = await getCarpetas();
+  } 
+  ) => {
+      const carpetas = await getCarpetas();
 
-    const Carpetas = carpetas.filter(
-      (carpeta) => {
-        return carpeta.idProceso === idProceso;
-      }
-    );
+      const Carpetas = carpetas.filter(
+        (
+          carpeta 
+        ) => {
+            return carpeta.idProceso === idProceso;
+        }
+      );
 
-    return Carpetas;
+      return Carpetas;
   }
 );
 
 export const getCarpetaById = cache(
-  async ({ _id }: { _id: string }) => {
-    const carpetas = await getCarpetas();
+  async (
+    { _id }: { _id: string } 
+  ) => {
+      const carpetas = await getCarpetas();
 
-    const Carpetas = carpetas.filter(
-      (carpeta) => {
-        return carpeta._id === _id;
-      }
-    );
+      const Carpetas = carpetas.filter(
+        (
+          carpeta 
+        ) => {
+            return carpeta._id === _id;
+        }
+      );
 
-    return Carpetas;
+      return Carpetas;
   }
 );
 
-export async function postCarpeta({
-  nota
-}: {
+export async function postCarpeta(
+  { nota }: {
   nota: IntCarpetaDemandado;
-}) {
-  const collection = await Collection();
+} 
+) {
+    const collection = await Collection();
 
-  const outgoingRequest =
-    await collection.insertOne(nota);
+    const outgoingRequest
+    = await collection.insertOne(
+      nota 
+    );
 
-  if (!outgoingRequest.acknowledged) {
-    return new NextResponse(null, {
-      status: 404
-    });
-  }
-
-  return new NextResponse(
-    JSON.stringify(
-      outgoingRequest.insertedId +
-        `${outgoingRequest.acknowledged}`
-    ),
-    {
-      status: 200,
-      headers: {
-        'content-type': 'application/json'
-      }
+    if ( !outgoingRequest.acknowledged ) {
+      return new NextResponse(
+        null,
+        { status: 404 } 
+      );
     }
-  );
+
+    return new NextResponse(
+      JSON.stringify(
+        outgoingRequest.insertedId
+        + `${ outgoingRequest.acknowledged }`
+      ),
+      {
+        status : 200,
+        headers: { 'content-type': 'application/json' }
+      }
+    );
 }

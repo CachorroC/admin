@@ -1,41 +1,51 @@
 'use client';
-import {
-  Dispatch,
-  ReactNode,
-  createContext,
-  useContext,
-  useState,
-  SetStateAction
-} from 'react';
+import { Dispatch,
+         ReactNode,
+         createContext,
+         useContext,
+         useState,
+         SetStateAction } from 'react';
 
 const ModalContext = createContext<
   | [boolean, Dispatch<SetStateAction<boolean>>]
   | undefined
->(undefined);
+>(
+  undefined 
+);
 
-export function ModalProvider({
-  children
-}: {
+export function ModalProvider(
+  { children }: {
   children: ReactNode;
-}) {
-  const [isOpen, setIsOpen] = useState(true);
+} 
+) {
+    const [
+      isOpen,
+      setIsOpen
+    ] = useState(
+      true 
+    );
 
-  return (
-    <ModalContext.Provider
-      value={[isOpen, setIsOpen]}>
-      {children}
-    </ModalContext.Provider>
-  );
+    return (
+      <ModalContext.Provider
+        value={[
+          isOpen,
+          setIsOpen
+        ]}>
+        {children}
+      </ModalContext.Provider>
+    );
 }
 
 export function useModal() {
-  const context = useContext(ModalContext);
-
-  if (context === undefined) {
-    throw new Error(
-      'useModal must be used within a ModalProvider'
+    const context = useContext(
+      ModalContext 
     );
-  }
 
-  return context;
+    if ( context === undefined ) {
+      throw new Error(
+        'useModal must be used within a ModalProvider'
+      );
+    }
+
+    return context;
 }

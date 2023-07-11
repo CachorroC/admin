@@ -7,15 +7,15 @@ import { NewNota } from '#@/components/nota/NuevaNota';
 import { Loader } from '#@/components/Loader';
 
 export default function Loading() {
-  return (
-    <>
-      <NewNota
-        llaveProceso={'Procesos'}
-        uri={`${getBaseUrl()}`}
-      />
-      <Loader />
-      <Loader />
-      <Loader />
-    </>
-  );
+    return (
+      <>
+        <NewNota
+          llaveProceso={'Procesos'}
+          uri={`${ getBaseUrl() }`}
+        />
+        <Loader />
+        <Loader />
+        <Loader />
+      </>
+    );
 }

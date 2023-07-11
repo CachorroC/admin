@@ -12,28 +12,28 @@ import { ListCardCarpetasNFechasServer } from '#@/components/card/CarpetasCard/c
 import layout from '#@/styles/scss/layout.module.scss';
 
 export default async function PageCarpetas() {
-  const carpetas = await getCarpetas();
+    const carpetas = await getCarpetas();
 
-  const fechas = await fetchFechas({
-    procesos: carpetas
-  });
+    const fechas = await fetchFechas(
+      { procesos: carpetas } 
+    );
 
-  return (
-    <>
-      <div className={layout.left}>
-        <Suspense fallback={<Loader />}>
-          <CardSearchList
-            path={'/Procesos' as Route}
-            uri={`${getBaseUrl()}`}
-            Fechas={fechas}
-          />
-        </Suspense>
-      </div>
-      <div className={layout.right}>
-        <Suspense fallback={<Loader />}>
-          <ListCardCarpetasNFechasServer />
-        </Suspense>
-      </div>
-    </>
-  );
+    return (
+      <>
+        <div className={layout.left}>
+          <Suspense fallback={<Loader />}>
+            <CardSearchList
+              path={'/Procesos' as Route}
+              uri={`${ getBaseUrl() }`}
+              Fechas={fechas}
+            />
+          </Suspense>
+        </div>
+        <div className={layout.right}>
+          <Suspense fallback={<Loader />}>
+            <ListCardCarpetasNFechasServer />
+          </Suspense>
+        </div>
+      </>
+    );
 }
