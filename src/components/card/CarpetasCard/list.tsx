@@ -29,17 +29,17 @@ const Fecha = async ({
 }: {
   idProceso: number;
 }) => {
-    const acts = await getActuaciones(idProceso);
+  const acts = await getActuaciones(idProceso);
 
-    if (acts.length === 0) {
-      return null;
-    }
+  if (acts.length === 0) {
+    return null;
+  }
 
-    return (
-      <div className={styles.date}>
-        {fixFechas(acts[0].fechaActuacion)}
-      </div>
-    );
+  return (
+    <div className={styles.date}>
+      {fixFechas(acts[0].fechaActuacion)}
+    </div>
+  );
 };
 
 export const DemandaContainer = ({
@@ -47,71 +47,71 @@ export const DemandaContainer = ({
 }: {
   demanda: Demanda;
 }) => {
-    const {
-      Departamento,
-      Municipio,
-      VencimientoPagare,
-      EntregadeGarantiasAbogado,
-      Radicado,
-      CapitalAdeudado,
-      Proceso,
-      Ubicacion,
-      Juzgado,
-      Obligacion
-    } = demanda;
+  const {
+    Departamento,
+    Municipio,
+    VencimientoPagare,
+    EntregadeGarantiasAbogado,
+    Radicado,
+    CapitalAdeudado,
+    Proceso,
+    Ubicacion,
+    Juzgado,
+    Obligacion
+  } = demanda;
 
-    return (
-      <div className={styles.section}>
-        <h1 className={typography.headlineMedium}>
-          {Radicado}
-        </h1>
-        <h2
-          className={
-            typography.titleMedium
-          }>{`${Departamento}: ${Municipio}`}</h2>
-        {VencimientoPagare && (
-          <p className={typography.labelMedium}>
-            {fixFechas(VencimientoPagare)}
-          </p>
-        )}
-        {EntregadeGarantiasAbogado && (
-          <p className={typography.labelSmall}>
-            {fixFechas(EntregadeGarantiasAbogado)}
-          </p>
-        )}
-        {CapitalAdeudado && (
-          <p className={typography.labelSmall}>
-            {CapitalAdeudado}
-          </p>
-        )}
-      </div>
-    );
+  return (
+    <div className={styles.section}>
+      <h1 className={typography.headlineMedium}>
+        {Radicado}
+      </h1>
+      <h2
+        className={
+          typography.titleMedium
+        }>{`${Departamento}: ${Municipio}`}</h2>
+      {VencimientoPagare && (
+        <p className={typography.labelMedium}>
+          {fixFechas(VencimientoPagare)}
+        </p>
+      )}
+      {EntregadeGarantiasAbogado && (
+        <p className={typography.labelSmall}>
+          {fixFechas(EntregadeGarantiasAbogado)}
+        </p>
+      )}
+      {CapitalAdeudado && (
+        <p className={typography.labelSmall}>
+          {CapitalAdeudado}
+        </p>
+      )}
+    </div>
+  );
 };
 
 export async function ListCardCarpetasNFechas() {
-    const req = await fetch(
-      `${getBaseUrl()}/api/Carpetas`
-    );
+  const req = await fetch(
+    `${getBaseUrl()}/api/Carpetas`
+  );
 
-    const carpetas =
+  const carpetas =
     (await req.json()) as monCarpetaDemandado[];
 
-    return (
-      <>
-        {carpetas.map((carpeta, index, arr) => {
-            return (
-              <CarpetaCard
-                Carpeta={carpeta}
-                key={carpeta._id}>
-                <Suspense fallback={<Loader />}>
-                  <Fecha
-                    key={carpeta._id + 'fecha'}
-                    idProceso={carpeta.idProceso}
-                  />
-                </Suspense>
-              </CarpetaCard>
-            );
-        })}
-      </>
-    );
+  return (
+    <>
+      {carpetas.map((carpeta, index, arr) => {
+        return (
+          <CarpetaCard
+            Carpeta={carpeta}
+            key={carpeta._id}>
+            <Suspense fallback={<Loader />}>
+              <Fecha
+                key={carpeta._id + 'fecha'}
+                idProceso={carpeta.idProceso}
+              />
+            </Suspense>
+          </CarpetaCard>
+        );
+      })}
+    </>
+  );
 }

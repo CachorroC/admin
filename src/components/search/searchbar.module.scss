@@ -69,11 +69,8 @@
   background-color: var(--tertiary-container);
   box-shadow: var(--dp3);
   & > .icon {
-    font-variation-settings:
-      'FILL' 0,
-      'wght' 200,
-      'GRAD' 0,
-      'opsz' 24;
+    font-variation-settings: 'FILL' 0, 'wght' 200,
+      'GRAD' 0, 'opsz' 24;
     color: var(--secondary);
   }
   &:link {
@@ -89,11 +86,8 @@
     color: var(--primary);
     border: 3px solid var(--outline);
     & > .icon {
-      font-variation-settings:
-        'FILL' 1,
-        'wght' 600,
-        'GRAD' 200,
-        'opsz' 48;
+      font-variation-settings: 'FILL' 1,
+        'wght' 600, 'GRAD' 200, 'opsz' 48;
       color: var(--secondary);
     }
   }
