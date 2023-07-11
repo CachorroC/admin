@@ -1,3 +1,8 @@
+
+
+
+
+
 para hacer peticiones sin https:
   process.env[ "NODE_TLS_REJECT_UNAUTHORIZED" ] = "0"
 
@@ -62,6 +67,76 @@ promessing but not quite:
           }
         },
         index * 2000
+      );
+    }
+  );
+
+
+
+
+
+
+
+
+  const carpetasMap = new Map ();
+
+  const lastActuacionesMapSorted = new Map ();
+
+  const lastActuacionesArraySorted: intFecha[] = [];
+
+  const lastActuacionesSorted = [
+    ... carpetas
+  ].sort (
+    (
+      a, b
+    ) => {
+      if ( !a.fecha || a.fecha === undefined || a.fecha === null ) {
+        return 1;
+      }
+      if ( !b.fecha || b.fecha === undefined ||  b.fecha === null ) {
+        return -1;
+      }
+      console.log (
+        typeof a.fecha
+      );
+      console.log (
+        typeof b.fecha
+      );
+      let x = typeof a.fecha === 'string'
+        ? a.fecha.toLowerCase ()
+        : a.fecha.toISOString ();
+      let y =  typeof b.fecha === 'string'
+        ? b.fecha.toLowerCase ()
+        : b.fecha.toISOString ();
+      if ( x < y ) {
+        return 1;
+      }
+      if ( x > y ) {
+        return -1;
+      }
+      return 0;
+    }
+  );
+  lastActuacionesSorted.forEach (
+    (
+      lastAct
+    ) => {
+      lastActuacionesArraySorted.push (
+        lastAct
+      );
+      return lastActuacionesMapSorted.set (
+        lastAct._id,
+        lastAct
+      );
+    }
+  );
+  carpetas.forEach (
+    (
+      carpeta
+    ) => {
+      return carpetasMap.set (
+        carpeta._id,
+        carpeta
       );
     }
   );

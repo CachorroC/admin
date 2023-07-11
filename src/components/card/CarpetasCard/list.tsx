@@ -1,9 +1,15 @@
 import 'server-only';
-import { getCarpetaById, getCarpetas } from '#@/lib/Carpetas';
+import {getCarpetaById,
+  getCarpetas} from '#@/lib/Carpetas';
 import { fixFechas } from '#@/lib/fix';
-import { intDemanda, monCarpetaDemandado } from '#@/lib/types/demandados';
+import type {Demanda,
+  monCarpetaDemandado} from '#@/lib/types/demandados';
 import Link from 'next/link';
-import { Fragment, ReactNode, Suspense, useEffect, useState } from 'react';
+import {Fragment,
+  ReactNode,
+  Suspense,
+  useEffect,
+  useState} from 'react';
 import styles from './carpetas.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getActuaciones } from '#@/lib/Actuaciones';
@@ -14,16 +20,18 @@ import { CarpetaCard } from '#@/components/card/CarpetasCard';
 const Fecha = async (
   {
     idProceso
-  }:{idProceso: number}
+  }: {
+  idProceso: number;
+}
 ) => {
   const acts = await getActuaciones (
     idProceso
   );
-  if ( acts.length === 0 ) {
+  if (acts.length === 0) {
     return null;
   }
   return (
-    <div className={ styles.date }>
+    <div className={styles.date}>
       {fixFechas (
         acts[ 0 ].fechaActuacion
       )}
@@ -35,7 +43,7 @@ export const DemandaContainer = (
   {
     demanda
   }: {
-  demanda: intDemanda;
+  demanda: Demanda;
 }
 ) => {
   const {
@@ -82,18 +90,23 @@ export const DemandaContainer = (
   );
 };
 
-export async function ListCardCarpetasNFechas () {
+export async function ListCardCarpetasNFechas() {
   const carpetas = await getCarpetas ();
   return (
     <>
-      { carpetas.map (
+      {carpetas.map (
         (
           carpeta, index, arr
         ) => {
           return (
-            <CarpetaCard Carpeta={ carpeta } key={ carpeta._id } >
+            <CarpetaCard
+              Carpeta={carpeta}
+              key={carpeta._id}>
               <Suspense fallback={<Loader />}>
-                <Fecha key={carpeta._id + 'fecha'} idProceso={carpeta.idProceso} />
+                <Fecha
+                  key={carpeta._id + 'fecha'}
+                  idProceso={carpeta.idProceso}
+                />
               </Suspense>
             </CarpetaCard>
           );
@@ -101,5 +114,4 @@ export async function ListCardCarpetasNFechas () {
       )}
     </>
   );
-
-};
+}

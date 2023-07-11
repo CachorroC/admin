@@ -32,7 +32,9 @@ async function Name(
     )
     .toString ();
   return (
-    <h3 key={llaveProceso} className={typography.displayMedium}>
+    <h3
+      key={llaveProceso}
+      className={typography.displayMedium}>
       {nombre}
     </h3>
   );

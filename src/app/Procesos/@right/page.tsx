@@ -11,10 +11,12 @@ import { Suspense } from 'react';
 import { Loader } from '#@/components/Loader';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 
-async function Fechs (
+async function Fechs(
   {
     procesos
-  }: {procesos: monCarpetaDemandado[]}
+  }: {
+  procesos: monCarpetaDemandado[];
+}
 ) {
   const fechas = await fetchFechas (
     {
@@ -22,7 +24,10 @@ async function Fechs (
     }
   );
   return (
-    <SearchOutputList path={ '/Procesos' } fechas={ fechas } />
+    <SearchOutputList
+      path={'/Procesos'}
+      fechas={fechas}
+    />
   );
 }
 
@@ -33,7 +38,7 @@ export default async function PageProcesosRight() {
   return (
     <>
       <Suspense fallback={<Loader />}>
-        <Fechs procesos={ procesos }/>
+        <Fechs procesos={procesos} />
       </Suspense>
       <NewNota
         llaveProceso={'Procesos'}

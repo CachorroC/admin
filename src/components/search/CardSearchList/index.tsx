@@ -59,8 +59,12 @@ export const CardSearchList = (
         return -1;
       }
 
-      let x = a.fecha.toLowerCase ();
-      let y = b.fecha.toLowerCase ();
+      let x = typeof a.fecha === 'string'
+        ? a.fecha.toLowerCase ()
+        : a.fecha.toISOString ();
+      let y =  typeof b.fecha === 'string'
+        ? b.fecha.toLowerCase ()
+        : b.fecha.toISOString ();
       if (x < y) {
         return 1;
       }
@@ -85,7 +89,7 @@ export const CardSearchList = (
       } = Fecha;
 
       const {
-        Nombre, Direccion, Tel, Email, Id 
+        Nombre, Direccion, Tel, Email, Id
       } =
       Deudor;
       if (

@@ -2,7 +2,8 @@ import { cache } from 'react';
 import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
-import {monCarpetaDemandado,IntCarpetaDemandado,
+import {monCarpetaDemandado,
+  IntCarpetaDemandado,
   ConvertCarpetas} from '#@/lib/types/demandados';
 
 export const preload = (
@@ -28,14 +29,15 @@ const Collection = cache (
       'RyS'
     );
 
-    const carpetas = db.collection <IntCarpetaDemandado> (
+    const carpetas =
+    db.collection<IntCarpetaDemandado> (
       'Demandados'
     );
     return carpetas;
   }
 );
 
-const getCarpetas = cache (
+export const getCarpetas = cache (
   async () => {
     const carpetasMap: monCarpetaDemandado[] = [];
 
@@ -56,8 +58,7 @@ const getCarpetas = cache (
           carpeta._id
         );
 
-        const carpetaToMongo: monCarpetaDemandado =
-        {
+        const carpetaToMongo: monCarpetaDemandado = {
           ...carpeta,
           _id: carpeta._id.toString ()
         };
@@ -121,7 +122,7 @@ export const getCarpetasByidProceso = cache (
 export const getCarpetaById = cache (
   async (
     {
-      _id
+      _id 
     }: { _id: string }
   ) => {
     const carpetas = await getCarpetas ();

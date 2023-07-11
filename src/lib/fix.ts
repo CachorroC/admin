@@ -1,5 +1,5 @@
 export function fixFechas(
-  fecha: string | null | undefined
+  fecha: Date | string | null | undefined
 ) {
   if (fecha === null) {
     return 'no hay fechas: null';

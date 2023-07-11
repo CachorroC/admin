@@ -93,9 +93,12 @@ export default function SearchOutputList(
       if (!b.fecha || b.fecha === undefined) {
         return -1;
       }
-
-      let x = a.fecha.toLowerCase ();
-      let y = b.fecha.toLowerCase ();
+      let x = typeof a.fecha === 'string'
+        ? a.fecha.toLowerCase ()
+        : a.fecha.toISOString ();
+      let y =  typeof b.fecha === 'string'
+        ? b.fecha.toLowerCase ()
+        : b.fecha.toISOString ();
       if (x < y) {
         return 1;
       }
@@ -132,9 +135,9 @@ export default function SearchOutputList(
 
       rows.push (
         <LinkCard
-          path={ path }
-          proceso={ proceso }
-          key={ _id }
+          path={path}
+          proceso={proceso}
+          key={_id}
         />
       );
     }

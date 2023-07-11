@@ -8,8 +8,5 @@ export default async function Page(
   params: { llaveProceso: string };
 }
 ) {
-  return (
-
-    <Title key={params.llaveProceso}/>
-  );
+  return <Title key={params.llaveProceso} />;
 }

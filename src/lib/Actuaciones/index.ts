@@ -1,6 +1,6 @@
 import 'server-only';
 import {Codeudor,
-  intCarpetaDemandado,
+  IntCarpetaDemandado,
   intFecha,
   monCarpetaDemandado} from '../types/demandados';
 import { monDemandado } from '../types/mongodb';
@@ -206,7 +206,34 @@ export async function fetchFecha(
 
   const fecha: intFecha = {
     ...proceso,
-    fecha: undefined
+    fecha: null
   };
   return fecha;
+}
+
+export async function fetchLastActuaciones(
+  {
+    idProcesos
+  }: {
+  idProcesos: number[];
+}
+) {
+  const lastActuaciones = [];
+
+  for (let p = 0; p < idProcesos.length; p++) {
+    const proceso = idProcesos[ p ];
+
+    const acts = await getActuaciones (
+      proceso
+    );
+    if (acts.length > 0) {
+      lastActuaciones.push (
+        acts[ 0 ]
+      );
+    }
+    if (p + 1 === idProcesos.length) {
+      return lastActuaciones;
+    }
+  }
+  return lastActuaciones;
 }

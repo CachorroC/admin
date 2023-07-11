@@ -18,7 +18,7 @@ function DemandadoNameBadge(
 }
 ) {
   const {
-    llaveProceso, _id 
+    llaveProceso, _id
   } = carpeta;
   if (proceso) {
     return (
@@ -30,7 +30,8 @@ function DemandadoNameBadge(
         <p className={typography.bodySmall}>
           {proceso.despacho}
         </p>
-        <CarpetaCard Carpeta={carpeta} />
+        <CarpetaCard Carpeta={carpeta} > <span className='material-symbols-outlined'>star</span>
+        </CarpetaCard >
       </Fragment>
     );
   }
@@ -38,7 +39,8 @@ function DemandadoNameBadge(
   return (
     <Fragment key={_id}>
       <Name llaveProceso={llaveProceso} />
-      <CarpetaCard Carpeta={carpeta} />
+      <CarpetaCard Carpeta={carpeta} > <span className='material-symbols-outlined'>star</span>
+      </CarpetaCard >
     </Fragment>
   );
 }

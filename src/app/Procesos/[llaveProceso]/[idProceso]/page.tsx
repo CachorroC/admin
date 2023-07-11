@@ -27,13 +27,14 @@ export default async function PageProcesosllaveProcesoidProceso(
           carpeta
         ) => {
           const {
-            _id 
+            _id
           } = carpeta;
           return (
             <CarpetaCard
               key={_id}
               Carpeta={carpeta}
-            />
+            > <span className='material-symbols-outlined'>star</span>
+            </CarpetaCard >
           );
         }
       )}

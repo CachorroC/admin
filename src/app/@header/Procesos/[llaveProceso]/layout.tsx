@@ -26,8 +26,7 @@ export default async function Layout(
     <Header>
       {children}
       <Drawer>
-        <Suspense
-          fallback={<Loader />}>
+        <Suspense fallback={<Loader />}>
           <SearchOutputList
             path='/Procesos'
             fechas={fechas}

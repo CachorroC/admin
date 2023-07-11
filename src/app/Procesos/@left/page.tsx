@@ -4,8 +4,7 @@ import { ListCardCarpetasNFechas } from '#@/components/card/CarpetasCard/list';
 
 export default function PageProcesosLeft() {
   return (
-    <Suspense
-      fallback={<Loader />}>
+    <Suspense fallback={<Loader />}>
       <ListCardCarpetasNFechas />
     </Suspense>
   );

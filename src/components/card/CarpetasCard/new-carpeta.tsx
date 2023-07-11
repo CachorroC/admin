@@ -2,7 +2,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
-import { intCarpetaDemandado } from '#@/lib/types/demandados';
+import { IntCarpetaDemandado } from '#@/lib/types/demandados';
 
 export function NuevoProceso(
   {
@@ -17,10 +17,10 @@ export function NuevoProceso(
     formState: {
       errors 
     }
-  } = useForm<intCarpetaDemandado> ();
+  } = useForm<IntCarpetaDemandado> ();
 
   const onSubmit = async (
-    data: intCarpetaDemandado
+    data: IntCarpetaDemandado
   ) => {
     alert (
       JSON.stringify (

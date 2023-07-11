@@ -3,6 +3,8 @@ import {NextRequest,
   NextResponse} from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { ObjectId } from 'mongodb';
+import {IntCarpetaDemandado,
+  monCarpetaDemandado} from '#@/lib/types/demandados';
 
 const Collection = async () => {
   const client = await clientPromise;
@@ -16,40 +18,93 @@ const Collection = async () => {
     'RyS'
   );
 
-  const notas = db.collection (
-    'Demandados'
+  const demandados =
+    db.collection<IntCarpetaDemandado> (
+      'Demandados'
+    );
+  return demandados;
+};
+
+const carpetas = async () => {
+  const carpetasMap: monCarpetaDemandado[] = [];
+
+  const collection = await Collection ();
+
+  const carpetasRaw = await collection
+    .find (
+      {
+      }
+    )
+    .toArray ();
+
+  carpetasRaw.forEach (
+    (
+      carpeta, index, arr
+    ) => {
+      console.log (
+        carpeta._id
+      );
+
+      const carpetaToMongo: monCarpetaDemandado = {
+        ...carpeta,
+        _id: carpeta._id.toString ()
+      };
+
+      return carpetasMap.push (
+        carpetaToMongo
+      );
+    }
   );
-  return notas;
+  console.log (
+    carpetasMap
+  );
+  return carpetasMap;
 };
 
 export async function GET(
   Request: NextRequest
 ) {
+  const carpetasMap: monCarpetaDemandado[] = [];
+
   const {
-    searchParams 
+    searchParams
   } = new URL (
     Request.url
   );
 
   const collection = await Collection ();
 
-  const notas = await collection
+  const carpetasRaw = await collection
     .find (
       {
       }
     )
     .toArray ();
-  if (!notas.length) {
-    throw new Error (
-      'no hay entradas en mongo'
-    );
-  }
+
+  carpetasRaw.forEach (
+    (
+      carpeta, index, arr
+    ) => {
+      console.log (
+        carpeta._id
+      );
+
+      const carpetaToMongo: monCarpetaDemandado = {
+        ...carpeta,
+        _id: carpeta._id.toString ()
+      };
+
+      return carpetasMap.push (
+        carpetaToMongo
+      );
+    }
+  );
 
   const llaveProceso = searchParams.get (
     'llaveProceso'
   );
   if (llaveProceso) {
-    const Demandados = notas.filter (
+    const Demandados = carpetasMap.filter (
       (
         nota
       ) => {
@@ -73,11 +128,11 @@ export async function GET(
     '_id'
   );
   if (_id) {
-    const Nota = notas.find (
+    const Nota = carpetasMap.find (
       (
         nota
       ) => {
-        return nota._id.toString () === _id;
+        return nota._id === _id;
       }
     );
     return new NextResponse (
@@ -94,7 +149,7 @@ export async function GET(
   }
   return new NextResponse (
     JSON.stringify (
-      notas
+      carpetasMap
     ),
     {
       status : 200,
@@ -108,7 +163,8 @@ export async function GET(
 export async function POST(
   request: NextRequest
 ) {
-  const incomingRequest = await request.json ();
+  const incomingRequest =
+    (await request.json ()) as IntCarpetaDemandado;
 
   const client = await Collection ();
 
@@ -138,12 +194,13 @@ export async function POST(
 export async function PUT(
   Request: NextRequest
 ) {
-  const updatedNote = await Request.json ();
+  const updatedNote =
+    (await Request.json ()) as IntCarpetaDemandado;
 
-  const notas = await Collection ();
+  const collection = await Collection ();
 
   const {
-    searchParams 
+    searchParams
   } = new URL (
     Request.url
   );
@@ -158,15 +215,15 @@ export async function PUT(
       )
     };
 
-    const result = await notas.updateOne (
+    const result = await collection.findOneAndUpdate (
       query,
       {
         $set: updatedNote
       }
     );
-    if (result.acknowledged) {
+    if (result.ok) {
       return new NextResponse (
-        `Successfully updated game with id ${ id }`,
+        `Successfully updated game with id ${ result.value }`,
         {
           status : 200,
           headers: {
@@ -178,12 +235,12 @@ export async function PUT(
 
     return new NextResponse (
       `the result was ${
-        result.acknowledged
+        result.ok
           ? 'true'
           : 'false'
-      } with ${ result.modifiedCount.toString () }`,
+      } with ${ result.value }`,
       {
-        status : 200,
+        status : 304,
         headers: {
           'content-type': 'text/html'
         }
@@ -193,7 +250,7 @@ export async function PUT(
   return new NextResponse (
     null,
     {
-      status: 404
+      status: 304
     }
   );
 }
@@ -204,7 +261,7 @@ export async function DELETE(
   const notas = await Collection ();
 
   const {
-    searchParams 
+    searchParams
   } = new URL (
     Request.url
   );

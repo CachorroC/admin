@@ -82,7 +82,9 @@ export default async function PageProcesosLeftllaveProceso(
     ) => {
       return (
         <Fragment key={carpeta._id}>
-          <CarpetaCard Carpeta={carpeta} />
+          <CarpetaCard Carpeta={ carpeta }>
+            <span className='material-symbols-outlined'>star</span>
+          </CarpetaCard >
         </Fragment>
       );
     }
@@ -112,7 +114,9 @@ export default async function PageProcesosLeftllaveProceso(
                   <CarpetaCard
                     Carpeta={carpeta}
                     key={carpeta._id}
-                  />
+                  >
+                    <span className='material-symbols-outlined'>star</span>
+                  </CarpetaCard >
                 );
               }
             )}

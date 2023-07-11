@@ -54,7 +54,7 @@ export const NotasList = (
             nt
           ) => {
             const {
-              _id, nota
+              _id, nota 
             } = nt;
             return (
               <button
@@ -112,8 +112,7 @@ export const NotasList = (
                     nota.fecha.toString ()
                   )}
                 </sub>
-                <div
-                  className={styles.buttonsRow}>
+                <div className={styles.buttonsRow}>
                   <Suspense
                     fallback={<ButtonSkeleton />}>
                     <EditNoteButton nota={nota} />
@@ -146,7 +145,6 @@ export const NotasList = (
           );
         }
       )}
-
     </>
   );
 };
@@ -157,7 +155,7 @@ export const NotaFRef = forwardRef (
     ref
   ) {
     const {
-      nota, index
+      nota, index 
     } = props;
     return (
       <div

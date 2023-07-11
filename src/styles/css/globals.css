@@ -1,5 +1,7 @@
-@import url(./theme/lightTokens.css) (prefers-color-scheme: light);
-@import url(./theme/darkTokens.css) (prefers-color-scheme: dark);
+@import url(./theme/lightTokens.css)
+(prefers-color-scheme: light);
+@import url(./theme/darkTokens.css)
+(prefers-color-scheme: dark);
 @import url(./theme/colors.module.css);
 @import url(./theme/tokens.css);
 :root {
@@ -262,11 +264,13 @@
 
 :root,
 html {
-  font-size: calc(14px + 8 * (100vw - 600px) / 1320);
+  font-size: calc(
+    14px + 8 * (100vw - 600px) / 1320
+  );
 }
 
 .material-symbols-outlined {
-  font-family: "Material Symbols Outlined";
+  font-family: 'Material Symbols Outlined';
   font-size: 1.5rem;
   text-transform: none;
   letter-spacing: normal;

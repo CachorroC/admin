@@ -34,7 +34,7 @@ export const Card = (
   despacho?: string;
   idProceso?: number;
   icon?: string;
-  fecha?: string | null;
+  fecha?: string | Date | null;
   contenido?: string;
 }
 ) => {
@@ -103,7 +103,6 @@ export const Card = (
       )
     : null;
 
-
   useEffect (
     () => {
       setDidMount (
@@ -113,7 +112,7 @@ export const Card = (
     []
   );
 
-  if ( didMount ) {
+  if (didMount) {
     return (
       <div
         className={card.container}
@@ -146,14 +145,15 @@ export const Card = (
                         : card.link
                     }
                     href={
-                `${ path }/${ llaveProceso }` as Route
+                  `${ path }/${ llaveProceso }` as Route
                     }>
                     <span
                       className={`material-symbols-outlined ${ card.icon }`}>
-                badge
+                  badge
                     </span>
-                    <span className={card.tooltiptext}>
-                Perfil del Demandado
+                    <span
+                      className={card.tooltiptext}>
+                  Perfil del Demandado
                     </span>
                   </Link>
                   <Link
@@ -170,10 +170,11 @@ export const Card = (
                     }}>
                     <span
                       className={`material-symbols-outlined ${ card.icon }`}>
-                add
+                  add
                     </span>
-                    <span className={card.tooltiptext}>
-                Agregar nota
+                    <span
+                      className={card.tooltiptext}>
+                  Agregar nota
                     </span>
                   </Link>
                   <Link
@@ -186,10 +187,11 @@ export const Card = (
                     href={href}>
                     <span
                       className={`${ card.icon } material-symbols-outlined`}>
-                file_open
+                  file_open
                     </span>
-                    <span className={card.tooltiptext}>
-                Actuaciones del proceso
+                    <span
+                      className={card.tooltiptext}>
+                  Actuaciones del proceso
                     </span>
                   </Link>
                   <Link
@@ -200,8 +202,9 @@ export const Card = (
                       className={`material-symbols-outlined ${ card.icon }`}>
                       {icon ?? 'open_in_new'}
                     </span>
-                    <span className={card.tooltiptext}>
-                abrir
+                    <span
+                      className={card.tooltiptext}>
+                  abrir
                     </span>
                   </Link>
                 </div>
@@ -234,9 +237,5 @@ export const Card = (
       </div>
     );
   }
-  return (
-    <Loader />
-  );
-
-
+  return <Loader />;
 };

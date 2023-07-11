@@ -4,7 +4,5 @@ import CardSkeleton from '#@/components/card/card-skeleton';
 import LinkCardSkeleton from '#@/components/search/link-skeleton';
 
 export default function Loading() {
-  return (
-    <div className={layout.loader}></div>
-  );
+  return <div className={layout.loader}></div>;
 }

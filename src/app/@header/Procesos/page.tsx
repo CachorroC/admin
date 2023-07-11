@@ -23,8 +23,7 @@ export default async function Page() {
         <Title />
       </Suspense>
       <Drawer>
-        <Suspense
-          fallback={<Loader />}>
+        <Suspense fallback={<Loader />}>
           <SearchOutputList
             path='/Procesos'
             fechas={fechas}

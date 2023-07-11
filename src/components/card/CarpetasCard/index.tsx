@@ -1,12 +1,16 @@
 'use client';
 import styles from './carpetas.module.scss';
-import type {Demanda, monCarpetaDemandado} from '#@/lib/types/demandados';
+import type {Demanda,
+  monCarpetaDemandado} from '#@/lib/types/demandados';
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 import type { Route } from 'next';
 import { fixFechas } from '#@/lib/fix';
 import { Loader } from '#@/components/Loader';
-import { ReactNode, useState, useEffect, Fragment } from 'react';
+import {ReactNode,
+  useState,
+  useEffect,
+  Fragment} from 'react';
 
 export const DemandaContainer = (
   {
@@ -59,12 +63,13 @@ export const DemandaContainer = (
   );
 };
 
-
 export const CarpetaCard = (
   {
-    Carpeta
+    Carpeta,
+    children
   }: {
-  Carpeta: monCarpetaDemandado
+  Carpeta: monCarpetaDemandado;
+  children: ReactNode;
 }
 ) => {
   const [
@@ -83,7 +88,7 @@ export const CarpetaCard = (
   } = Carpeta;
 
   const {
-    Nombre, Tel, Direccion, Email
+    Nombre, Tel, Direccion, Email 
   } =
     Deudor;
 
@@ -109,7 +114,7 @@ export const CarpetaCard = (
   if (didMount) {
     return (
       <Fragment key={_id}>
-        <DemandaContainer  demanda={Demanda} />
+        <DemandaContainer demanda={Demanda} />
         <div
           className={styles.container}
           key={_id}>
@@ -127,24 +132,27 @@ export const CarpetaCard = (
                 href={href}>
                 <span
                   className={`material-symbols-outlined ${ styles.icon }`}>
-                folder_open
+                  folder_open
                 </span>
                 <span
                   className={styles.tooltiptext}>
-                Abrir
+                  Abrir
                 </span>
               </Link>
+              {children}
               {Tel && Tel.Celular && (
                 <Link
                   className={styles.button}
                   href={`tel:${ Tel.Celular }`}>
                   <span
                     className={`material-symbols-outlined ${ styles.icon }`}>
-                  phone_iphone
+                    phone_iphone
                   </span>
                   <span
-                    className={styles.tooltiptext}>
-                  Numero Celular
+                    className={
+                      styles.tooltiptext
+                    }>
+                    Numero Celular
                   </span>
                 </Link>
               )}
@@ -154,11 +162,13 @@ export const CarpetaCard = (
                   href={`mailto:${ Email }`}>
                   <span
                     className={`material-symbols-outlined ${ styles.icon }`}>
-                  forward_to_inbox
+                    forward_to_inbox
                   </span>
                   <span
-                    className={styles.tooltiptext}>
-                  Email
+                    className={
+                      styles.tooltiptext
+                    }>
+                    Email
                   </span>
                 </Link>
               )}
@@ -168,11 +178,13 @@ export const CarpetaCard = (
                   href={`tel:${ Tel.Fijo }`}>
                   <span
                     className={`material-symbols-outlined ${ styles.icon }`}>
-                  call
+                    call
                   </span>
                   <span
-                    className={styles.tooltiptext}>
-                  Numero Fijo
+                    className={
+                      styles.tooltiptext
+                    }>
+                    Numero Fijo
                   </span>
                 </Link>
               )}
@@ -182,8 +194,5 @@ export const CarpetaCard = (
       </Fragment>
     );
   }
-  return (
-    <Loader />
-  );
-
+  return <Loader />;
 };
