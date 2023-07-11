@@ -131,56 +131,16 @@ export default function SearchOutputList(
       }
 
       rows.push (
-        <div
-          key={_id}
-          ref={(
-            node
-          ) => {
-            const map = getMap ();
-            if (node) {
-              map.set (
-                _id,
-                node
-              );
-            }
-            else {
-              map.delete (
-                _id
-              );
-            }
-          }}>
-          <LinkCard
-            path={path}
-            proceso={proceso}
-            key={_id}
-          />
-        </div>
+        <LinkCard
+          path={ path }
+          proceso={ proceso }
+          key={ _id }
+        />
       );
     }
   );
   return (
     <>
-      {fechas.map (
-        (
-          fecha, i, arr
-        ) => {
-          return (
-            <button
-              key={fecha._id}
-              type='button'
-              onClick={() => {
-                return scrollToId (
-                  fecha._id
-                );
-              }}>
-              <span className='material-symbols-outlined'>
-              folder
-              </span>
-              <p>{fecha.Carpeta}</p>
-            </button>
-          );
-        }
-      )}
       <div className={searchbar.container}>
         <div
           className={

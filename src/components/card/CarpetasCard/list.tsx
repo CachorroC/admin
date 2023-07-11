@@ -93,7 +93,7 @@ export async function ListCardCarpetasNFechas () {
           return (
             <CarpetaCard Carpeta={ carpeta } key={ carpeta._id } >
               <Suspense fallback={<Loader />}>
-                <Fecha key={carpeta._id} idProceso={carpeta.idProceso} />
+                <Fecha key={carpeta._id + 'fecha'} idProceso={carpeta.idProceso} />
               </Suspense>
             </CarpetaCard>
           );

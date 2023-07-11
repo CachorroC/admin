@@ -2,6 +2,7 @@ import { cache } from 'react';
 import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
+import { IntCarpetaDemandado } from '../types/demandados';
 import {monCarpetaDemandado,
   intCarpetaDemandado,
   ConvertCarpetas} from '#@/lib/types/demandados';
@@ -29,7 +30,7 @@ const Collection = cache (
       'RyS'
     );
 
-    const carpetas = db.collection (
+    const carpetas = db.collection <IntCarpetaDemandado> (
       'Demandados'
     );
     return carpetas;
@@ -37,6 +38,8 @@ const Collection = cache (
 );
 
 const Transform = async () => {
+  const carpetasMap = new Map ();
+
   const collection = await Collection ();
 
   const carpetasRaw = await collection
@@ -46,15 +49,20 @@ const Transform = async () => {
     )
     .toArray ();
 
-  const notasString = JSON.stringify (
-    carpetasRaw
+  carpetasRaw.forEach (
+    (
+      carpeta, index, arr
+    ) => {
+      return carpetasMap.set (
+        carpeta._id,
+        carpeta
+      );
+    }
   );
-
-  const carpetas =
-    ConvertCarpetas.toMonCarpetaDemandado (
-      notasString
-    );
-  return carpetas;
+  console.log (
+    carpetasMap
+  );
+  return carpetasMap;
 };
 
 export const getCarpetas = cache (
@@ -139,7 +147,7 @@ export const getCarpetasByidProceso = cache (
 export const getCarpetaById = cache (
   async (
     {
-      _id 
+      _id
     }: { _id: string }
   ) => {
     const collection = await Collection ();
@@ -151,12 +159,7 @@ export const getCarpetaById = cache (
       )
       .toArray ();
 
-    const carpetas =
-      ConvertCarpetas.toMonCarpetaDemandado (
-        JSON.stringify (
-          carpetasRaw
-        )
-      );
+    const carpetas = carpetasRaw as unknown as monCarpetaDemandado[];
 
     const Carpetas = carpetas.filter (
       (

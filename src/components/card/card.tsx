@@ -12,6 +12,8 @@ import { useNavigator } from '#@/app/search-context';
 import {fixFechas,
   toNameString} from '#@/lib/fix';
 import { Name } from '#@/components/Headings/clientSideName';
+import { useEffect } from 'react';
+import { Loader } from '#@/components/Loader';
 
 export const Card = (
   {
@@ -63,6 +65,13 @@ export const Card = (
     );
   };
 
+  const [
+    didMount,
+    setDidMount
+  ] = useState (
+    false
+  );
+
   const pathname = usePathname ();
 
   const isInProcesos = pathname === path;
@@ -93,123 +102,141 @@ export const Card = (
         -1
       )
     : null;
-  return (
-    <div
-      className={card.container}
-      onClick={() => {
-        setHasLinks (
-          !hasLinks
-        );
-      }}>
+
+
+  useEffect (
+    () => {
+      setDidMount (
+        true
+      );
+    },
+    []
+  );
+
+  if ( didMount ) {
+    return (
       <div
-        className={
-          isActive
-            ? card.isActive
-            : card.notActive
-        }>
-        <h1
-          className={`${ typography.titleMedium } ${ card.title }`}>
-          {toNameString (
-            {
-              nameRaw: name
-            }
-          )}
-        </h1>
-        {hasLinks
-          ? (
-              <div className={card.links}>
-                <Link
-                  className={
-                    isActive
-                      ? card.linkIsActive
-                      : card.link
-                  }
-                  href={
-                `${ path }/${ llaveProceso }` as Route
-                  }>
-                  <span
-                    className={`material-symbols-outlined ${ card.icon }`}>
-                badge
-                  </span>
-                  <span className={card.tooltiptext}>
-                Perfil del Demandado
-                  </span>
-                </Link>
-                <Link
-                  className={
-                    isActive
-                      ? card.linkIsActive
-                      : card.link
-                  }
-                  href={`/Notas/NuevaNota/${ llaveProceso }`}
-                  onClick={() => {
-                    setIsOpen (
-                      true
-                    );
-                  }}>
-                  <span
-                    className={`material-symbols-outlined ${ card.icon }`}>
-                add
-                  </span>
-                  <span className={card.tooltiptext}>
-                Agregar nota
-                  </span>
-                </Link>
-                <Link
-                  className={
-                    isActive
-                      ? card.linkIsActive
-                      : card.link
-                  }
-                  onClick={clickHandler}
-                  href={href}>
-                  <span
-                    className={`${ card.icon } material-symbols-outlined`}>
-                file_open
-                  </span>
-                  <span className={card.tooltiptext}>
-                Actuaciones del proceso
-                  </span>
-                </Link>
-                <Link
-                  onClick={clickHandler}
-                  href={href}
-                  className={card.link}>
-                  <span
-                    className={`material-symbols-outlined ${ card.icon }`}>
-                    {icon ?? 'open_in_new'}
-                  </span>
-                  <span className={card.tooltiptext}>
-                abrir
-                  </span>
-                </Link>
-              </div>
-            )
-          : (
-              children
+        className={card.container}
+        onClick={() => {
+          setHasLinks (
+            !hasLinks
+          );
+        }}>
+        <div
+          className={
+            isActive
+              ? card.isActive
+              : card.notActive
+          }>
+          <h1
+            className={`${ typography.titleMedium } ${ card.title }`}>
+            {toNameString (
+              {
+                nameRaw: name
+              }
             )}
-        {contenido && (
-          <p
-            className={`${ typography.bodySmall } ${ card.content }`}>
-            {contenido}
-          </p>
-        )}
-        {juzgado && (
-          <Link
-            href={`https://ramajudicial.gov.co/web/${ juzgado.replaceAll (
-              'á',
-              'a'
-            ) }`}>
+          </h1>
+          {hasLinks
+            ? (
+                <div className={card.links}>
+                  <Link
+                    className={
+                      isActive
+                        ? card.linkIsActive
+                        : card.link
+                    }
+                    href={
+                `${ path }/${ llaveProceso }` as Route
+                    }>
+                    <span
+                      className={`material-symbols-outlined ${ card.icon }`}>
+                badge
+                    </span>
+                    <span className={card.tooltiptext}>
+                Perfil del Demandado
+                    </span>
+                  </Link>
+                  <Link
+                    className={
+                      isActive
+                        ? card.linkIsActive
+                        : card.link
+                    }
+                    href={`/Notas/NuevaNota/${ llaveProceso }`}
+                    onClick={() => {
+                      setIsOpen (
+                        true
+                      );
+                    }}>
+                    <span
+                      className={`material-symbols-outlined ${ card.icon }`}>
+                add
+                    </span>
+                    <span className={card.tooltiptext}>
+                Agregar nota
+                    </span>
+                  </Link>
+                  <Link
+                    className={
+                      isActive
+                        ? card.linkIsActive
+                        : card.link
+                    }
+                    onClick={clickHandler}
+                    href={href}>
+                    <span
+                      className={`${ card.icon } material-symbols-outlined`}>
+                file_open
+                    </span>
+                    <span className={card.tooltiptext}>
+                Actuaciones del proceso
+                    </span>
+                  </Link>
+                  <Link
+                    onClick={clickHandler}
+                    href={href}
+                    className={card.link}>
+                    <span
+                      className={`material-symbols-outlined ${ card.icon }`}>
+                      {icon ?? 'open_in_new'}
+                    </span>
+                    <span className={card.tooltiptext}>
+                abrir
+                    </span>
+                  </Link>
+                </div>
+              )
+            : (
+                children
+              )}
+          {contenido && (
             <p
               className={`${ typography.bodySmall } ${ card.content }`}>
-              {juzgado.replaceAll (
+              {contenido}
+            </p>
+          )}
+          {juzgado && (
+            <Link
+              href={`https://ramajudicial.gov.co/web/${ juzgado.replaceAll (
                 'á',
                 'a'
-              )}
-            </p>
-          </Link>
-        )}
+              ) }`}>
+              <p
+                className={`${ typography.bodySmall } ${ card.content }`}>
+                {juzgado.replaceAll (
+                  'á',
+                  'a'
+                )}
+              </p>
+            </Link>
+          )}
+        </div>
       </div>
-    </div>
+    );
+  }
+  return (
+    <Loader />
   );
+
+
 };

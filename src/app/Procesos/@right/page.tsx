@@ -40,7 +40,6 @@ export default async function PageProcesosRight() {
         uri={`${ getBaseUrl () }`}
       />
       <NotasList notas={notas} />
-      <Notas />
     </>
   );
 }

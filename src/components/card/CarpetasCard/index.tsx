@@ -1,7 +1,6 @@
 'use client';
 import styles from './carpetas.module.scss';
-import {intDemanda,
-  monCarpetaDemandado} from '#@/lib/types/demandados';
+import type {Demanda, monCarpetaDemandado} from '#@/lib/types/demandados';
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 import type { Route } from 'next';
@@ -13,7 +12,7 @@ export const DemandaContainer = (
   {
     demanda
   }: {
-  demanda: intDemanda;
+  demanda: Demanda;
 }
 ) => {
   const {
@@ -63,9 +62,9 @@ export const DemandaContainer = (
 
 export const CarpetaCard = (
   {
-    Carpeta, children
+    Carpeta
   }: {
-  Carpeta: monCarpetaDemandado; children: ReactNode
+  Carpeta: monCarpetaDemandado
 }
 ) => {
   const [
@@ -110,7 +109,7 @@ export const CarpetaCard = (
   if (didMount) {
     return (
       <Fragment key={_id}>
-        <DemandaContainer key ={_id} demanda={Demanda} />
+        <DemandaContainer  demanda={Demanda} />
         <div
           className={styles.container}
           key={_id}>
@@ -122,7 +121,6 @@ export const CarpetaCard = (
             <p className={styles.content}>
               {Direccion ?? 'sin direccion'}
             </p>
-            {children}
             <div className={styles.links}>
               <Link
                 className={styles.button}

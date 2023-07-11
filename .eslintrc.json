@@ -61,7 +61,7 @@
     "no-dupe-else-if": "error",
     "no-else-return": [
       "error",
-      { "allowElseIf": false }
+      { "allowElseIf": true }
     ],
     "no-unreachable": "error",
     "object-curly-newline": [

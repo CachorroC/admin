@@ -54,7 +54,7 @@ export const NotasList = (
             nt
           ) => {
             const {
-              _id, nota 
+              _id, nota
             } = nt;
             return (
               <button
@@ -74,80 +74,79 @@ export const NotasList = (
           }
         )}
       </nav>
-      <ul>
-        {' '}
-        {notas.map (
-          (
-            nota, index, arr
-          ) => {
-            return (
-              <div
-                className={styles.container}
-                key={nota._id}
-                ref={(
-                  node
-                ) => {
-                  const map = getMap ();
 
-                  if (node) {
-                    map.set (
-                      nota._id,
-                      node
-                    );
-                  }
-                  else {
-                    map.delete (
-                      nota._id
-                    );
-                  }
-                }}>
-                <div className={styles.nota}>
-                  <sup className={styles.sup}>{`${
-                    index + 1
-                  }`}</sup>
-                  <p
-                    className={`${ typography.bodySmall } ${ styles.textArea }`}>{`Nota: ${ nota.nota }`}</p>
-                  <sub
-                    className={`${ typography.labelSmall } ${ styles.fecha }`}>
-                    {fixFechas (
-                      nota.fecha.toString ()
-                    )}
-                  </sub>
-                  <div
-                    className={styles.buttonsRow}>
-                    <Suspense
-                      fallback={<ButtonSkeleton />}>
-                      <EditNoteButton nota={nota} />
-                    </Suspense>
-                    <Suspense
-                      fallback={<ButtonSkeleton />}>
-                      <DeleteNoteButton
-                        id={nota._id}
-                      />
-                    </Suspense>
-                  </div>
-                  <div className={styles.tareas}>
-                    {nota.tareas.map (
-                      (
-                        nt
-                      ) => {
-                        return (
-                          <AccordionRow
-                            tarea={nt.tarea}
-                            key={nt.tarea}
-                            dueDate={nt.dueDate}
-                            isDone={nt.isDone}
-                          />
-                        );
-                      }
-                    )}
-                  </div>
+      {notas.map (
+        (
+          nota, index, arr
+        ) => {
+          return (
+            <div
+              className={styles.container}
+              key={nota._id}
+              ref={(
+                node
+              ) => {
+                const map = getMap ();
+
+                if (node) {
+                  map.set (
+                    nota._id,
+                    node
+                  );
+                }
+                else {
+                  map.delete (
+                    nota._id
+                  );
+                }
+              }}>
+              <div className={styles.nota}>
+                <sup className={styles.sup}>{`${
+                  index + 1
+                }`}</sup>
+                <p
+                  className={`${ typography.bodySmall } ${ styles.textArea }`}>{`Nota: ${ nota.nota }`}</p>
+                <sub
+                  className={`${ typography.labelSmall } ${ styles.fecha }`}>
+                  {fixFechas (
+                    nota.fecha.toString ()
+                  )}
+                </sub>
+                <div
+                  className={styles.buttonsRow}>
+                  <Suspense
+                    fallback={<ButtonSkeleton />}>
+                    <EditNoteButton nota={nota} />
+                  </Suspense>
+                  <Suspense
+                    fallback={<ButtonSkeleton />}>
+                    <DeleteNoteButton
+                      id={nota._id}
+                    />
+                  </Suspense>
+                </div>
+                <div className={styles.tareas}>
+                  {nota.tareas.map (
+                    (
+                      nt
+                    ) => {
+                      return (
+                        <AccordionRow
+                          tarea={nt.tarea}
+                          key={nt.tarea}
+                          dueDate={nt.dueDate}
+                          isDone={nt.isDone}
+                        />
+                      );
+                    }
+                  )}
                 </div>
               </div>
-            );
-          }
-        )}
-      </ul>
+            </div>
+          );
+        }
+      )}
+
     </>
   );
 };
@@ -158,7 +157,7 @@ export const NotaFRef = forwardRef (
     ref
   ) {
     const {
-      nota, index 
+      nota, index
     } = props;
     return (
       <div
