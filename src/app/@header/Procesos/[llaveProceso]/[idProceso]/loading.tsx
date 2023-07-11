@@ -3,31 +3,31 @@ import navbar from '#@/components/navbar/navbar.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function Loading() {
-    return (
-      <div className={layout.header}>
-        <button className={navbar.button}>
-          <span className='material-symbols-outlined'>
+  return (
+    <div className={layout.header}>
+      <button className={navbar.button}>
+        <span className='material-symbols-outlined'>
           refresh
-          </span>
-        </button>
-        <sub className={typography.displayLarge}>
+        </span>
+      </button>
+      <sub className={typography.displayLarge}>
         Loading
-        </sub>
-        <button className={navbar.button}>
-          <span className='material-symbols-outlined'>
+      </sub>
+      <button className={navbar.button}>
+        <span className='material-symbols-outlined'>
           refresh
-          </span>
-        </button>
-        <button className={navbar.button}>
-          <span className='material-symbols-outlined'>
+        </span>
+      </button>
+      <button className={navbar.button}>
+        <span className='material-symbols-outlined'>
           refresh
-          </span>
-        </button>
-        <button className={navbar.button}>
-          <span className='material-symbols-outlined'>
+        </span>
+      </button>
+      <button className={navbar.button}>
+        <span className='material-symbols-outlined'>
           refresh
-          </span>
-        </button>
-      </div>
-    );
+        </span>
+      </button>
+    </div>
+  );
 }

@@ -11,76 +11,64 @@ import Image from 'next/image';
 import Title from '../Headings/title';
 import { Name } from '../Headings/clientSideName';
 
-export const CardCarpeta = (
-  {
-    name,
-    path,
-    children,
-    llaveProceso,
-    idProceso,
-    icon
-  }: {
+export const CardCarpeta = ({
+  name,
+  path,
+  children,
+  llaveProceso,
+  idProceso,
+  icon
+}: {
   name: string;
   path: string;
   children: ReactNode;
   llaveProceso?: string;
   idProceso?: number;
   icon?: string;
-} 
-) => {
-    const [
-      isNavOpen,
-      setIsNavOpen
-    ]
-    = useNavigator();
+}) => {
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
 
-    const [
-      isOpen,
-      setIsOpen
-    ] = useModal();
+  const [isOpen, setIsOpen] = useModal();
 
-    const clickHandler = () => {
-        setIsNavOpen(
-          false 
-        );
-        setIsOpen(
-          true 
-        );
-    };
-    const pathname = usePathname();
+  const clickHandler = () => {
+    setIsNavOpen(false);
+    setIsOpen(true);
+  };
+  const pathname = usePathname();
 
-    const href = (
+  const href = (
     llaveProceso
       ? idProceso
-        ? `${ path }/${ llaveProceso }/${ idProceso }`
-        : `${ path }/${ llaveProceso }`
-      : `${ path }`
+        ? `${path}/${llaveProceso}/${idProceso}`
+        : `${path}/${llaveProceso}`
+      : `${path}`
   ) as Route;
 
-    const isActive
-    = pathname === href
-    || pathname
-      === `${ path }/${ llaveProceso }/${ idProceso }`
-    || pathname === `${ path }/${ llaveProceso }`
-    || pathname === path;
+  const isActive =
+    pathname === href ||
+    pathname ===
+      `${path}/${llaveProceso}/${idProceso}` ||
+    pathname === `${path}/${llaveProceso}` ||
+    pathname === path;
 
-    return (
-      <div
-        className={
-          isActive
-            ? carpeta.cardIsActive
-            : carpeta.card
-        }>
-        <div className={carpeta.cardInner}>
-          <div className={carpeta.cardFront}>
-            <Name helper={name} />
-          </div>
-          <div className={carpeta.cardBack}>
-            <Suspense fallback={<p>Loading...</p>}>
-              {children}
-            </Suspense>
-          </div>
+  return (
+    <div
+      className={
+        isActive
+          ? carpeta.cardIsActive
+          : carpeta.card
+      }>
+      <div className={carpeta.cardInner}>
+        <div className={carpeta.cardFront}>
+          <Name helper={name} />
+        </div>
+        <div className={carpeta.cardBack}>
+          <Suspense fallback={<p>Loading...</p>}>
+            {children}
+          </Suspense>
         </div>
       </div>
-    );
+    </div>
+  );
 };

@@ -8,30 +8,30 @@ import { Suspense } from 'react';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 
 async function ListDrawer() {
-    const procesos = await getCarpetas();
+  const procesos = await getCarpetas();
 
-    const fechas = await fetchFechas(
-      { procesos: procesos } 
-    );
+  const fechas = await fetchFechas({
+    procesos: procesos
+  });
 
-    return (
-      <Drawer>
-        <SearchOutputList
-          path='/Procesos'
-          fechas={fechas}
-        />
-      </Drawer>
-    );
+  return (
+    <Drawer>
+      <SearchOutputList
+        path='/Procesos'
+        fechas={fechas}
+      />
+    </Drawer>
+  );
 }
 
 export default function Default() {
-    return (
-      <Header>
-        <Title />
-        <Suspense
-          fallback={<SearchOutputListSkeleton />}>
-          <ListDrawer />
-        </Suspense>
-      </Header>
-    );
+  return (
+    <Header>
+      <Title />
+      <Suspense
+        fallback={<SearchOutputListSkeleton />}>
+        <ListDrawer />
+      </Suspense>
+    </Header>
+  );
 }

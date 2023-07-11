@@ -3,21 +3,29 @@
   "rules": {
     "array-bracket-newline": [
       "error",
-      { "minItems": 1 }
+      {
+        "minItems": 1
+      }
     ],
     "array-bracket-spacing": ["error", "always"],
     "array-callback-return": "error",
     "array-element-newline": [
       "error",
-      { "multiline": true, "minItems": 1 }
-    ],
-    "comma-spacing": [
-      "error",
-      { "before": false, "after": true }
+      {
+        "minItems": 1,
+        "multiline": true
+      }
     ],
     "arrow-body-style": ["error", "always"],
     "arrow-spacing": "error",
     "brace-style": ["error", "1tbs"],
+    "comma-spacing": [
+      "error",
+      {
+        "after": true,
+        "before": false
+      }
+    ],
     "computed-property-spacing": [
       "error",
       "always"
@@ -31,7 +39,7 @@
     ],
     "function-paren-newline": [
       "error",
-      { "minItems": 1 }
+      "multiline"
     ],
     "getter-return": "error",
     "indent": [
@@ -59,49 +67,56 @@
     ],
     "key-spacing": [
       "error",
-      { "align": "colon" }
+      {
+        "align": "colon"
+      }
     ],
     "linebreak-style": ["error", "unix"],
+    "max-statements-per-line": [
+      "error",
+      {
+        "max": 1
+      }
+    ],
     "multiline-ternary": ["error", "always"],
+    "newline-per-chained-call": [
+      "error",
+      {
+        "ignoreChainWithDepth": 2
+      }
+    ],
     "no-dupe-args": "error",
     "no-dupe-else-if": "error",
-    "space-in-parens": ["error", "always"],
     "no-else-return": [
       "error",
-      { "allowElseIf": true }
+      {
+        "allowElseIf": true
+      }
     ],
     "no-unreachable": "error",
     "object-curly-newline": [
       "error",
       {
         "ExportDeclaration": {
-          "multiline": true,
+          "consistent": false,
           "minProperties": 2,
-          "consistent": false
+          "multiline": true
         },
         "ImportDeclaration": "never",
         "ObjectExpression": {
-          "multiline": true,
+          "consistent": false,
           "minProperties": 2,
-          "consistent": false
+          "multiline": true
         },
         "ObjectPattern": {
-          "multiline": true,
+          "consistent": false,
           "minProperties": 2,
-          "consistent": false
+          "multiline": true
         }
       }
     ],
     "object-curly-spacing": ["error", "always"],
     "object-property-newline": "error",
-    "max-statements-per-line": [
-      "error",
-      { "max": 1 }
-    ],
-    "newline-per-chained-call": [
-      "error",
-      { "ignoreChainWithDepth": 2 }
-    ],
     "operator-linebreak": ["error", "before"],
     "padding-line-between-statements": [
       "error",
@@ -132,6 +147,7 @@
     ],
     "quotes": ["error", "single"],
     "semi": "error",
+    "space-in-parens": ["error", "always"],
     "template-curly-spacing": ["error", "always"],
     "template-tag-spacing": ["error", "always"]
   }

@@ -5,11 +5,11 @@ import { getCarpetas } from '#@/lib/Carpetas';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 
 export default async function PageProcesos() {
-    return (
-      <>
-        <h1 className={typography.displayLarge}>
+  return (
+    <>
+      <h1 className={typography.displayLarge}>
         Procesos
-        </h1>
-      </>
-    );
+      </h1>
+    </>
+  );
 }

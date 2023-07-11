@@ -1,121 +1,100 @@
 import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
-import { monNota,
-         intNota,
-         ConvertNotas } from '#@/lib/types/notas';
+import {
+  monNota,
+  intNota,
+  ConvertNotas
+} from '#@/lib/types/notas';
 import { cache } from 'react';
 
 const Collection = async () => {
-    const client = await clientPromise;
+  const client = await clientPromise;
 
-    if ( !client ) {
-      throw new Error(
-        'no hay cliente mongólico' 
-      );
-    }
+  if (!client) {
+    throw new Error('no hay cliente mongólico');
+  }
 
-    const db = client.db(
-      'RyS' 
-    );
+  const db = client.db('RyS');
 
-    const notas = db.collection(
-      'Notas' 
-    );
+  const notas = db.collection('Notas');
 
-    return notas;
+  return notas;
 };
 
 const Transform = async () => {
-    const collection = await Collection();
+  const collection = await Collection();
 
-    const notasRaw = await collection
-      .find(
-        {} 
-      )
-      .toArray();
+  const notasRaw = await collection
+    .find({})
+    .toArray();
 
-    const notasString = JSON.stringify(
-      notasRaw 
-    );
+  const notasString = JSON.stringify(notasRaw);
 
-    const notas
-    = ConvertNotas.toMonNota(
-      notasString 
-    );
+  const notas =
+    ConvertNotas.toMonNota(notasString);
 
-    return notas;
+  return notas;
 };
 
 export async function getNotas() {
-    const notas = await Transform();
+  const notas = await Transform();
 
-    return notas;
+  return notas;
 }
 
-export async function getNotasByllaveProceso(
-  { llaveProceso }: {
+export async function getNotasByllaveProceso({
+  llaveProceso
+}: {
   llaveProceso: string;
-} 
-) {
-    const notas = await Transform();
+}) {
+  const notas = await Transform();
 
-    const Notas = notas.filter(
-      (
-        nota 
-      ) => {
-          return nota.llaveProceso === llaveProceso;
-      } 
-    );
+  const Notas = notas.filter((nota) => {
+    return nota.llaveProceso === llaveProceso;
+  });
 
-    return Notas;
+  return Notas;
 }
 
 export const getNotaById = cache(
-  async (
-    { _id }: { _id: string } 
-  ) => {
-      const notas = await Transform();
+  async ({ _id }: { _id: string }) => {
+    const notas = await Transform();
 
-      const Notas = notas.filter(
-        (
-          nota 
-        ) => {
-            return nota._id === _id;
-        } 
-      );
+    const Notas = notas.filter((nota) => {
+      return nota._id === _id;
+    });
 
-      return Notas;
+    return Notas;
   }
 );
 
-export async function postNota(
-  { nota }: {
+export async function postNota({
+  nota
+}: {
   nota: intNota;
-} 
-) {
-    const collection = await Collection();
+}) {
+  const collection = await Collection();
 
-    const outgoingRequest
-    = await collection.insertOne(
-      nota 
-    );
+  const outgoingRequest =
+    await collection.insertOne(nota);
 
-    if ( !outgoingRequest.acknowledged ) {
-      return new NextResponse(
-        null,
-        { status: 404 } 
-      );
-    }
+  if (!outgoingRequest.acknowledged) {
+    return new NextResponse(null, {
+      status: 404
+    });
+  }
 
-    return new NextResponse(
-      JSON.stringify(
-        outgoingRequest.insertedId
-        + `${ outgoingRequest.acknowledged }`
-      ),
-      {
-        status : 200,
-        headers: { 'content-type': 'application/json' }
+  return new NextResponse(
+    JSON.stringify(
+      outgoingRequest.insertedId +
+        `${outgoingRequest.acknowledged}`
+    ),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'application/json'
       }
-    );
+    }
+  );
 }

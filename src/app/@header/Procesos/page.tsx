@@ -9,25 +9,25 @@ import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputS
 import { Loader } from '#@/components/Loader/index';
 
 export default async function Page() {
-    const procesos = await getCarpetas();
+  const procesos = await getCarpetas();
 
-    const fechas = await fetchFechas(
-      { procesos: procesos } 
-    );
+  const fechas = await fetchFechas({
+    procesos: procesos
+  });
 
-    return (
-      <Header>
+  return (
+    <Header>
+      <Suspense fallback={<Loader />}>
+        <Title />
+      </Suspense>
+      <Drawer>
         <Suspense fallback={<Loader />}>
-          <Title />
+          <SearchOutputList
+            path='/Procesos'
+            fechas={fechas}
+          />
         </Suspense>
-        <Drawer>
-          <Suspense fallback={<Loader />}>
-            <SearchOutputList
-              path='/Procesos'
-              fechas={fechas}
-            />
-          </Suspense>
-        </Drawer>
-      </Header>
-    );
+      </Drawer>
+    </Header>
+  );
 }
