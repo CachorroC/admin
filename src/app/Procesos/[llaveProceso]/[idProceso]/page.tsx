@@ -5,7 +5,7 @@ import { Name } from '#@/components/Headings/serverSideName';
 
 export default async function PageProcesosllaveProcesoidProceso(
   {
-    params 
+    params
   }: {
   params: {
     llaveProceso: string;
@@ -27,13 +27,13 @@ export default async function PageProcesosllaveProcesoidProceso(
           carpeta
         ) => {
           const {
-            id 
+            id
           } = carpeta;
 
           return (
             <CarpetaCard
               key={id}
-              Carpeta={carpeta}>
+              carpeta={carpeta}>
               {' '}
               <span className='material-symbols-outlined'>star</span>
             </CarpetaCard>

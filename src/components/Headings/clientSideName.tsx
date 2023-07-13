@@ -4,7 +4,9 @@ import { fixFechas } from '#@/lib/fix';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export const Name = (
-  { helper }: { helper?: string } 
+  {
+    helper 
+  }: { helper?: string } 
 ) => {
   const pathname = usePathname();
   const segment = useSelectedLayoutSegment();

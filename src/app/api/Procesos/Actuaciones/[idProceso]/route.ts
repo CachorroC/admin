@@ -4,7 +4,9 @@ import { IntActuaciones, intConsultaActuaciones } from '#@/lib/types/procesos';
 
 export async function GET(
   Request: NextRequest,
-  { params }: { params: { idProceso: number } }
+  {
+    params 
+  }: { params: { idProceso: number } }
 ) {
   try {
     const req = await fetch(

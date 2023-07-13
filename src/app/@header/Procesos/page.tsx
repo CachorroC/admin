@@ -14,11 +14,11 @@ export default async function Page() {
   const fechas = await fetchFechas(
     {
       procesos: procesos
-    } 
+    }
   );
 
   return (
-    <Header>
+    <>
       <Suspense fallback={<Loader />}>
         <Title />
       </Suspense>
@@ -30,6 +30,6 @@ export default async function Page() {
           />
         </Suspense>
       </Drawer>
-    </Header>
+    </>
   );
 }

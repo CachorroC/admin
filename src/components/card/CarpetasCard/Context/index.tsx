@@ -16,7 +16,9 @@ export const FormContext = createContext<vals | null>(
 );
 
 export default function FormProvider(
-  { children }: { children: ReactNode } 
+  {
+    children 
+  }: { children: ReactNode } 
 ) {
   const [
     data,

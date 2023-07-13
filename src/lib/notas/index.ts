@@ -49,7 +49,9 @@ export async function getNotas() {
 }
 
 export async function getNotasByllaveProceso(
-  { llaveProceso }: {
+  {
+    llaveProceso 
+  }: {
   llaveProceso: string;
 } 
 ) {
@@ -68,7 +70,9 @@ export async function getNotasByllaveProceso(
 
 export const getNotaById = cache(
   async (
-    { _id }: { _id: string } 
+    {
+      _id 
+    }: { _id: string } 
   ) => {
     const notas = await Transform();
 
@@ -85,7 +89,9 @@ export const getNotaById = cache(
 );
 
 export async function postNota(
-  { nota }: { nota: intNota } 
+  {
+    nota 
+  }: { nota: intNota } 
 ) {
   const collection = await Collection();
 

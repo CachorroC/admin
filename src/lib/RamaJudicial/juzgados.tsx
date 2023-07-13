@@ -5,7 +5,9 @@ import { fixDemandado } from '../fix';
 import { CardCarpeta } from '#@/components/card/cardCarpeta';
 
 export async function JuzgadosByllaveProceso(
-  { llaveProceso }: {
+  {
+    llaveProceso 
+  }: {
   llaveProceso: string;
 } 
 ) {

@@ -10,7 +10,9 @@ import { redirect } from 'next/navigation';
 import type { Route } from 'next';
 
 export default function Modal(
-  { children }: { children: React.ReactNode } 
+  {
+    children 
+  }: { children: React.ReactNode } 
 ) {
   const params = useParams();
   const pathname = usePathname();

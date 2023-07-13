@@ -25,7 +25,9 @@ export function NewNota(
     control,
     setValue,
     handleSubmit,
-    formState: { errors }
+    formState: {
+      errors 
+    }
   } = useForm<intNotaFormValues>(
     {
       defaultValues: {

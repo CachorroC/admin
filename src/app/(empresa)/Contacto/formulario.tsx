@@ -15,7 +15,9 @@ export default function Formulario() {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: {
+      errors 
+    }
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (

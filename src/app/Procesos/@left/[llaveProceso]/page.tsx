@@ -1,6 +1,4 @@
 import { getCarpetas, getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import { getActuacionesByidProceso,
-         getConsultaNumeroRadicion } from '#@/lib/RamaJudicial';
 import { Fragment, Suspense } from 'react';
 import { ActuacionCard } from '#@/components/card/ActuacionesCard';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';

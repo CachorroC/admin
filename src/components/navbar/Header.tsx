@@ -12,7 +12,9 @@ import { ButtonSkeleton } from './ButtonSkeleton';
 import typeface from '#@/styles/fonts/typeface.module.scss';
 
 export default function Header(
-  { children }: { children: React.ReactNode } 
+  {
+    children 
+  }: { children: React.ReactNode } 
 ) {
   const isDesktop = useMedia(
     2 

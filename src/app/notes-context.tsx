@@ -14,7 +14,9 @@ const NoteContext = createContext<
 );
 
 export function NoteProvider(
-  { children }: { children: ReactNode } 
+  {
+    children 
+  }: { children: ReactNode } 
 ) {
   const [
     isShowing,

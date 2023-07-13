@@ -5,7 +5,9 @@ import type { Route } from 'next';
 import Link from 'next/link';
 
 export function DeleteNoteButton(
-  { id }: { id: string } 
+  {
+    id 
+  }: { id: string } 
 ) {
   async function deleteRequestHandler() {
     const Request = await fetch(
@@ -85,7 +87,9 @@ export function AddNoteButton(
 }
 
 export function EditNoteButton(
-  { nota }: { nota: monNota } 
+  {
+    nota 
+  }: { nota: monNota } 
 ) {
   return (
     <Link

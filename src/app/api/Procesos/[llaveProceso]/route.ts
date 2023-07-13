@@ -5,11 +5,15 @@ import { monDemandado } from '#@/lib/types/mongodb';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { llaveProceso: string } }
+  {
+    params 
+  }: { params: { llaveProceso: string } }
 ) {
   const llaveProceso = params.llaveProceso;
 
-  const { searchParams } = new URL(
+  const {
+    searchParams 
+  } = new URL(
     request.url 
   );
   const client = await clientPromise;

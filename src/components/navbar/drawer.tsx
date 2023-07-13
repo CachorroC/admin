@@ -15,7 +15,9 @@ import Title from '#@/components/Headings/title';
 import { ButtonSkeleton } from './ButtonSkeleton';
 
 export default function Drawer(
-  { children }: { children: ReactNode } 
+  {
+    children 
+  }: { children: ReactNode } 
 ) {
   const isDesktop = useMedia(
     2 

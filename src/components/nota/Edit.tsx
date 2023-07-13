@@ -21,7 +21,9 @@ export function Edit(
     control,
     setValue,
     handleSubmit,
-    formState: { errors }
+    formState: {
+      errors 
+    }
   } = useForm<intNotaFormValues>();
 
   const {

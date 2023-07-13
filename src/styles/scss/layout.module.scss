@@ -271,11 +271,11 @@ $MaxSW: 480px; //maximum sma width
 }
 
 .loader {
-  border: 16px solid var(--outline); /* Light grey */
-  border-top: 16px solid var(--tertiary); /* Blue */
+  border: 1vmin solid var(--outline); /* Light grey */
+  border-top: 1vmin solid var(--tertiary); /* Blue */
   border-radius: 50%;
-  width: 10vw;
-  height: 10vw;
+  width: 5vmin;
+  height: 5vmin;
   box-sizing: border-box;
   animation: spin 2s linear infinite;
   & > .loader {

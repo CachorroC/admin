@@ -4,7 +4,7 @@ import { intProceso,
          IntActuaciones } from '#@/lib/types/procesos';
 import { monDemandado } from './types/mongodb';
 import { monNota } from '#@/lib/types/notas';
-import { IntCarpeta, UltimaActuacion } from './types/demandados';
+import { IntCarpeta, MonCarpeta, UltimaActuacion } from './types/demandados';
 import { intFecha } from '#@/lib/types/demandados';
 
 export function arrayMergerByidProceso(
@@ -60,7 +60,7 @@ export function arrayMergerByllaveProceso(
     carpetas,
     actuaciones
   }: {
-  carpetas: IntCarpeta[];
+  carpetas: MonCarpeta[];
   actuaciones: intActuacion[];
 }
 ) {

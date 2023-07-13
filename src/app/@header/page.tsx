@@ -6,33 +6,17 @@ import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 import Header from '#@/components/navbar/Header';
 import { Suspense } from 'react';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
+import { Loader } from '#@/components/Loader';
+import { ListDrawer } from './list';
 
-async function ListDrawer() {
-  const procesos = await getCarpetas();
-
-  const fechas = await fetchFechas(
-    {
-      procesos: procesos
-    } 
-  );
-
-  return (
-    <Drawer>
-      <SearchOutputList
-        path='/Procesos'
-        fechas={fechas}
-      />
-    </Drawer>
-  );
-}
 
 export default async function Page() {
   return (
-    <Header>
+    <>
       <Title />
-      <Suspense fallback={<SearchOutputListSkeleton />}>
+      <Suspense fallback={<Loader />}>
         <ListDrawer />
       </Suspense>
-    </Header>
+    </>
   );
 }

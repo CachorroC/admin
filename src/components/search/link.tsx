@@ -21,7 +21,7 @@ export const LinkCard = (
   }: {
   path: string;
   proceso: intFecha;
-} 
+}
 ) => {
   const [
     isOpen,
@@ -29,11 +29,11 @@ export const LinkCard = (
   ] = useModal();
 
   const {
-    Deudor, fecha, llaveProceso, idProceso, _id 
+    Deudor, fecha, llaveProceso, idProceso, id
   } = proceso;
 
   const {
-    Nombre, Id, Direccion, Tel 
+    Nombre, Id, Direccion, Tel
   } = Deudor;
   const params = useParams();
   const pathname = usePathname();
@@ -60,12 +60,12 @@ export const LinkCard = (
   return (
     <div
       className={searchbar.container}
-      key={_id}>
+      key={id}>
       <Link
         href={href}
         onClick={() => {
           return setIsNavOpen(
-            false 
+            false
           );
         }}
         className={isActive
@@ -73,7 +73,7 @@ export const LinkCard = (
           : searchbar.notActive}>
         <Name helper={Nombre} />
         <sub className={searchbar.date}>{fixFechas(
-          fecha 
+          fecha
         )}</sub>
       </Link>
     </div>

@@ -1,7 +1,6 @@
 import { Card } from '#@/components/card/card';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import { getActuacionesByidProceso,
-         getConsultaNumeroRadicion } from '#@/lib/RamaJudicial';
+import { getConsultaNumeroRadicion } from '#@/lib/RamaJudicial';
 import { Fragment, Suspense } from 'react';
 import typography from '#@/styles/fonts/typography.module.scss';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
@@ -44,7 +43,7 @@ export default async function DefaultProcesosLeftllaveProceso(
           );
 
           return (
-            <CarpetaCard Carpeta={ carpeta } key={ carpeta.id }>
+            <CarpetaCard carpeta={ carpeta } key={ carpeta.id }>
               <span className='material-symbols-outlined'>disabled_by_default</span>
               {proceso && ( <ProcesoCard proceso={  proceso} /> )}
             </CarpetaCard>

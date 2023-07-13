@@ -1,6 +1,7 @@
 import { ProcesoCard } from '#@/components/card/ProcesosCard';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { getConsultaNumeroRadicion } from '#@/lib/RamaJudicial';
+import typography from '#@/styles/fonts/typography.module.scss';
 
 export default async function PageProcesosRightllaveProceso(
   {
@@ -25,6 +26,7 @@ export default async function PageProcesosRightllaveProceso(
 
   return (
     <>
+      <h1 className={typography.displayMedium}>Procesos Disponibles</h1>
       { Procesos.map(
         (
           proceso

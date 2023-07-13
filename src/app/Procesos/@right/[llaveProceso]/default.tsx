@@ -22,7 +22,7 @@ export default async function DefaultProcesosRightLLaveProceso (
           carpeta, index, arr
         ) => {
           return (
-            <CarpetaCard Carpeta={ carpeta } key={ carpeta.id }>
+            <CarpetaCard carpeta={ carpeta } key={ carpeta.id }>
               <span className='material-symbols-outlined'>disabled_by_default</span>
             </CarpetaCard>
           );

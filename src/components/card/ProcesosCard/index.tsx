@@ -6,7 +6,9 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import type { Route } from 'next';
 
 export const ProcesoCard = (
-  { proceso }: { proceso: intProceso } 
+  {
+    proceso 
+  }: { proceso: intProceso } 
 ) => {
   const {
     idProceso, llaveProceso, sujetosProcesales, despacho, esPrivado 

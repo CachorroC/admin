@@ -6,7 +6,9 @@ import { Notas } from '#@/components/nota/notas';
 import Modal from '#@/components/modal';
 
 export default function NuevaNotallaveProceso(
-  { params }: {
+  {
+    params 
+  }: {
   params: { llaveProceso: string };
 } 
 ) {

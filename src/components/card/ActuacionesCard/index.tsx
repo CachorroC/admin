@@ -5,7 +5,9 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 
 export const ActuacionCard = (
-  { Actuacion }: { Actuacion: intActuacion } 
+  {
+    Actuacion 
+  }: { Actuacion: intActuacion } 
 ) => {
   const {
     idRegActuacion,
@@ -51,7 +53,9 @@ export const ActuacionCard = (
 };
 
 export const ActuacionesList = (
-  { Actuaciones }: {
+  {
+    Actuaciones 
+  }: {
   Actuaciones: intActuacion[];
 } 
 ) => {
@@ -61,7 +65,9 @@ export const ActuacionesList = (
         (
           Actuacion, ind, arr 
         ) => {
-          const { idRegActuacion } = Actuacion;
+          const {
+            idRegActuacion 
+          } = Actuacion;
 
           return (
             <ActuacionCard

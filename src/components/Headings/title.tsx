@@ -6,7 +6,9 @@ import { fixFechas } from '#@/lib/fix';
 import typeface from '#@/styles/fonts/typeface.module.scss';
 
 export default function Title(
-  { helper }: { helper?: string } 
+  {
+    helper 
+  }: { helper?: string }
 ) {
   const [
     isNavOpen,
@@ -72,14 +74,13 @@ export default function Title(
   ];
 
   return (
-    <h1
-      className={`${ typography.titleMedium }  ${
-        isNavOpen
-          ? typeface.drawer
-          : typeface.navbar
-      }`}>
-      {helper ?? `${ days[ today.getDay() ] }, ${ fixFechas(
-        today.toString() 
+    <h1 className={`${ typography.titleMedium }  ${
+      isNavOpen
+        ? typeface.drawer
+        : typeface.navbar
+    }`}>
+      {`${ helper }` ?? `${ days[ today.getDay() ] }, ${ fixFechas(
+        today.toString()
       ) }`}
     </h1>
   );

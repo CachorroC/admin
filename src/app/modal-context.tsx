@@ -13,7 +13,9 @@ const ModalContext = createContext<
 );
 
 export function ModalProvider(
-  { children }: { children: ReactNode } 
+  {
+    children 
+  }: { children: ReactNode } 
 ) {
   const [
     isOpen,

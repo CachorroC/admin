@@ -23,7 +23,9 @@ export const LevelContext = createContext(
 );
 
 export function SearchProvider(
-  { children }: { children: ReactNode } 
+  {
+    children 
+  }: { children: ReactNode } 
 ) {
   const level = useContext(
     LevelContext 

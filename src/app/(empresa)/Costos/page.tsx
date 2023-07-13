@@ -12,7 +12,9 @@ type FormValues = {
 let renderCount = 0;
 
 const Total = (
-  { control }: { control: Control<FormValues> } 
+  {
+    control 
+  }: { control: Control<FormValues> } 
 ) => {
   const formValues = useWatch(
     {
@@ -38,7 +40,9 @@ export default function Costos() {
     register,
     control,
     handleSubmit,
-    formState: { errors }
+    formState: {
+      errors 
+    }
   } = useForm<FormValues>(
     {
       defaultValues: {

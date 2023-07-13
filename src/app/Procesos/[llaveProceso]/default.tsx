@@ -1,48 +1,74 @@
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { Fragment, Suspense } from 'react';
-import { getActuacionesByidProceso } from '#@/lib/Actuaciones';
-import { Card } from '#@/components/card/card';
-import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
+import { IntCarpeta, MonCarpeta } from '#@/lib/types/demandados';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
+import { getConsultaNumeroRadicion } from '#@/lib/RamaJudicial';
+import { intProceso } from '#@/lib/types/procesos';
+import box from '#@/styles/scss/box.module.scss';
+import { Name } from '#@/components/Headings/serverSideName';
+import { ProcesoCard } from '#@/components/card/ProcesosCard';
+import { Accordion }from '#@/components/Accordion';
 
-async function Name(
+function DemandadoNameBadge(
   {
-    llaveProceso
-  }: { llaveProceso: string }
+    carpeta,
+    proceso
+  }: {
+  carpeta: MonCarpeta;
+  proceso?: intProceso;
+}
 ) {
-  const proceso = await getCarpetasByllaveProceso(
-    {
-      llaveProceso: llaveProceso
-    }
+  const {
+    llaveProceso, id
+  } = carpeta;
+
+  if ( proceso ) {
+    return (
+      <Fragment key={proceso
+        ? proceso.idProceso
+        : id}>
+        <Name llaveProceso={ llaveProceso } />
+        <Accordion>
+
+          <p className={typography.bodySmall}>{proceso.despacho}</p>
+          <ProcesoCard proceso={ proceso } />
+          <CarpetaCard carpeta={ carpeta }>
+            <span className='material-symbols-outlined'>star</span>
+          </CarpetaCard>
+        </Accordion>
+      </Fragment>
+    );
+  }
+
+  return (
+    <Fragment key={id}>
+      <Name llaveProceso={llaveProceso} />
+      <Accordion>
+        <CarpetaCard carpeta={carpeta}>
+          <span className='material-symbols-outlined'>star</span>
+        </CarpetaCard>
+      </Accordion>
+    </Fragment>
   );
-
-  const nombre = proceso
-    .map(
-      (
-        p
-      ) => {
-        return p.Deudor.Nombre;
-      }
-    )
-    .toString();
-
-  return <h3 className={typography.displayMedium}>{nombre}</h3>;
 }
 
-export default async function DefaultProcesosllaveProceso(
+export default async function PageProcesosllaveProceso(
   {
-    params: {
-      llaveProceso
-    }
+    params
   }: {
   params: { llaveProceso: string };
 }
 ) {
+  const Procesos = await getConsultaNumeroRadicion(
+    {
+      llaveProceso: params.llaveProceso
+    }
+  );
 
   const Carpetas = await getCarpetasByllaveProceso(
     {
-      llaveProceso: llaveProceso
+      llaveProceso: params.llaveProceso
     }
   );
 
@@ -52,17 +78,19 @@ export default async function DefaultProcesosllaveProceso(
         (
           carpeta, index, arr
         ) => {
-          const {
-            id
-          } = carpeta;
+          const proceso = Procesos.find(
+            (
+              prc
+            ) => {
+              return prc.idProceso === carpeta.idProceso;
+            }
+          );
 
-          return (
-            <Fragment key={ id }>
-              <Name llaveProceso={llaveProceso} />
-              <CarpetaCard Carpeta={carpeta}>
-                <span className='material-symbols-outlined'>star</span>
-              </CarpetaCard>
-            </Fragment> );
+          return (  <DemandadoNameBadge
+            carpeta={carpeta}
+            key={carpeta.id}
+            proceso={proceso}
+          /> );
         }
       )}
     </>

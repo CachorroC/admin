@@ -15,7 +15,9 @@ const NoteSliderContext = createContext<
 );
 
 export function NoteSliderProvider(
-  { children }: { children: ReactNode } 
+  {
+    children 
+  }: { children: ReactNode } 
 ) {
   const [
     noteSliderMap,

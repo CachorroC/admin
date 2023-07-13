@@ -1,37 +1,37 @@
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import { getActuacionesByidProceso } from '#@/lib/Actuaciones';
+import { getActuaciones } from '#@/lib/Actuaciones';
 import { ActuacionCard } from '#@/components/card/ActuacionesCard';
 import { Name } from '#@/components/Headings/serverSideName';
 
 export default async function Page(
-  { params }: {
+  {
+    params
+  }: {
   params: {
     llaveProceso: string;
     idProceso: number;
   };
-} 
+}
 ) {
-  const actuaciones = await getActuacionesByidProceso(
-    {
-      idProceso: params.idProceso
-    } 
+  const actuaciones = await getActuaciones(
+    params.idProceso,
+    1
   );
 
   return (
     <>
-      {actuaciones.acts
-        && actuaciones.acts.map(
-          (
-            actuacion, index, arr 
-          ) => {
-            return (
-              <ActuacionCard
-                Actuacion={actuacion}
-                key={index}
-              />
-            );
-          } 
-        )}
+      {actuaciones.map(
+        (
+          actuacion, index, arr
+        ) => {
+          return (
+            <ActuacionCard
+              Actuacion={actuacion}
+              key={actuacion.idRegActuacion}
+            />
+          );
+        }
+      )}
     </>
   );
 }

@@ -40,7 +40,9 @@ export const getProcesos = cache(
 
 export const getProcesosByllaveProceso = cache(
   async (
-    { llaveProceso }: { llaveProceso: string } 
+    {
+      llaveProceso 
+    }: { llaveProceso: string } 
   ) => {
     const collection = await Collection();
 
@@ -64,7 +66,9 @@ export const getProcesosByllaveProceso = cache(
 
 export const getProcesoById = cache(
   async (
-    { _id }: { _id: string } 
+    {
+      _id 
+    }: { _id: string } 
   ) => {
     const collection = await Collection();
 
@@ -87,7 +91,9 @@ export const getProcesoById = cache(
 );
 
 export async function postProceso(
-  { proceso }: { proceso: intDemandado } 
+  {
+    proceso 
+  }: { proceso: intDemandado } 
 ) {
   const collection = await Collection();
 

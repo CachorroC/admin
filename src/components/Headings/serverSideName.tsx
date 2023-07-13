@@ -5,7 +5,9 @@ import typeface from '#@/styles/fonts/typeface.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export async function Name(
-  { llaveProceso }: { llaveProceso: string } 
+  {
+    llaveProceso 
+  }: { llaveProceso: string } 
 ) {
   const proceso = await getCarpetasByllaveProceso(
     {

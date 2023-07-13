@@ -1,12 +1,34 @@
 'use client';
 import styles from './carpetas.module.scss';
-import type { Demanda, IntCarpeta, monCarpeta } from '#@/lib/types/demandados';
+import type { Demanda, IntCarpeta, MonCarpeta } from '#@/lib/types/demandados';
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 import type { Route } from 'next';
 import { fixFechas } from '#@/lib/fix';
 import { Loader } from '#@/components/Loader';
 import { ReactNode, useState, useEffect, Fragment } from 'react';
+import { Accordion } from '#@/components/Accordion';
+import { Notificaciones } from '#@/lib/types/demandados';
+
+const NotificacionesContainer = (
+  {
+    notificaciones
+  }: { notificaciones: Notificaciones }
+) => {
+  const {
+    AutoNotificado, Certimail, Fisico, Tipo
+  } = notificaciones;
+
+  return (
+    <Accordion>
+      <div>
+        <p>{fixFechas(
+          AutoNotificado
+        )}</p>
+      </div>
+    </Accordion>
+  );
+};
 
 export const DemandaContainer = (
   {
@@ -54,10 +76,10 @@ export const DemandaContainer = (
 
 export const CarpetaCard = (
   {
-    Carpeta,
+    carpeta,
     children
   }: {
-  Carpeta: monCarpeta;
+  carpeta: MonCarpeta;
   children: ReactNode;
 }
 ) => {
@@ -69,8 +91,8 @@ export const CarpetaCard = (
   );
 
   const {
-    llaveProceso, idProceso, Deudor, id, Demanda
-  } = Carpeta;
+    llaveProceso, idProceso, Deudor, id, Demanda, ultimaActuacion, Codeudor, Carpeta, EtapaProcesal, Notificaciones,
+  } = carpeta;
 
   const {
     Nombre, Tel, Direccion, Email
@@ -115,7 +137,9 @@ export const CarpetaCard = (
                 </span>
                 <span className={styles.tooltiptext}>Abrir</span>
               </Link>
-              {children}
+              <Accordion>
+                {children}
+              </Accordion>
               {Tel && Tel.Celular && (
                 <Link
                   className={styles.button}
@@ -135,7 +159,8 @@ export const CarpetaCard = (
                   </span>
                   <span className={styles.tooltiptext}>Email</span>
                 </Link>
-              )}
+              ) }
+              {Notificaciones && ( <NotificacionesContainer notificaciones={ Notificaciones } /> )}
               {Tel && Tel.Fijo && (
                 <Link
                   className={styles.button}
@@ -145,7 +170,8 @@ export const CarpetaCard = (
                   </span>
                   <span className={styles.tooltiptext}>Numero Fijo</span>
                 </Link>
-              )}
+              ) }
+
             </div>
           </div>
         </div>

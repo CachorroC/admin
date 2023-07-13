@@ -12,7 +12,9 @@ import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { AccordionRow } from '#@/components/nota/accordion';
 
 export const NotasList = (
-  { notas }: { notas: monNota[] } 
+  {
+    notas 
+  }: { notas: monNota[] } 
 ) => {
   const linkRef = useRef<Map<any, any>>();
 
@@ -188,7 +190,9 @@ export const NotaFRef = forwardRef(
 );
 
 export function Form(
-  { notas }: { notas: monNota[] } 
+  {
+    notas 
+  }: { notas: monNota[] } 
 ) {
   return (
     <form>

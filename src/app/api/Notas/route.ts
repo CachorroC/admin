@@ -51,7 +51,9 @@ const Transform = cache(
 export async function GET(
   Request: NextRequest 
 ) {
-  const { searchParams } = new URL(
+  const {
+    searchParams 
+  } = new URL(
     Request.url 
   );
   const client = await clientPromise;
@@ -182,7 +184,9 @@ export async function PUT(
   const collection = await Collection();
   const updatedNote = await Request.json();
 
-  const { searchParams } = new URL(
+  const {
+    searchParams 
+  } = new URL(
     Request.url 
   );
 
@@ -244,7 +248,9 @@ export async function DELETE(
 ) {
   const notas = await Collection();
 
-  const { searchParams } = new URL(
+  const {
+    searchParams 
+  } = new URL(
     Request.url 
   );
 
