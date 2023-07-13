@@ -6,16 +6,23 @@ import typeface from '#@/components/typográficos/typeface.module.scss';
 import note from '#@/components/nota/note.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export function AccordionRow({
-  tarea,
-  dueDate,
-  isDone
-}: {
+export function AccordionRow(
+  {
+    tarea,
+    dueDate,
+    isDone
+  }: {
   tarea: string;
   dueDate: string;
   isDone: boolean;
-}) {
-  const [isActive, setIsActive] = useState(false);
+} 
+) {
+  const [
+    isActive,
+    setIsActive
+  ] = useState(
+    false 
+  );
 
   return (
     <div className={accordion.accordion}>
@@ -23,7 +30,9 @@ export function AccordionRow({
         <button
           className={accordion.title}
           onClick={() => {
-            return setIsActive(!isActive);
+            return setIsActive(
+              !isActive 
+            );
           }}>
           <span className='material-symbols-outlined'>
             {isActive
@@ -33,19 +42,13 @@ export function AccordionRow({
         </button>
         {isActive && (
           <div className={accordion.content}>
-            <h1
-              className={typography.titleMedium}>
-              {tarea}
-            </h1>
-            <p
-              className={
-                isDone
-                  ? note.innactive
-                  : note.active
-              }>
-              {`fecha de entrega: ${fixFechas(
-                dueDate.toString()
-              )}`}
+            <h1 className={typography.titleMedium}>{tarea}</h1>
+            <p className={isDone
+              ? note.innactive
+              : note.active}>
+              {`fecha de entrega: ${ fixFechas(
+                dueDate.toString() 
+              ) }`}
             </p>
             <span
               className={`${

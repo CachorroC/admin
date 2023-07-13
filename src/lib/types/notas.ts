@@ -11,8 +11,7 @@ export interface Tarea {
   dueDate: string;
 }
 
-export interface intNota
-  extends intNotaFormValues {
+export interface intNota extends intNotaFormValues {
   llaveProceso: string;
   pathname: string;
   fecha: string;
@@ -24,32 +23,48 @@ export interface monNota extends intNota {
 
 export class ConvertNotas {
   public static toMonNota(
-    json: string
+    json: string 
   ): monNota[] {
-    return JSON.parse(json);
+    return JSON.parse(
+      json 
+    );
   }
   public static monNotaToJson(
-    value: monNota[]
+    value: monNota[] 
   ): string {
-    return JSON.stringify(value);
+    return JSON.stringify(
+      value 
+    );
   }
 }
 
 export class ConvertNota {
-  public static toMonNota(json: string): monNota {
-    return JSON.parse(json);
+  public static toMonNota(
+    json: string 
+  ): monNota {
+    return JSON.parse(
+      json 
+    );
   }
   public static monNotaToJson(
-    value: monNota
+    value: monNota 
   ): string {
-    return JSON.stringify(value);
+    return JSON.stringify(
+      value 
+    );
   }
-  public static toTarea(json: string): Tarea {
-    return JSON.parse(json);
+  public static toTarea(
+    json: string 
+  ): Tarea {
+    return JSON.parse(
+      json 
+    );
   }
   public static tareaToJson(
-    value: Tarea
+    value: Tarea 
   ): string {
-    return JSON.stringify(value);
+    return JSON.stringify(
+      value 
+    );
   }
 }

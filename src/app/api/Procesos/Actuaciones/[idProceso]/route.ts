@@ -1,12 +1,6 @@
 import 'server-only';
-import {
-  NextRequest,
-  NextResponse
-} from 'next/server';
-import {
-  IntActuaciones,
-  intConsultaActuaciones
-} from '#@/lib/types/procesos';
+import { NextRequest, NextResponse } from 'next/server';
+import { IntActuaciones, intConsultaActuaciones } from '#@/lib/types/procesos';
 
 export async function GET(
   Request: NextRequest,
@@ -14,110 +8,126 @@ export async function GET(
 ) {
   try {
     const req = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${params.idProceso}`,
-      { mode: 'cors' }
+      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ params.idProceso }`,
+      {
+        mode: 'cors' 
+      }
     );
 
-    if (!req.ok) {
+    if ( !req.ok ) {
       const text = await Request.text();
 
       const Response: IntActuaciones = {
         idProceso: params.idProceso,
-        text: text
-          ? JSON.parse(text)
+        text     : text
+          ? JSON.parse(
+            text 
+          )
           : {
               statusCode: req.status,
-              message: req.statusText
+              message   : req.statusText
             }
       };
 
       return new NextResponse(
-        JSON.stringify(Response),
+        JSON.stringify(
+          Response 
+        ),
         {
-          status: 200,
+          status : 200,
           headers: {
             'content-type': 'application/json'
           }
-        }
+        } 
       );
     }
+    const res = ( await req.json() ) as intConsultaActuaciones;
 
-    const res =
-      (await req.json()) as intConsultaActuaciones;
-
-    if (res.actuaciones) {
+    if ( res.actuaciones ) {
       const Response: IntActuaciones = {
         idProceso: params.idProceso,
-        text: {
+        text     : {
           statusCode: req.status,
-          message: req.statusText
+          message   : req.statusText
         },
         acts: res.actuaciones
       };
 
       return new NextResponse(
-        JSON.stringify(Response),
+        JSON.stringify(
+          Response 
+        ),
         {
-          status: 200,
+          status : 200,
           headers: {
             'content-type': 'application/json'
           }
-        }
+        } 
       );
     }
     const text = await req.text();
 
     const Response: IntActuaciones = {
       idProceso: params.idProceso,
-      text: JSON.parse(text)
+      text     : JSON.parse(
+        text 
+      )
     };
 
     return new NextResponse(
-      JSON.stringify(Response),
+      JSON.stringify(
+        Response 
+      ),
       {
-        status: 200,
+        status : 200,
         headers: {
           'content-type': 'application/json'
         }
-      }
+      } 
     );
   } catch {
-    (error: unknown | any) => {
+    (
+      error: unknown | any 
+    ) => {
       const Response: IntActuaciones = {
         idProceso: params.idProceso,
-        text: {
-          message: error.message ?? 'error',
+        text     : {
+          message   : error.message ?? 'error',
           statusCode: 0
         }
       };
 
       return new NextResponse(
-        JSON.stringify(Response),
+        JSON.stringify(
+          Response 
+        ),
         {
-          status: 200,
+          status : 200,
           headers: {
             'content-type': 'application/json'
           }
-        }
+        } 
       );
     };
   }
 
   const Response: IntActuaciones = {
     idProceso: params.idProceso,
-    text: {
-      message: 'error final',
+    text     : {
+      message   : 'error final',
       statusCode: 0
     }
   };
 
   return new NextResponse(
-    JSON.stringify(Response),
+    JSON.stringify(
+      Response 
+    ),
     {
-      status: 200,
+      status : 200,
       headers: {
         'content-type': 'application/json'
       }
-    }
+    } 
   );
 }

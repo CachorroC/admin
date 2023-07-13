@@ -1,26 +1,18 @@
 'use client';
 import styles from './carpetas.module.scss';
-import type {
-  Demanda,
-  monCarpetaDemandado
-} from '#@/lib/types/demandados';
+import type { Demanda, IntCarpeta, monCarpeta } from '#@/lib/types/demandados';
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 import type { Route } from 'next';
 import { fixFechas } from '#@/lib/fix';
 import { Loader } from '#@/components/Loader';
-import {
-  ReactNode,
-  useState,
-  useEffect,
-  Fragment
-} from 'react';
+import { ReactNode, useState, useEffect, Fragment } from 'react';
 
-export const DemandaContainer = ({
-  demanda
-}: {
-  demanda: Demanda;
-}) => {
+export const DemandaContainer = (
+  {
+    demanda
+  }: { demanda: Demanda }
+) => {
   const {
     Departamento,
     Municipio,
@@ -36,140 +28,122 @@ export const DemandaContainer = ({
 
   return (
     <div className={styles.section}>
-      <h1 className={typography.headlineMedium}>
-        {Radicado}
-      </h1>
+      <h1 className={typography.headlineMedium}>{Radicado}</h1>
       <h2
         className={
           typography.titleMedium
-        }>{`${Departamento}: ${Municipio}`}</h2>
+        }>{`${ Departamento }: ${ Municipio }`}</h2>
       {VencimientoPagare && (
-        <p className={typography.labelMedium}>
-          {fixFechas(VencimientoPagare)}
-        </p>
+        <p className={typography.labelMedium}>{fixFechas(
+          VencimientoPagare
+        )}</p>
       )}
       {EntregadeGarantiasAbogado && (
         <p className={typography.labelSmall}>
-          {fixFechas(EntregadeGarantiasAbogado)}
+          {fixFechas(
+            EntregadeGarantiasAbogado
+          )}
         </p>
       )}
       {CapitalAdeudado && (
-        <p className={typography.labelSmall}>
-          {CapitalAdeudado}
-        </p>
+        <p className={typography.labelSmall}>{CapitalAdeudado}</p>
       )}
     </div>
   );
 };
 
-export const CarpetaCard = ({
-  Carpeta,
-  children
-}: {
-  Carpeta: monCarpetaDemandado;
+export const CarpetaCard = (
+  {
+    Carpeta,
+    children
+  }: {
+  Carpeta: monCarpeta;
   children: ReactNode;
-}) => {
-  const [didMount, setDidMount] = useState(false);
+}
+) => {
+  const [
+    didMount,
+    setDidMount
+  ] = useState(
+    false
+  );
 
   const {
-    llaveProceso,
-    idProceso,
-    Deudor,
-    _id,
-    Demanda
+    llaveProceso, idProceso, Deudor, id, Demanda
   } = Carpeta;
 
-  const { Nombre, Tel, Direccion, Email } =
-    Deudor;
+  const {
+    Nombre, Tel, Direccion, Email
+  } = Deudor;
   const path = '/Procesos';
 
   const href = (
     llaveProceso
       ? idProceso
-        ? `${path}/${llaveProceso}/${idProceso}`
-        : `${path}/${llaveProceso}`
-      : `${path}`
+        ? `${ path }/${ llaveProceso }/${ idProceso }`
+        : `${ path }/${ llaveProceso }`
+      : `${ path }`
   ) as Route;
 
-  useEffect(() => {
-    setDidMount(true);
-  }, []);
+  useEffect(
+    () => {
+      setDidMount(
+        true
+      );
+    },
+    []
+  );
 
-  if (didMount) {
+  if ( didMount ) {
     return (
-      <Fragment key={_id}>
+      <Fragment key={id}>
         <DemandaContainer demanda={Demanda} />
         <div
           className={styles.container}
-          key={_id}>
+          key={id}>
           <div className={styles.cardInactive}>
-            <h1
-              className={`${typography.titleMedium} ${styles.title}`}>
+            <h1 className={`${ typography.titleMedium } ${ styles.title }`}>
               {Nombre}
             </h1>
-            <p className={styles.content}>
-              {Direccion ?? 'sin direccion'}
-            </p>
+            <p className={styles.content}>{Direccion ?? 'sin direccion'}</p>
             <div className={styles.links}>
               <Link
                 className={styles.button}
                 href={href}>
-                <span
-                  className={`material-symbols-outlined ${styles.icon}`}>
+                <span className={`material-symbols-outlined ${ styles.icon }`}>
                   folder_open
                 </span>
-                <span
-                  className={styles.tooltiptext}>
-                  Abrir
-                </span>
+                <span className={styles.tooltiptext}>Abrir</span>
               </Link>
               {children}
               {Tel && Tel.Celular && (
                 <Link
                   className={styles.button}
-                  href={`tel:${Tel.Celular}`}>
-                  <span
-                    className={`material-symbols-outlined ${styles.icon}`}>
+                  href={`tel:${ Tel.Celular }`}>
+                  <span className={`material-symbols-outlined ${ styles.icon }`}>
                     phone_iphone
                   </span>
-                  <span
-                    className={
-                      styles.tooltiptext
-                    }>
-                    Numero Celular
-                  </span>
+                  <span className={styles.tooltiptext}>Numero Celular</span>
                 </Link>
               )}
               {Email && (
                 <Link
                   className={styles.button}
-                  href={`mailto:${Email}`}>
-                  <span
-                    className={`material-symbols-outlined ${styles.icon}`}>
+                  href={`mailto:${ Email }`}>
+                  <span className={`material-symbols-outlined ${ styles.icon }`}>
                     forward_to_inbox
                   </span>
-                  <span
-                    className={
-                      styles.tooltiptext
-                    }>
-                    Email
-                  </span>
+                  <span className={styles.tooltiptext}>Email</span>
                 </Link>
               )}
               {Tel && Tel.Fijo && (
                 <Link
                   className={styles.button}
-                  href={`tel:${Tel.Fijo}`}>
-                  <span
-                    className={`material-symbols-outlined ${styles.icon}`}>
+                  href={`tel:${ Tel.Fijo }`}>
+                  <span className={`material-symbols-outlined ${ styles.icon }`}>
                     call
                   </span>
-                  <span
-                    className={
-                      styles.tooltiptext
-                    }>
-                    Numero Fijo
-                  </span>
+                  <span className={styles.tooltiptext}>Numero Fijo</span>
                 </Link>
               )}
             </div>

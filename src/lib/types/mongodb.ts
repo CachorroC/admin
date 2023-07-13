@@ -9,8 +9,7 @@ export interface intDemandado {
   idProceso: number;
 }
 
-export interface monDemandado
-  extends WithId<Document> {
+export interface monDemandado extends WithId<Document> {
   llaveProceso: string;
   sujetosProcesales: string;
   idProceso: number;

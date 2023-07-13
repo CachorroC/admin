@@ -1,29 +1,21 @@
-@import url(./theme/lightTokens.css)
-(prefers-color-scheme: light);
-@import url(./theme/darkTokens.css)
-(prefers-color-scheme: dark);
+@import url(./theme/lightTokens.css) (prefers-color-scheme: light);
+@import url(./theme/darkTokens.css) (prefers-color-scheme: dark);
 @import url(./theme/colors.module.css);
 @import url(./theme/tokens.css);
 :root {
-  --md-sys-typescale-display-large-font-family-name: var(
-    --font-poiret
-  );
+  --md-sys-typescale-display-large-font-family-name: var(--font-poiret);
   --md-sys-typescale-display-large-font-family-style: Regular;
   --md-sys-typescale-display-large-font-weight: 400px;
   --md-sys-typescale-display-large-font-size: 57px;
   --md-sys-typescale-display-large-line-height: 64px;
   --md-sys-typescale-display-large-letter-spacing: -0.25px; /* display - medium */
-  --md-sys-typescale-display-medium-font-family-name: var(
-    --font-poiret
-  );
+  --md-sys-typescale-display-medium-font-family-name: var(--font-poiret);
   --md-sys-typescale-display-medium-font-family-style: Regular;
   --md-sys-typescale-display-medium-font-weight: 400px;
   --md-sys-typescale-display-medium-font-size: 45px;
   --md-sys-typescale-display-medium-line-height: 52px;
   --md-sys-typescale-display-medium-letter-spacing: 0px; /* display - small */
-  --md-sys-typescale-display-small-font-family-name: var(
-    --font-poiret
-  );
+  --md-sys-typescale-display-small-font-family-name: var(--font-poiret);
   --md-sys-typescale-display-small-font-family-style: Regular;
   --md-sys-typescale-display-small-font-weight: 400px;
   --md-sys-typescale-display-small-font-size: 36px;
@@ -108,21 +100,15 @@
   --primary-fixed: var(--pal-primary90);
   --on-primary-fixed: var(--pal-primary10);
   --primary-fixed-dim: var(--pal-primary80);
-  --on-primary-fixed-variant: var(
-    --pal-primary30
-  );
+  --on-primary-fixed-variant: var(--pal-primary30);
   --secondary: var(--pal-secondary40);
   --on-secondary: var(--pal-neutral100);
   --secondary-container: var(--pal-secondary90);
-  --on-secondary-container: var(
-    --pal-secondary10
-  );
+  --on-secondary-container: var(--pal-secondary10);
   --secondary-fixed: var(--pal-secondary90);
   --on-secondary-fixed: var(--pal-secondary10);
   --secondary-fixed-dim: var(--pal-secondary80);
-  --on-secondary-fixed-variant: var(
-    --pal-secondary30
-  );
+  --on-secondary-fixed-variant: var(--pal-secondary30);
   --tertiary: var(--pal-tertiary40);
   --on-tertiary: var(--pal-neutral100);
   --tertiary-container: var(--pal-tertiary90);
@@ -130,9 +116,7 @@
   --tertiary-fixed: var(--pal-tertiary90);
   --on-tertiary-fixed: var(--pal-tertiary10);
   --tertiary-fixed-dim: var(--pal-tertiary80);
-  --on-tertiary-fixed-variant: var(
-    --pal-tertiary30
-  );
+  --on-tertiary-fixed-variant: var(--pal-tertiary30);
   --error: var(--pal-error40);
   --error-container: var(--pal-error90);
   --on-error: var(--pal-neutral100);
@@ -150,18 +134,12 @@
   --surface: var(--pal-neutral98);
   --on-surface: var(--pal-neutral10);
   --surface-variant: var(--pal-neutral-variant90);
-  --on-surface-variant: var(
-    --pal-neutral-variant30
-  );
-  --surface-container-highest: var(
-    --pal-neutral90
-  );
+  --on-surface-variant: var(--pal-neutral-variant30);
+  --surface-container-highest: var(--pal-neutral90);
   --surface-container-high: var(--pal-neutral92);
   --surface-container: var(--pal-neutral94);
   --surface-container-low: var(--pal-neutral96);
-  --surface-container-lowest: var(
-    --pal-neutral100
-  );
+  --surface-container-lowest: var(--pal-neutral100);
   --surface-dim: var(--pal-neutral87);
   --surface-bright: var(--pal-neutral98);
   --on-nav-background: var(--pal-primary12);
@@ -176,33 +154,23 @@
     --primary-fixed: var(--pal-primary90);
     --on-primary-fixed: var(--pal-primary10);
     --primary-fixed-dim: var(--pal-primary80);
-    --on-primary-fixed-variant: var(
-      --pal-primary30
-    );
+    --on-primary-fixed-variant: var(--pal-primary30);
     --secondary: var(--pal-secondary80);
     --on-secondary: var(--pal-secondary20);
     --secondary-container: var(--pal-secondary30);
-    --on-secondary-container: var(
-      --pal-secondary90
-    );
+    --on-secondary-container: var(--pal-secondary90);
     --secondary-fixed: var(--pal-secondary90);
     --on-secondary-fixed: var(--pal-secondary10);
     --secondary-fixed-dim: var(--pal-secondary80);
-    --on-secondary-fixed-variant: var(
-      --pal-secondary30
-    );
+    --on-secondary-fixed-variant: var(--pal-secondary30);
     --tertiary: var(--pal-tertiary80);
     --on-tertiary: var(--pal-tertiary20);
     --tertiary-container: var(--pal-tertiary30);
-    --on-tertiary-container: var(
-      --pal-tertiary90
-    );
+    --on-tertiary-container: var(--pal-tertiary90);
     --tertiary-fixed: var(--pal-tertiary90);
     --on-tertiary-fixed: var(--pal-tertiary10);
     --tertiary-fixed-dim: var(--pal-tertiary80);
-    --on-tertiary-fixed-variant: var(
-      --pal-tertiary30
-    );
+    --on-tertiary-fixed-variant: var(--pal-tertiary30);
     --error: var(--pal-error80);
     --error-container: var(--pal-error30);
     --on-error: var(--pal-error20);
@@ -215,29 +183,17 @@
     --inverse-primary: var(--pal-primary40);
     --shadow: var(--pal-neutral0);
     --surface-tint: var(--pal-primary80);
-    --outline-variant: var(
-      --pal-neutral-variant30
-    );
+    --outline-variant: var(--pal-neutral-variant30);
     --scrim: var(--pal-neutral0);
     --surface: var(--pal-neutral6);
     --on-surface: var(--pal-neutral80);
-    --surface-variant: var(
-      --pal-neutral-variant30
-    );
-    --on-surface-variant: var(
-      --pal-neutral-variant80
-    );
-    --surface-container-highest: var(
-      --pal-neutral22
-    );
-    --surface-container-high: var(
-      --pal-neutral17
-    );
+    --surface-variant: var(--pal-neutral-variant30);
+    --on-surface-variant: var(--pal-neutral-variant80);
+    --surface-container-highest: var(--pal-neutral22);
+    --surface-container-high: var(--pal-neutral17);
     --surface-container: var(--pal-neutral12);
     --surface-container-low: var(--pal-neutral10);
-    --surface-container-lowest: var(
-      --pal-neutral4
-    );
+    --surface-container-lowest: var(--pal-neutral4);
     --surface-dim: var(--pal-neutral6);
     --surface-bright: var(--pal-neutral24);
     --on-nav-background: var(--pal-primary94);
@@ -262,10 +218,7 @@
 }
 :root,
 html {
-  font-size: calc(
-    14px + (22 - 14) *
-      ((100vw - 600px) / (1920 - 600))
-  );
+  font-size: calc(14px + (22 - 14) * ((100vw - 600px) / (1920 - 600)));
 }
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';

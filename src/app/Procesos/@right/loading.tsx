@@ -11,7 +11,7 @@ export default function Loading() {
     <>
       <NewNota
         llaveProceso={'Procesos'}
-        uri={`${getBaseUrl()}`}
+        uri={`${ getBaseUrl() }`}
       />
       <Loader />
       <Loader />

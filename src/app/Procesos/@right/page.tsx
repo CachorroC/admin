@@ -5,20 +5,22 @@ import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { getNotas } from '#@/lib/notas';
 import { NotasList } from '#@/components/card/NotasCard';
 import { fetchFechas } from '#@/lib/Actuaciones';
-import { monCarpetaDemandado } from '#@/lib/types/demandados';
+import { IntCarpeta } from '#@/lib/types/demandados';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { Suspense } from 'react';
 import { Loader } from '#@/components/Loader';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 
-async function Fechs({
-  procesos
-}: {
-  procesos: monCarpetaDemandado[];
-}) {
-  const fechas = await fetchFechas({
-    procesos: procesos
-  });
+async function Fechs(
+  {
+    procesos 
+  }: { procesos: IntCarpeta[] }
+) {
+  const fechas = await fetchFechas(
+    {
+      procesos: procesos
+    }
+  );
 
   return (
     <SearchOutputList
@@ -30,11 +32,9 @@ async function Fechs({
 
 export default async function PageProcesosRight() {
   const req = await fetch(
-    `${getBaseUrl()}/api/Carpetas`
+    `${ getBaseUrl() }/api/Carpetas`
   );
-
-  const carpetas =
-    (await req.json()) as monCarpetaDemandado[];
+  const carpetas = ( await req.json() ) as IntCarpeta[];
   const notas = await getNotas();
   const procesos = await getCarpetas();
 
@@ -48,7 +48,7 @@ export default async function PageProcesosRight() {
       </Suspense>
       <NewNota
         llaveProceso={'Procesos'}
-        uri={`${getBaseUrl()}`}
+        uri={`${ getBaseUrl() }`}
       />
       <NotasList notas={notas} />
     </>

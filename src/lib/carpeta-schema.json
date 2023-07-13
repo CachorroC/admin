@@ -1,0 +1,623 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/IntCarpeta",
+  "definitions": {
+    "IntCarpeta": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/ObjectId"
+        },
+        "Avaluo": {
+          "$ref": "#/definitions/Avaluo"
+        },
+        "Carpeta": {
+          "type": "number"
+        },
+        "Demanda": {
+          "$ref": "#/definitions/Demanda"
+        },
+        "Deudor": {
+          "$ref": "#/definitions/Deudor"
+        },
+        "EtapaProcesal": {
+          "$ref": "#/definitions/EtapaProcesal"
+        },
+        "Liquidacion": {
+          "$ref": "#/definitions/Liquidacion"
+        },
+        "MedidasCautelares": {
+          "$ref": "#/definitions/MedidasCautelares"
+        },
+        "Notificaciones": {
+          "$ref": "#/definitions/Notificaciones"
+        },
+        "SuspencionProceso": {
+          "$ref": "#/definitions/SuspencionProceso"
+        },
+        "Terminacion": {
+          "$ref": "#/definitions/Terminacion"
+        },
+        "idProceso": {
+          "type": "number"
+        },
+        "llaveProceso": {
+          "type": "string"
+        },
+        "ultimaActuacion": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/intActuacion"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "Codeudor": {
+          "$ref": "#/definitions/Codeudor"
+        }
+      },
+      "required": [
+        "Demanda",
+        "Deudor",
+        "idProceso",
+        "llaveProceso",
+        "ultimaActuacion"
+      ],
+      "additionalProperties": false
+    },
+    "ObjectId": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { }
+    },
+    "Avaluo": {
+      "type": "object",
+      "properties": {
+        "Adjudicacion": {
+          "$ref": "#/definitions/Adjudicacion"
+        },
+        "Remate": {
+          "$ref": "#/definitions/Adjudicacion"
+        },
+        "Valor": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Adjudicacion": {
+      "type": "object",
+      "properties": {
+        "Fecha": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Fecha"
+      ],
+      "additionalProperties": false
+    },
+    "Demanda": {
+      "type": "object",
+      "properties": {
+        "Departamento": {
+          "$ref": "#/definitions/Departamento"
+        },
+        "Municipio": {
+          "type": "string"
+        },
+        "VencimientoPagare": {
+          "type": "string"
+        },
+        "EntregadeGarantiasAbogado": {
+          "type": "string"
+        },
+        "Radicado": {
+          "type": "string"
+        },
+        "CapitalAdeudado": {
+          "type": "string"
+        },
+        "Proceso": {
+          "$ref": "#/definitions/Proceso"
+        },
+        "Ubicacion": {
+          "$ref": "#/definitions/Ubicacion"
+        },
+        "Juzgado": {
+          "$ref": "#/definitions/Juzgado"
+        },
+        "Obligacion": {
+          "$ref": "#/definitions/Obligacion"
+        }
+      },
+      "required": [
+        "Departamento",
+        "Municipio",
+        "Radicado",
+        "Proceso",
+        "Ubicacion"
+      ],
+      "additionalProperties": false
+    },
+    "Departamento": {
+      "type": "string",
+      "const": "CUNDINAMARCA"
+    },
+    "Proceso": {
+      "type": "object",
+      "properties": {
+        "Tipo": {
+          "$ref": "#/definitions/Tipo"
+        }
+      },
+      "required": [
+        "Tipo"
+      ],
+      "additionalProperties": false
+    },
+    "Tipo": {
+      "type": "string",
+      "enum": [
+        "PRENDARIO",
+        "SINGULAR",
+        "HIPOTECARIO"
+      ]
+    },
+    "Ubicacion": {
+      "type": "object",
+      "properties": {
+        "Juzgado": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Juzgado"
+      ],
+      "additionalProperties": false
+    },
+    "Juzgado": {
+      "type": "object",
+      "properties": {
+        "Origen": {
+          "type": "string"
+        },
+        "Ejecucion": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Origen"
+      ],
+      "additionalProperties": false
+    },
+    "Obligacion": {
+      "type": "object",
+      "properties": {
+        "1": {
+          "type": [
+            "number",
+            "string"
+          ]
+        },
+        "2": {
+          "type": [
+            "number",
+            "string"
+          ]
+        }
+      },
+      "required": [
+        "1",
+        "2"
+      ],
+      "additionalProperties": false
+    },
+    "Deudor": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "type": "number"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Nombre": {
+          "type": "string"
+        },
+        "Direccion": {
+          "type": "string"
+        },
+        "Tel": {
+          "$ref": "#/definitions/Tel"
+        }
+      },
+      "required": [
+        "Nombre"
+      ],
+      "additionalProperties": false
+    },
+    "Tel": {
+      "type": "object",
+      "properties": {
+        "Fijo": {
+          "type": "number"
+        },
+        "Celular": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "Fijo",
+        "Celular"
+      ],
+      "additionalProperties": false
+    },
+    "EtapaProcesal": {
+      "type": "object",
+      "properties": {
+        "Etapa": {
+          "type": "string"
+        },
+        "Fecha": {
+          "$ref": "#/definitions/EtapaProcesalFecha"
+        }
+      },
+      "required": [
+        "Etapa"
+      ],
+      "additionalProperties": false
+    },
+    "EtapaProcesalFecha": {
+      "type": "object",
+      "properties": {
+        "MandamientodePago": {
+          "type": "string"
+        },
+        "PresentacionDemanda": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Liquidacion": {
+      "type": "object",
+      "properties": {
+        "Costas": {
+          "$ref": "#/definitions/Costas"
+        },
+        "Fecha": {
+          "$ref": "#/definitions/LiquidacionFecha"
+        },
+        "ValorCredito": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Fecha"
+      ],
+      "additionalProperties": false
+    },
+    "Costas": {
+      "type": "object",
+      "properties": {
+        "FechaAprobacion": {
+          "type": "string"
+        },
+        "Valor": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "FechaAprobacion"
+      ],
+      "additionalProperties": false
+    },
+    "LiquidacionFecha": {
+      "type": "object",
+      "properties": {
+        "Aprobacion": {
+          "type": "string"
+        },
+        "Presentacion": {
+          "type": "string"
+        },
+        "Solicitud": {
+          "type": "string"
+        },
+        "Sentencia": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MedidasCautelares": {
+      "type": "object",
+      "properties": {
+        "Bienes": {
+          "type": "string"
+        },
+        "MedidaSolicitada": {
+          "type": "string"
+        },
+        "Extra": {
+          "type": "string"
+        },
+        "PlacaoNumeroMatricula": {
+          "type": "string"
+        },
+        "DescripcionMedida": {
+          "type": "string"
+        },
+        "Fecha": {
+          "$ref": "#/definitions/MedidasCautelaresFecha"
+        },
+        "FechaRadicaccion": {
+          "type": "string"
+        },
+        "Oficios": {
+          "$ref": "#/definitions/Oficios"
+        },
+        "RespuestaEmbargo": {
+          "type": "boolean"
+        },
+        "FechaOrdena": {
+          "type": "string"
+        },
+        "Oficio": {
+          "$ref": "#/definitions/Oficio"
+        }
+      },
+      "required": [
+        "Bienes",
+        "MedidaSolicitada"
+      ],
+      "additionalProperties": false
+    },
+    "MedidasCautelaresFecha": {
+      "type": "object",
+      "properties": {
+        "Captura": {
+          "type": "number"
+        },
+        "Secuestro": {
+          "type": "string"
+        },
+        "DecretoSecuestrooCaptura": {
+          "type": "string"
+        },
+        "SolicitudCapturaoSecuestro": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Oficios": {
+      "type": "object",
+      "properties": {
+        "FechaRetiro": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "FechaRetiro"
+      ],
+      "additionalProperties": false
+    },
+    "Oficio": {
+      "type": "object",
+      "properties": {
+        "Numero": {
+          "type": "number"
+        },
+        "Fecha": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Numero",
+        "Fecha"
+      ],
+      "additionalProperties": false
+    },
+    "Notificaciones": {
+      "type": "object",
+      "properties": {
+        "291": {
+          "$ref": "#/definitions/The291"
+        },
+        "292": {
+          "$ref": "#/definitions/The291"
+        },
+        "AutoNotificado": {
+          "type": "string"
+        },
+        "Certimail": {
+          "type": "boolean"
+        },
+        "Fisico": {
+          "type": "boolean"
+        },
+        "Tipo": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "291"
+      ],
+      "additionalProperties": false
+    },
+    "The291": {
+      "type": "object",
+      "properties": {
+        "AportaNotificacion": {
+          "type": "string"
+        },
+        "Recibo": {
+          "type": "string"
+        },
+        "Resultado": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SuspencionProceso": {
+      "type": "object",
+      "properties": {
+        "TerminoSuspencion": {
+          "type": "string"
+        },
+        "Fecha": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "TerminoSuspencion",
+        "Fecha"
+      ],
+      "additionalProperties": false
+    },
+    "Terminacion": {
+      "type": "object",
+      "properties": {
+        "Causal": {
+          "type": "string"
+        },
+        "Fecha": {
+          "$ref": "#/definitions/TerminacionFecha"
+        }
+      },
+      "required": [
+        "Causal",
+        "Fecha"
+      ],
+      "additionalProperties": false
+    },
+    "TerminacionFecha": {
+      "type": "object",
+      "properties": {
+        "AutoTerminacion": {
+          "type": "string"
+        },
+        "RadicacionMemorial": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "AutoTerminacion",
+        "RadicacionMemorial"
+      ],
+      "additionalProperties": false
+    },
+    "intActuacion": {
+      "type": "object",
+      "properties": {
+        "idRegActuacion": {
+          "type": "number"
+        },
+        "llaveProceso": {
+          "type": "string"
+        },
+        "consActuacion": {
+          "type": "number"
+        },
+        "fechaActuacion": {
+          "type": "string"
+        },
+        "actuacion": {
+          "type": "string"
+        },
+        "anotacion": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "fechaInicial": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "fechaFinal": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "fechaRegistro": {
+          "type": "string"
+        },
+        "codRegla": {
+          "type": "string"
+        },
+        "conDocumentos": {
+          "type": "boolean"
+        },
+        "cant": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "idRegActuacion",
+        "llaveProceso",
+        "consActuacion",
+        "fechaActuacion",
+        "actuacion",
+        "anotacion",
+        "fechaInicial",
+        "fechaFinal",
+        "fechaRegistro",
+        "codRegla",
+        "conDocumentos",
+        "cant"
+      ],
+      "additionalProperties": false
+    },
+    "Codeudor": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "Nombre": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "Direccion": {
+          "type": "string"
+        },
+        "Tel": {
+          "$ref": "#/definitions/Tel"
+        }
+      },
+      "required": [
+        "Id",
+        "Nombre"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

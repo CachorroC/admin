@@ -26,15 +26,11 @@
       backface-visibility: hidden;
     }
     .cardFront {
-      background-color: var(
-        --surface-container-highest
-      );
+      background-color: var(--surface-container-highest);
       color: var(--on-surface-variant);
     } /* Style the back side */
     .cardBack {
-      background-color: var(
-        --secondary-container
-      );
+      background-color: var(--secondary-container);
       color: var(--on-secondary-container);
       transform: rotateY(180deg);
     }

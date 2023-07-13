@@ -7,29 +7,31 @@ import InputSearchBar from '#@/components/search/InputSearchBar';
 import useMedia from './mediaQuery';
 import typeface from '#@/components/typográficos/typeface.module.scss';
 import SearchOutputListSkeleton from '../search/SearchProcesosOutputSkeleton';
-import {
-  BackwardsButton,
-  DrawerMenuButton,
-  ForwardButton,
-  HomeButton
-} from './Buttons';
+import { BackwardsButton,
+         DrawerMenuButton,
+         ForwardButton,
+         HomeButton } from './Buttons';
 import Title from '#@/components/Headings/title';
 import { ButtonSkeleton } from './ButtonSkeleton';
 
-export default function Drawer({
-  children
-}: {
-  children: ReactNode;
-}) {
-  const isDesktop = useMedia(2);
+export default function Drawer(
+  { children }: { children: ReactNode } 
+) {
+  const isDesktop = useMedia(
+    2 
+  );
 
-  const isMobile = useMedia(0);
+  const isMobile = useMedia(
+    0 
+  );
 
-  const [isNavOpen, setIsNavOpen] =
-    useNavigator();
+  const [
+    isNavOpen,
+    setIsNavOpen
+  ] = useNavigator();
 
-  if (isNavOpen) {
-    if (isMobile) {
+  if ( isNavOpen ) {
+    if ( isMobile ) {
       return (
         <nav className={navbar.drawer}>
           <Suspense fallback={<ButtonSkeleton />}>
@@ -50,9 +52,7 @@ export default function Drawer({
           <Suspense fallback={<ButtonSkeleton />}>
             <HomeButton />
           </Suspense>
-          <div className={navbar.sidenav}>
-            {children}
-          </div>
+          <div className={navbar.sidenav}>{children}</div>
         </nav>
       );
     }
@@ -68,9 +68,7 @@ export default function Drawer({
         <Suspense fallback={<ButtonSkeleton />}>
           <Title />
         </Suspense>
-        <div className={navbar.sidenav}>
-          {children}
-        </div>
+        <div className={navbar.sidenav}>{children}</div>
       </nav>
     );
   }

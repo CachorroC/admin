@@ -7,16 +7,14 @@ export default function NotFound() {
       <div
         className={layout.name}
         style={{
-          backgroundColor:
-            'var(--error-container)'
+          backgroundColor: 'var(--error-container)'
         }}>
         <Title helper='perdido' />
         <p
           style={{
             color: 'var(--on-error-container)'
           }}>
-          No pudimos resolver la consulta que
-          realizaste. No existe el recurso
+          No pudimos resolver la consulta que realizaste. No existe el recurso
         </p>
       </div>
     </div>

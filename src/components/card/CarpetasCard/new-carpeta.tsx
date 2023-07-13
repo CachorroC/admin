@@ -2,42 +2,56 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
-import { IntCarpetaDemandado } from '#@/lib/types/demandados';
+import { IntCarpeta } from '#@/lib/types/demandados';
 
-export function NuevoProceso({
-  uri
-}: {
-  uri: string;
-}) {
+export function NuevoProceso(
+  {
+    uri 
+  }: { uri: string }
+) {
   const {
     register,
     handleSubmit,
-    formState: { errors }
-  } = useForm<IntCarpetaDemandado>();
+    formState: {
+      errors 
+    }
+  } = useForm<IntCarpeta>();
 
   const onSubmit = async (
-    data: IntCarpetaDemandado
+    data: IntCarpeta
   ) => {
-    alert(JSON.stringify(data));
+    alert(
+      JSON.stringify(
+        data
+      )
+    );
 
     const postNewNote = await fetch(
-      `${uri}/api/Demandados`,
+      `${ uri }/api/Demandados`,
       {
-        method: 'POST',
+        method : 'POST',
         headers: {
           'content-type': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(
+          data
+        )
       }
-    ).then((fullfilled) => {
-      alert(fullfilled.status);
+    ).then(
+      (
+        fullfilled
+      ) => {
+        alert(
+          fullfilled.status
+        );
 
-      return fullfilled;
-    });
-
-    const responsePostNewNote =
-      await postNewNote.json();
-    alert(responsePostNewNote);
+        return fullfilled;
+      }
+    );
+    const responsePostNewNote = await postNewNote.json();
+    alert(
+      responsePostNewNote
+    );
 
     return responsePostNewNote;
   };
@@ -46,91 +60,132 @@ export function NuevoProceso({
     <div className={form.container}>
       <form
         className={form.form}
-        onSubmit={handleSubmit(onSubmit)}>
+        onSubmit={handleSubmit(
+          onSubmit
+        )}>
         <input
           type='number'
           placeholder='Carpeta'
-          {...register('Carpeta', {
-            required: true
-          })}
+          {...register(
+            'Carpeta',
+            {
+              required: true
+            }
+          )}
         />
         <input
           type='number'
           placeholder='Deudor.Id'
-          {...register('Deudor.Id', {
-            required: true
-          })}
+          {...register(
+            'Deudor.Id',
+            {
+              required: true
+            }
+          )}
         />
         <input
           type='text'
           placeholder='Deudor.Nombre'
-          {...register('Deudor.Nombre', {
-            required: true
-          })}
+          {...register(
+            'Deudor.Nombre',
+            {
+              required: true
+            }
+          )}
         />
         <input
           type='text'
           placeholder='Deudor.Email'
-          {...register('Deudor.Email', {
-            pattern: /^\S+@\S+$/i
-          })}
+          {...register(
+            'Deudor.Email',
+            {
+              pattern: /^\S+@\S+$/i
+            }
+          )}
         />
         <input
           type='tel'
           placeholder='Deudor.Tel.Fijo'
-          {...register('Deudor.Tel.Fijo', {
-            maxLength: 10
-          })}
+          {...register(
+            'Deudor.Tel.Fijo',
+            {
+              maxLength: 10
+            }
+          )}
         />
         <input
           type='tel'
           placeholder='Deudor.Tel.Celular'
-          {...register('Deudor.Tel.Celular', {
-            maxLength: 10
-          })}
+          {...register(
+            'Deudor.Tel.Celular',
+            {
+              maxLength: 10
+            }
+          )}
         />
         <input
           type='text'
           placeholder='Deudor.Direccion'
-          {...register('Deudor.Direccion', {})}
+          {...register(
+            'Deudor.Direccion',
+            {}
+          )}
         />
         <input
           type='number'
           placeholder='Codeudor.Cedula'
-          {...register('Codeudor.Id', {})}
+          {...register(
+            'Codeudor.Id',
+            {}
+          )}
         />
         <input
           type='text'
           placeholder='Codeudor.Nombre'
-          {...register('Codeudor.Nombre', {})}
+          {...register(
+            'Codeudor.Nombre',
+            {}
+          )}
         />
         <input
           type='tel'
           placeholder='Codeudor.Tel.Fijo'
-          {...register('Codeudor.Tel.Fijo', {
-            maxLength: 10
-          })}
+          {...register(
+            'Codeudor.Tel.Fijo',
+            {
+              maxLength: 10
+            }
+          )}
         />
         <input
           type='tel'
           placeholder='Codeudor.Tel.Celular'
-          {...register('Codeudor.Tel.Celular', {
-            maxLength: 10
-          })}
+          {...register(
+            'Codeudor.Tel.Celular',
+            {
+              maxLength: 10
+            }
+          )}
         />
         <input
           type='number'
           placeholder='idProceso'
-          {...register('idProceso', {
-            required: true
-          })}
+          {...register(
+            'idProceso',
+            {
+              required: true
+            }
+          )}
         />
         <input
           type='text'
           placeholder='llaveProceso'
-          {...register('llaveProceso', {
-            minLength: 23
-          })}
+          {...register(
+            'llaveProceso',
+            {
+              minLength: 23
+            }
+          )}
         />
         <input
           type='datetime'
@@ -143,71 +198,52 @@ export function NuevoProceso({
         <input
           type='datetime'
           placeholder='Avaluo.Remate.Fecha'
-          {...register('Avaluo.Remate.Fecha', {})}
+          {...register(
+            'Avaluo.Remate.Fecha',
+            {}
+          )}
         />
         <input
           type='number'
           placeholder='Avaluo.Valor'
-          {...register('Avaluo.Valor', {})}
+          {...register(
+            'Avaluo.Valor',
+            {}
+          )}
         />
-        <select
-          {...register('Demanda.Departamento')}>
-          <option value='Amazonas'>
-            Amazonas
-          </option>
+        <select {...register(
+          'Demanda.Departamento'
+        )}>
+          <option value='Amazonas'>Amazonas</option>
           <option value='Vichada'>Vichada</option>
           <option value='Meta'> Meta</option>
           <option value='Caquetá'>Caquetá</option>
           <option value='Guainía'>Guainía</option>
-          <option value='Antioquia'>
-            Antioquia
-          </option>
+          <option value='Antioquia'>Antioquia</option>
           <option value='Vaupés'>Vaupés</option>
-          <option value='Guaviare'>
-            Guaviare
-          </option>
+          <option value='Guaviare'>Guaviare</option>
           <option value='Chocó'>Chocó</option>
-          <option value='Casanare'>
-            Casanare
-          </option>
+          <option value='Casanare'>Casanare</option>
           <option value='Nariño'>Nariño</option>
-          <option value='Santander'>
-            Santander
-          </option>
+          <option value='Santander'>Santander</option>
           <option value='Cauca'>Cauca</option>
           <option value='Bolívar'>Bolívar</option>
           <option value='Córdoba'>Córdoba</option>
-          <option value='Putumayo'>
-            Putumayo
-          </option>
+          <option value='Putumayo'>Putumayo</option>
           <option value='Arauca'>Arauca</option>
           <option value='Tolima'>Tolima</option>
           <option value='Boyacá'>Boyacá</option>
-          <option value='Magdalena'>
-            Magdalena
-          </option>
+          <option value='Magdalena'>Magdalena</option>
           <option value='Cesar'>Cesar</option>
-          <option value='CUNDINAMARCA'>
-            Cundinamarca
-          </option>
-          <option value='Valle del Cauca'>
-            Valle del Cauca
-          </option>
-          <option value='Norte de Santander'>
-            Norte de Santander
-          </option>
-          <option value='La Guajira'>
-            La Guajira
-          </option>
+          <option value='CUNDINAMARCA'>Cundinamarca</option>
+          <option value='Valle del Cauca'>Valle del Cauca</option>
+          <option value='Norte de Santander'>Norte de Santander</option>
+          <option value='La Guajira'>La Guajira</option>
           <option value='Huila'>Huila</option>
           <option value='Sucre'>Sucre</option>
           <option value='Caldas'>Caldas</option>
-          <option value='Risaralda'>
-            Risaralda
-          </option>
-          <option value='Atlántico'>
-            Atlántico
-          </option>
+          <option value='Risaralda'>Risaralda</option>
+          <option value='Atlántico'>Atlántico</option>
           <option value='Quindío'>Quindío</option>
           <option value='Bogotá, Distrito Capital'>
             Bogotá, Distrito Capital
@@ -219,7 +255,10 @@ export function NuevoProceso({
         <input
           type='text'
           placeholder='Demanda.Municipio'
-          {...register('Demanda.Municipio', {})}
+          {...register(
+            'Demanda.Municipio',
+            {}
+          )}
         />
         <input
           type='datetime'
@@ -240,10 +279,12 @@ export function NuevoProceso({
         <input
           type='text'
           placeholder='Demanda.Radicado'
-          {...register('Demanda.Radicado', {
-            pattern:
-              /"\d\d\d\d\s+-\s+\d\d\d\d\d"/i
-          })}
+          {...register(
+            'Demanda.Radicado',
+            {
+              pattern: /"\d\d\d\d\s+-\s+\d\d\d\d\d"/i
+            }
+          )}
         />
         <input
           type='number'
@@ -253,17 +294,12 @@ export function NuevoProceso({
             {}
           )}
         />
-        <select
-          {...register('Demanda.Proceso.Tipo')}>
-          <option value='HIPOTECARIO'>
-            HIPOTECARIO
-          </option>
-          <option value='PRENDARIO'>
-            PRENDARIO
-          </option>
-          <option value='SINGULAR'>
-            SINGULAR
-          </option>
+        <select {...register(
+          'Demanda.Proceso.Tipo'
+        )}>
+          <option value='HIPOTECARIO'>HIPOTECARIO</option>
+          <option value='PRENDARIO'>PRENDARIO</option>
+          <option value='SINGULAR'>SINGULAR</option>
         </select>
         <input
           type='text'
@@ -308,7 +344,10 @@ export function NuevoProceso({
         <input
           type='text'
           placeholder='EtapaProcesal.Etapa'
-          {...register('EtapaProcesal.Etapa', {})}
+          {...register(
+            'EtapaProcesal.Etapa',
+            {}
+          )}
         />
         <input
           type='datetime'

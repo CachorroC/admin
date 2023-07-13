@@ -10,9 +10,11 @@ import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputS
 async function ListDrawer() {
   const procesos = await getCarpetas();
 
-  const fechas = await fetchFechas({
-    procesos: procesos
-  });
+  const fechas = await fetchFechas(
+    {
+      procesos: procesos
+    } 
+  );
 
   return (
     <Drawer>
@@ -28,8 +30,7 @@ export default async function Page() {
   return (
     <Header>
       <Title />
-      <Suspense
-        fallback={<SearchOutputListSkeleton />}>
+      <Suspense fallback={<SearchOutputListSkeleton />}>
         <ListDrawer />
       </Suspense>
     </Header>

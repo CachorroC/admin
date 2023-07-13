@@ -1,15 +1,17 @@
 export function fixFechas(
   fecha: Date | string | null | undefined
-) {
-  if (fecha === null) {
+): string {
+  if ( fecha === null ) {
     return 'no hay fechas: null';
   }
 
-  if (fecha === undefined) {
+  if ( fecha === undefined ) {
     return 'no se ha definido el contenido';
   }
 
-  const date = new Date(fecha);
+  const date = new Date(
+    fecha
+  );
 
   const months = [
     'enero',
@@ -25,21 +27,24 @@ export function fixFechas(
     'noviembre',
     'diciembre'
   ];
-  const month = months[date.getMonth()];
+  const month = months[ date.getMonth() ];
   const dia = date.getDate();
   const ano = date.getFullYear();
 
   return dia + ' de ' + month + ' de ' + ano;
 }
 
-function trimmer(sujetosProcesales: string) {
-  const locateDemandado =
-    sujetosProcesales.search(
-      /(demandado|causante)+:(?:\s*?|'\s*?')/gi
-    );
+function trimmer(
+  sujetosProcesales: string
+) {
+  const locateDemandado = sujetosProcesales.search(
+    /(demandado|causante)+:(?:\s*?|'\s*?')/gi
+  );
 
   const extractDemandado = sujetosProcesales
-    .slice(locateDemandado + 10)
+    .slice(
+      locateDemandado + 10
+    )
     .toLowerCase();
 
   const trimDemandado = extractDemandado.replace(
@@ -47,83 +52,98 @@ function trimmer(sujetosProcesales: string) {
     ''
   );
 
-  const splitDemandado = trimDemandado.split(' ');
+  const splitDemandado = trimDemandado.split(
+    ' '
+  );
 
-  const splitDemandadotoUnify =
-    splitDemandado.map(
-      (
-        nombreOapellido: string,
-        index: number
-      ) => {
-        if (index >= 5) {
-          return '';
-        }
-
-        if (nombreOapellido === '|') {
-          return '';
-        }
-
-        if (nombreOapellido.includes('s.a.s')) {
-          return '';
-        }
-
-        if (nombreOapellido.includes('sas')) {
-          return '';
-        }
-
-        if (
-          nombreOapellido.includes('(emplazado)')
-        ) {
-          return '';
-        }
-
-        return nombreOapellido.replace(
-          /^./,
-          (str: string) => {
-            return str.toUpperCase();
-          }
-        );
+  const splitDemandadotoUnify = splitDemandado.map(
+    (
+      nombreOapellido: string, index: number
+    ) => {
+      if ( index >= 5 ) {
+        return '';
       }
-    );
 
-  const unifyDemandado =
-    splitDemandadotoUnify.join(' ');
+      if ( nombreOapellido === '|' ) {
+        return '';
+      }
+
+      if ( nombreOapellido.includes(
+        's.a.s'
+      ) ) {
+        return '';
+      }
+
+      if ( nombreOapellido.includes(
+        'sas'
+      ) ) {
+        return '';
+      }
+
+      if ( nombreOapellido.includes(
+        '(emplazado)'
+      ) ) {
+        return '';
+      }
+
+      return nombreOapellido.replace(
+        /^./,
+        (
+          str: string
+        ) => {
+          return str.toUpperCase();
+        }
+      );
+    }
+  );
+
+  const unifyDemandado = splitDemandadotoUnify.join(
+    ' '
+  );
 
   return unifyDemandado;
 }
 
 export const fixDemandado = (
   sujetosProcesales: string
-) => {
+): string => {
   const mySubString = 'Demandado';
 
-  const count =
-    sujetosProcesales.split(mySubString).length -
-    1;
+  const count = sujetosProcesales.split(
+    mySubString
+  ).length - 1;
 
-  if (count === 1) {
-    return trimmer(sujetosProcesales);
+  if ( count === 1 ) {
+    return trimmer(
+      sujetosProcesales
+    );
   }
 
   return sujetosProcesales;
 };
 
-export const toNameString = ({
-  nameRaw
-}: {
-  nameRaw: string;
-}) => {
+export const toNameString = (
+  {
+    nameRaw
+  }: { nameRaw: string }
+) => {
   const str = nameRaw.toLowerCase();
 
-  const arr = str.split(' ');
+  const arr = str.split(
+    ' '
+  );
 
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] =
-      arr[i].charAt(0).toUpperCase() +
-      arr[i].slice(1);
+  for ( let i = 0; i < arr.length; i++ ) {
+    arr[ i ] = arr[ i ].charAt(
+      0
+    ).toUpperCase() + arr[ i ].slice(
+      1
+    );
   }
 
-  const str2 = arr.join(' ');
+  const str2 = arr.join(
+    ' '
+  );
 
   return str2;
 };

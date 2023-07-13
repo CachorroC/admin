@@ -1,8 +1,5 @@
-import layout from '#@/styles/scss/layout.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
-import CardSkeleton from '#@/components/card/card-skeleton';
-import LinkCardSkeleton from '#@/components/search/link-skeleton';
+import { Loader } from '#@/components/Loader';
 
 export default function Loading() {
-  return <div className={layout.loader}></div>;
+  return <Loader />;
 }

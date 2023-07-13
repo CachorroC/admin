@@ -7,9 +7,7 @@
 }
 
 .on-primary {
-  background-color: var(
-    --md-sys-color-on-primary
-  );
+  background-color: var(--md-sys-color-on-primary);
 }
 
 .on-primary-text {
@@ -17,9 +15,7 @@
 }
 
 .primary-container {
-  background-color: var(
-    --md-sys-color-primary-container
-  );
+  background-color: var(--md-sys-color-primary-container);
 }
 
 .primary-container-text {
@@ -27,9 +23,7 @@
 }
 
 .on-primary-container {
-  background-color: var(
-    --md-sys-color-on-primary-container
-  );
+  background-color: var(--md-sys-color-on-primary-container);
 }
 
 .on-primary-container-text {
@@ -37,9 +31,7 @@
 }
 
 .primary-fixed {
-  background-color: var(
-    --md-sys-color-primary-fixed
-  );
+  background-color: var(--md-sys-color-primary-fixed);
 }
 
 .primary-fixed-text {
@@ -47,9 +39,7 @@
 }
 
 .on-primary-fixed {
-  background-color: var(
-    --md-sys-color-on-primary-fixed
-  );
+  background-color: var(--md-sys-color-on-primary-fixed);
 }
 
 .on-primary-fixed-text {
@@ -57,9 +47,7 @@
 }
 
 .primary-fixed-dim {
-  background-color: var(
-    --md-sys-color-primary-fixed-dim
-  );
+  background-color: var(--md-sys-color-primary-fixed-dim);
 }
 
 .primary-fixed-dim-text {
@@ -67,15 +55,11 @@
 }
 
 .on-primary-fixed-variant {
-  background-color: var(
-    --md-sys-color-on-primary-fixed-variant
-  );
+  background-color: var(--md-sys-color-on-primary-fixed-variant);
 }
 
 .on-primary-fixed-variant-text {
-  color: var(
-    --md-sys-color-on-primary-fixed-variant
-  );
+  color: var(--md-sys-color-on-primary-fixed-variant);
 }
 
 .secondary {
@@ -87,9 +71,7 @@
 }
 
 .on-secondary {
-  background-color: var(
-    --md-sys-color-on-secondary
-  );
+  background-color: var(--md-sys-color-on-secondary);
 }
 
 .on-secondary-text {
@@ -97,9 +79,7 @@
 }
 
 .secondary-container {
-  background-color: var(
-    --md-sys-color-secondary-container
-  );
+  background-color: var(--md-sys-color-secondary-container);
 }
 
 .secondary-container-text {
@@ -107,21 +87,15 @@
 }
 
 .on-secondary-container {
-  background-color: var(
-    --md-sys-color-on-secondary-container
-  );
+  background-color: var(--md-sys-color-on-secondary-container);
 }
 
 .on-secondary-container-text {
-  color: var(
-    --md-sys-color-on-secondary-container
-  );
+  color: var(--md-sys-color-on-secondary-container);
 }
 
 .secondary-fixed {
-  background-color: var(
-    --md-sys-color-secondary-fixed
-  );
+  background-color: var(--md-sys-color-secondary-fixed);
 }
 
 .secondary-fixed-text {
@@ -129,9 +103,7 @@
 }
 
 .on-secondary-fixed {
-  background-color: var(
-    --md-sys-color-on-secondary-fixed
-  );
+  background-color: var(--md-sys-color-on-secondary-fixed);
 }
 
 .on-secondary-fixed-text {
@@ -139,9 +111,7 @@
 }
 
 .secondary-fixed-dim {
-  background-color: var(
-    --md-sys-color-secondary-fixed-dim
-  );
+  background-color: var(--md-sys-color-secondary-fixed-dim);
 }
 
 .secondary-fixed-dim-text {
@@ -149,15 +119,11 @@
 }
 
 .on-secondary-fixed-variant {
-  background-color: var(
-    --md-sys-color-on-secondary-fixed-variant
-  );
+  background-color: var(--md-sys-color-on-secondary-fixed-variant);
 }
 
 .on-secondary-fixed-variant-text {
-  color: var(
-    --md-sys-color-on-secondary-fixed-variant
-  );
+  color: var(--md-sys-color-on-secondary-fixed-variant);
 }
 
 .tertiary {
@@ -169,9 +135,7 @@
 }
 
 .on-tertiary {
-  background-color: var(
-    --md-sys-color-on-tertiary
-  );
+  background-color: var(--md-sys-color-on-tertiary);
 }
 
 .on-tertiary-text {
@@ -179,9 +143,7 @@
 }
 
 .tertiary-container {
-  background-color: var(
-    --md-sys-color-tertiary-container
-  );
+  background-color: var(--md-sys-color-tertiary-container);
 }
 
 .tertiary-container-text {
@@ -189,21 +151,15 @@
 }
 
 .on-tertiary-container {
-  background-color: var(
-    --md-sys-color-on-tertiary-container
-  );
+  background-color: var(--md-sys-color-on-tertiary-container);
 }
 
 .on-tertiary-container-text {
-  color: var(
-    --md-sys-color-on-tertiary-container
-  );
+  color: var(--md-sys-color-on-tertiary-container);
 }
 
 .tertiary-fixed {
-  background-color: var(
-    --md-sys-color-tertiary-fixed
-  );
+  background-color: var(--md-sys-color-tertiary-fixed);
 }
 
 .tertiary-fixed-text {
@@ -211,9 +167,7 @@
 }
 
 .on-tertiary-fixed {
-  background-color: var(
-    --md-sys-color-on-tertiary-fixed
-  );
+  background-color: var(--md-sys-color-on-tertiary-fixed);
 }
 
 .on-tertiary-fixed-text {
@@ -221,9 +175,7 @@
 }
 
 .tertiary-fixed-dim {
-  background-color: var(
-    --md-sys-color-tertiary-fixed-dim
-  );
+  background-color: var(--md-sys-color-tertiary-fixed-dim);
 }
 
 .tertiary-fixed-dim-text {
@@ -231,15 +183,11 @@
 }
 
 .on-tertiary-fixed-variant {
-  background-color: var(
-    --md-sys-color-on-tertiary-fixed-variant
-  );
+  background-color: var(--md-sys-color-on-tertiary-fixed-variant);
 }
 
 .on-tertiary-fixed-variant-text {
-  color: var(
-    --md-sys-color-on-tertiary-fixed-variant
-  );
+  color: var(--md-sys-color-on-tertiary-fixed-variant);
 }
 
 .error {
@@ -251,9 +199,7 @@
 }
 
 .error-container {
-  background-color: var(
-    --md-sys-color-error-container
-  );
+  background-color: var(--md-sys-color-error-container);
 }
 
 .error-container-text {
@@ -269,9 +215,7 @@
 }
 
 .on-error-container {
-  background-color: var(
-    --md-sys-color-on-error-container
-  );
+  background-color: var(--md-sys-color-on-error-container);
 }
 
 .on-error-container-text {
@@ -279,9 +223,7 @@
 }
 
 .background {
-  background-color: var(
-    --md-sys-color-background
-  );
+  background-color: var(--md-sys-color-background);
 }
 
 .background-text {
@@ -289,9 +231,7 @@
 }
 
 .on-background {
-  background-color: var(
-    --md-sys-color-on-background
-  );
+  background-color: var(--md-sys-color-on-background);
 }
 
 .on-background-text {
@@ -307,9 +247,7 @@
 }
 
 .inverse-on-surface {
-  background-color: var(
-    --md-sys-color-inverse-on-surface
-  );
+  background-color: var(--md-sys-color-inverse-on-surface);
 }
 
 .inverse-on-surface-text {
@@ -317,9 +255,7 @@
 }
 
 .inverse-surface {
-  background-color: var(
-    --md-sys-color-inverse-surface
-  );
+  background-color: var(--md-sys-color-inverse-surface);
 }
 
 .inverse-surface-text {
@@ -327,9 +263,7 @@
 }
 
 .inverse-primary {
-  background-color: var(
-    --md-sys-color-inverse-primary
-  );
+  background-color: var(--md-sys-color-inverse-primary);
 }
 
 .inverse-primary-text {
@@ -345,9 +279,7 @@
 }
 
 .surface-tint {
-  background-color: var(
-    --md-sys-color-surface-tint
-  );
+  background-color: var(--md-sys-color-surface-tint);
 }
 
 .surface-tint-text {
@@ -355,9 +287,7 @@
 }
 
 .outline-variant {
-  background-color: var(
-    --md-sys-color-outline-variant
-  );
+  background-color: var(--md-sys-color-outline-variant);
 }
 
 .outline-variant-text {
@@ -381,9 +311,7 @@
 }
 
 .on-surface {
-  background-color: var(
-    --md-sys-color-on-surface
-  );
+  background-color: var(--md-sys-color-on-surface);
 }
 
 .on-surface-text {
@@ -391,9 +319,7 @@
 }
 
 .surface-variant {
-  background-color: var(
-    --md-sys-color-surface-variant
-  );
+  background-color: var(--md-sys-color-surface-variant);
 }
 
 .surface-variant-text {
@@ -401,9 +327,7 @@
 }
 
 .on-surface-variant {
-  background-color: var(
-    --md-sys-color-on-surface-variant
-  );
+  background-color: var(--md-sys-color-on-surface-variant);
 }
 
 .on-surface-variant-text {
@@ -411,33 +335,23 @@
 }
 
 .surface-container-highest {
-  background-color: var(
-    --md-sys-color-surface-container-highest
-  );
+  background-color: var(--md-sys-color-surface-container-highest);
 }
 
 .surface-container-highest-text {
-  color: var(
-    --md-sys-color-surface-container-highest
-  );
+  color: var(--md-sys-color-surface-container-highest);
 }
 
 .surface-container-high {
-  background-color: var(
-    --md-sys-color-surface-container-high
-  );
+  background-color: var(--md-sys-color-surface-container-high);
 }
 
 .surface-container-high-text {
-  color: var(
-    --md-sys-color-surface-container-high
-  );
+  color: var(--md-sys-color-surface-container-high);
 }
 
 .surface-container {
-  background-color: var(
-    --md-sys-color-surface-container
-  );
+  background-color: var(--md-sys-color-surface-container);
 }
 
 .surface-container-text {
@@ -445,33 +359,23 @@
 }
 
 .surface-container-low {
-  background-color: var(
-    --md-sys-color-surface-container-low
-  );
+  background-color: var(--md-sys-color-surface-container-low);
 }
 
 .surface-container-low-text {
-  color: var(
-    --md-sys-color-surface-container-low
-  );
+  color: var(--md-sys-color-surface-container-low);
 }
 
 .surface-container-lowest {
-  background-color: var(
-    --md-sys-color-surface-container-lowest
-  );
+  background-color: var(--md-sys-color-surface-container-lowest);
 }
 
 .surface-container-lowest-text {
-  color: var(
-    --md-sys-color-surface-container-lowest
-  );
+  color: var(--md-sys-color-surface-container-lowest);
 }
 
 .surface-dim {
-  background-color: var(
-    --md-sys-color-surface-dim
-  );
+  background-color: var(--md-sys-color-surface-dim);
 }
 
 .surface-dim-text {
@@ -479,9 +383,7 @@
 }
 
 .surface-bright {
-  background-color: var(
-    --md-sys-color-surface-bright
-  );
+  background-color: var(--md-sys-color-surface-bright);
 }
 
 .surface-bright-text {

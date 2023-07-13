@@ -19,17 +19,13 @@
   align-content: stretch;
   &Active {
     @extend .card;
-    background-color: var(
-      --surface-container-high
-    );
+    background-color: var(--surface-container-high);
     border: solid 2px var(--outline-variant);
     color: var(--on-surface);
     box-shadow: var(--dp6);
     & > .links {
       & > .button {
-        background-color: var(
-          --tertiary-container
-        );
+        background-color: var(--tertiary-container);
         color: var(--on-tertiary-container);
       }
     }
@@ -41,9 +37,7 @@
     background-color: var(--surface-container);
     & > .links {
       & > .button {
-        background-color: var(
-          --surface-container-highest
-        );
+        background-color: var(--surface-container-highest);
         color: var(--on-surface);
       }
     }
@@ -88,14 +82,12 @@
           margin-left: -5px;
           border-width: 5px;
           border-style: solid;
-          border-color: #555 transparent
-            transparent transparent;
+          border-color: #555 transparent transparent transparent;
         }
       }
       & > .icon {
         margin: 0 auto;
-        font-variation-settings: 'FILL' 0,
-          'wght' 300, 'GRAD' 0, 'opsz' 24;
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
         font-size: 1.5rem;
       }
       &:hover,

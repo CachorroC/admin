@@ -5,9 +5,7 @@
   box-shadow: var(--dp2);
   border-radius: 2vmin;
   flex-flow: column nowrap;
-  background-color: var(
-    --surface-container-lowest
-  );
+  background-color: var(--surface-container-lowest);
   .form,
   .nota {
     border-radius: 2vmin;
@@ -46,24 +44,20 @@
   background-color: var(--secondary);
   & > span {
     color: var(--on-secondary);
-    font-variation-settings: 'FILL' 0, 'wght' 300,
-      'GRAD' 0, 'opsz' 24;
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
   }
   &:hover,
   &:active {
     background-color: var(--secondary);
     box-shadow: var(--dp8);
     & > span {
-      font-variation-settings: 'FILL' 1,
-        'wght' 600, 'GRAD' 200, 'opsz' 48;
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 200, 'opsz' 48;
       color: var(--on-secondary);
     }
   }
 }
 .textArea {
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
   color: var(--on-surface);
   box-shadow: var(--dp2);
   border: solid 2px var(--outline);
@@ -76,9 +70,7 @@
     border: var(--surface-tint) solid 2px;
   }
   &:focus {
-    background-color: var(
-      --surface-container-lowest
-    );
+    background-color: var(--surface-container-lowest);
   }
 }
 .editButton {
@@ -117,16 +109,14 @@
   }
   & > span {
     color: var(--on-secondary);
-    font-variation-settings: 'FILL' 0, 'wght' 300,
-      'GRAD' 0, 'opsz' 24;
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
   }
   &:hover,
   &:active {
     background-color: var(--tertiary-container);
     box-shadow: var(--dp8);
     & > span {
-      font-variation-settings: 'FILL' 1,
-        'wght' 400, 'GRAD' 200, 'opsz' 24;
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 200, 'opsz' 24;
       color: var(--tertiary);
     }
   }
