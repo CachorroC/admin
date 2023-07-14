@@ -1,4 +1,9 @@
-import { WithId } from 'mongodb';
+import { WithId, ObjectId } from 'mongodb';
+// To parse this data:
+//
+//   import { Convert } from "./file";
+//
+//   const intNota = Convert.toIntNota(json);
 
 export interface intNotaFormValues {
   nota: string;
@@ -18,33 +23,44 @@ export interface intNota extends intNotaFormValues {
 }
 
 export interface monNota extends intNota {
-  _id: string;
+  _id?: ObjectId;
+  id: string;
 }
 
-export class ConvertNotas {
-  public static toMonNota(
-    json: string 
+export class notaConvert {
+  public static toMonNotas(
+    notas: WithId<intNota>[] 
   ): monNota[] {
-    return JSON.parse(
-      json 
+    const newNotas = notas.map(
+      (
+        nota 
+      ) => {
+        return this.toMonNota(
+          nota 
+        );
+      } 
     );
+
+    return newNotas;
   }
-  public static monNotaToJson(
+  public static monNotasToJson(
     value: monNota[] 
   ): string {
     return JSON.stringify(
       value 
     );
   }
-}
 
-export class ConvertNota {
   public static toMonNota(
-    json: string 
+    nota: WithId<intNota> 
   ): monNota {
-    return JSON.parse(
-      json 
-    );
+    const newNota = {
+      ...nota,
+      _id: nota._id,
+      id : nota._id.toString()
+    };
+
+    return newNota;
   }
   public static monNotaToJson(
     value: monNota 

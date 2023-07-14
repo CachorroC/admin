@@ -6,29 +6,29 @@ import { Nota } from '../../components/nota/notas';
 
 async function renderName(
   {
-    llaveProceso
-  }: { llaveProceso: string }
+    llaveProceso 
+  }: { llaveProceso: string } 
 ) {
   const carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: llaveProceso
-    }
+    } 
   );
 
   const names = carpetas.map(
     (
-      carpeta, i, arr
+      carpeta, i, arr 
     ) => {
       const {
-        Deudor
+        Deudor 
       } = carpeta;
 
       const {
-        Nombre
+        Nombre 
       } = Deudor;
 
       return Nombre;
-    }
+    } 
   );
 
   return names.toString();
@@ -45,21 +45,21 @@ export default async function PageNotas() {
       <div className={layout.left}>
         {notas.map(
           (
-            NotaM, index, arr
+            NotaM, index, arr 
           ) => {
             const {
-              _id, llaveProceso, nota, pathname, tareas, fecha
+              id, llaveProceso, nota, pathname, tareas, fecha 
             } = NotaM;
 
             return (
               <Nota
                 notaRaw={NotaM}
                 i={index}
-                key={_id}
+                key={id}
                 arr={arr}
               />
             );
-          }
+          } 
         )}
       </div>
     </div>

@@ -8,22 +8,26 @@ import { getActuaciones } from '#@/lib/Actuaciones';
 
 async function Acts(
   {
-    idProceso, index
-  }: { idProceso: number; index: number }
+    idProceso,
+    index
+  }: {
+  idProceso: number;
+  index: number;
+} 
 ) {
   const actuaciones = await getActuaciones(
     idProceso,
-    index
+    index 
   );
 
   return (
     <>
       {actuaciones.map(
         (
-          act, i, arr
+          act, i, arr 
         ) => {
           const {
-            idRegActuacion
+            idRegActuacion 
           } = act;
 
           return (
@@ -32,7 +36,7 @@ async function Acts(
               key={idRegActuacion}
             />
           );
-        }
+        } 
       )}
     </>
   );
@@ -45,24 +49,28 @@ export default async function PageProcesosLeftllaveProceso(
   params: {
     llaveProceso: string;
   };
-}
+} 
 ) {
   const Carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: params.llaveProceso
-    }
+    } 
   );
 
   return (
     <>
-      { Carpetas.map(
+      {Carpetas.map(
         (
-          carpeta, index
+          carpeta, index 
         ) => {
           return (
-            <Acts key={carpeta.id} index={index} idProceso={ carpeta.idProceso } />
+            <Acts
+              key={carpeta.id}
+              index={index}
+              idProceso={carpeta.idProceso}
+            />
           );
-        }
+        } 
       )}
     </>
   );

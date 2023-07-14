@@ -52,7 +52,7 @@ export async function POST(
         error 
       ),
       {
-        status: 505 
+        status: 505
       } 
     );
   }

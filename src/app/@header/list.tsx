@@ -9,12 +9,15 @@ export async function ListDrawer() {
   const fechas = await fetchFechas(
     {
       procesos: procesos
-    }
+    } 
   );
 
   return (
     <Drawer>
-      <SearchOutputList  path='/Procesos' fechas={fechas}/>
+      <SearchOutputList
+        path='/Procesos'
+        fechas={fechas}
+      />
     </Drawer>
   );
 }

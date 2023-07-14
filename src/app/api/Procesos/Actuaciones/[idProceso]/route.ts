@@ -12,7 +12,7 @@ export async function GET(
     const req = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ params.idProceso }`,
       {
-        mode: 'cors' 
+        mode: 'cors'
       }
     );
 

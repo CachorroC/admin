@@ -6,7 +6,7 @@ import { Notas } from '#@/components/nota/notas';
 
 export default function NuevaNotallaveProceso(
   {
-    params 
+    params
   }: {
   params: { llaveProceso: string };
 } 

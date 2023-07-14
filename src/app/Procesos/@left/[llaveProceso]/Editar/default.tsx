@@ -11,15 +11,15 @@ export default async function Default(
     searchParams
   }: {
   params: { llaveProceso: string };
-  searchParams: { _id: string };
+  searchParams: { id: string };
 } 
 ) {
   const llaveProceso = params.llaveProceso;
-  const _id = searchParams._id;
+  const id = searchParams.id;
 
   const nota = await getNotaById(
     {
-      _id: _id 
+      id: id
     } 
   );
 
@@ -31,7 +31,7 @@ export default async function Default(
             ntext, i 
           ) => {
             return (
-              <Fragment key={ntext._id}>
+              <Fragment key={ntext.id}>
                 <h1
                   key={i}
                   className={typeface.title}>

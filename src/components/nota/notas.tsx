@@ -20,47 +20,47 @@ export function Nota(
   notaRaw: monNota;
   i: number;
   arr: monNota[];
-}
+} 
 ) {
   const {
-    _id, nota, tareas, fecha
+    id, nota, tareas, fecha 
   } = notaRaw;
 
   return (
     <div
       className={note.container}
-      key={_id}>
+      key={id}>
       <div className={note.nota}>
         <sup className={note.sup}>{`${ i + 1 }`}</sup>
         <Name
-          key={_id}
+          key={id}
           llaveProceso={notaRaw.llaveProceso}
         />
         <p
           className={`${ typography.bodySmall } ${ note.textArea }`}>{`Nota: ${ nota }`}</p>
         <sub className={`${ typography.labelSmall } ${ note.fecha }`}>
           {fixFechas(
-            fecha.toString()
+            fecha.toString() 
           )}
         </sub>
         <div className={note.buttonsRow}>
           <Suspense fallback={<ButtonSkeleton />}>
             <EditNoteButton
-              key={_id}
+              key={id}
               nota={notaRaw}
             />
           </Suspense>
           <Suspense fallback={<ButtonSkeleton />}>
             <DeleteNoteButton
-              key={_id}
-              id={_id}
+              key={id}
+              id={id}
             />
           </Suspense>
         </div>
         <div className={note.tareas}>
           {tareas.map(
             (
-              tr
+              tr 
             ) => {
               return (
                 <AccordionRow
@@ -70,7 +70,7 @@ export function Nota(
                   isDone={tr.isDone}
                 />
               );
-            }
+            } 
           )}
         </div>
       </div>
@@ -81,13 +81,13 @@ export function Nota(
 export async function Notas(
   {
     llaveProceso 
-  }: { llaveProceso?: string }
+  }: { llaveProceso?: string } 
 ) {
   if ( llaveProceso ) {
     const notas = await getNotasByllaveProceso(
       {
         llaveProceso: llaveProceso
-      }
+      } 
     );
 
     if ( notas.length === 0 ) {
@@ -95,17 +95,17 @@ export async function Notas(
 
       const NotasRow = nts.map(
         (
-          nota, i, arr
+          nota, i, arr 
         ) => {
           return (
             <Nota
               notaRaw={nota}
               i={i}
               arr={arr}
-              key={nota._id}
+              key={nota.id}
             />
           );
-        }
+        } 
       );
 
       return <>{NotasRow}</>;
@@ -113,17 +113,17 @@ export async function Notas(
 
     const NotasRow = notas.map(
       (
-        nota, i, arr
+        nota, i, arr 
       ) => {
         return (
           <Nota
             notaRaw={nota}
             i={i}
             arr={arr}
-            key={nota._id}
+            key={nota.id}
           />
         );
-      }
+      } 
     );
 
     return <>{NotasRow}</>;
@@ -132,17 +132,17 @@ export async function Notas(
 
   const NotasRow = notas.map(
     (
-      nota, i, arr
+      nota, i, arr 
     ) => {
       return (
         <Nota
           notaRaw={nota}
           i={i}
           arr={arr}
-          key={nota._id}
+          key={nota.id}
         />
       );
-    }
+    } 
   );
 
   return <>{NotasRow}</>;

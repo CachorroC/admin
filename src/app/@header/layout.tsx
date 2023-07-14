@@ -10,15 +10,15 @@ import { Loader } from '#@/components/Loader';
 
 export default async function Layout(
   {
-    children
-  }: { children: ReactNode }
+    children 
+  }: { children: ReactNode } 
 ) {
   const procesos = await getCarpetas();
 
   const fechas = await fetchFechas(
     {
       procesos: procesos
-    }
+    } 
   );
 
   return (

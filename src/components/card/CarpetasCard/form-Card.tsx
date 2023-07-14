@@ -77,7 +77,7 @@ export const PersonalInfo = (
   } = useForm(
     {
       defaultValues: {
-        email: 'admin@example.com' 
+        email: 'admin@example.com'
       }
     } 
   );
@@ -143,7 +143,7 @@ export const ConfirmPurchase = (
   } = useForm(
     {
       defaultValues: {
-        checkbox: false 
+        checkbox: false
       }
     } 
   );

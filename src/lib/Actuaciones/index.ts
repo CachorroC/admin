@@ -8,29 +8,29 @@ import { IntActuaciones, intConsultaActuaciones } from '../types/procesos';
 import { carpetasCollection } from '../Carpetas';
 
 function wait(
-  delay: number
-){
+  delay: number 
+) {
   return new Promise(
     (
-      resolve
+      resolve 
     ) => {
       return setTimeout(
         resolve,
-        delay
+        delay 
       );
-    }
+    } 
   );
 }
 
 export async function getActuaciones(
-  idProceso: number, index: number
+  idProceso: number, index: number 
 ) {
   console.log(
-    index
+    index 
   );
   const awaitTime = index * 1000;
   console.log(
-    'awaited'
+    'awaited' 
   );
 
   if ( idProceso === 0 || idProceso === 404 ) {
@@ -38,7 +38,7 @@ export async function getActuaciones(
   }
   const collection = await carpetasCollection();
   wait(
-    awaitTime
+    awaitTime 
   );
 
   try {
@@ -78,10 +78,10 @@ export async function getActuaciones(
     return res.actuaciones;
   } catch {
     (
-      error: { message: string }
+      error: { message: string } 
     ) => {
       console.log(
-        error.message ?? 'error'
+        error.message ?? 'error' 
       );
     };
 
@@ -89,13 +89,10 @@ export async function getActuaciones(
   }
 }
 
-
 export async function fetchFechas(
   {
-    procesos
-  }: {
-  procesos:  MonCarpeta[] ;
-}
+    procesos 
+  }: { procesos: MonCarpeta[] } 
 ) {
   const fechas: intFecha[] = [];
 
@@ -106,10 +103,10 @@ export async function fetchFechas(
       {
         proceso: proceso,
         index  : p
-      }
+      } 
     );
     fechas.push(
-      fetch
+      fetch 
     );
   }
 
@@ -118,14 +115,16 @@ export async function fetchFechas(
 
 export async function fetchFecha(
   {
-    proceso, index
+    proceso,
+    index
   }: {
-  proceso: MonCarpeta; index: number
-}
+  proceso: MonCarpeta;
+  index: number;
+} 
 ) {
   const acts = await getActuaciones(
     proceso.idProceso,
-    index
+    index 
   );
 
   if ( acts.length >= 1 ) {
@@ -150,7 +149,7 @@ export async function fetchLastActuaciones(
     idProcesos
   }: {
   idProcesos: number[];
-}
+} 
 ) {
   const lastActuaciones = [];
 
@@ -159,12 +158,12 @@ export async function fetchLastActuaciones(
 
     const acts = await getActuaciones(
       proceso,
-      p
+      p 
     );
 
     if ( acts.length > 0 ) {
       lastActuaciones.push(
-        acts[ 0 ]
+        acts[ 0 ] 
       );
     }
 

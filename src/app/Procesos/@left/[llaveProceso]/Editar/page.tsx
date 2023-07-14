@@ -11,15 +11,15 @@ export default async function page(
     searchParams
   }: {
   params: { llaveProceso: string };
-  searchParams: { _id: string };
+  searchParams: { id: string };
 } 
 ) {
   const llaveProceso = params.llaveProceso;
-  const _id = searchParams._id;
+  const id = searchParams.id;
 
   const nota = await getNotaById(
     {
-      _id: _id 
+      id: id
     } 
   );
 
@@ -31,7 +31,7 @@ export default async function page(
             ntext, i 
           ) => {
             return (
-              <Fragment key={ntext._id}>
+              <Fragment key={ntext.id}>
                 <Edit
                   uri={getBaseUrl()}
                   nota={ntext}

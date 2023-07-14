@@ -10,44 +10,21 @@ import { getCarpetas } from '#@/lib/Carpetas';
 import { Suspense } from 'react';
 import { Loader } from '#@/components/Loader';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
+import { NotasListSkeleton } from '#@/components/card/NotasCard/skeleton';
 
-async function Fechs(
-  {
-    procesos
-  }: { procesos: MonCarpeta[] }
-) {
-  const fechas = await fetchFechas(
-    {
-      procesos: procesos
-    }
-  );
-
-  return (
-    <SearchOutputList
-      path={'/Procesos'}
-      fechas={fechas}
-    />
-  );
-}
-
-export default async function PageProcesosRight () {
-
+export default async function PageProcesosRight() {
   const notas = await getNotas();
   const procesos = await getCarpetas();
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <Fechs procesos={procesos} />
-      </Suspense>
-      <Suspense fallback={<Loader />}>
-        <Fechs procesos={procesos} />
-      </Suspense>
       <NewNota
         llaveProceso={'Procesos'}
         uri={`${ getBaseUrl() }`}
       />
-      <NotasList notas={notas} />
+      <Suspense fallback={<NotasListSkeleton />}>
+        <NotasList notas={notas} />
+      </Suspense>
     </>
   );
 }

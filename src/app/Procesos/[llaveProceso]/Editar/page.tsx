@@ -7,15 +7,15 @@ export default async function Page(
     searchParams
   }: {
   params: { llaveProceso: string };
-  searchParams: { _id: string };
+  searchParams: { id: string };
 } 
 ) {
   const llaveProceso = params.llaveProceso;
-  const _id = searchParams._id;
+  const id = searchParams.id;
 
   const nota = await getNotaById(
     {
-      _id: _id 
+      id: id
     } 
   );
 

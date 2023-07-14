@@ -54,7 +54,7 @@ export const ActuacionCard = (
 
 export const ActuacionesList = (
   {
-    Actuaciones 
+    Actuaciones
   }: {
   Actuaciones: intActuacion[];
 } 

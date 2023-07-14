@@ -3,8 +3,7 @@ import { Loader } from '#@/components/Loader';
 import { ListCardCarpetasNFechas } from '#@/components/card/CarpetasCard/list';
 import { getCarpetas } from '#@/lib/Carpetas';
 
-
-export default async function PageProcesosLeft () {
+export default async function PageProcesosLeft() {
   const carpetas = await getCarpetas();
 
   return (

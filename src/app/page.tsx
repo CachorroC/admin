@@ -7,7 +7,6 @@ import { Suspense } from 'react';
 import type { Route } from 'next';
 
 export default async function Page() {
-
   const lyr = [
     'I met God Just for a minute Sat in His house, took a look around And saw I didn\'t fit in I tried love Gave me something to believe in Planning futures from the start, giving pieces of my heart Just to end up leaving',
     'Am I gonna die trying to find my happy ending ? And will I ever know what it\'s like To be fine without pretending that my',

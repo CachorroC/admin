@@ -11,9 +11,9 @@ export function DeleteNoteButton(
 ) {
   async function deleteRequestHandler() {
     const Request = await fetch(
-      `/api/Notas?_id=${ id }`,
+      `/api/Notas?id=${ id }`,
       {
-        method: 'DELETE' 
+        method: 'DELETE'
       } 
     );
 
@@ -94,7 +94,7 @@ export function EditNoteButton(
   return (
     <Link
       className={note.buttonEdit}
-      href={`/Procesos/${ nota.llaveProceso }/Editar?_id=${ nota._id }` as Route}>
+      href={`/Procesos/${ nota.llaveProceso }/Editar?id=${ nota.id }` as Route}>
       <span className={`material-symbols-outlined ${ note.icon }`}>edit</span>
     </Link>
   );

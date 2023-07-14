@@ -14,7 +14,7 @@ export default async function Page() {
   const fechas = await fetchFechas(
     {
       procesos: procesos
-    }
+    } 
   );
 
   return (

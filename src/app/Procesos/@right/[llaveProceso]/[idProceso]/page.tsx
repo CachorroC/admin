@@ -14,22 +14,22 @@ import { Notas } from '#@/components/nota/notas';
 
 async function Name(
   {
-    llaveProceso
-  }: { llaveProceso: string }
+    llaveProceso 
+  }: { llaveProceso: string } 
 ) {
   const proceso = await getCarpetasByllaveProceso(
     {
       llaveProceso: llaveProceso
-    }
+    } 
   );
 
   const nombre = proceso
     .map(
       (
-        p
+        p 
       ) => {
         return p.Deudor.Nombre;
-      }
+      } 
     )
     .toString();
 
@@ -38,8 +38,8 @@ async function Name(
 
 async function Acts(
   {
-    idProceso
-  }: { idProceso: number }
+    idProceso 
+  }: { idProceso: number } 
 ) {
   const acts = await fetch(
     `${ getBaseUrl() }/api/Procesos/Actuaciones/${ idProceso }`
@@ -58,7 +58,7 @@ async function Acts(
               <p>{res.acts[ 0 ].actuacion}</p>
               <p>{res.acts[ 0 ].anotacion}</p>
               <p>{fixFechas(
-                res.acts[ 0 ].fechaActuacion
+                res.acts[ 0 ].fechaActuacion 
               )}</p>
             </>
           )
@@ -74,18 +74,18 @@ export default async function PageProcesosRightllaveProcesoidProceso(
     params
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   const carpeta = await getCarpetasByllaveProceso(
     {
       llaveProceso: params.llaveProceso
-    }
+    } 
   );
 
   const notasllaveProceso = await getNotasByllaveProceso(
     {
       llaveProceso: params.llaveProceso
-    }
+    } 
   );
   const cantidadNotas = notasllaveProceso.length;
   const notas = await getNotas();

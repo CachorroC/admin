@@ -26,7 +26,7 @@ export default function Error(
       <h1
         className={typography.displayLarge}
         style={{
-          color: 'var(--error)' 
+          color: 'var(--error)'
         }}>
         Error
       </h1>

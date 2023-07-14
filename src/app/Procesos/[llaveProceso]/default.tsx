@@ -8,7 +8,7 @@ import { intProceso } from '#@/lib/types/procesos';
 import box from '#@/styles/scss/box.module.scss';
 import { Name } from '#@/components/Headings/serverSideName';
 import { ProcesoCard } from '#@/components/card/ProcesosCard';
-import { Accordion }from '#@/components/Accordion';
+import { Accordion } from '#@/components/Accordion';
 
 function DemandadoNameBadge(
   {
@@ -17,10 +17,10 @@ function DemandadoNameBadge(
   }: {
   carpeta: MonCarpeta;
   proceso?: intProceso;
-}
+} 
 ) {
   const {
-    llaveProceso, id
+    llaveProceso, id 
   } = carpeta;
 
   if ( proceso ) {
@@ -28,12 +28,11 @@ function DemandadoNameBadge(
       <Fragment key={proceso
         ? proceso.idProceso
         : id}>
-        <Name llaveProceso={ llaveProceso } />
+        <Name llaveProceso={llaveProceso} />
         <Accordion>
-
           <p className={typography.bodySmall}>{proceso.despacho}</p>
-          <ProcesoCard proceso={ proceso } />
-          <CarpetaCard carpeta={ carpeta }>
+          <ProcesoCard proceso={proceso} />
+          <CarpetaCard carpeta={carpeta}>
             <span className='material-symbols-outlined'>star</span>
           </CarpetaCard>
         </Accordion>
@@ -58,40 +57,42 @@ export default async function PageProcesosllaveProceso(
     params
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   const Procesos = await getConsultaNumeroRadicion(
     {
       llaveProceso: params.llaveProceso
-    }
+    } 
   );
 
   const Carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: params.llaveProceso
-    }
+    } 
   );
 
   return (
     <>
-      { Carpetas.map(
+      {Carpetas.map(
         (
-          carpeta, index, arr
+          carpeta, index, arr 
         ) => {
           const proceso = Procesos.find(
             (
-              prc
+              prc 
             ) => {
               return prc.idProceso === carpeta.idProceso;
-            }
+            } 
           );
 
-          return (  <DemandadoNameBadge
-            carpeta={carpeta}
-            key={carpeta.id}
-            proceso={proceso}
-          /> );
-        }
+          return (
+            <DemandadoNameBadge
+              carpeta={carpeta}
+              key={carpeta.id}
+              proceso={proceso}
+            />
+          );
+        } 
       )}
     </>
   );

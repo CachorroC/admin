@@ -9,13 +9,9 @@ import { Loader } from '#@/components/Loader';
 export default function Loading() {
   return (
     <>
-      <NewNota
-        llaveProceso={'Procesos'}
-        uri={`${ getBaseUrl() }`}
-      />
-      <Loader />
-      <Loader />
-      <Loader />
+      +<CardSkeleton />
+      <CardSkeleton />
+      <CardSkeleton />
     </>
   );
 }

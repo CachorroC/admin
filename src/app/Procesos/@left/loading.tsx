@@ -1,5 +1,15 @@
 import { Loader } from '#@/components/Loader';
 
 export default function Loading() {
-  return <Loader />;
+  return (
+    <>
+      <Loader />
+      <Loader />
+      <Loader />
+      <Loader />
+      <Loader />
+      <Loader />
+      <Loader />
+    </>
+  );
 }

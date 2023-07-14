@@ -14,42 +14,42 @@ export function arrayMergerByidProceso(
   }: {
   a: intProceso[] | IntActuaciones[] | monDemandado[] | intFecha[];
   b: intProceso[] | IntActuaciones[] | monDemandado[] | intFecha[];
-}
+} 
 ) {
   const map = new Map();
   a.forEach(
     (
-      item
+      item 
     ) => {
       return map.set(
         item.idProceso,
-        item
+        item 
       );
-    }
+    } 
   );
   b.forEach(
     (
-      item
+      item 
     ) => {
       return map.set(
         item.idProceso,
         {
           ...map.get(
-            item.idProceso
+            item.idProceso 
           ),
           ...item
-        }
+        } 
       );
-    }
+    } 
   );
 
   const mergedArr = Array.from(
-    map.values()
+    map.values() 
   );
   console.log(
     JSON.stringify(
-      mergedArr
-    )
+      mergedArr 
+    ) 
   );
 
   return mergedArr;
@@ -62,18 +62,18 @@ export function arrayMergerByllaveProceso(
   }: {
   carpetas: MonCarpeta[];
   actuaciones: intActuacion[];
-}
+} 
 ) {
   const map = new Map();
   carpetas.forEach(
     (
-      carpeta
+      carpeta 
     ) => {
       return map.set(
         carpeta._id,
-        carpeta
+        carpeta 
       );
-    }
+    } 
   );
 
   for ( const crp of map ) {
@@ -83,33 +83,32 @@ export function arrayMergerByllaveProceso(
     ] = crp;
 
     const {
-      llaveProceso
+      llaveProceso 
     } = carpeta;
 
     const actsByMap = actuaciones.filter(
       (
-        actuacion
+        actuacion 
       ) => {
         return actuacion.llaveProceso === llaveProceso;
-      }
+      } 
     );
     map.set(
       _id,
       {
         ...carpeta,
         UltimaActuacion: actsByMap
-      }
+      } 
     );
   }
 
-
   const mergedArr = Array.from(
-    map.values()
+    map.values() 
   );
   console.log(
     JSON.stringify(
-      mergedArr
-    )
+      mergedArr 
+    ) 
   );
 
   return mergedArr;

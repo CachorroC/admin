@@ -2,7 +2,7 @@ import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { monDemandado } from '#@/lib/types/mongodb';
-import { ConvertNotas, intNota } from '#@/lib/types/notas';
+import { notaConvert, intNota } from '#@/lib/types/notas';
 import { ObjectId } from 'mongodb';
 import { cache } from 'react';
 
@@ -20,7 +20,7 @@ const Collection = cache(
       'RyS' 
     );
 
-    const notas = db.collection(
+    const notas = db.collection<intNota>(
       'Notas' 
     );
 
@@ -36,12 +36,8 @@ const Transform = cache(
       {} 
     ).toArray();
 
-    const notasString = JSON.stringify(
+    const notas = notaConvert.toMonNotas(
       notasRaw 
-    );
-
-    const notas = ConvertNotas.toMonNota(
-      notasString 
     );
 
     return notas;
@@ -56,24 +52,7 @@ export async function GET(
   } = new URL(
     Request.url 
   );
-  const client = await clientPromise;
-
-  if ( !client ) {
-    throw new Error(
-      'no hay cliente mongólico' 
-    );
-  }
-
-  const db = client.db(
-    'RyS' 
-  );
-
-  const notas = await db.collection(
-    'Notas' 
-  ).find(
-    {} 
-  )
-    .toArray();
+  const notas = await Transform();
 
   if ( !notas.length ) {
     throw new Error(
@@ -107,16 +86,16 @@ export async function GET(
     );
   }
 
-  const _id = searchParams.get(
-    '_id' 
+  const id = searchParams.get(
+    'id' 
   );
 
-  if ( _id ) {
+  if ( id ) {
     const Nota = notas.find(
       (
         nota 
       ) => {
-        return nota._id.toString() === _id;
+        return nota.id === id;
       } 
     );
 
@@ -204,7 +183,7 @@ export async function PUT(
     const result = await collection.updateOne(
       query,
       {
-        $set: updatedNote 
+        $set: updatedNote
       } 
     );
 
@@ -214,7 +193,7 @@ export async function PUT(
         {
           status : 200,
           headers: {
-            'content-type': 'text/html' 
+            'content-type': 'text/html'
           }
         } 
       );
@@ -229,7 +208,7 @@ export async function PUT(
       {
         status : 200,
         headers: {
-          'content-type': 'text/html' 
+          'content-type': 'text/html'
         }
       }
     );
@@ -238,7 +217,7 @@ export async function PUT(
   return new NextResponse(
     null,
     {
-      status: 404 
+      status: 404
     } 
   );
 }
@@ -255,7 +234,7 @@ export async function DELETE(
   );
 
   const id = searchParams.get(
-    '_id' 
+    'id' 
   );
 
   if ( id ) {
@@ -307,7 +286,7 @@ export async function DELETE(
         Result 
       ),
       {
-        status: 200 
+        status: 200
       } 
     );
   }

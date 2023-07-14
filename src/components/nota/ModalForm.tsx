@@ -16,7 +16,7 @@ export const ModalForm = (
   } = useForm<FormValues>(
     {
       defaultValues: {
-        mail 
+        mail
       }
     } 
   );
@@ -24,7 +24,7 @@ export const ModalForm = (
     () => {
       reset(
         {
-          mail 
+          mail
         } 
       );
     },
@@ -52,7 +52,7 @@ export const ModalForm = (
         {...register(
           'mail',
           {
-            required: true 
+            required: true
           } 
         )}
       />

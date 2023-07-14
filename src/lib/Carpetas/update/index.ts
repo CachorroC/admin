@@ -10,31 +10,34 @@ const Collection = cache(
 
     if ( !client ) {
       throw new Error(
-        'no hay cliente mongólico'
+        'no hay cliente mongólico' 
       );
     }
 
     const db = client.db(
-      'RyS'
+      'RyS' 
     );
 
     const carpetas = db.collection<IntCarpeta>(
-      'Demandados'
+      'Demandados' 
     );
 
     return carpetas;
-  }
+  } 
 );
 
-export const updateCarpeta = async(
+export const updateCarpeta = async (
   {
-    carpeta, index
-  }: { carpeta: MonCarpeta; index: number }
-) =>  {
-
+    carpeta,
+    index
+  }: {
+  carpeta: MonCarpeta;
+  index: number;
+} 
+) => {
   const actuaciones = await getActuaciones(
     carpeta.idProceso,
-    index
+    index 
   );
   const collection = await Collection();
 
@@ -42,7 +45,7 @@ export const updateCarpeta = async(
     return null;
   }
   console.log(
-    actuaciones[ 0 ]
+    actuaciones[ 0 ] 
   );
 
   const outgoingRequest = await collection.findOneAndReplace(
@@ -59,14 +62,12 @@ export const updateCarpeta = async(
   );
 
   return outgoingRequest;
-
 };
-
 
 export async function updateCarpetas(
   {
-    carpetas
-  }: { carpetas: MonCarpeta[] }
+    carpetas 
+  }: { carpetas: MonCarpeta[] } 
 ) {
   const newCarpetas = [];
 
@@ -77,7 +78,7 @@ export async function updateCarpetas(
       {
         carpeta: carpeta,
         index  : i
-      }
+      } 
     );
 
     if ( req === null ) {
@@ -85,16 +86,16 @@ export async function updateCarpetas(
         {
           ...carpeta,
           ultimaActuacion: null
-        }
+        } 
       );
 
       continue;
     }
     newCarpetas.push(
-      req.value ?? carpeta
+      req.value ?? carpeta 
     );
     console.log(
-      newCarpetas.length
+      newCarpetas.length 
     );
   }
 

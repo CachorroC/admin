@@ -95,9 +95,7 @@ export const CardSearchList = (
         <Card
           key={id}
           name={Nombre}
-          path='/Procesos'
-          llaveProceso={llaveProceso}
-          idProceso={idProceso}
+          path={`/Carpetas/${ id }`}
           fecha={fecha}>
           <p className={card.sub}>{`${ i + 1 } de ${ arr.length }`}</p>
           {fecha && <sub className={card.date}>{fixFechas(

@@ -32,7 +32,7 @@ export async function Name(
         ) => {
           return toNameString(
             {
-              nameRaw: n 
+              nameRaw: n
             } 
           );
         } 

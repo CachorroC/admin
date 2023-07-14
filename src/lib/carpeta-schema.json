@@ -70,7 +70,7 @@
     "ObjectId": {
       "type": "object",
       "additionalProperties": false,
-      "properties": { }
+      "properties": {}
     },
     "Avaluo": {
       "type": "object",
@@ -94,9 +94,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "Fecha"
-      ],
+      "required": ["Fecha"],
       "additionalProperties": false
     },
     "Demanda": {
@@ -153,18 +151,12 @@
           "$ref": "#/definitions/Tipo"
         }
       },
-      "required": [
-        "Tipo"
-      ],
+      "required": ["Tipo"],
       "additionalProperties": false
     },
     "Tipo": {
       "type": "string",
-      "enum": [
-        "PRENDARIO",
-        "SINGULAR",
-        "HIPOTECARIO"
-      ]
+      "enum": ["PRENDARIO", "SINGULAR", "HIPOTECARIO"]
     },
     "Ubicacion": {
       "type": "object",
@@ -173,9 +165,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "Juzgado"
-      ],
+      "required": ["Juzgado"],
       "additionalProperties": false
     },
     "Juzgado": {
@@ -188,31 +178,20 @@
           "type": "string"
         }
       },
-      "required": [
-        "Origen"
-      ],
+      "required": ["Origen"],
       "additionalProperties": false
     },
     "Obligacion": {
       "type": "object",
       "properties": {
         "1": {
-          "type": [
-            "number",
-            "string"
-          ]
+          "type": ["number", "string"]
         },
         "2": {
-          "type": [
-            "number",
-            "string"
-          ]
+          "type": ["number", "string"]
         }
       },
-      "required": [
-        "1",
-        "2"
-      ],
+      "required": ["1", "2"],
       "additionalProperties": false
     },
     "Deudor": {
@@ -234,9 +213,7 @@
           "$ref": "#/definitions/Tel"
         }
       },
-      "required": [
-        "Nombre"
-      ],
+      "required": ["Nombre"],
       "additionalProperties": false
     },
     "Tel": {
@@ -249,10 +226,7 @@
           "type": "number"
         }
       },
-      "required": [
-        "Fijo",
-        "Celular"
-      ],
+      "required": ["Fijo", "Celular"],
       "additionalProperties": false
     },
     "EtapaProcesal": {
@@ -265,9 +239,7 @@
           "$ref": "#/definitions/EtapaProcesalFecha"
         }
       },
-      "required": [
-        "Etapa"
-      ],
+      "required": ["Etapa"],
       "additionalProperties": false
     },
     "EtapaProcesalFecha": {
@@ -295,9 +267,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "Fecha"
-      ],
+      "required": ["Fecha"],
       "additionalProperties": false
     },
     "Costas": {
@@ -310,9 +280,7 @@
           "type": "number"
         }
       },
-      "required": [
-        "FechaAprobacion"
-      ],
+      "required": ["FechaAprobacion"],
       "additionalProperties": false
     },
     "LiquidacionFecha": {
@@ -370,10 +338,7 @@
           "$ref": "#/definitions/Oficio"
         }
       },
-      "required": [
-        "Bienes",
-        "MedidaSolicitada"
-      ],
+      "required": ["Bienes", "MedidaSolicitada"],
       "additionalProperties": false
     },
     "MedidasCautelaresFecha": {
@@ -401,9 +366,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "FechaRetiro"
-      ],
+      "required": ["FechaRetiro"],
       "additionalProperties": false
     },
     "Oficio": {
@@ -416,10 +379,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "Numero",
-        "Fecha"
-      ],
+      "required": ["Numero", "Fecha"],
       "additionalProperties": false
     },
     "Notificaciones": {
@@ -444,9 +404,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "291"
-      ],
+      "required": ["291"],
       "additionalProperties": false
     },
     "The291": {
@@ -474,10 +432,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "TerminoSuspencion",
-        "Fecha"
-      ],
+      "required": ["TerminoSuspencion", "Fecha"],
       "additionalProperties": false
     },
     "Terminacion": {
@@ -490,10 +445,7 @@
           "$ref": "#/definitions/TerminacionFecha"
         }
       },
-      "required": [
-        "Causal",
-        "Fecha"
-      ],
+      "required": ["Causal", "Fecha"],
       "additionalProperties": false
     },
     "TerminacionFecha": {
@@ -506,10 +458,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "AutoTerminacion",
-        "RadicacionMemorial"
-      ],
+      "required": ["AutoTerminacion", "RadicacionMemorial"],
       "additionalProperties": false
     },
     "intActuacion": {
@@ -531,22 +480,13 @@
           "type": "string"
         },
         "anotacion": {
-          "type": [
-            "null",
-            "string"
-          ]
+          "type": ["null", "string"]
         },
         "fechaInicial": {
-          "type": [
-            "null",
-            "string"
-          ]
+          "type": ["null", "string"]
         },
         "fechaFinal": {
-          "type": [
-            "null",
-            "string"
-          ]
+          "type": ["null", "string"]
         },
         "fechaRegistro": {
           "type": "string"
@@ -613,10 +553,7 @@
           "$ref": "#/definitions/Tel"
         }
       },
-      "required": [
-        "Id",
-        "Nombre"
-      ],
+      "required": ["Id", "Nombre"],
       "additionalProperties": false
     }
   }

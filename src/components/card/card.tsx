@@ -118,69 +118,66 @@ export const Card = (
           <h1 className={`${ typography.titleMedium } ${ card.title }`}>
             {toNameString(
               {
-                nameRaw: name 
+                nameRaw: name
               } 
             )}
           </h1>
-          {hasLinks
-            ? (
-                <div className={card.links}>
-                  <Link
-                    className={isActive
-                      ? card.linkIsActive
-                      : card.link}
-                    href={`${ path }/${ llaveProceso }` as Route}>
-                    <span className={`material-symbols-outlined ${ card.icon }`}>
+          {hasLinks && (
+            <div className={card.links}>
+              <Link
+                className={isActive
+                  ? card.linkIsActive
+                  : card.link}
+                href={`${ path }/${ llaveProceso }` as Route}>
+                <span className={`material-symbols-outlined ${ card.icon }`}>
                   badge
-                    </span>
-                    <span className={card.tooltiptext}>Perfil del Demandado</span>
-                  </Link>
-                  <Link
-                    className={isActive
-                      ? card.linkIsActive
-                      : card.link}
-                    href={`/Notas/NuevaNota/${ llaveProceso }`}
-                    onClick={() => {
-                      setIsOpen(
-                        true 
-                      );
-                    }}>
-                    <span className={`material-symbols-outlined ${ card.icon }`}>
+                </span>
+                <span className={card.tooltiptext}>Perfil del Demandado</span>
+              </Link>
+              <Link
+                className={isActive
+                  ? card.linkIsActive
+                  : card.link}
+                href={`/Notas/NuevaNota/${ llaveProceso }`}
+                onClick={() => {
+                  setIsOpen(
+                    true 
+                  );
+                }}>
+                <span className={`material-symbols-outlined ${ card.icon }`}>
                   add
-                    </span>
-                    <span className={card.tooltiptext}>Agregar nota</span>
-                  </Link>
-                  <Link
-                    className={isActive
-                      ? card.linkIsActive
-                      : card.link}
-                    onClick={clickHandler}
-                    href={href}>
-                    <span className={`${ card.icon } material-symbols-outlined`}>
+                </span>
+                <span className={card.tooltiptext}>Agregar nota</span>
+              </Link>
+              <Link
+                className={isActive
+                  ? card.linkIsActive
+                  : card.link}
+                onClick={clickHandler}
+                href={href}>
+                <span className={`${ card.icon } material-symbols-outlined`}>
                   file_open
-                    </span>
-                    <span className={card.tooltiptext}>
+                </span>
+                <span className={card.tooltiptext}>
                   Actuaciones del proceso
-                    </span>
-                  </Link>
-                  <Link
-                    onClick={clickHandler}
-                    href={href}
-                    className={card.link}>
-                    <span className={`material-symbols-outlined ${ card.icon }`}>
-                      {icon ?? 'open_in_new'}
-                    </span>
-                    <span className={card.tooltiptext}>abrir</span>
-                  </Link>
-                </div>
-              )
-            : (
-                children
-              )}
+                </span>
+              </Link>
+              <Link
+                onClick={clickHandler}
+                href={href}
+                className={card.link}>
+                <span className={`material-symbols-outlined ${ card.icon }`}>
+                  {icon ?? 'open_in_new'}
+                </span>
+                <span className={card.tooltiptext}>abrir</span>
+              </Link>
+            </div>
+          )}
+          {children}
           {contenido && (
-            <p className={`${ typography.bodySmall } ${ card.content }`}>
+            <div className={`${ typography.bodySmall } ${ card.content }`}>
               {contenido}
-            </p>
+            </div>
           )}
           {juzgado && (
             <Link
@@ -201,5 +198,5 @@ export const Card = (
     );
   }
 
-  return <Loader />;
+  return null;
 };

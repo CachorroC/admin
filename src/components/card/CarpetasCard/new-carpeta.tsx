@@ -7,7 +7,7 @@ import { IntCarpeta } from '#@/lib/types/demandados';
 export function NuevoProceso(
   {
     uri 
-  }: { uri: string }
+  }: { uri: string } 
 ) {
   const {
     register,
@@ -18,12 +18,12 @@ export function NuevoProceso(
   } = useForm<IntCarpeta>();
 
   const onSubmit = async (
-    data: IntCarpeta
+    data: IntCarpeta 
   ) => {
     alert(
       JSON.stringify(
-        data
-      )
+        data 
+      ) 
     );
 
     const postNewNote = await fetch(
@@ -34,23 +34,23 @@ export function NuevoProceso(
           'content-type': 'application/json'
         },
         body: JSON.stringify(
-          data
+          data 
         )
-      }
+      } 
     ).then(
       (
-        fullfilled
+        fullfilled 
       ) => {
         alert(
-          fullfilled.status
+          fullfilled.status 
         );
 
         return fullfilled;
-      }
+      } 
     );
     const responsePostNewNote = await postNewNote.json();
     alert(
-      responsePostNewNote
+      responsePostNewNote 
     );
 
     return responsePostNewNote;
@@ -61,7 +61,7 @@ export function NuevoProceso(
       <form
         className={form.form}
         onSubmit={handleSubmit(
-          onSubmit
+          onSubmit 
         )}>
         <input
           type='number'
@@ -70,7 +70,7 @@ export function NuevoProceso(
             'Carpeta',
             {
               required: true
-            }
+            } 
           )}
         />
         <input
@@ -80,7 +80,7 @@ export function NuevoProceso(
             'Deudor.Id',
             {
               required: true
-            }
+            } 
           )}
         />
         <input
@@ -90,7 +90,7 @@ export function NuevoProceso(
             'Deudor.Nombre',
             {
               required: true
-            }
+            } 
           )}
         />
         <input
@@ -100,7 +100,7 @@ export function NuevoProceso(
             'Deudor.Email',
             {
               pattern: /^\S+@\S+$/i
-            }
+            } 
           )}
         />
         <input
@@ -110,7 +110,7 @@ export function NuevoProceso(
             'Deudor.Tel.Fijo',
             {
               maxLength: 10
-            }
+            } 
           )}
         />
         <input
@@ -120,7 +120,7 @@ export function NuevoProceso(
             'Deudor.Tel.Celular',
             {
               maxLength: 10
-            }
+            } 
           )}
         />
         <input
@@ -128,7 +128,7 @@ export function NuevoProceso(
           placeholder='Deudor.Direccion'
           {...register(
             'Deudor.Direccion',
-            {}
+            {} 
           )}
         />
         <input
@@ -136,7 +136,7 @@ export function NuevoProceso(
           placeholder='Codeudor.Cedula'
           {...register(
             'Codeudor.Id',
-            {}
+            {} 
           )}
         />
         <input
@@ -144,7 +144,7 @@ export function NuevoProceso(
           placeholder='Codeudor.Nombre'
           {...register(
             'Codeudor.Nombre',
-            {}
+            {} 
           )}
         />
         <input
@@ -154,7 +154,7 @@ export function NuevoProceso(
             'Codeudor.Tel.Fijo',
             {
               maxLength: 10
-            }
+            } 
           )}
         />
         <input
@@ -164,7 +164,7 @@ export function NuevoProceso(
             'Codeudor.Tel.Celular',
             {
               maxLength: 10
-            }
+            } 
           )}
         />
         <input
@@ -174,7 +174,7 @@ export function NuevoProceso(
             'idProceso',
             {
               required: true
-            }
+            } 
           )}
         />
         <input
@@ -184,7 +184,7 @@ export function NuevoProceso(
             'llaveProceso',
             {
               minLength: 23
-            }
+            } 
           )}
         />
         <input
@@ -192,7 +192,7 @@ export function NuevoProceso(
           placeholder='Avaluo.Adjudicacion.Fecha'
           {...register(
             'Avaluo.Adjudicacion.Fecha',
-            {}
+            {} 
           )}
         />
         <input
@@ -200,7 +200,7 @@ export function NuevoProceso(
           placeholder='Avaluo.Remate.Fecha'
           {...register(
             'Avaluo.Remate.Fecha',
-            {}
+            {} 
           )}
         />
         <input
@@ -208,11 +208,11 @@ export function NuevoProceso(
           placeholder='Avaluo.Valor'
           {...register(
             'Avaluo.Valor',
-            {}
+            {} 
           )}
         />
         <select {...register(
-          'Demanda.Departamento'
+          'Demanda.Departamento' 
         )}>
           <option value='Amazonas'>Amazonas</option>
           <option value='Vichada'>Vichada</option>
@@ -257,7 +257,7 @@ export function NuevoProceso(
           placeholder='Demanda.Municipio'
           {...register(
             'Demanda.Municipio',
-            {}
+            {} 
           )}
         />
         <input
@@ -265,7 +265,7 @@ export function NuevoProceso(
           placeholder='Demanda.VencimientoPagaré'
           {...register(
             'Demanda.VencimientoPagare',
-            {}
+            {} 
           )}
         />
         <input
@@ -273,7 +273,7 @@ export function NuevoProceso(
           placeholder='Demanda.EntregaGarantiasAbogado'
           {...register(
             'Demanda.EntregadeGarantiasAbogado',
-            {}
+            {} 
           )}
         />
         <input
@@ -283,7 +283,7 @@ export function NuevoProceso(
             'Demanda.Radicado',
             {
               pattern: /"\d\d\d\d\s+-\s+\d\d\d\d\d"/i
-            }
+            } 
           )}
         />
         <input
@@ -291,11 +291,11 @@ export function NuevoProceso(
           placeholder='Demanda.CapitalAdeudado'
           {...register(
             'Demanda.CapitalAdeudado',
-            {}
+            {} 
           )}
         />
         <select {...register(
-          'Demanda.Proceso.Tipo'
+          'Demanda.Proceso.Tipo' 
         )}>
           <option value='HIPOTECARIO'>HIPOTECARIO</option>
           <option value='PRENDARIO'>PRENDARIO</option>
@@ -306,7 +306,7 @@ export function NuevoProceso(
           placeholder='Demanda.Ubicacion.Juzgado'
           {...register(
             'Demanda.Ubicacion.Juzgado',
-            {}
+            {} 
           )}
         />
         <input
@@ -314,7 +314,7 @@ export function NuevoProceso(
           placeholder='Demanda.Juzgado.Origen'
           {...register(
             'Demanda.Juzgado.Origen',
-            {}
+            {} 
           )}
         />
         <input
@@ -322,7 +322,7 @@ export function NuevoProceso(
           placeholder='Demanda.Juzgado.Ejecucion'
           {...register(
             'Demanda.Juzgado.Ejecucion',
-            {}
+            {} 
           )}
         />
         <input
@@ -330,7 +330,7 @@ export function NuevoProceso(
           placeholder='Demanda.Obligacion.1'
           {...register(
             'Demanda.Obligacion.1',
-            {}
+            {} 
           )}
         />
         <input
@@ -338,7 +338,7 @@ export function NuevoProceso(
           placeholder='Demanda.Obligacion.2'
           {...register(
             'Demanda.Obligacion.2',
-            {}
+            {} 
           )}
         />
         <input
@@ -346,7 +346,7 @@ export function NuevoProceso(
           placeholder='EtapaProcesal.Etapa'
           {...register(
             'EtapaProcesal.Etapa',
-            {}
+            {} 
           )}
         />
         <input
@@ -354,7 +354,7 @@ export function NuevoProceso(
           placeholder='EtapaProcesal.Fecha.MandamientodePago'
           {...register(
             'EtapaProcesal.Fecha.MandamientodePago',
-            {}
+            {} 
           )}
         />
         <input
@@ -362,7 +362,7 @@ export function NuevoProceso(
           placeholder='Liquidacion.Costas.FechaAprobacion'
           {...register(
             'Liquidacion.Costas.FechaAprobacion',
-            {}
+            {} 
           )}
         />
         <input
@@ -370,7 +370,7 @@ export function NuevoProceso(
           placeholder='Liquidacion.Costas.Valor'
           {...register(
             'Liquidacion.Costas.Valor',
-            {}
+            {} 
           )}
         />
         <input
@@ -378,7 +378,7 @@ export function NuevoProceso(
           placeholder='Liquidacion.Fecha.Aprobacion'
           {...register(
             'Liquidacion.Fecha.Aprobacion',
-            {}
+            {} 
           )}
         />
         <input
@@ -386,7 +386,7 @@ export function NuevoProceso(
           placeholder='Liquidacion.Fecha.Presentacion'
           {...register(
             'Liquidacion.Fecha.Presentacion',
-            {}
+            {} 
           )}
         />
         <input
@@ -394,7 +394,7 @@ export function NuevoProceso(
           placeholder='Liquidacion.Fecha.Solicitud'
           {...register(
             'Liquidacion.Fecha.Solicitud',
-            {}
+            {} 
           )}
         />
         <input
@@ -402,7 +402,7 @@ export function NuevoProceso(
           placeholder='Liquidacion.Fecha.Sentencia'
           {...register(
             'Liquidacion.Fecha.Sentencia',
-            {}
+            {} 
           )}
         />
         <input
@@ -410,7 +410,7 @@ export function NuevoProceso(
           placeholder='MedidasCautelares.Bienes'
           {...register(
             'MedidasCautelares.Bienes',
-            {}
+            {} 
           )}
         />
         <input
@@ -418,7 +418,7 @@ export function NuevoProceso(
           placeholder='MedidasCautelares.MedidaSolicitada'
           {...register(
             'MedidasCautelares.MedidaSolicitada',
-            {}
+            {} 
           )}
         />
         <input
@@ -426,7 +426,7 @@ export function NuevoProceso(
           placeholder='MedidasCautelares.extra'
           {...register(
             'MedidasCautelares.Extra',
-            {}
+            {} 
           )}
         />
         <input
@@ -434,7 +434,7 @@ export function NuevoProceso(
           placeholder='MedidasCautelares.PlacaoNumeroMatricula'
           {...register(
             'MedidasCautelares.PlacaoNumeroMatricula',
-            {}
+            {} 
           )}
         />
         <input
@@ -442,7 +442,7 @@ export function NuevoProceso(
           placeholder='MedidasCautelares.DescripcionMedida'
           {...register(
             'MedidasCautelares.DescripcionMedida',
-            {}
+            {} 
           )}
         />
         <input
@@ -450,7 +450,7 @@ export function NuevoProceso(
           placeholder='MedidasCautelares.Fecha.Captura'
           {...register(
             'MedidasCautelares.Fecha.Captura',
-            {}
+            {} 
           )}
         />
         <input
@@ -458,7 +458,7 @@ export function NuevoProceso(
           placeholder='MedidasCautelares.Fecha.Secuestro'
           {...register(
             'MedidasCautelares.Fecha.Secuestro',
-            {}
+            {} 
           )}
         />
         <input
@@ -466,7 +466,7 @@ export function NuevoProceso(
           placeholder='MedidasCautelares.Fecha.DecretoSecuestrooCaptura'
           {...register(
             'MedidasCautelares.Fecha.DecretoSecuestrooCaptura',
-            {}
+            {} 
           )}
         />
         <input

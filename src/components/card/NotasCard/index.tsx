@@ -51,16 +51,16 @@ export const NotasList = (
             nt 
           ) => {
             const {
-              _id, nota 
+              id, nota 
             } = nt;
 
             return (
               <button
-                key={_id}
+                key={id}
                 type='button'
                 onClick={() => {
                   return scrollToId(
-                    _id 
+                    id 
                   );
                 }}>
                 <span className='material-symbols-outlined'>open_in_new</span>
@@ -78,7 +78,7 @@ export const NotasList = (
           return (
             <div
               className={styles.container}
-              key={nota._id}
+              key={nota.id}
               ref={(
                 node 
               ) => {
@@ -86,12 +86,12 @@ export const NotasList = (
 
                 if ( node ) {
                   map.set(
-                    nota._id,
+                    nota.id,
                     node 
                   );
                 } else {
                   map.delete(
-                    nota._id 
+                    nota.id 
                   );
                 }
               }}>
@@ -109,7 +109,7 @@ export const NotasList = (
                     <EditNoteButton nota={nota} />
                   </Suspense>
                   <Suspense fallback={<ButtonSkeleton />}>
-                    <DeleteNoteButton id={nota._id} />
+                    <DeleteNoteButton id={nota.id} />
                   </Suspense>
                 </div>
                 <div className={styles.tareas}>
@@ -149,7 +149,7 @@ export const NotaFRef = forwardRef(
     return (
       <div
         className={styles.container}
-        key={nota._id}>
+        key={nota.id}>
         <div className={styles.nota}>
           <sup className={styles.sup}>{`${ index + 1 }`}</sup>
           <p
@@ -164,7 +164,7 @@ export const NotaFRef = forwardRef(
               <EditNoteButton nota={nota} />
             </Suspense>
             <Suspense fallback={<ButtonSkeleton />}>
-              <DeleteNoteButton id={nota._id} />
+              <DeleteNoteButton id={nota.id} />
             </Suspense>
           </div>
           <div className={styles.tareas}>
@@ -202,7 +202,7 @@ export function Form(
         ) => {
           return (
             <NotaFRef
-              key={nt._id}
+              key={nt.id}
               nota={nt}
               index={i}
             />

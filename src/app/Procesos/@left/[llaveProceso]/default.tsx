@@ -10,45 +10,49 @@ import { ProcesoCard } from '#@/components/card/ProcesosCard';
 export default async function DefaultProcesosLeftllaveProceso(
   {
     params: {
-      llaveProceso
+      llaveProceso 
     }
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   const carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: llaveProceso
-    }
+    } 
   );
 
   const Procesos = await getConsultaNumeroRadicion(
     {
       llaveProceso: llaveProceso
-    }
+    } 
   );
 
   return (
     <>
-      { carpetas.map(
+      {carpetas.map(
         (
-          carpeta, index, arr
+          carpeta, index, arr 
         ) => {
           const proceso = Procesos.find(
             (
-              pr
+              pr 
             ) => {
               return pr.idProceso === carpeta.idProceso;
-            }
+            } 
           );
 
           return (
-            <CarpetaCard carpeta={ carpeta } key={ carpeta.id }>
-              <span className='material-symbols-outlined'>disabled_by_default</span>
-              {proceso && ( <ProcesoCard proceso={  proceso} /> )}
+            <CarpetaCard
+              carpeta={carpeta}
+              key={carpeta.id}>
+              <span className='material-symbols-outlined'>
+              disabled_by_default
+              </span>
+              {proceso && <ProcesoCard proceso={proceso} />}
             </CarpetaCard>
           );
-        }
+        } 
       )}
     </>
   );

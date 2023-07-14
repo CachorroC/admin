@@ -1,7 +1,7 @@
 import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
-import { monNota, intNota, ConvertNotas } from '#@/lib/types/notas';
+import { monNota, intNota, notaConvert } from '#@/lib/types/notas';
 import { cache } from 'react';
 
 const Collection = async () => {
@@ -17,7 +17,7 @@ const Collection = async () => {
     'RyS' 
   );
 
-  const notas = db.collection(
+  const notas = db.collection<intNota>(
     'Notas' 
   );
 
@@ -31,12 +31,8 @@ const Transform = async () => {
     {} 
   ).toArray();
 
-  const notasString = JSON.stringify(
+  const notas = notaConvert.toMonNotas(
     notasRaw 
-  );
-
-  const notas = ConvertNotas.toMonNota(
-    notasString 
   );
 
   return notas;
@@ -50,7 +46,7 @@ export async function getNotas() {
 
 export async function getNotasByllaveProceso(
   {
-    llaveProceso 
+    llaveProceso
   }: {
   llaveProceso: string;
 } 
@@ -71,8 +67,8 @@ export async function getNotasByllaveProceso(
 export const getNotaById = cache(
   async (
     {
-      _id 
-    }: { _id: string } 
+      id 
+    }: { id: string } 
   ) => {
     const notas = await Transform();
 
@@ -80,7 +76,7 @@ export const getNotaById = cache(
       (
         nota 
       ) => {
-        return nota._id === _id;
+        return nota.id === id;
       } 
     );
 

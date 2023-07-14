@@ -159,7 +159,7 @@
 .linkIsActive {
   grid-area: link;
   border-radius: 10cqmin;
-  padding: 2vmin;
+  padding: 1cqmax;
   flex: 1 0 48%;
   position: relative;
   & > .tooltiptext {
@@ -234,7 +234,7 @@
     }
   }
   .links {
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
   }
 }
 @container card (300px < width < 320px) {

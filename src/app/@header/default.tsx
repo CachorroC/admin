@@ -9,7 +9,6 @@ import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputS
 import { Loader } from '#@/components/Loader';
 import { ListDrawer } from './list';
 
-
 export default function Default() {
   return (
     <>

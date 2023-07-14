@@ -7,36 +7,38 @@ export default async function PageProcesosRightllaveProceso(
   {
     params
   }: {
-      params: {
-        llaveProceso: string
-      };
-}
+  params: {
+    llaveProceso: string;
+  };
+} 
 ) {
   const carpeta = await getCarpetasByllaveProceso(
     {
       llaveProceso: params.llaveProceso
-    }
+    } 
   );
 
   const Procesos = await getConsultaNumeroRadicion(
     {
       llaveProceso: params.llaveProceso
-    }
+    } 
   );
 
   return (
     <>
       <h1 className={typography.displayMedium}>Procesos Disponibles</h1>
-      { Procesos.map(
+      {Procesos.map(
         (
-          proceso
+          proceso 
         ) => {
           return (
-            <ProcesoCard proceso={ proceso } key={proceso.idProceso} />
+            <ProcesoCard
+              proceso={proceso}
+              key={proceso.idProceso}
+            />
           );
-        }
+        } 
       )}
     </>
   );
-
 }

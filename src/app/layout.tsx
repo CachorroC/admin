@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: 'cam' 
+      name: 'cam'
     },
     {
       name: 'Cachorro Cami',
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icons/favicon.png' 
+        url: '/icons/favicon.png'
       },
       new URL(
         '/favicon.svg',
