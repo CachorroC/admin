@@ -13,9 +13,7 @@ export default async function Page() {
   return (
     <>
       <Title />
-      <Suspense fallback={<Loader />}>
-        <ListDrawer />
-      </Suspense>
+
     </>
   );
 }

@@ -11,11 +11,11 @@ import { ListDrawer } from './list';
 
 export default function Default() {
   return (
-    <>
+    <Header>
       <Title />
       <Suspense fallback={<Loader />}>
         <ListDrawer />
       </Suspense>
-    </>
+    </Header>
   );
 }

@@ -6,24 +6,24 @@ import { IntCarpeta } from '#@/lib/types/demandados';
 
 export function NuevoProceso(
   {
-    uri 
-  }: { uri: string } 
+    uri
+  }: { uri: string }
 ) {
   const {
     register,
     handleSubmit,
     formState: {
-      errors 
+      errors
     }
   } = useForm<IntCarpeta>();
 
   const onSubmit = async (
-    data: IntCarpeta 
+    data: IntCarpeta
   ) => {
     alert(
       JSON.stringify(
-        data 
-      ) 
+        data
+      )
     );
 
     const postNewNote = await fetch(
@@ -34,23 +34,23 @@ export function NuevoProceso(
           'content-type': 'application/json'
         },
         body: JSON.stringify(
-          data 
+          data
         )
-      } 
+      }
     ).then(
       (
-        fullfilled 
+        fullfilled
       ) => {
         alert(
-          fullfilled.status 
+          fullfilled.status
         );
 
         return fullfilled;
-      } 
+      }
     );
     const responsePostNewNote = await postNewNote.json();
     alert(
-      responsePostNewNote 
+      responsePostNewNote
     );
 
     return responsePostNewNote;
@@ -61,158 +61,174 @@ export function NuevoProceso(
       <form
         className={form.form}
         onSubmit={handleSubmit(
-          onSubmit 
+          onSubmit
         )}>
         <input
+          className={form.textArea}
           type='number'
           placeholder='Carpeta'
           {...register(
             'Carpeta',
             {
               required: true
-            } 
+            }
           )}
         />
         <input
+          className={form.textArea}
           type='number'
           placeholder='Deudor.Id'
           {...register(
             'Deudor.Id',
             {
               required: true
-            } 
+            }
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='Deudor.Nombre'
           {...register(
             'Deudor.Nombre',
             {
               required: true
-            } 
+            }
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='Deudor.Email'
           {...register(
             'Deudor.Email',
             {
               pattern: /^\S+@\S+$/i
-            } 
+            }
           )}
         />
         <input
+          className={form.textArea}
           type='tel'
           placeholder='Deudor.Tel.Fijo'
           {...register(
             'Deudor.Tel.Fijo',
             {
               maxLength: 10
-            } 
+            }
           )}
         />
         <input
+          className={form.textArea}
           type='tel'
           placeholder='Deudor.Tel.Celular'
           {...register(
             'Deudor.Tel.Celular',
             {
               maxLength: 10
-            } 
+            }
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='Deudor.Direccion'
           {...register(
             'Deudor.Direccion',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='number'
           placeholder='Codeudor.Cedula'
           {...register(
             'Codeudor.Id',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='Codeudor.Nombre'
           {...register(
             'Codeudor.Nombre',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='tel'
           placeholder='Codeudor.Tel.Fijo'
           {...register(
             'Codeudor.Tel.Fijo',
             {
               maxLength: 10
-            } 
+            }
           )}
         />
         <input
+          className={form.textArea}
           type='tel'
           placeholder='Codeudor.Tel.Celular'
           {...register(
             'Codeudor.Tel.Celular',
             {
               maxLength: 10
-            } 
+            }
           )}
         />
         <input
+          className={form.textArea}
           type='number'
           placeholder='idProceso'
           {...register(
             'idProceso',
             {
               required: true
-            } 
+            }
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='llaveProceso'
           {...register(
             'llaveProceso',
             {
               minLength: 23
-            } 
+            }
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='Avaluo.Adjudicacion.Fecha'
           {...register(
             'Avaluo.Adjudicacion.Fecha',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='Avaluo.Remate.Fecha'
           {...register(
             'Avaluo.Remate.Fecha',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='number'
           placeholder='Avaluo.Valor'
           {...register(
             'Avaluo.Valor',
-            {} 
+            {}
           )}
         />
         <select {...register(
-          'Demanda.Departamento' 
+          'Demanda.Departamento'
         )}>
           <option value='Amazonas'>Amazonas</option>
           <option value='Vichada'>Vichada</option>
@@ -253,223 +269,250 @@ export function NuevoProceso(
           </option>
         </select>
         <input
+          className={form.textArea}
           type='text'
           placeholder='Demanda.Municipio'
           {...register(
             'Demanda.Municipio',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='Demanda.VencimientoPagaré'
           {...register(
             'Demanda.VencimientoPagare',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='Demanda.EntregaGarantiasAbogado'
           {...register(
             'Demanda.EntregadeGarantiasAbogado',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='Demanda.Radicado'
           {...register(
             'Demanda.Radicado',
             {
               pattern: /"\d\d\d\d\s+-\s+\d\d\d\d\d"/i
-            } 
+            }
           )}
         />
         <input
+          className={form.textArea}
           type='number'
           placeholder='Demanda.CapitalAdeudado'
           {...register(
             'Demanda.CapitalAdeudado',
-            {} 
+            {}
           )}
         />
         <select {...register(
-          'Demanda.Proceso.Tipo' 
+          'Demanda.Proceso.Tipo'
         )}>
           <option value='HIPOTECARIO'>HIPOTECARIO</option>
           <option value='PRENDARIO'>PRENDARIO</option>
           <option value='SINGULAR'>SINGULAR</option>
         </select>
         <input
+          className={form.textArea}
           type='text'
           placeholder='Demanda.Ubicacion.Juzgado'
           {...register(
             'Demanda.Ubicacion.Juzgado',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='Demanda.Juzgado.Origen'
           {...register(
             'Demanda.Juzgado.Origen',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='Demanda.Juzgado.Ejecucion'
           {...register(
             'Demanda.Juzgado.Ejecucion',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='Demanda.Obligacion.1'
           {...register(
             'Demanda.Obligacion.1',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='Demanda.Obligacion.2'
           {...register(
             'Demanda.Obligacion.2',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='EtapaProcesal.Etapa'
           {...register(
             'EtapaProcesal.Etapa',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='EtapaProcesal.Fecha.MandamientodePago'
           {...register(
             'EtapaProcesal.Fecha.MandamientodePago',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='Liquidacion.Costas.FechaAprobacion'
           {...register(
             'Liquidacion.Costas.FechaAprobacion',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='number'
           placeholder='Liquidacion.Costas.Valor'
           {...register(
             'Liquidacion.Costas.Valor',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='Liquidacion.Fecha.Aprobacion'
           {...register(
             'Liquidacion.Fecha.Aprobacion',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='Liquidacion.Fecha.Presentacion'
           {...register(
             'Liquidacion.Fecha.Presentacion',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='Liquidacion.Fecha.Solicitud'
           {...register(
             'Liquidacion.Fecha.Solicitud',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='Liquidacion.Fecha.Sentencia'
           {...register(
             'Liquidacion.Fecha.Sentencia',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='MedidasCautelares.Bienes'
           {...register(
             'MedidasCautelares.Bienes',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='MedidasCautelares.MedidaSolicitada'
           {...register(
             'MedidasCautelares.MedidaSolicitada',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='MedidasCautelares.extra'
           {...register(
             'MedidasCautelares.Extra',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='MedidasCautelares.PlacaoNumeroMatricula'
           {...register(
             'MedidasCautelares.PlacaoNumeroMatricula',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='MedidasCautelares.DescripcionMedida'
           {...register(
             'MedidasCautelares.DescripcionMedida',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='MedidasCautelares.Fecha.Captura'
           {...register(
             'MedidasCautelares.Fecha.Captura',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='text'
           placeholder='MedidasCautelares.Fecha.Secuestro'
           {...register(
             'MedidasCautelares.Fecha.Secuestro',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='MedidasCautelares.Fecha.DecretoSecuestrooCaptura'
           {...register(
             'MedidasCautelares.Fecha.DecretoSecuestrooCaptura',
-            {} 
+            {}
           )}
         />
         <input
+          className={form.textArea}
           type='datetime'
           placeholder='MedidasCautelares.Fecha.SolicitudCapturaoSecuestro'
           {...register(
@@ -477,7 +520,8 @@ export function NuevoProceso(
             {}
           )}
         />
-        <input type='submit' />
+        <input
+          className={form.textArea} type='submit' />
       </form>
     </div>
   );

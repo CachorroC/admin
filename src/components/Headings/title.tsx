@@ -1,21 +1,15 @@
 'use client';
-import { useNavigator } from '#@/app/search-context';
-import { usePathname, useSelectedLayoutSegment } from 'next/navigation';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { fixFechas } from '#@/lib/fix';
 import typeface from '#@/styles/fonts/typeface.module.scss';
+import { useOnlineStatus } from '#@/hooks/online-state';
 
 export default function Title(
   {
-    helper 
-  }: { helper?: string } 
+    helper
+  }: { helper?: string }
 ) {
-  const [
-    isNavOpen,
-    setIsNavOpen
-  ] = useNavigator();
-  const pathname = usePathname();
-  const segment = useSelectedLayoutSegment();
+  const isOnline = useOnlineStatus();
   const today = new Date();
   let day;
 
@@ -73,16 +67,18 @@ export default function Title(
     'diciembre '
   ];
 
+  const txt = helper
+    ? helper
+    :  days[ today.getDay() ] + ' '+ fixFechas(
+      today.toString()
+    );
+
   return (
     <h1
-      className={`${ typography.titleMedium }  ${
-        isNavOpen
-          ? typeface.drawer
-          : typeface.navbar
-      }`}>
-      {`${ helper }` ?? `${ days[ today.getDay() ] }, ${ fixFechas(
-        today.toString() 
-      ) }`}
+      className={`${ typography.titleMedium }  ${ typeface.navbar }` }>
+      {isOnline
+        ? txt
+        : 'offline'}
     </h1>
   );
 }

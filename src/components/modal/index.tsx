@@ -11,18 +11,18 @@ import type { Route } from 'next';
 
 export default function Modal(
   {
-    children 
-  }: { children: React.ReactNode } 
+    children
+  }: { children: React.ReactNode }
 ) {
   const params = useParams();
   const pathname = usePathname();
 
   const overlay = useRef(
-    null 
+    null
   );
 
   const wrapper = useRef(
-    null 
+    null
   );
   const router = useRouter();
 
@@ -34,17 +34,17 @@ export default function Modal(
   const onEnter = useCallback(
     () => {
       setIsOpen(
-        false 
+        false
       );
       router.push(
- pathname as Route 
+ pathname as Route
       );
     },
     [
       router,
       pathname,
       setIsOpen
-    ] 
+    ]
   );
 
   const onDismiss = useCallback(
@@ -52,7 +52,7 @@ export default function Modal(
       setIsOpen(
         isOpen
           ? false
-          : true 
+          : true
       );
       router.back();
     },
@@ -60,12 +60,12 @@ export default function Modal(
       router,
       setIsOpen,
       isOpen
-    ] 
+    ]
   );
 
   const onClick = useCallback(
     (
-      e: { target: undefined } 
+      e: { target: undefined }
     ) => {
       if ( e.target === overlay.current || e.target === wrapper.current ) {
         if ( onDismiss ) {
@@ -87,7 +87,7 @@ export default function Modal(
 
   const onKeyDown = useCallback(
     (
-      e: { key: string } 
+      e: { key: string }
     ) => {
       if ( e.key === 'Escape' ) {
         onDismiss();
@@ -104,21 +104,35 @@ export default function Modal(
   );
   useEffect(
     () => {
+      if ( params ) {
+        console.log(
+          params 
+        );
+        setIsOpen(
+          true
+        );
+      }
       document.addEventListener(
         'keydown',
-        onKeyDown 
+        onKeyDown
       );
 
       return () => {
+        setIsOpen(
+          false
+        );
+
         return document.removeEventListener(
           'keydown',
-          onKeyDown 
+          onKeyDown
         );
       };
     },
     [
-      onKeyDown
-    ] 
+      onKeyDown,
+      setIsOpen,
+      params
+    ]
   );
 
   if ( isOpen ) {

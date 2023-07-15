@@ -1,4 +1,4 @@
-import { Card } from '#@/components/card/card';
+
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { getConsultaNumeroRadicion } from '#@/lib/RamaJudicial';
 import { Fragment, Suspense } from 'react';
@@ -10,36 +10,37 @@ import { ProcesoCard } from '#@/components/card/ProcesosCard';
 export default async function DefaultProcesosLeftllaveProceso(
   {
     params: {
-      llaveProceso 
+      llaveProceso
     }
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   const carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: llaveProceso
-    } 
+    }
   );
 
   const Procesos = await getConsultaNumeroRadicion(
     {
       llaveProceso: llaveProceso
-    } 
+    }
   );
 
   return (
     <>
+      <p>default</p>
       {carpetas.map(
         (
-          carpeta, index, arr 
+          carpeta, index, arr
         ) => {
           const proceso = Procesos.find(
             (
-              pr 
+              pr
             ) => {
               return pr.idProceso === carpeta.idProceso;
-            } 
+            }
           );
 
           return (
@@ -52,7 +53,7 @@ export default async function DefaultProcesosLeftllaveProceso(
               {proceso && <ProcesoCard proceso={proceso} />}
             </CarpetaCard>
           );
-        } 
+        }
       )}
     </>
   );

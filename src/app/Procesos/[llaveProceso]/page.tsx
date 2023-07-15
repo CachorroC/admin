@@ -1,28 +1,29 @@
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { Fragment, Suspense } from 'react';
-import { Card } from '#@/components/card/card';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
+import Link from 'next/link';
+import card from '#@/components/card/card.module.scss';
 
 async function Name(
   {
-    llaveProceso 
-  }: { llaveProceso: string } 
+    llaveProceso
+  }: { llaveProceso: string }
 ) {
   const proceso = await getCarpetasByllaveProceso(
     {
       llaveProceso: llaveProceso
-    } 
+    }
   );
 
   const nombre = proceso
     .map(
       (
-        p 
+        p
       ) => {
         return p.Deudor.Nombre;
-      } 
+      }
     )
     .toString();
 
@@ -32,37 +33,41 @@ async function Name(
 export default async function DefaultProcesosllaveProceso(
   {
     params: {
-      llaveProceso 
+      llaveProceso
     }
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   const Carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: llaveProceso
-    } 
+    }
   );
 
   return (
     <>
+      <p>page</p>
       {Carpetas.map(
         (
-          carpeta, index, arr 
+          carpeta, index, arr
         ) => {
           const {
-            id 
+            id
           } = carpeta;
 
           return (
             <Fragment key={id}>
-              <Name llaveProceso={llaveProceso} />
+              <Name llaveProceso={ llaveProceso } />
+              <Link href={ `/Carpetas/${ llaveProceso }` } className={card.link}>
+                <span className='material-symbols-outlined'>folder_shared</span>
+              </Link>
               <CarpetaCard carpeta={carpeta}>
                 <span className='material-symbols-outlined'>star</span>
               </CarpetaCard>
             </Fragment>
           );
-        } 
+        }
       )}
     </>
   );

@@ -9,6 +9,8 @@ import box from '#@/styles/scss/box.module.scss';
 import { Name } from '#@/components/Headings/serverSideName';
 import { ProcesoCard } from '#@/components/card/ProcesosCard';
 import { Accordion } from '#@/components/Accordion';
+import Link from 'next/link';
+import card from '#@/components/card/card.module.scss';
 
 function DemandadoNameBadge(
   {
@@ -17,10 +19,10 @@ function DemandadoNameBadge(
   }: {
   carpeta: MonCarpeta;
   proceso?: intProceso;
-} 
+}
 ) {
   const {
-    llaveProceso, id 
+    llaveProceso, id
   } = carpeta;
 
   if ( proceso ) {
@@ -57,42 +59,48 @@ export default async function PageProcesosllaveProceso(
     params
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   const Procesos = await getConsultaNumeroRadicion(
     {
       llaveProceso: params.llaveProceso
-    } 
+    }
   );
 
   const Carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: params.llaveProceso
-    } 
+    }
   );
 
   return (
     <>
+      <p>default</p>
       {Carpetas.map(
         (
-          carpeta, index, arr 
+          carpeta, index, arr
         ) => {
           const proceso = Procesos.find(
             (
-              prc 
+              prc
             ) => {
               return prc.idProceso === carpeta.idProceso;
-            } 
+            }
           );
 
           return (
-            <DemandadoNameBadge
-              carpeta={carpeta}
-              key={carpeta.id}
-              proceso={proceso}
-            />
+            <Fragment key={carpeta.id}>
+              <DemandadoNameBadge
+                carpeta={carpeta}
+                key={carpeta.id}
+                proceso={proceso}
+              />
+              <Link href={ `/Carpetas/${ carpeta.llaveProceso }` } className={card.link}>
+                <span className='material-symbols-outlined'>folder_shared</span>
+              </Link>
+            </Fragment>
           );
-        } 
+        }
       )}
     </>
   );

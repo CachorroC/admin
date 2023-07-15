@@ -93,6 +93,7 @@ export const CardSearchList = (
 
       rows.push(
         <Card
+          carpeta={Fecha}
           key={id}
           name={Nombre}
           path={`/Carpetas/${ id }`}

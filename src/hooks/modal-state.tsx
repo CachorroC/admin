@@ -1,0 +1,54 @@
+'use client';
+import { ReactNode, useEffect, useRef, useState } from 'react';
+import modal from '#@/components/modal/modal.module.scss';
+
+export default function ModalDialog(
+  {
+    children
+  }: {children: ReactNode}
+) {
+  const [
+    isOpen,
+    setShow
+  ] = useState(
+    false
+  );
+  const ref = useRef();
+
+  useEffect(
+    () => {
+      if ( !isOpen ) {
+        return;
+      }
+      const dialog = ref.current;
+      dialog.showModal();
+
+      return () => {
+        dialog.close();
+      };
+    },
+    [
+      isOpen
+    ]
+  );
+
+  return (
+    <>
+      <button onClick={() => {
+        setShow(
+          false
+        );
+      } }>
+        <span className='material-symbols-outlined'>close</span>
+      </button>
+      <dialog ref={ ref } className={ modal.modal }>{ children }</dialog>
+      <button onClick={() => {
+        return setShow(
+          true
+        );
+      }}>
+        Open dialog
+      </button>
+    </>
+  );
+}

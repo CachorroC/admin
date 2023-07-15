@@ -11,7 +11,8 @@ import { Loader } from '#@/components/Loader';
 import type { Route } from 'next';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
-import { Card } from '../card';
+import { Card } from '#@/components/card/card-with-carpeta';
+
 
 const Fecha = async (
   {
@@ -20,26 +21,28 @@ const Fecha = async (
   }: {
   idProceso: number;
   index: number;
-} 
+}
 ) => {
   const acts = await getActuaciones(
     idProceso,
-    index 
+    index
   );
 
   if ( acts.length === 0 ) {
     return null;
   }
 
-  return <div className={styles.date}>{fixFechas(
-    acts[ 0 ].fechaActuacion 
-  )}</div>;
+  return <div className={ styles.date }>{
+    fixFechas(
+      acts[ 0 ].fechaActuacion
+    )
+  }</div>;
 };
 
 export const DemandaContainer = (
   {
-    demanda 
-  }: { demanda: Demanda } 
+    demanda
+  }: { demanda: Demanda }
 ) => {
   const {
     Departamento,
@@ -63,13 +66,13 @@ export const DemandaContainer = (
         }>{`${ Departamento }: ${ Municipio }`}</h2>
       {VencimientoPagare && (
         <p className={typography.labelMedium}>{fixFechas(
-          VencimientoPagare 
+          VencimientoPagare
         )}</p>
       )}
       {EntregadeGarantiasAbogado && (
         <p className={typography.labelSmall}>
           {fixFechas(
-            EntregadeGarantiasAbogado 
+            EntregadeGarantiasAbogado
           )}
         </p>
       )}
@@ -87,7 +90,7 @@ export async function ListCardCarpetasNFechas() {
     ...carpetas
   ].sort(
     (
-      a, b 
+      a, b
     ) => {
       if ( !a.ultimaActuacion || a.ultimaActuacion.fechaActuacion === undefined ) {
         return 1;
@@ -108,26 +111,18 @@ export async function ListCardCarpetasNFechas() {
       }
 
       return 0;
-    } 
+    }
   );
 
   return (
     <>
       {sortedCarpetas.map(
         (
-          carpeta, index, arr 
+          carpeta, index, arr
         ) => {
           return (
             <Card
-              key={carpeta.id}
-              name={carpeta.Deudor.Nombre}
-              despacho={
-                carpeta.Demanda.Juzgado?.Ejecucion
-              ?? carpeta.Demanda.Juzgado?.Origen
-              }
-              path={'/Procesos'}
-              llaveProceso={carpeta.llaveProceso}
-              idProceso={carpeta.idProceso}>
+              key={ carpeta.id } path={ '/Procesos' } carpeta={ carpeta }  >
               <Suspense fallback={<Loader />}>
                 <Fecha
                   key={carpeta.ultimaActuacion?.idRegActuacion}
@@ -137,7 +132,7 @@ export async function ListCardCarpetasNFechas() {
               </Suspense>
             </Card>
           );
-        } 
+        }
       )}
     </>
   );

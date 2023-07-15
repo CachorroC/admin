@@ -11,33 +11,27 @@ import { fixFechas, toNameString } from '#@/lib/fix';
 import { Name } from '#@/components/Headings/clientSideName';
 import { useEffect } from 'react';
 import { Loader } from '#@/components/Loader';
-import { MonCarpeta } from '#@/lib/types/demandados';
+import { MonCarpeta, intFecha } from '#@/lib/types/demandados';
 
 export const Card = (
   {
-    name,
     path,
-    children,
-    llaveProceso,
-    idProceso,
-    icon,
-    despacho,
-    fecha,
-    contenido,
-    carpeta
+    carpeta,
+    children
   }: {
-      name: string;
       path: string;
+      carpeta: MonCarpeta | intFecha;
       children: ReactNode;
-      llaveProceso?: string;
-      despacho?: string;
-      idProceso?: number;
-      icon?: string;
-      fecha?: string | Date | null;
-      contenido?: string;
-      carpeta?: MonCarpeta;
 }
 ) => {
+  const {
+    llaveProceso, id, idProceso, Deudor, Carpeta, Avaluo, Demanda
+  } = carpeta;
+
+  const {
+    Juzgado, Proceso, Municipio, Radicado, Ubicacion
+  } = Demanda;
+
   const [
     isNavOpen,
     setIsNavOpen
@@ -73,12 +67,9 @@ export const Card = (
     || pathname === `${ path }/${ llaveProceso }/${ idProceso }`
     || pathname === `${ path }/${ llaveProceso }`;
 
-  const profileHref = ( carpeta
-    ? `/Carpetas/${ carpeta.id }`
-    : `${ path }/${ llaveProceso }` ) as Route;
 
-  const juzgado = despacho
-    ? despacho.replace(
+  const juzgado = Juzgado
+    ? Juzgado.Origen.replace(
       / /g,
       '-'
     ).toLocaleLowerCase()
@@ -97,14 +88,14 @@ export const Card = (
         <h1 className={`${ typography.titleMedium } ${ card.title }`}>
           {toNameString(
             {
-              nameRaw: name
+              nameRaw: Deudor.Nombre
             }
           )}
         </h1>
         <div className={card.links}>
           <Link
             className={`${ card.link } ${ isActive && card.isActive }`}
-            href={profileHref}>
+            href={`/Carpetas/${ id }`}>
             <span className={`material-symbols-outlined ${ card.icon }`}>
                   folder_shared
             </span>
@@ -142,21 +133,13 @@ export const Card = (
                   Actuaciones del proceso
             </span>
           </Link>
-          <Link
-            onClick={clickHandler}
-            href={href}
-            className={`${ card.link } ${ isActive && card.isActive }`}>
-            <span className={`material-symbols-outlined ${ card.icon }`}>
-              {icon ?? 'open_in_new'}
-            </span>
-            <span className={card.tooltiptext}>abrir</span>
-          </Link>
+
         </div>
 
         {children}
-        {contenido && (
+        {Radicado && (
           <div className={`${ typography.bodySmall } ${ card.content }`}>
-            {contenido}
+            {Radicado}
           </div>
         )}
         {juzgado && (

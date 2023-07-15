@@ -1,38 +1,16 @@
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
+import { ListCardCarpetasNFechas } from '#@/components/card/CarpetasCard/list';
+import { NotasListSkeleton } from '#@/components/card/NotasCard/skeleton';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
+import { Suspense } from 'react';
 
-export default async function DefaultProcesosRightLLaveProceso(
-  {
-    params: {
-      llaveProceso 
-    }
-  }: {
-  params: { llaveProceso: string };
-} 
-) {
-  const carpetas = await getCarpetasByllaveProceso(
-    {
-      llaveProceso: llaveProceso
-    } 
-  );
-
+export default function DefaultProcesosRightLLaveProceso () {
   return (
     <>
-      {carpetas.map(
-        (
-          carpeta, index, arr 
-        ) => {
-          return (
-            <CarpetaCard
-              carpeta={carpeta}
-              key={carpeta.id}>
-              <span className='material-symbols-outlined'>
-              disabled_by_default
-              </span>
-            </CarpetaCard>
-          );
-        } 
-      )}
+      <p>default</p>
+      <Suspense fallback={<NotasListSkeleton />}>
+        <ListCardCarpetasNFechas />
+      </Suspense>
     </>
   );
 }
