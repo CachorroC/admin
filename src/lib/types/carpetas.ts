@@ -209,7 +209,7 @@ export interface UltimaActuacion {
 export type CodRegla = '00                              ';
 
 // Converts JSON strings to/from your types
-export class carpetaConvert {
+export class Convert {
   public static toIntCarpetas(
     json: string
   ): IntCarpeta[] {
