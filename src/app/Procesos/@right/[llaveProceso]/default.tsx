@@ -4,7 +4,7 @@ import { NotasListSkeleton } from '#@/components/card/NotasCard/skeleton';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { Suspense } from 'react';
 
-export default function DefaultProcesosRightLLaveProceso () {
+export default function DefaultProcesosRightLLaveProceso() {
   return (
     <>
       <p>default</p>

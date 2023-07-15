@@ -20,7 +20,7 @@ export default async function Page(
       (
         prc 
       ) => {
-        return prc.Deudor.Nombre;
+        return prc.Deudor.PrimerNombre;
       } 
     )
     .toString();

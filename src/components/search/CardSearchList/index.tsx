@@ -5,6 +5,7 @@ import { intFecha } from '#@/lib/types/demandados';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import card from '#@/components/card/card.module.scss';
 import { fixFechas } from '#@/lib/fix';
+import { NombreCompleto } from '#@/lib/types/carpetas';
 
 export const CardSearchList = (
   {
@@ -20,6 +21,7 @@ export const CardSearchList = (
   const pathname = usePathname();
   const router = useRouter();
   const params = useParams();
+
 
   const [
     search,
@@ -81,8 +83,13 @@ export const CardSearchList = (
         idProceso, llaveProceso, Deudor, fecha, id
       } = Fecha;
 
+      const newName = new NombreCompleto(
+        Fecha.Deudor
+      );
+      const Nombre = newName.Nombre;
+
       const {
-        Nombre, Direccion, Tel, Email, Id
+        Direccion, Tel, Email, Id
       } = Deudor;
 
       if ( Nombre.toLowerCase().indexOf(
@@ -92,12 +99,7 @@ export const CardSearchList = (
       }
 
       rows.push(
-        <Card
-          carpeta={Fecha}
-          key={id}
-          name={Nombre}
-          path={`/Carpetas/${ id }`}
-          fecha={fecha}>
+        <Card path={ '/Procesos' } carpeta={ Fecha } >
           <p className={card.sub}>{`${ i + 1 } de ${ arr.length }`}</p>
           {fecha && <sub className={card.date}>{fixFechas(
             fecha

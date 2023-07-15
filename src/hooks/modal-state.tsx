@@ -5,7 +5,7 @@ import modal from '#@/components/modal/modal.module.scss';
 export default function ModalDialog(
   {
     children
-  }: {children: ReactNode}
+  }: { children: ReactNode }
 ) {
   const [
     isOpen,
@@ -34,19 +34,25 @@ export default function ModalDialog(
 
   return (
     <>
-      <button onClick={() => {
-        setShow(
-          false
-        );
-      } }>
+      <button
+        onClick={() => {
+          setShow(
+            false
+          );
+        }}>
         <span className='material-symbols-outlined'>close</span>
       </button>
-      <dialog ref={ ref } className={ modal.modal }>{ children }</dialog>
-      <button onClick={() => {
-        return setShow(
-          true
-        );
-      }}>
+      <dialog
+        ref={ref}
+        className={modal.modal}>
+        {children}
+      </dialog>
+      <button
+        onClick={() => {
+          return setShow(
+            true
+          );
+        }}>
         Open dialog
       </button>
     </>

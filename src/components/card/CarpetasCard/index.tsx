@@ -8,6 +8,7 @@ import { Loader } from '#@/components/Loader';
 import { ReactNode, Fragment } from 'react';
 import { Accordion } from '#@/components/Accordion';
 import { Notificaciones } from '#@/lib/types/demandados';
+import { NombreComponent } from '../Nombre';
 
 const NotificacionesContainer = (
   {
@@ -92,13 +93,13 @@ export const CarpetaCard = (
     Demanda,
     ultimaActuacion,
     Codeudor,
-    Carpeta,
+    Numero,
     EtapaProcesal,
     Notificaciones
   } = carpeta;
 
   const {
-    Nombre, Tel, Direccion, Email 
+    Tel, Direccion, Email 
   } = Deudor;
   const path = '/Procesos';
 
@@ -117,9 +118,7 @@ export const CarpetaCard = (
         className={styles.container}
         key={id}>
         <div className={styles.cardInactive}>
-          <h1 className={`${ typography.titleMedium } ${ styles.title }`}>
-            {Nombre}
-          </h1>
+          <NombreComponent Deudor={carpeta.Deudor} />
           <p className={styles.content}>{Direccion ?? 'sin direccion'}</p>
           <div className={styles.links}>
             <Link

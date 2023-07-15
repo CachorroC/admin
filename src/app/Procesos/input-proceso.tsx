@@ -7,21 +7,21 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-
-interface FormValues
-{
-  llaveProceso: string
+interface FormValues {
+  llaveProceso: string;
 }
 
 export default function InputProceso() {
   const {
-    register, handleSubmit, formState: {
-      errors
+    register,
+    handleSubmit,
+    formState: {
+      errors 
     }
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = async(
-    data
+  const onSubmit: SubmitHandler<FormValues> = async (
+    data 
   ) => {
     const Request = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ data.llaveProceso }&SoloActivos=false`
@@ -37,40 +37,47 @@ export default function InputProceso() {
     }
     const procesos = Response.procesos;
     alert(
-      procesos
+      procesos 
     );
 
     return (
       <Modal>
-        { procesos.map(
+        {procesos.map(
           (
-            proceso
+            proceso 
           ) => {
             return (
-              <ProcesoCard key={proceso.idProceso} proceso={ proceso } />
+              <ProcesoCard
+                key={proceso.idProceso}
+                proceso={proceso}
+              />
             );
-          }
+          } 
         )}
       </Modal>
     );
   };
   console.log(
-    errors
+    errors 
   );
 
   return (
     <form onSubmit={handleSubmit(
-      onSubmit
+      onSubmit 
     )}>
-      <input type="text" placeholder="llaveProceso" {...register(
-        'llaveProceso',
-        {
-          required : true,
-          maxLength: 23
-        }
-      )} />
+      <input
+        type='text'
+        placeholder='llaveProceso'
+        {...register(
+          'llaveProceso',
+          {
+            required : true,
+            maxLength: 23
+          } 
+        )}
+      />
 
-      <input type="submit" />
+      <input type='submit' />
     </form>
   );
 }

@@ -7,7 +7,7 @@ export async function getConsultaNumeroRadicion(
     llaveProceso
   }: {
   llaveProceso: string;
-}
+} 
 ) {
   const Request = await fetch(
     `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=false`
@@ -15,7 +15,7 @@ export async function getConsultaNumeroRadicion(
 
   if ( !Request.ok ) {
     console.log(
-      Request.text()
+      Request.text() 
     );
 
     return [];

@@ -12,6 +12,7 @@ import { Name } from '#@/components/Headings/clientSideName';
 import { useEffect } from 'react';
 import { Loader } from '#@/components/Loader';
 import { MonCarpeta, intFecha } from '#@/lib/types/demandados';
+import { NombreCompleto } from '#@/lib/types/carpetas';
 
 export const Card = (
   {
@@ -19,19 +20,11 @@ export const Card = (
     carpeta,
     children
   }: {
-      path: string;
-      carpeta: MonCarpeta | intFecha;
-      children: ReactNode;
+  path: string;
+  carpeta: MonCarpeta | intFecha;
+  children: ReactNode;
 }
 ) => {
-  const {
-    llaveProceso, id, idProceso, Deudor, Carpeta, Avaluo, Demanda
-  } = carpeta;
-
-  const {
-    Juzgado, Proceso, Municipio, Radicado, Ubicacion
-  } = Demanda;
-
   const [
     isNavOpen,
     setIsNavOpen
@@ -41,7 +34,6 @@ export const Card = (
     isOpen,
     setIsOpen
   ] = useModal();
-
 
   const clickHandler = () => {
     setIsNavOpen(
@@ -55,70 +47,68 @@ export const Card = (
   const isInProcesos = pathname === path;
 
   const href = (
-    llaveProceso
-      ? idProceso
-        ? `${ path }/${ llaveProceso }/${ idProceso }`
-        : `${ path }/${ llaveProceso }`
+    carpeta.llaveProceso
+      ? carpeta.idProceso
+        ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
+        : `${ path }/${ carpeta.llaveProceso }`
       : `${ path }`
   ) as Route;
 
-  const isActive
-    = pathname === href
-    || pathname === `${ path }/${ llaveProceso }/${ idProceso }`
-    || pathname === `${ path }/${ llaveProceso }`;
+  const isActive = pathname === href
+    || pathname === `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
+    || pathname === `${ path }/${ carpeta.llaveProceso }`;
 
+  const juzgado =  carpeta.despacho.id.replace(
+    / /g,
+    '-'
+  ).toLocaleLowerCase()
+    .slice(
+      0,
+      -1
+    );
 
-  const juzgado = Juzgado
-    ? Juzgado.Origen.replace(
-      / /g,
-      '-'
-    ).toLocaleLowerCase()
-      .slice(
-        0,
-        -1
-      )
-    : null;
 
   return (
-    <div
-      className={card.container}>
+    <div className={card.container}>
       <div className={isActive
         ? card.isActive
         : card.notActive}>
         <h1 className={`${ typography.titleMedium } ${ card.title }`}>
           {toNameString(
             {
-              nameRaw: Deudor.Nombre
+              nameRaw: new NombreCompleto(
+                carpeta.Deudor
+              ).Nombre
             }
           )}
         </h1>
         <div className={card.links}>
           <Link
             className={`${ card.link } ${ isActive && card.isActive }`}
-            href={`/Carpetas/${ id }`}>
+            href={`/Carpetas/${ carpeta.id }`}>
             <span className={`material-symbols-outlined ${ card.icon }`}>
-                  folder_shared
+              folder_shared
             </span>
             <span className={card.tooltiptext}>Perfil del Demandado</span>
           </Link>
           <Link
             className={`${ card.link } ${ isActive && card.isActive }`}
-            href={`/Procesos/${ llaveProceso }`}>
+            href={`/Procesos/${ carpeta.llaveProceso }`}>
             <span className={`material-symbols-outlined ${ card.icon }`}>
-                  badge
+              badge
             </span>
             <span className={card.tooltiptext}>Perfil del Demandado</span>
           </Link>
           <Link
             className={`${ card.link } ${ isActive && card.isActive }`}
-            href={`/Notas/NuevaNota/${ llaveProceso }`}
+            href={`/Notas/NuevaNota/${ carpeta.llaveProceso }`}
             onClick={() => {
               setIsOpen(
                 true
               );
             }}>
             <span className={`material-symbols-outlined ${ card.icon }`}>
-                  add
+              add
             </span>
             <span className={card.tooltiptext}>Agregar nota</span>
           </Link>
@@ -127,36 +117,30 @@ export const Card = (
             onClick={clickHandler}
             href={href}>
             <span className={`${ card.icon } material-symbols-outlined`}>
-                  file_open
+              file_open
             </span>
-            <span className={card.tooltiptext}>
-                  Actuaciones del proceso
-            </span>
+            <span className={card.tooltiptext}>Actuaciones del proceso</span>
           </Link>
-
         </div>
 
         {children}
-        {Radicado && (
+        {carpeta.Demanda.Radicado && (
           <div className={`${ typography.bodySmall } ${ card.content }`}>
-            {Radicado}
+            {carpeta.Demanda.Radicado}
           </div>
         )}
-        {juzgado && (
-          <Link
-            className={`${ card.link } ${ isActive && card.isActive }`}
-            href={`https://ramajudicial.gov.co/web/${ juzgado.replaceAll(
+
+        <Link
+          className={`${ card.link } ${ isActive && card.isActive }`}
+          href={carpeta.despacho.url as Route}>
+          <p className={`${ typography.bodySmall } ${ card.content }`}>
+            {juzgado.replaceAll(
               'á',
               'a'
-            ) }`}>
-            <p className={`${ typography.bodySmall } ${ card.content }`}>
-              {juzgado.replaceAll(
-                'á',
-                'a'
-              )}
-            </p>
-          </Link>
-        )}
+            )}
+          </p>
+        </Link>
+
       </div>
     </div>
   );

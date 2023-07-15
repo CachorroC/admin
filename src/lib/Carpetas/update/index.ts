@@ -48,7 +48,7 @@ export const updateCarpeta = async (
     actuaciones[ 0 ] 
   );
 
-  const outgoingRequest = await collection.findOneAndReplace(
+  const outgoingRequest = await collection.findOneAndUpdate(
     {
       _id: carpeta._id
     },

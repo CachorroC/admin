@@ -19,7 +19,7 @@ export async function Name(
     (
       p 
     ) => {
-      return p.Deudor.Nombre;
+      return p.Deudor.PrimerNombre;
     } 
   );
   const isEmptyArray = nombre.length === 0;

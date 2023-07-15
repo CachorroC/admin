@@ -9,14 +9,11 @@ import { Loader } from '#@/components/Loader';
 
 export default function NuevaCarpetaPage() {
   return (
-
-
     <div className={layout.body}>
       <div className={layout.name}>
         <h1 className={typography.displaySmall}>Nueva Carpeta</h1>
       </div>
       <div className={layout.left}>
-
         <NuevoProceso uri={`${ getBaseUrl() }`} />
       </div>
       <div className={layout.right}>

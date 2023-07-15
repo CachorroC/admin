@@ -1,209 +1,211 @@
 // To parse this data:
 //
 //   import { Convert } from "./file";
+import { ObjectId, WithId } from 'mongodb';
 //
 //   const intCarpeta = Convert.toIntCarpeta(json);
 
-import { ObjectId, WithId } from 'mongodb';
-
 export interface IntCarpeta {
-    Avaluo?:            Avaluo;
-    Demanda:            Demanda;
-    Deudor:             Deudor;
-    EtapaProcesal?:     EtapaProcesal;
-    Liquidacion?:       Liquidacion;
-    MedidasCautelares?: MedidasCautelares;
-    Notificaciones?:    Notificaciones;
-    Numero:             number;
-    SuspencionProceso?: SuspencionProceso;
-    Terminacion?:       Terminacion;
-    _id?:                ObjectId;
-    idProceso:          number;
-    llaveProceso:       string;
-    ultimaActuacion?:   UltimaActuacion;
-    Codeudor?:          Codeudor;
+  _id: ObjectId;
+  Avaluo?: Avaluo;
+  Numero: number;
+  Demanda: Demanda;
+  Deudor: Deudor;
+  EtapaProcesal?: EtapaProcesal;
+  Liquidacion?: Liquidacion;
+  MedidasCautelares?: MedidasCautelares;
+  Notificaciones?: Notificaciones;
+  SuspencionProceso?: SuspencionProceso;
+  Terminacion?: Terminacion;
+  idProceso: number;
+  llaveProceso: string;
+  ultimaActuacion?: UltimaActuacion;
+  Codeudor?: Codeudor;
 }
 
-export interface MonCarpeta extends IntCarpeta
-{
- id: string
+export interface MonCarpeta extends IntCarpeta {
+  id: string;
+  despacho: Ejecucion
 }
 
 export interface Avaluo {
-    Adjudicacion?: Adjudicacion;
-    Remate?:       Adjudicacion;
-    Valor?:        string;
+  Adjudicacion?: Adjudicacion;
+  Remate?: Adjudicacion;
+  Valor?: string;
 }
 
 export interface Adjudicacion {
-    Fecha: Date | string;
+  Fecha: Date | string;
 }
 
 export interface Codeudor {
-    Id:         number[] | number;
-    Nombre:     string[] | string;
-    Direccion?: string;
-    Tel?:       Tel;
+  Id: number[] | number;
+  Nombre: string[] | string;
+  Direccion?: string;
+  Tel?: Tel;
 }
 
 export interface Tel {
-    Celular: number;
-    Fijo:    number;
+  Fijo: number;
+  Celular: number;
 }
 
 export interface Demanda {
-    CapitalAdeudado?:           string;
-    Departamento:               Departamento;
-    EntregadeGarantiasAbogado?: Date | string;
-    Municipio:                  string;
-    Proceso:                    Proceso;
-    Radicado:                   string;
-    Ubicacion:                  Ubicacion;
-    VencimientoPagare?:         Date | string;
-    Juzgado?:                   Juzgado;
-    Obligacion?:                Obligacion;
+  Departamento: Departamento;
+  Municipio: string;
+  VencimientoPagare?: Date | string;
+  EntregadeGarantiasAbogado?: Date | string;
+  Radicado: string;
+  CapitalAdeudado?: string;
+  Proceso: Proceso;
+  Juzgado: Juzgado;
+  Ubicacion: Ubicacion;
+  Obligacion?: Obligacion;
 }
 
 export type Departamento = 'CUNDINAMARCA';
 
 export interface Juzgado {
-    Origen:     Ejecucion;
-    Ejecucion?: Ejecucion;
+  Origen: Ejecucion;
+  Ejecucion?: Ejecucion;
 }
 
 export interface Ejecucion {
-    id:  string;
-    url: string;
+  id: string;
+  url: string;
 }
 
 export interface Obligacion {
-    '1': number | string;
-    '2': number | string;
+  '1': number | string;
+  '2': number | string;
 }
 
 export interface Proceso {
-    Tipo: Tipo;
+  Tipo: Tipo;
 }
 
 export type Tipo = 'PRENDARIO' | 'SINGULAR' | 'HIPOTECARIO';
 
 export interface Ubicacion {
-    Juzgado: string;
+  Juzgado: string;
 }
 
 export interface Deudor {
-    Direccion?:       string;
-    Email?:           string;
-    Id?:              number;
-    Nombre?:          string;
-    Tel?:             Tel;
-    PrimerApellido?:  string;
-    PrimerNombre?:    string;
-    SegundoNombre?:   string;
-    SegundoApellido?: string;
+  Id?: number;
+  Email?: string;
+  PrimerNombre: string;
+  SegundoNombre?: string;
+  PrimerApellido: string;
+  Direccion?: string;
+  Tel?: Tel;
+  SegundoApellido?: string;
 }
 
 export interface EtapaProcesal {
-    Etapa:  string;
-    Fecha?: EtapaProcesalFecha;
+  Etapa: string;
+  Fecha?: EtapaProcesalFecha;
 }
 
 export interface EtapaProcesalFecha {
-    MandamientodePago?:   Date | string;
-    PresentacionDemanda?: Date | string;
+  MandamientodePago?: Date | string;
+  PresentacionDemanda?: Date | string;
 }
 
 export interface Liquidacion {
-    Costas?:       Costas;
-    Fecha:         LiquidacionFecha;
-    ValorCredito?: string;
+  Costas?: Costas;
+  Fecha: LiquidacionFecha;
+  ValorCredito?: string;
 }
 
 export interface Costas {
-    FechaAprobacion: Date | string;
-    Valor?:          number;
+  FechaAprobacion: Date | string;
+  Valor?: number;
 }
 
 export interface LiquidacionFecha {
-    Aprobacion?:   Date | string;
-    Presentacion?: Date | string;
-    Solicitud?:    Date | string;
-    Sentencia?:    Date | string;
+  Aprobacion?: Date | string;
+  Presentacion?: Date | string;
+  Solicitud?: Date | string;
+  Sentencia?: Date | string;
 }
 
 export interface MedidasCautelares {
-    Bienes:                 string;
-    DescripcionMedida?:     string;
-    Extra?:                 string;
-    Fecha?:                 MedidasCautelaresFecha;
-    FechaRadicaccion?:      string;
-    MedidaSolicitada:       string;
-    Oficios?:               Oficios;
-    PlacaoNumeroMatricula?: string;
-    RespuestaEmbargo?:      boolean;
-    FechaOrdena?:           Date | string;
-    Oficio?:                Oficio;
+  Bienes: string;
+  MedidaSolicitada: string;
+  Extra?: string;
+  PlacaoNumeroMatricula?: string;
+  DescripcionMedida?: string;
+  Fecha?: MedidasCautelaresFecha;
+  FechaRadicaccion?: string;
+  Oficios?: Oficios;
+  RespuestaEmbargo?: boolean;
+  FechaOrdena?: Date | string;
+  Oficio?: Oficio;
 }
 
 export interface MedidasCautelaresFecha {
-    Captura?:                    number;
-    DecretoSecuestrooCaptura?:   Date | string;
-    Secuestro?:                  string;
-    SolicitudCapturaoSecuestro?: Date | string;
+  Captura?: number;
+  Secuestro?: string;
+  DecretoSecuestrooCaptura?: Date | string;
+  SolicitudCapturaoSecuestro?: Date | string;
 }
 
 export interface Oficio {
-    Fecha:  Date | string;
-    Numero: number;
+  Fecha: Date | string;
+  Numero: number;
 }
 
 export interface Oficios {
-    FechaRetiro: Date | string;
+  FechaRetiro: Date | string;
 }
 
 export interface Notificaciones {
-    '291':           The291;
-    '292'?:          The291;
-    AutoNotificado?: Date | string;
-    Certimail?:      boolean;
-    Fisico?:         boolean;
-    Tipo?:           string;
+  '291': The291;
+  '292'?: The291;
+  AutoNotificado?: Date | string;
+  Certimail?: boolean;
+  Fisico?: boolean;
+  Tipo?: string;
 }
 
 export interface The291 {
-    AportaNotificacion?: Date | string;
-    Recibo?:             Date | string;
-    Resultado?:          boolean;
+  AportaNotificacion?: Date | string;
+  Recibo?: Date | string;
+  Resultado?: boolean;
 }
 
 export interface SuspencionProceso {
-    Fecha:             Date | string;
-    TerminoSuspencion: string;
+  TerminoSuspencion: string;
+  Fecha: Date | string;
 }
 
 export interface Terminacion {
-    Causal: string;
-    Fecha:  TerminacionFecha;
+  Causal: string;
+  Fecha: TerminacionFecha;
 }
 
 export interface TerminacionFecha {
-    AutoTerminacion:    Date | string;
-    RadicacionMemorial: Date | string;
+  AutoTerminacion: Date | string;
+  RadicacionMemorial: Date | string;
 }
 
 export interface UltimaActuacion {
-    actuacion:      string;
-    anotacion:      string;
-    cant:           number;
-    codRegla:       CodRegla;
-    conDocumentos:  boolean;
-    consActuacion:  number;
-    fechaActuacion: Date | string;
-    fechaFinal:     Date | string | null;
-    fechaInicial:   Date | string | null;
-    fechaRegistro:  Date | string;
-    idRegActuacion: number;
-    llaveProceso:   string;
+  idRegActuacion: number;
+  llaveProceso: string;
+  consActuacion: number;
+  fechaActuacion: Date | string;
+  actuacion: string;
+  anotacion: string;
+  fechaInicial: Date | string | null;
+  fechaFinal: Date | string | null;
+  fechaRegistro: Date | string;
+  codRegla: CodRegla;
+  conDocumentos: boolean;
+  cant: number;
+}
+
+export interface intFecha extends MonCarpeta {
+  fecha: Date | string | undefined | null;
 }
 
 export type CodRegla = '00                              ';
@@ -244,10 +246,16 @@ export class carpetaConvert {
   public static toMonCarpeta(
     carpeta: WithId<IntCarpeta>
   ): MonCarpeta {
+    const dsp = carpeta.Demanda.Juzgado.Ejecucion
+      ? carpeta.Demanda.Juzgado.Ejecucion
+      : carpeta.Demanda.Juzgado.Origen;
+
     const newCarpeta = {
       ...carpeta,
-      id: carpeta._id.toString()
+      id      : carpeta._id.toString(),
+      despacho: dsp
     };
+
 
     return newCarpeta;
   }

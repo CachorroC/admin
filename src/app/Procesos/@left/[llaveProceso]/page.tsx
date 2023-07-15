@@ -13,21 +13,21 @@ async function Acts(
   }: {
   idProceso: number;
   index: number;
-}
+} 
 ) {
   const actuaciones = await getActuaciones(
     idProceso,
-    index
+    index 
   );
 
   return (
     <>
       {actuaciones.map(
         (
-          act, i, arr
+          act, i, arr 
         ) => {
           const {
-            idRegActuacion
+            idRegActuacion 
           } = act;
 
           return (
@@ -36,7 +36,7 @@ async function Acts(
               key={idRegActuacion}
             />
           );
-        }
+        } 
       )}
     </>
   );
@@ -49,12 +49,12 @@ export default async function PageProcesosLeftllaveProceso(
   params: {
     llaveProceso: string;
   };
-}
+} 
 ) {
   const Carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: params.llaveProceso
-    }
+    } 
   );
 
   return (
@@ -62,7 +62,7 @@ export default async function PageProcesosLeftllaveProceso(
       <p>page</p>
       {Carpetas.map(
         (
-          carpeta, index
+          carpeta, index 
         ) => {
           return (
             <Acts
@@ -71,7 +71,7 @@ export default async function PageProcesosLeftllaveProceso(
               idProceso={carpeta.idProceso}
             />
           );
-        }
+        } 
       )}
     </>
   );

@@ -8,16 +8,12 @@
         pathname: '/250/200?image=**'
       }
     ],
-    domains: [
-      'placekitten.com'
-    ]
+    domains: ['placekitten.com']
   },
   experimental: {
-    typedRoutes                     : true,
-    serverActions                   : true,
-    serverComponentsExternalPackages: [
-      'mongodb'
-    ]
+    typedRoutes: true,
+    serverActions: true,
+    serverComponentsExternalPackages: ['mongodb']
   }
 };
 module.exports = nextConfig;

@@ -6,8 +6,8 @@ import { useOnlineStatus } from '#@/hooks/online-state';
 
 export default function Title(
   {
-    helper
-  }: { helper?: string }
+    helper 
+  }: { helper?: string } 
 ) {
   const isOnline = useOnlineStatus();
   const today = new Date();
@@ -69,13 +69,12 @@ export default function Title(
 
   const txt = helper
     ? helper
-    :  days[ today.getDay() ] + ' '+ fixFechas(
-      today.toString()
+    : days[ today.getDay() ] + ' ' + fixFechas(
+      today.toString() 
     );
 
   return (
-    <h1
-      className={`${ typography.titleMedium }  ${ typeface.navbar }` }>
+    <h1 className={`${ typography.titleMedium }  ${ typeface.navbar }`}>
       {isOnline
         ? txt
         : 'offline'}

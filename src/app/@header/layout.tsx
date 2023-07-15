@@ -7,10 +7,9 @@ import { ListDrawer } from './list';
 
 export default function Layout(
   {
-    children
-  }: { children: ReactNode }
+    children 
+  }: { children: ReactNode } 
 ) {
-
   return (
     <Header>
       {children}
