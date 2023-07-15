@@ -18,7 +18,7 @@ export default async function PageCarpetas() {
   const fechas = await fetchFechas(
     {
       procesos: carpetas
-    } 
+    }
   );
 
   return (
@@ -30,7 +30,6 @@ export default async function PageCarpetas() {
         <Suspense fallback={<Loader />}>
           <CardSearchList
             path={'/Procesos' as Route}
-            uri={`${ getBaseUrl() }`}
             Fechas={fechas}
           />
         </Suspense>

@@ -13,14 +13,13 @@ export default async function DefaultProcesosLeft() {
   const fechas = await fetchFechas(
     {
       procesos: carpetas
-    } 
+    }
   );
 
   return (
     <Suspense fallback={<SearchOutputListSkeleton />}>
       <CardSearchList
         path={'/Procesos' as Route}
-        uri={`${ getBaseUrl() }`}
         Fechas={fechas}
       />
     </Suspense>

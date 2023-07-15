@@ -45,7 +45,7 @@ async function Fecha(
 }
 
 export async function ListCardCarpetasNFechasServer() {
-  const carpetas = await getCarpetasNew();
+  const carpetas = await getCarpetas();
 
   const sortedCarpetas = [
     ...carpetas

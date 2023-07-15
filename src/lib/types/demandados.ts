@@ -2,6 +2,7 @@
 //
 //   import { Convert } from "./file";
 import { ObjectId, WithId } from 'mongodb';
+import { intActuacion } from './procesos';
 //
 //   const intCarpeta = Convert.toIntCarpeta(json);
 
@@ -19,13 +20,14 @@ export interface IntCarpeta {
   Terminacion?: Terminacion;
   idProceso: number;
   llaveProceso: string;
-  ultimaActuacion?: UltimaActuacion;
+  ultimaActuacion?: intActuacion;
   Codeudor?: Codeudor;
 }
 
 export interface MonCarpeta extends IntCarpeta {
   id: string;
   despacho: Ejecucion
+  nombre: string;
 }
 
 export interface Avaluo {
@@ -250,10 +252,17 @@ export class carpetaConvert {
       ? carpeta.Demanda.Juzgado.Ejecucion
       : carpeta.Demanda.Juzgado.Origen;
 
+    const nmb = carpeta.Deudor.SegundoApellido
+      ? carpeta.Deudor.SegundoNombre
+        ? `${ carpeta.Deudor.PrimerNombre } ${ carpeta.Deudor.SegundoNombre } ${ carpeta.Deudor.PrimerApellido } ${ carpeta.Deudor.SegundoApellido }`
+        : `${ carpeta.Deudor.PrimerNombre } ${ carpeta.Deudor.PrimerApellido } ${ carpeta.Deudor.SegundoApellido }`
+      : `${ carpeta.Deudor.PrimerNombre } ${ carpeta.Deudor.PrimerApellido }`;
+
     const newCarpeta = {
       ...carpeta,
       id      : carpeta._id.toString(),
-      despacho: dsp
+      despacho: dsp,
+      nombre  : nmb
     };
 
 

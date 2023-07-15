@@ -10,17 +10,12 @@ import { NombreCompleto } from '#@/lib/types/carpetas';
 export const CardSearchList = (
   {
     path,
-    uri,
     Fechas
   }: {
   path: string;
-  uri: string;
   Fechas: intFecha[];
 }
 ) => {
-  const pathname = usePathname();
-  const router = useRouter();
-  const params = useParams();
 
 
   const [
@@ -80,17 +75,9 @@ export const CardSearchList = (
       Fecha, i, arr
     ) => {
       const {
-        idProceso, llaveProceso, Deudor, fecha, id
+        fecha
       } = Fecha;
-
-      const newName = new NombreCompleto(
-        Fecha.Deudor
-      );
-      const Nombre = newName.Nombre;
-
-      const {
-        Direccion, Tel, Email, Id
-      } = Deudor;
+      const Nombre = Fecha.nombre;
 
       if ( Nombre.toLowerCase().indexOf(
         search.toLowerCase()
@@ -99,7 +86,7 @@ export const CardSearchList = (
       }
 
       rows.push(
-        <Card path={ '/Procesos' } carpeta={ Fecha } >
+        <Card path={ path } carpeta={ Fecha } >
           <p className={card.sub}>{`${ i + 1 } de ${ arr.length }`}</p>
           {fecha && <sub className={card.date}>{fixFechas(
             fecha
