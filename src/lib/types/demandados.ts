@@ -7,7 +7,7 @@ import { intActuacion } from './procesos';
 //   const intCarpeta = Convert.toIntCarpeta(json);
 
 export interface IntCarpeta {
-  _id: ObjectId;
+  _id?: ObjectId;
   Avaluo?: Avaluo;
   Numero: number;
   Demanda: Demanda;

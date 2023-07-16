@@ -2,98 +2,98 @@ import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { Collection, ObjectId } from 'mongodb';
-import { getCarpetas } from '#@/lib/Carpetas';
+import { getCarpetas, getCarpetasNew } from '#@/lib/Carpetas';
 import { carpetasCollection } from '#@/lib/Carpetas';
 import { IntCarpeta } from '#@/lib/types/demandados';
 
 export async function GET(
-  Request: NextRequest 
+  Request: NextRequest
 ) {
   const {
-    searchParams 
+    searchParams
   } = new URL(
-    Request.url 
+    Request.url
   );
   const carpetas = await getCarpetas();
 
   const llaveProceso = searchParams.get(
-    'llaveProceso' 
+    'llaveProceso'
   );
 
   if ( llaveProceso ) {
     const Demandados = carpetas.filter(
       (
-        carpeta 
+        carpeta
       ) => {
         return carpeta.llaveProceso === llaveProceso;
-      } 
+      }
     );
 
     return new NextResponse(
       JSON.stringify(
-        Demandados 
+        Demandados
       ),
       {
         status : 200,
         headers: {
           'content-type': 'application/json'
         }
-      } 
+      }
     );
   }
 
   const id = searchParams.get(
-    'id' 
+    'id'
   );
 
   if ( id ) {
     const Nota = carpetas.find(
       (
-        carpeta 
+        carpeta
       ) => {
         return carpeta.id === id;
-      } 
+      }
     );
 
     return new NextResponse(
       JSON.stringify(
-        Nota 
+        Nota
       ),
       {
         status : 200,
         headers: {
           'content-type': 'application/json'
         }
-      } 
+      }
     );
   }
 
   return new NextResponse(
     JSON.stringify(
-      carpetas 
+      carpetas
     ),
     {
       status : 200,
       headers: {
         'content-type': 'application/json'
       }
-    } 
+    }
   );
 }
 
 export async function POST(
-  request: NextRequest 
+  request: NextRequest
 ) {
   const incomingRequest = ( await request.json() ) as IntCarpeta;
   const client = await carpetasCollection();
 
   const outgoingRequest = await client.insertOne(
-    incomingRequest 
+    incomingRequest
   );
 
   if ( !outgoingRequest.acknowledged ) {
     throw new Error(
-      `${ outgoingRequest.acknowledged }` 
+      `${ outgoingRequest.acknowledged }`
     );
   }
 
@@ -111,25 +111,25 @@ export async function POST(
 }
 
 export async function PUT(
-  Request: NextRequest 
+  Request: NextRequest
 ) {
   const updatedNote = ( await Request.json() ) as IntCarpeta;
   const collection = await carpetasCollection();
 
   const {
-    searchParams 
+    searchParams
   } = new URL(
-    Request.url 
+    Request.url
   );
 
   const id = searchParams.get(
-    'id' 
+    'id'
   );
 
   if ( id ) {
     const query = {
       _id: new ObjectId(
-        id 
+        id
       )
     };
 
@@ -137,7 +137,7 @@ export async function PUT(
       query,
       {
         $set: updatedNote
-      } 
+      }
     );
 
     if ( result.ok ) {
@@ -169,34 +169,34 @@ export async function PUT(
     null,
     {
       status: 304
-    } 
+    }
   );
 }
 
 export async function DELETE(
-  Request: NextRequest 
+  Request: NextRequest
 ) {
   const notas = await carpetasCollection();
 
   const {
-    searchParams 
+    searchParams
   } = new URL(
-    Request.url 
+    Request.url
   );
 
   const id = searchParams.get(
-    '_id' 
+    '_id'
   );
 
   if ( id ) {
     const query = {
       _id: new ObjectId(
-        id 
+        id
       )
     };
 
     const Result = await notas.deleteOne(
-      query 
+      query
     );
 
     if ( Result.acknowledged ) {
@@ -210,35 +210,35 @@ export async function DELETE(
 
       return new NextResponse(
         JSON.stringify(
-          response 
+          response
         ),
         {
           status : 202,
           headers: {
             'content-type': 'application/json'
           }
-        } 
+        }
       );
     }
 
     if ( !Result.acknowledged ) {
       return new NextResponse(
         JSON.stringify(
-          `error 400 ${ id } not deleted` 
+          `error 400 ${ id } not deleted`
         ),
         {
           status: 400
-        } 
+        }
       );
     }
 
     return new NextResponse(
       JSON.stringify(
-        Result 
+        Result
       ),
       {
         status: 200
-      } 
+      }
     );
   }
 }

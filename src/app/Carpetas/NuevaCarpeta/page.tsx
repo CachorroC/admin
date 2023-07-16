@@ -1,5 +1,5 @@
 import 'server-only';
-import { NuevoProceso } from '#@/components/card/CarpetasCard/new-carpeta';
+import { NuevoProceso } from '#@/app/Carpetas/NuevaCarpeta/new-carpeta';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
