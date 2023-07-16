@@ -1,8 +1,8 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
-import { IntCarpeta } from '#@/lib/types/demandados';
+import { IntCarpeta, MonCarpeta, intFecha } from '#@/lib/types/demandados';
 import { NuevoDeudorSection } from '#@/app/Carpetas/NuevaCarpeta/nuevo-deudor';
 import { NuevaDemandaSection } from '#@/app/Carpetas/NuevaCarpeta/nueva-demanda';
 import { NuevaEtapaProcesalSection } from '#@/app/Carpetas/NuevaCarpeta/nueva-etapaProcesal';
@@ -14,6 +14,7 @@ import { NuevasNotificacionesSection } from '#@/app/Carpetas/NuevaCarpeta/nuevas
 import { NuevaSuspencionProcesoSection } from './nueva-suspencionProceso';
 import { NuevaTerminacionSection } from '#@/app/Carpetas/NuevaCarpeta/nueva-terminacion';
 import { usePrettyPrintedState } from '#@/hooks/usePrettyPrintedState';
+import { sleep } from '#@/lib/fix';
 
 const defaultValues: IntCarpeta = {
   Numero : 501,
@@ -44,13 +45,14 @@ const defaultValues: IntCarpeta = {
 
 export function NuevoProceso(
   {
-    uri
-  }: { uri: string }
+    uri, carpeta
+  }: { uri: string; carpeta? : MonCarpeta | IntCarpeta | intFecha }
 ) {
   const [
     value,
     setValue
   ] = usePrettyPrintedState();
+  const values = carpeta ?? defaultValues;
 
   const methods = useForm<IntCarpeta>(
     {
@@ -61,12 +63,7 @@ export function NuevoProceso(
   const {
     register,
     handleSubmit,
-    formState: {
-      isDirty,
-      submitCount,
-      dirtyFields, touchedFields,
-      errors
-    }
+    formState
   } = methods;
 
   const onSubmit = async (
@@ -77,9 +74,12 @@ export function NuevoProceso(
         data
       )
     );
+    await sleep(
+      2000
+    );
 
     const postNewNote = await fetch(
-      `${ uri }/api/Demandados`,
+      `${ uri }/api/Carpetas`,
       {
         method : 'POST',
         headers: {
@@ -107,6 +107,36 @@ export function NuevoProceso(
 
     return responsePostNewNote;
   };
+
+  useEffect(
+    () => {
+      console.log(
+        'touchedFields',
+        formState.touchedFields
+      );
+      console.log(
+        'Dirty',
+        formState.dirtyFields
+      );
+      console.log(
+        'submitCound',
+        formState.submitCount
+      );
+      console.log(
+        'isValid',
+        formState.isValid
+      );
+      console.log(
+        'errors',
+        formState.errors
+      );
+    },
+    [
+      formState
+    ]
+  ); // use entire formState object as optional array arg in useEffect, not individual properties of it
+
+
 
   return (
     <>

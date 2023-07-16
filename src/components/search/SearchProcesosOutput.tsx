@@ -17,7 +17,7 @@ export default function SearchOutputList(
   }: {
   path: string;
   fechas: intFecha[];
-} 
+}
 ) {
   const pathname = usePathname();
 
@@ -27,23 +27,23 @@ export default function SearchOutputList(
   ] = useSearch();
 
   const searchLinkRef = useRef<Map<any, any> | null>(
-    null 
+    null
   );
 
   function scrollToId(
-    id: string 
+    id: string
   ) {
     const map = getMap();
 
     const node = map.get(
-      id 
+      id
     );
     node.scrollIntoView(
       {
         behavior: 'smooth',
         block   : 'nearest',
         inline  : 'center'
-      } 
+      }
     );
     node.focus();
   }
@@ -58,7 +58,7 @@ export default function SearchOutputList(
 
   const clickHandler = () => {
     setIsNavOpen(
-      false 
+      false
     );
   };
 
@@ -74,7 +74,7 @@ export default function SearchOutputList(
     ...fechas
   ].sort(
     (
-      a, b 
+      a, b
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -103,22 +103,22 @@ export default function SearchOutputList(
       }
 
       return 0;
-    } 
+    }
   );
   idk.forEach(
     (
-      proceso, index, array 
+      proceso, index, array
     ) => {
       const {
-        idProceso, llaveProceso, Deudor, fecha, id 
+        idProceso, llaveProceso, Deudor, fecha, id
       } = proceso;
 
       const {
-        Nombre, Id, Tel, Direccion 
+        Id, Tel, Direccion
       } = Deudor;
 
       if ( Nombre.toLowerCase().indexOf(
-        search.toLowerCase() 
+        search.toLowerCase()
       ) === -1 ) {
         return;
       }
@@ -129,7 +129,7 @@ export default function SearchOutputList(
           key={id}
         />
       );
-    } 
+    }
   );
 
   return (
@@ -142,7 +142,7 @@ export default function SearchOutputList(
           <div className={searchbar.section}>
             <sub className={searchbar.date}>
               {fixFechas(
-                new Date().toISOString() 
+                new Date().toISOString()
               )}
             </sub>
           </div>

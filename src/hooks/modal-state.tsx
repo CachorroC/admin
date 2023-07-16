@@ -13,7 +13,10 @@ export default function ModalDialog(
   ] = useState(
     false
   );
-  const ref = useRef();
+
+  const ref = useRef<HTMLDialogElement>(
+    null
+  );
 
   useEffect(
     () => {
@@ -21,10 +24,10 @@ export default function ModalDialog(
         return;
       }
       const dialog = ref.current;
-      dialog.showModal();
+      dialog && dialog.showModal();
 
-      return () => {
-        dialog.close();
+      () =>  {
+        dialog &&  dialog.close();
       };
     },
     [

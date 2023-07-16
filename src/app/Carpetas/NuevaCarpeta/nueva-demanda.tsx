@@ -113,8 +113,8 @@ export function NuevaDemandaSection () {
           {...register(
             'Demanda.Radicado',
             {
-              required: true,
-              pattern : /"\d\d\d\d\s+-\s+\d\d\d\d\d"/i
+              required: false,
+              pattern : /\d\d\d\d\s+-\s+\d\d\d\d\d/ig
             }
           )}
         />

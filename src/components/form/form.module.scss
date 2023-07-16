@@ -13,12 +13,6 @@
     flex-flow: column nowrap;
     padding: 2vmin;
     gap: 2vmin;
-    & > section {
-      gap: 2vmin;
-      padding: 1vmin;
-      display: flex;
-      flex-flow: row nowrap;
-    }
     sub {
       color: var(--primary);
     }
@@ -27,7 +21,7 @@
       flex-flow: row nowrap;
     }
     .section {
-      gap: 2vmin;
+      gap: 2cqmin;
       padding: 1vmin;
       display: flex;
       flex-flow: column wrap;
@@ -198,7 +192,3 @@
     }
   }
 } /* The slider */
-
-.required {
-  background-color: var(--error-container);
-}

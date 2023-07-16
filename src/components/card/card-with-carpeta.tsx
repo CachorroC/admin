@@ -93,7 +93,7 @@ export const Card = (
           </Link>
           <Link
             className={`${ card.link } ${ isActive && card.isActive }`}
-            href={`/Procesos/${ carpeta.llaveProceso }`}>
+            href={`/Procesos/${ carpeta.llaveProceso }` as Route}>
             <span className={`material-symbols-outlined ${ card.icon }`}>
               badge
             </span>
@@ -101,7 +101,7 @@ export const Card = (
           </Link>
           <Link
             className={`${ card.link } ${ isActive && card.isActive }`}
-            href={`/Notas/NuevaNota/${ carpeta.llaveProceso }`}
+            href={`/Notas/NuevaNota/${ carpeta.llaveProceso }` as Route}
             onClick={() => {
               setIsOpen(
                 true

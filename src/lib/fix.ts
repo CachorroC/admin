@@ -1,5 +1,18 @@
-export function fixFechas(
-  fecha: Date | string | null | undefined 
+export const sleep = (
+  ms: number 
+) => {
+  return new Promise(
+    resolve => {
+      return setTimeout(
+        resolve,
+        ms 
+      );
+    } 
+  );
+};
+
+export function fixFechas (
+  fecha: Date | string | null | undefined
 ): string {
   if ( fecha === null ) {
     return 'no hay fechas: null';
@@ -10,7 +23,7 @@ export function fixFechas(
   }
 
   const date = new Date(
-    fecha 
+    fecha
   );
 
   const months = [
@@ -35,7 +48,7 @@ export function fixFechas(
 }
 
 function trimmer(
-  sujetosProcesales: string 
+  sujetosProcesales: string
 ) {
   const locateDemandado = sujetosProcesales.search(
     /(demandado|causante)+:(?:\s*?|'\s*?')/gi
@@ -43,22 +56,22 @@ function trimmer(
 
   const extractDemandado = sujetosProcesales
     .slice(
-      locateDemandado + 10 
+      locateDemandado + 10
     )
     .toLowerCase();
 
   const trimDemandado = extractDemandado.replace(
     /^\s+|\s+$/gm,
-    '' 
+    ''
   );
 
   const splitDemandado = trimDemandado.split(
-    ' ' 
+    ' '
   );
 
   const splitDemandadotoUnify = splitDemandado.map(
     (
-      nombreOapellido: string, index: number 
+      nombreOapellido: string, index: number
     ) => {
       if ( index >= 5 ) {
         return '';
@@ -69,19 +82,19 @@ function trimmer(
       }
 
       if ( nombreOapellido.includes(
-        's.a.s' 
+        's.a.s'
       ) ) {
         return '';
       }
 
       if ( nombreOapellido.includes(
-        'sas' 
+        'sas'
       ) ) {
         return '';
       }
 
       if ( nombreOapellido.includes(
-        '(emplazado)' 
+        '(emplazado)'
       ) ) {
         return '';
       }
@@ -89,33 +102,33 @@ function trimmer(
       return nombreOapellido.replace(
         /^./,
         (
-          str: string 
+          str: string
         ) => {
           return str.toUpperCase();
-        } 
+        }
       );
     }
   );
 
   const unifyDemandado = splitDemandadotoUnify.join(
-    ' ' 
+    ' '
   );
 
   return unifyDemandado;
 }
 
 export const fixDemandado = (
-  sujetosProcesales: string 
+  sujetosProcesales: string
 ): string => {
   const mySubString = 'Demandado';
 
   const count = sujetosProcesales.split(
-    mySubString 
+    mySubString
   ).length - 1;
 
   if ( count === 1 ) {
     return trimmer(
-      sujetosProcesales 
+      sujetosProcesales
     );
   }
 
@@ -124,25 +137,25 @@ export const fixDemandado = (
 
 export const toNameString = (
   {
-    nameRaw 
-  }: { nameRaw: string } 
+    nameRaw
+  }: { nameRaw: string }
 ) => {
   const str = nameRaw.toLowerCase();
 
   const arr = str.split(
-    ' ' 
+    ' '
   );
 
   for ( let i = 0; i < arr.length; i++ ) {
     arr[ i ] = arr[ i ].charAt(
-      0 
+      0
     ).toUpperCase() + arr[ i ].slice(
-      1 
+      1
     );
   }
 
   const str2 = arr.join(
-    ' ' 
+    ' '
   );
 
   return str2;
