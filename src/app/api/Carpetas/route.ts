@@ -115,67 +115,24 @@ export async function PUT(
   Request: NextRequest
 ) {
   const incomingCarpeta = ( await Request.json() ) as IntCarpeta;
-  const collection = await carpetasCollection();
 
-  const {
-    searchParams
-  } = new URL(
-    Request.url
-  );
-
-  const _id = searchParams.get(
-    '_id'
-  );
-
-  if ( _id ) {
-
-    const updatedCarpeta: MonCarpeta = {
-      ...incomingCarpeta,
-      _id: _id
-    };
-
-    const result = await updateCarpeta(
-      {
-        carpeta: updatedCarpeta,
-        index  : 0
-      }
-    );
-
-    if ( result.ok ) {
-
-      return new NextResponse(
-        JSON.stringify(
-          result.value
-        ),
-        {
-          status : 200,
-          headers: {
-            'content-type': 'application/json'
-          }
-        }
-      );
+  const updated = await updateCarpeta(
+    {
+      carpeta: incomingCarpeta
     }
-
-    return new NextResponse(
-      `the result was null  with ${ result.value }`,
-      {
-        status : 304,
-        headers: {
-          'content-type': 'text/html'
-        }
-      }
-    );
-  }
-
-  const insertWithoutId = await collection.insertOne(
-    incomingCarpeta
   );
 
-  if ( insertWithoutId.acknowledged ) {
+  if ( updated.acknowledged ) {
+    const cuantosModificados = updated.modifiedCount;
+    const cuantosInsertados = updated.upsertedCount;
+    const cuantosM = updated.matchedCount;
+
     return new NextResponse(
       JSON.stringify(
         {
-          _id: insertWithoutId.insertedId
+          insertedDocuments: cuantosInsertados,
+          modifiedDocuments: cuantosModificados,
+          matched          : cuantosM
         }
       ),
       {

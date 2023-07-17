@@ -15,111 +15,25 @@ export function NuevasMedidasCautelaresSection() {
     <section className={form.section}>
       <h3 className={`${ form.title } ${ typography.displayMedium }`}>
         Medidas Cautelares
-      </h3><Accordion>
+      </h3>
+      <Accordion>
+        <InputSection name={ 'MedidasCautelares.Bienes' } title={ 'Bienes para incautar' } type={ 'text' } />
+        <InputSection name={ 'MedidasCautelares.medidaSolicitada' } title={ 'Medida solicitada' } type={ 'text' } />
+        <InputSection name={ 'MedidasCautelares.Extra' } title={ 'Comentarios e informacion adicional' } type={ 'text' } />
+        <InputSection name={ 'MedidasCautelares.PlacaoNumeroMatricula' } title={ 'Placa o número de matrícula' } type={ 'text' } />
+        <InputSection name={ 'MedidasCautelares.DescripcionMedida' } title={ ' Descripción de la medida cautelar' } type={ 'text' } />
+        <section className={form.section}>
+          <h4 className={`${ form.title } ${ typography.displaySmall }`}>Fechas</h4>
+          <InputSection name={ 'MedidasCautelares.Fecha.Captura' } title={ 'Fecha de captura' } type={ 'date' } />
+          <InputSection name={ 'MedidasCautelares.Fecha.Secuestro' } title={ 'Fecha del secuestro' } type={ 'number' } />
 
-        <section className={form.section}>
-          <label
-            className={form.label}
-            htmlFor='MedidasCautelares.Bienes'>Bienes de las medidas cautelares</label>
-          <input
-            className={form.textArea}
-            type='text'
-            placeholder='MedidasCautelares.Bienes'
-            {...register(
-              'MedidasCautelares.Bienes',
-              {
-                required: false
-              }
-            )}
-          />
-        </section>
-        <section className={form.section}>
-          <label
-            className={form.label}
-            htmlFor='MedidasCautelares.MedidaSolicitada'>Medida solicitada</label>
-          <input
-            className={form.textArea}
-            type='text'
-            placeholder='MedidasCautelares.MedidaSolicitada'
-            {...register(
-              'MedidasCautelares.MedidaSolicitada',
-              {
-                required: false
-              }
-            )}
-          />
-        </section>
-        <section className={form.section}>
-          <label
-            className={form.label}
-            htmlFor='MedidasCautelares.Extra'>Comentarios e informacion adicional</label>
-          <input
-            className={form.textArea}
-            type='text'
-            placeholder='MedidasCautelares.Extra'
-            {...register(
-              'MedidasCautelares.Extra',
-              {
-                required: false
-              }
-            )}
-          />
-        </section>
-        <section className={form.section}>
-          <label
-            className={form.label}
-            htmlFor='MedidasCautelares.PlacaoNumeroMatricula'>Placa o número de matrícula</label>
-          <input
-            className={form.textArea}
-            type='text'
-            placeholder='MedidasCautelares.PlacaoNumeroMatricula'
-            {...register(
-              'MedidasCautelares.PlacaoNumeroMatricula',
-              {
-                required: false
-              }
-            )}
-          />
-        </section>
-        <section className={form.section}>
-          <label
-            className={form.label}
-            htmlFor='MedidasCautelares.DescripcionMedida'>Descripción de la medida cautelar</label>
-          <input
-            className={form.textArea}
-            type='text'
-            placeholder='MedidasCautelares.DescripcionMedida'
-            {...register(
-              'MedidasCautelares.DescripcionMedida',
-              {}
-            )}
-          />
-        </section>
-        <section className={ form.section }>
-          <h4 className={`${ form.title } ${ typography.displaySmall }`}>
-       Fechas
-          </h4>
 
           <section className={form.section}>
             <label
               className={form.label}
-              htmlFor='MedidasCautelares.Fecha.Captura'>Fecha de la captura</label>
-            <input
-              className={form.textArea}
-              type='date'
-              placeholder='MedidasCautelares.Fecha.Captura'
-              {...register(
-                'MedidasCautelares.Fecha.Captura',
-                {
-                  required: false
-                }
-              )}
-            />
-          </section>
-          <section className={form.section}>
-            <label
-              className={form.label}
-              htmlFor='MedidasCautelares.Fecha.Secuestro'>Fecha del secuestro</label>
+              htmlFor='MedidasCautelares.Fecha.Secuestro'>
+              Fecha del secuestro
+            </label>
             <input
               className={form.textArea}
               type='date'
@@ -131,11 +45,13 @@ export function NuevasMedidasCautelaresSection() {
                 }
               )}
             />
-          </section>
+          I</section>
           <section className={form.section}>
             <label
               className={form.label}
-              htmlFor='MedidasCautelares.Fecha.DecretoSecuestrooCaptura'>Fecha decreto secuestro o captura</label>
+              htmlFor='MedidasCautelares.Fecha.DecretoSecuestrooCaptura'>
+              Fecha decreto secuestro o captura
+            </label>
             <input
               className={form.textArea}
               type='date'
@@ -148,26 +64,52 @@ export function NuevasMedidasCautelaresSection() {
               )}
             />
           </section>
-          <InputSection name={ 'MedidasCautelares.Fecha.SolicitudCapturaoSecuestro' }  type={ 'date' } title={ 'Fecha de solicitud de  captura o secuestro'} />
+          <InputSection
+            name={'MedidasCautelares.Fecha.SolicitudCapturaoSecuestro'}
+            type={'date'}
+            title={'Fecha de solicitud de  captura o secuestro'}
+          />
         </section>
-        <section className={ form.section }>
+        <section className={form.section}>
           <h4 className={`${ form.title } ${ typography.displaySmall }`}>
-        Oficios
+            Oficios
           </h4>
 
-          <InputSection name='MedidasCautelares.Oficios.FechaRetiro' type={ 'date' } title={'Fecha de retiro de las medidas Cautelares'} />
+          <InputSection
+            name='MedidasCautelares.Oficios.FechaRetiro'
+            type={'date'}
+            title={'Fecha de retiro de las medidas Cautelares'}
+          />
         </section>
-        <InputSection   name='MedidasCautelares.FechaRadicacion' type={ 'text' } title={ 'Fecha de radicacion de las medidas cautelares'} />
+        <InputSection
+          name='MedidasCautelares.FechaRadicacion'
+          type={'text'}
+          title={'Fecha de radicacion de las medidas cautelares'}
+        />
 
-        <InputSection   name='MedidasCautelares.RespuestaEmbargo' type={ 'checkbox' } title={ 'Respuesta del embargo' } />
-        <InputSection   name='MedidasCautelares.FechaOrdena' type={ 'date' } title={ 'Fecha Ordena' } />
-        <section className={ form.section }>
+        <InputSection
+          name='MedidasCautelares.RespuestaEmbargo'
+          type={'checkbox'}
+          title={'Respuesta del embargo'}
+        />
+        <InputSection
+          name='MedidasCautelares.FechaOrdena'
+          type={'date'}
+          title={'Fecha Ordena'}
+        />
+        <section className={form.section}>
           <h4 className={`${ form.title } ${ typography.displaySmall }`}>Oficio</h4>
-          <InputSection name='MedidasCautelares.Oficio.Fecha' type={ 'date' } title={ 'Fecha del oficio' } />
-          <InputSection name='MedidasCautelares.Oficio.Numero' type={ 'number' } title={ 'Oficio Numero' } />
+          <InputSection
+            name='MedidasCautelares.Oficio.Fecha'
+            type={'date'}
+            title={'Fecha del oficio'}
+          />
+          <InputSection
+            name='MedidasCautelares.Oficio.Numero'
+            type={'number'}
+            title={'Oficio Numero'}
+          />
         </section>
-
-
       </Accordion>
     </section>
   );

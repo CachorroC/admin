@@ -20,7 +20,7 @@ export default async function PageProcesosRight() {
     <>
       <NewNota
         llaveProceso={'Procesos'}
-        uri={`${ getBaseUrl() }`}
+        uri={`${getBaseUrl()}`}
       />
       <Suspense fallback={<NotasListSkeleton />}>
         <NotasList notas={notas} />

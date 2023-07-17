@@ -9,17 +9,15 @@ export interface FormValues {
   address: string;
 }
 
-export const FormCard = (
-  {
-    children,
-    currentStep,
-    prevFormStep
-  }: {
+export const FormCard = ({
+  children,
+  currentStep,
+  prevFormStep
+}: {
   children: ReactNode;
   currentStep: number;
   prevFormStep: () => void;
-} 
-) => {
+}) => {
   return (
     <div className={styles.formCard}>
       {currentStep < 3 && (
@@ -41,75 +39,52 @@ export const FormCard = (
 };
 
 export const FormCompleted = () => {
-  const {
-    data 
-  } = useFormData();
+  const { data } = useFormData();
 
   return (
     <>
       <h2>Thank you for your purchase! 🎉</h2>
-      <pre>{JSON.stringify(
-        data 
-      )}</pre>
+      <pre>{JSON.stringify(data)}</pre>
     </>
   );
 };
 
-export const PersonalInfo = (
-  {
-    formStep,
-    nextFormStep
-  }: {
+export const PersonalInfo = ({
+  formStep,
+  nextFormStep
+}: {
   formStep: number;
   nextFormStep: () => void;
-} 
-) => {
-  const {
-    setFormValues 
-  } = useFormData();
+}) => {
+  const { setFormValues } = useFormData();
 
   const {
     handleSubmit,
-    formState: {
-      errors 
-    },
+    formState: { errors },
     register
-  } = useForm(
-    {
-      defaultValues: {
-        email: 'admin@example.com'
-      }
-    } 
-  );
+  } = useForm({
+    defaultValues: {
+      email: 'admin@example.com'
+    }
+  });
 
-  const onSubmit = (
-    values: any 
-  ) => {
-    setFormValues(
-      values 
-    );
+  const onSubmit = (values: any) => {
+    setFormValues(values);
     nextFormStep();
   };
 
   return (
-    <div className={formStep === 0
-      ? styles.showForm
-      : styles.hideForm}>
+    <div className={formStep === 0 ? styles.showForm : styles.hideForm}>
       <h2>Personal Info</h2>
-      <form onSubmit={handleSubmit(
-        onSubmit 
-      )}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.formRow}>
           <label htmlFor='email'>Email</label>
           <input
             type='email'
             id='email'
-            {...register(
-              'email',
-              {
-                required: true
-              } 
-            )}
+            {...register('email', {
+              required: true
+            })}
           />
           {errors.email && (
             <p className={styles.errorText}>Email is required</p>
@@ -121,60 +96,41 @@ export const PersonalInfo = (
   );
 };
 
-export const ConfirmPurchase = (
-  {
-    formStep,
-    nextFormStep
-  }: {
+export const ConfirmPurchase = ({
+  formStep,
+  nextFormStep
+}: {
   formStep: number;
   nextFormStep: () => void;
-} 
-) => {
-  const {
-    setFormValues 
-  } = useFormData();
+}) => {
+  const { setFormValues } = useFormData();
 
   const {
     handleSubmit,
-    formState: {
-      errors 
-    },
+    formState: { errors },
     register
-  } = useForm(
-    {
-      defaultValues: {
-        checkbox: false
-      }
-    } 
-  );
+  } = useForm({
+    defaultValues: {
+      checkbox: false
+    }
+  });
 
-  const onSubmit = (
-    values: any 
-  ) => {
-    setFormValues(
-      values 
-    );
+  const onSubmit = (values: any) => {
+    setFormValues(values);
     nextFormStep();
   };
 
   return (
-    <div className={formStep === 2
-      ? styles.showForm
-      : styles.hideForm}>
+    <div className={formStep === 2 ? styles.showForm : styles.hideForm}>
       <h2>Confirm Purchase</h2>
-      <form onSubmit={handleSubmit(
-        onSubmit 
-      )}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.formRow}>
           <label htmlFor='checkbox'>
             <input
               type='checkbox'
-              {...register(
-                'checkbox',
-                {
-                  required: true
-                } 
-              )}
+              {...register('checkbox', {
+                required: true
+              })}
             />
             Ready to buy?
           </label>
@@ -188,61 +144,42 @@ export const ConfirmPurchase = (
   );
 };
 
-export const BillingInfo = (
-  {
-    formStep,
-    nextFormStep
-  }: {
+export const BillingInfo = ({
+  formStep,
+  nextFormStep
+}: {
   formStep: number;
   nextFormStep: () => void;
-} 
-) => {
-  const {
-    setFormValues 
-  } = useFormData();
+}) => {
+  const { setFormValues } = useFormData();
 
   const {
     handleSubmit,
-    formState: {
-      errors 
-    },
+    formState: { errors },
     register
-  } = useForm(
-    {
-      defaultValues: {
-        address: 'calle 12c # 6 - 21'
-      }
-    } 
-  );
+  } = useForm({
+    defaultValues: {
+      address: 'calle 12c # 6 - 21'
+    }
+  });
 
-  const onSubmit = (
-    values: any 
-  ) => {
-    setFormValues(
-      values 
-    );
+  const onSubmit = (values: any) => {
+    setFormValues(values);
     nextFormStep();
   };
 
   return (
-    <div className={formStep === 1
-      ? styles.showForm
-      : styles.hideForm}>
+    <div className={formStep === 1 ? styles.showForm : styles.hideForm}>
       <h2>Billing Info</h2>
-      <form onSubmit={handleSubmit(
-        onSubmit 
-      )}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.formRow}>
           <label htmlFor='address'>Address</label>
           <input
             type='address'
             id='address'
-            {...register(
-              'address',
-              {
-                required: true
-              } 
-            )}
+            {...register('address', {
+              required: true
+            })}
           />
           {errors.address && (
             <p className={styles.errorText}>Shipping address is required</p>

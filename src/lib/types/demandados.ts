@@ -233,7 +233,7 @@ export class carpetaConvert {
     carpeta: MonCarpeta
   ): IntCarpeta {
     const {
-      despacho, nombre,  _id, ...newCarpeta
+      despacho, nombre, _id, ...newCarpeta
     } = carpeta;
 
     return newCarpeta;
@@ -249,17 +249,7 @@ export class carpetaConvert {
   public static toMonCarpeta(
     carpeta: WithId<IntCarpeta>
   ): MonCarpeta {
-    const carpetaToString = JSON.stringify(
-      carpeta
-    );
-
-    const carpetaCleanId = JSON.parse(
-      carpetaToString
-    );
-
-    const dsp = carpeta.Demanda.Juzgado.Ejecucion
-      ? carpeta.Demanda.Juzgado.Ejecucion
-      : carpeta.Demanda.Juzgado.Origen;
+    const dsp = carpeta.Demanda.Juzgado.Ejecucion ??  carpeta.Demanda.Juzgado.Origen;
 
     const nmb = carpeta.Deudor.SegundoApellido
       ? carpeta.Deudor.SegundoNombre
@@ -267,18 +257,15 @@ export class carpetaConvert {
         : `${ carpeta.Deudor.PrimerNombre } ${ carpeta.Deudor.PrimerApellido } ${ carpeta.Deudor.SegundoApellido }`
       : `${ carpeta.Deudor.PrimerNombre } ${ carpeta.Deudor.PrimerApellido }`;
 
-
-
-
     const fixedCarpeta: MonCarpeta = {
-      ...carpetaCleanId,
+      ...carpeta,
+      _id     : carpeta._id.toString(),
       despacho: dsp,
       nombre  : nmb
     };
 
     return fixedCarpeta;
   }
-
   public static toMonCarpetas(
     carpetas: WithId<IntCarpeta>[]
   ): MonCarpeta[] {

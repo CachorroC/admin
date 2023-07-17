@@ -1,4 +1,3 @@
-
 import { ListCardCarpetasNFechas } from '#@/components/card/CarpetasCard/list';
 import { NotasListSkeleton } from '#@/components/card/NotasCard/skeleton';
 

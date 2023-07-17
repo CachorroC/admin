@@ -29,26 +29,41 @@ declare namespace __next_route_internal_types__ {
     S extends `${string}${SearchOrHash}` ? never : S
 
   type StaticRoutes = 
+    | `/`
+    | `/Contacto`
+    | `/Costos`
+    | `/QuienesSomos`
+    | `/`
+    | `/Procesos`
     | `/Carpetas`
-    | `/Notas`
-    | `/api`
     | `/Carpetas/NuevaCarpeta`
+    | `/Notas`
     | `/Notas/NuevaNota`
+    | `/Procesos`
+    | `/Procesos`
+    | `/Procesos`
+    | `/api`
     | `/api/Carpetas`
     | `/api/Notas`
     | `/api/Procesos`
-    | `/QuienesSomos`
-    | `/Costos`
-    | `/Contacto`
     | `/api/Procesos/mongo`
   type DynamicRoutes<T extends string = string> = 
+    | `/Procesos/${SafeSlug<T>}`
+    | `/(.)Notas/NuevaNota/${SafeSlug<T>}`
     | `/Carpetas/${SafeSlug<T>}`
     | `/Carpetas/${SafeSlug<T>}/Editar`
     | `/Notas/NuevaNota/${SafeSlug<T>}`
     | `/Notas/${SafeSlug<T>}/Editar`
-    | `/api/Procesos/${SafeSlug<T>}`
-    | `/(.)Notas/NuevaNota/${SafeSlug<T>}`
+    | `/Procesos/${SafeSlug<T>}`
+    | `/Procesos/${SafeSlug<T>}/Editar`
+    | `/Procesos/${SafeSlug<T>}/${SafeSlug<T>}`
+    | `/Procesos/${SafeSlug<T>}`
+    | `/Procesos/${SafeSlug<T>}/${SafeSlug<T>}`
+    | `/Procesos/${SafeSlug<T>}`
+    | `/Procesos/${SafeSlug<T>}/Editar`
+    | `/Procesos/${SafeSlug<T>}/${SafeSlug<T>}`
     | `/api/Procesos/Actuaciones/${SafeSlug<T>}`
+    | `/api/Procesos/${SafeSlug<T>}`
 
   type RouteImpl<T> = 
     | StaticRoutes
