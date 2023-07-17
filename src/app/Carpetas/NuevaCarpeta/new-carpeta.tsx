@@ -74,8 +74,14 @@ export function NuevoProceso(
   ) => {
     alert(
       JSON.stringify(
-        formState.dirtyFields
+        uri + formState.dirtyFields
       )
+    );
+    console.log(
+      formState.dirtyFields
+    );
+    console.log(
+      data
     );
     alert(
       JSON.stringify(
@@ -83,9 +89,6 @@ export function NuevoProceso(
       )
     );
 
-    await sleep(
-      2000
-    );
 
     const postNewNote = await fetch(
       `${ uri }/api/Carpetas${ carpeta && `?_id=${ carpeta._id }` }`,
@@ -99,13 +102,34 @@ export function NuevoProceso(
         )
       }
     );
-    const result = await postNewNote.json();
-
-    alert(
-      JSON.stringify(
-        result
-      )
+    await sleep(
+      2000
     );
+
+    if ( postNewNote.status === 201 ) {
+      const message = await postNewNote.text();
+      alert(
+        message
+      );
+    }
+
+    if ( postNewNote.status === 200 ) {
+      const result = await postNewNote.json();
+      alert(
+        JSON.stringify(
+          result
+        )
+      );
+    }
+
+    if ( postNewNote.status === 304 ) {
+      alert(
+        'nothing updated'
+      );
+    }
+
+
+
   };
 
   return (

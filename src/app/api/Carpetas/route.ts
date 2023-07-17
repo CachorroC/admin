@@ -127,13 +127,33 @@ export async function PUT(
     const cuantosInsertados = updated.upsertedCount;
     const cuantosM = updated.matchedCount;
 
+    if ( cuantosModificados > cuantosInsertados ) {
+      return new NextResponse(
+        `the file was accepted with code: ${ cuantosModificados }`,
+        {
+          status : 201,
+          headers: {
+            'content-type': 'text/html'
+          }
+        }
+      );
+    }
+
+    if ( cuantosInsertados > cuantosModificados ) {
+      return new NextResponse(
+        `the file was accepted with code: ${ cuantosInsertados }`,
+        {
+          status : 201,
+          headers: {
+            'content-type': 'text/html'
+          }
+        }
+      );
+    }
+
     return new NextResponse(
       JSON.stringify(
-        {
-          insertedDocuments: cuantosInsertados,
-          modifiedDocuments: cuantosModificados,
-          matched          : cuantosM
-        }
+        updated
       ),
       {
         status : 200,
@@ -142,6 +162,7 @@ export async function PUT(
         }
       }
     );
+
   }
 
   return new NextResponse(
