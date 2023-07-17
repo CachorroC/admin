@@ -1,3 +1,123 @@
 {
-  "_id": "sjideunwieewfj"
+  "_id": "443",
+  "llaveProceso": "11001400300320170088400",
+  "idProceso": [10299384383, 10029383483],
+  "deudor": {
+    "id": 1032488516,
+    "email": "juankpato87@gmail.com",
+    "primerNombre": "Juan",
+    "segundoNombre": "Camilo",
+    "primerApellido": "Suarez",
+    "segundoApellido": "Ramirez",
+    "direccion": "carrera 63 # 22 - 31",
+    "tel": {
+      "fijo": 3193905254,
+      "celular": 3212337597
+    }
+  },
+  "codeudor": {
+    "id": 1022352429,
+    "primerNombre": "Melissa",
+    "segundoNombre": "Lorena",
+    "primerApellido": "Suarez",
+    "segundoApellido": "Ramirez",
+    "tel": {
+      "fijo": 6051567,
+      "celular": 3103032791
+    },
+    "direccion": "carrera 63 # 22 - 31"
+  },
+
+  "demanda": {
+    "vencimientoPagare": "2020-05-04",
+    "obligaciones": [2530444, 2530444],
+    "capitalAdeudado": "$ 33.791.309",
+    "entregaGarantiasAbogado": "2017-05-11",
+    "departamento": "CUNDINAMARCA",
+    "municipio": "BOGOTA",
+    "juzgado": {
+      "origen": {
+        "id": "3 CM",
+        "url": "https://www.ramajudicial.gov.co/web/juzgado-03-civil-municipal-de-bogota"
+      },
+      "ejecucion": {
+        "id": "8 CM",
+        "url": "https://disneylatino.com"
+      }
+    },
+    "tipoProceso": "PRENDARIO",
+    "radicado": "2017 - 00884",
+    "expediente": "11001400300320170088400",
+    "ubicacion": "Juzgados de Ejecucion"
+  },
+
+  "etapaProcesal": {
+    "Etapa": "EMPLAZAMIENTO",
+    "fechas": {
+      "presentacionDemanda": "2018-01-03",
+      "mandamientoDePago": "2017-06-02"
+    }
+  },
+  "notificaciones": {
+    "certimail": false,
+    "fisico": true,
+    "notificacion291": {
+      "fechas": {
+        "recibo": "02-12-2018",
+        "aporta": "12-12-2013"
+      },
+      "resultado": true
+    },
+    "notificacion292": {
+      "fechas": {
+        "recibo": "02-12-2018",
+        "aporta": "12-12-2013"
+      },
+      "resultado": false
+    },
+    "publicacionEmplazamiento": "1999-01-01",
+    "NombramientoCurador": "199-01-01",
+    "tipoNotificacion": "CERTIMAIL",
+    "autoNotificado": "2018-07-11"
+  },
+  "MedidasCautelares": {
+    "fechas": {
+      "ordenaMedidasCautelares": "1999-01-01"
+    },
+    "medidaSolicitada": "Embargo Vehiculo",
+    "Bienes": "VEHICULO",
+    "Extra": "LA PRINCIPAL SAS",
+    "PlacaoNumeroMatricula": "IYM-870",
+    "DescripcionMedida": "AUTOMOVIL MODELO 2017 MARCA CHEVROLET COLOR ROJO VELVET SERVICIOPARTICULAR  MINI SPARK",
+    "Fecha": {
+      "Captura": 43315,
+      "Secuestro": "PENDIENTE",
+      "DecretoSecuestrooCaptura": "2010-03-20"
+    },
+    "FechaRadicaccion": "2018-05-31",
+    "Oficios": {
+      "FechaRetiro": "2017-09-28"
+    },
+    "RespuestaEmbargo": true
+  },
+  "Liquidacion": {
+    "Costas": {
+      "FechaAprobacion": "1999-01-01"
+    },
+    "Fecha": {
+      "Aprobacion": "1999-01-01"
+    }
+  },
+
+  "SuspencionProceso": {
+    "TerminoSuspencion": "N/A",
+    "Fecha": "1999-01-01"
+  },
+  "avaluo": {
+    "fechas": {
+      "adjudicacion": "1999-01-01",
+      "remate": "1999-01-01"
+    },
+    "costo": "$ 4'000.000.00"
+  }
 }

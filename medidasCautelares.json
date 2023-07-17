@@ -1,0 +1,17 @@
+{
+  "medidaSolicitada": [],
+  "numeroOficio": 1229,
+  "fechas": {
+    "ordenaMedidasCautelares": "1999-01-01",
+    "oficio": "2017-01-01",
+    "retiroDeOficios": "1999-01-01",
+    "radicacion": "1999-01-01",
+    "solicitudCapturaSuecuestro": "1999-01-01",
+    "decretoCapturaSuecuestro": "1999-01-01",
+    "captura": "1999-01-01",
+    "secuestro": "1999-01-01"
+  },
+  "bienes": ["inmueble", "vehiculo", "cuentaBancaria"],
+  "placasNumeroMatricula": "zzy-059",
+  "respuestaEmbargo": false
+}

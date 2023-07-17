@@ -82,10 +82,12 @@ export interface Obligacion {
 }
 
 export interface Proceso {
-  Tipo: Tipo;
+  Tipo: tipoProceso;
 }
 
-export type Tipo = 'PRENDARIO' | 'SINGULAR' | 'HIPOTECARIO';
+export type tipoProceso = 'PRENDARIO' | 'SINGULAR' | 'HIPOTECARIO';
+
+export type tipoMedidaCautelar =  'inmueble' | 'vehiculo' | 'cuentasBancarias'| 'salario' | 'establecimientoComercial'
 
 export interface Ubicacion {
   Juzgado: string;
@@ -131,8 +133,8 @@ export interface LiquidacionFecha {
 }
 
 export interface MedidasCautelares {
+  MedidaSolicitada: tipoMedidaCautelar;
   Bienes: string;
-  MedidaSolicitada: string;
   Extra?: string;
   PlacaoNumeroMatricula?: string;
   DescripcionMedida?: string;
