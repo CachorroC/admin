@@ -6,19 +6,23 @@ import Link from 'next/link';
 import typography from '#@/styles/fonts/typography.module.scss';
 import layout from '#@/styles/scss/layout.module.scss';
 
-export default async function CarpetasPageId({
-  params
-}: {
+export default async function CarpetasPageId(
+  {
+    params
+  }: {
   params: { _id: string };
-}) {
-  const carpeta = await getCarpetaById({
-    _id: params._id
-  });
+} 
+) {
+  const carpeta = await getCarpetaById(
+    {
+      _id: params._id
+    } 
+  );
 
   return (
     <>
       <Link
-        href={`/Carpetas/${params._id}/Editar`}
+        href={`/Carpetas/${ params._id }/Editar`}
         className={layout.button}>
         <p className={typography.labelSmall}>Editar</p>
         <span className='material-symbols-outlined'>bookmark_manager</span>

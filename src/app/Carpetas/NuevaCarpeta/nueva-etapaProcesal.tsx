@@ -6,11 +6,13 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { Accordion } from '#@/components/Accordion';
 
 export function NuevaEtapaProcesalSection() {
-  const { register } = useFormContext<IntCarpeta>();
+  const {
+    register 
+  } = useFormContext<IntCarpeta>();
 
   return (
     <section className={form.section}>
-      <h3 className={`${form.title} ${typography.displayMedium}`}>
+      <h3 className={`${ form.title } ${ typography.displayMedium }`}>
         Etapa Procesal
       </h3>
       <Accordion>
@@ -24,7 +26,10 @@ export function NuevaEtapaProcesalSection() {
             className={form.textArea}
             type='text'
             placeholder='EtapaProcesal.Etapa'
-            {...register('EtapaProcesal.Etapa', {})}
+            {...register(
+              'EtapaProcesal.Etapa',
+              {} 
+            )}
           />
         </section>
         <section className={form.section}>
@@ -37,7 +42,10 @@ export function NuevaEtapaProcesalSection() {
             className={form.textArea}
             type='datetime'
             placeholder='EtapaProcesal.Fecha.MandamientodePago'
-            {...register('EtapaProcesal.Fecha.MandamientodePago', {})}
+            {...register(
+              'EtapaProcesal.Fecha.MandamientodePago',
+              {} 
+            )}
           />
         </section>
         <section className={form.section}>
@@ -50,7 +58,10 @@ export function NuevaEtapaProcesalSection() {
             className={form.textArea}
             type='datetime'
             placeholder='EtapaProcesal.Fecha.PresentacionDemanda'
-            {...register('EtapaProcesal.Fecha.PresentacionDemanda', {})}
+            {...register(
+              'EtapaProcesal.Fecha.PresentacionDemanda',
+              {} 
+            )}
           />
         </section>
       </Accordion>

@@ -15,9 +15,11 @@ import typography from '#@/styles/fonts/typography.module.scss';
 export default async function PageCarpetas() {
   const carpetas = await getCarpetas();
 
-  const fechas = await fetchFechas({
-    procesos: carpetas
-  });
+  const fechas = await fetchFechas(
+    {
+      procesos: carpetas
+    } 
+  );
 
   return (
     <div className={layout.body}>

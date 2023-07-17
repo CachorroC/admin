@@ -28,33 +28,59 @@ export interface monNota extends intNota {
 }
 
 export class notaConvert {
-  public static toMonNotas(notas: WithId<intNota>[]): monNota[] {
-    const newNotas = notas.map((nota) => {
-      return this.toMonNota(nota);
-    });
+  public static toMonNotas(
+    notas: WithId<intNota>[] 
+  ): monNota[] {
+    const newNotas = notas.map(
+      (
+        nota 
+      ) => {
+        return this.toMonNota(
+          nota 
+        );
+      } 
+    );
 
     return newNotas;
   }
-  public static monNotasToJson(value: monNota[]): string {
-    return JSON.stringify(value);
+  public static monNotasToJson(
+    value: monNota[] 
+  ): string {
+    return JSON.stringify(
+      value 
+    );
   }
 
-  public static toMonNota(nota: WithId<intNota>): monNota {
+  public static toMonNota(
+    nota: WithId<intNota> 
+  ): monNota {
     const newNota = {
       ...nota,
       _id: nota._id,
-      id: nota._id.toString()
+      id : nota._id.toString()
     };
 
     return newNota;
   }
-  public static monNotaToJson(value: monNota): string {
-    return JSON.stringify(value);
+  public static monNotaToJson(
+    value: monNota 
+  ): string {
+    return JSON.stringify(
+      value 
+    );
   }
-  public static toTarea(json: string): Tarea {
-    return JSON.parse(json);
+  public static toTarea(
+    json: string 
+  ): Tarea {
+    return JSON.parse(
+      json 
+    );
   }
-  public static tareaToJson(value: Tarea): string {
-    return JSON.stringify(value);
+  public static tareaToJson(
+    value: Tarea 
+  ): string {
+    return JSON.stringify(
+      value 
+    );
   }
 }

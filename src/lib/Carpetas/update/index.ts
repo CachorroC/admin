@@ -6,21 +6,33 @@ import { cache } from 'react';
 import { UltimaActuacion } from '../../types/demandados';
 import { ObjectId } from 'mongodb';
 
-const Collection = cache(async () => {
-  const client = await clientPromise;
+const Collection = cache(
+  async () => {
+    const client = await clientPromise;
 
-  if (!client) {
-    throw new Error('no hay cliente mongólico');
-  }
+    if ( !client ) {
+      throw new Error(
+        'no hay cliente mongólico' 
+      );
+    }
 
-  const db = client.db('RyS');
+    const db = client.db(
+      'RyS' 
+    );
 
-  const carpetas = db.collection<IntCarpeta>('Demandados');
+    const carpetas = db.collection<IntCarpeta>(
+      'Demandados' 
+    );
 
-  return carpetas;
-});
+    return carpetas;
+  } 
+);
 
-export const updateCarpeta = async ({ carpeta }: { carpeta: IntCarpeta }) => {
+export const updateCarpeta = async (
+  {
+    carpeta 
+  }: { carpeta: IntCarpeta } 
+) => {
   const collection = await Collection();
   const query = carpeta;
 
@@ -32,7 +44,11 @@ export const updateCarpeta = async ({ carpeta }: { carpeta: IntCarpeta }) => {
     upsert: true
   };
 
-  const updt = await collection.updateOne(query, update, options);
+  const updt = await collection.updateOne(
+    query,
+    update,
+    options 
+  );
 
   return updt;
 };

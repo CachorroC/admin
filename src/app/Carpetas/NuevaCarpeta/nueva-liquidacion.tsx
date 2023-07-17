@@ -6,11 +6,13 @@ import { Accordion } from '#@/components/Accordion';
 import { IntCarpeta } from '#@/lib/types/demandados';
 
 export function NuevaLiquidacionSection() {
-  const { register } = useFormContext<IntCarpeta>();
+  const {
+    register 
+  } = useFormContext<IntCarpeta>();
 
   return (
     <section className={form.section}>
-      <h3 className={`${form.title} ${typography.displayMedium}`}>
+      <h3 className={`${ form.title } ${ typography.displayMedium }`}>
         Liquidacion
       </h3>
       <Accordion>
@@ -24,7 +26,10 @@ export function NuevaLiquidacionSection() {
             className={form.textArea}
             type='date'
             placeholder='Liquidacion.Fecha.Aprobacion'
-            {...register('Liquidacion.Fecha.Aprobacion', {})}
+            {...register(
+              'Liquidacion.Fecha.Aprobacion',
+              {} 
+            )}
           />
         </section>
         <section className={form.section}>
@@ -37,7 +42,10 @@ export function NuevaLiquidacionSection() {
             className={form.textArea}
             type='date'
             placeholder='Liquidacion.Fecha.Presentacion'
-            {...register('Liquidacion.Fecha.Presentacion', {})}
+            {...register(
+              'Liquidacion.Fecha.Presentacion',
+              {} 
+            )}
           />
         </section>
         <section className={form.section}>
@@ -50,10 +58,13 @@ export function NuevaLiquidacionSection() {
             className={form.textArea}
             type='date'
             placeholder='Liquidacion.Fecha.Solicitud'
-            {...register('Liquidacion.Fecha.Solicitud', {})}
+            {...register(
+              'Liquidacion.Fecha.Solicitud',
+              {} 
+            )}
           />
         </section>
-        <h4 className={`${form.title} ${typography.displaySmall}`}>Costas</h4>
+        <h4 className={`${ form.title } ${ typography.displaySmall }`}>Costas</h4>
         <section className={form.section}>
           <section className={form.section}>
             <label
@@ -65,7 +76,10 @@ export function NuevaLiquidacionSection() {
               className={form.textArea}
               type='date'
               placeholder='Liquidacion.Costas.FechaAprobacion'
-              {...register('Liquidacion.Costas.FechaAprobacion', {})}
+              {...register(
+                'Liquidacion.Costas.FechaAprobacion',
+                {} 
+              )}
             />
           </section>
           <section className={form.section}>
@@ -78,7 +92,10 @@ export function NuevaLiquidacionSection() {
               className={form.textArea}
               type='number'
               placeholder='Liquidacion.Costas.Valor'
-              {...register('Liquidacion.Costas.Valor', {})}
+              {...register(
+                'Liquidacion.Costas.Valor',
+                {} 
+              )}
             />
           </section>
         </section>
@@ -92,7 +109,10 @@ export function NuevaLiquidacionSection() {
             className={form.textArea}
             type='date'
             placeholder='Liquidacion.Fecha.Sentencia'
-            {...register('Liquidacion.Fecha.Sentencia', {})}
+            {...register(
+              'Liquidacion.Fecha.Sentencia',
+              {} 
+            )}
           />
         </section>
         <section className={form.section}>
@@ -105,7 +125,10 @@ export function NuevaLiquidacionSection() {
             className={form.textArea}
             type='number'
             placeholder='Liquidacion.ValorCredito'
-            {...register('Liquidacion.ValorCredito', {})}
+            {...register(
+              'Liquidacion.ValorCredito',
+              {} 
+            )}
           />
         </section>
       </Accordion>

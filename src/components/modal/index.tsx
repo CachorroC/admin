@@ -9,69 +9,133 @@ import { useParams } from 'next/navigation';
 import { redirect } from 'next/navigation';
 import type { Route } from 'next';
 
-export default function Modal({ children }: { children: React.ReactNode }) {
+export default function Modal(
+  {
+    children 
+  }: { children: React.ReactNode } 
+) {
   const params = useParams();
   const pathname = usePathname();
 
-  const overlay = useRef(null);
+  const overlay = useRef(
+    null 
+  );
 
-  const wrapper = useRef(null);
+  const wrapper = useRef(
+    null 
+  );
   const router = useRouter();
 
-  const [isOpen, setIsOpen] = useModal();
+  const [
+    isOpen,
+    setIsOpen
+  ] = useModal();
 
-  const onEnter = useCallback(() => {
-    setIsOpen(false);
-    router.push(pathname as Route);
-  }, [router, pathname, setIsOpen]);
+  const onEnter = useCallback(
+    () => {
+      setIsOpen(
+        false 
+      );
+      router.push(
+ pathname as Route 
+      );
+    },
+    [
+      router,
+      pathname,
+      setIsOpen
+    ] 
+  );
 
-  const onDismiss = useCallback(() => {
-    setIsOpen(isOpen ? false : true);
-    router.back();
-  }, [router, setIsOpen, isOpen]);
+  const onDismiss = useCallback(
+    () => {
+      setIsOpen(
+        isOpen
+          ? false
+          : true 
+      );
+      router.back();
+    },
+    [
+      router,
+      setIsOpen,
+      isOpen
+    ] 
+  );
 
   const onClick = useCallback(
-    (e: { target: undefined }) => {
-      if (e.target === overlay.current || e.target === wrapper.current) {
-        if (onDismiss) {
+    (
+      e: { target: undefined } 
+    ) => {
+      if ( e.target === overlay.current || e.target === wrapper.current ) {
+        if ( onDismiss ) {
           onDismiss();
         }
 
-        if (onEnter) {
+        if ( onEnter ) {
           onEnter();
         }
       }
     },
-    [onDismiss, onEnter, overlay, wrapper]
+    [
+      onDismiss,
+      onEnter,
+      overlay,
+      wrapper
+    ]
   );
 
   const onKeyDown = useCallback(
-    (e: { key: string }) => {
-      if (e.key === 'Escape') {
+    (
+      e: { key: string } 
+    ) => {
+      if ( e.key === 'Escape' ) {
         onDismiss();
       }
 
-      if (e.key === 'Enter') {
+      if ( e.key === 'Enter' ) {
         onEnter();
       }
     },
-    [onDismiss, onEnter]
+    [
+      onDismiss,
+      onEnter
+    ]
   );
-  useEffect(() => {
-    if (params) {
-      console.log(params);
-      setIsOpen(true);
-    }
-    document.addEventListener('keydown', onKeyDown);
+  useEffect(
+    () => {
+      if ( params ) {
+        console.log(
+          params 
+        );
+        setIsOpen(
+          true 
+        );
+      }
+      document.addEventListener(
+        'keydown',
+        onKeyDown 
+      );
 
-    return () => {
-      setIsOpen(false);
+      return () => {
+        setIsOpen(
+          false 
+        );
 
-      return document.removeEventListener('keydown', onKeyDown);
-    };
-  }, [onKeyDown, setIsOpen, params]);
+        return document.removeEventListener(
+          'keydown',
+          onKeyDown 
+        );
+      };
+    },
+    [
+      onKeyDown,
+      setIsOpen,
+      params
+    ] 
+  );
 
-  if (isOpen) {
+  if ( isOpen ) {
     return (
       <div
         ref={overlay}

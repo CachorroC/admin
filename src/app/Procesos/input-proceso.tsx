@@ -15,49 +15,66 @@ export default function InputProceso() {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: {
+      errors 
+    }
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (
+    data 
+  ) => {
     const Request = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${data.llaveProceso}&SoloActivos=false`
+      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ data.llaveProceso }&SoloActivos=false`
     );
 
-    if (!Request.ok) {
+    if ( !Request.ok ) {
       return notFound();
     }
-    const Response = (await Request.json()) as intConsultaNumeroRadicacion;
+    const Response = ( await Request.json() ) as intConsultaNumeroRadicacion;
 
-    if (Response.procesos.length === 0) {
+    if ( Response.procesos.length === 0 ) {
       return notFound();
     }
     const procesos = Response.procesos;
-    alert(procesos);
+    alert(
+      procesos 
+    );
 
     return (
       <Modal>
-        {procesos.map((proceso) => {
-          return (
-            <ProcesoCard
-              key={proceso.idProceso}
-              proceso={proceso}
-            />
-          );
-        })}
+        {procesos.map(
+          (
+            proceso 
+          ) => {
+            return (
+              <ProcesoCard
+                key={proceso.idProceso}
+                proceso={proceso}
+              />
+            );
+          } 
+        )}
       </Modal>
     );
   };
-  console.log(errors);
+  console.log(
+    errors 
+  );
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(
+      onSubmit 
+    )}>
       <input
         type='text'
         placeholder='llaveProceso'
-        {...register('llaveProceso', {
-          required: true,
-          maxLength: 23
-        })}
+        {...register(
+          'llaveProceso',
+          {
+            required : true,
+            maxLength: 23
+          } 
+        )}
       />
 
       <input type='submit' />

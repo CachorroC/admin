@@ -6,7 +6,7 @@ import { InputSection } from '#@/components/form/InputSection';
 export function NuevoDeudorSection() {
   return (
     <section className={form.section}>
-      <h3 className={`${form.title} ${typography.displayMedium}`}>Deudor</h3>
+      <h3 className={`${ form.title } ${ typography.displayMedium }`}>Deudor</h3>
       <Accordion>
         <InputSection
           name={'Deudor.PrimerNombre'}
@@ -48,7 +48,7 @@ export function NuevoDeudorSection() {
           type={'text'}
           rls={{
             required: false,
-            pattern: /^\S+@\S+$/i
+            pattern : /^\S+@\S+$/i
           }}
         />
         <InputSection
@@ -56,7 +56,7 @@ export function NuevoDeudorSection() {
           title={'Telefono fijo'}
           type={'tel'}
           rls={{
-            required: false,
+            required : false,
             maxLength: 10
           }}
         />
@@ -65,7 +65,7 @@ export function NuevoDeudorSection() {
           title={'Telefono celular'}
           type={'tel'}
           rls={{
-            required: false,
+            required : false,
             maxLength: 10
           }}
         />
