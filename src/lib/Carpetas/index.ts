@@ -4,7 +4,6 @@ import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
 import { ObjectId } from 'mongodb';
 import { IntCarpeta, carpetaConvert } from '#@/lib/types/demandados';
-import { Carpeta } from '../types/carpetas';
 
 export const preload = (
   llaveProceso: string
@@ -35,31 +34,6 @@ export const carpetasCollection = cache(
     );
 
     return carpetas;
-  }
-);
-
-export const getCarpetasNew = cache(
-  async () => {
-    const collection = await carpetasCollection();
-
-    const carpetasRaw = await collection.find(
-      {}
-    ).toArray();
-
-    const map = carpetasRaw.map(
-      (
-        carpeta
-      ) => {
-        return new Carpeta(
-          carpeta
-        );
-      }
-    );
-    console.log(
-      map
-    );
-
-    return map;
   }
 );
 
@@ -135,7 +109,7 @@ export const getCarpetaById = cache(
       }
     );
 
-    return Carpetas ;
+    return Carpetas;
   }
 );
 

@@ -8,7 +8,7 @@ export function usePrettyPrintedState<T extends object>(): [
   const [
     value,
     setValue
-  ] = useState<T>( );
+  ] = useState<T>();
 
   const resultValue = useMemo(
     () => {
@@ -21,7 +21,7 @@ export function usePrettyPrintedState<T extends object>(): [
               {JSON.stringify(
                 value,
                 null,
-                2
+                2 
               )}
             </pre>
           )}
@@ -30,7 +30,7 @@ export function usePrettyPrintedState<T extends object>(): [
     },
     [
       value
-    ]
+    ] 
   );
 
   return [

@@ -19,22 +19,22 @@ function DemandadoNameBadge(
   }: {
   carpeta: MonCarpeta;
   proceso?: intProceso;
-} 
+}
 ) {
   const {
-    llaveProceso, id 
+    _id, ...newCarpeta
   } = carpeta;
 
   if ( proceso ) {
     return (
       <Fragment key={proceso
         ? proceso.idProceso
-        : id}>
-        <Name llaveProceso={llaveProceso} />
+        : carpeta.id}>
+        <Name llaveProceso={carpeta.llaveProceso} />
         <Accordion>
           <p className={typography.bodySmall}>{proceso.despacho}</p>
           <ProcesoCard proceso={proceso} />
-          <CarpetaCard carpeta={carpeta}>
+          <CarpetaCard carpeta={newCarpeta}>
             <span className='material-symbols-outlined'>star</span>
           </CarpetaCard>
         </Accordion>
@@ -43,10 +43,10 @@ function DemandadoNameBadge(
   }
 
   return (
-    <Fragment key={id}>
-      <Name llaveProceso={llaveProceso} />
+    <Fragment key={carpeta.id}>
+      <Name llaveProceso={carpeta.llaveProceso} />
       <Accordion>
-        <CarpetaCard carpeta={carpeta}>
+        <CarpetaCard carpeta={newCarpeta}>
           <span className='material-symbols-outlined'>star</span>
         </CarpetaCard>
       </Accordion>
@@ -59,18 +59,18 @@ export default async function PageProcesosllaveProceso(
     params
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   const Procesos = await getConsultaNumeroRadicion(
     {
       llaveProceso: params.llaveProceso
-    } 
+    }
   );
 
   const Carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: params.llaveProceso
-    } 
+    }
   );
 
   return (
@@ -78,14 +78,14 @@ export default async function PageProcesosllaveProceso(
       <p>default</p>
       {Carpetas.map(
         (
-          carpeta, index, arr 
+          carpeta, index, arr
         ) => {
           const proceso = Procesos.find(
             (
-              prc 
+              prc
             ) => {
               return prc.idProceso === carpeta.idProceso;
-            } 
+            }
           );
 
           return (
@@ -102,7 +102,7 @@ export default async function PageProcesosllaveProceso(
               </Link>
             </Fragment>
           );
-        } 
+        }
       )}
     </>
   );

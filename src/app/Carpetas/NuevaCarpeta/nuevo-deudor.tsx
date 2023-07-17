@@ -1,161 +1,40 @@
-'use client';
-import { Deudor, IntCarpeta } from '#@/lib/types/demandados';
 import form from '#@/components/form/form.module.scss';
-import { UseFormRegister, useForm, useFormContext } from 'react-hook-form';
 import typography from '#@/styles/fonts/typography.module.scss';
+import { Accordion } from '#@/components/Accordion';
+import { InputSection } from '#@/components/form/InputSection';
 
+export function NuevoDeudorSection() {
 
-
-
-export function NuevoDeudorSection (){
-  const {
-    register
-  } = useFormContext();
 
   return (
-    <section className={ form.section }>
-      <h4 className={`${ form.title } ${ typography.displaySmall }`}>Deudor</h4>
-      <section className={form.section}>
-        <label className={`${ form.label } ${ form.required }`} htmlFor='Deudor.PrimerNombre'>Primer Nombre</label>
-        <input
-          className={form.textArea}
-          type='text'
-          placeholder='Primer Nombre'
-          {...register(
-            'Deudor.PrimerNombre',
-            {
-              required: true
-            }
-          )}
-        />
-
-
-      </section>
-      <section className={form.section}>
-        <label className={form.label} htmlFor='Deudor.SegundoNombre'>Segundo Nombre</label>
-        <input
-          className={form.textArea}
-          type='text'
-          placeholder='Segundo Nombre'
-          {...register(
-            'Deudor.SegundoNombre',
-            {
-              required: false
-            }
-          )}
-        />
-
-      </section>
-      <section className={form.section}>
-        <label className={`${ form.label } ${ form.required }`} htmlFor='Deudor.PrimerApellido'>Primer Apellido</label>
-        <input
-          className={form.textArea}
-          type='text'
-          placeholder='Primer Apellido'
-          {...register(
-            'Deudor.PrimerApellido',
-            {
-              required: true
-            }
-          )}
-        />
-
-      </section>
-      <section className={form.section}>
-        <label className={form.label} htmlFor='Deudor.SegundoApellido'>Segundo Apellido</label>
-        <input
-          className={form.textArea}
-          type='text'
-          placeholder='Segundo Apellido'
-          {...register(
-            'Deudor.SegundoApellido',
-            {
-              required: false
-            }
-
-          ) } />
-      </section>
-
-      <section className={form.section}>
-        <label className={`${ form.label } ${ form.required }`} htmlFor='Deudor.Id'>Cédula</label>
-        <input
-          className={form.textArea}
-          type='number'
-          placeholder='Deudor.Id'
-          {...register(
-            'Deudor.Id',
-            {
-              required: true
-            }
-          )}
-        />
-
-
-      </section>
-      <section className={form.section}>
-        <label className={form.label} htmlFor='Deudor.Email'>Email</label>
-        <input
-          className={form.textArea}
-          type='text'
-          placeholder='Deudor.Email'
-          {...register(
-            'Deudor.Email',
-            {
-              required: false,
-              pattern : /^\S+@\S+$/i
-            }
-          )}
-        />
-
-      </section>
-      <section className={form.section}>
-        <label className={form.label} htmlFor=''></label>
-        <input
-          className={form.textArea}
-          type='tel'
-          placeholder='Deudor.Tel.Fijo'
-          {...register(
-            'Deudor.Tel.Fijo',
-            {
-              required : false,
-              maxLength: 10
-            }
-          )}
-        />
-
-      </section>
-      <section className={form.section}>
-        <label className={form.label} htmlFor=''></label>
-        <input
-          className={form.textArea}
-          type='tel'
-          placeholder='Deudor.Tel.Celular'
-          {...register(
-            'Deudor.Tel.Celular',
-            {
-              required : false,
-              maxLength: 10
-            }
-          )}
-        />
-
-      </section>
-      <section className={form.section}>
-        <label className={form.label} htmlFor=''></label>
-        <input
-          className={form.textArea}
-          type='text'
-          placeholder='Deudor.Direccion'
-          {...register(
-            'Deudor.Direccion',
-            {
-              required: false
-            }
-          )}
-        />
-
-      </section>
+    <section className={form.section}>
+      <h4 className={ `${ form.title } ${ typography.displayMedium }` }>Deudor</h4>
+      <Accordion>
+        <InputSection name={ 'Deudor.PrimerNombre' } title={ 'Nombre del deudor' } type={ 'text' } rls={{
+          required: true
+        } } />
+        <InputSection name={ 'Deudor.SegundoNombre' } title={ 'segundo nombre' } type={ 'text' }  />
+        <InputSection name={ 'Deudor.PrimerApellido' } title={ 'Apellido del deudor' } type={ 'text' } rls={{
+          required: true
+        } } />
+        <InputSection name={ 'Deudor.SegundoApellido' } title={ 'Segundo apellido' } type={ 'text' } />
+        <InputSection name={ 'Deudor.Id' } title={ 'Cedula del deudor' } type={ 'number' } rls={{
+          required: true
+        } } />
+        <InputSection name={ 'Deudor.Email' } title={ 'Correo electrónico' } type={ 'text' } rls={{
+          required: false,
+          pattern : /^\S+@\S+$/i
+        } } />
+        <InputSection name={ 'Deudor.Tel.Fijo' } title={ 'Telefono fijo' } type={ 'tel' } rls={{
+          required : false,
+          maxLength: 10
+        }}/>
+        <InputSection name={ 'Deudor.Tel.Celular' } title={ 'Telefono celular' } type={ 'tel' } rls={{
+          required : false,
+          maxLength: 10
+        } } />
+        <InputSection name={ 'Deudor.Direccion' } title={ 'Direccion de residencia o trabajo' } type={ 'text' } />
+      </Accordion>
     </section>
-
   );
 }

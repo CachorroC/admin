@@ -7,12 +7,13 @@ import { useSelectedLayoutSegment,
 import type { Route } from 'next';
 import searchbar from '#@/components/search/searchbar.module.scss';
 import { ReactNode, Fragment, useCallback } from 'react';
-import { intFecha } from '#@/lib/types/demandados';
+import { NombreCompleto, intFecha } from '#@/lib/types/demandados';
 import { fixFechas } from '#@/lib/fix';
 import { useNavigator } from '#@/app/search-context';
 import { useModal } from '#@/app/modal-context';
 import { Name } from '../Headings/clientSideName';
 import { useRouter } from 'next/navigation';
+import { NombreComponent } from '../card/Nombre';
 
 export const LinkCard = (
   {
@@ -21,7 +22,7 @@ export const LinkCard = (
   }: {
   path: string;
   proceso: intFecha;
-} 
+}
 ) => {
   const [
     isOpen,
@@ -29,11 +30,11 @@ export const LinkCard = (
   ] = useModal();
 
   const {
-    Deudor, fecha, llaveProceso, idProceso, id 
+    Deudor, fecha, llaveProceso, idProceso, id
   } = proceso;
 
   const {
-    Nombre, Id, Direccion, Tel 
+    Id, Direccion, Tel
   } = Deudor;
   const params = useParams();
   const pathname = usePathname();
@@ -65,15 +66,15 @@ export const LinkCard = (
         href={href}
         onClick={() => {
           return setIsNavOpen(
-            false 
+            false
           );
         }}
         className={isActive
           ? searchbar.isActive
           : searchbar.notActive}>
-        <Name helper={Nombre} />
+        <NombreComponent Deudor={ Deudor} />
         <sub className={searchbar.date}>{fixFechas(
-          fecha 
+          fecha
         )}</sub>
       </Link>
     </div>

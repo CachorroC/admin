@@ -2,17 +2,13 @@
 import { Route } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ReactNode, Suspense, useState } from 'react';
+import { ReactNode } from 'react';
 import card from '#@/components/card/card.module.scss';
 import { useModal } from '#@/app/modal-context';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { useNavigator } from '#@/app/search-context';
-import { fixFechas, toNameString } from '#@/lib/fix';
-import { Name } from '#@/components/Headings/clientSideName';
-import { useEffect } from 'react';
-import { Loader } from '#@/components/Loader';
-import { MonCarpeta, intFecha } from '#@/lib/types/demandados';
-import { NombreCompleto } from '#@/lib/types/carpetas';
+import { toNameString } from '#@/lib/fix';
+import { IntCarpeta, MonCarpeta, NombreCompleto, intFecha } from '#@/lib/types/demandados';
 
 export const Card = (
   {
@@ -21,7 +17,7 @@ export const Card = (
     children
   }: {
   path: string;
-  carpeta: MonCarpeta | intFecha;
+  carpeta: MonCarpeta | intFecha ;
   children: ReactNode;
 }
 ) => {
@@ -54,19 +50,21 @@ export const Card = (
       : `${ path }`
   ) as Route;
 
-  const isActive = pathname === href
+  const isActive
+    = pathname === href
     || pathname === `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
     || pathname === `${ path }/${ carpeta.llaveProceso }`;
 
-  const juzgado =  carpeta.despacho.id.replace(
-    / /g,
-    '-'
-  ).toLocaleLowerCase()
+  const juzgado = carpeta.despacho.id
+    .replace(
+      / /g,
+      '-'
+    )
+    .toLocaleLowerCase()
     .slice(
       0,
       -1
     );
-
 
   return (
     <div className={card.container}>
@@ -93,7 +91,7 @@ export const Card = (
           </Link>
           <Link
             className={`${ card.link } ${ isActive && card.isActive }`}
-            href={ `/Procesos/${ carpeta.llaveProceso }` as Route}>
+            href={`/Procesos/${ carpeta.llaveProceso }` as Route}>
             <span className={`material-symbols-outlined ${ card.icon }`}>
               badge
             </span>
@@ -140,7 +138,6 @@ export const Card = (
             )}
           </p>
         </Link>
-
       </div>
     </div>
   );

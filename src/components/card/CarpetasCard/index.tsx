@@ -15,17 +15,17 @@ const NotificacionesContainer = (
     notificaciones
   }: {
   notificaciones: Notificaciones;
-} 
+}
 ) => {
   const {
-    AutoNotificado, Certimail, Fisico, Tipo 
+    AutoNotificado, Certimail, Fisico, Tipo
   } = notificaciones;
 
   return (
     <Accordion>
       <div>
         <p>{fixFechas(
-          AutoNotificado 
+          AutoNotificado
         )}</p>
       </div>
     </Accordion>
@@ -34,8 +34,8 @@ const NotificacionesContainer = (
 
 export const DemandaContainer = (
   {
-    demanda 
-  }: { demanda: Demanda } 
+    demanda
+  }: { demanda: Demanda }
 ) => {
   const {
     Departamento,
@@ -59,13 +59,13 @@ export const DemandaContainer = (
         }>{`${ Departamento }: ${ Municipio }`}</h2>
       {VencimientoPagare && (
         <p className={typography.labelMedium}>{fixFechas(
-          VencimientoPagare 
+          VencimientoPagare
         )}</p>
       )}
       {EntregadeGarantiasAbogado && (
         <p className={typography.labelSmall}>
           {fixFechas(
-            EntregadeGarantiasAbogado 
+            EntregadeGarantiasAbogado
           )}
         </p>
       )}
@@ -83,7 +83,7 @@ export const CarpetaCard = (
   }: {
   carpeta: MonCarpeta;
   children: ReactNode;
-} 
+}
 ) => {
   const {
     llaveProceso,
@@ -99,7 +99,7 @@ export const CarpetaCard = (
   } = carpeta;
 
   const {
-    Tel, Direccion, Email 
+    Tel, Direccion, Email
   } = Deudor;
   const path = '/Procesos';
 

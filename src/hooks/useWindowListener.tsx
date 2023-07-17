@@ -2,25 +2,25 @@
 import { useState, useEffect } from 'react';
 
 export function useWindowListener(
-  eventType, listener
+  eventType, listener 
 ) {
   useEffect(
     () => {
       window.addEventListener(
         eventType,
-        listener
+        listener 
       );
 
       return () => {
         window.removeEventListener(
           eventType,
-          listener
+          listener 
         );
       };
     },
     [
       eventType,
       listener
-    ]
+    ] 
   );
 }

@@ -8,22 +8,22 @@ import card from '#@/components/card/card.module.scss';
 
 async function Name(
   {
-    llaveProceso 
-  }: { llaveProceso: string } 
+    llaveProceso
+  }: { llaveProceso: string }
 ) {
   const proceso = await getCarpetasByllaveProceso(
     {
       llaveProceso: llaveProceso
-    } 
+    }
   );
 
   const nombre = proceso
     .map(
       (
-        p 
+        p
       ) => {
         return p.Deudor.PrimerNombre;
-      } 
+      }
     )
     .toString();
 
@@ -33,16 +33,16 @@ async function Name(
 export default async function DefaultProcesosllaveProceso(
   {
     params: {
-      llaveProceso 
+      llaveProceso
     }
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   const Carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: llaveProceso
-    } 
+    }
   );
 
   return (
@@ -50,26 +50,26 @@ export default async function DefaultProcesosllaveProceso(
       <p>page</p>
       {Carpetas.map(
         (
-          carpeta, index, arr 
+          carpeta, index, arr
         ) => {
           const {
-            id 
+            _id, ...newCarpeta
           } = carpeta;
 
           return (
-            <Fragment key={id}>
+            <Fragment key={carpeta.id}>
               <Name llaveProceso={llaveProceso} />
               <Link
                 href={`/Carpetas/${ llaveProceso }`}
                 className={card.link}>
                 <span className='material-symbols-outlined'>folder_shared</span>
               </Link>
-              <CarpetaCard carpeta={carpeta}>
+              <CarpetaCard carpeta={newCarpeta}>
                 <span className='material-symbols-outlined'>star</span>
               </CarpetaCard>
             </Fragment>
           );
-        } 
+        }
       )}
     </>
   );

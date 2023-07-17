@@ -11,8 +11,7 @@ import { fixFechas, toNameString } from '#@/lib/fix';
 import { Name } from '#@/components/Headings/clientSideName';
 import { useEffect } from 'react';
 import { Loader } from '#@/components/Loader';
-import { MonCarpeta, intFecha } from '#@/lib/types/demandados';
-import { NombreCompleto } from '#@/lib/types/carpetas';
+import { MonCarpeta, NombreCompleto, intFecha } from '#@/lib/types/demandados';
 
 export const Card = (
   {
@@ -23,7 +22,7 @@ export const Card = (
   path: string;
   carpeta: MonCarpeta | intFecha;
   children: ReactNode;
-}
+} 
 ) => {
   const [
     isNavOpen,
@@ -37,10 +36,10 @@ export const Card = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false
+      false 
     );
     setIsOpen(
-      true
+      true 
     );
   };
   const pathname = usePathname();
@@ -54,19 +53,21 @@ export const Card = (
       : `${ path }`
   ) as Route;
 
-  const isActive = pathname === href
+  const isActive
+    = pathname === href
     || pathname === `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
     || pathname === `${ path }/${ carpeta.llaveProceso }`;
 
-  const juzgado =  carpeta.despacho.id.replace(
-    / /g,
-    '-'
-  ).toLocaleLowerCase()
+  const juzgado = carpeta.despacho.id
+    .replace(
+      / /g,
+      '-' 
+    )
+    .toLocaleLowerCase()
     .slice(
       0,
-      -1
+      -1 
     );
-
 
   return (
     <div className={card.container}>
@@ -77,9 +78,9 @@ export const Card = (
           {toNameString(
             {
               nameRaw: new NombreCompleto(
-                carpeta.Deudor
+                carpeta.Deudor 
               ).Nombre
-            }
+            } 
           )}
         </h1>
         <div className={card.links}>
@@ -104,7 +105,7 @@ export const Card = (
             href={`/Notas/NuevaNota/${ carpeta.llaveProceso }` as Route}
             onClick={() => {
               setIsOpen(
-                true
+                true 
               );
             }}>
             <span className={`material-symbols-outlined ${ card.icon }`}>
@@ -136,11 +137,10 @@ export const Card = (
           <p className={`${ typography.bodySmall } ${ card.content }`}>
             {juzgado.replaceAll(
               'á',
-              'a'
+              'a' 
             )}
           </p>
         </Link>
-
       </div>
     </div>
   );

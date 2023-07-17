@@ -3,59 +3,23 @@ import { IntCarpeta } from '#@/lib/types/demandados';
 import { UseFormRegister, useFormContext } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
+import { Accordion } from '#@/components/Accordion';
+import { InputSection } from '#@/components/form/InputSection';
 
-export function NuevoAvaluoSection () {
+export function NuevoAvaluoSection() {
   const {
     register
-  } = useFormContext();
+  } =useFormContext<IntCarpeta>();
 
   return (
     <section className={form.section}>
       <h4 className={ `${ form.title } ${ typography.displaySmall }` }>Avaluo</h4>
-      <section className={form.section}>
-        <label className={form.label} htmlFor='Avaluo.Adjudicacion.Fecha'>Fecha de adjudicación del avaluo</label>
-        <input
-          className={form.textArea}
-          type='date'
-          placeholder='Avaluo.Adjudicacion.Fecha'
-          {...register(
-            'Avaluo.Adjudicacion.Fecha',
-            {
-              required: false
-            }
-          )}
-        />
+      <Accordion>
+        <InputSection name={ 'Avaluo.Adjudicacion.Fecha' } title={ 'Fecha de adjudicación del avaluo' } type={ 'date' } />
+        <InputSection name={ 'Avaluo.Remate.Fecha' } title={ 'Fecha del remate' } type={ 'date' } />
+        <InputSection name={ 'Avaluo.Valor' } title={ 'Valor del avaluo' } type={ 'number' } />
 
-      </section>
-      <section className={form.section}>
-        <label className={form.label} htmlFor='Avaluo.Remate.Fecha'>Fecha del remate</label>
-        <input
-          className={form.textArea}
-          type='date'
-          placeholder='Avaluo.Remate.Fecha'
-          {...register(
-            'Avaluo.Remate.Fecha',
-            {
-              required: false
-            }
-          )}
-        />
-
-      </section>
-      <section className={form.section}>
-        <label className={form.label} htmlFor='Avaluo.Valor'>Valor del Avaluo</label>
-        <input
-          className={form.textArea}
-          type='number'
-          placeholder='Avaluo.Valor'
-          {...register(
-            'Avaluo.Valor',
-            {
-              required: false
-            }
-          )}
-        />
-      </section>
+      </Accordion>
     </section>
   );
 }

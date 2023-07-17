@@ -4,41 +4,41 @@ import { Codeudor,
          MonCarpeta,
          intFecha } from '../types/demandados';
 import { monDemandado } from '../types/mongodb';
-import { IntActuaciones, intConsultaActuaciones } from '../types/procesos';
+import { IntActuaciones,
+         intActuacion,
+         intConsultaActuaciones } from '../types/procesos';
 import { carpetasCollection } from '../Carpetas';
 
-function wait(
-  delay: number 
+export function wait(
+  delay: number
 ) {
   return new Promise(
     (
-      resolve 
+      resolve
     ) => {
       return setTimeout(
         resolve,
-        delay 
+        delay
       );
-    } 
+    }
   );
 }
 
 export async function getActuaciones(
-  idProceso: number, index: number 
+  idProceso: number, index: number
 ) {
-  console.log(
-    index 
-  );
-  const awaitTime = index * 1000;
-  console.log(
-    'awaited' 
-  );
+  const awaitTime = index * 500;
 
   if ( idProceso === 0 || idProceso === 404 ) {
+    console.log(
+      `idProceso es ${ idProceso }`
+    );
+
     return [];
   }
   const collection = await carpetasCollection();
   wait(
-    awaitTime 
+    awaitTime
   );
 
   try {
@@ -52,11 +52,19 @@ export async function getActuaciones(
     );
 
     if ( !request.ok ) {
+      console.log(
+        `Get Actuaciones request was not ok ${ request.status }`
+      );
+
       return [];
     }
     const res = ( await request.json() ) as intConsultaActuaciones;
 
     if ( !res.actuaciones ) {
+      console.log(
+        'Get Actuaciones no tiene actuaciones'
+      );
+
       return [];
     }
     const ultimaActuacion = res.actuaciones[ 0 ];
@@ -71,19 +79,18 @@ export async function getActuaciones(
         }
       }
     );
-    console.log(
-      `${ idProceso } was ${ updateCarpeta.acknowledged } with ${ updateCarpeta.modifiedCount } documents modified`
-    );
+
+    if ( updateCarpeta.modifiedCount >= 1 ) {
+      console.log(
+        `${ idProceso } was ${ updateCarpeta.acknowledged } with ${ updateCarpeta.modifiedCount } documents modified`
+      );
+    }
 
     return res.actuaciones;
-  } catch {
-    (
-      error: { message: string } 
-    ) => {
-      console.log(
-        error.message ?? 'error' 
-      );
-    };
+  } catch ( err ) {
+    console.log(
+      err ?? 'error'
+    );
 
     return [];
   }
@@ -91,8 +98,8 @@ export async function getActuaciones(
 
 export async function fetchFechas(
   {
-    procesos 
-  }: { procesos: MonCarpeta[] } 
+    procesos
+  }: { procesos: MonCarpeta[] }
 ) {
   const fechas: intFecha[] = [];
 
@@ -103,10 +110,10 @@ export async function fetchFechas(
       {
         proceso: proceso,
         index  : p
-      } 
+      }
     );
     fechas.push(
-      fetch 
+      fetch
     );
   }
 
@@ -120,11 +127,11 @@ export async function fetchFecha(
   }: {
   proceso: MonCarpeta;
   index: number;
-} 
+}
 ) {
   const acts = await getActuaciones(
     proceso.idProceso,
-    index 
+    index
   );
 
   if ( acts.length >= 1 ) {
@@ -149,7 +156,7 @@ export async function fetchLastActuaciones(
     idProcesos
   }: {
   idProcesos: number[];
-} 
+}
 ) {
   const lastActuaciones = [];
 
@@ -158,12 +165,12 @@ export async function fetchLastActuaciones(
 
     const acts = await getActuaciones(
       proceso,
-      p 
+      p
     );
 
     if ( acts.length > 0 ) {
       lastActuaciones.push(
-        acts[ 0 ] 
+        acts[ 0 ]
       );
     }
 

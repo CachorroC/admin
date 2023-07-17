@@ -5,24 +5,25 @@ import typography from '#@/styles/fonts/typography.module.scss';
 
 export function Accordion(
   {
-    children 
-  }: { children: ReactNode } 
+    children
+  }: { children: ReactNode }
 ) {
   const [
     isActive,
     setIsActive
   ] = useState(
-    false 
+    false
   );
 
   return (
     <div className={styles.accordion}>
       <div className={styles.item}>
         <button
+          type='button'
           className={styles.title}
           onClick={() => {
             return setIsActive(
-              !isActive 
+              !isActive
             );
           }}>
           <span className='material-symbols-outlined'>

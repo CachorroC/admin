@@ -1,6 +1,5 @@
 import typography from '#@/styles/fonts/typography.module.scss';
-import { Deudor } from '#@/lib/types/demandados';
-import { NombreCompleto } from '#@/lib/types/carpetas';
+import { Deudor, NombreCompleto } from '#@/lib/types/demandados';
 
 export function NombreComponent(
   {
@@ -11,7 +10,5 @@ export function NombreComponent(
     Deudor
   );
 
-  return (
-    <p className={typography.bodyMedium}>{newName.Nombre}</p>
-  );
+  return <h4 className={typography.displayMedium}>{newName.Nombre}</h4>;
 }

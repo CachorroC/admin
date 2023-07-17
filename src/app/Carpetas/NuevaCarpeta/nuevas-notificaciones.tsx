@@ -1,14 +1,10 @@
 import { IntCarpeta } from '#@/lib/types/demandados';
 import { UseFormRegister, useFormContext } from 'react-hook-form';
 
-export function NuevasNotificacionesSection () {
+export function NuevasNotificacionesSection() {
   const {
     register
-  } = useFormContext();
+  } = useFormContext<IntCarpeta>();
 
-  return (
-    <>
-
-    </>
-  );
+  return <></>;
 }

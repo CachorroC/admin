@@ -4,20 +4,17 @@ import { getNotaById } from '#@/lib/notas';
 import { Fragment } from 'react';
 import note from '#@/components/nota/note.module.scss';
 
-
 export default async function page(
   {
-    params
-  }: {
-  params: { id: string };
-}
+    params 
+  }: { params: { id: string } } 
 ) {
   const id = params.id;
 
   const nota = await getNotaById(
     {
       id: id
-    }
+    } 
   );
 
   return (
@@ -25,7 +22,7 @@ export default async function page(
       <div className={note.note}>
         {nota.map(
           (
-            ntext, i
+            ntext, i 
           ) => {
             return (
               <Fragment key={ntext.id}>
@@ -35,7 +32,7 @@ export default async function page(
                 />
               </Fragment>
             );
-          }
+          } 
         )}
       </div>
     </div>

@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 
 export default function Box() {
   const ref = useRef(
-    null
+    null 
   );
 
   useEffect(
@@ -10,7 +10,9 @@ export default function Box() {
       const div = ref.current;
 
       const observer = new IntersectionObserver(
-        entries => {
+        (
+          entries 
+        ) => {
           const entry = entries[ 0 ];
 
           if ( entry.isIntersecting ) {
@@ -20,29 +22,32 @@ export default function Box() {
             document.body.style.backgroundColor = 'white';
             document.body.style.color = 'black';
           }
-        }
+        } 
       );
       observer.observe(
         div,
         {
           threshold: 1.0
-        }
+        } 
       );
 
       return () => {
         observer.disconnect();
       };
     },
-    []
+    [] 
   );
 
   return (
-    <div ref={ref} style={{
-      margin         : 20,
-      height         : 100,
-      width          : 100,
-      border         : '2px solid black',
-      backgroundColor: 'blue'
-    }} />
+    <div
+      ref={ref}
+      style={{
+        margin         : 20,
+        height         : 100,
+        width          : 100,
+        border         : '2px solid black',
+        backgroundColor: 'blue'
+      }}
+    />
   );
 }

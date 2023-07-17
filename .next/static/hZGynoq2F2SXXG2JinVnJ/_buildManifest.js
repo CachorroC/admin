@@ -1,0 +1,1 @@
+self.__BUILD_MANIFEST={__rewrites:{beforeFiles:[{source:"/Notas/NuevaNota/:llaveProceso",destination:"/(.)Notas/NuevaNota/:llaveProceso",has:[{type:"header",key:"Next-Url",value:"(?:\\/(.*))?[\\/#\\?]?"}]}],afterFiles:[],fallback:[]},"/_error":["static/chunks/pages/_error-c07fd9a0d5c668e7.js"],sortedPages:["/_app","/_error"]},self.__BUILD_MANIFEST_CB&&self.__BUILD_MANIFEST_CB();

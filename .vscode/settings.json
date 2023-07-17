@@ -1,4 +1,10 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "editor.guides.bracketPairs": "active"
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "editor.guides.bracketPairs": "active",
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "eslint.nodePath": ".yarn/sdks",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

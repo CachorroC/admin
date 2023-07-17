@@ -5,7 +5,6 @@ import { intFecha } from '#@/lib/types/demandados';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import card from '#@/components/card/card.module.scss';
 import { fixFechas } from '#@/lib/fix';
-import { NombreCompleto } from '#@/lib/types/carpetas';
 
 export const CardSearchList = (
   {
@@ -16,8 +15,6 @@ export const CardSearchList = (
   Fechas: intFecha[];
 }
 ) => {
-
-
   const [
     search,
     setSearch
@@ -85,8 +82,13 @@ export const CardSearchList = (
         return;
       }
 
+      const {
+        _id, ...newCarpeta
+      } = Fecha;
       rows.push(
-        <Card path={ path } carpeta={ Fecha } >
+        <Card
+          path={path}
+          carpeta={newCarpeta}>
           <p className={card.sub}>{`${ i + 1 } de ${ arr.length }`}</p>
           {fecha && <sub className={card.date}>{fixFechas(
             fecha

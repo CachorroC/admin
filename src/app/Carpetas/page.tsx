@@ -18,7 +18,7 @@ export default async function PageCarpetas() {
   const fechas = await fetchFechas(
     {
       procesos: carpetas
-    }
+    } 
   );
 
   return (

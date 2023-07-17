@@ -2,9 +2,10 @@ import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { Collection, ObjectId } from 'mongodb';
-import { getCarpetas, getCarpetasNew } from '#@/lib/Carpetas';
+import { getCarpetas } from '#@/lib/Carpetas';
 import { carpetasCollection } from '#@/lib/Carpetas';
-import { IntCarpeta } from '#@/lib/types/demandados';
+import { IntCarpeta, MonCarpeta } from '#@/lib/types/demandados';
+import { updateCarpeta } from '#@/lib/Carpetas/update';
 
 export async function GET(
   Request: NextRequest
@@ -42,16 +43,16 @@ export async function GET(
     );
   }
 
-  const id = searchParams.get(
-    'id'
+  const _id = searchParams.get(
+    '_id'
   );
 
-  if ( id ) {
+  if ( _id ) {
     const Nota = carpetas.find(
       (
         carpeta
       ) => {
-        return carpeta.id === id;
+        return carpeta._id === _id;
       }
     );
 
@@ -113,7 +114,7 @@ export async function POST(
 export async function PUT(
   Request: NextRequest
 ) {
-  const updatedNote = ( await Request.json() ) as IntCarpeta;
+  const incomingCarpeta = ( await Request.json() ) as IntCarpeta;
   const collection = await carpetasCollection();
 
   const {
@@ -122,44 +123,65 @@ export async function PUT(
     Request.url
   );
 
-  const id = searchParams.get(
-    'id'
+  const _id = searchParams.get(
+    '_id'
   );
 
-  if ( id ) {
-    const query = {
-      _id: new ObjectId(
-        id
-      )
+  if ( _id ) {
+
+    const updatedCarpeta: MonCarpeta = {
+      ...incomingCarpeta,
+      _id: _id
     };
 
-    const result = await collection.findOneAndUpdate(
-      query,
+    const result = await updateCarpeta(
       {
-        $set: updatedNote
+        carpeta: updatedCarpeta,
+        index  : 0
       }
     );
 
     if ( result.ok ) {
+
       return new NextResponse(
-        `Successfully updated game with id ${ result.value }`,
+        JSON.stringify(
+          result.value
+        ),
         {
           status : 200,
           headers: {
-            'content-type': 'text/html'
+            'content-type': 'application/json'
           }
         }
       );
     }
 
     return new NextResponse(
-      `the result was ${ result.ok
-        ? 'true'
-        : 'false' } with ${ result.value }`,
+      `the result was null  with ${ result.value }`,
       {
         status : 304,
         headers: {
           'content-type': 'text/html'
+        }
+      }
+    );
+  }
+
+  const insertWithoutId = await collection.insertOne(
+    incomingCarpeta
+  );
+
+  if ( insertWithoutId.acknowledged ) {
+    return new NextResponse(
+      JSON.stringify(
+        {
+          _id: insertWithoutId.insertedId
+        }
+      ),
+      {
+        status : 200,
+        headers: {
+          'content-type': 'application/json'
         }
       }
     );

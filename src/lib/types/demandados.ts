@@ -7,7 +7,6 @@ import { intActuacion } from './procesos';
 //   const intCarpeta = Convert.toIntCarpeta(json);
 
 export interface IntCarpeta {
-  _id?: ObjectId;
   Avaluo?: Avaluo;
   Numero: number;
   Demanda: Demanda;
@@ -25,9 +24,9 @@ export interface IntCarpeta {
 }
 
 export interface MonCarpeta extends IntCarpeta {
-  id: string;
-  despacho: Ejecucion
-  nombre: string;
+  _id: string;
+  despacho?: Ejecucion;
+  nombre?: string;
 }
 
 export interface Avaluo {
@@ -116,7 +115,7 @@ export interface EtapaProcesalFecha {
 export interface Liquidacion {
   Costas?: Costas;
   Fecha: LiquidacionFecha;
-  ValorCredito?: string;
+  ValorCredito?: string | number;
 }
 
 export interface Costas {
@@ -146,8 +145,8 @@ export interface MedidasCautelares {
 }
 
 export interface MedidasCautelaresFecha {
-  Captura?: number;
-  Secuestro?: string;
+  Captura?: Date | string;
+  Secuestro?: Date | string;
   DecretoSecuestrooCaptura?: Date | string;
   SolicitudCapturaoSecuestro?: Date | string;
 }
@@ -231,11 +230,13 @@ export class carpetaConvert {
   }
 
   public static toIntCarpeta(
-    json: string
+    carpeta: MonCarpeta
   ): IntCarpeta {
-    return JSON.parse(
-      json
-    );
+    const {
+      despacho, nombre,  _id, ...newCarpeta
+    } = carpeta;
+
+    return newCarpeta;
   }
 
   public static intCarpetaToJson(
@@ -248,6 +249,14 @@ export class carpetaConvert {
   public static toMonCarpeta(
     carpeta: WithId<IntCarpeta>
   ): MonCarpeta {
+    const carpetaToString = JSON.stringify(
+      carpeta
+    );
+
+    const carpetaCleanId = JSON.parse(
+      carpetaToString
+    );
+
     const dsp = carpeta.Demanda.Juzgado.Ejecucion
       ? carpeta.Demanda.Juzgado.Ejecucion
       : carpeta.Demanda.Juzgado.Origen;
@@ -258,15 +267,16 @@ export class carpetaConvert {
         : `${ carpeta.Deudor.PrimerNombre } ${ carpeta.Deudor.PrimerApellido } ${ carpeta.Deudor.SegundoApellido }`
       : `${ carpeta.Deudor.PrimerNombre } ${ carpeta.Deudor.PrimerApellido }`;
 
-    const newCarpeta = {
-      ...carpeta,
-      id      : carpeta._id.toString(),
+
+
+
+    const fixedCarpeta: MonCarpeta = {
+      ...carpetaCleanId,
       despacho: dsp,
       nombre  : nmb
     };
 
-
-    return newCarpeta;
+    return fixedCarpeta;
   }
 
   public static toMonCarpetas(
@@ -699,5 +709,28 @@ export class carpetaConvert {
     return JSON.stringify(
       value
     );
+  }
+}
+
+export class NombreCompleto {
+  Nombre: string;
+  constructor(
+    {
+      PrimerNombre,
+      SegundoNombre,
+      PrimerApellido,
+      SegundoApellido
+    }: {
+    PrimerNombre: string;
+    PrimerApellido: string;
+    SegundoNombre?: string;
+    SegundoApellido?: string;
+  }
+  ) {
+    this.Nombre = SegundoApellido
+      ? SegundoNombre
+        ? `${ PrimerNombre } ${ SegundoNombre } ${ PrimerApellido } ${ SegundoApellido }`
+        : `${ PrimerNombre } ${ PrimerApellido } ${ SegundoApellido }`
+      : `${ PrimerNombre } ${ PrimerApellido }`;
   }
 }

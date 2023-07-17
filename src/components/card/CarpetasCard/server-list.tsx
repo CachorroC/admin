@@ -1,4 +1,6 @@
-import { IntCarpeta, MonCarpeta } from '#@/lib/types/demandados';
+import { IntCarpeta,
+         MonCarpeta,
+         NombreCompleto } from '#@/lib/types/demandados';
 
 import { fixFechas } from '#@/lib/fix';
 import styles from './carpetas.module.scss';
@@ -9,10 +11,7 @@ import { getActuaciones } from '#@/lib/Actuaciones';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { DemandaContainer } from '.';
 import Link from 'next/link';
-import { getCarpetas,
-         getCarpetasByllaveProceso,
-         getCarpetasNew } from '#@/lib/Carpetas';
-import { NombreCompleto } from '../../../lib/types/carpetas';
+import { getCarpetas } from '#@/lib/Carpetas';
 import { NombreComponent } from '../Nombre';
 
 async function Fecha(
@@ -22,11 +21,11 @@ async function Fecha(
   }: {
   idProceso: number;
   index: number;
-}
+} 
 ) {
   const actuaciones = await getActuaciones(
     idProceso,
-    index
+    index 
   );
 
   if ( idProceso === 0 || actuaciones.length === 0 ) {
@@ -37,7 +36,7 @@ async function Fecha(
     <div className={styles.date}>
       <p className={typography.labelSmall}>
         {fixFechas(
-          actuaciones[ 0 ].fechaActuacion
+          actuaciones[ 0 ].fechaActuacion 
         )}
       </p>
     </div>
@@ -51,7 +50,7 @@ export async function ListCardCarpetasNFechasServer() {
     ...carpetas
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       if ( !a.ultimaActuacion || a.ultimaActuacion.fechaActuacion === undefined ) {
         return 1;
@@ -72,14 +71,14 @@ export async function ListCardCarpetasNFechasServer() {
       }
 
       return 0;
-    }
+    } 
   );
 
   return (
     <>
-      { sortedCarpetas.map(
+      {sortedCarpetas.map(
         (
-          carpeta, index, arr
+          carpeta, index, arr 
         ) => {
           const newName = new NombreCompleto(
             {
@@ -87,14 +86,14 @@ export async function ListCardCarpetasNFechasServer() {
               PrimerApellido : carpeta.Deudor.PrimerApellido,
               SegundoNombre  : carpeta.Deudor.SegundoNombre,
               SegundoApellido: carpeta.Deudor.SegundoApellido
-            }
+            } 
           );
 
           return (
             <CarpetaCard
               Carpeta={carpeta}
-              key={ carpeta.id }>
-              <h1>{ newName.Nombre }</h1>
+              key={carpeta.id}>
+              <h1>{newName.Nombre}</h1>
               <Suspense fallback={<Loader />}>
                 <Fecha
                   idProceso={carpeta.idProceso}
@@ -103,7 +102,7 @@ export async function ListCardCarpetasNFechasServer() {
               </Suspense>
             </CarpetaCard>
           );
-        }
+        } 
       )}
     </>
   );
@@ -116,14 +115,14 @@ const CarpetaCard = async (
   }: {
   Carpeta: MonCarpeta;
   children: ReactNode;
-}
+} 
 ) => {
   const {
-    llaveProceso, idProceso, Deudor, id, Demanda
+    llaveProceso, idProceso, Deudor, id, Demanda 
   } = Carpeta;
 
   const {
-    Tel, Direccion, Email
+    Tel, Direccion, Email 
   } = Deudor;
   const path = '/Procesos';
 
