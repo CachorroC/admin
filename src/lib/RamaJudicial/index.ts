@@ -31,9 +31,20 @@ export const procesosCollection = cache(
 
 export async function fetchProceso (
   {
-    llaveProceso
-  }:{llaveProceso: string}
+    llaveProceso, index
+  }: { llaveProceso: string; index: number; }
 ) {
+  console.log(
+    llaveProceso.length
+  );
+  sleep(
+    index * 1000
+  );
+
+  if ( llaveProceso.length < 23 ) {
+    return [];
+  }
+
   try {
     const req = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=false`
@@ -67,13 +78,11 @@ export async function fetchProcesos(
     for ( let ia = 0; ia < llavesProceso.length; ia++ ) {
       const llaveProceso = llavesProceso[ ia ];
       const awaitTime  = ia * 1000;
-      sleep(
-        awaitTime
-      );
 
       const response = await fetchProceso(
         {
-          llaveProceso: llaveProceso
+          llaveProceso: llaveProceso,
+          index       : awaitTime
         }
       );
 
@@ -100,15 +109,12 @@ export async function getProceso (
   }: { llaveProceso: string ; index?: number}
 ) {
 
-  if ( index ) {
-    sleep(
-      index * 2000
-    );
-  }
+  const awaitTime = ( index ?? 0 ) *1000;
 
   const ultimosProcesos = await fetchProceso(
     {
-      llaveProceso: llaveProceso
+      llaveProceso: llaveProceso,
+      index       : awaitTime
     }
   );
   const returnedProcesos: Map<number, intProceso> = new Map();
@@ -145,13 +151,12 @@ export async function getProcesos (
 
   for ( let index = 0; index < llavesProceso.length; index++ ) {
     const llaveProceso = llavesProceso[ index ];
-    sleep(
-      index * 2000
-    );
+    const awaitTime = index * 1000;
 
     const ultimosProcesos = await fetchProceso(
       {
-        llaveProceso: llaveProceso
+        llaveProceso: llaveProceso,
+        index       : awaitTime
       }
     );
     ultimosProcesos.forEach(

@@ -1,4 +1,4 @@
-import { fixDemandado } from '#@/lib/fix';
+import { fixDemandado, fixFechas } from '#@/lib/fix';
 import { intProceso } from '#@/lib/types/procesos';
 import Link from 'next/link';
 import styles from './procesos.module.scss';
@@ -15,7 +15,7 @@ export const ProcesoCard = (
   }
 
   const {
-    idProceso, llaveProceso, sujetosProcesales, despacho, esPrivado
+    idProceso, llaveProceso, sujetosProcesales, despacho, esPrivado, fechaUltimaActuacion,
   }
     = proceso;
 
@@ -52,6 +52,11 @@ export const ProcesoCard = (
         <p className={`${ typography.bodyMedium } ${ styles.content }`}>
           {despacho}
         </p>
+        { fechaUltimaActuacion && (
+          <sub className={styles.date}>{fixFechas(
+            fechaUltimaActuacion
+          )}</sub>
+        )}
         {juzgado && (
           <Link
             className={styles.button}
