@@ -3,7 +3,7 @@ import type { Demanda, IntCarpeta, MonCarpeta } from '#@/lib/types/demandados';
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 import type { Route } from 'next';
-import { fixFechas } from '#@/lib/fix';
+import { fixFechas, fixMoney } from '#@/lib/fix';
 import { Loader } from '#@/components/Loader';
 import { ReactNode, Fragment } from 'react';
 import { Accordion } from '#@/components/Accordion';
@@ -34,7 +34,7 @@ export const DemandaContainer = ({ demanda }: { demanda: Demanda }) => {
     EntregadeGarantiasAbogado,
     Radicado,
     CapitalAdeudado,
-    Proceso,
+    tipoProceso,
     Ubicacion,
     Juzgado,
     Obligacion
@@ -55,9 +55,12 @@ export const DemandaContainer = ({ demanda }: { demanda: Demanda }) => {
           {fixFechas(EntregadeGarantiasAbogado)}
         </p>
       )}
-      {CapitalAdeudado && (
-        <p className={typography.labelSmall}>{CapitalAdeudado}</p>
-      )}
+      <p>
+        {CapitalAdeudado &&
+          fixMoney({
+            valor: CapitalAdeudado
+          })}
+      </p>
     </div>
   );
 };

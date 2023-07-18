@@ -83,7 +83,11 @@ $MaxSW: 480px; //maximum sma width
   &:hover,
   &:active {
     & > span {
-      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 200, 'opsz' 40;
+      font-variation-settings:
+        'FILL' 1,
+        'wght' 600,
+        'GRAD' 200,
+        'opsz' 40;
     }
     background-color: var(--inverse-surface);
     color: var(--inverse-on-surface);

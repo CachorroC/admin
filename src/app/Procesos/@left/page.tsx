@@ -6,14 +6,11 @@ import { getCarpetas } from '#@/lib/Carpetas';
 export default async function PageProcesosLeft() {
   const carpetas = await getCarpetas();
 
-
   return (
     <>
-
       <Suspense fallback={<Loader />}>
         <ListCardCarpetasNFechas />
       </Suspense>
-
     </>
   );
 }

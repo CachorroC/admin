@@ -7,20 +7,20 @@ import { intActuacion } from './procesos';
 //   const intCarpeta = Convert.toIntCarpeta(json);
 
 export interface IntCarpeta {
-  Avaluo?: Avaluo;
   Numero: number;
-  Demanda: Demanda;
   Deudor: Deudor;
+  Demanda: Demanda;
   EtapaProcesal?: EtapaProcesal;
   Liquidacion?: Liquidacion;
   MedidasCautelares?: MedidasCautelares;
   Notificaciones?: Notificaciones;
   SuspencionProceso?: SuspencionProceso;
   Terminacion?: Terminacion;
-  idProceso: number;
+  idProceso: number[];
   llaveProceso: string;
   ultimaActuacion?: intActuacion;
   Codeudor?: Codeudor;
+  Avaluo?: Avaluo;
 }
 
 export interface MonCarpeta extends IntCarpeta {
@@ -36,7 +36,7 @@ export interface Avaluo {
 }
 
 export interface Adjudicacion {
-  Fecha: Date | string;
+  Fecha: Date;
 }
 
 export interface Codeudor {
@@ -52,19 +52,17 @@ export interface Tel {
 }
 
 export interface Demanda {
-  Departamento: Departamento;
-  Municipio: string;
-  VencimientoPagare?: Date | string;
-  EntregadeGarantiasAbogado?: Date | string;
-  Radicado: string;
-  CapitalAdeudado?: string;
-  Proceso: Proceso;
-  Juzgado: Juzgado;
-  Ubicacion: Ubicacion;
+  VencimientoPagare?: Date;
   Obligacion?: number[];
+  CapitalAdeudado: number;
+  EntregadeGarantiasAbogado?: Date;
+  Departamento: string;
+  Municipio: string;
+  Juzgado: Juzgado;
+  Ubicacion: string;
+  tipoProceso: Tipo;
+  Radicado: string;
 }
-
-export type Departamento = 'CUNDINAMARCA';
 
 export interface Juzgado {
   Origen: Ejecucion;
@@ -108,26 +106,26 @@ export interface EtapaProcesal {
 }
 
 export interface EtapaProcesalFecha {
-  MandamientodePago?: Date | string;
-  PresentacionDemanda?: Date | string;
+  MandamientodePago?: Date;
+  PresentacionDemanda?: Date;
 }
 
 export interface Liquidacion {
   Costas?: Costas;
   Fecha: LiquidacionFecha;
-  ValorCredito?: string | number;
+  ValorCredito?: number;
 }
 
 export interface Costas {
-  FechaAprobacion: Date | string;
+  FechaAprobacion: Date;
   Valor?: number;
 }
 
 export interface LiquidacionFecha {
-  Aprobacion?: Date | string;
-  Presentacion?: Date | string;
-  Solicitud?: Date | string;
-  Sentencia?: Date | string;
+  Aprobacion?: Date;
+  Presentacion?: Date;
+  Solicitud?: Date;
+  Sentencia?: Date;
 }
 
 export interface MedidasCautelares {
@@ -140,44 +138,44 @@ export interface MedidasCautelares {
   FechaRadicaccion?: string;
   Oficios?: Oficios;
   RespuestaEmbargo?: boolean;
-  FechaOrdena?: Date | string;
+  FechaOrdena?: Date;
   Oficio?: Oficio;
 }
 
 export interface MedidasCautelaresFecha {
-  Captura?: Date | string;
-  Secuestro?: Date | string;
-  DecretoSecuestrooCaptura?: Date | string;
-  SolicitudCapturaoSecuestro?: Date | string;
+  Captura?: Date;
+  Secuestro?: Date;
+  DecretoSecuestrooCaptura?: Date;
+  SolicitudCapturaoSecuestro?: Date;
 }
 
 export interface Oficio {
-  Fecha: Date | string;
+  Fecha: Date;
   Numero: number;
 }
 
 export interface Oficios {
-  FechaRetiro: Date | string;
+  FechaRetiro: Date;
 }
 
 export interface Notificaciones {
   '291': The291;
   '292'?: The291;
-  AutoNotificado?: Date | string;
+  AutoNotificado?: Date;
   Certimail?: boolean;
   Fisico?: boolean;
   Tipo?: string;
 }
 
 export interface The291 {
-  AportaNotificacion?: Date | string;
-  Recibo?: Date | string;
+  AportaNotificacion?: Date;
+  Recibo?: Date;
   Resultado?: boolean;
 }
 
 export interface SuspencionProceso {
   TerminoSuspencion: string;
-  Fecha: Date | string;
+  Fecha: Date;
 }
 
 export interface Terminacion {
@@ -186,27 +184,27 @@ export interface Terminacion {
 }
 
 export interface TerminacionFecha {
-  AutoTerminacion: Date | string;
-  RadicacionMemorial: Date | string;
+  AutoTerminacion: Date;
+  RadicacionMemorial: Date;
 }
 
 export interface UltimaActuacion {
   idRegActuacion: number;
   llaveProceso: string;
   consActuacion: number;
-  fechaActuacion: Date | string;
+  fechaActuacion: Date;
   actuacion: string;
   anotacion: string;
-  fechaInicial: Date | string | null;
-  fechaFinal: Date | string | null;
-  fechaRegistro: Date | string;
+  fechaInicial: Date | null;
+  fechaFinal: Date | null;
+  fechaRegistro: Date;
   codRegla: CodRegla;
   conDocumentos: boolean;
   cant: number;
 }
 
 export interface intFecha extends MonCarpeta {
-  fecha: Date | string | undefined | null;
+  fecha: Date | undefined | null;
 }
 
 export type CodRegla = '00                              ';

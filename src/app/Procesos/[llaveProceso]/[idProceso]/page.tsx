@@ -25,8 +25,8 @@ export default async function PageProcesosllaveProcesoidProceso({
 
         return (
           <CarpetaCard
-            key={carpeta.id}
-            carpeta={newCarpeta}>
+            key={carpeta._id}
+            carpeta={carpeta}>
             {' '}
             <span className='material-symbols-outlined'>star</span>
           </CarpetaCard>

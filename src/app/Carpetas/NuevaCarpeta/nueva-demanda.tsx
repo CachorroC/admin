@@ -7,13 +7,11 @@ import { Accordion } from '#@/components/Accordion';
 import { InputSection } from '#@/components/form/InputSection';
 
 export function NuevaDemandaSection() {
-  const {
-    register
-  } = useFormContext<IntCarpeta>();
+  const { register } = useFormContext<IntCarpeta>();
 
   return (
     <section className={form.section}>
-      <h3 className={`${ form.title } ${ typography.displayMedium }`}>Demanda</h3>
+      <h3 className={`${form.title} ${typography.displayMedium}`}>Demanda</h3>
 
       <section className={form.section}>
         <label
@@ -23,59 +21,70 @@ export function NuevaDemandaSection() {
         </label>
         <select
           className={form.textArea}
-          {...register(
-            'Demanda.Departamento',
-            {
-              required: false
-            }
-          )}>
-          <option value='Amazonas'>Amazonas</option>
-          <option value='Vichada'>Vichada</option>
-          <option value='Meta'> Meta</option>
-          <option value='Caquetá'>Caquetá</option>
-          <option value='Guainía'>Guainía</option>
-          <option value='Antioquia'>Antioquia</option>
-          <option value='Vaupés'>Vaupés</option>
-          <option value='Guaviare'>Guaviare</option>
-          <option value='Chocó'>Chocó</option>
-          <option value='Casanare'>Casanare</option>
-          <option value='Nariño'>Nariño</option>
-          <option value='Santander'>Santander</option>
-          <option value='Cauca'>Cauca</option>
-          <option value='Bolívar'>Bolívar</option>
-          <option value='Córdoba'>Córdoba</option>
-          <option value='Putumayo'>Putumayo</option>
-          <option value='Arauca'>Arauca</option>
-          <option value='Tolima'>Tolima</option>
-          <option value='Boyacá'>Boyacá</option>
-          <option value='Magdalena'>Magdalena</option>
-          <option value='Cesar'>Cesar</option>
-          <option value='CUNDINAMARCA'>Cundinamarca</option>
-          <option value='Valle del Cauca'>Valle del Cauca</option>
-          <option value='Norte de Santander'>Norte de Santander</option>
-          <option value='La Guajira'>La Guajira</option>
-          <option value='Huila'>Huila</option>
-          <option value='Sucre'>Sucre</option>
-          <option value='Caldas'>Caldas</option>
-          <option value='Risaralda'>Risaralda</option>
-          <option value='Atlántico'>Atlántico</option>
-          <option value='Quindío'>Quindío</option>
-          <option value='Bogotá, Distrito Capital'>
-            Bogotá, Distrito Capital
+          {...register('Demanda.Departamento', {
+            required: false
+          })}>
+          <option value='CO-AMA'>Amazonas</option>
+          <option value='CO-ANT'>Antioquia</option>
+          <option value='CO-ARA'>Arauca</option>
+          <option value='CO-ATL'>Atlántico</option>
+          <option value='CO-BOL'>Bolívar</option>
+          <option value='CO-BOY'>Boyacá</option>
+          <option value='CO-CAL'>Caldas</option>
+          <option value='CO-CAQ'>Caquetá</option>
+          <option value='CO-CAS'>Casanare</option>
+          <option value='CO-CAU'>Cauca</option>
+          <option value='CO-CES'>Cesar</option>
+          <option value='CO-CHO'>Chocó</option>
+          <option value='CO-COR'>Córdoba</option>
+          <option value='CO-CUN'>Cundinamarca</option>
+          <option value='CO-DC'>Distrito Capital de Bogotá</option>
+          <option value='CO-GUA'>Guainía</option>
+          <option value='CO-GUV'>Guaviare</option>
+          <option value='CO-HUI'>Huila</option>
+          <option value='CO-LAG'>La Guajira</option>
+          <option value='CO-MAG'>Magdalena</option>
+          <option value='CO-MET'>Meta</option>
+          <option value='CO-NAR'>Nariño</option>
+          <option value='CO-NSA'>Norte de Santander</option>
+          <option value='CO-PUT'>Putumayo</option>
+          <option value='CO-QUI'>Quindío</option>
+          <option value='CO-RIS'>Risaralda</option>
+          <option value='CO-SAP'>
+            San Andrés, Providencia y Santa Catalina
           </option>
-          <option value='San Andrés y Providencia'>
-            San Andrés y Providencia
-          </option>
+          <option value='CO-SAN'>Santander</option>
+          <option value='CO-SUC'>Sucre</option>
+          <option value='CO-TOL'>Tolima</option>
+          <option value='CO-VAC'>Valle del Cauca</option>
+          <option value='CO-VAU'>Vaupés</option>
+          <option value='CO-VID'>Vichada</option>
         </select>
       </section>
-      <InputSection name={ 'Demanda.Municipio' } title={ 'Municipio' } type={ 'text' } />
-      <InputSection name={ 'Demanda.VencimientoPagare' } title={ 'Vencimiento pagare' } type={ 'date' } />
-      <InputSection name={ 'Demanda.EntregadeGarantiasAbogado' } title={ 'Entrega de garantias abogado' } type={ 'date' } />
-      <InputSection name={ 'Demanda.Radicado' } title={ 'Radicado número' } type={ 'text' } rls={{
-        required: false,
-        pattern : /\d\d\d\d\s+-\s+\d\d\d\d\d/gi
-      }}/>
-
+      <InputSection
+        name={'Demanda.Municipio'}
+        title={'Municipio'}
+        type={'text'}
+      />
+      <InputSection
+        name={'Demanda.VencimientoPagare'}
+        title={'Vencimiento pagare'}
+        type={'date'}
+      />
+      <InputSection
+        name={'Demanda.EntregadeGarantiasAbogado'}
+        title={'Entrega de garantias abogado'}
+        type={'date'}
+      />
+      <InputSection
+        name={'Demanda.Radicado'}
+        title={'Radicado número'}
+        type={'text'}
+        rls={{
+          required: false,
+          pattern: /\d\d\d\d\s+-\s+\d\d\d\d\d/gi
+        }}
+      />
 
       <section className={form.section}>
         <label
@@ -87,12 +96,9 @@ export function NuevaDemandaSection() {
           className={form.textArea}
           type='number'
           placeholder='Demanda.CapitalAdeudado'
-          {...register(
-            'Demanda.CapitalAdeudado',
-            {
-              required: false
-            }
-          )}
+          {...register('Demanda.CapitalAdeudado', {
+            required: false
+          })}
         />
       </section>
       <section className={form.section}>
@@ -102,12 +108,9 @@ export function NuevaDemandaSection() {
           Tipo de proceso
         </label>
         <select
-          {...register(
-            'Demanda.Proceso.Tipo',
-            {
-              required: false
-            }
-          )}>
+          {...register('Demanda.Proceso.Tipo', {
+            required: false
+          })}>
           <option value='HIPOTECARIO'>HIPOTECARIO</option>
           <option value='PRENDARIO'>PRENDARIO</option>
           <option value='SINGULAR'>SINGULAR</option>
@@ -123,12 +126,9 @@ export function NuevaDemandaSection() {
           className={form.textArea}
           type='text'
           placeholder='Demanda.Ubicacion.Juzgado'
-          {...register(
-            'Demanda.Ubicacion.Juzgado',
-            {
-              required: false
-            }
-          )}
+          {...register('Demanda.Ubicacion.Juzgado', {
+            required: false
+          })}
         />
       </section>
       <section className={form.section}>
@@ -142,12 +142,9 @@ export function NuevaDemandaSection() {
             className={form.textArea}
             type='text'
             placeholder='Juzgado de Origen'
-            {...register(
-              'Demanda.Juzgado.Origen.id',
-              {
-                required: false
-              }
-            )}
+            {...register('Demanda.Juzgado.Origen.id', {
+              required: false
+            })}
           />
         </section>
         <section className={form.section}>
@@ -160,12 +157,9 @@ export function NuevaDemandaSection() {
             className={form.textArea}
             type='text'
             placeholder='Link del juzgado'
-            {...register(
-              'Demanda.Juzgado.Origen.url',
-              {
-                required: false
-              }
-            )}
+            {...register('Demanda.Juzgado.Origen.url', {
+              required: false
+            })}
           />
         </section>
       </section>
@@ -180,10 +174,7 @@ export function NuevaDemandaSection() {
             className={form.textArea}
             type='text'
             placeholder='Juzgado de ejecucion'
-            {...register(
-              'Demanda.Juzgado.Ejecucion.id',
-              {}
-            )}
+            {...register('Demanda.Juzgado.Ejecucion.id', {})}
           />
         </section>
         <section className={form.section}>
@@ -196,10 +187,7 @@ export function NuevaDemandaSection() {
             className={form.textArea}
             type='text'
             placeholder='Link del juzgado'
-            {...register(
-              'Demanda.Juzgado.Ejecucion.url',
-              {}
-            )}
+            {...register('Demanda.Juzgado.Ejecucion.url', {})}
           />
         </section>
       </section>
@@ -213,10 +201,7 @@ export function NuevaDemandaSection() {
           className={form.textArea}
           type='text'
           placeholder='Demanda.Obligacion.0'
-          {...register(
-            'Demanda.Obligacion.0',
-            {}
-          )}
+          {...register('Demanda.Obligacion.0', {})}
         />
       </section>
       <section className={form.section}>
@@ -229,10 +214,7 @@ export function NuevaDemandaSection() {
           className={form.textArea}
           type='text'
           placeholder='Demanda.Obligacion.1'
-          {...register(
-            'Demanda.Obligacion.1',
-            {}
-          )}
+          {...register('Demanda.Obligacion.1', {})}
         />
       </section>
       <section className={form.section}>
@@ -245,10 +227,7 @@ export function NuevaDemandaSection() {
           className={form.textArea}
           type='text'
           placeholder='Demanda.Obligacion.2'
-          {...register(
-            'Demanda.Obligacion.2',
-            {}
-          )}
+          {...register('Demanda.Obligacion.2', {})}
         />
       </section>
     </section>

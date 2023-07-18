@@ -12,21 +12,16 @@ import { Accordion } from '#@/components/Accordion';
 import Link from 'next/link';
 import card from '#@/components/card/card.module.scss';
 
-function DemandadoNameBadge(
-  {
-    carpeta,
-    proceso
-  }: {
+function DemandadoNameBadge({
+  carpeta,
+  proceso
+}: {
   carpeta: MonCarpeta;
   proceso?: intProceso;
-}
-) {
-
-  if ( proceso ) {
+}) {
+  if (proceso) {
     return (
-      <Fragment key={proceso
-        ? proceso.idProceso
-        : carpeta._id}>
+      <Fragment key={proceso ? proceso.idProceso : carpeta._id}>
         <Name llaveProceso={carpeta.llaveProceso} />
         <Accordion>
           <p className={typography.bodySmall}>{proceso.despacho}</p>
@@ -51,56 +46,42 @@ function DemandadoNameBadge(
   );
 }
 
-export default async function PageProcesosllaveProceso(
-  {
-    params
-  }: {
+export default async function PageProcesosllaveProceso({
+  params
+}: {
   params: { llaveProceso: string };
-}
-) {
-  const Procesos = await getProceso(
-    {
-      llaveProceso: params.llaveProceso
-    }
-  );
+}) {
+  const Procesos = await getProceso({
+    llaveProceso: params.llaveProceso
+  });
 
-  const Carpetas = await getCarpetasByllaveProceso(
-    {
-      llaveProceso: params.llaveProceso
-    }
-  );
+  const Carpetas = await getCarpetasByllaveProceso({
+    llaveProceso: params.llaveProceso
+  });
 
   return (
     <>
       <p>default</p>
-      {Carpetas.map(
-        (
-          carpeta, index, arr
-        ) => {
-          const proceso = Procesos.find(
-            (
-              prc
-            ) => {
-              return prc.idProceso === carpeta.idProceso;
-            }
-          );
+      {Carpetas.map((carpeta, index, arr) => {
+        const proceso = Procesos.find((prc) => {
+          return prc.idProceso === carpeta.idProceso;
+        });
 
-          return (
-            <Fragment key={carpeta._id}>
-              <DemandadoNameBadge
-                carpeta={carpeta}
-                key={carpeta._id}
-                proceso={proceso}
-              />
-              <Link
-                href={`/Carpetas/${ carpeta.llaveProceso }`}
-                className={card.link}>
-                <span className='material-symbols-outlined'>folder_shared</span>
-              </Link>
-            </Fragment>
-          );
-        }
-      )}
+        return (
+          <Fragment key={carpeta._id}>
+            <DemandadoNameBadge
+              carpeta={carpeta}
+              key={carpeta._id}
+              proceso={proceso}
+            />
+            <Link
+              href={`/Carpetas/${carpeta.llaveProceso}`}
+              className={card.link}>
+              <span className='material-symbols-outlined'>folder_shared</span>
+            </Link>
+          </Fragment>
+        );
+      })}
     </>
   );
 }
