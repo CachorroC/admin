@@ -167,21 +167,22 @@ export async function ListCardCarpetasNFechas() {
         ) => {
           return (
             <Fragment key={ carpeta._id }>
-              <NombreComponent Deudor={ carpeta.Deudor } />
+              <NombreComponent Deudor={ carpeta.Deudor } key={carpeta._id}/>
               <Card
                 key={carpeta._id}
                 path={'/Procesos'}
                 carpeta={carpeta}>
                 <Suspense fallback={<Loader />}>
                   <Fecha
+                    key={carpeta._id}
                     idProceso={carpeta.idProceso}
                     index={index}
                   />
 
                 </Suspense>
               </Card>
-              <Suspense fallback={<Loader />}>
-                <ProcesosList llaveProceso={ carpeta.llaveProceso } index={index} />
+              <Suspense fallback={<Loader  />}>
+                <ProcesosList llaveProceso={ carpeta.llaveProceso } key={carpeta.llaveProceso} index={index} />
               </Suspense>
             </Fragment>
 

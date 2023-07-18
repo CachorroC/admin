@@ -13,7 +13,7 @@ export const CardSearchList = (
   }: {
   path: string;
   Fechas: intFecha[];
-} 
+}
 ) => {
   const [
     search,
@@ -27,7 +27,7 @@ export const CardSearchList = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false 
+      false
     );
   };
   const rows: any[] = [];
@@ -36,7 +36,7 @@ export const CardSearchList = (
     ...Fechas
   ].sort(
     (
-      a, b 
+      a, b
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -65,34 +65,35 @@ export const CardSearchList = (
       }
 
       return 0;
-    } 
+    }
   );
   sortedFechas.forEach(
     (
-      Fecha, i, arr 
+      Fecha, i, arr
     ) => {
       const {
-        fecha 
+        fecha
       } = Fecha;
       const Nombre = Fecha.nombre ?? 'sin nombre';
 
       if ( Nombre.toLowerCase().indexOf(
-        search.toLowerCase() 
+        search.toLowerCase()
       ) === -1 ) {
         return;
       }
 
       rows.push(
         <Card
+          key={Fecha._id}
           path={path}
           carpeta={Fecha}>
           <p className={card.sub}>{`${ i + 1 } de ${ arr.length }`}</p>
           {fecha && <sub className={card.date}>{fixFechas(
-            fecha 
+            fecha
           )}</sub>}
         </Card>
       );
-    } 
+    }
   );
 
   return <>{rows}</>;

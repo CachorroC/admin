@@ -40,6 +40,9 @@ export async function fetchProceso (
   sleep(
     index * 1000
   );
+  console.log(
+    'wakey' 
+  );
 
   if ( llaveProceso.length < 23 ) {
     return [];
