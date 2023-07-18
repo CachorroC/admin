@@ -8,6 +8,7 @@ import { IntActuaciones,
          intActuacion,
          intConsultaActuaciones } from '../types/procesos';
 import { carpetasCollection } from '../Carpetas';
+import { sleep } from '../fix';
 
 export function wait(
   delay: number
@@ -24,10 +25,11 @@ export function wait(
   );
 }
 
+
 export async function getActuaciones(
   idProceso: number, index: number
 ) {
-  const awaitTime = index * 500;
+  const awaitTime = index * 2000;
 
   if ( idProceso === 0 || idProceso === 404 ) {
     console.log(

@@ -3,7 +3,7 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { Fragment, Suspense } from 'react';
 import { IntCarpeta, MonCarpeta } from '#@/lib/types/demandados';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
-import { getConsultaNumeroRadicion } from '#@/lib/RamaJudicial';
+import { fetchProceso, getProceso } from '#@/lib/RamaJudicial';
 import { intProceso } from '#@/lib/types/procesos';
 import box from '#@/styles/scss/box.module.scss';
 import { Name } from '#@/components/Headings/serverSideName';
@@ -19,22 +19,19 @@ function DemandadoNameBadge(
   }: {
   carpeta: MonCarpeta;
   proceso?: intProceso;
-} 
+}
 ) {
-  const {
-    _id, ...newCarpeta 
-  } = carpeta;
 
   if ( proceso ) {
     return (
       <Fragment key={proceso
         ? proceso.idProceso
-        : carpeta.id}>
+        : carpeta._id}>
         <Name llaveProceso={carpeta.llaveProceso} />
         <Accordion>
           <p className={typography.bodySmall}>{proceso.despacho}</p>
           <ProcesoCard proceso={proceso} />
-          <CarpetaCard carpeta={newCarpeta}>
+          <CarpetaCard carpeta={carpeta}>
             <span className='material-symbols-outlined'>star</span>
           </CarpetaCard>
         </Accordion>
@@ -43,10 +40,10 @@ function DemandadoNameBadge(
   }
 
   return (
-    <Fragment key={carpeta.id}>
+    <Fragment key={carpeta._id}>
       <Name llaveProceso={carpeta.llaveProceso} />
       <Accordion>
-        <CarpetaCard carpeta={newCarpeta}>
+        <CarpetaCard carpeta={carpeta}>
           <span className='material-symbols-outlined'>star</span>
         </CarpetaCard>
       </Accordion>
@@ -59,18 +56,18 @@ export default async function PageProcesosllaveProceso(
     params
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
-  const Procesos = await getConsultaNumeroRadicion(
+  const Procesos = await getProceso(
     {
       llaveProceso: params.llaveProceso
-    } 
+    }
   );
 
   const Carpetas = await getCarpetasByllaveProceso(
     {
       llaveProceso: params.llaveProceso
-    } 
+    }
   );
 
   return (
@@ -78,21 +75,21 @@ export default async function PageProcesosllaveProceso(
       <p>default</p>
       {Carpetas.map(
         (
-          carpeta, index, arr 
+          carpeta, index, arr
         ) => {
           const proceso = Procesos.find(
             (
-              prc 
+              prc
             ) => {
               return prc.idProceso === carpeta.idProceso;
-            } 
+            }
           );
 
           return (
-            <Fragment key={carpeta.id}>
+            <Fragment key={carpeta._id}>
               <DemandadoNameBadge
                 carpeta={carpeta}
-                key={carpeta.id}
+                key={carpeta._id}
                 proceso={proceso}
               />
               <Link
@@ -102,7 +99,7 @@ export default async function PageProcesosllaveProceso(
               </Link>
             </Fragment>
           );
-        } 
+        }
       )}
     </>
   );

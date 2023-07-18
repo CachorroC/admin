@@ -4,26 +4,6 @@ import clientPromise from '#@/lib/mongodb';
 import { monDemandado } from '#@/lib/types/mongodb';
 import { notFound } from 'next/navigation';
 
-const Collection = async () => {
-  const client = await clientPromise;
-
-  if ( !client ) {
-    throw new Error(
-      'no hay cliente mongólico' 
-    );
-  }
-
-  const db = client.db(
-    'RyS' 
-  );
-
-  const notas = await db.collection(
-    'Procesos' 
-  );
-
-  return notas;
-};
-
 export async function GET() {
   const collection = await Collection();
 

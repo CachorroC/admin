@@ -141,7 +141,7 @@ export const toNameString = (
   {
     nameRaw 
   }: { nameRaw: string } 
-) => {
+): string => {
   const str = nameRaw.toLowerCase();
 
   const arr = str.split(

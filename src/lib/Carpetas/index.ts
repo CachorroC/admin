@@ -3,15 +3,15 @@ import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
 import { ObjectId } from 'mongodb';
-import { IntCarpeta, carpetaConvert } from '#@/lib/types/demandados';
+import { IntCarpeta, MonCarpeta, carpetaConvert } from '#@/lib/types/demandados';
 
 export const preload = (
-  llaveProceso: string 
+  llaveProceso: string
 ) => {
   void getCarpetasByllaveProceso(
     {
       llaveProceso: llaveProceso
-    } 
+    }
   );
 };
 
@@ -21,20 +21,20 @@ export const carpetasCollection = cache(
 
     if ( !client ) {
       throw new Error(
-        'no hay cliente mongólico' 
+        'no hay cliente mongólico'
       );
     }
 
     const db = client.db(
-      'RyS' 
+      'RyS'
     );
 
     const carpetas = db.collection<IntCarpeta>(
-      'Demandados' 
+      'Demandados'
     );
 
     return carpetas;
-  } 
+  }
 );
 
 export const getCarpetas = cache(
@@ -42,31 +42,31 @@ export const getCarpetas = cache(
     const collection = await carpetasCollection();
 
     const carpetasRaw = await collection.find(
-      {} 
+      {}
     ).toArray();
 
     const carpetas = carpetaConvert.toMonCarpetas(
-      carpetasRaw 
+      carpetasRaw
     );
 
     return carpetas;
-  } 
+  }
 );
 
 export const getCarpetasByllaveProceso = cache(
   async (
     {
-      llaveProceso 
-    }: { llaveProceso: string } 
+      llaveProceso
+    }: { llaveProceso: string }
   ) => {
     const carpetas = await getCarpetas();
 
     const Carpetas = carpetas.filter(
       (
-        carpeta 
+        carpeta
       ) => {
         return carpeta.llaveProceso === llaveProceso;
-      } 
+      }
     );
 
     return Carpetas;
@@ -76,17 +76,17 @@ export const getCarpetasByllaveProceso = cache(
 export const getCarpetasByidProceso = cache(
   async (
     {
-      idProceso 
-    }: { idProceso: number } 
+      idProceso
+    }: { idProceso: number }
   ) => {
     const carpetas = await getCarpetas();
 
     const Carpetas = carpetas.filter(
       (
-        carpeta 
+        carpeta
       ) => {
         return carpeta.idProceso === idProceso;
-      } 
+      }
     );
 
     return Carpetas;
@@ -96,32 +96,38 @@ export const getCarpetasByidProceso = cache(
 export const getCarpetaById = cache(
   async (
     {
-      _id 
-    }: { _id: string } 
+      _id
+    }: { _id: string }
   ) => {
     const carpetas = await getCarpetas();
 
-    const Carpetas = carpetas.find(
+    const Carpeta = carpetas.find(
       (
-        carpeta 
+        carpeta
       ) => {
         return carpeta._id === _id;
-      } 
+      }
     );
 
-    return Carpetas;
-  } 
+    if ( !Carpeta ) {
+      return null;
+    }
+
+    return Carpeta;
+
+
+  }
 );
 
 export async function postCarpeta(
   {
-    nota 
-  }: { nota: IntCarpeta } 
+    nota
+  }: { nota: IntCarpeta }
 ) {
   const collection = await carpetasCollection();
 
   const outgoingRequest = await collection.insertOne(
-    nota 
+    nota
   );
 
   if ( !outgoingRequest.acknowledged ) {
@@ -129,7 +135,7 @@ export async function postCarpeta(
       null,
       {
         status: 404
-      } 
+      }
     );
   }
 

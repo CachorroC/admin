@@ -4,16 +4,12 @@ import { fixFechas } from '#@/lib/fix';
 import typeface from '#@/styles/fonts/typeface.module.scss';
 import { useOnlineStatus } from '#@/hooks/online-state';
 
-export default function Title(
-  {
-    helper 
-  }: { helper?: string } 
-) {
+export default function Title({ helper }: { helper?: string }) {
   const isOnline = useOnlineStatus();
   const today = new Date();
   let day;
 
-  switch ( today.getDay() ) {
+  switch (today.getDay()) {
     case 0:
       day = 'Mimingo';
 
@@ -69,15 +65,11 @@ export default function Title(
 
   const txt = helper
     ? helper
-    : days[ today.getDay() ] + ' ' + fixFechas(
-      today.toString() 
-    );
+    : days[today.getDay()] + ' ' + fixFechas(today.toString());
 
   return (
-    <h1 className={`${ typography.titleMedium }  ${ typeface.navbar }`}>
-      {isOnline
-        ? txt
-        : 'offline'}
+    <h1 className={`${typography.titleMedium}  ${typeface.navbar}`}>
+      {isOnline ? txt : 'offline'}
     </h1>
   );
 }

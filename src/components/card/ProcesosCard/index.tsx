@@ -7,11 +7,15 @@ import type { Route } from 'next';
 
 export const ProcesoCard = (
   {
-    proceso 
-  }: { proceso: intProceso } 
+    proceso
+  }: { proceso: intProceso }
 ) => {
+  if ( !proceso ) {
+    return null;
+  }
+
   const {
-    idProceso, llaveProceso, sujetosProcesales, despacho, esPrivado 
+    idProceso, llaveProceso, sujetosProcesales, despacho, esPrivado
   }
     = proceso;
 
@@ -22,11 +26,11 @@ export const ProcesoCard = (
   const juzgado = despacho
     ? despacho.replace(
       / /g,
-      '-' 
+      '-'
     ).toLocaleLowerCase()
       .slice(
         0,
-        -1 
+        -1
       )
     : null;
 
@@ -35,7 +39,7 @@ export const ProcesoCard = (
       <div className={styles.card}>
         <h1 className={`${ typography.titleLarge } ${ styles.title }`}>
           {fixDemandado(
-            sujetosProcesales 
+            sujetosProcesales
           )}
         </h1>
         <Link
@@ -58,7 +62,7 @@ export const ProcesoCard = (
             <p className={typography.bodySmall}>
               {juzgado.replaceAll(
                 'á',
-                'a' 
+                'a'
               )}
             </p>
           </Link>

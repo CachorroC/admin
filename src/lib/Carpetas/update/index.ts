@@ -5,35 +5,14 @@ import { IntCarpeta, MonCarpeta } from '#@/lib/types/demandados';
 import { cache } from 'react';
 import { UltimaActuacion } from '../../types/demandados';
 import { ObjectId } from 'mongodb';
+import { carpetasCollection } from '#@/lib/Carpetas';
 
-const Collection = cache(
-  async () => {
-    const client = await clientPromise;
-
-    if ( !client ) {
-      throw new Error(
-        'no hay cliente mongólico' 
-      );
-    }
-
-    const db = client.db(
-      'RyS' 
-    );
-
-    const carpetas = db.collection<IntCarpeta>(
-      'Demandados' 
-    );
-
-    return carpetas;
-  } 
-);
-
-export const updateCarpeta = async (
+export async function updateCarpeta(
   {
-    carpeta 
-  }: { carpeta: IntCarpeta } 
-) => {
-  const collection = await Collection();
+    carpeta
+  }: { carpeta: IntCarpeta }
+){
+  const collection = await carpetasCollection();
   const query = carpeta;
 
   const update = {
@@ -47,7 +26,7 @@ export const updateCarpeta = async (
   const updt = await collection.updateOne(
     query,
     update,
-    options 
+    options
   );
 
   return updt;

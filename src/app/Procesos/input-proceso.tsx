@@ -1,7 +1,6 @@
 'use client';
 import { ProcesoCard } from '#@/components/card/ProcesosCard';
 import Modal from '#@/components/modal';
-import { getConsultaNumeroRadicion } from '#@/lib/RamaJudicial';
 import { intConsultaNumeroRadicacion } from '#@/lib/types/procesos';
 import { notFound } from 'next/navigation';
 import React from 'react';

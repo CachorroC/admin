@@ -22,7 +22,7 @@ export const Card = (
   path: string;
   carpeta: MonCarpeta | intFecha;
   children: ReactNode;
-} 
+}
 ) => {
   const [
     isNavOpen,
@@ -36,10 +36,10 @@ export const Card = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false 
+      false
     );
     setIsOpen(
-      true 
+      true
     );
   };
   const pathname = usePathname();
@@ -58,15 +58,23 @@ export const Card = (
     || pathname === `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
     || pathname === `${ path }/${ carpeta.llaveProceso }`;
 
-  const juzgado = carpeta.despacho.id
+  const despachoName =  carpeta.Demanda.Juzgado.Ejecucion
+    ? carpeta.Demanda.Juzgado.Ejecucion.id
+    : carpeta.Demanda.Juzgado.Origen.id;
+
+  const despachoUrl =  carpeta.Demanda.Juzgado.Ejecucion
+    ? carpeta.Demanda.Juzgado.Ejecucion.url
+    : carpeta.Demanda.Juzgado.Origen.url;
+
+  const juzgado = despachoName
     .replace(
       / /g,
-      '-' 
+      '-'
     )
     .toLocaleLowerCase()
     .slice(
       0,
-      -1 
+      -1
     );
 
   return (
@@ -77,16 +85,14 @@ export const Card = (
         <h1 className={`${ typography.titleMedium } ${ card.title }`}>
           {toNameString(
             {
-              nameRaw: new NombreCompleto(
-                carpeta.Deudor 
-              ).Nombre
-            } 
+              nameRaw: carpeta.Deudor.PrimerNombre + carpeta.Deudor.PrimerApellido
+            }
           )}
         </h1>
         <div className={card.links}>
           <Link
             className={`${ card.link } ${ isActive && card.isActive }`}
-            href={`/Carpetas/${ carpeta.id }`}>
+            href={`/Carpetas/${ carpeta._id }`}>
             <span className={`material-symbols-outlined ${ card.icon }`}>
               folder_shared
             </span>
@@ -105,7 +111,7 @@ export const Card = (
             href={`/Notas/NuevaNota/${ carpeta.llaveProceso }` as Route}
             onClick={() => {
               setIsOpen(
-                true 
+                true
               );
             }}>
             <span className={`material-symbols-outlined ${ card.icon }`}>
@@ -133,11 +139,11 @@ export const Card = (
 
         <Link
           className={`${ card.link } ${ isActive && card.isActive }`}
-          href={carpeta.despacho.url as Route}>
+          href={despachoUrl as Route}>
           <p className={`${ typography.bodySmall } ${ card.content }`}>
             {juzgado.replaceAll(
               'á',
-              'a' 
+              'a'
             )}
           </p>
         </Link>

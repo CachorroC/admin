@@ -17,7 +17,7 @@ export default function SearchOutputList(
   }: {
   path: string;
   fechas: intFecha[];
-} 
+}
 ) {
   const pathname = usePathname();
 
@@ -27,23 +27,23 @@ export default function SearchOutputList(
   ] = useSearch();
 
   const searchLinkRef = useRef<Map<any, any> | null>(
-    null 
+    null
   );
 
   function scrollToId(
-    id: string 
+    _id: string
   ) {
     const map = getMap();
 
     const node = map.get(
-      id 
+      _id
     );
     node.scrollIntoView(
       {
         behavior: 'smooth',
         block   : 'nearest',
         inline  : 'center'
-      } 
+      }
     );
     node.focus();
   }
@@ -58,7 +58,7 @@ export default function SearchOutputList(
 
   const clickHandler = () => {
     setIsNavOpen(
-      false 
+      false
     );
   };
 
@@ -74,7 +74,7 @@ export default function SearchOutputList(
     ...fechas
   ].sort(
     (
-      a, b 
+      a, b
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -103,22 +103,23 @@ export default function SearchOutputList(
       }
 
       return 0;
-    } 
+    }
   );
   idk.forEach(
     (
-      proceso, index, array 
+      proceso, index, array
     ) => {
       const {
-        idProceso, llaveProceso, Deudor, fecha, id 
+        idProceso, llaveProceso, Deudor, fecha, _id
       } = proceso;
 
       const {
-        Id, Tel, Direccion 
+        Id, Tel, Direccion, PrimerNombre, SegundoNombre, PrimerApellido, SegundoApellido
       } = Deudor;
+      const Nombre = `${ PrimerNombre } ${ SegundoNombre } ${ PrimerApellido } ${ SegundoApellido }`;
 
       if ( Nombre.toLowerCase().indexOf(
-        search.toLowerCase() 
+        search.toLowerCase()
       ) === -1 ) {
         return;
       }
@@ -126,10 +127,10 @@ export default function SearchOutputList(
         <LinkCard
           path={path}
           proceso={proceso}
-          key={id}
+          key={_id}
         />
       );
-    } 
+    }
   );
 
   return (
@@ -142,7 +143,7 @@ export default function SearchOutputList(
           <div className={searchbar.section}>
             <sub className={searchbar.date}>
               {fixFechas(
-                new Date().toISOString() 
+                new Date().toISOString()
               )}
             </sub>
           </div>

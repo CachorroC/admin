@@ -26,13 +26,16 @@
       flex: 1;
       display: flex;
       flex-flow: column wrap;
+      border: 1px solid var(--primary);
       & > .section {
+        border: 1px dashed var(--secondary);
         gap: 5cqmin;
         padding: 0;
         display: flex;
         flex: 1;
         flex-flow: row wrap;
         & > .section {
+          border: 1px doted var(--tertiary);
           gap: 2cqmin;
           padding: 0;
           display: flex;

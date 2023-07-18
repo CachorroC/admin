@@ -6,29 +6,28 @@ import { Accordion } from '#@/components/Accordion';
 export function NuevoCodeudorSection() {
   return (
     <section className={form.section}>
-      <h4 className={`${ form.title } ${ typography.displayMedium }`}>Codeudor</h4>
-      <Accordion>
-        <InputSection
-          name={'Codeudor.Id'}
-          title={'Codeudor.Id'}
-          type={'number'}
-        />
-        <InputSection
-          name={'Codeudor.Nombre'}
-          title={'Codeudor.Nombre'}
-          type={'text'}
-        />
-        <InputSection
-          name={'Codeudor.Tel.Fijo'}
-          title={'Telefono Fijo'}
-          type={'tel'}
-        />
-        <InputSection
-          name={'Codeudor.Tel.Celular'}
-          title={'Telefono celular'}
-          type={'tel'}
-        />
-      </Accordion>
+      <h4 className={`${form.title} ${typography.displayMedium}`}>Codeudor</h4>
+
+      <InputSection
+        name={'Codeudor.Id'}
+        title={'Codeudor.Id'}
+        type={'number'}
+      />
+      <InputSection
+        name={'Codeudor.Nombre'}
+        title={'Codeudor.Nombre'}
+        type={'text'}
+      />
+      <InputSection
+        name={'Codeudor.Tel.Fijo'}
+        title={'Telefono Fijo'}
+        type={'tel'}
+      />
+      <InputSection
+        name={'Codeudor.Tel.Celular'}
+        title={'Telefono celular'}
+        type={'tel'}
+      />
     </section>
   );
 }
