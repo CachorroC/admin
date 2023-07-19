@@ -13,17 +13,21 @@ import { getProceso, getProcesos } from '#@/lib/RamaJudicial';
 import { ProcesoCard } from '../ProcesosCard';
 import { NombreComponent } from '../Nombre';
 
-const ProcesosList = async ({
-  llaveProceso,
-  index
-}: {
+const ProcesosList = async (
+  {
+    llaveProceso,
+    index
+  }: {
   llaveProceso: string;
   index: number;
-}) => {
-  const procesos = await getProceso({
-    llaveProceso: llaveProceso,
-    index: index
-  });
+} 
+) => {
+  const procesos = await getProceso(
+    {
+      llaveProceso: llaveProceso,
+      index       : index
+    } 
+  );
 
   /*
 
@@ -47,35 +51,50 @@ const ProcesosList = async ({
  */
   return (
     <Fragment key={llaveProceso}>
-      {procesos.map((proceso) => {
-        return (
-          <ProcesoCard
-            proceso={proceso}
-            key={proceso.idProceso}
-          />
-        );
-      })}
+      {procesos.map(
+        (
+          proceso 
+        ) => {
+          return (
+            <ProcesoCard
+              proceso={proceso}
+              key={proceso.idProceso}
+            />
+          );
+        } 
+      )}
     </Fragment>
   );
 };
 
-const Fecha = async ({
-  idProceso,
-  index
-}: {
+const Fecha = async (
+  {
+    idProceso,
+    index
+  }: {
   idProceso: number;
   index: number;
-}) => {
-  const acts = await getActuaciones(idProceso, index);
+} 
+) => {
+  const acts = await getActuaciones(
+    idProceso,
+    index 
+  );
 
-  if (acts.length === 0) {
+  if ( acts.length === 0 ) {
     return null;
   }
 
-  return <div className={styles.date}>{fixFechas(acts[0].fechaActuacion)}</div>;
+  return <div className={styles.date}>{fixFechas(
+    acts[ 0 ].fechaActuacion 
+  )}</div>;
 };
 
-export const DemandaContainer = ({ demanda }: { demanda: Demanda }) => {
+export const DemandaContainer = (
+  {
+    demanda 
+  }: { demanda: Demanda } 
+) => {
   const {
     Departamento,
     Municipio,
@@ -95,13 +114,17 @@ export const DemandaContainer = ({ demanda }: { demanda: Demanda }) => {
       <h2
         className={
           typography.titleMedium
-        }>{`${Departamento}: ${Municipio}`}</h2>
+        }>{`${ Departamento }: ${ Municipio }`}</h2>
       {VencimientoPagare && (
-        <p className={typography.labelMedium}>{fixFechas(VencimientoPagare)}</p>
+        <p className={typography.labelMedium}>{fixFechas(
+          VencimientoPagare 
+        )}</p>
       )}
       {EntregadeGarantiasAbogado && (
         <p className={typography.labelSmall}>
-          {fixFechas(EntregadeGarantiasAbogado)}
+          {fixFechas(
+            EntregadeGarantiasAbogado 
+          )}
         </p>
       )}
       {CapitalAdeudado && (
@@ -114,59 +137,69 @@ export const DemandaContainer = ({ demanda }: { demanda: Demanda }) => {
 export async function ListCardCarpetasNFechas() {
   const carpetas = await getCarpetas();
 
-  const sortedCarpetas = [...carpetas].sort((a, b) => {
-    if (!a.ultimaActuacion || a.ultimaActuacion.fechaActuacion === undefined) {
-      return 1;
-    }
+  const sortedCarpetas = [
+    ...carpetas
+  ].sort(
+    (
+      a, b 
+    ) => {
+      if ( !a.ultimaActuacion || a.ultimaActuacion.fechaActuacion === undefined ) {
+        return 1;
+      }
 
-    if (!b.ultimaActuacion || b.ultimaActuacion.fechaActuacion === undefined) {
-      return -1;
-    }
-    const x = a.ultimaActuacion.fechaActuacion;
-    const y = b.ultimaActuacion.fechaActuacion;
+      if ( !b.ultimaActuacion || b.ultimaActuacion.fechaActuacion === undefined ) {
+        return -1;
+      }
+      const x = a.ultimaActuacion.fechaActuacion;
+      const y = b.ultimaActuacion.fechaActuacion;
 
-    if (x < y) {
-      return 1;
-    }
+      if ( x < y ) {
+        return 1;
+      }
 
-    if (x > y) {
-      return -1;
-    }
+      if ( x > y ) {
+        return -1;
+      }
 
-    return 0;
-  });
+      return 0;
+    } 
+  );
 
   return (
     <>
-      {sortedCarpetas.map((carpeta, index, arr) => {
-        return (
-          <Fragment key={carpeta._id}>
-            <NombreComponent
-              Deudor={carpeta.Deudor}
-              key={carpeta._id}
-            />
-            <Card
-              key={carpeta._id}
-              path={'/Procesos'}
-              carpeta={carpeta}>
+      {sortedCarpetas.map(
+        (
+          carpeta, index, arr 
+        ) => {
+          return (
+            <Fragment key={carpeta._id}>
+              <NombreComponent
+                Deudor={carpeta.Deudor}
+                key={carpeta._id}
+              />
+              <Card
+                key={carpeta._id}
+                path={'/Procesos'}
+                carpeta={carpeta}>
+                <Suspense fallback={<Loader />}>
+                  <Fecha
+                    key={carpeta._id}
+                    idProceso={carpeta.idProceso}
+                    index={index}
+                  />
+                </Suspense>
+              </Card>
               <Suspense fallback={<Loader />}>
-                <Fecha
-                  key={carpeta._id}
-                  idProceso={carpeta.idProceso}
+                <ProcesosList
+                  llaveProceso={carpeta.llaveProceso}
+                  key={carpeta.llaveProceso}
                   index={index}
                 />
               </Suspense>
-            </Card>
-            <Suspense fallback={<Loader />}>
-              <ProcesosList
-                llaveProceso={carpeta.llaveProceso}
-                key={carpeta.llaveProceso}
-                index={index}
-              />
-            </Suspense>
-          </Fragment>
-        );
-      })}
+            </Fragment>
+          );
+        } 
+      )}
     </>
   );
 }

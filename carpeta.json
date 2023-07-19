@@ -4,9 +4,10 @@
       "$oid": "11001400300320170088400"
     },
     "numero": 14,
+    "clase": "vehiculo",
     "llaveProceso": "11001400300320170088400",
-    "idProcesos": [50468620, 113956611],
-    "obligaciones": [2530444, 2530444],
+    "idProcesos": [ 50468620, 113956611 ],
+    "grupo": "Bancolombia",
     "deudor": {
       "cedula": 1077969975,
       "email": "yess_Id@hotmail.com",
@@ -20,18 +21,103 @@
         "celular": 3212337597
       }
     },
-    "tipoBien": "VEHICULO",
-    "tipoProceso": "PRENDARIO",
-    "capitalAdeudado": 33791309,
-    "juzgado": {
-      "origen": {
-        "id": "3 CM",
-        "url": "https://www.ramajudicial.gov.co/web/juzgado-03-civil-municipal-de-bogota"
-      },
-      "ejecucion": {
-        "id": "8 CM",
-        "url": "https://disneylatino.com"
+    "codeudor": {
+      "cedula": 1022352429,
+      "nombre": "Melissa Lorena Suarez Ramirez",
+      "direccion": "Carrera 63 # 22 - 31",
+      "tel": {
+        "fijo": 6051567,
+        "celular": 3103032791
       }
+    },
+    "demanda": {
+      "fechas": [
+        { "vencimientoPagare": "1999-01-01" },
+        { "entregaGarantias": "1999-01-01" }
+
+      ],
+      "capitalAdeudado": 33791309,
+      "obligacion": [ 2530444, 2530444 ],
+
+      "tipoProceso": "PRENDARIO",
+      "tipoBien": "VEHICULO",
+      "juzgado": {
+        "origen": {
+          "id": "3 CM",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-03-civil-municipal-de-bogota"
+        },
+        "ejecucion": {
+          "id": "8 CM",
+          "url": "https://disneylatino.com"
+        }
+      }, "ubicacion": "carrera decima", "radicado": "2023 - 01648", "municipio": "Bogota", "departamento": "CUNDINAMARCA"
+
+    },
+    "agendaInformativa": {
+      "certimail": true,
+      "fisico": false,
+      "notificacion": [
+        { "id": 291,
+          "recibo": "1999-01-01",
+          "aporta": "1999-01-01",
+          "resultado": true
+        },
+        { "id": 292,
+          "recibo": "1999-01-01",
+          "aporta": "1999-01-01",
+          "resultado": true
+        }
+      ],
+      "tipoNotificacion": "EMPLAZAMIENTO",
+      "autoNotificado": "1999-01-01"
+    },
+    "medidasCautelares": {
+      "fechas": [
+        { "ordenaMedidaCautelar": "1999-01-01" },
+        { "oficio": "1999-01-01", "numero": 2681 },
+        { "retiroOficios": "1999-01-01" }
+      ],
+      "medidaSolicitada": "solicita levantarle el vehiculo",
+      "descripcionMedida": "esto con el fin de poder tener algo para rematar y be a nasty asshole",
+      "bienes": [ {
+          "tipo": "VEHICULO",
+          "placa": "zzy-059"
+        }, { "tipo": "BANCOS", "numeroCuenta": "051-130616" } ],
+      "embargo": {
+        "radicacion": "1999-01-01",
+        "respuesta": true
+      },
+      "captura": {
+        "solicitud": "1999-01-01", "secuestro": "1999-01-01"
+      }
+    },
+
+    "liquidacion": {
+      "fechas": [
+        { "aprobacion": "1999-01-01" },
+        { "presentacion": "1999-01-01" },
+        { "solicitud": "1999-02-01" },
+        { "sentencia": "1999-01-01" },
+        { "costas": "1999-01-01" }
+      ],
+      "valores": [
+        { "costas": 1000000 },
+        { "liquidacion": "2000000" },
+        { "crédito": 37000000 }
+      ]
+
+    },
+    "avaluo": {
+      "fechas": [
+        { "adjudicacion": "1999-01-01" },
+        { "remate": "1999-01-01" }
+      ],
+      "valores": [
+        { "resultadoAvaluador": 7000000 },
+        { "cuotas": 500000 }
+      ]
     }
+
+
   }
 ]

@@ -1,38 +1,62 @@
-import {
-  useState,
-  createContext,
-  useContext,
-  ReactNode,
-  SetStateAction,
-  Dispatch,
-  useMemo,
-  useCallback
-} from 'react';
+import { useState,
+         createContext,
+         useContext,
+         ReactNode,
+         SetStateAction,
+         Dispatch,
+         useMemo,
+         useCallback } from 'react';
 type vals = {
   data: {};
-  setFormValues: (values: any) => void;
+  setFormValues: ( values: any ) => void;
 };
 
-export const FormContext = createContext<vals | null>(null);
+export const FormContext = createContext<vals | null>(
+  null 
+);
 
-export default function FormProvider({ children }: { children: ReactNode }) {
-  const [data, setData] = useState({});
+export default function FormProvider(
+  {
+    children 
+  }: { children: ReactNode } 
+) {
+  const [
+    data,
+    setData
+  ] = useState(
+    {} 
+  );
 
-  const setFormValues = useCallback((values: {}) => {
-    setData((prevValues) => {
+  const setFormValues = useCallback(
+    (
+      values: {} 
+    ) => {
+      setData(
+        (
+          prevValues 
+        ) => {
+          return {
+            ...prevValues,
+            ...values
+          };
+        } 
+      );
+    },
+    [] 
+  );
+
+  const contextValue = useMemo(
+    () => {
       return {
-        ...prevValues,
-        ...values
+        data,
+        setFormValues
       };
-    });
-  }, []);
-
-  const contextValue = useMemo(() => {
-    return {
+    },
+    [
       data,
       setFormValues
-    };
-  }, [data, setFormValues]);
+    ] 
+  );
 
   return (
     <FormContext.Provider value={contextValue}>{children}</FormContext.Provider>
@@ -40,10 +64,14 @@ export default function FormProvider({ children }: { children: ReactNode }) {
 }
 
 export function useFormData() {
-  const context = useContext(FormContext);
+  const context = useContext(
+    FormContext 
+  );
 
-  if (context === null) {
-    throw new Error('useSearch must be used inside a SearchProvider');
+  if ( context === null ) {
+    throw new Error(
+      'useSearch must be used inside a SearchProvider' 
+    );
   }
 
   return context;

@@ -7,11 +7,13 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { InputSection } from '#@/components/form/InputSection';
 
 export function NuevaTerminacionSection() {
-  const { register } = useFormContext<IntCarpeta>();
+  const {
+    register 
+  } = useFormContext<IntCarpeta>();
 
   return (
     <section className={form.section}>
-      <h3 className={`${form.title} ${typography.displayMedium}`}>
+      <h3 className={`${ form.title } ${ typography.displayMedium }`}>
         Terminacion
       </h3>
       <InputSection

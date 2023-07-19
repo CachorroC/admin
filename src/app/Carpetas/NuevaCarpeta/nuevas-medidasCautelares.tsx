@@ -7,11 +7,13 @@ import { Accordion } from '#@/components/Accordion';
 import { InputSection } from '#@/components/form/InputSection';
 
 export function NuevasMedidasCautelaresSection() {
-  const { register, control } = useFormContext();
+  const {
+    register, control 
+  } = useFormContext();
 
   return (
     <section className={form.section}>
-      <h3 className={`${form.title} ${typography.displayMedium}`}>
+      <h3 className={`${ form.title } ${ typography.displayMedium }`}>
         Medidas Cautelares
       </h3>
 
@@ -40,7 +42,7 @@ export function NuevasMedidasCautelaresSection() {
         title={' Descripción de la medida cautelar'}
         type={'text'}
       />
-      <h4 className={`${form.title} ${typography.displaySmall}`}>Fechas</h4>
+      <h4 className={`${ form.title } ${ typography.displaySmall }`}>Fechas</h4>
       <section className={form.section}>
         <InputSection
           name={'MedidasCautelares.Fecha.Captura'}
@@ -63,7 +65,7 @@ export function NuevasMedidasCautelaresSection() {
           title={'Fecha de la solicitud de captura o secuestro'}
         />
       </section>
-      <h4 className={`${form.title} ${typography.displaySmall}`}>Oficios</h4>
+      <h4 className={`${ form.title } ${ typography.displaySmall }`}>Oficios</h4>
       <section className={form.section}>
         <InputSection
           name='MedidasCautelares.Oficios.FechaRetiro'
@@ -88,7 +90,7 @@ export function NuevasMedidasCautelaresSection() {
         title={'Fecha Ordena'}
       />
       <section className={form.section}>
-        <h4 className={`${form.title} ${typography.displaySmall}`}>Oficio</h4>
+        <h4 className={`${ form.title } ${ typography.displaySmall }`}>Oficio</h4>
         <InputSection
           name='MedidasCautelares.Oficio.Fecha'
           type={'date'}

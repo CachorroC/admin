@@ -11,25 +11,39 @@ import { NewNota } from '#@/components/nota/NuevaNota';
 import note from '#@/components/nota/note.module.scss';
 import { Notas } from '#@/components/nota/notas';
 
-async function Name({ llaveProceso }: { llaveProceso: string }) {
-  const proceso = await getCarpetasByllaveProceso({
-    llaveProceso: llaveProceso
-  });
+async function Name(
+  {
+    llaveProceso 
+  }: { llaveProceso: string } 
+) {
+  const proceso = await getCarpetasByllaveProceso(
+    {
+      llaveProceso: llaveProceso
+    } 
+  );
 
   const nombre = proceso
-    .map((p) => {
-      return p.Deudor.PrimerNombre;
-    })
+    .map(
+      (
+        p 
+      ) => {
+        return p.Deudor.PrimerNombre;
+      } 
+    )
     .toString();
 
   return <h3 className={typography.displayMedium}>{nombre}</h3>;
 }
 
-async function Acts({ idProceso }: { idProceso: number }) {
+async function Acts(
+  {
+    idProceso 
+  }: { idProceso: number } 
+) {
   const acts = await fetch(
-    `${getBaseUrl()}/api/Procesos/Actuaciones/${idProceso}`
+    `${ getBaseUrl() }/api/Procesos/Actuaciones/${ idProceso }`
   );
-  const res = (await acts.json()) as IntActuaciones;
+  const res = ( await acts.json() ) as IntActuaciones;
 
   return (
     <div
@@ -37,41 +51,51 @@ async function Acts({ idProceso }: { idProceso: number }) {
       key={idProceso}>
       <h1 className={typography.titleLarge}>{res.text.message}</h1>
       <p className={typography.bodyMedium}>{res.text.statusCode.toString()}</p>
-      {res.acts ? (
-        <>
-          <p>{res.acts[0].actuacion}</p>
-          <p>{res.acts[0].anotacion}</p>
-          <p>{fixFechas(res.acts[0].fechaActuacion)}</p>
-        </>
-      ) : (
-        <p>nothing</p>
-      )}
+      {res.acts
+        ? (
+            <>
+              <p>{res.acts[ 0 ].actuacion}</p>
+              <p>{res.acts[ 0 ].anotacion}</p>
+              <p>{fixFechas(
+                res.acts[ 0 ].fechaActuacion 
+              )}</p>
+            </>
+          )
+        : (
+            <p>nothing</p>
+          )}
     </div>
   );
 }
 
-export default async function PageProcesosRightllaveProcesoidProceso({
-  params
-}: {
+export default async function PageProcesosRightllaveProcesoidProceso(
+  {
+    params
+  }: {
   params: { llaveProceso: string };
-}) {
-  const carpeta = await getCarpetasByllaveProceso({
-    llaveProceso: params.llaveProceso
-  });
+} 
+) {
+  const carpeta = await getCarpetasByllaveProceso(
+    {
+      llaveProceso: params.llaveProceso
+    } 
+  );
 
-  const notasllaveProceso = await getNotasByllaveProceso({
-    llaveProceso: params.llaveProceso
-  });
+  const notasllaveProceso = await getNotasByllaveProceso(
+    {
+      llaveProceso: params.llaveProceso
+    } 
+  );
   const cantidadNotas = notasllaveProceso.length;
   const notas = await getNotas();
 
-  switch (cantidadNotas) {
+  switch ( cantidadNotas ) {
     case 0:
       return (
         <>
           <NewNota
             llaveProceso={params.llaveProceso}
-            uri={`${getBaseUrl()}`}
+            uri={`${ getBaseUrl() }`}
           />
           <Notas />
         </>
@@ -81,7 +105,7 @@ export default async function PageProcesosRightllaveProcesoidProceso({
         <>
           <NewNota
             llaveProceso={params.llaveProceso}
-            uri={`${getBaseUrl()}`}
+            uri={`${ getBaseUrl() }`}
           />
           <Notas llaveProceso={params.llaveProceso} />
         </>
@@ -91,7 +115,7 @@ export default async function PageProcesosRightllaveProcesoidProceso({
         <>
           <NewNota
             llaveProceso={params.llaveProceso}
-            uri={`${getBaseUrl()}`}
+            uri={`${ getBaseUrl() }`}
           />
           <Notas llaveProceso={params.llaveProceso} />
         </>
@@ -101,7 +125,7 @@ export default async function PageProcesosRightllaveProcesoidProceso({
         <>
           <NewNota
             llaveProceso={params.llaveProceso}
-            uri={`${getBaseUrl()}`}
+            uri={`${ getBaseUrl() }`}
           />
           <Notas llaveProceso={params.llaveProceso} />
         </>

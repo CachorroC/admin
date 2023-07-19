@@ -14,14 +14,18 @@ import { Fragment, Suspense } from 'react';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import { ButtonsNuevaCarpeta } from '../NuevaCarpeta/new-carpeta-buttons';
 
-export default async function CarpetasPageId({
-  params
-}: {
+export default async function CarpetasPageId(
+  {
+    params
+  }: {
   params: { _id: string };
-}) {
-  const carpeta = await getCarpetaById({
-    _id: params._id
-  });
+} 
+) {
+  const carpeta = await getCarpetaById(
+    {
+      _id: params._id
+    } 
+  );
 
   return (
     <div className={layout.body}>
@@ -47,7 +51,7 @@ export default async function CarpetasPageId({
               carpeta={carpeta}
               key={carpeta._id}>
               <Link
-                href={`/Carpetas/${params._id}/Editar`}
+                href={`/Carpetas/${ params._id }/Editar`}
                 key={carpeta._id}
                 className={layout.button}>
                 <p className={typography.labelSmall}>Editar</p>
@@ -58,7 +62,7 @@ export default async function CarpetasPageId({
             </CarpetaCard>
             <NuevoProceso
               key={carpeta._id}
-              uri={`${getBaseUrl()}`}
+              uri={`${ getBaseUrl() }`}
               carpeta={carpeta}
             />
           </Fragment>
