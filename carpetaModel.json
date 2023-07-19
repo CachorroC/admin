@@ -35,16 +35,7 @@
     "entregaGarantiasAbogado": "2017-05-11",
     "departamento": "CUNDINAMARCA",
     "municipio": "BOGOTA",
-    "juzgado": {
-      "origen": {
-        "id": "3 CM",
-        "url": "https://www.ramajudicial.gov.co/web/juzgado-03-civil-municipal-de-bogota"
-      },
-      "ejecucion": {
-        "id": "8 CM",
-        "url": "https://disneylatino.com"
-      }
-    },
+
     "tipoProceso": "PRENDARIO",
     "radicado": "2017 - 00884",
     "expediente": "11001400300320170088400",

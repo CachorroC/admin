@@ -1,39 +1,37 @@
-[{
-  "_id": {
-    "$oid": "11001400300320170088400"
-  },
-  "numero": 14,
-  "llaveProceso": "11001400300320170088400",
-  "idProcesos": [50468620, 113956611],
-  "obligaciones": [2530444, 2530444],
-}
-
-
-
-,{
-
-  "deudor": {
-    "cedula": 1077969975,
-    "email": "yess_Id@hotmail.com",
-    "primerNombre": "Yesid",
-    "segundoNombre": "Albeiro",
-    "primerApellido": "Ramos",
-    "segundoApellido": "Flores",
-    "direccion": "CARRERA 77B No. 68B - 19 BARRIO SANTA HELENITA",
-    "tel": {
-      "fijo": 3193905254,
-      "celular": 3212337597
-    }
-  }, "codeudor": {
-    "id": 1022352429,
-    "primerNombre": "Melissa",
-    "segundoNombre": "Lorena",
-    "primerApellido": "Suarez",
-    "segundoApellido": "Ramirez",
-    "tel": {
-      "fijo": 6051567,
-      "celular": 3103032791
+[
+  {
+    "_id": {
+      "$oid": "11001400300320170088400"
     },
-    "direccion": "carrera 63 # 22 - 31"
-  },
-}]
+    "numero": 14,
+    "llaveProceso": "11001400300320170088400",
+    "idProcesos": [50468620, 113956611],
+    "obligaciones": [2530444, 2530444],
+    "deudor": {
+      "cedula": 1077969975,
+      "email": "yess_Id@hotmail.com",
+      "primerNombre": "Yesid",
+      "segundoNombre": "Albeiro",
+      "primerApellido": "Ramos",
+      "segundoApellido": "Flores",
+      "direccion": "CARRERA 77B No. 68B - 19 BARRIO SANTA HELENITA",
+      "tel": {
+        "fijo": 3193905254,
+        "celular": 3212337597
+      }
+    },
+    "tipoBien": "VEHICULO",
+    "tipoProceso": "PRENDARIO",
+    "capitalAdeudado": 33791309,
+    "juzgado": {
+      "origen": {
+        "id": "3 CM",
+        "url": "https://www.ramajudicial.gov.co/web/juzgado-03-civil-municipal-de-bogota"
+      },
+      "ejecucion": {
+        "id": "8 CM",
+        "url": "https://disneylatino.com"
+      }
+    }
+  }
+]

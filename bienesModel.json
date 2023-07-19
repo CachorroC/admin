@@ -1,0 +1,47 @@
+{
+  "vehiculo": [
+    { "embargo": "inicia el embargo" },
+    { "oficio": "el oficio del sim o el runt" },
+    {
+      "respuestaEmbargo": "la respuesta de la secretaria de transporte"
+    },
+    {
+      "secuestro": "se realiza el secuestro del vehiculo y se asigna un secuestre"
+    },
+    { "avaluo": "se avalua el avaluo" },
+    { "remate": "se remata el remate" }
+  ],
+
+  "inmueble": [
+    { "embargo": "inicia el embargo" },
+    { "oficio": "el oficio de instrumentos publicos" },
+    {
+      "secuestro": "se realiza el secuestro del inmueble y se asigna un secuestre"
+    },
+    { "avaluo": "se avalua el avaluo" },
+    { "remate": "se remata el remate" }
+  ],
+
+  "cuentaBancaria": [
+    { "oficio": "se oficia el oficio" },
+    {
+      "respuestaBanco": "Se recibe la reespuesta positiva o negativa dle banco a retener la cuenta"
+    }
+  ],
+
+  "establecimientoComercial": [
+    { "oficio": "le oficié" },
+    {
+      "secuestro": "le secuestré de la producioné del establecimientoé"
+    }
+  ],
+
+  "salario": [
+    {
+      "oficio": "el oficio al empleador diciendo que consigne las luks de la o el pisque que no pague"
+    },
+    {
+      "depositos": "el empleador paga las luks mes a mes al juzgado "
+    }
+  ]
+}
