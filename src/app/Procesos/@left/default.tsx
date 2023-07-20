@@ -15,7 +15,9 @@ export default async function DefaultProcesosLeft() {
   });
 
   return (
-    <Suspense fallback={<SearchOutputListSkeleton />}>
+    <Suspense
+      fallback={<SearchOutputListSkeleton />}
+    >
       <CardSearchList
         path={'/Procesos' as Route}
         Fechas={fechas}

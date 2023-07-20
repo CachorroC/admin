@@ -11,18 +11,23 @@ export default async function Page({
     idProceso: number;
   };
 }) {
-  const actuaciones = await getActuaciones(params.idProceso, 1);
+  const actuaciones = await getActuaciones(
+    params.idProceso,
+    1
+  );
 
   return (
     <>
-      {actuaciones.map((actuacion, index, arr) => {
-        return (
-          <ActuacionCard
-            Actuacion={actuacion}
-            key={actuacion.idRegActuacion}
-          />
-        );
-      })}
+      {actuaciones.map(
+        (actuacion, index, arr) => {
+          return (
+            <ActuacionCard
+              Actuacion={actuacion}
+              key={actuacion.idRegActuacion}
+            />
+          );
+        }
+      )}
     </>
   );
 }

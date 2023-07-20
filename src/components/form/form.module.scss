@@ -84,7 +84,9 @@
   }
 }
 .textArea {
-  background-color: var(--surface-container-highest);
+  background-color: var(
+    --surface-container-highest
+  );
   color: var(--on-surface);
   box-shadow: var(--dp2);
   flex: 2;
@@ -98,7 +100,9 @@
     border: var(--surface-tint) solid 2px;
   }
   &:focus {
-    background-color: var(--surface-container-lowest);
+    background-color: var(
+      --surface-container-lowest
+    );
   }
 }
 .editButton {

@@ -13,7 +13,11 @@ import Drawer from './drawer';
 import { ButtonSkeleton } from './ButtonSkeleton';
 import typeface from '#@/styles/fonts/typeface.module.scss';
 
-export default function Header({ children }: { children: React.ReactNode }) {
+export default function Header({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   const isDesktop = useMedia(2);
 
   const isMobile = useMedia(0);
@@ -26,7 +30,13 @@ export default function Header({ children }: { children: React.ReactNode }) {
         <Suspense fallback={<ButtonSkeleton />}>
           <HomeButton />
         </Suspense>
-        <Suspense fallback={<sub className={typeface.title}>Loading</sub>}>
+        <Suspense
+          fallback={
+            <sub className={typeface.title}>
+              Loading
+            </sub>
+          }
+        >
           {children}
         </Suspense>
         <Suspense fallback={<ButtonSkeleton />}>
@@ -49,7 +59,13 @@ export default function Header({ children }: { children: React.ReactNode }) {
         <Suspense fallback={<ButtonSkeleton />}>
           <HomeButton />
         </Suspense>
-        <Suspense fallback={<sub className={typeface.title}>Loading</sub>}>
+        <Suspense
+          fallback={
+            <sub className={typeface.title}>
+              Loading
+            </sub>
+          }
+        >
           {children}
         </Suspense>
         <Suspense fallback={<ButtonSkeleton />}>
@@ -64,7 +80,13 @@ export default function Header({ children }: { children: React.ReactNode }) {
       <Suspense fallback={<ButtonSkeleton />}>
         <HomeButton />
       </Suspense>
-      <Suspense fallback={<sub className={typeface.title}>Loading</sub>}>
+      <Suspense
+        fallback={
+          <sub className={typeface.title}>
+            Loading
+          </sub>
+        }
+      >
         {children}
       </Suspense>
       <Suspense fallback={<ButtonSkeleton />}>

@@ -20,7 +20,10 @@ export function wait(delay: number) {
   });
 }
 
-export async function getActuaciones(idProceso: number, index: number) {
+export async function getActuaciones(
+  idProceso: number,
+  index: number
+) {
   const awaitTime = index * 2000;
 
   if (idProceso === 0 || idProceso === 404) {
@@ -40,29 +43,35 @@ export async function getActuaciones(idProceso: number, index: number) {
     );
 
     if (!request.ok) {
-      console.log(`Get Actuaciones request was not ok ${request.status}`);
+      console.log(
+        `Get Actuaciones request was not ok ${request.status}`
+      );
 
       return [];
     }
-    const res = (await request.json()) as intConsultaActuaciones;
+    const res =
+      (await request.json()) as intConsultaActuaciones;
 
     if (!res.actuaciones) {
-      console.log('Get Actuaciones no tiene actuaciones');
+      console.log(
+        'Get Actuaciones no tiene actuaciones'
+      );
 
       return [];
     }
     const ultimaActuacion = res.actuaciones[0];
 
-    const updateCarpeta = await collection.updateOne(
-      {
-        idProceso: idProceso
-      },
-      {
-        $set: {
-          ultimaActuacion: ultimaActuacion
+    const updateCarpeta =
+      await collection.updateOne(
+        {
+          idProceso: idProceso
+        },
+        {
+          $set: {
+            ultimaActuacion: ultimaActuacion
+          }
         }
-      }
-    );
+      );
 
     if (updateCarpeta.modifiedCount >= 1) {
       console.log(
@@ -78,7 +87,11 @@ export async function getActuaciones(idProceso: number, index: number) {
   }
 }
 
-export async function fetchFechas({ procesos }: { procesos: MonCarpeta[] }) {
+export async function fetchFechas({
+  procesos
+}: {
+  procesos: MonCarpeta[];
+}) {
   const fechas: intFecha[] = [];
 
   for (let p = 0; p < procesos.length; p++) {
@@ -101,7 +114,10 @@ export async function fetchFecha({
   proceso: MonCarpeta;
   index: number;
 }) {
-  const acts = await getActuaciones(proceso.idProceso, index);
+  const acts = await getActuaciones(
+    proceso.idProceso,
+    index
+  );
 
   if (acts.length >= 1) {
     const fecha: intFecha = {

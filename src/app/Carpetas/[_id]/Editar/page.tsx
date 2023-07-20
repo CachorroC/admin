@@ -23,7 +23,9 @@ export default async function EditarCarpetabyId({
     return (
       <div className={layout.body}>
         <div className={layout.name}>
-          <NombreComponent Deudor={carpeta.Deudor} />
+          <NombreComponent
+            Deudor={carpeta.Deudor}
+          />
         </div>
         <div className={layout.left}>
           <NuevoProceso

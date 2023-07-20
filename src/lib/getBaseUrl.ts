@@ -1,7 +1,8 @@
 import 'server-only';
 import { cache } from 'react';
 const basePort = process.env.PORT ?? '3000';
-const baseUrl = process.env.URL ?? 'beta.rsasesorjuridico.com';
+const baseUrl =
+  process.env.URL ?? 'beta.rsasesorjuridico.com';
 const baseEnvironment = process.env.NODE_ENV;
 
 const hostname =
@@ -11,7 +12,9 @@ const hostname =
     : 'app.rsasesorjuridico.com');
 
 export const getBaseUrl = cache(() => {
-  const uri = `https://${hostname}` ?? `http://localhost:${basePort}`;
+  const uri =
+    `https://${hostname}` ??
+    `http://localhost:${basePort}`;
   console.log(uri);
 
   return uri;

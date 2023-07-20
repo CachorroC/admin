@@ -1,0 +1,578 @@
+[
+  {
+    "deudor": {
+      "direccion": "CARRERA 3 # 29A - 02",
+      "cedula": 900212673,
+      "primerNombre": "Jencell",
+      "primerApellido": "E.U."
+    },
+    "numero": 116,
+    "capitalAdeudado": 500314967,
+    "fechaIngreso": "2023-07-20T21:53:48.661Z",
+    "reparto": true,
+    "codeudor": {
+      "direccion": "CARRERA 3 # 29A - 02 LOCAL 1057",
+      "cedula": 52771090,
+      "Nombre": "YENY ESPERANZA ARIAS MENDIETA"
+    },
+    "tipoProceso": "SINGULAR",
+    "tipoBien": "BANCOS",
+    "llaveProceso": "25754418900320170075500",
+    "grupo": "Bancolombia",
+    "clase": "BANCOS"
+  },
+  {
+    "deudor": {
+      "direccion": "CARRERA 81C # 2B - 80 PISO 2",
+      "email": "grupocomerciallasabana@hotmail.com",
+      "cedula": 11185630,
+      "primerNombre": "Wilson",
+      "segundoNombre": "Alfonso",
+      "primerApellido": "Jimenez",
+      "segundoApellido": "Mendieta"
+    },
+    "numero": 178,
+    "capitalAdeudado": 25833335,
+    "fechaIngreso": "2023-07-20T21:53:48.766Z",
+    "reparto": true,
+    "tipoProceso": "SINGULAR",
+    "tipoBien": "BANCOS",
+    "llaveProceso": "11001400300120170100100",
+    "grupo": "Bancolombia",
+    "clase": "BANCOS"
+  },
+  {
+    "deudor": {
+      "direccion": "DIAGONAL 56 BIS 84 A 10 SUR TR 1",
+      "email": "fanor.diaz@gmail.com",
+      "cedula": 79853115,
+      "primerNombre": "Fanor",
+      "primerApellido": "Diaz",
+      "segundoApellido": "Agudelo",
+      "tel": {
+        "celular": 3212406193,
+        "fijo": 8060271
+      }
+    },
+    "numero": 231,
+    "capitalAdeudado": "$ 27.603.821",
+    "fechaIngreso": "2023-07-20T21:53:48.838Z",
+    "reparto": true,
+    "tipoBien": "INMUEBLE",
+    "llaveProceso": "11001400300820170113400",
+    "grupo": "Bancolombia",
+    "clase": "INMUEBLE"
+  },
+  {
+    "deudor": {
+      "cedula": 79388145,
+      "primerNombre": "Libardo",
+      "segundoNombre": "Alfonso",
+      "primerApellido": "Gonzalez",
+      "segundoApellido": "Triviño",
+      "email": "li_bcar@hotmail.com",
+      "direccion": "CARRERA 72 A- No 9 - 44"
+    },
+    "numero": 306,
+    "capitalAdeudado": "$ 40.406.421",
+    "fechaIngreso": "2023-07-20T21:53:48.910Z",
+    "reparto": true,
+    "tipoBien": "VEHICULO",
+    "obligacion": {
+      "1": "1740086734 4513073749673967",
+      "2": 5303719549810730
+    },
+    "llaveProceso": "11001400302120170153200",
+    "grupo": "Bancolombia",
+    "clase": "VEHICULO"
+  },
+  {
+    "deudor": {
+      "direccion": "CALLE 12 A No 71 B - 60",
+      "email": "arthurlingo64@hotmail.com",
+      "cedula": 79396995,
+      "primerNombre": "Arturo",
+      "primerApellido": "Lince",
+      "segundoApellido": "Gomez",
+      "tel": {
+        "celular": 31088445603,
+        "fijo": 4244358
+      }
+    },
+    "numero": 401,
+    "capitalAdeudado": "$ 22.592.583",
+    "fechaIngreso": "2023-07-20T21:53:48.966Z",
+    "reparto": true,
+    "tipoBien": "CASA 176",
+    "llaveProceso": "11001400302120180023600",
+    "grupo": "Bancolombia",
+    "clase": "CASA 176"
+  },
+  {
+    "deudor": {
+      "direccion": "CARRERA 50 1# 47 - 50 INT 1 APTO 101",
+      "email": "andibarracosta@gmail.com",
+      "cedula": 900545720,
+      "primerNombre": "Creas",
+      "primerApellido": "Soluciones",
+      "segundoApellido": "S.A.S",
+      "tel": {
+        "celular": 3107982028,
+        "fijo": 8626344
+      }
+    },
+    "numero": 405,
+    "capitalAdeudado": "$ 11.949.471",
+    "fechaIngreso": "2023-07-20T21:53:49.017Z",
+    "reparto": true,
+    "codeudor": {
+      "direccion": "CALLE 56 # 17 - 03 CASA 65 NEIVA",
+      "cedula": 12192291,
+      "Nombre": "ANDRES ENRIQUE IBARRA ACOSTA"
+    },
+    "tipoBien": "BANCOS",
+    "llaveProceso": "11001400305620180022100",
+    "grupo": "Bancolombia",
+    "clase": "BANCOS"
+  },
+  {
+    "deudor": {
+      "primerNombre": "Pedro",
+      "segundoNombre": "Jonathan",
+      "primerApellido": "Ramirez",
+      "segundoApellido": "Gomez"
+    },
+    "numero": 500,
+    "capitalAdeudado": "sin especificar",
+    "fechaIngreso": "2023-07-20T21:53:49.066Z",
+    "reparto": true,
+    "llaveProceso": "00000000000000000000000",
+    "grupo": "Bancolombia"
+  },
+  {
+    "deudor": {
+      "direccion": "CARRERA 95 # 138 - 58",
+      "email": "orduzcrit2@hotmail.com",
+      "cedula": 1032432802,
+      "primerNombre": "Luis",
+      "segundoNombre": "Esneider",
+      "primerApellido": "Orduz",
+      "segundoApellido": "Farfan"
+    },
+    "numero": 86,
+    "capitalAdeudado": "$ 26.515.333",
+    "fechaIngreso": "2023-07-20T21:53:49.113Z",
+    "reparto": true,
+    "codeudor": {
+      "cedula": 1015435620,
+      "Nombre": "JESICA PAOLA GUZMAN OSPINA"
+    },
+    "tipoBien": "VEHICULO",
+    "llaveProceso": "11001400303420170083600",
+    "grupo": "Bancolombia",
+    "clase": "VEHICULO"
+  },
+  {
+    "deudor": {
+      "cedula": 1032432802,
+      "email": "orduzcrit2@hotmail.com",
+      "primerNombre": "Luis",
+      "segundoNombre": "Esneider",
+      "primerApellido": "Orduz",
+      "segundoApellido": "Farfan",
+      "direccion": "CARRERA 95 # 138 - 58"
+    },
+    "numero": 86,
+    "capitalAdeudado": 26515333,
+    "fechaIngreso": "2023-07-20T21:53:49.164Z",
+    "reparto": true,
+    "codeudor": {
+      "cedula": 1015435620,
+      "Nombre": "JESICA PAOLA GUZMAN OSPINA"
+    },
+    "tipoBien": "VEHICULO",
+    "llaveProceso": "11001400303420170083600",
+    "grupo": "Bancolombia",
+    "clase": "VEHICULO"
+  },
+  {
+    "deudor": {
+      "direccion": "CALL 2 # 8-40 EL COLEGIO",
+      "cedula": 1070329396,
+      "primerNombre": "Erika",
+      "segundoNombre": "Alejandra",
+      "primerApellido": "Quintero",
+      "segundoApellido": "Reyes"
+    },
+    "numero": 98,
+    "capitalAdeudado": "$ 50.000.000",
+    "fechaIngreso": "2023-07-20T21:53:49.216Z",
+    "reparto": true,
+    "tipoBien": "BANCOS",
+    "llaveProceso": "25245408900120170023900",
+    "grupo": "Bancolombia",
+    "clase": "BANCOS"
+  },
+  {
+    "deudor": {
+      "cedula": 52189873,
+      "email": "darnelly-74@hotmail.com",
+      "primerNombre": "Darnelly",
+      "primerApellido": "Hernandez",
+      "segundoApellido": "Martinez",
+      "direccion": "CALLE 74G # 80 - 58 SUR",
+      "tel": {
+        "fijo": 4530972,
+        "celular": 3144189224
+      }
+    },
+    "numero": 170,
+    "capitalAdeudado": "$ 14.795.921",
+    "fechaIngreso": "2023-07-20T21:53:49.227Z",
+    "reparto": true,
+    "tipoBien": "INMUEBLE APTO 504",
+    "llaveProceso": "11001400302520170090300",
+    "grupo": "Bancolombia",
+    "clase": "INMUEBLE APTO 504"
+  },
+  {
+    "deudor": {
+      "direccion": "CARRERA  101  No 71 B - 53",
+      "email": "natis-rolita@hotmail.con",
+      "cedula": 35506033,
+      "primerNombre": "Luz",
+      "segundoNombre": "Dary",
+      "primerApellido": "Puerta",
+      "segundoApellido": "Jaramillo",
+      "tel": {
+        "celular": 3103430010,
+        "fijo": 4357832
+      }
+    },
+    "numero": 274,
+    "capitalAdeudado": "$ 12.347.548",
+    "fechaIngreso": "2023-07-20T21:53:49.239Z",
+    "reparto": true,
+    "codeudor": {
+      "direccion": "CARRERA  115 No 89 A - 31 INT 12 APART 202",
+      "cedula": 4337296,
+      "Nombre": "JOSE NOEL PUERTA PUERTA"
+    },
+    "llaveProceso": "11001400303720170139100",
+    "grupo": "Bancolombia"
+  },
+  {
+    "deudor": {
+      "direccion": "CALLE 64 SUR  No 85 B - 40  APARTAMENTO  104",
+      "email": "ars.09@hotmail.com",
+      "cedula": 1032383389,
+      "primerNombre": "Anderson",
+      "primerApellido": "Revelo",
+      "segundoApellido": "Santos",
+      "tel": {
+        "celular": 3118526428,
+        "fijo": 4725511
+      }
+    },
+    "numero": 289,
+    "capitalAdeudado": "$ 12.249.598",
+    "fechaIngreso": "2023-07-20T21:53:49.250Z",
+    "reparto": true,
+    "tipoBien": "APTO 104 TORRE 4",
+    "obligacion": {
+      "1": "320088443  / 377813441863587",
+      "2": 4513070212799642
+    },
+    "llaveProceso": "11001400304820170097400",
+    "grupo": "Bancolombia",
+    "clase": "APTO 104 TORRE 4"
+  },
+  {
+    "deudor": {
+      "direccion": "CARRERA 72 A- No 9 - 44",
+      "email": "li_bcar@hotmail.com",
+      "cedula": 79388145,
+      "primerNombre": "Libardo",
+      "segundoNombre": "Alfonso",
+      "primerApellido": "Gonzalez",
+      "segundoApellido": "Triviño"
+    },
+    "numero": 306,
+    "capitalAdeudado": "$ 40.406.421",
+    "fechaIngreso": "2023-07-20T21:53:49.262Z",
+    "reparto": true,
+    "tipoBien": "VEHICULO",
+    "obligacion": {
+      "1": "1740086734 4513073749673967",
+      "2": 5303719549810730
+    },
+    "llaveProceso": "11001400302120170153200",
+    "grupo": "Bancolombia",
+    "clase": "VEHICULO"
+  },
+  {
+    "deudor": {
+      "direccion": "CARRERA 6 No 6-59",
+      "email": "mopadinco@yahoo.com",
+      "cedula": 13222728,
+      "primerNombre": "Modesto",
+      "primerApellido": "Pineda",
+      "segundoApellido": "Perez"
+    },
+    "numero": 494,
+    "capitalAdeudado": "$ 27.373.832",
+    "fechaIngreso": "2023-07-20T21:53:49.273Z",
+    "reparto": true,
+    "tipoBien": "CASA",
+    "obligacion": {
+      "1": "AUDIOPRESTAMO",
+      "2": 5491570347356810
+    },
+    "llaveProceso": "25175408900320180060200",
+    "grupo": "Bancolombia",
+    "clase": "CASA"
+  },
+  {
+    "deudor": {
+      "direccion": "KR 81 No. 127 A - 46 CONJUNTO MONTE AZUL BOGOTA",
+      "email": "yadelcis@hotmail.com",
+      "cedula": 51813018,
+      "primerNombre": "Sandra",
+      "segundoNombre": "Leonor",
+      "primerApellido": "Paez",
+      "segundoApellido": "Murcia",
+      "tel": {
+        "celular": 3134386087,
+        "fijo": 6139147
+      }
+    },
+    "numero": 529,
+    "capitalAdeudado": "$ 35.608.653",
+    "fechaIngreso": "2023-07-20T21:53:49.281Z",
+    "reparto": true,
+    "codeudor": {
+      "direccion": "KR 81 No. 127 - 46 Torre 1 Apt 401",
+      "cedula": 19299851,
+      "Nombre": "MARCO TULIO SANCHEZ MEDINA"
+    },
+    "obligacion": {
+      "1": 2020084294,
+      "2": "2020087484 // 4594250317705437 //5303723260933890"
+    },
+    "llaveProceso": "11001400304220200053500",
+    "grupo": "Bancolombia"
+  },
+  {
+    "deudor": {
+      "direccion": "DIAGONAL 28 No 33-27  TORRE 7 APART 203  SOACHA",
+      "email": "jairopardo8-11-70@hotmail.com",
+      "cedula": 79522009,
+      "primerNombre": "Jairo",
+      "segundoNombre": "Alfonso",
+      "primerApellido": "Pardo",
+      "segundoApellido": "jaimes"
+    },
+    "numero": 366,
+    "capitalAdeudado": "$ 56.987.693",
+    "fechaIngreso": "2023-07-20T21:53:49.290Z",
+    "reparto": true,
+    "obligacion": {
+      "1": 1680097436,
+      "2": 148653
+    },
+    "llaveProceso": "2575440030042018000600",
+    "grupo": "Bancolombia"
+  },
+  {
+    "deudor": {
+      "direccion": "CARRERA 18 B No 4 C -  20  SOACHA",
+      "email": "saliradelante2012@hotmail.com",
+      "cedula": 8799171,
+      "primerNombre": "Manuel",
+      "segundoNombre": "Enrique",
+      "primerApellido": "Arteaga",
+      "segundoApellido": "Orozco"
+    },
+    "numero": 312,
+    "capitalAdeudado": "$ 44.944.657",
+    "fechaIngreso": "2023-07-20T21:53:49.298Z",
+    "reparto": true,
+    "tipoBien": "APTO 101 TORRE 20",
+    "obligacion": {
+      "1": "180049   53037120066499008",
+      "2": "3778133433049336 /4513075801129044"
+    },
+    "llaveProceso": "25754400300120170032300",
+    "grupo": "Bancolombia",
+    "clase": "APTO 101 TORRE 20"
+  },
+  {
+    "deudor": {
+      "cedula": 51987570,
+      "email": "sandrabogota2007@yahoo.com",
+      "primerNombre": "Sandra",
+      "segundoNombre": "Patricia",
+      "primerApellido": "Pacheco",
+      "segundoApellido": "Ramirez",
+      "direccion": "CALLE 163 B No 50-80  INTERIOR 10 APT 231 CONJUNTO LA ESTANCIA III"
+    },
+    "numero": 489,
+    "capitalAdeudado": "$ 18.100.699",
+    "fechaIngreso": "2023-07-20T21:53:49.308Z",
+    "reparto": true,
+    "tipoBien": "APTO 231",
+    "obligacion": {
+      "1": "AUDIOPRESTAMO",
+      "2": "0377816345049476 // 4513070259455355 // 5303720114305077"
+    },
+    "llaveProceso": "11001418900820180078500",
+    "grupo": "Bancolombia",
+    "clase": "APTO 231"
+  },
+  {
+    "deudor": {
+      "direccion": "CALLE 2 A # 5-22 APTO 503",
+      "email": "joalvato09@hotmail.com",
+      "cedula": 11230400,
+      "primerNombre": "Jose",
+      "segundoNombre": "Alfonso",
+      "primerApellido": "Vasquez",
+      "segundoApellido": "Tovar"
+    },
+    "numero": 506,
+    "capitalAdeudado": "$ 29.416.113",
+    "fechaIngreso": "2023-07-20T21:53:49.316Z",
+    "reparto": true,
+    "tipoBien": "APTO 503",
+    "llaveProceso": "25377408900120180037100",
+    "grupo": "Bancolombia",
+    "clase": "APTO 503"
+  },
+  {
+    "deudor": {
+      "direccion": "CALLE 2 C No 62 - 20",
+      "email": "maifren_13@yahoo.es",
+      "cedula": 19255260,
+      "primerNombre": "Matias",
+      "segundoNombre": "Humberto",
+      "primerApellido": "Avila",
+      "segundoApellido": "Aguilar",
+      "tel": {
+        "celular": 3125024008,
+        "fijo": 4170527
+      }
+    },
+    "numero": 278,
+    "capitalAdeudado": "$ 66.362.959",
+    "fechaIngreso": "2023-07-20T21:53:49.324Z",
+    "reparto": true,
+    "codeudor": {
+      "direccion": "DG 3B No. 0-78 ESTE",
+      "cedula": [41759787, 39710157],
+      "Nombre": [
+        "CARMELINA AGUILAR ",
+        " ANA LUCIA AGUILAR"
+      ],
+      "tel": {
+        "celular": 3204613419,
+        "fijo": 3107627120
+      }
+    },
+    "tipoBien": "CASA",
+    "llaveProceso": "11001400301520170139400",
+    "grupo": "Bancolombia",
+    "clase": "CASA"
+  },
+  {
+    "deudor": {
+      "direccion": "DIAGONAL 2 # 21 B-20",
+      "email": "leidyyaneth.lyv@gmail.com",
+      "cedula": 52883958,
+      "primerNombre": "Leidy",
+      "segundoNombre": "Yaneth",
+      "primerApellido": "Vidal",
+      "segundoApellido": "Rodriguez"
+    },
+    "numero": 461,
+    "capitalAdeudado": "$ 24.501.535",
+    "fechaIngreso": "2023-07-20T21:53:49.333Z",
+    "reparto": true,
+    "tipoBien": "PREDIO RURAL",
+    "obligacion": {
+      "1": "AMERICAN 0377814037749057",
+      "2": "VISA 4513083943843365 // MASTER 5303729958258417"
+    },
+    "llaveProceso": "11001418901420190065600",
+    "grupo": "Bancolombia",
+    "clase": "PREDIO RURAL"
+  },
+  {
+    "deudor": {
+      "cedula": 52883958,
+      "email": "leidyyaneth.lyv@gmail.com",
+      "primerNombre": "Leidy",
+      "segundoNombre": "Yaneth",
+      "primerApellido": "Vidal",
+      "segundoApellido": "Rodriguez",
+      "direccion": "DIAGONAL 2 # 21 B-20"
+    },
+    "numero": 461,
+    "capitalAdeudado": "$ 24.501.535",
+    "fechaIngreso": "2023-07-20T21:53:49.342Z",
+    "reparto": true,
+    "tipoBien": "PREDIO RURAL",
+    "obligacion": {
+      "1": "AMERICAN 0377814037749057",
+      "2": "VISA 4513083943843365 // MASTER 5303729958258417"
+    },
+    "llaveProceso": "11001418901420190065600",
+    "grupo": "Bancolombia",
+    "clase": "PREDIO RURAL"
+  },
+  {
+    "deudor": {
+      "direccion": "DIAGONAL 77B No 119 A-74 APTO 504 INT6",
+      "email": "dcentro@pcpplasticos.com",
+      "cedula": 3208569,
+      "primerNombre": "Floresmiro",
+      "primerApellido": "Aponte",
+      "segundoApellido": "Acosta"
+    },
+    "numero": 497,
+    "capitalAdeudado": "$ 24.807.317",
+    "fechaIngreso": "2023-07-20T21:53:49.353Z",
+    "reparto": true,
+    "codeudor": {
+      "direccion": "DIAGONAL 77B No 119 A-74 APTO 504 INT6",
+      "cedula": 51955296,
+      "Nombre": "FLOR ANGELA RODRIGUEZ"
+    },
+    "tipoBien": "APTO 504",
+    "obligacion": {
+      "1": "20990123680  7/  377813468472239",
+      "2": "4513079359765043 // 53037220341399596"
+    },
+    "llaveProceso": "11001418901320190070800",
+    "grupo": "Bancolombia",
+    "clase": "APTO 504"
+  },
+  {
+    "deudor": {
+      "direccion": "AV BOYACA 63D - 26 OFICINA 103",
+      "cedula": 900520023,
+      "primerNombre": "Dimoin",
+      "primerApellido": "Colombia",
+      "segundoApellido": "S.A.S"
+    },
+    "numero": 530,
+    "capitalAdeudado": "$ 15.324.570",
+    "fechaIngreso": "2023-07-20T21:53:49.368Z",
+    "reparto": true,
+    "obligacion": {
+      "1": 65886140334,
+      "2": 4594260446916180
+    },
+    "llaveProceso": "11001400306820200102100",
+    "grupo": "Bancolombia"
+  }
+]

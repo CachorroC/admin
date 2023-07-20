@@ -11,7 +11,11 @@
     "captura": "1999-01-01",
     "secuestro": "1999-01-01"
   },
-  "bienes": ["inmueble", "vehiculo", "cuentaBancaria"],
+  "bienes": [
+    "inmueble",
+    "vehiculo",
+    "cuentaBancaria"
+  ],
   "placasNumeroMatricula": "zzy-059",
   "respuestaEmbargo": false
 }

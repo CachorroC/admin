@@ -7,13 +7,16 @@ export const ModalForm = ({
   setModalFormData
 }: {
   mail: string;
-  setModalFormData: React.Dispatch<React.SetStateAction<string>>;
+  setModalFormData: React.Dispatch<
+    React.SetStateAction<string>
+  >;
 }) => {
-  const { register, reset, handleSubmit } = useForm<FormValues>({
-    defaultValues: {
-      mail
-    }
-  });
+  const { register, reset, handleSubmit } =
+    useForm<FormValues>({
+      defaultValues: {
+        mail
+      }
+    });
   React.useEffect(() => {
     reset({
       mail

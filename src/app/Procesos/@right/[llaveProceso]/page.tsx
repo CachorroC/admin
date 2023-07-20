@@ -10,9 +10,11 @@ export default async function PageProcesosRightllaveProceso({
     llaveProceso: string;
   };
 }) {
-  const carpeta = await getCarpetasByllaveProceso({
-    llaveProceso: params.llaveProceso
-  });
+  const carpeta = await getCarpetasByllaveProceso(
+    {
+      llaveProceso: params.llaveProceso
+    }
+  );
 
   const Procesos = await getProceso({
     llaveProceso: params.llaveProceso
@@ -21,7 +23,9 @@ export default async function PageProcesosRightllaveProceso({
   return (
     <>
       <p>page</p>
-      <h1 className={typography.displayMedium}>Procesos Disponibles</h1>
+      <h1 className={typography.displayMedium}>
+        Procesos Disponibles
+      </h1>
       {Procesos.map((proceso) => {
         return (
           <ProcesoCard

@@ -24,7 +24,9 @@
       "0377816345049476 // 4513070259455355 // 5303720114305077"
     ],
     "Proceso": { "Tipo": "PRENDARIO" },
-    "Ubicacion": { "Juzgado": "JUZGADOS EJECUCION" }
+    "Ubicacion": {
+      "Juzgado": "JUZGADOS EJECUCION"
+    }
   },
   "Deudor": {
     "Id": 51987570,
@@ -47,7 +49,10 @@
     "MedidaSolicitada": "EMBARGO DE INMUEBLE",
     "Bienes": "APTO 231",
     "FechaOrdena": "2018-11-20",
-    "Oficio": { "Numero": 2288, "Fecha": "2018-11-20" },
+    "Oficio": {
+      "Numero": 2288,
+      "Fecha": "2018-11-20"
+    },
     "PlacaoNumeroMatricula": "50N - 20247423",
     "RespuestaEmbargo": false,
     "Extra": "",
@@ -86,15 +91,25 @@
     "conDocumentos": false,
     "cant": 26
   },
-  "Codeudor": { "Id": "", "Nombre": "", "Tel": { "Fijo": "", "Celular": "" } },
+  "Codeudor": {
+    "Id": "",
+    "Nombre": "",
+    "Tel": { "Fijo": "", "Celular": "" }
+  },
   "Avaluo": {
     "Adjudicacion": { "Fecha": "" },
     "Remate": { "Fecha": "" },
     "Valor": ""
   },
-  "SuspencionProceso": { "TerminoSuspencion": "", "Fecha": "" },
+  "SuspencionProceso": {
+    "TerminoSuspencion": "",
+    "Fecha": ""
+  },
   "Liquidacion": {
-    "Costas": { "FechaAprobacion": "", "Valor": "" },
+    "Costas": {
+      "FechaAprobacion": "",
+      "Valor": ""
+    },
     "Fecha": {
       "Aprobacion": "",
       "Presentacion": "",

@@ -1,15 +1,28 @@
 import 'server-only';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { fixFechas } from '#@/lib/fix';
-import type { Demanda, IntCarpeta, MonCarpeta } from '#@/lib/types/demandados';
+import type {
+  Demanda,
+  IntCarpeta,
+  MonCarpeta
+} from '#@/lib/types/demandados';
 import Link from 'next/link';
-import { Fragment, ReactNode, Suspense, useEffect, useState } from 'react';
+import {
+  Fragment,
+  ReactNode,
+  Suspense,
+  useEffect,
+  useState
+} from 'react';
 import styles from './carpetas.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getActuaciones } from '#@/lib/Actuaciones';
 import { Loader } from '#@/components/Loader';
 import { Card } from '#@/components/card/card-with-carpeta';
-import { getProceso, getProcesos } from '#@/lib/RamaJudicial';
+import {
+  getProceso,
+  getProcesos
+} from '#@/lib/RamaJudicial';
 import { ProcesoCard } from '../ProcesosCard';
 import { NombreComponent } from '../Nombre';
 
@@ -66,16 +79,27 @@ const Fecha = async ({
   idProceso: number;
   index: number;
 }) => {
-  const acts = await getActuaciones(idProceso, index);
+  const acts = await getActuaciones(
+    idProceso,
+    index
+  );
 
   if (acts.length === 0) {
     return null;
   }
 
-  return <div className={styles.date}>{fixFechas(acts[0].fechaActuacion)}</div>;
+  return (
+    <div className={styles.date}>
+      {fixFechas(acts[0].fechaActuacion)}
+    </div>
+  );
 };
 
-export const DemandaContainer = ({ demanda }: { demanda: Demanda }) => {
+export const DemandaContainer = ({
+  demanda
+}: {
+  demanda: Demanda;
+}) => {
   const {
     Departamento,
     Municipio,
@@ -91,13 +115,16 @@ export const DemandaContainer = ({ demanda }: { demanda: Demanda }) => {
 
   return (
     <div className={styles.section}>
-      <h1 className={typography.headlineMedium}>{Radicado}</h1>
+      <h1 className={typography.headlineMedium}>
+        {Radicado}
+      </h1>
       <h2
-        className={
-          typography.titleMedium
-        }>{`${Departamento}: ${Municipio}`}</h2>
+        className={typography.titleMedium}
+      >{`${Departamento}: ${Municipio}`}</h2>
       {VencimientoPagare && (
-        <p className={typography.labelMedium}>{fixFechas(VencimientoPagare)}</p>
+        <p className={typography.labelMedium}>
+          {fixFechas(VencimientoPagare)}
+        </p>
       )}
       {EntregadeGarantiasAbogado && (
         <p className={typography.labelSmall}>
@@ -105,7 +132,9 @@ export const DemandaContainer = ({ demanda }: { demanda: Demanda }) => {
         </p>
       )}
       {CapitalAdeudado && (
-        <p className={typography.labelSmall}>{CapitalAdeudado}</p>
+        <p className={typography.labelSmall}>
+          {CapitalAdeudado}
+        </p>
       )}
     </div>
   );
@@ -114,59 +143,74 @@ export const DemandaContainer = ({ demanda }: { demanda: Demanda }) => {
 export async function ListCardCarpetasNFechas() {
   const carpetas = await getCarpetas();
 
-  const sortedCarpetas = [...carpetas].sort((a, b) => {
-    if (!a.ultimaActuacion || a.ultimaActuacion.fechaActuacion === undefined) {
-      return 1;
-    }
+  const sortedCarpetas = [...carpetas].sort(
+    (a, b) => {
+      if (
+        !a.ultimaActuacion ||
+        a.ultimaActuacion.fechaActuacion ===
+          undefined
+      ) {
+        return 1;
+      }
 
-    if (!b.ultimaActuacion || b.ultimaActuacion.fechaActuacion === undefined) {
-      return -1;
-    }
-    const x = a.ultimaActuacion.fechaActuacion;
-    const y = b.ultimaActuacion.fechaActuacion;
+      if (
+        !b.ultimaActuacion ||
+        b.ultimaActuacion.fechaActuacion ===
+          undefined
+      ) {
+        return -1;
+      }
+      const x = a.ultimaActuacion.fechaActuacion;
+      const y = b.ultimaActuacion.fechaActuacion;
 
-    if (x < y) {
-      return 1;
-    }
+      if (x < y) {
+        return 1;
+      }
 
-    if (x > y) {
-      return -1;
-    }
+      if (x > y) {
+        return -1;
+      }
 
-    return 0;
-  });
+      return 0;
+    }
+  );
 
   return (
     <>
-      {sortedCarpetas.map((carpeta, index, arr) => {
-        return (
-          <Fragment key={carpeta._id}>
-            <NombreComponent
-              Deudor={carpeta.Deudor}
-              key={carpeta._id}
-            />
-            <Card
-              key={carpeta._id}
-              path={'/Procesos'}
-              carpeta={carpeta}>
+      {sortedCarpetas.map(
+        (carpeta, index, arr) => {
+          return (
+            <Fragment key={carpeta._id}>
+              <NombreComponent
+                Deudor={carpeta.Deudor}
+                key={carpeta._id}
+              />
+              <Card
+                key={carpeta._id}
+                path={'/Procesos'}
+                carpeta={carpeta}
+              >
+                <Suspense fallback={<Loader />}>
+                  <Fecha
+                    key={carpeta._id}
+                    idProceso={carpeta.idProceso}
+                    index={index}
+                  />
+                </Suspense>
+              </Card>
               <Suspense fallback={<Loader />}>
-                <Fecha
-                  key={carpeta._id}
-                  idProceso={carpeta.idProceso}
+                <ProcesosList
+                  llaveProceso={
+                    carpeta.llaveProceso
+                  }
+                  key={carpeta.llaveProceso}
                   index={index}
                 />
               </Suspense>
-            </Card>
-            <Suspense fallback={<Loader />}>
-              <ProcesosList
-                llaveProceso={carpeta.llaveProceso}
-                key={carpeta.llaveProceso}
-                index={index}
-              />
-            </Suspense>
-          </Fragment>
-        );
-      })}
+            </Fragment>
+          );
+        }
+      )}
     </>
   );
 }

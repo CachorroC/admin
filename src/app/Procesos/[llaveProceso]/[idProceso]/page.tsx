@@ -13,9 +13,10 @@ export default async function PageProcesosllaveProcesoidProceso({
     idProceso: number;
   };
 }) {
-  const carpetas = await getCarpetasByllaveProceso({
-    llaveProceso: params.llaveProceso
-  });
+  const carpetas =
+    await getCarpetasByllaveProceso({
+      llaveProceso: params.llaveProceso
+    });
 
   return (
     <>
@@ -26,9 +27,12 @@ export default async function PageProcesosllaveProcesoidProceso({
         return (
           <CarpetaCard
             key={carpeta._id}
-            carpeta={carpeta}>
+            carpeta={carpeta}
+          >
             {' '}
-            <span className='material-symbols-outlined'>star</span>
+            <span className='material-symbols-outlined'>
+              star
+            </span>
           </CarpetaCard>
         );
       })}

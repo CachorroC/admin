@@ -2,7 +2,10 @@ import 'server-only';
 import { Suspense } from 'react';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-import { getCarpetas, getCarpetasNew } from '#@/lib/Carpetas';
+import {
+  getCarpetas,
+  getCarpetasNew
+} from '#@/lib/Carpetas';
 import { fetchFechas } from '#@/lib/Actuaciones';
 import { CardSearchList } from '#@/components/search/CardSearchList';
 import type { Route } from 'next';
@@ -22,7 +25,9 @@ export default async function PageCarpetas() {
   return (
     <div className={layout.body}>
       <div className={layout.name}>
-        <h1 className={typography.displaySmall}>Carpetas</h1>
+        <h1 className={typography.displaySmall}>
+          Carpetas
+        </h1>
       </div>
       <div className={layout.left}>
         <Suspense fallback={<Loader />}>

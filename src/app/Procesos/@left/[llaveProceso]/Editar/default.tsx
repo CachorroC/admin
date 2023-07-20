@@ -27,7 +27,8 @@ export default async function Default({
             <Fragment key={ntext.id}>
               <h1
                 key={i}
-                className={typeface.title}>
+                className={typeface.title}
+              >
                 {ntext.nota}
               </h1>
               <Edit

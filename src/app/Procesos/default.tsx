@@ -1,5 +1,9 @@
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function Default() {
-  return <h1 className={typography.displayMedium}>Procesos</h1>;
+  return (
+    <h1 className={typography.displayMedium}>
+      Procesos
+    </h1>
+  );
 }

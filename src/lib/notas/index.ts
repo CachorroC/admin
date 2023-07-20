@@ -1,7 +1,11 @@
 import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
-import { monNota, intNota, notaConvert } from '#@/lib/types/notas';
+import {
+  monNota,
+  intNota,
+  notaConvert
+} from '#@/lib/types/notas';
 import { cache } from 'react';
 
 const Collection = async () => {
@@ -21,7 +25,9 @@ const Collection = async () => {
 const Transform = async () => {
   const collection = await Collection();
 
-  const notasRaw = await collection.find({}).toArray();
+  const notasRaw = await collection
+    .find({})
+    .toArray();
 
   const notas = notaConvert.toMonNotas(notasRaw);
 
@@ -48,20 +54,27 @@ export async function getNotasByllaveProceso({
   return Notas;
 }
 
-export const getNotaById = cache(async ({ id }: { id: string }) => {
-  const notas = await Transform();
+export const getNotaById = cache(
+  async ({ id }: { id: string }) => {
+    const notas = await Transform();
 
-  const Notas = notas.filter((nota) => {
-    return nota.id === id;
-  });
+    const Notas = notas.filter((nota) => {
+      return nota.id === id;
+    });
 
-  return Notas;
-});
+    return Notas;
+  }
+);
 
-export async function postNota({ nota }: { nota: intNota }) {
+export async function postNota({
+  nota
+}: {
+  nota: intNota;
+}) {
   const collection = await Collection();
 
-  const outgoingRequest = await collection.insertOne(nota);
+  const outgoingRequest =
+    await collection.insertOne(nota);
 
   if (!outgoingRequest.acknowledged) {
     return new NextResponse(null, {
@@ -71,7 +84,8 @@ export async function postNota({ nota }: { nota: intNota }) {
 
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
+      outgoingRequest.insertedId +
+        `${outgoingRequest.acknowledged}`
     ),
     {
       status: 200,

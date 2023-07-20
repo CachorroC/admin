@@ -1,5 +1,9 @@
 import styles from './carpetas.module.scss';
-import type { Demanda, IntCarpeta, MonCarpeta } from '#@/lib/types/demandados';
+import type {
+  Demanda,
+  IntCarpeta,
+  MonCarpeta
+} from '#@/lib/types/demandados';
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 import type { Route } from 'next';
@@ -15,7 +19,12 @@ const NotificacionesContainer = ({
 }: {
   notificaciones: Notificaciones;
 }) => {
-  const { AutoNotificado, Certimail, Fisico, Tipo } = notificaciones;
+  const {
+    AutoNotificado,
+    Certimail,
+    Fisico,
+    Tipo
+  } = notificaciones;
 
   return (
     <Accordion>
@@ -26,7 +35,11 @@ const NotificacionesContainer = ({
   );
 };
 
-export const DemandaContainer = ({ demanda }: { demanda: Demanda }) => {
+export const DemandaContainer = ({
+  demanda
+}: {
+  demanda: Demanda;
+}) => {
   const {
     Departamento,
     Municipio,
@@ -42,13 +55,16 @@ export const DemandaContainer = ({ demanda }: { demanda: Demanda }) => {
 
   return (
     <div className={styles.section}>
-      <h1 className={typography.headlineMedium}>{Radicado}</h1>
+      <h1 className={typography.headlineMedium}>
+        {Radicado}
+      </h1>
       <h2
-        className={
-          typography.titleMedium
-        }>{`${Departamento}: ${Municipio}`}</h2>
+        className={typography.titleMedium}
+      >{`${Departamento}: ${Municipio}`}</h2>
       {VencimientoPagare && (
-        <p className={typography.labelMedium}>{fixFechas(VencimientoPagare)}</p>
+        <p className={typography.labelMedium}>
+          {fixFechas(VencimientoPagare)}
+        </p>
       )}
       {EntregadeGarantiasAbogado && (
         <p className={typography.labelSmall}>
@@ -101,51 +117,86 @@ export const CarpetaCard = ({
       <DemandaContainer demanda={Demanda} />
       <div
         className={styles.container}
-        key={_id}>
+        key={_id}
+      >
         <div className={styles.cardInactive}>
-          <NombreComponent Deudor={carpeta.Deudor} />
-          <p className={styles.content}>{Direccion ?? 'sin direccion'}</p>
+          <NombreComponent
+            Deudor={carpeta.Deudor}
+          />
+          <p className={styles.content}>
+            {Direccion ?? 'sin direccion'}
+          </p>
           <div className={styles.links}>
             <Link
               className={styles.button}
-              href={href}>
-              <span className={`material-symbols-outlined ${styles.icon}`}>
+              href={href}
+            >
+              <span
+                className={`material-symbols-outlined ${styles.icon}`}
+              >
                 folder_open
               </span>
-              <span className={styles.tooltiptext}>Abrir</span>
+              <span
+                className={styles.tooltiptext}
+              >
+                Abrir
+              </span>
             </Link>
             <Accordion>{children}</Accordion>
             {Tel && Tel.Celular && (
               <Link
                 className={styles.button}
-                href={`tel:${Tel.Celular}`}>
-                <span className={`material-symbols-outlined ${styles.icon}`}>
+                href={`tel:${Tel.Celular}`}
+              >
+                <span
+                  className={`material-symbols-outlined ${styles.icon}`}
+                >
                   phone_iphone
                 </span>
-                <span className={styles.tooltiptext}>Numero Celular</span>
+                <span
+                  className={styles.tooltiptext}
+                >
+                  Numero Celular
+                </span>
               </Link>
             )}
             {Email && (
               <Link
                 className={styles.button}
-                href={`mailto:${Email}`}>
-                <span className={`material-symbols-outlined ${styles.icon}`}>
+                href={`mailto:${Email}`}
+              >
+                <span
+                  className={`material-symbols-outlined ${styles.icon}`}
+                >
                   forward_to_inbox
                 </span>
-                <span className={styles.tooltiptext}>Email</span>
+                <span
+                  className={styles.tooltiptext}
+                >
+                  Email
+                </span>
               </Link>
             )}
             {Notificaciones && (
-              <NotificacionesContainer notificaciones={Notificaciones} />
+              <NotificacionesContainer
+                notificaciones={Notificaciones}
+              />
             )}
             {Tel && Tel.Fijo && (
               <Link
                 className={styles.button}
-                href={`tel:${Tel.Fijo}`}>
-                <span className={`material-symbols-outlined ${styles.icon}`}>
+                href={`tel:${Tel.Fijo}`}
+              >
+                <span
+                  className={`material-symbols-outlined ${styles.icon}`}
+                >
                   call
                 </span>
-                <span className={styles.tooltiptext}>Numero Fijo</span>
+                <span
+                  className={styles.tooltiptext}
+                >
+                  Numero Fijo
+                </span>
               </Link>
             )}
           </div>

@@ -1,6 +1,9 @@
 'use client';
 import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import {
+  useForm,
+  SubmitHandler
+} from 'react-hook-form';
 type FormValues = {
   Nombres: string;
   Apellidos: string;
@@ -18,7 +21,9 @@ export default function Formulario() {
     formState: { errors }
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = (
+    data
+  ) => {
     return alert(JSON.stringify(data));
   };
 
@@ -60,7 +65,8 @@ export default function Formulario() {
       <select
         {...register('Title', {
           required: true
-        })}>
+        })}
+      >
         <option value='Mr'>Mr</option>
         <option value='Mrs'>Mrs</option>
         <option value='Miss'>Miss</option>
@@ -80,7 +86,9 @@ export default function Formulario() {
         type='radio'
         value='No'
       />
-      <textarea {...register('Comentarios', {})} />
+      <textarea
+        {...register('Comentarios', {})}
+      />
       <input type='submit' />
     </form>
   );

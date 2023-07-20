@@ -20,7 +20,8 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { NoteSliderProvider } from './context/note-slider-context';
 
 const hostname =
-  process.env.URL ?? process.env.NODE_ENV === 'development'
+  process.env.URL ??
+  process.env.NODE_ENV === 'development'
     ? 'beta.rsasesorjuridico.com'
     : 'app.rsasesorjuridico.com';
 
@@ -63,7 +64,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'R&S Asesoría Jurídica',
-    description: 'The React Framework for the Web',
+    description:
+      'The React Framework for the Web',
     url: `https://${hostname}`,
     siteName: 'Next.js',
     images: [
@@ -87,7 +89,10 @@ export const metadata: Metadata = {
       {
         url: '/icons/favicon.png'
       },
-      new URL('/favicon.svg', `https://${hostname}`)
+      new URL(
+        '/favicon.svg',
+        `https://${hostname}`
+      )
     ],
     shortcut: '/safari-pinned-tab.svg',
     apple: '/icons/apple-touch-icon.png',
@@ -103,7 +108,8 @@ export const metadata: Metadata = {
       '/icons/mstile-310x310.png',
       {
         url: '/icons/android-chrome-512x512.png',
-        media: '(device-width: 768px) and (device-height: 1024px)'
+        media:
+          '(device-width: 768px) and (device-height: 1024px)'
       }
     ]
   },
@@ -127,12 +133,15 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${poiret.variable} ${raleway.variable} ${inter.variable} ${roboto.variable} ${josefina.variable} [ color-scheme: light dark ]`}>
+        className={`${poiret.variable} ${raleway.variable} ${inter.variable} ${roboto.variable} ${josefina.variable} [ color-scheme: light dark ]`}
+      >
         <NoteSliderProvider>
           <SearchProvider>
             <ModalProvider>
               <NoteProvider>
-                <div className={`${layout.container} ${typography.container}`}>
+                <div
+                  className={`${layout.container} ${typography.container}`}
+                >
                   {modal} {header} {children}
                 </div>
               </NoteProvider>

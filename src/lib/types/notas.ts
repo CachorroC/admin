@@ -16,7 +16,8 @@ export interface Tarea {
   dueDate: string;
 }
 
-export interface intNota extends intNotaFormValues {
+export interface intNota
+  extends intNotaFormValues {
   llaveProceso: string;
   pathname: string;
   fecha: string;
@@ -28,18 +29,24 @@ export interface monNota extends intNota {
 }
 
 export class notaConvert {
-  public static toMonNotas(notas: WithId<intNota>[]): monNota[] {
+  public static toMonNotas(
+    notas: WithId<intNota>[]
+  ): monNota[] {
     const newNotas = notas.map((nota) => {
       return this.toMonNota(nota);
     });
 
     return newNotas;
   }
-  public static monNotasToJson(value: monNota[]): string {
+  public static monNotasToJson(
+    value: monNota[]
+  ): string {
     return JSON.stringify(value);
   }
 
-  public static toMonNota(nota: WithId<intNota>): monNota {
+  public static toMonNota(
+    nota: WithId<intNota>
+  ): monNota {
     const newNota = {
       ...nota,
       _id: nota._id,
@@ -48,13 +55,17 @@ export class notaConvert {
 
     return newNota;
   }
-  public static monNotaToJson(value: monNota): string {
+  public static monNotaToJson(
+    value: monNota
+  ): string {
     return JSON.stringify(value);
   }
   public static toTarea(json: string): Tarea {
     return JSON.parse(json);
   }
-  public static tareaToJson(value: Tarea): string {
+  public static tareaToJson(
+    value: Tarea
+  ): string {
     return JSON.stringify(value);
   }
 }

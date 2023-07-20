@@ -1,6 +1,12 @@
 import 'server-only';
-import { NextRequest, NextResponse } from 'next/server';
-import { IntActuaciones, intConsultaActuaciones } from '#@/lib/types/procesos';
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server';
+import {
+  IntActuaciones,
+  intConsultaActuaciones
+} from '#@/lib/types/procesos';
 
 export async function GET(
   Request: NextRequest,
@@ -27,14 +33,18 @@ export async function GET(
             }
       };
 
-      return new NextResponse(JSON.stringify(Response), {
-        status: 200,
-        headers: {
-          'content-type': 'application/json'
+      return new NextResponse(
+        JSON.stringify(Response),
+        {
+          status: 200,
+          headers: {
+            'content-type': 'application/json'
+          }
         }
-      });
+      );
     }
-    const res = (await req.json()) as intConsultaActuaciones;
+    const res =
+      (await req.json()) as intConsultaActuaciones;
 
     if (res.actuaciones) {
       const Response: IntActuaciones = {
@@ -46,12 +56,15 @@ export async function GET(
         acts: res.actuaciones
       };
 
-      return new NextResponse(JSON.stringify(Response), {
-        status: 200,
-        headers: {
-          'content-type': 'application/json'
+      return new NextResponse(
+        JSON.stringify(Response),
+        {
+          status: 200,
+          headers: {
+            'content-type': 'application/json'
+          }
         }
-      });
+      );
     }
     const text = await req.text();
 
@@ -60,12 +73,15 @@ export async function GET(
       text: JSON.parse(text)
     };
 
-    return new NextResponse(JSON.stringify(Response), {
-      status: 200,
-      headers: {
-        'content-type': 'application/json'
+    return new NextResponse(
+      JSON.stringify(Response),
+      {
+        status: 200,
+        headers: {
+          'content-type': 'application/json'
+        }
       }
-    });
+    );
   } catch {
     (error: unknown | any) => {
       const Response: IntActuaciones = {
@@ -76,12 +92,15 @@ export async function GET(
         }
       };
 
-      return new NextResponse(JSON.stringify(Response), {
-        status: 200,
-        headers: {
-          'content-type': 'application/json'
+      return new NextResponse(
+        JSON.stringify(Response),
+        {
+          status: 200,
+          headers: {
+            'content-type': 'application/json'
+          }
         }
-      });
+      );
     };
   }
 
@@ -93,10 +112,13 @@ export async function GET(
     }
   };
 
-  return new NextResponse(JSON.stringify(Response), {
-    status: 200,
-    headers: {
-      'content-type': 'application/json'
+  return new NextResponse(
+    JSON.stringify(Response),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'application/json'
+      }
     }
-  });
+  );
 }

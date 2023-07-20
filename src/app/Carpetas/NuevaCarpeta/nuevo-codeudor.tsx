@@ -6,7 +6,11 @@ import { Accordion } from '#@/components/Accordion';
 export function NuevoCodeudorSection() {
   return (
     <section className={form.section}>
-      <h4 className={`${form.title} ${typography.displayMedium}`}>Codeudor</h4>
+      <h4
+        className={`${form.title} ${typography.displayMedium}`}
+      >
+        Codeudor
+      </h4>
 
       <InputSection
         name={'Codeudor.Id'}

@@ -18,7 +18,9 @@ export default function NuevaNotallaveProceso({
         />
       </div>
       <div className={layout.right}>
-        <Notas llaveProceso={params.llaveProceso} />
+        <Notas
+          llaveProceso={params.llaveProceso}
+        />
       </div>
     </div>
   );

@@ -33,7 +33,8 @@
   &:link,
   &:visited {
     background-color: var(--primary-container);
-    border: dashed solid 2px var(--on-primary-container);
+    border: dashed solid 2px
+      var(--on-primary-container);
     box-shadow: var(--dp4);
   }
   &:hover,
@@ -43,7 +44,9 @@
   }
 }
 .input {
-  background-color: var(--surface-container-lowest);
+  background-color: var(
+    --surface-container-lowest
+  );
   border: none;
   color: var(--on-surface);
   grid-area: inputSearchBar;

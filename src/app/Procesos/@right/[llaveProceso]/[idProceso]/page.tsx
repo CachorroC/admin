@@ -1,20 +1,35 @@
-import { getCarpetas, getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import { fixDemandado, fixFechas } from '#@/lib/fix';
+import {
+  getCarpetas,
+  getCarpetasByllaveProceso
+} from '#@/lib/Carpetas';
+import {
+  fixDemandado,
+  fixFechas
+} from '#@/lib/fix';
 import layout from '#@/styles/scss/layout.module.scss';
 import { Fragment } from 'react';
 import typography from '#@/styles/fonts/typography.module.scss';
 import box from '#@/styles/scss/box.module.scss';
 import { IntActuaciones } from '#@/lib/types/procesos';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
-import { getNotas, getNotasByllaveProceso } from '#@/lib/notas';
+import {
+  getNotas,
+  getNotasByllaveProceso
+} from '#@/lib/notas';
 import { NewNota } from '#@/components/nota/NuevaNota';
 import note from '#@/components/nota/note.module.scss';
 import { Notas } from '#@/components/nota/notas';
 
-async function Name({ llaveProceso }: { llaveProceso: string }) {
-  const proceso = await getCarpetasByllaveProceso({
-    llaveProceso: llaveProceso
-  });
+async function Name({
+  llaveProceso
+}: {
+  llaveProceso: string;
+}) {
+  const proceso = await getCarpetasByllaveProceso(
+    {
+      llaveProceso: llaveProceso
+    }
+  );
 
   const nombre = proceso
     .map((p) => {
@@ -22,26 +37,44 @@ async function Name({ llaveProceso }: { llaveProceso: string }) {
     })
     .toString();
 
-  return <h3 className={typography.displayMedium}>{nombre}</h3>;
+  return (
+    <h3 className={typography.displayMedium}>
+      {nombre}
+    </h3>
+  );
 }
 
-async function Acts({ idProceso }: { idProceso: number }) {
+async function Acts({
+  idProceso
+}: {
+  idProceso: number;
+}) {
   const acts = await fetch(
     `${getBaseUrl()}/api/Procesos/Actuaciones/${idProceso}`
   );
-  const res = (await acts.json()) as IntActuaciones;
+  const res =
+    (await acts.json()) as IntActuaciones;
 
   return (
     <div
       className={box.container}
-      key={idProceso}>
-      <h1 className={typography.titleLarge}>{res.text.message}</h1>
-      <p className={typography.bodyMedium}>{res.text.statusCode.toString()}</p>
+      key={idProceso}
+    >
+      <h1 className={typography.titleLarge}>
+        {res.text.message}
+      </h1>
+      <p className={typography.bodyMedium}>
+        {res.text.statusCode.toString()}
+      </p>
       {res.acts ? (
         <>
           <p>{res.acts[0].actuacion}</p>
           <p>{res.acts[0].anotacion}</p>
-          <p>{fixFechas(res.acts[0].fechaActuacion)}</p>
+          <p>
+            {fixFechas(
+              res.acts[0].fechaActuacion
+            )}
+          </p>
         </>
       ) : (
         <p>nothing</p>
@@ -55,13 +88,16 @@ export default async function PageProcesosRightllaveProcesoidProceso({
 }: {
   params: { llaveProceso: string };
 }) {
-  const carpeta = await getCarpetasByllaveProceso({
-    llaveProceso: params.llaveProceso
-  });
+  const carpeta = await getCarpetasByllaveProceso(
+    {
+      llaveProceso: params.llaveProceso
+    }
+  );
 
-  const notasllaveProceso = await getNotasByllaveProceso({
-    llaveProceso: params.llaveProceso
-  });
+  const notasllaveProceso =
+    await getNotasByllaveProceso({
+      llaveProceso: params.llaveProceso
+    });
   const cantidadNotas = notasllaveProceso.length;
   const notas = await getNotas();
 
@@ -83,7 +119,9 @@ export default async function PageProcesosRightllaveProcesoidProceso({
             llaveProceso={params.llaveProceso}
             uri={`${getBaseUrl()}`}
           />
-          <Notas llaveProceso={params.llaveProceso} />
+          <Notas
+            llaveProceso={params.llaveProceso}
+          />
         </>
       );
     case 2:
@@ -93,7 +131,9 @@ export default async function PageProcesosRightllaveProcesoidProceso({
             llaveProceso={params.llaveProceso}
             uri={`${getBaseUrl()}`}
           />
-          <Notas llaveProceso={params.llaveProceso} />
+          <Notas
+            llaveProceso={params.llaveProceso}
+          />
         </>
       );
     default:
@@ -103,7 +143,9 @@ export default async function PageProcesosRightllaveProcesoidProceso({
             llaveProceso={params.llaveProceso}
             uri={`${getBaseUrl()}`}
           />
-          <Notas llaveProceso={params.llaveProceso} />
+          <Notas
+            llaveProceso={params.llaveProceso}
+          />
         </>
       );
   }

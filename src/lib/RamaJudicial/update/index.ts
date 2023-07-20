@@ -12,29 +12,31 @@ export async function updateProceso({
   const collection = await procesosCollection();
   const carpetasColl = await carpetasCollection();
 
-  const requestUpdate = await collection.findOneAndUpdate(
-    {
-      idProceso: proceso.idProceso
-    },
-    {
-      $set: proceso
-    },
-    {
-      returnDocument: 'after',
-      upsert: true
-    }
-  );
-
-  const carpetaUpdate = await carpetasColl.updateOne(
-    {
-      llaveProceso: proceso.llaveProceso
-    },
-    {
-      $addToSet: {
-        procesos: proceso
+  const requestUpdate =
+    await collection.findOneAndUpdate(
+      {
+        idProceso: proceso.idProceso
+      },
+      {
+        $set: proceso
+      },
+      {
+        returnDocument: 'after',
+        upsert: true
       }
-    }
-  );
+    );
+
+  const carpetaUpdate =
+    await carpetasColl.updateOne(
+      {
+        llaveProceso: proceso.llaveProceso
+      },
+      {
+        $addToSet: {
+          procesos: proceso
+        }
+      }
+    );
   console.log(carpetaUpdate.modifiedCount);
   console.log(carpetaUpdate.matchedCount);
 

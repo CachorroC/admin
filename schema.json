@@ -530,7 +530,10 @@
           "format": "date"
         }
       },
-      "required": ["AutoTerminacion", "RadicacionMemorial"],
+      "required": [
+        "AutoTerminacion",
+        "RadicacionMemorial"
+      ],
       "title": "TerminacionFecha"
     },
     "UltimaActuacion": {

@@ -31,7 +31,9 @@
   }
   .date {
     grid-area: date;
-    background-color: var(--surface-container-highest);
+    background-color: var(
+      --surface-container-highest
+    );
     padding: 2cqmin;
     color: var(--on-surface);
     font-family: var(--font-poiret);

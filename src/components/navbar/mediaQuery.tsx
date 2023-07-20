@@ -13,11 +13,13 @@ export default function useMedia(query: number) {
 
           break;
         case 1:
-          media = '(min-width: 600px) and (max-width: 1200px)';
+          media =
+            '(min-width: 600px) and (max-width: 1200px)';
 
           break;
         case 2:
-          media = '(min-width: 1200px) and (max-width: 1920px)';
+          media =
+            '(min-width: 1200px) and (max-width: 1920px)';
 
           break;
         case 3:
@@ -50,7 +52,10 @@ export default function useMedia(query: number) {
     media.addEventListener('change', listener);
 
     return () => {
-      return media.removeEventListener('change', listener);
+      return media.removeEventListener(
+        'change',
+        listener
+      );
     };
   }, [matches, query]);
 

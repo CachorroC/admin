@@ -1,25 +1,31 @@
 import 'server-only';
 import { notFound } from 'next/navigation';
-import { intConsultaNumeroRadicacion, intProceso } from '#@/lib/types/procesos';
+import {
+  intConsultaNumeroRadicacion,
+  intProceso
+} from '#@/lib/types/procesos';
 import { ObjectId } from 'mongodb';
 import { sleep } from '#@/lib/fix';
 import { cache } from 'react';
 import clientPromise from '#@/lib/mongodb';
 import { updateProceso } from './update';
 
-export const procesosCollection = cache(async () => {
-  const client = await clientPromise;
+export const procesosCollection = cache(
+  async () => {
+    const client = await clientPromise;
 
-  if (!client) {
-    throw new Error('no hay cliente mongólico');
+    if (!client) {
+      throw new Error('no hay cliente mongólico');
+    }
+
+    const db = client.db('RyS');
+
+    const procesos =
+      db.collection<intProceso>('Procesos');
+
+    return procesos;
   }
-
-  const db = client.db('RyS');
-
-  const procesos = db.collection<intProceso>('Procesos');
-
-  return procesos;
-});
+);
 
 export async function fetchProceso({
   llaveProceso,
@@ -44,7 +50,8 @@ export async function fetchProceso({
     if (!req.ok) {
       return [];
     }
-    const res = (await req.json()) as intConsultaNumeroRadicacion;
+    const res =
+      (await req.json()) as intConsultaNumeroRadicacion;
     const procesos = res.procesos;
 
     return procesos;
@@ -60,10 +67,15 @@ export async function fetchProcesos({
 }: {
   llavesProceso: string[];
 }) {
-  const procesos: Map<string, intProceso[]> = new Map();
+  const procesos: Map<string, intProceso[]> =
+    new Map();
 
   try {
-    for (let ia = 0; ia < llavesProceso.length; ia++) {
+    for (
+      let ia = 0;
+      ia < llavesProceso.length;
+      ia++
+    ) {
       const llaveProceso = llavesProceso[ia];
       const awaitTime = ia * 1000;
 
@@ -77,7 +89,9 @@ export async function fetchProcesos({
 
     return procesos;
   } catch (error) {
-    console.log(error ?? 'error en fetchProcesos');
+    console.log(
+      error ?? 'error en fetchProcesos'
+    );
 
     return procesos;
   }
@@ -96,18 +110,29 @@ export async function getProceso({
     llaveProceso: llaveProceso,
     index: awaitTime
   });
-  const returnedProcesos: Map<number, intProceso> = new Map();
+  const returnedProcesos: Map<
+    number,
+    intProceso
+  > = new Map();
 
-  for (let prc = 0; prc < ultimosProcesos.length; prc++) {
+  for (
+    let prc = 0;
+    prc < ultimosProcesos.length;
+    prc++
+  ) {
     const proceso = ultimosProcesos[prc];
 
     const updtProceso = await updateProceso({
       proceso: proceso,
       index: prc
     });
-    const returnedProceso = updtProceso.value ?? proceso;
+    const returnedProceso =
+      updtProceso.value ?? proceso;
 
-    returnedProcesos.set(proceso.idProceso, returnedProceso);
+    returnedProcesos.set(
+      proceso.idProceso,
+      returnedProceso
+    );
   }
 
   return Array.from(returnedProcesos.values());
@@ -118,9 +143,16 @@ export async function getProcesos({
 }: {
   llavesProceso: string[];
 }) {
-  const returnedProcesos: Map<number, intProceso> = new Map();
+  const returnedProcesos: Map<
+    number,
+    intProceso
+  > = new Map();
 
-  for (let index = 0; index < llavesProceso.length; index++) {
+  for (
+    let index = 0;
+    index < llavesProceso.length;
+    index++
+  ) {
     const llaveProceso = llavesProceso[index];
     const awaitTime = index * 1000;
 
@@ -128,14 +160,20 @@ export async function getProcesos({
       llaveProceso: llaveProceso,
       index: awaitTime
     });
-    ultimosProcesos.forEach(async (proceso, i) => {
-      const updtProceso = await updateProceso({
-        proceso: proceso,
-        index: index * i
-      });
-      const returnedProceso = updtProceso.value ?? proceso;
-      returnedProcesos.set(proceso.idProceso, returnedProceso);
-    });
+    ultimosProcesos.forEach(
+      async (proceso, i) => {
+        const updtProceso = await updateProceso({
+          proceso: proceso,
+          index: index * i
+        });
+        const returnedProceso =
+          updtProceso.value ?? proceso;
+        returnedProcesos.set(
+          proceso.idProceso,
+          returnedProceso
+        );
+      }
+    );
   }
 
   return returnedProcesos;

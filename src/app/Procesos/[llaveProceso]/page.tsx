@@ -6,10 +6,16 @@ import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import Link from 'next/link';
 import card from '#@/components/card/card.module.scss';
 
-async function Name({ llaveProceso }: { llaveProceso: string }) {
-  const proceso = await getCarpetasByllaveProceso({
-    llaveProceso: llaveProceso
-  });
+async function Name({
+  llaveProceso
+}: {
+  llaveProceso: string;
+}) {
+  const proceso = await getCarpetasByllaveProceso(
+    {
+      llaveProceso: llaveProceso
+    }
+  );
 
   const nombre = proceso
     .map((p) => {
@@ -17,7 +23,11 @@ async function Name({ llaveProceso }: { llaveProceso: string }) {
     })
     .toString();
 
-  return <h3 className={typography.displayMedium}>{nombre}</h3>;
+  return (
+    <h3 className={typography.displayMedium}>
+      {nombre}
+    </h3>
+  );
 }
 
 export default async function DefaultProcesosllaveProceso({
@@ -25,9 +35,10 @@ export default async function DefaultProcesosllaveProceso({
 }: {
   params: { llaveProceso: string };
 }) {
-  const Carpetas = await getCarpetasByllaveProceso({
-    llaveProceso: llaveProceso
-  });
+  const Carpetas =
+    await getCarpetasByllaveProceso({
+      llaveProceso: llaveProceso
+    });
 
   return (
     <>
@@ -40,11 +51,16 @@ export default async function DefaultProcesosllaveProceso({
             <Name llaveProceso={llaveProceso} />
             <Link
               href={`/Carpetas/${llaveProceso}`}
-              className={card.link}>
-              <span className='material-symbols-outlined'>folder_shared</span>
+              className={card.link}
+            >
+              <span className='material-symbols-outlined'>
+                folder_shared
+              </span>
             </Link>
             <CarpetaCard carpeta={carpeta}>
-              <span className='material-symbols-outlined'>star</span>
+              <span className='material-symbols-outlined'>
+                star
+              </span>
             </CarpetaCard>
           </Fragment>
         );

@@ -1,7 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server';
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server';
 
 export async function GET(Request: NextRequest) {
-  const { host, searchParams, hostname, port } = new URL(Request.url);
+  const { host, searchParams, hostname, port } =
+    new URL(Request.url);
 
   return new NextResponse(
     JSON.stringify({

@@ -4,7 +4,11 @@ import { getNotaById } from '#@/lib/notas';
 import { Fragment } from 'react';
 import note from '#@/components/nota/note.module.scss';
 
-export default async function page({ params }: { params: { id: string } }) {
+export default async function page({
+  params
+}: {
+  params: { id: string };
+}) {
   const id = params.id;
 
   const nota = await getNotaById({

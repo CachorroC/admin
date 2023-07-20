@@ -40,17 +40,28 @@ export default async function CarpetasPageId({
             <Card
               path={'/Procesos'}
               key={carpeta._id}
-              carpeta={carpeta}>
-              <span className='material-symbols-outlined'>folder</span>
+              carpeta={carpeta}
+            >
+              <span className='material-symbols-outlined'>
+                folder
+              </span>
             </Card>
             <CarpetaCard
               carpeta={carpeta}
-              key={carpeta._id}>
+              key={carpeta._id}
+            >
               <Link
                 href={`/Carpetas/${params._id}/Editar`}
                 key={carpeta._id}
-                className={layout.button}>
-                <p className={typography.labelSmall}>Editar</p>
+                className={layout.button}
+              >
+                <p
+                  className={
+                    typography.labelSmall
+                  }
+                >
+                  Editar
+                </p>
                 <span className='material-symbols-outlined'>
                   bookmark_manager
                 </span>

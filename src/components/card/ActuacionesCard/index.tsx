@@ -4,7 +4,11 @@ import styles from './actuaciones.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 
-export const ActuacionCard = ({ Actuacion }: { Actuacion: intActuacion }) => {
+export const ActuacionCard = ({
+  Actuacion
+}: {
+  Actuacion: intActuacion;
+}) => {
   const {
     idRegActuacion,
     llaveProceso,
@@ -23,22 +27,35 @@ export const ActuacionCard = ({ Actuacion }: { Actuacion: intActuacion }) => {
   return (
     <div
       className={styles.container}
-      key={idRegActuacion}>
+      key={idRegActuacion}
+    >
       <div className={styles.card}>
-        <h1 className={`${typography.titleMedium} ${styles.title}`}>
+        <h1
+          className={`${typography.titleMedium} ${styles.title}`}
+        >
           {actuacion}
         </h1>
-        {anotacion && <p className={typography.bodyMedium}>{anotacion}</p>}
+        {anotacion && (
+          <p className={typography.bodyMedium}>
+            {anotacion}
+          </p>
+        )}
         <sub
-          className={`${typography.labelSmall} ${styles.sub}`}>{`${consActuacion} de ${cant}`}</sub>
+          className={`${typography.labelSmall} ${styles.sub}`}
+        >{`${consActuacion} de ${cant}`}</sub>
         <Link
           href={`/Notas/NuevaNota/${llaveProceso}`}
-          className={styles.button}>
-          <span className={`material-symbols-outlined ${styles.icon}`}>
+          className={styles.button}
+        >
+          <span
+            className={`material-symbols-outlined ${styles.icon}`}
+          >
             note_add
           </span>
         </Link>
-        <sup className={`${typography.labelMedium} ${styles.date}`}>
+        <sup
+          className={`${typography.labelMedium} ${styles.date}`}
+        >
           {fixFechas(fechaActuacion)}
         </sup>
       </div>

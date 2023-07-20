@@ -23,5 +23,9 @@ export default async function Page({
     })
     .toString();
 
-  return <h1 className={typeface.title}>{`Editar: ${ntext}`}</h1>;
+  return (
+    <h1
+      className={typeface.title}
+    >{`Editar: ${ntext}`}</h1>
+  );
 }

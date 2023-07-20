@@ -7,9 +7,11 @@ export default async function Page({
 }: {
   params: { llaveProceso: string };
 }) {
-  const proceso = await getCarpetasByllaveProceso({
-    llaveProceso: params.llaveProceso
-  });
+  const proceso = await getCarpetasByllaveProceso(
+    {
+      llaveProceso: params.llaveProceso
+    }
+  );
 
   const nombre = proceso
     .map((prc) => {

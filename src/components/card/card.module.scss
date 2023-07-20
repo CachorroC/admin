@@ -26,7 +26,9 @@
     box-sizing: border-box;
   }
   .cardFront {
-    background-color: var(--surface-container-highest);
+    background-color: var(
+      --surface-container-highest
+    );
     color: var(--on-surface-variant);
   } /* Style the back side */
   .cardBack {
@@ -35,12 +37,16 @@
   }
 }
 .notActive {
-  background-color: var(--surface-container-highest);
+  background-color: var(
+    --surface-container-highest
+  );
   color: var(--on-surface);
   box-shadow: none;
 }
 .isActive {
-  background-color: var(--surface-container-highest);
+  background-color: var(
+    --surface-container-highest
+  );
   color: var(--on-secondary-container);
   box-shadow: none;
   border: 2px solid var(--outline-variant);
@@ -119,7 +125,9 @@
   }
   &:hover {
     box-shadow: var(--dp8);
-    background-color: var(--surface-container-highest);
+    background-color: var(
+      --surface-container-highest
+    );
     & > p {
       color: var(--primary);
       font-weight: 800;
@@ -135,11 +143,15 @@
   }
   &:focus {
     box-shadow: var(--dp20);
-    background-color: var(--surface-container-highest);
+    background-color: var(
+      --surface-container-highest
+    );
     border: 2px dashed var(--primary-container);
   }
   &:active {
-    background-color: var(--ssurface-container-high);
+    background-color: var(
+      --ssurface-container-high
+    );
     box-shadow: var(--dp3);
   }
 
@@ -171,7 +183,8 @@
       margin-left: -5px;
       border-width: 5px;
       border-style: solid;
-      border-color: #555 transparent transparent transparent;
+      border-color: #555 transparent transparent
+        transparent;
     }
   }
   & > .icon {

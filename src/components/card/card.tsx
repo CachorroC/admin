@@ -24,7 +24,8 @@ export const Card = ({
   carpeta: MonCarpeta | intFecha;
   children: ReactNode;
 }) => {
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
 
   const [isOpen, setIsOpen] = useModal();
 
@@ -45,8 +46,10 @@ export const Card = ({
 
   const isActive =
     pathname === href ||
-    pathname === `${path}/${carpeta.llaveProceso}/${carpeta.idProceso}` ||
-    pathname === `${path}/${carpeta.llaveProceso}`;
+    pathname ===
+      `${path}/${carpeta.llaveProceso}/${carpeta.idProceso}` ||
+    pathname ===
+      `${path}/${carpeta.llaveProceso}`;
 
   const juzgado = carpeta.despacho?.id
     .replace(/ /g, '-')
@@ -55,63 +58,111 @@ export const Card = ({
 
   return (
     <div className={card.container}>
-      <div className={isActive ? card.isActive : card.notActive}>
-        <h1 className={`${typography.titleMedium} ${card.title}`}>
+      <div
+        className={
+          isActive
+            ? card.isActive
+            : card.notActive
+        }
+      >
+        <h1
+          className={`${typography.titleMedium} ${card.title}`}
+        >
           {toNameString({
-            nameRaw: new NombreCompleto(carpeta.Deudor).Nombre
+            nameRaw: new NombreCompleto(
+              carpeta.Deudor
+            ).Nombre
           })}
         </h1>
         <div className={card.links}>
           <Link
-            className={`${card.link} ${isActive && card.isActive}`}
-            href={`/Carpetas/${carpeta._id}`}>
-            <span className={`material-symbols-outlined ${card.icon}`}>
+            className={`${card.link} ${
+              isActive && card.isActive
+            }`}
+            href={`/Carpetas/${carpeta._id}`}
+          >
+            <span
+              className={`material-symbols-outlined ${card.icon}`}
+            >
               folder_shared
             </span>
-            <span className={card.tooltiptext}>Perfil del Demandado</span>
+            <span className={card.tooltiptext}>
+              Perfil del Demandado
+            </span>
           </Link>
           <Link
-            className={`${card.link} ${isActive && card.isActive}`}
-            href={`/Procesos/${carpeta.llaveProceso}` as Route}>
-            <span className={`material-symbols-outlined ${card.icon}`}>
+            className={`${card.link} ${
+              isActive && card.isActive
+            }`}
+            href={
+              `/Procesos/${carpeta.llaveProceso}` as Route
+            }
+          >
+            <span
+              className={`material-symbols-outlined ${card.icon}`}
+            >
               badge
             </span>
-            <span className={card.tooltiptext}>Perfil del Demandado</span>
+            <span className={card.tooltiptext}>
+              Perfil del Demandado
+            </span>
           </Link>
           <Link
-            className={`${card.link} ${isActive && card.isActive}`}
+            className={`${card.link} ${
+              isActive && card.isActive
+            }`}
             href={`/Notas/NuevaNota/${carpeta.llaveProceso}`}
             onClick={() => {
               setIsOpen(true);
-            }}>
-            <span className={`material-symbols-outlined ${card.icon}`}>
+            }}
+          >
+            <span
+              className={`material-symbols-outlined ${card.icon}`}
+            >
               add
             </span>
-            <span className={card.tooltiptext}>Agregar nota</span>
+            <span className={card.tooltiptext}>
+              Agregar nota
+            </span>
           </Link>
           <Link
-            className={`${card.link} ${isActive && card.isActive}`}
+            className={`${card.link} ${
+              isActive && card.isActive
+            }`}
             onClick={clickHandler}
-            href={href}>
-            <span className={`${card.icon} material-symbols-outlined`}>
+            href={href}
+          >
+            <span
+              className={`${card.icon} material-symbols-outlined`}
+            >
               file_open
             </span>
-            <span className={card.tooltiptext}>Actuaciones del proceso</span>
+            <span className={card.tooltiptext}>
+              Actuaciones del proceso
+            </span>
           </Link>
         </div>
 
         {children}
         {carpeta.Demanda.Radicado && (
-          <div className={`${typography.bodySmall} ${card.content}`}>
+          <div
+            className={`${typography.bodySmall} ${card.content}`}
+          >
             {carpeta.Demanda.Radicado}
           </div>
         )}
 
         <Link
-          className={`${card.link} ${isActive && card.isActive}`}
-          href={carpeta.despacho?.url as Route}>
-          <p className={`${typography.bodySmall} ${card.content}`}>
-            {juzgado && juzgado.replaceAll('á', 'a')}
+          className={`${card.link} ${
+            isActive && card.isActive
+          }`}
+          href={carpeta.despacho?.url as Route}
+        >
+          <p
+            className={`${typography.bodySmall} ${card.content}`}
+          >
+            {juzgado &&
+              juzgado.replaceAll('á', 'a')}
           </p>
         </Link>
       </div>

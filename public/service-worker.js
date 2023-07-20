@@ -17,7 +17,9 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async () => {
-      if ('navigationPreload' in self.registration) {
+      if (
+        'navigationPreload' in self.registration
+      ) {
         await self.registration.navigationPreload.enable();
       }
     })()
@@ -29,21 +31,30 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       (async () => {
         try {
-          const preloadResponse = await event.preloadResponse;
+          const preloadResponse =
+            await event.preloadResponse;
 
           if (preloadResponse) {
             return preloadResponse;
           }
 
-          const networkResponse = await fetch(event.request);
+          const networkResponse = await fetch(
+            event.request
+          );
 
           return networkResponse;
         } catch (error) {
-          console.log('Fetch failed; returning offline page instead.', error);
+          console.log(
+            'Fetch failed; returning offline page instead.',
+            error
+          );
 
-          const cache = await caches.open(CACHE_NAME);
+          const cache = await caches.open(
+            CACHE_NAME
+          );
 
-          const cachedResponse = await cache.match(OFFLINE_URL);
+          const cachedResponse =
+            await cache.match(OFFLINE_URL);
 
           return cachedResponse;
         }

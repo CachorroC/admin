@@ -1,50 +1,54 @@
-import {
-  BienIncautado,
-  Codeudor,
-  Deudor,
-  Tipo
-} from '../demandados';
+import { Codeudor, Deudor, Tipo } from './Mess';
 
-export class Demanda {
+export class ClassDemanda {
   deudor: Deudor;
   numero: number;
-  capitalAdeudado: number;
+  capitalAdeudado: number | string;
   fechaIngreso: string | Date;
   reparto: boolean;
   codeudor: Codeudor | undefined;
-  tipoProceso: string | undefined;
-  tipoBien: string | undefined;
-  obligacion: number[] | undefined;
-  llaveProceso: string | undefined;
-  grupo: string | undefined;
-  clase: string | undefined;
-  constructor({
-    deudor,
-    numero = getConsecutivo(),
-    capitalAdeudado,
-    fechaIngreso = new Date(),
-    reparto = false,
-    codeudor,
-    clase,
-    grupo,
-    tipoProceso,
-    tipoBien,
-    obligacion,
-    llaveProceso
-  }: {
+  tipoProceso: string;
+  tipoBien: string;
+  obligacion?:
+    | number[]
+    | { [key: string]: number | string };
+  llaveProceso: string;
+  idProceso: number | number[];
+  grupo: string;
+  clase: string;
+  constructor(
+    {
+      numero = getConsecutivo(),
+      deudor,
+      idProceso,
+      capitalAdeudado,
+      fechaIngreso = new Date(),
+      reparto = false,
+      codeudor,
+      tipoProceso,
+      tipoBien,
+      obligacion,
+      llaveProceso,
+      clase,
+      grupo,
+    }: {
+      numero: number;
     deudor: Deudor;
-    numero: number;
-    capitalAdeudado: number;
+    idProceso: number | number[]
+    capitalAdeudado: number | string;
     fechaIngreso: Date | string;
     reparto: boolean;
-    clase?: string;
-    grupo?: string;
+    clase: string;
+    grupo: string;
+    tipoProceso: string;
+    tipoBien: string;
+    llaveProceso: string;
     codeudor?: Codeudor;
-    tipoProceso?: Tipo;
-    tipoBien?: BienIncautado;
-    obligacion?: number[];
-    llaveProceso?: string;
-  }) {
+    obligacion?:
+      | number[]
+      | { [key: string]: number | string };
+  }
+  ) {
     this.deudor = deudor;
     this.numero = numero;
     this.capitalAdeudado = capitalAdeudado;
@@ -57,9 +61,9 @@ export class Demanda {
     this.tipoBien = tipoBien;
     this.obligacion = obligacion;
     this.llaveProceso = llaveProceso;
+    this.idProceso = idProceso;
   }
 }
-const YesidAlbeiro = new Demanda();
 
 function getConsecutivo(): number {
   const procesos = 800;

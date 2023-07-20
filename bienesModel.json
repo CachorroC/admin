@@ -14,7 +14,9 @@
 
   "inmueble": [
     { "embargo": "inicia el embargo" },
-    { "oficio": "el oficio de instrumentos publicos" },
+    {
+      "oficio": "el oficio de instrumentos publicos"
+    },
     {
       "secuestro": "se realiza el secuestro del inmueble y se asigna un secuestre"
     },

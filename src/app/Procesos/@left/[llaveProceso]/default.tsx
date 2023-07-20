@@ -12,9 +12,10 @@ export default async function DefaultProcesosLeftllaveProceso({
 }: {
   params: { llaveProceso: string };
 }) {
-  const carpetas = await getCarpetasByllaveProceso({
-    llaveProceso: llaveProceso
-  });
+  const carpetas =
+    await getCarpetasByllaveProceso({
+      llaveProceso: llaveProceso
+    });
 
   const Procesos = await getProceso({
     llaveProceso: llaveProceso
@@ -25,7 +26,9 @@ export default async function DefaultProcesosLeftllaveProceso({
       <p>default</p>
       {carpetas.map((carpeta, index, arr) => {
         const proceso = Procesos.find((pr) => {
-          return pr.idProceso === carpeta.idProceso;
+          return (
+            pr.idProceso === carpeta.idProceso
+          );
         });
 
         const { _id, ...newCarpeta } = carpeta;
@@ -33,11 +36,14 @@ export default async function DefaultProcesosLeftllaveProceso({
         return (
           <CarpetaCard
             carpeta={carpeta}
-            key={carpeta._id}>
+            key={carpeta._id}
+          >
             <span className='material-symbols-outlined'>
               disabled_by_default
             </span>
-            {proceso && <ProcesoCard proceso={proceso} />}
+            {proceso && (
+              <ProcesoCard proceso={proceso} />
+            )}
           </CarpetaCard>
         );
       })}

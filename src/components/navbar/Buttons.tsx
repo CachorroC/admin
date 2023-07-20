@@ -7,7 +7,8 @@ import { useNavigator } from '#@/app/search-context';
 import type { Route } from 'next';
 
 export const ForwardButton = () => {
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
   const router = useRouter();
 
   return (
@@ -17,17 +18,23 @@ export const ForwardButton = () => {
       onClick={() => {
         router.forward();
         setIsNavOpen(false);
-      }}>
-      <span className={`material-symbols-outlined ${navbar.icon}`}>
+      }}
+    >
+      <span
+        className={`material-symbols-outlined ${navbar.icon}`}
+      >
         chevron_right
       </span>
-      <p className={navbar.ButtonTextHelper}>entrar</p>
+      <p className={navbar.ButtonTextHelper}>
+        entrar
+      </p>
     </button>
   );
 };
 
 export const BackwardsButton = () => {
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
 
   const [isOpen, setIsOpen] = useModal();
   const router = useRouter();
@@ -42,17 +49,23 @@ export const BackwardsButton = () => {
     <button
       type='button'
       className={navbar.buttonBackwards}
-      onClick={clickHandler}>
-      <span className={`material-symbols-outlined ${navbar.icon}`}>
+      onClick={clickHandler}
+    >
+      <span
+        className={`material-symbols-outlined ${navbar.icon}`}
+      >
         chevron_left
       </span>
-      <p className={navbar.ButtonTextHelper}>atras</p>
+      <p className={navbar.ButtonTextHelper}>
+        atras
+      </p>
     </button>
   );
 };
 
 export const DrawerMenuButton = () => {
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
 
   if (isNavOpen) {
     return (
@@ -61,11 +74,16 @@ export const DrawerMenuButton = () => {
         className={navbar.buttonDrawerMenu}
         onClick={() => {
           return setIsNavOpen(false);
-        }}>
-        <span className={`material-symbols-outlined ${navbar.icon}`}>
+        }}
+      >
+        <span
+          className={`material-symbols-outlined ${navbar.icon}`}
+        >
           close
         </span>
-        <p className={navbar.ButtonTextHelper}>cerrar</p>
+        <p className={navbar.ButtonTextHelper}>
+          cerrar
+        </p>
       </button>
     );
   }
@@ -76,15 +94,23 @@ export const DrawerMenuButton = () => {
       className={navbar.buttonDrawerMenu}
       onClick={() => {
         return setIsNavOpen(true);
-      }}>
-      <span className={`material-symbols-outlined ${navbar.icon}`}>menu</span>
-      <p className={navbar.ButtonTextHelper}>abrir</p>
+      }}
+    >
+      <span
+        className={`material-symbols-outlined ${navbar.icon}`}
+      >
+        menu
+      </span>
+      <p className={navbar.ButtonTextHelper}>
+        abrir
+      </p>
     </button>
   );
 };
 
 export const HomeButton = () => {
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
 
   return (
     <Link
@@ -92,9 +118,16 @@ export const HomeButton = () => {
       className={navbar.buttonHome}
       onClick={() => {
         setIsNavOpen(false);
-      }}>
-      <span className={`material-symbols-outlined ${navbar.icon}`}>home</span>
-      <p className={navbar.ButtonTextHelper}>inicio</p>
+      }}
+    >
+      <span
+        className={`material-symbols-outlined ${navbar.icon}`}
+      >
+        home
+      </span>
+      <p className={navbar.ButtonTextHelper}>
+        inicio
+      </p>
     </Link>
   );
 };
@@ -107,8 +140,13 @@ export const ModalButton = () => {
       className={navbar.buttonModal}
       onClick={() => {
         return setIsOpen(true);
-      }}>
-      <span className={`material-symbols-outlined ${navbar.icon}`}>box</span>
+      }}
+    >
+      <span
+        className={`material-symbols-outlined ${navbar.icon}`}
+      >
+        box
+      </span>
     </button>
   );
 };

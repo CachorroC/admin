@@ -1,6 +1,9 @@
 'use client';
 import { intFecha } from '#@/lib/types/demandados';
-import { useSearch, useNavigator } from '#@/app/search-context';
+import {
+  useSearch,
+  useNavigator
+} from '#@/app/search-context';
 import { LinkCard } from './link';
 import { fixFechas } from '#@/lib/fix';
 import Link from 'next/link';
@@ -21,7 +24,10 @@ export default function SearchOutputList({
 
   const [search, setSearch] = useSearch();
 
-  const searchLinkRef = useRef<Map<any, any> | null>(null);
+  const searchLinkRef = useRef<Map<
+    any,
+    any
+  > | null>(null);
 
   function scrollToId(_id: string) {
     const map = getMap();
@@ -47,7 +53,8 @@ export default function SearchOutputList({
     setIsNavOpen(false);
   };
 
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
   const isActive = pathname === path;
   const href = path as Route;
   const rows: any[] = [];
@@ -82,7 +89,13 @@ export default function SearchOutputList({
     return 0;
   });
   idk.forEach((proceso, index, array) => {
-    const { idProceso, llaveProceso, Deudor, fecha, _id } = proceso;
+    const {
+      idProceso,
+      llaveProceso,
+      Deudor,
+      fecha,
+      _id
+    } = proceso;
 
     const {
       Id,
@@ -95,7 +108,11 @@ export default function SearchOutputList({
     } = Deudor;
     const Nombre = `${PrimerNombre} ${SegundoNombre} ${PrimerApellido} ${SegundoApellido}`;
 
-    if (Nombre.toLowerCase().indexOf(search.toLowerCase()) === -1) {
+    if (
+      Nombre.toLowerCase().indexOf(
+        search.toLowerCase()
+      ) === -1
+    ) {
       return;
     }
     rows.push(
@@ -110,26 +127,48 @@ export default function SearchOutputList({
   return (
     <>
       <div className={searchbar.container}>
-        <div className={isActive ? searchbar.isActive : searchbar.notActive}>
+        <div
+          className={
+            isActive
+              ? searchbar.isActive
+              : searchbar.notActive
+          }
+        >
           <Name helper={path} />
           <div className={searchbar.section}>
             <sub className={searchbar.date}>
-              {fixFechas(new Date().toISOString())}
+              {fixFechas(
+                new Date().toISOString()
+              )}
             </sub>
           </div>
           <div className={searchbar.links}>
             <Link
-              className={isActive ? searchbar.linkIsActive : searchbar.link}
+              className={
+                isActive
+                  ? searchbar.linkIsActive
+                  : searchbar.link
+              }
               onClick={clickHandler}
-              href={href}>
-              <span className={`${searchbar.icon} material-symbols-outlined`}>
+              href={href}
+            >
+              <span
+                className={`${searchbar.icon} material-symbols-outlined`}
+              >
                 file_open
               </span>
             </Link>
             <Link
-              className={isActive ? searchbar.linkIsActive : searchbar.link}
-              href='/Notas/NuevaNota'>
-              <span className={`material-symbols-outlined ${searchbar.icon}`}>
+              className={
+                isActive
+                  ? searchbar.linkIsActive
+                  : searchbar.link
+              }
+              href='/Notas/NuevaNota'
+            >
+              <span
+                className={`material-symbols-outlined ${searchbar.icon}`}
+              >
                 add
               </span>
             </Link>

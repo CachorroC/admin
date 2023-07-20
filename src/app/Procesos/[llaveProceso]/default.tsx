@@ -1,9 +1,15 @@
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { Fragment, Suspense } from 'react';
-import { IntCarpeta, MonCarpeta } from '#@/lib/types/demandados';
+import {
+  IntCarpeta,
+  MonCarpeta
+} from '#@/lib/types/demandados';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
-import { fetchProceso, getProceso } from '#@/lib/RamaJudicial';
+import {
+  fetchProceso,
+  getProceso
+} from '#@/lib/RamaJudicial';
 import { intProceso } from '#@/lib/types/procesos';
 import box from '#@/styles/scss/box.module.scss';
 import { Name } from '#@/components/Headings/serverSideName';
@@ -21,13 +27,25 @@ function DemandadoNameBadge({
 }) {
   if (proceso) {
     return (
-      <Fragment key={proceso ? proceso.idProceso : carpeta._id}>
-        <Name llaveProceso={carpeta.llaveProceso} />
+      <Fragment
+        key={
+          proceso
+            ? proceso.idProceso
+            : carpeta._id
+        }
+      >
+        <Name
+          llaveProceso={carpeta.llaveProceso}
+        />
         <Accordion>
-          <p className={typography.bodySmall}>{proceso.despacho}</p>
+          <p className={typography.bodySmall}>
+            {proceso.despacho}
+          </p>
           <ProcesoCard proceso={proceso} />
           <CarpetaCard carpeta={carpeta}>
-            <span className='material-symbols-outlined'>star</span>
+            <span className='material-symbols-outlined'>
+              star
+            </span>
           </CarpetaCard>
         </Accordion>
       </Fragment>
@@ -39,7 +57,9 @@ function DemandadoNameBadge({
       <Name llaveProceso={carpeta.llaveProceso} />
       <Accordion>
         <CarpetaCard carpeta={carpeta}>
-          <span className='material-symbols-outlined'>star</span>
+          <span className='material-symbols-outlined'>
+            star
+          </span>
         </CarpetaCard>
       </Accordion>
     </Fragment>
@@ -55,16 +75,19 @@ export default async function PageProcesosllaveProceso({
     llaveProceso: params.llaveProceso
   });
 
-  const Carpetas = await getCarpetasByllaveProceso({
-    llaveProceso: params.llaveProceso
-  });
+  const Carpetas =
+    await getCarpetasByllaveProceso({
+      llaveProceso: params.llaveProceso
+    });
 
   return (
     <>
       <p>default</p>
       {Carpetas.map((carpeta, index, arr) => {
         const proceso = Procesos.find((prc) => {
-          return prc.idProceso === carpeta.idProceso;
+          return (
+            prc.idProceso === carpeta.idProceso
+          );
         });
 
         return (
@@ -76,8 +99,11 @@ export default async function PageProcesosllaveProceso({
             />
             <Link
               href={`/Carpetas/${carpeta.llaveProceso}`}
-              className={card.link}>
-              <span className='material-symbols-outlined'>folder_shared</span>
+              className={card.link}
+            >
+              <span className='material-symbols-outlined'>
+                folder_shared
+              </span>
             </Link>
           </Fragment>
         );

@@ -6,7 +6,11 @@ import { InputSection } from '#@/components/form/InputSection';
 export function NuevoDeudorSection() {
   return (
     <section className={form.section}>
-      <h3 className={`${form.title} ${typography.displayMedium}`}>Deudor</h3>
+      <h3
+        className={`${form.title} ${typography.displayMedium}`}
+      >
+        Deudor
+      </h3>
 
       <InputSection
         name={'Deudor.PrimerNombre'}
@@ -71,7 +75,9 @@ export function NuevoDeudorSection() {
       />
       <InputSection
         name={'Deudor.Direccion'}
-        title={'Direccion de residencia o trabajo'}
+        title={
+          'Direccion de residencia o trabajo'
+        }
         type={'text'}
       />
     </section>

@@ -1,8 +1,14 @@
 import 'server-only';
-import { NextRequest, NextResponse } from 'next/server';
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { monDemandado } from '#@/lib/types/mongodb';
-import { notaConvert, intNota } from '#@/lib/types/notas';
+import {
+  notaConvert,
+  intNota
+} from '#@/lib/types/notas';
 import { ObjectId } from 'mongodb';
 import { cache } from 'react';
 
@@ -23,7 +29,9 @@ const Collection = cache(async () => {
 const Transform = cache(async () => {
   const collection = await Collection();
 
-  const notasRaw = await collection.find({}).toArray();
+  const notasRaw = await collection
+    .find({})
+    .toArray();
 
   const notas = notaConvert.toMonNotas(notasRaw);
 
@@ -38,19 +46,24 @@ export async function GET(Request: NextRequest) {
     throw new Error('no hay entradas en mongo');
   }
 
-  const llaveProceso = searchParams.get('llaveProceso');
+  const llaveProceso = searchParams.get(
+    'llaveProceso'
+  );
 
   if (llaveProceso) {
     const Notas = notas.filter((nota) => {
       return nota.llaveProceso === llaveProceso;
     });
 
-    return new NextResponse(JSON.stringify(Notas), {
-      status: 200,
-      headers: {
-        'content-type': 'application/json'
+    return new NextResponse(
+      JSON.stringify(Notas),
+      {
+        status: 200,
+        headers: {
+          'content-type': 'application/json'
+        }
       }
-    });
+    );
   }
 
   const id = searchParams.get('id');
@@ -60,12 +73,15 @@ export async function GET(Request: NextRequest) {
       return nota.id === id;
     });
 
-    return new NextResponse(JSON.stringify(Nota), {
-      status: 200,
-      headers: {
-        'content-type': 'application/json'
+    return new NextResponse(
+      JSON.stringify(Nota),
+      {
+        status: 200,
+        headers: {
+          'content-type': 'application/json'
+        }
       }
-    });
+    );
   }
 
   return new NextResponse(JSON.stringify(notas), {
@@ -80,7 +96,8 @@ export async function POST(request: NextRequest) {
   const incomingRequest = await request.json();
   const collection = await Collection();
 
-  const outgoingRequest = await collection.insertOne(incomingRequest);
+  const outgoingRequest =
+    await collection.insertOne(incomingRequest);
 
   if (!outgoingRequest.acknowledged) {
     return new NextResponse(null, {
@@ -90,7 +107,8 @@ export async function POST(request: NextRequest) {
 
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
+      outgoingRequest.insertedId +
+        `${outgoingRequest.acknowledged}`
     ),
     {
       status: 200,
@@ -114,17 +132,23 @@ export async function PUT(Request: NextRequest) {
       _id: new ObjectId(id)
     };
 
-    const result = await collection.updateOne(query, {
-      $set: updatedNote
-    });
+    const result = await collection.updateOne(
+      query,
+      {
+        $set: updatedNote
+      }
+    );
 
     if (result.acknowledged) {
-      return new NextResponse(`Successfully updated game with id ${id}`, {
-        status: 200,
-        headers: {
-          'content-type': 'text/html'
+      return new NextResponse(
+        `Successfully updated game with id ${id}`,
+        {
+          status: 200,
+          headers: {
+            'content-type': 'text/html'
+          }
         }
-      });
+      );
     }
 
     return new NextResponse(
@@ -145,7 +169,9 @@ export async function PUT(Request: NextRequest) {
   });
 }
 
-export async function DELETE(Request: NextRequest) {
+export async function DELETE(
+  Request: NextRequest
+) {
   const notas = await Collection();
 
   const { searchParams } = new URL(Request.url);
@@ -168,22 +194,33 @@ export async function DELETE(Request: NextRequest) {
         deletedId: id
       };
 
-      return new NextResponse(JSON.stringify(response), {
-        status: 202,
-        headers: {
-          'content-type': 'application/json'
+      return new NextResponse(
+        JSON.stringify(response),
+        {
+          status: 202,
+          headers: {
+            'content-type': 'application/json'
+          }
         }
-      });
+      );
     }
 
     if (!Result.acknowledged) {
-      return new NextResponse(JSON.stringify(`error 400 ${id} not deleted`), {
-        status: 400
-      });
+      return new NextResponse(
+        JSON.stringify(
+          `error 400 ${id} not deleted`
+        ),
+        {
+          status: 400
+        }
+      );
     }
 
-    return new NextResponse(JSON.stringify(Result), {
-      status: 200
-    });
+    return new NextResponse(
+      JSON.stringify(Result),
+      {
+        status: 200
+      }
+    );
   }
 }

@@ -2,7 +2,7 @@
 
 ## EtapasProcesales
 
-``` mermaid
+```mermaid
 erDiagram
 DEMANDA {
     string llaveProceso PK
@@ -113,7 +113,7 @@ ACTUACIONES{
 
 ## Classes
 
-``` mermaid
+```mermaid
 classDiagram
 class SECUESTRO{
 +Informe informe
@@ -141,6 +141,5 @@ class BankAccount{
 +withdrawal(amount)
 }
 ```
-
 
 ##

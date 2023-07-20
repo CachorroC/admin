@@ -16,12 +16,17 @@ import {
 import Title from '#@/components/Headings/title';
 import { ButtonSkeleton } from './ButtonSkeleton';
 
-export default function Drawer({ children }: { children: ReactNode }) {
+export default function Drawer({
+  children
+}: {
+  children: ReactNode;
+}) {
   const isDesktop = useMedia(2);
 
   const isMobile = useMedia(0);
 
-  const [isNavOpen, setIsNavOpen] = useNavigator();
+  const [isNavOpen, setIsNavOpen] =
+    useNavigator();
 
   if (isNavOpen) {
     if (isMobile) {
@@ -45,7 +50,9 @@ export default function Drawer({ children }: { children: ReactNode }) {
           <Suspense fallback={<ButtonSkeleton />}>
             <HomeButton />
           </Suspense>
-          <div className={navbar.sidenav}>{children}</div>
+          <div className={navbar.sidenav}>
+            {children}
+          </div>
         </nav>
       );
     }
@@ -61,7 +68,9 @@ export default function Drawer({ children }: { children: ReactNode }) {
         <Suspense fallback={<ButtonSkeleton />}>
           <Title />
         </Suspense>
-        <div className={navbar.sidenav}>{children}</div>
+        <div className={navbar.sidenav}>
+          {children}
+        </div>
       </nav>
     );
   }

@@ -1,5 +1,8 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useState
+} from 'react';
 import {
   DefaultValues,
   FormProvider,
@@ -8,7 +11,11 @@ import {
   useForm
 } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
-import { IntCarpeta, MonCarpeta, intFecha } from '#@/lib/types/demandados';
+import {
+  IntCarpeta,
+  MonCarpeta,
+  intFecha
+} from '#@/lib/types/demandados';
 import { NuevoDeudorSection } from '#@/app/Carpetas/NuevaCarpeta/nuevo-deudor';
 import { NuevaDemandaSection } from '#@/app/Carpetas/NuevaCarpeta/nueva-demanda';
 import { NuevaEtapaProcesalSection } from '#@/app/Carpetas/NuevaCarpeta/nueva-etapaProcesal';
@@ -21,7 +28,9 @@ import { NuevaSuspencionProcesoSection } from './nueva-suspencionProceso';
 import { NuevaTerminacionSection } from '#@/app/Carpetas/NuevaCarpeta/nueva-terminacion';
 
 import { InputSection } from '#@/components/form/InputSection';
-type UnknownArrayOrObject = unknown[] | Record<string, unknown>;
+type UnknownArrayOrObject =
+  | unknown[]
+  | Record<string, unknown>;
 
 const defaultValues: DefaultValues<IntCarpeta> = {
   Numero: 501,
@@ -61,19 +70,31 @@ export function NuevoProceso({
     defaultValues: carpeta ?? defaultValues
   });
 
-  const { register, handleSubmit, formState, control } = methods;
+  const {
+    register,
+    handleSubmit,
+    formState,
+    control
+  } = methods;
 
-  const onSubmit: SubmitHandler<IntCarpeta> = async (data) => {
-    alert(JSON.stringify(uri + formState.dirtyFields));
+  const onSubmit: SubmitHandler<
+    IntCarpeta
+  > = async (data) => {
+    alert(
+      JSON.stringify(uri + formState.dirtyFields)
+    );
     alert(JSON.stringify(data));
 
-    const postNewNote = await fetch(`${uri}/api/Carpetas`, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
+    const postNewNote = await fetch(
+      `${uri}/api/Carpetas`,
+      {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+    );
 
     if (postNewNote.status === 201) {
       const message = await postNewNote.text();
@@ -96,23 +117,42 @@ export function NuevoProceso({
         <div className={form.container}>
           <form
             className={form.form}
-            onSubmit={handleSubmit(onSubmit)}>
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <section className={form.section}>
               <input
                 className={form.textArea}
                 type='submit'
               />
             </section>
-            <p>{formState.submitCount && formState.submitCount}</p>
-            <p>{formState.isSubmitted ? 'submitted' : 'not submitted'}</p>
-            <p>{formState.isSubmitting ? 'submitting' : 'submitted'}</p>
+            <p>
+              {formState.submitCount &&
+                formState.submitCount}
+            </p>
+            <p>
+              {formState.isSubmitted
+                ? 'submitted'
+                : 'not submitted'}
+            </p>
+            <p>
+              {formState.isSubmitting
+                ? 'submitting'
+                : 'submitted'}
+            </p>
             <p>
               {formState.isSubmitSuccessful
                 ? 'submit successful'
                 : 'not submit successful'}{' '}
             </p>
-            <p>{formState.isLoading ? 'loading' : 'loaded'}</p>
-            <p>{formState.errors && JSON.stringify(formState.errors)}</p>
+            <p>
+              {formState.isLoading
+                ? 'loading'
+                : 'loaded'}
+            </p>
+            <p>
+              {formState.errors &&
+                JSON.stringify(formState.errors)}
+            </p>
             <InputSection
               name={'Numero'}
               title={'Carpeta numero'}
@@ -150,7 +190,9 @@ export function NuevoProceso({
             <NuevaLiquidacionSection />
           </form>
 
-          <pre>{JSON.stringify(formState, null, 2)}</pre>
+          <pre>
+            {JSON.stringify(formState, null, 2)}
+          </pre>
         </div>
       </FormProvider>
     </>

@@ -6,17 +6,21 @@ export default function Box() {
   useEffect(() => {
     const div = ref.current;
 
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
 
-      if (entry.isIntersecting) {
-        document.body.style.backgroundColor = 'black';
-        document.body.style.color = 'white';
-      } else {
-        document.body.style.backgroundColor = 'white';
-        document.body.style.color = 'black';
+        if (entry.isIntersecting) {
+          document.body.style.backgroundColor =
+            'black';
+          document.body.style.color = 'white';
+        } else {
+          document.body.style.backgroundColor =
+            'white';
+          document.body.style.color = 'black';
+        }
       }
-    });
+    );
     observer.observe(div, {
       threshold: 1.0
     });

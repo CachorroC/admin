@@ -1,15 +1,29 @@
 'use client';
-import { useCallback, useRef, useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import {
+  useCallback,
+  useRef,
+  useEffect
+} from 'react';
+import {
+  usePathname,
+  useRouter
+} from 'next/navigation';
 import React from 'react';
 import { useModal } from '#@/app/modal-context';
 import modal from '#@/components/modal/modal.module.scss';
-import { BackwardsButton, ForwardButton } from '../navbar/Buttons';
+import {
+  BackwardsButton,
+  ForwardButton
+} from '../navbar/Buttons';
 import { useParams } from 'next/navigation';
 import { redirect } from 'next/navigation';
 import type { Route } from 'next';
 
-export default function Modal({ children }: { children: React.ReactNode }) {
+export default function Modal({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   const params = useParams();
   const pathname = usePathname();
 
@@ -32,7 +46,10 @@ export default function Modal({ children }: { children: React.ReactNode }) {
 
   const onClick = useCallback(
     (e: { target: undefined }) => {
-      if (e.target === overlay.current || e.target === wrapper.current) {
+      if (
+        e.target === overlay.current ||
+        e.target === wrapper.current
+      ) {
         if (onDismiss) {
           onDismiss();
         }
@@ -62,12 +79,18 @@ export default function Modal({ children }: { children: React.ReactNode }) {
       console.log(params);
       setIsOpen(true);
     }
-    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener(
+      'keydown',
+      onKeyDown
+    );
 
     return () => {
       setIsOpen(false);
 
-      return document.removeEventListener('keydown', onKeyDown);
+      return document.removeEventListener(
+        'keydown',
+        onKeyDown
+      );
     };
   }, [onKeyDown, setIsOpen, params]);
 
@@ -78,10 +101,12 @@ export default function Modal({ children }: { children: React.ReactNode }) {
         className={modal.modal}
         onClick={() => {
           onClick;
-        }}>
+        }}
+      >
         <div
           ref={wrapper}
-          className={modal.wrapper}>
+          className={modal.wrapper}
+        >
           <ForwardButton /> {children}
           <BackwardsButton />
         </div>

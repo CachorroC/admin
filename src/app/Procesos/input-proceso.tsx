@@ -4,7 +4,10 @@ import Modal from '#@/components/modal';
 import { intConsultaNumeroRadicacion } from '#@/lib/types/procesos';
 import { notFound } from 'next/navigation';
 import React from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import {
+  SubmitHandler,
+  useForm
+} from 'react-hook-form';
 
 interface FormValues {
   llaveProceso: string;
@@ -17,7 +20,9 @@ export default function InputProceso() {
     formState: { errors }
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+  const onSubmit: SubmitHandler<
+    FormValues
+  > = async (data) => {
     const Request = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${data.llaveProceso}&SoloActivos=false`
     );
@@ -25,7 +30,8 @@ export default function InputProceso() {
     if (!Request.ok) {
       return notFound();
     }
-    const Response = (await Request.json()) as intConsultaNumeroRadicacion;
+    const Response =
+      (await Request.json()) as intConsultaNumeroRadicacion;
 
     if (Response.procesos.length === 0) {
       return notFound();

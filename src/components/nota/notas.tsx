@@ -10,7 +10,10 @@ import {
 import { AccordionRow } from '#@/components/nota/accordion';
 import { ButtonSkeleton } from '../navbar/ButtonSkeleton';
 import typography from '#@/styles/fonts/typography.module.scss';
-import { getNotas, getNotasByllaveProceso } from '#@/lib/notas';
+import {
+  getNotas,
+  getNotasByllaveProceso
+} from '#@/lib/notas';
 import { Name } from '#@/components/Headings/serverSideName';
 
 export function Nota({
@@ -27,16 +30,22 @@ export function Nota({
   return (
     <div
       className={note.container}
-      key={id}>
+      key={id}
+    >
       <div className={note.nota}>
-        <sup className={note.sup}>{`${i + 1}`}</sup>
+        <sup className={note.sup}>{`${
+          i + 1
+        }`}</sup>
         <Name
           key={id}
           llaveProceso={notaRaw.llaveProceso}
         />
         <p
-          className={`${typography.bodySmall} ${note.textArea}`}>{`Nota: ${nota}`}</p>
-        <sub className={`${typography.labelSmall} ${note.fecha}`}>
+          className={`${typography.bodySmall} ${note.textArea}`}
+        >{`Nota: ${nota}`}</p>
+        <sub
+          className={`${typography.labelSmall} ${note.fecha}`}
+        >
           {fixFechas(fecha.toString())}
         </sub>
         <div className={note.buttonsRow}>
@@ -70,7 +79,11 @@ export function Nota({
   );
 }
 
-export async function Notas({ llaveProceso }: { llaveProceso?: string }) {
+export async function Notas({
+  llaveProceso
+}: {
+  llaveProceso?: string;
+}) {
   if (llaveProceso) {
     const notas = await getNotasByllaveProceso({
       llaveProceso: llaveProceso

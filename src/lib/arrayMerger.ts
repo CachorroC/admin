@@ -6,15 +6,27 @@ import {
 } from '#@/lib/types/procesos';
 import { monDemandado } from './types/mongodb';
 import { monNota } from '#@/lib/types/notas';
-import { IntCarpeta, MonCarpeta, UltimaActuacion } from './types/demandados';
+import {
+  IntCarpeta,
+  MonCarpeta,
+  UltimaActuacion
+} from './types/demandados';
 import { intFecha } from '#@/lib/types/demandados';
 
 export function arrayMergerByidProceso({
   a,
   b
 }: {
-  a: intProceso[] | IntActuaciones[] | monDemandado[] | intFecha[];
-  b: intProceso[] | IntActuaciones[] | monDemandado[] | intFecha[];
+  a:
+    | intProceso[]
+    | IntActuaciones[]
+    | monDemandado[]
+    | intFecha[];
+  b:
+    | intProceso[]
+    | IntActuaciones[]
+    | monDemandado[]
+    | intFecha[];
 }) {
   const map = new Map();
   a.forEach((item) => {
@@ -50,9 +62,13 @@ export function arrayMergerByllaveProceso({
 
     const { llaveProceso } = carpeta;
 
-    const actsByMap = actuaciones.filter((actuacion) => {
-      return actuacion.llaveProceso === llaveProceso;
-    });
+    const actsByMap = actuaciones.filter(
+      (actuacion) => {
+        return (
+          actuacion.llaveProceso === llaveProceso
+        );
+      }
+    );
     map.set(_id, {
       ...carpeta,
       UltimaActuacion: actsByMap

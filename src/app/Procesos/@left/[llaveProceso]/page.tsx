@@ -1,4 +1,7 @@
-import { getCarpetas, getCarpetasByllaveProceso } from '#@/lib/Carpetas';
+import {
+  getCarpetas,
+  getCarpetasByllaveProceso
+} from '#@/lib/Carpetas';
 import { ActuacionCard } from '#@/components/card/ActuacionesCard';
 import { getActuaciones } from '#@/lib/Actuaciones';
 
@@ -9,7 +12,10 @@ async function Acts({
   idProceso: number;
   index: number;
 }) {
-  const actuaciones = await getActuaciones(idProceso, index);
+  const actuaciones = await getActuaciones(
+    idProceso,
+    index
+  );
 
   return (
     <>
@@ -34,9 +40,10 @@ export default async function PageProcesosLeftllaveProceso({
     llaveProceso: string;
   };
 }) {
-  const Carpetas = await getCarpetasByllaveProceso({
-    llaveProceso: params.llaveProceso
-  });
+  const Carpetas =
+    await getCarpetasByllaveProceso({
+      llaveProceso: params.llaveProceso
+    });
 
   return (
     <>

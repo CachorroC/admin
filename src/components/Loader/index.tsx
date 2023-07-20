@@ -6,7 +6,11 @@ export function Loader() {
   return (
     <div className={card.container}>
       <div className={card.notActive}>
-        <h1 className={`${typography.titleMedium} ${card.title}`}>Cargando</h1>
+        <h1
+          className={`${typography.titleMedium} ${card.title}`}
+        >
+          Cargando
+        </h1>
         <div className={layout.loader}></div>
       </div>
     </div>

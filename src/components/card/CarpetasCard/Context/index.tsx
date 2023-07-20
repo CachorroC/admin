@@ -13,19 +13,27 @@ type vals = {
   setFormValues: (values: any) => void;
 };
 
-export const FormContext = createContext<vals | null>(null);
+export const FormContext =
+  createContext<vals | null>(null);
 
-export default function FormProvider({ children }: { children: ReactNode }) {
+export default function FormProvider({
+  children
+}: {
+  children: ReactNode;
+}) {
   const [data, setData] = useState({});
 
-  const setFormValues = useCallback((values: {}) => {
-    setData((prevValues) => {
-      return {
-        ...prevValues,
-        ...values
-      };
-    });
-  }, []);
+  const setFormValues = useCallback(
+    (values: {}) => {
+      setData((prevValues) => {
+        return {
+          ...prevValues,
+          ...values
+        };
+      });
+    },
+    []
+  );
 
   const contextValue = useMemo(() => {
     return {
@@ -35,7 +43,9 @@ export default function FormProvider({ children }: { children: ReactNode }) {
   }, [data, setFormValues]);
 
   return (
-    <FormContext.Provider value={contextValue}>{children}</FormContext.Provider>
+    <FormContext.Provider value={contextValue}>
+      {children}
+    </FormContext.Provider>
   );
 }
 
@@ -43,7 +53,9 @@ export function useFormData() {
   const context = useContext(FormContext);
 
   if (context === null) {
-    throw new Error('useSearch must be used inside a SearchProvider');
+    throw new Error(
+      'useSearch must be used inside a SearchProvider'
+    );
   }
 
   return context;

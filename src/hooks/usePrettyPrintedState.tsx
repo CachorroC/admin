@@ -1,10 +1,14 @@
 'use client';
-import { Dispatch, SetStateAction, useMemo, useState } from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  useMemo,
+  useState
+} from 'react';
 
-export function usePrettyPrintedState<T extends object>(): [
-  JSX.Element,
-  Dispatch<SetStateAction<T>>
-] {
+export function usePrettyPrintedState<
+  T extends object
+>(): [JSX.Element, Dispatch<SetStateAction<T>>] {
   const [value, setValue] = useState<T>();
 
   const resultValue = useMemo(() => {

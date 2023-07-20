@@ -33,7 +33,10 @@ export const InputSection = ({
   rls?:
     | Omit<
         RegisterOptions<FieldValues, string>,
-        'setValueAs' | 'disabled' | 'valueAsNumber' | 'valueAsDate'
+        | 'setValueAs'
+        | 'disabled'
+        | 'valueAsNumber'
+        | 'valueAsDate'
       >
     | undefined;
 }) => {
@@ -62,10 +65,12 @@ export const InputSection = ({
         } else {
           map.delete(name);
         }
-      }}>
+      }}
+    >
       <label
         className={`${form.label} ${typography.titleLarge}`}
-        htmlFor={field.name}>
+        htmlFor={field.name}
+      >
         {title}
       </label>
       <input
@@ -77,7 +82,9 @@ export const InputSection = ({
       <p>{fieldState.isTouched && 'Touched'}</p>
       <p>{fieldState.error && 'error'}</p>
       <p>{fieldState.isDirty && 'Dirty'}</p>
-      <p>{fieldState.invalid ? 'invalid' : 'valid'}</p>
+      <p>
+        {fieldState.invalid ? 'invalid' : 'valid'}
+      </p>
     </section>
   );
 };

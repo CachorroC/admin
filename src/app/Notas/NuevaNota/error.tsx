@@ -4,7 +4,10 @@ import React from 'react';
 import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export default function Error({ error, reset }: any) {
+export default function Error({
+  error,
+  reset
+}: any) {
   React.useEffect(() => {
     console.log('logging error:', error);
   }, [error]);
@@ -14,23 +17,29 @@ export default function Error({ error, reset }: any) {
       <div
         className={layout.name}
         style={{
-          backgroundColor: 'var(--error-container)'
-        }}>
+          backgroundColor:
+            'var(--error-container)'
+        }}
+      >
         <h2
           className={typography.displayLarge}
           style={{
             color: 'var(--on-error-container)'
-          }}>
+          }}
+        >
           Error
         </h2>
-        <p className={typography.bodyLarge}>{error?.message}</p>
+        <p className={typography.bodyLarge}>
+          {error?.message}
+        </p>
       </div>
       <div className={layout.right}>
         <button
           onClick={() => {
             return reset();
           }}
-          className={layout.button}>
+          className={layout.button}
+        >
           Try Again
         </button>
       </div>

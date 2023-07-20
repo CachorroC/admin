@@ -25,7 +25,14 @@ const raleway = Raleway({
 const roboto = Roboto({
   subsets: ['latin'],
   variable: '--roboto',
-  weight: ['100', '300', '400', '500', '700', '900']
+  weight: [
+    '100',
+    '300',
+    '400',
+    '500',
+    '700',
+    '900'
+  ]
 });
 
 const poiret = Poiret_One({
@@ -34,4 +41,10 @@ const poiret = Poiret_One({
   subsets: ['latin', 'latin-ext']
 });
 
-export { inter, raleway, roboto, poiret, josefina };
+export {
+  inter,
+  raleway,
+  roboto,
+  poiret,
+  josefina
+};

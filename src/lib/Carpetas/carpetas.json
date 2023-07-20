@@ -861,7 +861,10 @@
     "Codeudor": {
       "Direccion": "DG 3B No. 0-78 ESTE",
       "Id": [41759787, 39710157],
-      "Nombre": ["CARMELINA AGUILAR ", " ANA LUCIA AGUILAR"],
+      "Nombre": [
+        "CARMELINA AGUILAR ",
+        " ANA LUCIA AGUILAR"
+      ],
       "Tel": {
         "Celular": 3204613419,
         "Fijo": 3107627120

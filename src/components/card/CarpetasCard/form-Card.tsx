@@ -26,11 +26,14 @@ export const FormCard = ({
             <button
               className={styles.back}
               onClick={prevFormStep}
-              type='button'>
+              type='button'
+            >
               back
             </button>
           )}
-          <span className={styles.steps}>Step {currentStep + 1} of 3</span>
+          <span className={styles.steps}>
+            Step {currentStep + 1} of 3
+          </span>
         </>
       )}
       {children}
@@ -74,7 +77,13 @@ export const PersonalInfo = ({
   };
 
   return (
-    <div className={formStep === 0 ? styles.showForm : styles.hideForm}>
+    <div
+      className={
+        formStep === 0
+          ? styles.showForm
+          : styles.hideForm
+      }
+    >
       <h2>Personal Info</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.formRow}>
@@ -87,7 +96,9 @@ export const PersonalInfo = ({
             })}
           />
           {errors.email && (
-            <p className={styles.errorText}>Email is required</p>
+            <p className={styles.errorText}>
+              Email is required
+            </p>
           )}
         </div>
         <button type='submit'>Next</button>
@@ -121,7 +132,13 @@ export const ConfirmPurchase = ({
   };
 
   return (
-    <div className={formStep === 2 ? styles.showForm : styles.hideForm}>
+    <div
+      className={
+        formStep === 2
+          ? styles.showForm
+          : styles.hideForm
+      }
+    >
       <h2>Confirm Purchase</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.formRow}>
@@ -135,7 +152,9 @@ export const ConfirmPurchase = ({
             Ready to buy?
           </label>
           {errors.checkbox && (
-            <p className={styles.errorText}>Confirm purchase to proceed</p>
+            <p className={styles.errorText}>
+              Confirm purchase to proceed
+            </p>
           )}
         </div>
         <button>Next</button>
@@ -169,7 +188,13 @@ export const BillingInfo = ({
   };
 
   return (
-    <div className={formStep === 1 ? styles.showForm : styles.hideForm}>
+    <div
+      className={
+        formStep === 1
+          ? styles.showForm
+          : styles.hideForm
+      }
+    >
       <h2>Billing Info</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.formRow}>
@@ -182,7 +207,9 @@ export const BillingInfo = ({
             })}
           />
           {errors.address && (
-            <p className={styles.errorText}>Shipping address is required</p>
+            <p className={styles.errorText}>
+              Shipping address is required
+            </p>
           )}
         </div>
         <button>Next</button>
