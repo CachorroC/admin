@@ -1,6 +1,8 @@
 import fs from 'fs/promises';
 import { Mess, Liquidacion } from './Mess';
 import { ClassDemanda, pruebaDemanda } from './demanda';
+import { carpetasCollection } from '#@/lib/Carpetas';
+import { ObjectId } from 'mongodb';
 
 const mess: Mess[] = [
   {
@@ -2457,12 +2459,22 @@ const plainMaps = mess.map(
 );
 
 
+plainMaps.forEach(
+  async (
+    map
+  ) => {
+    const collection = await carpetasCollection();
 
-
-
-fs.writeFile(
-  'carpetasNew.json',
-  JSON.stringify(
-    plainMaps
-  )
+    collection.findOneAndReplace(
+      {
+        _id: new ObjectId(
+          map._id
+        )
+      },
+      map,
+      {
+        ignoreUndefined: true
+      }
+    );
+  }
 );
