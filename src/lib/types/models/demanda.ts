@@ -1,6 +1,27 @@
 import { Codeudor, Deudor, Tipo } from './Mess';
 
-export class ClassDemanda {
+export interface pruebaDemanda
+{
+  numero: number;
+  _id: string;
+    deudor: Deudor;
+    idProceso: number | number[]
+    capitalAdeudado: number | string;
+    fechaIngreso: Date | string;
+    reparto: boolean;
+    clase: string;
+    grupo: string;
+    tipoProceso: string;
+    tipoBien: string;
+    llaveProceso: string;
+    codeudor?: Codeudor;
+    obligacion?:
+      | number[]
+      | { [key: string]: number | string };
+}
+
+export class ClassDemanda implements pruebaDemanda {
+  _id: string;
   deudor: Deudor;
   numero: number;
   capitalAdeudado: number | string;
@@ -31,6 +52,7 @@ export class ClassDemanda {
       llaveProceso,
       clase,
       grupo,
+      _id
     }: {
       numero: number;
     deudor: Deudor;
@@ -46,7 +68,8 @@ export class ClassDemanda {
     codeudor?: Codeudor;
     obligacion?:
       | number[]
-      | { [key: string]: number | string };
+    | { [ key: string ]: number | string };
+        _id: string;
   }
   ) {
     this.deudor = deudor;
@@ -62,7 +85,9 @@ export class ClassDemanda {
     this.obligacion = obligacion;
     this.llaveProceso = llaveProceso;
     this.idProceso = idProceso;
+    this._id = _id;
   }
+
 }
 
 function getConsecutivo(): number {

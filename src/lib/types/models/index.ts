@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import { Mess, Liquidacion } from './Mess';
-import { ClassDemanda } from './demanda';
+import { ClassDemanda, pruebaDemanda } from './demanda';
 
 const mess: Mess[] = [
   {
@@ -2420,22 +2420,33 @@ const mess: Mess[] = [
 const plainMaps = mess.map(
   (
     messito, index, array
-  ) =>  {
-
-    const idk = new ClassDemanda({
-      numero: messito.numero,
+  ) => {
+    const meh: pruebaDemanda = {
+      numero         : messito.numero,
       deudor         : messito.deudor,
-      idProceso: messito.idProceso,
-      capitalAdeudado:  messito.liquidacion?.capitalAdeudado ? messito.liquidacion?.capitalAdeudado : messito.demanda.capitalAdeudado ?? 'sin especificar',
-      fechaIngreso   : new Date(),
-      reparto        : true,
-      codeudor       : messito.codeudor,
-      tipoProceso    : messito.demanda.Proceso?.tipo ? messito.demanda.Proceso?.tipo : messito.demanda.tipoProceso ? messito.demanda.tipoProceso: '',
-      tipoBien       : messito.medidasCautelares?.bien ?? '',
-      obligacion     : messito.demanda.obligacion,
-      llaveProceso   : messito.llaveProceso,
-      grupo          : 'Bancolombia',
-      clase          : messito.medidasCautelares?.bien ?? });
+      idProceso      : messito.idProceso,
+      capitalAdeudado: messito.liquidacion?.capitalAdeudado
+        ? messito.liquidacion?.capitalAdeudado
+        : messito.demanda.capitalAdeudado ?? 'sin especificar',
+      fechaIngreso: new Date(),
+      reparto     : true,
+      codeudor    : messito.codeudor,
+      tipoProceso : messito.demanda.Proceso?.tipo
+        ? messito.demanda.Proceso?.tipo
+        : messito.demanda.tipoProceso
+          ? messito.demanda.tipoProceso
+          : '',
+      tipoBien    : messito.medidasCautelares?.bien ?? '',
+      obligacion  : messito.demanda.obligacion,
+      llaveProceso: messito.llaveProceso,
+      grupo       : 'Bancolombia',
+      clase       : messito.medidasCautelares?.bien ?? 'sin especificar',
+      _id         : messito._id
+    };
+
+    const idk = new ClassDemanda(
+      meh
+    );
 
     console.log(
       idk
@@ -2444,6 +2455,10 @@ const plainMaps = mess.map(
     return idk;
   }
 );
+
+
+
+
 
 fs.writeFile(
   'carpetasNew.json',
