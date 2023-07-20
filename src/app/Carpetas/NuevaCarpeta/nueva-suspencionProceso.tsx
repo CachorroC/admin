@@ -5,13 +5,11 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { Accordion } from '#@/components/Accordion';
 
 export function NuevaSuspencionProcesoSection() {
-  const {
-    register 
-  } = useFormContext<IntCarpeta>();
+  const { register } = useFormContext<IntCarpeta>();
 
   return (
     <section className={form.section}>
-      <h3 className={`${ form.title } ${ typography.displayMedium }`}>
+      <h3 className={`${form.title} ${typography.displayMedium}`}>
         Suspencion del Proceso
       </h3>
 
@@ -25,12 +23,9 @@ export function NuevaSuspencionProcesoSection() {
           className={form.textArea}
           type='text'
           placeholder='SuspencionProceso.TerminoSuspencion'
-          {...register(
-            'SuspencionProceso.TerminoSuspencion',
-            {
-              required: false
-            } 
-          )}
+          {...register('SuspencionProceso.TerminoSuspencion', {
+            required: false
+          })}
         />
       </section>
       <section className={form.section}>
@@ -43,12 +38,9 @@ export function NuevaSuspencionProcesoSection() {
           className={form.textArea}
           type='date'
           placeholder='SuspencionProceso.Fecha'
-          {...register(
-            'SuspencionProceso.Fecha',
-            {
-              required: false
-            } 
-          )}
+          {...register('SuspencionProceso.Fecha', {
+            required: false
+          })}
         />
       </section>
     </section>

@@ -2,15 +2,13 @@ import { intProceso } from '#@/lib/types/procesos';
 import { procesosCollection } from '#@/lib/RamaJudicial';
 import { carpetasCollection } from '#@/lib/Carpetas';
 
-export async function updateProceso(
-  {
-    proceso,
-    index
-  }: {
+export async function updateProceso({
+  proceso,
+  index
+}: {
   proceso: intProceso;
   index: number;
-} 
-) {
+}) {
   const collection = await procesosCollection();
   const carpetasColl = await carpetasCollection();
 
@@ -23,7 +21,7 @@ export async function updateProceso(
     },
     {
       returnDocument: 'after',
-      upsert        : true
+      upsert: true
     }
   );
 
@@ -37,12 +35,8 @@ export async function updateProceso(
       }
     }
   );
-  console.log(
-    carpetaUpdate.modifiedCount 
-  );
-  console.log(
-    carpetaUpdate.matchedCount 
-  );
+  console.log(carpetaUpdate.modifiedCount);
+  console.log(carpetaUpdate.matchedCount);
 
   return requestUpdate;
 }

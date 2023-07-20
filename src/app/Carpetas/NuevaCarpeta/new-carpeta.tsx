@@ -1,10 +1,12 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { DefaultValues,
-         FormProvider,
-         FormState,
-         SubmitHandler,
-         useForm } from 'react-hook-form';
+import {
+  DefaultValues,
+  FormProvider,
+  FormState,
+  SubmitHandler,
+  useForm
+} from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
 import { IntCarpeta, MonCarpeta, intFecha } from '#@/lib/types/demandados';
 import { NuevoDeudorSection } from '#@/app/Carpetas/NuevaCarpeta/nuevo-deudor';
@@ -22,17 +24,17 @@ import { InputSection } from '#@/components/form/InputSection';
 type UnknownArrayOrObject = unknown[] | Record<string, unknown>;
 
 const defaultValues: DefaultValues<IntCarpeta> = {
-  Numero : 501,
+  Numero: 501,
   Demanda: {
     Departamento: 'CUNDINAMARCA',
-    Municipio   : 'Bogotá',
-    Radicado    : '2023 - 00000',
-    Proceso     : {
+    Municipio: 'Bogotá',
+    Radicado: '2023 - 00000',
+    Proceso: {
       Tipo: 'PRENDARIO'
     },
     Juzgado: {
       Origen: {
-        id : '001 Cm',
+        id: '001 Cm',
         url: 'https://app.rsasesorjuridico.com'
       }
     },
@@ -41,79 +43,50 @@ const defaultValues: DefaultValues<IntCarpeta> = {
     }
   },
   Deudor: {
-    PrimerNombre  : 'Pepito',
+    PrimerNombre: 'Pepito',
     PrimerApellido: 'Perez'
   },
-  idProceso   : 0,
+  idProceso: 0,
   llaveProceso: '00000000000000000000000'
 };
 
-export function NuevoProceso(
-  {
-    uri,
-    carpeta
-  }: {
+export function NuevoProceso({
+  uri,
+  carpeta
+}: {
   uri: string;
   carpeta?: MonCarpeta | intFecha;
-} 
-) {
-  const methods = useForm<IntCarpeta>(
-    {
-      defaultValues: carpeta ?? defaultValues
-    } 
-  );
+}) {
+  const methods = useForm<IntCarpeta>({
+    defaultValues: carpeta ?? defaultValues
+  });
 
-  const {
-    register, handleSubmit, formState, control 
-  } = methods;
+  const { register, handleSubmit, formState, control } = methods;
 
-  const onSubmit: SubmitHandler<IntCarpeta> = async (
-    data 
-  ) => {
-    alert(
-      JSON.stringify(
-        uri + formState.dirtyFields 
-      ) 
-    );
-    alert(
-      JSON.stringify(
-        data 
-      ) 
-    );
+  const onSubmit: SubmitHandler<IntCarpeta> = async (data) => {
+    alert(JSON.stringify(uri + formState.dirtyFields));
+    alert(JSON.stringify(data));
 
-    const postNewNote = await fetch(
-      `${ uri }/api/Carpetas`,
-      {
-        method : 'PUT',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify(
-          data 
-        )
-      } 
-    );
+    const postNewNote = await fetch(`${uri}/api/Carpetas`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
 
-    if ( postNewNote.status === 201 ) {
+    if (postNewNote.status === 201) {
       const message = await postNewNote.text();
-      alert(
-        message 
-      );
+      alert(message);
     }
 
-    if ( postNewNote.status === 200 ) {
+    if (postNewNote.status === 200) {
       const result = await postNewNote.json();
-      alert(
-        JSON.stringify(
-          result 
-        ) 
-      );
+      alert(JSON.stringify(result));
     }
 
-    if ( postNewNote.status === 304 ) {
-      alert(
-        'nothing updated' 
-      );
+    if (postNewNote.status === 304) {
+      alert('nothing updated');
     }
   };
 
@@ -123,9 +96,7 @@ export function NuevoProceso(
         <div className={form.container}>
           <form
             className={form.form}
-            onSubmit={handleSubmit(
-              onSubmit 
-            )}>
+            onSubmit={handleSubmit(onSubmit)}>
             <section className={form.section}>
               <input
                 className={form.textArea}
@@ -133,23 +104,15 @@ export function NuevoProceso(
               />
             </section>
             <p>{formState.submitCount && formState.submitCount}</p>
-            <p>{formState.isSubmitted
-              ? 'submitted'
-              : 'not submitted'}</p>
-            <p>{formState.isSubmitting
-              ? 'submitting'
-              : 'submitted'}</p>
+            <p>{formState.isSubmitted ? 'submitted' : 'not submitted'}</p>
+            <p>{formState.isSubmitting ? 'submitting' : 'submitted'}</p>
             <p>
               {formState.isSubmitSuccessful
                 ? 'submit successful'
                 : 'not submit successful'}{' '}
             </p>
-            <p>{formState.isLoading
-              ? 'loading'
-              : 'loaded'}</p>
-            <p>{formState.errors && JSON.stringify(
-              formState.errors 
-            )}</p>
+            <p>{formState.isLoading ? 'loading' : 'loaded'}</p>
+            <p>{formState.errors && JSON.stringify(formState.errors)}</p>
             <InputSection
               name={'Numero'}
               title={'Carpeta numero'}
@@ -171,7 +134,7 @@ export function NuevoProceso(
               title={'Expediente judicial'}
               type={'text'}
               rls={{
-                required : true,
+                required: true,
                 minLength: 23
               }}
             />
@@ -187,11 +150,7 @@ export function NuevoProceso(
             <NuevaLiquidacionSection />
           </form>
 
-          <pre>{JSON.stringify(
-            formState,
-            null,
-            2 
-          )}</pre>
+          <pre>{JSON.stringify(formState, null, 2)}</pre>
         </div>
       </FormProvider>
     </>

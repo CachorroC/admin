@@ -7,65 +7,70 @@ export function useOnlineStatus() {
     isOnline,
     setIsOnline
   ] = useState(
-    true 
+    true
   );
   useEffect(
     () => {
+
+
       function handleOnline() {
         if ( 'serviceWorker' in navigator ) {
           console.log(
-            'CLIENT: service worker registration in progress.' 
+            'CLIENT: service worker registration in progress.'
           );
           navigator.serviceWorker.register(
-            '/service-worker.js' 
+            '/service-worker.js'
           ).then(
             function () {
               console.log(
-                'CLIENT: service worker registration complete.' 
+                'CLIENT: service worker registration complete.'
               );
             },
             function () {
               console.log(
-                'CLIENT: service worker registration failure.' 
+                'CLIENT: service worker registration failure.'
               );
             }
           );
         } else {
           console.log(
-            'CLIENT: service worker is not supported.' 
+            'CLIENT: service worker is not supported.'
           );
         }
         setIsOnline(
-          true 
+          true
         );
       }
 
       function handleOffline() {
         setIsOnline(
-          false 
+          false
         );
       }
       window.addEventListener(
         'online',
-        handleOnline 
+        handleOnline
       );
+      window.navigator;
       window.addEventListener(
         'offline',
-        handleOffline 
+        handleOffline
       );
 
       return () => {
         window.removeEventListener(
           'online',
-          handleOnline 
+          handleOnline
         );
         window.removeEventListener(
           'offline',
-          handleOffline 
+          handleOffline
         );
       };
     },
-    [] 
+    [
+      setIsOnline
+    ]
   );
 
   return isOnline;

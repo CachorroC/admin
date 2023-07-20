@@ -9,7 +9,7 @@ import { InputSection } from '#@/components/form/InputSection';
 export function NuevoAvaluoSection() {
   return (
     <section className={form.section}>
-      <h3 className={`${ form.title } ${ typography.displayMedium }`}>Avaluo</h3>
+      <h3 className={`${form.title} ${typography.displayMedium}`}>Avaluo</h3>
 
       <InputSection
         name={'Avaluo.Adjudicacion.Fecha'}

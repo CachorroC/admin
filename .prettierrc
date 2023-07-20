@@ -6,8 +6,8 @@
   "useTabs": false,
   "trailingComma": "none",
   "jsxSingleQuote": true,
-  "bracketSameLine": true,
-  "printWidth": 80,
+  "bracketSameLine": false,
+  "printWidth": 50,
   "singleQuote": true,
   "singleAttributePerLine": true,
   "endOfLine": "lf"

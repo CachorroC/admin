@@ -6,11 +6,11 @@ import { InputSection } from '#@/components/form/InputSection';
 export function NuevasNotificacionesSection() {
   return (
     <section className={form.section}>
-      <h3 className={`${ form.title } ${ typography.displayMedium }`}>
+      <h3 className={`${form.title} ${typography.displayMedium}`}>
         Notificaciones
       </h3>
 
-      <h4 className={`${ form.title } ${ typography.displaySmall }`}>291</h4>
+      <h4 className={`${form.title} ${typography.displaySmall}`}>291</h4>
       <Accordion>
         <InputSection
           name={'Notificaciones.291.AportaNotificacion'}
@@ -28,7 +28,7 @@ export function NuevasNotificacionesSection() {
           type={'date'}
         />
       </Accordion>
-      <h4 className={`${ form.title } ${ typography.displaySmall }`}>292</h4>
+      <h4 className={`${form.title} ${typography.displaySmall}`}>292</h4>
       <Accordion>
         <InputSection
           name={'Notificaciones.292.AportaNotificacion'}

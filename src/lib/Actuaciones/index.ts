@@ -1,72 +1,57 @@
 import 'server-only';
-import { Codeudor,
-         IntCarpeta,
-         MonCarpeta,
-         intFecha } from '../types/demandados';
+import {
+  Codeudor,
+  IntCarpeta,
+  MonCarpeta,
+  intFecha
+} from '../types/demandados';
 import { monDemandado } from '../types/mongodb';
-import { IntActuaciones,
-         intActuacion,
-         intConsultaActuaciones } from '../types/procesos';
+import {
+  IntActuaciones,
+  intActuacion,
+  intConsultaActuaciones
+} from '../types/procesos';
 import { carpetasCollection } from '../Carpetas';
 import { sleep } from '../fix';
 
-export function wait(
-  delay: number 
-) {
-  return new Promise(
-    (
-      resolve 
-    ) => {
-      return setTimeout(
-        resolve,
-        delay 
-      );
-    } 
-  );
+export function wait(delay: number) {
+  return new Promise((resolve) => {
+    return setTimeout(resolve, delay);
+  });
 }
 
-export async function getActuaciones(
-  idProceso: number, index: number 
-) {
+export async function getActuaciones(idProceso: number, index: number) {
   const awaitTime = index * 2000;
 
-  if ( idProceso === 0 || idProceso === 404 ) {
-    console.log(
-      `idProceso es ${ idProceso }` 
-    );
+  if (idProceso === 0 || idProceso === 404) {
+    console.log(`idProceso es ${idProceso}`);
 
     return [];
   }
   const collection = await carpetasCollection();
-  wait(
-    awaitTime 
-  );
+  wait(awaitTime);
 
   try {
     const request = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
+      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${idProceso}`,
       {
         cache: 'no-store'
       }
     );
 
-    if ( !request.ok ) {
-      console.log(
-        `Get Actuaciones request was not ok ${ request.status }` 
-      );
+    if (!request.ok) {
+      console.log(`Get Actuaciones request was not ok ${request.status}`);
 
       return [];
     }
-    const res = ( await request.json() ) as intConsultaActuaciones;
+    const res = (await request.json()) as intConsultaActuaciones;
 
-    if ( !res.actuaciones ) {
-      console.log(
-        'Get Actuaciones no tiene actuaciones' 
-      );
+    if (!res.actuaciones) {
+      console.log('Get Actuaciones no tiene actuaciones');
 
       return [];
     }
-    const ultimaActuacion = res.actuaciones[ 0 ];
+    const ultimaActuacion = res.actuaciones[0];
 
     const updateCarpeta = await collection.updateOne(
       {
@@ -79,64 +64,49 @@ export async function getActuaciones(
       }
     );
 
-    if ( updateCarpeta.modifiedCount >= 1 ) {
+    if (updateCarpeta.modifiedCount >= 1) {
       console.log(
-        `${ idProceso } was ${ updateCarpeta.acknowledged } with ${ updateCarpeta.modifiedCount } documents modified`
+        `${idProceso} was ${updateCarpeta.acknowledged} with ${updateCarpeta.modifiedCount} documents modified`
       );
     }
 
     return res.actuaciones;
-  } catch ( err ) {
-    console.log(
-      err ?? 'error' 
-    );
+  } catch (err) {
+    console.log(err ?? 'error');
 
     return [];
   }
 }
 
-export async function fetchFechas(
-  {
-    procesos 
-  }: { procesos: MonCarpeta[] } 
-) {
+export async function fetchFechas({ procesos }: { procesos: MonCarpeta[] }) {
   const fechas: intFecha[] = [];
 
-  for ( let p = 0; p < procesos.length; p++ ) {
-    const proceso = procesos[ p ];
+  for (let p = 0; p < procesos.length; p++) {
+    const proceso = procesos[p];
 
-    const fetch = await fetchFecha(
-      {
-        proceso: proceso,
-        index  : p
-      } 
-    );
-    fechas.push(
-      fetch 
-    );
+    const fetch = await fetchFecha({
+      proceso: proceso,
+      index: p
+    });
+    fechas.push(fetch);
   }
 
   return fechas;
 }
 
-export async function fetchFecha(
-  {
-    proceso,
-    index
-  }: {
+export async function fetchFecha({
+  proceso,
+  index
+}: {
   proceso: MonCarpeta;
   index: number;
-} 
-) {
-  const acts = await getActuaciones(
-    proceso.idProceso,
-    index 
-  );
+}) {
+  const acts = await getActuaciones(proceso.idProceso, index);
 
-  if ( acts.length >= 1 ) {
+  if (acts.length >= 1) {
     const fecha: intFecha = {
       ...proceso,
-      fecha: acts[ 0 ].fechaActuacion
+      fecha: acts[0].fechaActuacion
     };
 
     return fecha;
@@ -150,30 +120,23 @@ export async function fetchFecha(
   return fecha;
 }
 
-export async function fetchLastActuaciones(
-  {
-    idProcesos
-  }: {
+export async function fetchLastActuaciones({
+  idProcesos
+}: {
   idProcesos: number[];
-} 
-) {
+}) {
   const lastActuaciones = [];
 
-  for ( let p = 0; p < idProcesos.length; p++ ) {
-    const proceso = idProcesos[ p ];
+  for (let p = 0; p < idProcesos.length; p++) {
+    const proceso = idProcesos[p];
 
-    const acts = await getActuaciones(
-      proceso,
-      p 
-    );
+    const acts = await getActuaciones(proceso, p);
 
-    if ( acts.length > 0 ) {
-      lastActuaciones.push(
-        acts[ 0 ] 
-      );
+    if (acts.length > 0) {
+      lastActuaciones.push(acts[0]);
     }
 
-    if ( p + 1 === idProcesos.length ) {
+    if (p + 1 === idProcesos.length) {
       return lastActuaciones;
     }
   }

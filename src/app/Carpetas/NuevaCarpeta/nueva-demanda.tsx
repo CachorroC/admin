@@ -7,13 +7,11 @@ import { Accordion } from '#@/components/Accordion';
 import { InputSection } from '#@/components/form/InputSection';
 
 export function NuevaDemandaSection() {
-  const {
-    register 
-  } = useFormContext<IntCarpeta>();
+  const { register } = useFormContext<IntCarpeta>();
 
   return (
     <section className={form.section}>
-      <h3 className={`${ form.title } ${ typography.displayMedium }`}>Demanda</h3>
+      <h3 className={`${form.title} ${typography.displayMedium}`}>Demanda</h3>
 
       <section className={form.section}>
         <label
@@ -23,12 +21,9 @@ export function NuevaDemandaSection() {
         </label>
         <select
           className={form.textArea}
-          {...register(
-            'Demanda.Departamento',
-            {
-              required: false
-            } 
-          )}>
+          {...register('Demanda.Departamento', {
+            required: false
+          })}>
           <option value='CO-AMA'>Amazonas</option>
           <option value='CO-ANT'>Antioquia</option>
           <option value='CO-ARA'>Arauca</option>
@@ -87,7 +82,7 @@ export function NuevaDemandaSection() {
         type={'text'}
         rls={{
           required: false,
-          pattern : /\d\d\d\d\s+-\s+\d\d\d\d\d/gi
+          pattern: /\d\d\d\d\s+-\s+\d\d\d\d\d/gi
         }}
       />
 
@@ -101,12 +96,9 @@ export function NuevaDemandaSection() {
           className={form.textArea}
           type='number'
           placeholder='Demanda.CapitalAdeudado'
-          {...register(
-            'Demanda.CapitalAdeudado',
-            {
-              required: false
-            } 
-          )}
+          {...register('Demanda.CapitalAdeudado', {
+            required: false
+          })}
         />
       </section>
       <section className={form.section}>
@@ -116,12 +108,9 @@ export function NuevaDemandaSection() {
           Tipo de proceso
         </label>
         <select
-          {...register(
-            'Demanda.Proceso.Tipo',
-            {
-              required: false
-            } 
-          )}>
+          {...register('Demanda.Proceso.Tipo', {
+            required: false
+          })}>
           <option value='HIPOTECARIO'>HIPOTECARIO</option>
           <option value='PRENDARIO'>PRENDARIO</option>
           <option value='SINGULAR'>SINGULAR</option>
@@ -137,12 +126,9 @@ export function NuevaDemandaSection() {
           className={form.textArea}
           type='text'
           placeholder='Demanda.Ubicacion.Juzgado'
-          {...register(
-            'Demanda.Ubicacion.Juzgado',
-            {
-              required: false
-            } 
-          )}
+          {...register('Demanda.Ubicacion.Juzgado', {
+            required: false
+          })}
         />
       </section>
       <section className={form.section}>
@@ -156,12 +142,9 @@ export function NuevaDemandaSection() {
             className={form.textArea}
             type='text'
             placeholder='Juzgado de Origen'
-            {...register(
-              'Demanda.Juzgado.Origen.id',
-              {
-                required: false
-              } 
-            )}
+            {...register('Demanda.Juzgado.Origen.id', {
+              required: false
+            })}
           />
         </section>
         <section className={form.section}>
@@ -174,12 +157,9 @@ export function NuevaDemandaSection() {
             className={form.textArea}
             type='text'
             placeholder='Link del juzgado'
-            {...register(
-              'Demanda.Juzgado.Origen.url',
-              {
-                required: false
-              } 
-            )}
+            {...register('Demanda.Juzgado.Origen.url', {
+              required: false
+            })}
           />
         </section>
       </section>
@@ -194,10 +174,7 @@ export function NuevaDemandaSection() {
             className={form.textArea}
             type='text'
             placeholder='Juzgado de ejecucion'
-            {...register(
-              'Demanda.Juzgado.Ejecucion.id',
-              {} 
-            )}
+            {...register('Demanda.Juzgado.Ejecucion.id', {})}
           />
         </section>
         <section className={form.section}>
@@ -210,10 +187,7 @@ export function NuevaDemandaSection() {
             className={form.textArea}
             type='text'
             placeholder='Link del juzgado'
-            {...register(
-              'Demanda.Juzgado.Ejecucion.url',
-              {} 
-            )}
+            {...register('Demanda.Juzgado.Ejecucion.url', {})}
           />
         </section>
       </section>
@@ -227,10 +201,7 @@ export function NuevaDemandaSection() {
           className={form.textArea}
           type='text'
           placeholder='Demanda.Obligacion.0'
-          {...register(
-            'Demanda.Obligacion.0',
-            {} 
-          )}
+          {...register('Demanda.Obligacion.0', {})}
         />
       </section>
       <section className={form.section}>
@@ -243,10 +214,7 @@ export function NuevaDemandaSection() {
           className={form.textArea}
           type='text'
           placeholder='Demanda.Obligacion.1'
-          {...register(
-            'Demanda.Obligacion.1',
-            {} 
-          )}
+          {...register('Demanda.Obligacion.1', {})}
         />
       </section>
       <section className={form.section}>
@@ -259,10 +227,7 @@ export function NuevaDemandaSection() {
           className={form.textArea}
           type='text'
           placeholder='Demanda.Obligacion.2'
-          {...register(
-            'Demanda.Obligacion.2',
-            {} 
-          )}
+          {...register('Demanda.Obligacion.2', {})}
         />
       </section>
     </section>

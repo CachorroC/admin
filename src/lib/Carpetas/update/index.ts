@@ -7,11 +7,7 @@ import { UltimaActuacion } from '../../types/demandados';
 import { ObjectId } from 'mongodb';
 import { carpetasCollection } from '#@/lib/Carpetas';
 
-export async function updateCarpeta(
-  {
-    carpeta 
-  }: { carpeta: IntCarpeta } 
-) {
+export async function updateCarpeta({ carpeta }: { carpeta: IntCarpeta }) {
   const collection = await carpetasCollection();
   const query = carpeta;
 
@@ -23,11 +19,7 @@ export async function updateCarpeta(
     upsert: true
   };
 
-  const updt = await collection.updateOne(
-    query,
-    update,
-    options 
-  );
+  const updt = await collection.updateOne(query, update, options);
 
   return updt;
 }

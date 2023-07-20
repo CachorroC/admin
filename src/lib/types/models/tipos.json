@@ -1,4 +1,5 @@
-{ "vehiculo": [
+{
+  "vehiculo": [
     { "embargo": "inicia el embargo" },
     { "oficio": "el oficio del sim o el runt" },
     {
@@ -42,4 +43,5 @@
     {
       "depositos": "el empleador paga las luks mes a mes al juzgado "
     }
-  ] }
+  ]
+}

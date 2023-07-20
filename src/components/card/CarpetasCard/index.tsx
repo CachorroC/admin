@@ -10,33 +10,23 @@ import { Accordion } from '#@/components/Accordion';
 import { Notificaciones } from '#@/lib/types/demandados';
 import { NombreComponent } from '../Nombre';
 
-const NotificacionesContainer = (
-  {
-    notificaciones
-  }: {
+const NotificacionesContainer = ({
+  notificaciones
+}: {
   notificaciones: Notificaciones;
-} 
-) => {
-  const {
-    AutoNotificado, Certimail, Fisico, Tipo 
-  } = notificaciones;
+}) => {
+  const { AutoNotificado, Certimail, Fisico, Tipo } = notificaciones;
 
   return (
     <Accordion>
       <div>
-        <p>{fixFechas(
-          AutoNotificado 
-        )}</p>
+        <p>{fixFechas(AutoNotificado)}</p>
       </div>
     </Accordion>
   );
 };
 
-export const DemandaContainer = (
-  {
-    demanda 
-  }: { demanda: Demanda } 
-) => {
+export const DemandaContainer = ({ demanda }: { demanda: Demanda }) => {
   const {
     Departamento,
     Municipio,
@@ -56,40 +46,32 @@ export const DemandaContainer = (
       <h2
         className={
           typography.titleMedium
-        }>{`${ Departamento }: ${ Municipio }`}</h2>
+        }>{`${Departamento}: ${Municipio}`}</h2>
       {VencimientoPagare && (
-        <p className={typography.labelMedium}>{fixFechas(
-          VencimientoPagare 
-        )}</p>
+        <p className={typography.labelMedium}>{fixFechas(VencimientoPagare)}</p>
       )}
       {EntregadeGarantiasAbogado && (
         <p className={typography.labelSmall}>
-          {fixFechas(
-            EntregadeGarantiasAbogado 
-          )}
+          {fixFechas(EntregadeGarantiasAbogado)}
         </p>
       )}
       <p>
-        {CapitalAdeudado
-          && fixMoney(
-            {
-              valor: CapitalAdeudado
-            } 
-          )}
+        {CapitalAdeudado &&
+          fixMoney({
+            valor: CapitalAdeudado
+          })}
       </p>
     </div>
   );
 };
 
-export const CarpetaCard = (
-  {
-    carpeta,
-    children
-  }: {
+export const CarpetaCard = ({
+  carpeta,
+  children
+}: {
   carpeta: MonCarpeta;
   children: ReactNode;
-} 
-) => {
+}) => {
   const {
     llaveProceso,
     idProceso,
@@ -103,17 +85,15 @@ export const CarpetaCard = (
     Notificaciones
   } = carpeta;
 
-  const {
-    Tel, Direccion, Email 
-  } = Deudor;
+  const { Tel, Direccion, Email } = Deudor;
   const path = '/Procesos';
 
   const href = (
     llaveProceso
       ? idProceso
-        ? `${ path }/${ llaveProceso }/${ idProceso }`
-        : `${ path }/${ llaveProceso }`
-      : `${ path }`
+        ? `${path}/${llaveProceso}/${idProceso}`
+        : `${path}/${llaveProceso}`
+      : `${path}`
   ) as Route;
 
   return (
@@ -129,7 +109,7 @@ export const CarpetaCard = (
             <Link
               className={styles.button}
               href={href}>
-              <span className={`material-symbols-outlined ${ styles.icon }`}>
+              <span className={`material-symbols-outlined ${styles.icon}`}>
                 folder_open
               </span>
               <span className={styles.tooltiptext}>Abrir</span>
@@ -138,8 +118,8 @@ export const CarpetaCard = (
             {Tel && Tel.Celular && (
               <Link
                 className={styles.button}
-                href={`tel:${ Tel.Celular }`}>
-                <span className={`material-symbols-outlined ${ styles.icon }`}>
+                href={`tel:${Tel.Celular}`}>
+                <span className={`material-symbols-outlined ${styles.icon}`}>
                   phone_iphone
                 </span>
                 <span className={styles.tooltiptext}>Numero Celular</span>
@@ -148,8 +128,8 @@ export const CarpetaCard = (
             {Email && (
               <Link
                 className={styles.button}
-                href={`mailto:${ Email }`}>
-                <span className={`material-symbols-outlined ${ styles.icon }`}>
+                href={`mailto:${Email}`}>
+                <span className={`material-symbols-outlined ${styles.icon}`}>
                   forward_to_inbox
                 </span>
                 <span className={styles.tooltiptext}>Email</span>
@@ -161,8 +141,8 @@ export const CarpetaCard = (
             {Tel && Tel.Fijo && (
               <Link
                 className={styles.button}
-                href={`tel:${ Tel.Fijo }`}>
-                <span className={`material-symbols-outlined ${ styles.icon }`}>
+                href={`tel:${Tel.Fijo}`}>
+                <span className={`material-symbols-outlined ${styles.icon}`}>
                   call
                 </span>
                 <span className={styles.tooltiptext}>Numero Fijo</span>
