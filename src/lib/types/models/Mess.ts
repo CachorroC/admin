@@ -199,19 +199,13 @@ export type CodRegla =
 
 // Converts JSON strings to/from your types
 export class Convert {
-  public static toMess(
-    json: string 
-  ): Mess[] {
-    return JSON.parse(
-      json 
-    );
+  public static toMess(json: string): Mess[] {
+    return JSON.parse(json);
   }
 
   public static messToJson(
     value: Mess[]
   ): string {
-    return JSON.stringify(
-      value 
-    );
+    return JSON.stringify(value);
   }
 }

@@ -1,40 +1,23 @@
-import { Codeudor, Deudor, Tipo } from './Mess';
+import { IntCarpeta, Deudor, Codeudor, TipoProceso, Obligacion } from '../demandados';
+import { Demanda } from './Mess';
 
-export interface pruebaDemanda
-{
-  numero: number;
-  _id: string;
-    deudor: Deudor;
-    idProceso: number | number[]
-    capitalAdeudado: number | string;
-    fechaIngreso: Date | string;
-    reparto: boolean;
-    clase: string;
-    grupo: string;
-    tipoProceso: string;
-    tipoBien: string;
-    llaveProceso: string;
-    codeudor?: Codeudor;
-    obligacion?:
-      | number[]
-      | { [key: string]: number | string };
-}
 
-export class ClassDemanda implements pruebaDemanda {
-  _id: string;
+
+
+export class ClassDemanda
+implements IntCarpeta {
+
   deudor: Deudor;
   numero: number;
   capitalAdeudado: number | string;
-  fechaIngreso: string | Date;
+  fechaIngreso: Date  ;
   reparto: boolean;
   codeudor: Codeudor | undefined;
-  tipoProceso: string;
+  tipoProceso: TipoProceso;
   tipoBien: string;
-  obligacion?:
-    | number[]
-    | { [key: string]: number | string };
+  obligacion?: Obligacion;
   llaveProceso: string;
-  idProceso: number | number[];
+  idProceso: number[];
   grupo: string;
   clase: string;
   constructor(
@@ -51,31 +34,30 @@ export class ClassDemanda implements pruebaDemanda {
       obligacion,
       llaveProceso,
       clase,
-      grupo,
-      _id
+      grupo
     }: {
-      numero: number;
+    numero: number;
     deudor: Deudor;
-    idProceso: number | number[]
+    idProceso:  number[];
     capitalAdeudado: number | string;
-    fechaIngreso: Date | string;
+    fechaIngreso: Date| string;
     reparto: boolean;
     clase: string;
     grupo: string;
-    tipoProceso: string;
+    tipoProceso: TipoProceso;
     tipoBien: string;
     llaveProceso: string;
     codeudor?: Codeudor;
-    obligacion?:
-      | number[]
-    | { [ key: string ]: number | string };
-        _id: string;
+        obligacion?: Obligacion;
+
   }
   ) {
     this.deudor = deudor;
     this.numero = numero;
     this.capitalAdeudado = capitalAdeudado;
-    this.fechaIngreso = fechaIngreso;
+    this.fechaIngreso = new Date(
+      fechaIngreso
+    );
     this.reparto = reparto;
     this.clase = clase;
     this.grupo = grupo;
@@ -85,9 +67,8 @@ export class ClassDemanda implements pruebaDemanda {
     this.obligacion = obligacion;
     this.llaveProceso = llaveProceso;
     this.idProceso = idProceso;
-    this._id = _id;
-  }
 
+  }
 }
 
 function getConsecutivo(): number {

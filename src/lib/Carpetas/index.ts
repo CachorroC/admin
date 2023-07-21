@@ -3,58 +3,76 @@ import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
 import { ObjectId } from 'mongodb';
-import {
-  IntCarpeta,
-  MonCarpeta,
-  carpetaConvert
-} from '#@/lib/types/demandados';
+import { IntCarpeta,
+         MonCarpeta,
+         carpetaConvert } from '#@/lib/types/demandados';
 
-export const preload = (llaveProceso: string) => {
-  void getCarpetasByllaveProceso({
-    llaveProceso: llaveProceso
-  });
+export const preload = (
+  llaveProceso: string
+) => {
+  void getCarpetasByllaveProceso(
+    {
+      llaveProceso: llaveProceso
+    }
+  );
 };
 
 export const carpetasCollection = cache(
   async () => {
     const client = await clientPromise;
 
-    if (!client) {
-      throw new Error('no hay cliente mongólico');
+    if ( !client ) {
+      throw new Error(
+        'no hay cliente mongólico'
+      );
     }
 
-    const db = client.db('RyS');
+    const db = client.db(
+      'RyS'
+    );
 
-    const carpetas =
-      db.collection<IntCarpeta>('Demandados');
+    const carpetas
+      = db.collection<IntCarpeta>(
+        'Demandados'
+      );
 
     return carpetas;
   }
 );
 
-export const getCarpetas = cache(async () => {
-  const collection = await carpetasCollection();
+export const getCarpetas = cache(
+  async () => {
+    const collection = await carpetasCollection();
 
-  const carpetasRaw = await collection
-    .find({})
-    .toArray();
+    const carpetasRaw = await collection
+      .find(
+        {}
+      )
+      .toArray();
 
-  const carpetas =
-    carpetaConvert.toMonCarpetas(carpetasRaw);
+    const carpetas
+    = carpetaConvert.toMonCarpetas(
+      carpetasRaw
+    );
 
-  return carpetas;
-});
+    return carpetas;
+  }
+);
 
 export const getCarpetasByllaveProceso = cache(
-  async ({
-    llaveProceso
-  }: {
+  async (
+    {
+      llaveProceso
+    }: {
     llaveProceso: string;
-  }) => {
+  }
+  ) => {
     const carpetas = await getCarpetas();
 
     const Carpetas = carpetas.filter(
-      (carpeta) => {
+      (
+        carpeta
+      ) => {
         return (
           carpeta.llaveProceso === llaveProceso
         );
@@ -66,15 +84,19 @@ export const getCarpetasByllaveProceso = cache(
 );
 
 export const getCarpetasByidProceso = cache(
-  async ({
-    idProceso
-  }: {
+  async (
+    {
+      idProceso
+    }: {
     idProceso: number;
-  }) => {
+  }
+  ) => {
     const carpetas = await getCarpetas();
 
     const Carpetas = carpetas.filter(
-      (carpeta) => {
+      (
+        carpeta
+      ) => {
         return carpeta.idProceso === idProceso;
       }
     );
@@ -84,14 +106,22 @@ export const getCarpetasByidProceso = cache(
 );
 
 export const getCarpetaById = cache(
-  async ({ _id }: { _id: string }) => {
+  async (
+    {
+      _id
+    }: { _id: string }
+  ) => {
     const carpetas = await getCarpetas();
 
-    const Carpeta = carpetas.find((carpeta) => {
-      return carpeta._id === _id;
-    });
+    const Carpeta = carpetas.find(
+      (
+        carpeta
+      ) => {
+        return carpeta._id === _id;
+      }
+    );
 
-    if (!Carpeta) {
+    if ( !Carpeta ) {
       return null;
     }
 
@@ -99,29 +129,36 @@ export const getCarpetaById = cache(
   }
 );
 
-export async function postCarpeta({
-  nota
-}: {
+export async function postCarpeta(
+  {
+    nota
+  }: {
   nota: IntCarpeta;
-}) {
+}
+) {
   const collection = await carpetasCollection();
 
-  const outgoingRequest =
-    await collection.insertOne(nota);
+  const outgoingRequest
+    = await collection.insertOne(
+      nota
+    );
 
-  if (!outgoingRequest.acknowledged) {
-    return new NextResponse(null, {
-      status: 404
-    });
+  if ( !outgoingRequest.acknowledged ) {
+    return new NextResponse(
+      null,
+      {
+        status: 404
+      }
+    );
   }
 
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId +
-        `${outgoingRequest.acknowledged}`
+      outgoingRequest.insertedId
+        + `${ outgoingRequest.acknowledged }`
     ),
     {
-      status: 200,
+      status : 200,
       headers: {
         'content-type': 'application/json'
       }

@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import { Mess, Liquidacion } from './Mess';
-import { ClassDemanda, pruebaDemanda } from './demanda';
+import { ClassDemanda,
+         pruebaDemanda } from './demanda';
 import { carpetasCollection } from '#@/lib/Carpetas';
 import { ObjectId } from 'mongodb';
 
@@ -2421,15 +2422,17 @@ const mess: Mess[] = [
 
 const plainMaps = mess.map(
   (
-    messito, index, array
+    messito, index, array 
   ) => {
     const meh: pruebaDemanda = {
       numero         : messito.numero,
       deudor         : messito.deudor,
       idProceso      : messito.idProceso,
-      capitalAdeudado: messito.liquidacion?.capitalAdeudado
+      capitalAdeudado: messito.liquidacion
+        ?.capitalAdeudado
         ? messito.liquidacion?.capitalAdeudado
-        : messito.demanda.capitalAdeudado ?? 'sin especificar',
+        : messito.demanda.capitalAdeudado
+          ?? 'sin especificar',
       fechaIngreso: new Date(),
       reparto     : true,
       codeudor    : messito.codeudor,
@@ -2438,37 +2441,39 @@ const plainMaps = mess.map(
         : messito.demanda.tipoProceso
           ? messito.demanda.tipoProceso
           : '',
-      tipoBien    : messito.medidasCautelares?.bien ?? '',
+      tipoBien:
+        messito.medidasCautelares?.bien ?? '',
       obligacion  : messito.demanda.obligacion,
       llaveProceso: messito.llaveProceso,
       grupo       : 'Bancolombia',
-      clase       : messito.medidasCautelares?.bien ?? 'sin especificar',
-      _id         : messito._id
+      clase:
+        messito.medidasCautelares?.bien
+        ?? 'sin especificar',
+      _id: messito._id
     };
 
     const idk = new ClassDemanda(
-      meh
+      meh 
     );
 
     console.log(
-      idk
+      idk 
     );
 
     return idk;
   }
 );
 
-
 plainMaps.forEach(
   async (
-    map
+    map 
   ) => {
     const collection = await carpetasCollection();
 
     collection.findOneAndReplace(
       {
         _id: new ObjectId(
-          map._id
+          map._id 
         )
       },
       map,
@@ -2476,5 +2481,5 @@ plainMaps.forEach(
         ignoreUndefined: true
       }
     );
-  }
+  } 
 );
