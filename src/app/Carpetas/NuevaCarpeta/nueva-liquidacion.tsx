@@ -6,13 +6,15 @@ import { Accordion } from '#@/components/Accordion';
 import { IntCarpeta } from '#@/lib/types/demandados';
 
 export function NuevaLiquidacionSection() {
-  const { register } =
-    useFormContext<IntCarpeta>();
+  const {
+    register 
+  }
+    = useFormContext<IntCarpeta>();
 
   return (
     <section className={form.section}>
       <h3
-        className={`${form.title} ${typography.displayMedium}`}
+        className={`${ form.title } ${ typography.displayMedium }`}
       >
         Liquidacion
       </h3>
@@ -69,7 +71,7 @@ export function NuevaLiquidacionSection() {
         />
       </section>
       <h4
-        className={`${form.title} ${typography.displaySmall}`}
+        className={`${ form.title } ${ typography.displaySmall }`}
       >
         Costas
       </h4>

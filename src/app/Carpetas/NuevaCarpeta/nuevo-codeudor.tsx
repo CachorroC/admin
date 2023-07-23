@@ -7,31 +7,28 @@ export function NuevoCodeudorSection() {
   return (
     <section className={form.section}>
       <h4
-        className={`${form.title} ${typography.displayMedium}`}
+        className={`${ form.title } ${ typography.displayMedium }`}
       >
         Codeudor
       </h4>
 
       <InputSection
-        name={'Codeudor.Id'}
-        title={'Codeudor.Id'}
+        name={'codeudor.cedula'}
+        title={'cedula del codeudor'}
         type={'number'}
       />
       <InputSection
-        name={'Codeudor.Nombre'}
+        name={'codeudor.nombre'}
         title={'Codeudor.Nombre'}
         type={'text'}
       />
       <InputSection
-        name={'Codeudor.Tel.Fijo'}
-        title={'Telefono Fijo'}
+        name={'codeudor.tel'}
+        title={'Telefono del codeudor'}
         type={'tel'}
       />
-      <InputSection
-        name={'Codeudor.Tel.Celular'}
-        title={'Telefono celular'}
-        type={'tel'}
-      />
+      <InputSection name={ 'codeudor.direccion' } title={ 'Direccion del codeudor ' } type={ 'text' } />
+
     </section>
   );
 }

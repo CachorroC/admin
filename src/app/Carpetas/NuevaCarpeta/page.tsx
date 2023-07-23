@@ -16,7 +16,7 @@ export default function NuevaCarpetaPage() {
         </h1>
       </div>
       <div className={layout.left}>
-        <NuevoProceso uri={`${getBaseUrl()}`} />
+        <NuevoProceso uri={`${ getBaseUrl() }`} />
       </div>
       <div className={layout.right}>
         <Suspense fallback={<Loader />}>

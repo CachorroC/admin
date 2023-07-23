@@ -7,7 +7,7 @@ export function NuevoDeudorSection() {
   return (
     <section className={form.section}>
       <h3
-        className={`${form.title} ${typography.displayMedium}`}
+        className={`${ form.title } ${ typography.displayMedium }`}
       >
         Deudor
       </h3>
@@ -46,40 +46,7 @@ export function NuevoDeudorSection() {
           required: true
         }}
       />
-      <InputSection
-        name={'Deudor.Email'}
-        title={'Correo electrónico'}
-        type={'text'}
-        rls={{
-          required: false,
-          pattern: /^\S+@\S+$/i
-        }}
-      />
-      <InputSection
-        name={'Deudor.Tel.Fijo'}
-        title={'Telefono fijo'}
-        type={'tel'}
-        rls={{
-          required: false,
-          maxLength: 10
-        }}
-      />
-      <InputSection
-        name={'Deudor.Tel.Celular'}
-        title={'Telefono celular'}
-        type={'tel'}
-        rls={{
-          required: false,
-          maxLength: 10
-        }}
-      />
-      <InputSection
-        name={'Deudor.Direccion'}
-        title={
-          'Direccion de residencia o trabajo'
-        }
-        type={'text'}
-      />
+
     </section>
   );
 }

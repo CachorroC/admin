@@ -1,81 +1,100 @@
-import {
-  IntCarpeta,
-  MonCarpeta,
-  NombreCompleto
-} from '#@/lib/types/demandados';
+import { IntCarpeta,
+         MonCarpeta,
+         NombreCompleto } from '#@/lib/types/demandados';
 
 import { fixFechas } from '#@/lib/fix';
 import styles from './carpetas.module.scss';
 import type { Route } from 'next';
-import {
-  Fragment,
-  ReactNode,
-  Suspense
-} from 'react';
+import { Fragment,
+         ReactNode,
+         Suspense } from 'react';
 import { Loader } from '#@/components/Loader';
-import { getActuaciones } from '#@/lib/Actuaciones';
+import { fetchLastActuaciones, getActuaciones } from '#@/lib/Actuaciones';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { DemandaContainer } from '.';
 import Link from 'next/link';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { NombreComponent } from '../Nombre';
 
-async function Fecha({
-  idProceso,
-  index
-}: {
-  idProceso: number;
+async function Fecha(
+                {
+                  idProceso,
+                  index
+                }: {
+  idProceso: number[];
   index: number;
-}) {
-  const actuaciones = await getActuaciones(
-    idProceso,
-    index
-  );
+}
+) {
+  const idk = [];
 
-  if (
-    idProceso === 0 ||
-    actuaciones.length === 0
-  ) {
-    return null;
+  for ( let i = 0; i < idProceso.length; i++ ) {
+    const idP = idProceso[ i ];
+
+    const actuaciones = await fetchLastActuaciones(
+      idP
+    );
+
+    if ( idP === 0 || !actuaciones.ok ) {
+      return null;
+    }
+    const lastAct = actuaciones.value;
+
+    if ( lastAct === null ) {
+      return null;
+    }
+
+    idk.push(
+      <div className={styles.date}>
+        <p className={typography.labelSmall}>
+          {`se revisó por última vez el ${ fixFechas(
+            lastAct.lastFetch
+          ) }`}
+        </p>
+        { lastAct.ultimaActuacion && (
+          <p>{  `eltima actuacion el  ${ fixFechas(
+            lastAct.ultimaActuacion.fechaActuacion
+          ) }`}</p>
+        )}
+      </div>
+    );
   }
 
-  return (
-    <div className={styles.date}>
-      <p className={typography.labelSmall}>
-        {fixFechas(actuaciones[0].fechaActuacion)}
-      </p>
-    </div>
-  );
+  return ( <>{idk}</> );
+
 }
 
 export async function ListCardCarpetasNFechasServer() {
   const carpetas = await getCarpetas();
 
-  const sortedCarpetas = [...carpetas].sort(
-    (a, b) => {
+  const sortedCarpetas = [
+    ...carpetas
+  ].sort(
+    (
+      a, b
+    ) => {
       if (
-        !a.ultimaActuacion ||
-        a.ultimaActuacion.fechaActuacion ===
-          undefined
+        !a.ultimaActuacion
+        || a.ultimaActuacion.fechaActuacion
+          === undefined
       ) {
         return 1;
       }
 
       if (
-        !b.ultimaActuacion ||
-        b.ultimaActuacion.fechaActuacion ===
-          undefined
+        !b.ultimaActuacion
+        || b.ultimaActuacion.fechaActuacion
+          === undefined
       ) {
         return -1;
       }
       const x = a.ultimaActuacion.fechaActuacion;
       const y = b.ultimaActuacion.fechaActuacion;
 
-      if (x < y) {
+      if ( x < y ) {
         return 1;
       }
 
-      if (x > y) {
+      if ( x > y ) {
         return -1;
       }
 
@@ -85,30 +104,20 @@ export async function ListCardCarpetasNFechasServer() {
 
   return (
     <>
-      {sortedCarpetas.map(
-        (carpeta, index, arr) => {
-          const newName = new NombreCompleto({
-            PrimerNombre:
-              carpeta.Deudor.PrimerNombre,
-            PrimerApellido:
-              carpeta.Deudor.PrimerApellido,
-            SegundoNombre:
-              carpeta.Deudor.SegundoNombre,
-            SegundoApellido:
-              carpeta.Deudor.SegundoApellido
-          });
-
+      {carpetas.map(
+        (
+          carpeta, index, arr
+        ) => {
           return (
             <CarpetaCard
-              Carpeta={carpeta}
-              key={carpeta._id}
+              Carpeta={ carpeta }
+              key={ carpeta._id }
             >
-              <h1>{newName.Nombre}</h1>
-              <Suspense fallback={<Loader />}>
+              <NombreComponent deudor={carpeta.deudor}/>
+              <Suspense fallback={ <Loader /> }>
                 <Fecha
-                  idProceso={carpeta.idProceso}
-                  index={index}
-                />
+                  idProceso={ carpeta.idProceso }
+                  index={ index } />
               </Suspense>
             </CarpetaCard>
           );
@@ -118,43 +127,47 @@ export async function ListCardCarpetasNFechasServer() {
   );
 }
 
-const CarpetaCard = async ({
-  Carpeta,
-  children
-}: {
+const CarpetaCard = async (
+  {
+    Carpeta,
+    children
+  }: {
   Carpeta: MonCarpeta;
   children: ReactNode;
-}) => {
+}
+) => {
   const {
     llaveProceso,
     idProceso,
-    Deudor,
+    deudor,
     _id,
-    Demanda
+    demanda
   } = Carpeta;
 
-  const { Tel, Direccion, Email } = Deudor;
+  const {
+    tel, direccion, email
+  } = deudor;
   const path = '/Procesos';
 
   const href = (
     llaveProceso
       ? idProceso
-        ? `${path}/${llaveProceso}/${idProceso}`
-        : `${path}/${llaveProceso}`
-      : `${path}`
+        ? `${ path }/${ llaveProceso }/${ idProceso }`
+        : `${ path }/${ llaveProceso }`
+      : `${ path }`
   ) as Route;
 
   return (
     <Fragment key={_id}>
-      <DemandaContainer demanda={Demanda} />
+      <DemandaContainer demanda={demanda} />
       <div
         className={styles.container}
         key={_id}
       >
         <div className={styles.cardInactive}>
-          <NombreComponent Deudor={Deudor} />
+          <NombreComponent deudor={deudor} />
           <p className={styles.content}>
-            {Direccion ?? 'sin direccion'}
+            {direccion ?? 'sin direccion'}
           </p>
           <div className={styles.links}>
             <Link
@@ -162,7 +175,7 @@ const CarpetaCard = async ({
               href={href}
             >
               <span
-                className={`material-symbols-outlined ${styles.icon}`}
+                className={`material-symbols-outlined ${ styles.icon }`}
               >
                 folder_open
               </span>
@@ -173,13 +186,13 @@ const CarpetaCard = async ({
               </span>
             </Link>
             {children}
-            {Tel && Tel.Celular && (
+            {tel && tel.celular && (
               <Link
                 className={styles.button}
-                href={`tel:${Tel.Celular}`}
+                href={`tel:${ tel.celular }`}
               >
                 <span
-                  className={`material-symbols-outlined ${styles.icon}`}
+                  className={`material-symbols-outlined ${ styles.icon }`}
                 >
                   phone_iphone
                 </span>
@@ -190,13 +203,13 @@ const CarpetaCard = async ({
                 </span>
               </Link>
             )}
-            {Email && (
+            {email && (
               <Link
                 className={styles.button}
-                href={`mailto:${Email}`}
+                href={`mailto:${ email }`}
               >
                 <span
-                  className={`material-symbols-outlined ${styles.icon}`}
+                  className={`material-symbols-outlined ${ styles.icon }`}
                 >
                   forward_to_inbox
                 </span>
@@ -207,13 +220,13 @@ const CarpetaCard = async ({
                 </span>
               </Link>
             )}
-            {Tel && Tel.Fijo && (
+            {tel && tel.fijo && (
               <Link
                 className={styles.button}
-                href={`tel:${Tel.Fijo}`}
+                href={`tel:${ tel.fijo }`}
               >
                 <span
-                  className={`material-symbols-outlined ${styles.icon}`}
+                  className={`material-symbols-outlined ${ styles.icon }`}
                 >
                   call
                 </span>

@@ -10,7 +10,7 @@ export default function Loading() {
     <div className={layout.body}>
       <div className={layout.name}>
         <h1
-          className={`${typography.titleMedium}  ${typeface.drawer}`}
+          className={`${ typography.titleMedium }  ${ typeface.drawer }`}
         >
           R&S consultoria s.a.s
         </h1>

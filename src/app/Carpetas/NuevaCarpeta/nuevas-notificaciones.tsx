@@ -7,13 +7,13 @@ export function NuevasNotificacionesSection() {
   return (
     <section className={form.section}>
       <h3
-        className={`${form.title} ${typography.displayMedium}`}
+        className={`${ form.title } ${ typography.displayMedium }`}
       >
         Notificaciones
       </h3>
 
       <h4
-        className={`${form.title} ${typography.displaySmall}`}
+        className={`${ form.title } ${ typography.displaySmall }`}
       >
         291
       </h4>
@@ -37,7 +37,7 @@ export function NuevasNotificacionesSection() {
         />
       </Accordion>
       <h4
-        className={`${form.title} ${typography.displaySmall}`}
+        className={`${ form.title } ${ typography.displaySmall }`}
       >
         292
       </h4>

@@ -1,38 +1,42 @@
 'use client';
 import form from '#@/components/form/form.module.scss';
 import { IntCarpeta } from '#@/lib/types/demandados';
-import {
-  UseFormRegister,
-  useFormContext
-} from 'react-hook-form';
+import { UseFormRegister,
+         useFormContext } from 'react-hook-form';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { Accordion } from '#@/components/Accordion';
 import { InputSection } from '#@/components/form/InputSection';
+import { ObligacionesArray } from './obligaciones-array';
 
 export function NuevaDemandaSection() {
-  const { register } =
-    useFormContext<IntCarpeta>();
+  const {
+    register
+  }
+    = useFormContext<IntCarpeta>();
 
   return (
     <section className={form.section}>
       <h3
-        className={`${form.title} ${typography.displayMedium}`}
+        className={`${ form.title } ${ typography.displayMedium }`}
       >
         Demanda
       </h3>
 
       <section className={form.section}>
         <label
-          htmlFor='Demanda.Departamento'
+          htmlFor='demanda.departamento'
           className={form.label}
         >
-          Departamento:
+          departamento:
         </label>
         <select
           className={form.textArea}
-          {...register('Demanda.Departamento', {
-            required: false
-          })}
+          {...register(
+            'demanda.departamento',
+            {
+              required: false
+            }
+          )}
         >
           <option value='CO-AMA'>Amazonas</option>
           <option value='CO-ANT'>
@@ -93,85 +97,35 @@ export function NuevaDemandaSection() {
         </select>
       </section>
       <InputSection
-        name={'Demanda.Municipio'}
+        name={'demanda.municipio'}
         title={'Municipio'}
         type={'text'}
       />
+
       <InputSection
-        name={'Demanda.VencimientoPagare'}
-        title={'Vencimiento pagare'}
-        type={'date'}
-      />
-      <InputSection
-        name={'Demanda.EntregadeGarantiasAbogado'}
-        title={'Entrega de garantias abogado'}
-        type={'date'}
-      />
-      <InputSection
-        name={'Demanda.Radicado'}
+        name={'demanda.radicado'}
         title={'Radicado número'}
         type={'text'}
         rls={{
           required: false,
-          pattern: /\d\d\d\d\s+-\s+\d\d\d\d\d/gi
+          pattern : /\d\d\d\d\s+-\s+\d\d\d\d\d/gi
         }}
       />
+
 
       <section className={form.section}>
         <label
           className={form.label}
-          htmlFor='Demanda.CapitalAdeudado'
-        >
-          Capital Adeudado
-        </label>
-        <input
-          className={form.textArea}
-          type='number'
-          placeholder='Demanda.CapitalAdeudado'
-          {...register(
-            'Demanda.CapitalAdeudado',
-            {
-              required: false
-            }
-          )}
-        />
-      </section>
-      <section className={form.section}>
-        <label
-          className={form.label}
-          htmlFor='Demanda.Proceso.tipo'
-        >
-          Tipo de proceso
-        </label>
-        <select
-          {...register('Demanda.Proceso.Tipo', {
-            required: false
-          })}
-        >
-          <option value='HIPOTECARIO'>
-            HIPOTECARIO
-          </option>
-          <option value='PRENDARIO'>
-            PRENDARIO
-          </option>
-          <option value='SINGULAR'>
-            SINGULAR
-          </option>
-        </select>
-      </section>
-      <section className={form.section}>
-        <label
-          className={form.label}
-          htmlFor='Demanda.Ubicacion.Juzgado'
+          htmlFor='demanda.Ubicacion.Juzgado'
         >
           Ubicacion del juzgado
         </label>
         <input
           className={form.textArea}
           type='text'
-          placeholder='Demanda.Ubicacion.Juzgado'
+          placeholder='demanda.Ubicacion.Juzgado'
           {...register(
-            'Demanda.Ubicacion.Juzgado',
+            'demanda.ubicacion',
             {
               required: false
             }
@@ -182,7 +136,7 @@ export function NuevaDemandaSection() {
         <section className={form.section}>
           <label
             className={form.label}
-            htmlFor='Demanda.Juzgado.Origen.id'
+            htmlFor='demanda.juzgado.origen.id'
           >
             Nombre del Juzgado de origen
           </label>
@@ -191,7 +145,7 @@ export function NuevaDemandaSection() {
             type='text'
             placeholder='Juzgado de Origen'
             {...register(
-              'Demanda.Juzgado.Origen.id',
+              'demanda.juzgado.origen.id',
               {
                 required: false
               }
@@ -201,7 +155,7 @@ export function NuevaDemandaSection() {
         <section className={form.section}>
           <label
             className={form.label}
-            htmlFor='Demanda.Juzgado.Origen.url'
+            htmlFor='demanda.Juzgado.Origen.url'
           >
             Link para el juzgado de origen
           </label>
@@ -210,7 +164,7 @@ export function NuevaDemandaSection() {
             type='text'
             placeholder='Link del juzgado'
             {...register(
-              'Demanda.Juzgado.Origen.url',
+              'demanda.juzgado.origen.url',
               {
                 required: false
               }
@@ -222,7 +176,7 @@ export function NuevaDemandaSection() {
         <section className={form.section}>
           <label
             className={form.label}
-            htmlFor='Demanda.Juzgado.Ejecucion.id'
+            htmlFor='demanda.juzgado.ejecucion.id'
           >
             Nombre del Juzgado de ejecucion
           </label>
@@ -231,7 +185,7 @@ export function NuevaDemandaSection() {
             type='text'
             placeholder='Juzgado de ejecucion'
             {...register(
-              'Demanda.Juzgado.Ejecucion.id',
+              'demanda.juzgado.ejecucion.id',
               {}
             )}
           />
@@ -239,7 +193,7 @@ export function NuevaDemandaSection() {
         <section className={form.section}>
           <label
             className={form.label}
-            htmlFor='Demanda.Juzgado.Ejecucion.url'
+            htmlFor='demanda.juzgado.ejecucion.url'
           >
             Link para el juzgado de ejecucion
           </label>
@@ -248,63 +202,13 @@ export function NuevaDemandaSection() {
             type='text'
             placeholder='Link del juzgado'
             {...register(
-              'Demanda.Juzgado.Ejecucion.url',
+              'demanda.juzgado.ejecucion.url',
               {}
             )}
           />
         </section>
       </section>
-      <section className={form.section}>
-        <label
-          className={form.label}
-          htmlFor='Demanda.Obligacion.0'
-        >
-          Obligacion 0
-        </label>
-        <input
-          className={form.textArea}
-          type='text'
-          placeholder='Demanda.Obligacion.0'
-          {...register(
-            'Demanda.Obligacion.0',
-            {}
-          )}
-        />
-      </section>
-      <section className={form.section}>
-        <label
-          className={form.label}
-          htmlFor='Demanda.Obligacion.1'
-        >
-          Obligacion 1
-        </label>
-        <input
-          className={form.textArea}
-          type='text'
-          placeholder='Demanda.Obligacion.1'
-          {...register(
-            'Demanda.Obligacion.1',
-            {}
-          )}
-        />
-      </section>
-      <section className={form.section}>
-        <label
-          className={form.label}
-          htmlFor='Demanda.Obligacion.2'
-        >
-          Obligacion 2
-        </label>
-        <input
-          className={form.textArea}
-          type='text'
-          placeholder='Demanda.Obligacion.2'
-          {...register(
-            'Demanda.Obligacion.2',
-            {}
-          )}
-        />
-      </section>
+
     </section>
   );
 }

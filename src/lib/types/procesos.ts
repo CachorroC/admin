@@ -69,3 +69,12 @@ export interface IntActuaciones {
   text: { statusCode: number; message: string };
   acts?: intActuacion[];
 }
+
+
+
+export interface ActuacionCollectionItem
+{
+
+  lastFetch: Date | string;
+  idProceso: number;
+ultimaActuacion?: intActuacion}
