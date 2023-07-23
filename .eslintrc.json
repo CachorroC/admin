@@ -52,7 +52,7 @@
         },
         "FunctionDeclaration": {
           "body": 1,
-          "parameters": "first"
+          "parameters": "8"
         },
         "FunctionExpression": {
           "body": 1,
@@ -60,6 +60,7 @@
         },
         "ImportDeclaration": "first",
         "ObjectExpression": "first",
+        "MemberExpression": 3,
         "SwitchCase": 1,
         "VariableDeclarator": "first",
         "offsetTernaryExpressions": true

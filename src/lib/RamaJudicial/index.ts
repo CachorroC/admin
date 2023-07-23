@@ -50,6 +50,7 @@ export async function fetchProceso({
     if (!req.ok) {
       return [];
     }
+
     const res =
       (await req.json()) as intConsultaNumeroRadicacion;
     const procesos = res.procesos;
@@ -110,6 +111,7 @@ export async function getProceso({
     llaveProceso: llaveProceso,
     index: awaitTime
   });
+
   const returnedProcesos: Map<
     number,
     intProceso
@@ -126,6 +128,7 @@ export async function getProceso({
       proceso: proceso,
       index: prc
     });
+
     const returnedProceso =
       updtProceso.value ?? proceso;
 
@@ -166,6 +169,7 @@ export async function getProcesos({
           proceso: proceso,
           index: index * i
         });
+
         const returnedProceso =
           updtProceso.value ?? proceso;
         returnedProcesos.set(

@@ -63,6 +63,7 @@ export function Edit({
 
       return fullfilled;
     });
+
     const responsePostNewNote =
       await postNewNote.json();
     alert(responsePostNewNote);

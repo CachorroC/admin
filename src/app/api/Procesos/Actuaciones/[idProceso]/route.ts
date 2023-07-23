@@ -43,6 +43,7 @@ export async function GET(
         }
       );
     }
+
     const res =
       (await req.json()) as intConsultaActuaciones;
 

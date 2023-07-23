@@ -1,4 +1,3 @@
-
 import clientPromise from '#@/lib/mongodb';
 import { IntCarpeta } from '#@/lib/types/demandados';
 import { ClassDemanda } from '#@/lib/types/models/demanda';
@@ -8,7 +7,6 @@ import { cache } from 'react';
 
 const newCarpetas: IntCarpeta[] = [
   {
-
     capitalAdeudado: 500314967,
     clase          : 'BANCOS',
     codeudor       : {
@@ -36,7 +34,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso : 'SINGULAR'
   },
   {
-
     capitalAdeudado: 25833335,
     clase          : 'BANCOS',
     deudor         : {
@@ -51,10 +48,8 @@ const newCarpetas: IntCarpeta[] = [
     fechaIngreso: new Date(
       '2023-07-20T22:40:03.345Z'
     ),
-    grupo    : 'Bancolombia',
-    idProceso: [ ][
-      50621670
-    ],
+    grupo       : 'Bancolombia',
+    idProceso   : [][ 50621670 ],
     llaveProceso: '11001400300120170100100',
     numero      : 178,
     reparto     : true,
@@ -62,7 +57,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso : 'SINGULAR'
   },
   {
-
     capitalAdeudado: '$ 27.603.821',
     clase          : 'INMUEBLE',
     deudor         : {
@@ -92,7 +86,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso : 'HIPOTECARIO'
   },
   {
-
     capitalAdeudado: '$ 40.406.421',
     clase          : 'VEHICULO',
     deudor         : {
@@ -123,7 +116,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso: 'SINGULAR'
   },
   {
-
     capitalAdeudado: '$ 22.592.583',
     clase          : 'CASA 176',
     deudor         : {
@@ -152,7 +144,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso : 'HIPOTECARIO'
   },
   {
-
     capitalAdeudado: '$ 11.949.471',
     clase          : 'BANCOS',
     codeudor       : {
@@ -188,7 +179,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso : 'SINGULAR'
   },
   {
-
     capitalAdeudado: 'sin especificar',
     clase          : 'sin especificar',
     deudor         : {
@@ -211,7 +201,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso : 'SINGULAR'
   },
   {
-
     capitalAdeudado: '$ 26.515.333',
     clase          : 'VEHICULO',
     codeudor       : {
@@ -243,7 +232,6 @@ const newCarpetas: IntCarpeta[] = [
   },
 
   {
-
     capitalAdeudado: '$ 50.000.000',
     clase          : 'BANCOS',
     deudor         : {
@@ -268,7 +256,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso : 'SINGULAR'
   },
   {
-
     capitalAdeudado: '$ 14.795.921',
     clase          : 'INMUEBLE APTO 504',
     deudor         : {
@@ -297,7 +284,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso : 'HIPOTECARIO'
   },
   {
-
     capitalAdeudado: '$ 12.347.548',
     clase          : 'sin especificar',
     codeudor       : {
@@ -333,7 +319,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso : 'SINGULAR'
   },
   {
-
     capitalAdeudado: '$ 12.249.598',
     clase          : 'APTO 104 TORRE 4',
     deudor         : {
@@ -368,7 +353,6 @@ const newCarpetas: IntCarpeta[] = [
   },
 
   {
-
     capitalAdeudado: '$ 27.373.832',
     clase          : 'CASA',
     deudor         : {
@@ -397,7 +381,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso: 'SINGULAR'
   },
   {
-
     capitalAdeudado: '$ 35.608.653',
     clase          : 'sin especificar',
     codeudor       : {
@@ -438,7 +421,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso: 'SINGULAR'
   },
   {
-
     capitalAdeudado: '$ 56.987.693',
     clase          : 'sin especificar',
     deudor         : {
@@ -469,7 +451,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso: 'HIPOTECARIO'
   },
   {
-
     capitalAdeudado: '$ 44.944.657',
     clase          : 'APTO 101 TORRE 20',
     deudor         : {
@@ -500,7 +481,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso: 'HIPOTECARIO'
   },
   {
-
     capitalAdeudado: '$ 18.100.699',
     clase          : 'APTO 231',
     deudor         : {
@@ -531,7 +511,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso: 'SINGULAR'
   },
   {
-
     capitalAdeudado: '$ 29.416.113',
     clase          : 'APTO 503',
     deudor         : {
@@ -557,7 +536,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso : 'SINGULAR'
   },
   {
-
     capitalAdeudado: '$ 66.362.959',
     clase          : 'CASA',
     codeudor       : {
@@ -602,7 +580,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso : 'HIPOTECARIO'
   },
   {
-
     capitalAdeudado: '$ 24.501.535',
     clase          : 'PREDIO RURAL',
     deudor         : {
@@ -634,7 +611,6 @@ const newCarpetas: IntCarpeta[] = [
   },
 
   {
-
     capitalAdeudado: '$ 24.807.317',
     clase          : 'APTO 504',
     codeudor       : {
@@ -670,7 +646,6 @@ const newCarpetas: IntCarpeta[] = [
     tipoProceso: 'HIPOTECARIO'
   },
   {
-
     capitalAdeudado: '$ 15.324.570',
     clase          : 'sin especificar',
     deudor         : {
@@ -722,24 +697,18 @@ export const carpetasCollection = cache(
   }
 );
 
-export async function GET () {
+export async function GET() {
   const collection = await carpetasCollection();
-
-
 
   const newMapCarpetas = newCarpetas.map(
     (
       carpeta
     ) => {
-
-
       const classesita = new ClassDemanda(
         carpeta
       );
 
       return classesita;
-
-
     }
   );
 
@@ -754,6 +723,4 @@ export async function GET () {
       }
     }
   );
-
-
 }

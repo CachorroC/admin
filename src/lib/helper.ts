@@ -15,6 +15,7 @@ export const uri = async () => {
   if (!composeduri.ok) {
     throw new Error('no pudimos pedir la uri');
   }
+
   const res =
     (await composeduri.json()) as intUri;
 

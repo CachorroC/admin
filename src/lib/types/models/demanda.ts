@@ -1,58 +1,22 @@
-import { IntCarpeta, Deudor, Codeudor, TipoProceso, Obligacion } from '../demandados';
-import { Demanda } from './Mess';
+import { IntCarpeta,
+         Deudor,
+         Codeudor,
+         TipoProceso } from '../demandados';
 
-
-
-
-export class ClassDemanda
-implements IntCarpeta {
-
+export class ClassDemanda implements IntCarpeta {
   deudor: Deudor;
   numero: number;
   capitalAdeudado: number | string;
-  fechaIngreso: Date  ;
+  fechaIngreso: Date;
   reparto: boolean;
   codeudor: Codeudor | undefined;
   tipoProceso: TipoProceso;
   tipoBien: string;
   obligacion?: Obligacion;
   llaveProceso: string;
-  idProceso: number[];
   grupo: string;
   clase: string;
-  constructor(
-    {
-      numero = getConsecutivo(),
-      deudor,
-      idProceso,
-      capitalAdeudado,
-      fechaIngreso = new Date(),
-      reparto = false,
-      codeudor,
-      tipoProceso,
-      tipoBien,
-      obligacion,
-      llaveProceso,
-      clase,
-      grupo
-    }: {
-    numero: number;
-    deudor: Deudor;
-    idProceso:  number[];
-    capitalAdeudado: number | string;
-    fechaIngreso: Date| string;
-    reparto: boolean;
-    clase: string;
-    grupo: string;
-    tipoProceso: TipoProceso;
-    tipoBien: string;
-    llaveProceso: string;
-    codeudor?: Codeudor;
-        obligacion?: Obligacion;
-
-  }
-  ) {
-    this.deudor = deudor;
+  constructor({ numero = getConsecutivo(), deudor, capitalAdeudado, fechaIngreso = new Date(), reparto = false, codeudor, tipoProceso, tipoBien, obligacion, llaveProceso, clase, idProceso, grupo}: { numero: number; deudor: Deudor; idProceso: number[]; capitalAdeudado: number | string; fechaIngreso: Date | string; reparto: boolean; clase: string; grupo: string; tipoProceso: TipoProceso; tipoBien: string; llaveProceso: string; codeudor?: Codeudor; obligacion?: (number | string)[];}) {this.deudor = deudor;
     this.numero = numero;
     this.capitalAdeudado = capitalAdeudado;
     this.fechaIngreso = new Date(
@@ -67,7 +31,19 @@ implements IntCarpeta {
     this.obligacion = obligacion;
     this.llaveProceso = llaveProceso;
     this.idProceso = idProceso;
+  }
 
+  set idProceso (
+    x: number[]
+  ) {
+    this.idProceso = x;
+  }
+
+  get idProceso () {
+    return this.idProceso;
+  }
+  get llaveProceso () {
+    return this.llaveProceso;
   }
 }
 

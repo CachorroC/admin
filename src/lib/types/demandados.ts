@@ -5,57 +5,61 @@
 //   const intCarpeta = Convert.toIntCarpeta(json);
 
 export interface IntCarpeta {
-    capitalAdeudado: number | string;
-    clase:           string;
-    codeudor?:       Codeudor;
-    deudor:          Deudor;
-    fechaIngreso:    Date;
-    grupo:           string;
-    idProceso:      number[];
-    llaveProceso:    string;
-    numero:          number;
-    reparto:         boolean;
-    tipoBien:        string;
-    tipoProceso:     TipoProceso;
-  obligacion?: Obligacion;
+  numero: number;
+  fechaIngreso: Date;
+  deudor: Deudor;
+  capitalAdeudado: number;
+  vencimientoPagare: Date;
+  clase: ClaseProceso;
+  codeudor?: Codeudor;
+  grupo: Grupo;
+  idProceso: number[];
+  llaveProceso: string;
+  reparto: boolean;
+  tipoBien: string;
+  tipoProceso: TipoProceso;
+  obligacion?:  ( number | string )[];
 }
 
-export interface Obligacion {
-    '1': number | string;
-    '2': number | string;
-}
+export type ClaseProceso = 'VEHICULO' | 'INMUEBLE' | 'BANCOS' | 'SALARIO' | 'ESTABLECIMIENTO'
+
+export type Grupo = 'Bancolombia' | 'Reintegra' | 'LiosJuridicos'
+
+
 
 export interface Codeudor {
-    Nombre:     string[] | string;
-    cedula:     number[] | number;
-    direccion?: string;
-    tel?:       Tel;
+  nombre: string[] | string;
+  cedula: number[] | number | string;
+  direccion?: string;
+  tel?: number | string;
 }
 
 export interface Tel {
-    celular: number;
-    fijo:    number;
+  celular?: number;
+  fijo?: number;
 }
 
 export interface Deudor {
-    cedula?:          number;
-    direccion?:       string;
-    primerApellido:   string;
-    primerNombre:     string;
-    email?:           string;
-    segundoApellido?: string;
-    segundoNombre?:   string;
-    tel?:             Tel;
+  cedula?: number;
+  direccion?: string;
+  primerApellido: string;
+  primerNombre: string;
+  email?: string;
+  segundoApellido?: string;
+  segundoNombre?: string;
+  tel?: Tel;
 }
 
-export interface MonCarpeta extends IntCarpeta
-{
-  _id : string
+export interface MonCarpeta extends IntCarpeta {
+  _id: string;
 }
 
-export type Grupo = 'Bancolombia';
 
-export type TipoProceso = 'SINGULAR' | 'HIPOTECARIO' | 'PRENDARIO';
+
+export type TipoProceso =
+  | 'SINGULAR'
+  | 'HIPOTECARIO'
+  | 'PRENDARIO';
 
 // Converts JSON strings to/from your types
 export class Convert {

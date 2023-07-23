@@ -30,6 +30,7 @@ export default function InputProceso() {
     if (!Request.ok) {
       return notFound();
     }
+
     const Response =
       (await Request.json()) as intConsultaNumeroRadicacion;
 

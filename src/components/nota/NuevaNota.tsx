@@ -77,6 +77,7 @@ export function NewNota({
 
       return fullfilled;
     });
+
     const responsePostNewNote =
       await postNewNote.json();
     alert(responsePostNewNote);

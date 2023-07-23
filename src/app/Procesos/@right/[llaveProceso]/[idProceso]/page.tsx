@@ -52,6 +52,7 @@ async function Acts({
   const acts = await fetch(
     `${getBaseUrl()}/api/Procesos/Actuaciones/${idProceso}`
   );
+
   const res =
     (await acts.json()) as IntActuaciones;
 
