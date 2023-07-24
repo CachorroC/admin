@@ -105,7 +105,6 @@ export interface MonCarpeta extends IntCarpeta
 {
   _id: string;
   nombre: string;
-  despacho: Ejecucion
     }
 
 // Converts JSON strings to/from your types/ Converts JSON strings to/from your types
@@ -146,8 +145,6 @@ export class carpetaConvert {
   public static toMonCarpeta(
     carpeta: WithId<IntCarpeta>
   ): MonCarpeta {
-    const dsp
-      = carpeta.demanda.juzgado.ejecucion ?? carpeta.demanda.juzgado.origen;
 
     const nmb = carpeta.deudor.segundoApellido
       ? carpeta.deudor.segundoNombre
@@ -157,9 +154,8 @@ export class carpetaConvert {
 
     const fixedCarpeta: MonCarpeta = {
       ...carpeta,
-      _id     : carpeta._id.toString(),
-      despacho: dsp,
-      nombre  : nmb
+      _id   : carpeta._id.toString(),
+      nombre: nmb
     };
 
     return fixedCarpeta;

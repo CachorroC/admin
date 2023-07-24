@@ -7,64 +7,27 @@ import { carpetasCollection } from '../Carpetas';
 import { sleep } from '../fix';
 import { cache } from 'react';
 import clientPromise from '../mongodb';
-import { MonCarpeta } from '../types/demandados';
+import { IntCarpeta, MonCarpeta } from '../types/demandados';
 import { Collection } from 'mongodb';
 
-export function wait(
-                delay: number
-) {
-  return new Promise(
-    (
-      resolve
-    ) => {
-      return setTimeout(
-        resolve,
-        delay
-      );
-    }
-  );
+
+export async function fetchActuaciones (
+                {
+                  idProceso,  index
+                }: {
+  idProceso: number;  index?: number
 }
-
-export const actuacionesCollection = cache(
-  async () => {
-    const client = await clientPromise;
-
-    if ( !client ) {
-      throw new Error(
-        'no hay cliente mongo actuaciones'
-      );
-    }
-
-    const actuaciones = client.db(
-      'RyS'
-    ).collection<ActuacionCollectionItem>(
-      'Actuaciones'
-    );
-
-    return actuaciones;
-  }
-);
-
-export async function getActuaciones(
-                idProceso: number,
-                index: number
 ) {
-  const awaitTime = index * 2000;
-
   if ( idProceso === 0 || idProceso === 404 ) {
-    console.log(
-      `idProceso es ${ idProceso }`
-    );
-
     return [];
   }
-  const collection = await actuacionesCollection();
-  wait(
+  const awaitTime = index ?? 0;
+  await sleep(
     awaitTime
   );
 
   try {
-    const request = await fetch(
+    const Request = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
       {
         next: {
@@ -73,52 +36,103 @@ export async function getActuaciones(
       }
     );
 
-    if ( !request.ok ) {
-      console.log(
-        `Get Actuaciones request was not ok ${ request.status }`
-      );
-
+    if ( !Request.ok ) {
       return [];
     }
+    const Response = ( await Request.json() ) as intConsultaActuaciones;
 
-    const res
-      = ( await request.json() ) as intConsultaActuaciones;
-
-    if ( !res.actuaciones ) {
-      console.log(
-        'Get Actuaciones no tiene actuaciones'
-      );
-
-      return [];
-    }
-    const ultimaActuacion = res.actuaciones[ 0 ];
-
-    const updateCarpeta
-      = await collection.updateOne(
-        {
-          idProceso: idProceso
-        },
-        {
-          $set: {
-            ultimaActuacion: ultimaActuacion
-          }
-        }
-      );
-
-    if ( updateCarpeta.modifiedCount >= 1 ) {
-      console.log(
-        `${ idProceso } was ${ updateCarpeta.acknowledged } with ${ updateCarpeta.modifiedCount } documents modified`
-      );
-    }
-
-    return res.actuaciones;
-  } catch ( err ) {
+    return Response.actuaciones;
+  } catch ( error ) {
     console.log(
-      err ?? 'error'
+      error
     );
 
     return [];
   }
+}
+
+export async function getActuaciones(
+                idProceso: number,
+                llaveProceso: string,
+                index?: number
+) {
+  const awaitTime = index ?? 0;
+
+  if ( idProceso === 0 || idProceso === 404 ) {
+    console.log(
+      `idProceso es ${ idProceso }`
+    );
+
+    return [];
+  }
+  await sleep(
+    awaitTime
+  );
+  const collection = await carpetasCollection();
+
+  const actuaciones = await fetchActuaciones(
+    {
+      idProceso: idProceso,
+      index    : index
+    }
+  );
+
+  if ( actuaciones.length >= 1 ) {
+
+    const updateCarpeta
+      = await collection.findOneAndUpdate(
+        {
+          idProceso: {
+            $all: [
+              idProceso
+            ]
+          }
+        },
+        {
+          $addToSet: {
+            idProcesos: {
+              idProceso      : idProceso,
+              ultimaActuacion: actuaciones[ 0 ].fechaActuacion
+            }
+          }
+        },
+        {
+          upsert        : true,
+          returnDocument: 'after'
+        }
+      );
+    console.log(
+      updateCarpeta
+    );
+
+    const updateCarpetabyLLave
+      = await collection.findOneAndUpdate(
+        {
+          llaveProceso: llaveProceso
+        },
+        {
+          $addToSet: {
+            idProcesos: {
+              idProceso      : idProceso,
+              ultimaActuacion: actuaciones[ 0 ].fechaActuacion
+            }
+          }
+        },
+        {
+          upsert        : true,
+          returnDocument: 'after'
+        }
+      );
+    console.log(
+      updateCarpetabyLLave
+    );
+
+  }
+
+  return  actuaciones;
+
+
+
 }
 
 export async function fetchFechas(
@@ -133,15 +147,20 @@ export async function fetchFechas(
   for ( let p = 0; p < procesos.length; p++ ) {
     const proceso = procesos[ p ];
 
-    const fetch = await fetchFecha(
-      {
-        proceso: proceso,
-        index  : p
-      }
-    );
-    fechas.push(
-      fetch
-    );
+    for ( let i = 0; i < proceso.idProceso.length; i++ ) {
+      const idp = proceso.idProceso[ i ];
+
+      const fetch = await fetchFecha(
+        {
+          idProceso: idp,
+          proceso  : proceso,
+          index    : p
+        }
+      );
+      fechas.push(
+        fetch
+      );
+    }
   }
 
   return fechas;
@@ -149,16 +168,20 @@ export async function fetchFechas(
 
 export async function fetchFecha(
                 {
+                  idProceso,
                   proceso,
                   index
-                }: {
+                }: {idProceso: number,
   proceso: MonCarpeta;
   index: number;
 }
 ) {
-  const acts = await getActuaciones(
-    proceso.idProceso,
-    index
+
+  const acts = await fetchActuaciones(
+    {
+      idProceso: idProceso,
+      index    : index
+    }
   );
 
   if ( acts.length >= 1 ) {
@@ -176,80 +199,4 @@ export async function fetchFecha(
   };
 
   return fecha;
-}
-
-export async function fetchLastActuaciones (
-                idProceso: number,
-) {
-  const collection = await actuacionesCollection();
-
-  const Request = await fetch(
-    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
-    {
-      next: {
-        revalidate: 32000
-      }
-    }
-  );
-
-  if ( !Request.ok ) {
-    const newNotOk: ActuacionCollectionItem = {
-      lastFetch: new Date(),
-      idProceso: idProceso
-    };
-
-    const updateNotOk = await collection.findOneAndUpdate(
-      {
-        idProceso: idProceso
-      },
-      newNotOk,
-      {
-        upsert        : true,
-        returnDocument: 'after'
-      }
-    );
-
-    return updateNotOk;
-  }
-  const Response = ( await Request.json() ) as intConsultaActuaciones;
-  const actuaciones = Response.actuaciones;
-
-  if ( actuaciones.length === 0 ) {
-    const updateEmptyActs = await collection.findOneAndUpdate(
-      {
-        idProceso: idProceso
-      },
-      {
-        $set: {
-          lastFetch: new Date(),
-          idProceso: idProceso
-        }
-      },
-      {
-        upsert        : true,
-        returnDocument: 'after'
-      }
-    );
-
-    return updateEmptyActs;
-  }
-
-  const updateWithAnswer: ActuacionCollectionItem = {
-    lastFetch      : new Date(),
-    idProceso      : idProceso,
-    ultimaActuacion: actuaciones[ 0 ]
-  };
-
-  const updateExistingActs = await collection.findOneAndUpdate(
-    {
-      idProceso: idProceso
-    },
-    updateWithAnswer,
-    {
-      upsert        : true,
-      returnDocument: 'after'
-    }
-  );
-
-  return updateExistingActs;
 }

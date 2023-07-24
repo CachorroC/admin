@@ -12,7 +12,7 @@ import { Fragment,
          useState } from 'react';
 import styles from './carpetas.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
-import { getActuaciones } from '#@/lib/Actuaciones';
+import { fetchActuaciones, getActuaciones } from '#@/lib/Actuaciones';
 import { Loader } from '#@/components/Loader';
 import { Card } from '#@/components/card/card-with-carpeta';
 import { getProceso,
@@ -27,13 +27,13 @@ const ProcesosList = async (
   }: {
   llaveProceso: string;
   index: number;
-} 
+}
 ) => {
   const procesos = await getProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
-    } 
+    }
   );
 
   /*
@@ -60,7 +60,7 @@ const ProcesosList = async (
     <Fragment key={llaveProceso}>
       {procesos.map(
         (
-          proceso 
+          proceso
         ) => {
           return (
             <ProcesoCard
@@ -68,7 +68,7 @@ const ProcesosList = async (
               key={proceso.idProceso}
             />
           );
-        } 
+        }
       )}
     </Fragment>
   );
@@ -81,9 +81,9 @@ const Fecha = async (
   }: {
   idProceso: number;
   index: number;
-} 
+}
 ) => {
-  const acts = await getActuaciones(
+  const acts = await fetchActuaciones(
     idProceso,
     index
   );
@@ -95,7 +95,7 @@ const Fecha = async (
   return (
     <div className={styles.date}>
       {fixFechas(
-        acts[ 0 ].fechaActuacion 
+        acts[ 0 ].fechaActuacion
       )}
     </div>
   );
@@ -106,7 +106,7 @@ export const DemandaContainer = (
     demanda
   }: {
   demanda: Demanda;
-} 
+}
 ) => {
   const {
     Departamento,
@@ -132,14 +132,14 @@ export const DemandaContainer = (
       {VencimientoPagare && (
         <p className={typography.labelMedium}>
           {fixFechas(
-            VencimientoPagare 
+            VencimientoPagare
           )}
         </p>
       )}
       {EntregadeGarantiasAbogado && (
         <p className={typography.labelSmall}>
           {fixFechas(
-            EntregadeGarantiasAbogado 
+            EntregadeGarantiasAbogado
           )}
         </p>
       )}
@@ -159,7 +159,7 @@ export async function ListCardCarpetasNFechas() {
     ...carpetas
   ].sort(
     (
-      a, b 
+      a, b
     ) => {
       if (
         !a.ultimaActuacion
@@ -195,7 +195,7 @@ export async function ListCardCarpetasNFechas() {
     <>
       {sortedCarpetas.map(
         (
-          carpeta, index, arr 
+          carpeta, index, arr
         ) => {
           return (
             <Fragment key={carpeta._id}>

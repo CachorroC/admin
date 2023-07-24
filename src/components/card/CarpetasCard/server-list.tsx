@@ -9,7 +9,7 @@ import { Fragment,
          ReactNode,
          Suspense } from 'react';
 import { Loader } from '#@/components/Loader';
-import { fetchLastActuaciones, getActuaciones } from '#@/lib/Actuaciones';
+import { fetchLastActuaciones, } from '#@/lib/Actuaciones';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { DemandaContainer } from '.';
 import Link from 'next/link';
