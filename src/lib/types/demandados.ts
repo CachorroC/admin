@@ -105,7 +105,10 @@ export interface MonCarpeta extends IntCarpeta
 {
   _id: string;
   nombre: string;
+  fecha? : Date | string
     }
+
+
 
 // Converts JSON strings to/from your types/ Converts JSON strings to/from your types
 export class carpetaConvert {
@@ -129,7 +132,7 @@ export class carpetaConvert {
     carpeta: MonCarpeta
   ): IntCarpeta {
     const {
-      despacho, nombre, _id, ...newCarpeta
+      nombre, _id, ...newCarpeta
     } = carpeta;
 
     return newCarpeta;

@@ -15,8 +15,7 @@ import { Name } from '#@/components/Headings/clientSideName';
 import { useEffect } from 'react';
 import { Loader } from '#@/components/Loader';
 import { MonCarpeta,
-         NombreCompleto,
-         intFecha } from '#@/lib/types/demandados';
+         NombreCompleto, } from '#@/lib/types/demandados';
 
 export const Card = (
   {
@@ -25,9 +24,9 @@ export const Card = (
     children
   }: {
   path: string;
-  carpeta: MonCarpeta | intFecha;
+  carpeta: MonCarpeta ;
   children: ReactNode;
-} 
+}
 ) => {
   const [
     isNavOpen,
@@ -42,10 +41,10 @@ export const Card = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false 
+      false
     );
     setIsOpen(
-      true 
+      true
     );
   };
   const pathname = usePathname();
@@ -64,28 +63,7 @@ export const Card = (
     || pathname
       === `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
     || pathname
-      === `${ path }/${ carpeta.llaveProceso }`;
-
-  const despachoName = carpeta.Demanda.Juzgado
-        .Ejecucion
-    ? carpeta.Demanda.Juzgado.Ejecucion.id
-    : carpeta.Demanda.Juzgado.Origen.id;
-
-  const despachoUrl = carpeta.Demanda.Juzgado
-        .Ejecucion
-    ? carpeta.Demanda.Juzgado.Ejecucion.url
-    : carpeta.Demanda.Juzgado.Origen.url;
-
-  const juzgado = despachoName
-        .replace(
-          / /g,
-          '-' 
-        )
-        .toLocaleLowerCase()
-        .slice(
-          0,
-          -1 
-        );
+    === `${ path }/${ carpeta.llaveProceso }`;
 
   return (
     <div className={card.container}>
@@ -96,17 +74,8 @@ export const Card = (
             : card.notActive
         }
       >
-        <h1
-          className={`${ typography.titleMedium } ${ card.title }`}
-        >
-          {toNameString(
-            {
-              nameRaw:
-              carpeta.Deudor.PrimerNombre
-              + carpeta.Deudor.PrimerApellido
-            } 
-          )}
-        </h1>
+
+
         <div className={card.links}>
           <Link
             className={`${ card.link } ${
@@ -120,7 +89,7 @@ export const Card = (
               folder_shared
             </span>
             <span className={card.tooltiptext}>
-              Perfil del Demandado
+              Perfil del demandado
             </span>
           </Link>
           <Link
@@ -137,7 +106,7 @@ export const Card = (
               badge
             </span>
             <span className={card.tooltiptext}>
-              Perfil del Demandado
+              Perfil del demandado
             </span>
           </Link>
           <Link
@@ -149,7 +118,7 @@ export const Card = (
             }
             onClick={() => {
               setIsOpen(
-                true 
+                true
               );
             }}
           >
@@ -181,29 +150,9 @@ export const Card = (
         </div>
 
         {children}
-        {carpeta.Demanda.Radicado && (
-          <div
-            className={`${ typography.bodySmall } ${ card.content }`}
-          >
-            {carpeta.Demanda.Radicado}
-          </div>
-        )}
 
-        <Link
-          className={`${ card.link } ${
-            isActive && card.isActive
-          }`}
-          href={despachoUrl as Route}
-        >
-          <p
-            className={`${ typography.bodySmall } ${ card.content }`}
-          >
-            {juzgado.replaceAll(
-              'á',
-              'a' 
-            )}
-          </p>
-        </Link>
+
+
       </div>
     </div>
   );

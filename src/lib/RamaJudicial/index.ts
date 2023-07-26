@@ -54,47 +54,6 @@ export async function fetchProceso(
   }
 }
 
-export async function fetchProcesos(
-                {
-                  llavesProceso
-                }: {
-  llavesProceso: string[];
-}
-) {
-  const procesos: Map<string, intProceso[]>
-    = new Map();
-
-  try {
-    for (
-      let ia = 0;
-      ia < llavesProceso.length;
-      ia++
-    ) {
-      const llaveProceso = llavesProceso[ ia ];
-      const awaitTime = ia * 1000;
-
-      const response = await fetchProceso(
-        {
-          llaveProceso: llaveProceso,
-          index       : awaitTime
-        }
-      );
-
-      return procesos.set(
-        llaveProceso,
-        response
-      );
-    }
-
-    return procesos;
-  } catch ( error ) {
-    console.log(
-      error ?? 'error en fetchProcesos'
-    );
-
-    return procesos;
-  }
-}
 
 export async function getProceso(
                 {
@@ -105,12 +64,11 @@ export async function getProceso(
   index?: number;
 }
 ) {
-  const awaitTime = ( index ?? 0 ) * 1000;
 
   const ultimosProcesos = await fetchProceso(
     {
       llaveProceso: llaveProceso,
-      index       : awaitTime
+      index       : index ?? 0
     }
   );
 

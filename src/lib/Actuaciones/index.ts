@@ -51,97 +51,13 @@ export async function fetchActuaciones (
   }
 }
 
-export async function getActuaciones(
-                idProceso: number,
-                llaveProceso: string,
-                index?: number
-) {
-  const awaitTime = index ?? 0;
-
-  if ( idProceso === 0 || idProceso === 404 ) {
-    console.log(
-      `idProceso es ${ idProceso }`
-    );
-
-    return [];
-  }
-  await sleep(
-    awaitTime
-  );
-  const collection = await carpetasCollection();
-
-  const actuaciones = await fetchActuaciones(
-    {
-      idProceso: idProceso,
-      index    : index
-    }
-  );
-
-  if ( actuaciones.length >= 1 ) {
-
-    const updateCarpeta
-      = await collection.findOneAndUpdate(
-        {
-          idProceso: {
-            $all: [
-              idProceso
-            ]
-          }
-        },
-        {
-          $addToSet: {
-            idProcesos: {
-              idProceso      : idProceso,
-              ultimaActuacion: actuaciones[ 0 ].fechaActuacion
-            }
-          }
-        },
-        {
-          upsert        : true,
-          returnDocument: 'after'
-        }
-      );
-    console.log(
-      updateCarpeta
-    );
-
-    const updateCarpetabyLLave
-      = await collection.findOneAndUpdate(
-        {
-          llaveProceso: llaveProceso
-        },
-        {
-          $addToSet: {
-            idProcesos: {
-              idProceso      : idProceso,
-              ultimaActuacion: actuaciones[ 0 ].fechaActuacion
-            }
-          }
-        },
-        {
-          upsert        : true,
-          returnDocument: 'after'
-        }
-      );
-    console.log(
-      updateCarpetabyLLave
-    );
-
-  }
-
-  return  actuaciones;
-
-
-
-}
-
-export async function fetchFechas(
-                {
-                  procesos
-                }: {
+export const fetchFechas = async(
+  {
+    procesos
+  }: {
   procesos: MonCarpeta[];
 }
-) {
+) => {
   const fechas = [];
 
   for ( let p = 0; p < procesos.length; p++ ) {
@@ -164,18 +80,18 @@ export async function fetchFechas(
   }
 
   return fechas;
-}
+};
 
-export async function fetchFecha(
-                {
-                  idProceso,
-                  proceso,
-                  index
-                }: {idProceso: number,
+export const fetchFecha = async(
+  {
+    idProceso,
+    proceso,
+    index
+  }: {idProceso: number,
   proceso: MonCarpeta;
   index: number;
 }
-) {
+) => {
 
   const acts = await fetchActuaciones(
     {
@@ -199,4 +115,4 @@ export async function fetchFecha(
   };
 
   return fecha;
-}
+};

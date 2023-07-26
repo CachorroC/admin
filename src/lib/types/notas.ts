@@ -24,8 +24,7 @@ export interface intNota
 }
 
 export interface monNota extends intNota {
-  _id?: ObjectId;
-  id: string;
+  _id: string
 }
 
 export class notaConvert {
@@ -34,12 +33,12 @@ export class notaConvert {
   ): monNota[] {
     const newNotas = notas.map(
       (
-        nota 
+        nota
       ) => {
         return this.toMonNota(
-          nota 
+          nota
         );
-      } 
+      }
     );
 
     return newNotas;
@@ -48,7 +47,7 @@ export class notaConvert {
     value: monNota[]
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 
@@ -57,8 +56,7 @@ export class notaConvert {
   ): monNota {
     const newNota = {
       ...nota,
-      _id: nota._id,
-      id : nota._id.toString()
+      _id: nota._id.toString()
     };
 
     return newNota;
@@ -67,21 +65,21 @@ export class notaConvert {
     value: monNota
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
   public static toTarea(
-    json: string 
+    json: string
   ): Tarea {
     return JSON.parse(
-      json 
+      json
     );
   }
   public static tareaToJson(
     value: Tarea
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 }

@@ -13,7 +13,7 @@ export function NombreComponent(
   );
 
   return (
-    <h4 className={typography.displayMedium}>
+    <h4 className={typography.displaySmall}>
       {newName.Nombre}
     </h4>
   );

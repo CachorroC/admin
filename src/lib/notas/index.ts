@@ -6,37 +6,37 @@ import { monNota,
          notaConvert } from '#@/lib/types/notas';
 import { cache } from 'react';
 
-const Collection = async () => {
+export const notasCollection = async () => {
   const client = await clientPromise;
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico' 
+      'no hay cliente mongólico'
     );
   }
 
   const db = client.db(
-    'RyS' 
+    'RyS'
   );
 
   const notas = db.collection<intNota>(
-    'Notas' 
+    'Notas'
   );
 
   return notas;
 };
 
 const Transform = async () => {
-  const collection = await Collection();
+  const collection = await notasCollection();
 
   const notasRaw = await collection
         .find(
-          {} 
+          {}
         )
         .toArray();
 
   const notas = notaConvert.toMonNotas(
-    notasRaw 
+    notasRaw
   );
 
   return notas;
@@ -53,16 +53,16 @@ export async function getNotasByllaveProceso(
                   llaveProceso
                 }: {
   llaveProceso: string;
-} 
+}
 ) {
   const notas = await Transform();
 
   const Notas = notas.filter(
     (
-      nota 
+      nota
     ) => {
       return nota.llaveProceso === llaveProceso;
-    } 
+    }
   );
 
   return Notas;
@@ -71,17 +71,17 @@ export async function getNotasByllaveProceso(
 export const getNotaById = cache(
   async (
     {
-      id 
-    }: { id: string } 
+      id
+    }: { id: string }
   ) => {
     const notas = await Transform();
 
     const Notas = notas.filter(
       (
-        nota 
+        nota
       ) => {
         return nota.id === id;
-      } 
+      }
     );
 
     return Notas;
@@ -93,13 +93,13 @@ export async function postNota(
                   nota
                 }: {
   nota: intNota;
-} 
+}
 ) {
   const collection = await Collection();
 
   const outgoingRequest
     = await collection.insertOne(
-      nota 
+      nota
     );
 
   if ( !outgoingRequest.acknowledged ) {
@@ -107,7 +107,7 @@ export async function postNota(
       null,
       {
         status: 404
-      } 
+      }
     );
   }
 

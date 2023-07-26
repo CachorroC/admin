@@ -12,10 +12,10 @@ import { Fragment,
          useState } from 'react';
 import styles from './carpetas.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
-import { fetchActuaciones, getActuaciones } from '#@/lib/Actuaciones';
+import { fetchActuaciones } from '#@/lib/Actuaciones';
 import { Loader } from '#@/components/Loader';
 import { Card } from '#@/components/card/card-with-carpeta';
-import { getProceso,
+import { fetchProceso, getProceso,
          getProcesos } from '#@/lib/RamaJudicial';
 import { ProcesoCard } from '../ProcesosCard';
 import { NombreComponent } from '../Nombre';
@@ -29,7 +29,7 @@ const ProcesosList = async (
   index: number;
 }
 ) => {
-  const procesos = await getProceso(
+  const procesos = await fetchProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
@@ -84,8 +84,10 @@ const Fecha = async (
 }
 ) => {
   const acts = await fetchActuaciones(
-    idProceso,
-    index
+    {
+      idProceso: idProceso,
+      index    : index
+    }
   );
 
   if ( acts.length === 0 ) {
@@ -94,60 +96,9 @@ const Fecha = async (
 
   return (
     <div className={styles.date}>
-      {fixFechas(
+      {`ultima actuacion: ${ fixFechas(
         acts[ 0 ].fechaActuacion
-      )}
-    </div>
-  );
-};
-
-export const DemandaContainer = (
-  {
-    demanda
-  }: {
-  demanda: Demanda;
-}
-) => {
-  const {
-    Departamento,
-    Municipio,
-    VencimientoPagare,
-    EntregadeGarantiasAbogado,
-    Radicado,
-    CapitalAdeudado,
-    Proceso,
-    Ubicacion,
-    Juzgado,
-    Obligacion
-  } = demanda;
-
-  return (
-    <div className={styles.section}>
-      <h1 className={typography.headlineMedium}>
-        {Radicado}
-      </h1>
-      <h2
-        className={typography.titleMedium}
-      >{`${ Departamento }: ${ Municipio }`}</h2>
-      {VencimientoPagare && (
-        <p className={typography.labelMedium}>
-          {fixFechas(
-            VencimientoPagare
-          )}
-        </p>
-      )}
-      {EntregadeGarantiasAbogado && (
-        <p className={typography.labelSmall}>
-          {fixFechas(
-            EntregadeGarantiasAbogado
-          )}
-        </p>
-      )}
-      {CapitalAdeudado && (
-        <p className={typography.labelSmall}>
-          {CapitalAdeudado}
-        </p>
-      )}
+      ) }`}
     </div>
   );
 };
@@ -162,22 +113,22 @@ export async function ListCardCarpetasNFechas() {
       a, b
     ) => {
       if (
-        !a.ultimaActuacion
-        || a.ultimaActuacion.fechaActuacion
+        !a.fecha
+        || a.fecha
           === undefined
       ) {
         return 1;
       }
 
       if (
-        !b.ultimaActuacion
-        || b.ultimaActuacion.fechaActuacion
+        !b.fecha
+        || b.fecha
           === undefined
       ) {
         return -1;
       }
-      const x = a.ultimaActuacion.fechaActuacion;
-      const y = b.ultimaActuacion.fechaActuacion;
+      const x = a.fecha;
+      const y = b.fecha;
 
       if ( x < y ) {
         return 1;
@@ -199,21 +150,30 @@ export async function ListCardCarpetasNFechas() {
         ) => {
           return (
             <Fragment key={carpeta._id}>
-              <NombreComponent
-                Deudor={carpeta.Deudor}
-                key={carpeta._id}
-              />
+
               <Card
                 key={carpeta._id}
                 path={'/Procesos'}
                 carpeta={carpeta}
               >
+                <NombreComponent
+                  deudor={carpeta.deudor}
+                  key={carpeta._id}
+                />
                 <Suspense fallback={<Loader />}>
-                  <Fecha
-                    key={carpeta._id}
-                    idProceso={carpeta.idProceso}
-                    index={index}
-                  />
+                  {
+                    carpeta.idProceso.map(
+                      (
+                        idp
+                      ) => {
+                        return ( <Fecha
+                          key={idp}
+                          idProceso={idp}
+                          index={index}
+                        /> );
+                      }
+                    )
+                  }
                 </Suspense>
               </Card>
               <Suspense fallback={<Loader />}>
