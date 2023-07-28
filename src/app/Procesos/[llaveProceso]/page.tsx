@@ -5,84 +5,39 @@ import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputS
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import Link from 'next/link';
 import card from '#@/components/card/card.module.scss';
+import { NombreComponent } from '#@/components/card/Nombre';
+import { notFound } from 'next/navigation';
 
-async function Name(
-                {
-                  llaveProceso
-                }: {
-  llaveProceso: string;
-} 
-) {
-  const proceso = await getCarpetasByllaveProceso(
-    {
-      llaveProceso: llaveProceso
-    }
-  );
 
-  const nombre = proceso
-        .map(
-          (
-            p 
-          ) => {
-            return p.Deudor.PrimerNombre;
-          } 
-        )
-        .toString();
-
-  return (
-    <h3 className={typography.displayMedium}>
-      {nombre}
-    </h3>
-  );
-}
-
-export default async function DefaultProcesosllaveProceso(
-                {
-                  params: {
-                    llaveProceso 
-                  }
-                }: {
+export default async function DefaultProcesosllaveProceso( { params: { llaveProceso } }: {
   params: { llaveProceso: string };
-} 
-) {
-  const Carpetas
-    = await getCarpetasByllaveProceso(
-      {
-        llaveProceso: llaveProceso
-      } 
-    );
+} ) {
+  const Carpeta
+    = await getCarpetasByllaveProceso( { llaveProceso: llaveProceso } );
+
+  if ( !Carpeta ) {
+    notFound();
+  }
 
   return (
     <>
-      <p>page</p>
-      {Carpetas.map(
-        (
-          carpeta, index, arr 
-        ) => {
-          const {
-            _id, ...newCarpeta 
-          } = carpeta;
-
-          return (
-            <Fragment key={carpeta._id}>
-              <Name llaveProceso={llaveProceso} />
-              <Link
-                href={`/Carpetas/${ llaveProceso }`}
-                className={card.link}
-              >
-                <span className='material-symbols-outlined'>
+      <NombreComponent deudor={ Carpeta.deudor } />
+      <Link
+        href={`/Carpetas/${ llaveProceso }`}
+        className={card.link}
+      >
+        <span className='material-symbols-outlined'>
                 folder_shared
-                </span>
-              </Link>
-              <CarpetaCard carpeta={carpeta}>
-                <span className='material-symbols-outlined'>
+        </span>
+      </Link>
+      <CarpetaCard carpeta={Carpeta}>
+        <span className='material-symbols-outlined'>
                 star
-                </span>
-              </CarpetaCard>
-            </Fragment>
-          );
-        } 
-      )}
+        </span>
+      </CarpetaCard>
     </>
   );
+
+
+
 }

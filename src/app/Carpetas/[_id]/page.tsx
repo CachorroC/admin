@@ -7,25 +7,21 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import layout from '#@/styles/scss/layout.module.scss';
 import { NombreComponent } from '#@/components/card/Nombre';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
-import { NuevoProceso } from '../NuevaCarpeta/new-carpeta';
+import { NuevoProceso } from '../NuevaCarpeta/edit-carpeta';
 import { Loader } from '#@/components/Loader';
 import { ListCardCarpetasNFechasServer } from '#@/components/card/CarpetasCard/server-list';
 import { Fragment, Suspense } from 'react';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import { ButtonsNuevaCarpeta } from '../NuevaCarpeta/new-carpeta-buttons';
 
-export default async function CarpetasPageId(
-                {
-                  params
-                }: {
+export default async function CarpetasPageId({
+  params
+}: {
   params: { _id: string };
-} 
-) {
-  const carpeta = await getCarpetaById(
-    {
-      _id: params._id
-    } 
-  );
+}) {
+  const carpeta = await getCarpetaById({
+    _id: params._id
+  });
 
   return (
     <div className={layout.body}>
@@ -55,7 +51,7 @@ export default async function CarpetasPageId(
               key={carpeta._id}
             >
               <Link
-                href={`/Carpetas/${ params._id }/Editar`}
+                href={`/Carpetas/${params._id}/Editar`}
                 key={carpeta._id}
                 className={layout.button}
               >
@@ -73,7 +69,7 @@ export default async function CarpetasPageId(
             </CarpetaCard>
             <NuevoProceso
               key={carpeta._id}
-              uri={`${ getBaseUrl() }`}
+              uri={`${getBaseUrl()}`}
               carpeta={carpeta}
             />
           </Fragment>

@@ -4,13 +4,11 @@ import styles from './actuaciones.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 
-export const ActuacionCard = (
-  {
-    Actuacion
-  }: {
+export const ActuacionCard = ({
+  Actuacion
+}: {
   Actuacion: intActuacion;
-} 
-) => {
+}) => {
   const {
     idRegActuacion,
     llaveProceso,
@@ -33,7 +31,7 @@ export const ActuacionCard = (
     >
       <div className={styles.card}>
         <h1
-          className={`${ typography.titleMedium } ${ styles.title }`}
+          className={`${typography.titleMedium} ${styles.title}`}
         >
           {actuacion}
         </h1>
@@ -43,55 +41,45 @@ export const ActuacionCard = (
           </p>
         )}
         <sub
-          className={`${ typography.labelSmall } ${ styles.sub }`}
-        >{`${ consActuacion } de ${ cant }`}</sub>
+          className={`${typography.labelSmall} ${styles.sub}`}
+        >{`${consActuacion} de ${cant}`}</sub>
         <Link
-          href={`/Notas/NuevaNota/${ llaveProceso }`}
+          href={`/Notas/NuevaNota/${llaveProceso}`}
           className={styles.button}
         >
           <span
-            className={`material-symbols-outlined ${ styles.icon }`}
+            className={`material-symbols-outlined ${styles.icon}`}
           >
             note_add
           </span>
         </Link>
         <sup
-          className={`${ typography.labelMedium } ${ styles.date }`}
+          className={`${typography.labelMedium} ${styles.date}`}
         >
-          {fixFechas(
-            fechaActuacion 
-          )}
+          {fixFechas(fechaActuacion)}
         </sup>
       </div>
     </div>
   );
 };
 
-export const ActuacionesList = (
-  {
-    Actuaciones
-  }: {
+export const ActuacionesList = ({
+  Actuaciones
+}: {
   Actuaciones: intActuacion[];
-} 
-) => {
+}) => {
   return (
     <>
-      {Actuaciones.map(
-        (
-          Actuacion, ind, arr 
-        ) => {
-          const {
-            idRegActuacion 
-          } = Actuacion;
+      {Actuaciones.map((Actuacion, ind, arr) => {
+        const { idRegActuacion } = Actuacion;
 
-          return (
-            <ActuacionCard
-              Actuacion={Actuacion}
-              key={idRegActuacion}
-            />
-          );
-        } 
-      )}
+        return (
+          <ActuacionCard
+            Actuacion={Actuacion}
+            key={idRegActuacion}
+          />
+        );
+      })}
     </>
   );
 };

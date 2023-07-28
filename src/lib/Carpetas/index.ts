@@ -4,8 +4,8 @@ import { NextResponse } from 'next/server';
 import { ObjectId } from 'mongodb';
 import { IntCarpeta,
          MonCarpeta,
-         carpetaConvert, } from '../types/demandados';
-import { fetchActuaciones } from '../Actuaciones';
+         carpetaConvert } from '../types/demandados';
+import { fetchActuaciones, getActuaciones } from '../Actuaciones';
 
 export const carpetasCollection = async () => {
   const client = await clientPromise;
@@ -28,6 +28,7 @@ export const carpetasCollection = async () => {
   return carpetas;
 };
 
+
 export async function fetchCarpetas() {
   const collection = await carpetasCollection();
 
@@ -38,7 +39,6 @@ export async function fetchCarpetas() {
         .toArray();
 
   const carpetas
-
     = carpetaConvert.toMonCarpetas(
       carpetasRaw
     );
@@ -46,29 +46,53 @@ export async function fetchCarpetas() {
   return carpetas;
 }
 
-export async function getCarpetas() {
-  const carpetasRaw = await fetchCarpetas();
+export async function getCarpetas () {
+  const carpetas = await fetchCarpetas();
+  const carpetasMAnagementMap: Map<string, MonCarpeta> = new Map();
 
-  const carpetasMap: Map<string, MonCarpeta>
-    = new Map();
+  for ( const carpeta of carpetas ) {
+    carpetasMAnagementMap.set(
+      carpeta._id, carpeta
+    );
 
-  for (
-    let index = 0;
-    index < carpetasRaw.length;
-    index++
-  ) {
-    const carpeta = carpetasRaw[ index ];
-    carpetasMap.set(
-      carpeta._id,
+    const index = carpetas.indexOf(
       carpeta
     );
 
-    for (
-      let i = 0;
-      i < carpeta.idProceso.length;
-      i++
-    ) {
-      const idp = carpeta.idProceso[ i ];
+    if ( carpeta.idProceso.length === 0 ) {
+      continue;
+    }
+
+    if ( carpeta.idProceso.length === 1 ) {
+
+      const actuaciones = await fetchActuaciones(
+        {
+          idProceso: carpeta.idProceso[ 0 ],
+          index    : index
+        }
+      );
+
+      if ( actuaciones.length === 0 ) {
+        continue;
+      }
+      const ultimaActuacion = actuaciones[ 0 ];
+
+      const newCarpeta: MonCarpeta = {
+        ...carpeta,
+        fecha: new Date(
+          ultimaActuacion.fechaActuacion
+        )
+      };
+
+      carpetasMAnagementMap.set(
+        newCarpeta._id, newCarpeta
+      );
+
+
+    }
+    const ultimasActuaciones = [];
+
+    for ( const idp of carpeta.idProceso ) {
 
       const actuaciones = await fetchActuaciones(
         {
@@ -77,23 +101,27 @@ export async function getCarpetas() {
         }
       );
 
-      if ( actuaciones.length === 0 ) {
+      if( actuaciones.length === 0 ){
         continue;
       }
-
-      const newCarpeta= {
-        ...carpeta,
-        fecha: actuaciones[ 0 ].fechaActuacion
-      };
-      carpetasMap.set(
-        carpeta._id,
-        newCarpeta
+      const ultimaActuacion = actuaciones[ 0 ];
+      ultimasActuaciones.push(
+        ultimaActuacion
       );
     }
+
+    const newCarpeta = {
+      ...carpeta,
+      ultimasActuaciones: ultimasActuaciones
+    };
+
+    carpetasMAnagementMap.set(
+      newCarpeta._id, newCarpeta
+    );
   }
 
   return Array.from(
-    carpetasMap.values()
+    carpetasMAnagementMap.values()
   );
 }
 
@@ -106,7 +134,7 @@ export const getCarpetasByllaveProceso = async (
 ) => {
   const carpetas = await getCarpetas();
 
-  const Carpetas = carpetas.filter(
+  const Carpetas = carpetas.find(
     (
       carpeta
     ) => {

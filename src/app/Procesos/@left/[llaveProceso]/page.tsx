@@ -1,32 +1,32 @@
 import { getCarpetas,
          getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { ActuacionCard } from '#@/components/card/ActuacionesCard';
-import { fetchActuaciones, getActuaciones } from '#@/lib/Actuaciones';
+import { getActuaciones } from '#@/lib/Actuaciones';
 
 async function Acts(
-                {
-                  idProceso,
-                  index
-                }: {
+  {
+    idProceso,
+    index
+  }: {
   idProceso: number;
   index: number;
-}
+} 
 ) {
-  const actuaciones = await fetchActuaciones(
+  const actuaciones = await getActuaciones(
     {
       idProceso: idProceso,
       index    : index
-    }
+    } 
   );
 
   return (
     <>
       {actuaciones.map(
         (
-          act, i, arr
+          act, i, arr 
         ) => {
           const {
-            idRegActuacion
+            idRegActuacion 
           } = act;
 
           return (
@@ -35,26 +35,24 @@ async function Acts(
               key={idRegActuacion}
             />
           );
-        }
+        } 
       )}
     </>
   );
 }
 
 export default async function PageProcesosLeftllaveProceso(
-                {
-                  params
-                }: {
+  {
+    params
+  }: {
   params: {
     llaveProceso: string;
   };
-}
+} 
 ) {
   const Carpetas
     = await getCarpetasByllaveProceso(
-      {
-        llaveProceso: params.llaveProceso
-      }
+      { llaveProceso: params.llaveProceso } 
     );
 
   return (
@@ -62,7 +60,7 @@ export default async function PageProcesosLeftllaveProceso(
       <p>page</p>
       {Carpetas.map(
         (
-          carpeta, index
+          carpeta, index 
         ) => {
           return (
             <Acts
@@ -71,7 +69,7 @@ export default async function PageProcesosLeftllaveProceso(
               idProceso={carpeta.idProceso}
             />
           );
-        }
+        } 
       )}
     </>
   );

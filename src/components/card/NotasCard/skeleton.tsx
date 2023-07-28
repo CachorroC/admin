@@ -18,13 +18,11 @@ export function NotasListSkeleton() {
   );
 }
 
-export function NotaSkeleton(
-                {
-                  index
-                }: {
+export function NotaSkeleton({
+  index
+}: {
   index: number;
-} 
-) {
+}) {
   return (
     <div
       className={styles.container}
@@ -35,12 +33,12 @@ export function NotaSkeleton(
           index + 1
         }`}</sup>
         <p
-          className={`${ typography.bodySmall } ${ styles.textArea }`}
+          className={`${typography.bodySmall} ${styles.textArea}`}
         >
           Nota: ... cargando
         </p>
         <sub
-          className={`${ typography.labelSmall } ${ styles.fecha }`}
+          className={`${typography.labelSmall} ${styles.fecha}`}
         >
           ... cargando
         </sub>

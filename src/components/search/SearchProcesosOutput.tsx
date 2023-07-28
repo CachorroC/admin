@@ -1,5 +1,4 @@
 'use client';
-import { intFecha } from '#@/lib/types/demandados';
 import { useSearch,
          useNavigator } from '#@/app/search-context';
 import { LinkCard } from './link';
@@ -10,14 +9,15 @@ import { usePathname } from 'next/navigation';
 import { Name } from '../Headings/clientSideName';
 import type { Route } from 'next';
 import { useRef } from 'react';
+import { MonCarpeta } from '#@/lib/types/demandados';
 
 export default function SearchOutputList(
-                {
-                  path,
-                  fechas
-                }: {
+  {
+    path,
+    fechas
+  }: {
   path: string;
-  fechas: intFecha[];
+  fechas: MonCarpeta[];
 } 
 ) {
   const pathname = usePathname();
@@ -35,7 +35,7 @@ export default function SearchOutputList(
   );
 
   function scrollToId(
-                  _id: string 
+    _id: string 
   ) {
     const map = getMap();
 
@@ -134,9 +134,10 @@ export default function SearchOutputList(
       const Nombre = `${ PrimerNombre } ${ SegundoNombre } ${ PrimerApellido } ${ SegundoApellido }`;
 
       if (
-        Nombre.toLowerCase().indexOf(
-          search.toLowerCase()
-        ) === -1
+        Nombre.toLowerCase()
+              .indexOf(
+                search.toLowerCase()
+              ) === -1
       ) {
         return;
       }
@@ -164,7 +165,8 @@ export default function SearchOutputList(
           <div className={searchbar.section}>
             <sub className={searchbar.date}>
               {fixFechas(
-                new Date().toISOString()
+                new Date()
+                      .toISOString()
               )}
             </sub>
           </div>

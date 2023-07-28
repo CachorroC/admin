@@ -10,19 +10,17 @@ import { useNavigator } from '#@/app/search-context';
 import { toNameString } from '#@/lib/fix';
 import { IntCarpeta,
          MonCarpeta,
-         NombreCompleto, } from '#@/lib/types/demandados';
+         NombreCompleto } from '#@/lib/types/demandados';
 
-export const Card = (
-  {
-    path,
-    carpeta,
-    children
-  }: {
+export const Card = ( {
+  path,
+  carpeta,
+  children
+}: {
   path: string;
-  carpeta: MonCarpeta ;
+  carpeta: MonCarpeta;
   children: ReactNode;
-}
-) => {
+} ) => {
   const [
     isNavOpen,
     setIsNavOpen
@@ -35,12 +33,8 @@ export const Card = (
   ] = useModal();
 
   const clickHandler = () => {
-    setIsNavOpen(
-      false
-    );
-    setIsOpen(
-      true
-    );
+    setIsNavOpen( false );
+    setIsOpen( true );
   };
   const pathname = usePathname();
   const isInProcesos = pathname === path;
@@ -60,16 +54,6 @@ export const Card = (
     || pathname
       === `${ path }/${ carpeta.llaveProceso }`;
 
-  const juzgado = carpeta.despacho?.id
-        .replace(
-          / /g,
-          '-'
-        )
-        .toLocaleLowerCase()
-        .slice(
-          0,
-          -1
-        );
 
   return (
     <div className={card.container}>
@@ -83,13 +67,7 @@ export const Card = (
         <h1
           className={`${ typography.titleMedium } ${ card.title }`}
         >
-          {toNameString(
-            {
-              nameRaw: new NombreCompleto(
-                carpeta.deudor
-              ).Nombre
-            }
-          )}
+          {toNameString( { nameRaw: new NombreCompleto( carpeta.deudor ).Nombre } )}
         </h1>
         <div className={card.links}>
           <Link
@@ -130,9 +108,7 @@ export const Card = (
             }`}
             href={`/Notas/NuevaNota/${ carpeta.llaveProceso }`}
             onClick={() => {
-              setIsOpen(
-                true
-              );
+              setIsOpen( true );
             }}
           >
             <span
@@ -171,22 +147,7 @@ export const Card = (
           </div>
         )}
 
-        <Link
-          className={`${ card.link } ${
-            isActive && card.isActive
-          }`}
-          href={carpeta.despacho?.url as Route}
-        >
-          <p
-            className={`${ typography.bodySmall } ${ card.content }`}
-          >
-            {juzgado
-              && juzgado.replaceAll(
-                'á',
-                'a'
-              )}
-          </p>
-        </Link>
+
       </div>
     </div>
   );

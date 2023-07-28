@@ -1,52 +1,38 @@
 'use client';
-import { ReactNode,
-         useEffect,
-         useRef,
-         useState } from 'react';
+import {
+  ReactNode,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import modal from '#@/components/modal/modal.module.scss';
 
-export default function ModalDialog(
-                {
-                  children
-                }: {
+export default function ModalDialog({
+  children
+}: {
   children: ReactNode;
-} 
-) {
-  const [
-    isOpen,
-    setShow
-  ] = useState(
-    false 
-  );
+}) {
+  const [isOpen, setShow] = useState(false);
 
-  const ref = useRef<HTMLDialogElement>(
-    null 
-  );
+  const ref = useRef<HTMLDialogElement>(null);
 
-  useEffect(
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+    const dialog = ref.current;
+    dialog && dialog.showModal();
+
     () => {
-      if ( !isOpen ) {
-        return;
-      }
-      const dialog = ref.current;
-      dialog && dialog.showModal();
-
-      () => {
-        dialog && dialog.close();
-      };
-    },
-    [
-      isOpen
-    ] 
-  );
+      dialog && dialog.close();
+    };
+  }, [isOpen]);
 
   return (
     <>
       <button
         onClick={() => {
-          setShow(
-            false 
-          );
+          setShow(false);
         }}
       >
         <span className='material-symbols-outlined'>
@@ -61,9 +47,7 @@ export default function ModalDialog(
       </dialog>
       <button
         onClick={() => {
-          return setShow(
-            true 
-          );
+          return setShow(true);
         }}
       >
         Open dialog

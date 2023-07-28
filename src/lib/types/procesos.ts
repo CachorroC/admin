@@ -70,11 +70,8 @@ export interface IntActuaciones {
   acts?: intActuacion[];
 }
 
-
-
-export interface ActuacionCollectionItem
-{
-
+export interface ActuacionCollectionItem {
   lastFetch: Date | string;
   idProceso: number;
-ultimaActuacion?: intActuacion}
+  ultimaActuacion?: intActuacion;
+}

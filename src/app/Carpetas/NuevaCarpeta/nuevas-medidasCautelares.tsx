@@ -1,21 +1,21 @@
 'use client';
 import { IntCarpeta } from '#@/lib/types/demandados';
-import { UseFormRegister,
-         useFormContext } from 'react-hook-form';
+import {
+  UseFormRegister,
+  useFormContext
+} from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { Accordion } from '#@/components/Accordion';
 import { InputSection } from '#@/components/form/InputSection';
 
 export function NuevasMedidasCautelaresSection() {
-  const {
-    register, control 
-  } = useFormContext();
+  const { register, control } = useFormContext();
 
   return (
     <section className={form.section}>
       <h3
-        className={`${ form.title } ${ typography.displayMedium }`}
+        className={`${form.title} ${typography.displayMedium}`}
       >
         Medidas Cautelares
       </h3>
@@ -56,7 +56,7 @@ export function NuevasMedidasCautelaresSection() {
         type={'text'}
       />
       <h4
-        className={`${ form.title } ${ typography.displaySmall }`}
+        className={`${form.title} ${typography.displaySmall}`}
       >
         Fechas
       </h4>
@@ -93,7 +93,7 @@ export function NuevasMedidasCautelaresSection() {
         />
       </section>
       <h4
-        className={`${ form.title } ${ typography.displaySmall }`}
+        className={`${form.title} ${typography.displaySmall}`}
       >
         Oficios
       </h4>
@@ -126,7 +126,7 @@ export function NuevasMedidasCautelaresSection() {
       />
       <section className={form.section}>
         <h4
-          className={`${ form.title } ${ typography.displaySmall }`}
+          className={`${form.title} ${typography.displaySmall}`}
         >
           Oficio
         </h4>

@@ -4,8 +4,7 @@ import { Fragment, Suspense } from 'react';
 import { IntCarpeta,
          MonCarpeta } from '#@/lib/types/demandados';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
-import { fetchProceso,
-         getProceso } from '#@/lib/RamaJudicial';
+import { getProceso } from '#@/lib/RamaJudicial';
 import { intProceso } from '#@/lib/types/procesos';
 import box from '#@/styles/scss/box.module.scss';
 import { Name } from '#@/components/Headings/serverSideName';
@@ -15,10 +14,10 @@ import Link from 'next/link';
 import card from '#@/components/card/card.module.scss';
 
 function DemandadoNameBadge(
-                {
-                  carpeta,
-                  proceso
-                }: {
+  {
+    carpeta,
+    proceso
+  }: {
   carpeta: MonCarpeta;
   proceso?: intProceso;
 } 
@@ -65,23 +64,19 @@ function DemandadoNameBadge(
 }
 
 export default async function PageProcesosllaveProceso(
-                {
-                  params
-                }: {
+  {
+    params
+  }: {
   params: { llaveProceso: string };
 } 
 ) {
   const Procesos = await getProceso(
-    {
-      llaveProceso: params.llaveProceso
-    } 
+    { llaveProceso: params.llaveProceso } 
   );
 
   const Carpetas
     = await getCarpetasByllaveProceso(
-      {
-        llaveProceso: params.llaveProceso
-      } 
+      { llaveProceso: params.llaveProceso } 
     );
 
   return (

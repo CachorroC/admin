@@ -7,7 +7,7 @@ export function NuevoDeudorSection() {
   return (
     <section className={form.section}>
       <h3
-        className={`${ form.title } ${ typography.displayMedium }`}
+        className={`${form.title} ${typography.displayMedium}`}
       >
         Deudor
       </h3>
@@ -46,7 +46,6 @@ export function NuevoDeudorSection() {
           required: true
         }}
       />
-
     </section>
   );
 }

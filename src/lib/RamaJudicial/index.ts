@@ -2,32 +2,29 @@ import 'server-only';
 import { notFound } from 'next/navigation';
 import { intConsultaNumeroRadicacion,
          intProceso } from '#@/lib/types/procesos';
-import { ObjectId } from 'mongodb';
 import { sleep } from '#@/lib/fix';
-import { cache } from 'react';
-import clientPromise from '#@/lib/mongodb';
-import { updateProceso } from './update';
+import { carpetasCollection } from '../Carpetas';
 
 export async function fetchProceso(
-                {
-                  llaveProceso,
-                  index
-                }: {
+  {
+    llaveProceso,
+    index
+  }: {
   llaveProceso: string;
   index: number;
-}
+  }
 ) {
-  console.log(
-    llaveProceso.length
-  );
-  sleep(
-    index * 1000
-  );
-  console.log(
-    'wakey'
+  const awaitTime = index * 1000;
+  await sleep(
+    awaitTime
   );
 
   if ( llaveProceso.length < 23 ) {
+
+    console.log(
+      `esta llaveProceso es menos de 23: ${ llaveProceso }`
+    );
+
     return [];
   }
 
@@ -54,103 +51,43 @@ export async function fetchProceso(
   }
 }
 
-
 export async function getProceso(
-                {
-                  llaveProceso,
-                  index
-                }: {
+  {
+    llaveProceso,
+    index
+  }: {
   llaveProceso: string;
   index?: number;
 }
 ) {
+  const collection = await carpetasCollection();
 
-  const ultimosProcesos = await fetchProceso(
+  const procesos = await fetchProceso(
     {
       llaveProceso: llaveProceso,
       index       : index ?? 0
     }
   );
 
-  const returnedProcesos: Map<
-    number,
-    intProceso
-  > = new Map();
-
-  for (
-    let prc = 0;
-    prc < ultimosProcesos.length;
-    prc++
-  ) {
-    const proceso = ultimosProcesos[ prc ];
-
-    const updtProceso = await updateProceso(
-      {
-        proceso: proceso,
-        index  : prc
-      }
-    );
-
-    const returnedProceso
-      = updtProceso.value ?? proceso;
-
-    returnedProcesos.set(
-      proceso.idProceso,
-      returnedProceso
-    );
-  }
-
-  return Array.from(
-    returnedProcesos.values()
+  const idProcesos = procesos.map(
+    (
+      proceso
+    ) => {
+      return proceso.idProceso;
+    }
   );
-}
 
-export async function getProcesos(
-                {
-                  llavesProceso
-                }: {
-  llavesProceso: string[];
-}
-) {
-  const returnedProcesos: Map<
-    number,
-    intProceso
-  > = new Map();
+  const updateCarpetawithProceso = await collection.updateOne(
+    { llaveProceso: llaveProceso }, { $set: { idProceso: idProcesos } }, { upsert: true }
+  );
 
-  for (
-    let index = 0;
-    index < llavesProceso.length;
-    index++
-  ) {
-    const llaveProceso = llavesProceso[ index ];
-    const awaitTime = index * 1000;
-
-    const ultimosProcesos = await fetchProceso(
-      {
-        llaveProceso: llaveProceso,
-        index       : awaitTime
-      }
+  if ( updateCarpetawithProceso.acknowledged ) {
+    console.log(
+      `the collection was updated with ${ updateCarpetawithProceso.modifiedCount } documents modified or ${ updateCarpetawithProceso.upsertedCount } documents upserted with a matched count of ${ updateCarpetawithProceso.matchedCount }`
     );
-    ultimosProcesos.forEach(
-      async (
-        proceso, i
-      ) => {
-        const updtProceso = await updateProceso(
-          {
-            proceso: proceso,
-            index  : index * i
-          }
-        );
 
-        const returnedProceso
-          = updtProceso.value ?? proceso;
-        returnedProcesos.set(
-          proceso.idProceso,
-          returnedProceso
-        );
-      }
-    );
+    return procesos;
   }
 
-  return returnedProcesos;
+  return procesos;
 }

@@ -11,18 +11,13 @@ import { ReactNode, Fragment } from 'react';
 import { Accordion } from '#@/components/Accordion';
 import { NombreComponent } from '../Nombre';
 
-
-export const DemandaContainer = (
-  {
-    demanda
-  }: {
+export const DemandaContainer = ( { demanda }: {
   demanda: Demanda;
-}
-) => {
+} ) => {
   const {
-    departamento, municipio,
-    radicado
-  } = demanda;
+    departamento, municipio, radicado
+  }
+    = demanda;
 
   return (
     <div className={styles.section}>
@@ -32,31 +27,26 @@ export const DemandaContainer = (
       <h2
         className={typography.titleMedium}
       >{`${ departamento }: ${ municipio }`}</h2>
-
-
     </div>
   );
 };
 
-export const CarpetaCard = (
-  {
-    carpeta,
-    children
-  }: {
+export const CarpetaCard = ( {
+  carpeta,
+  children
+}: {
   carpeta: MonCarpeta;
   children: ReactNode;
-}
-) => {
+} ) => {
   const {
     llaveProceso,
     idProceso,
-    _id,
-    deudor, vencimientoPagare, entregaGarantiasAbogado, demanda, capitalAdeudado
+    _id
   } = carpeta;
 
   const {
     tel, direccion, email
-  } = deudor;
+  } = carpeta.deudor;
   const path = '/Procesos';
 
   const href = (
@@ -69,20 +59,21 @@ export const CarpetaCard = (
 
   return (
     <Fragment key={_id}>
-      <DemandaContainer demanda={demanda} />
+      <DemandaContainer demanda={carpeta.demanda} />
       <div
         className={styles.container}
         key={_id}
       >
         <div className={styles.cardInactive}>
           <NombreComponent
-            Deudor={carpeta.deudor}
+            deudor={carpeta.deudor}
           />
 
           <div className={styles.links}>
             <Link
               className={styles.button}
-              href={href}
+              href={ href }
+
             >
               <span
                 className={`material-symbols-outlined ${ styles.icon }`}
@@ -112,12 +103,12 @@ export const CarpetaCard = (
                   Numero Celular
                 </span>
               </Link>
-            ) }
-            {vencimientoPagare && (
-              <p className={typography.labelMedium}>
-                {fixFechas(
-                  vencimientoPagare
-                )}
+            )}
+            {carpeta.vencimientoPagare && (
+              <p
+                className={typography.labelMedium}
+              >
+                {fixFechas( carpeta.vencimientoPagare )}
               </p>
             )}
             {email && (
@@ -154,21 +145,17 @@ export const CarpetaCard = (
                   Numero Fijo
                 </span>
               </Link>
-            ) }
-            {entregaGarantiasAbogado && (
-              <p className={typography.labelSmall}>
-                {fixFechas(
-                  entregaGarantiasAbogado
-                )}
+            )}
+            {carpeta.entregaGarantiasAbogado && (
+              <p
+                className={typography.labelSmall}
+              >
+                {fixFechas( carpeta.entregaGarantiasAbogado )}
               </p>
             )}
             <p>
-              {capitalAdeudado
-          && fixMoney(
-            {
-              valor: capitalAdeudado
-            }
-          )}
+              {carpeta.capitalAdeudado
+                && fixMoney( { valor: carpeta.capitalAdeudado } )}
             </p>
           </div>
         </div>

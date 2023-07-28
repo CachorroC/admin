@@ -7,7 +7,7 @@ export function NuevoCodeudorSection() {
   return (
     <section className={form.section}>
       <h4
-        className={`${ form.title } ${ typography.displayMedium }`}
+        className={`${form.title} ${typography.displayMedium}`}
       >
         Codeudor
       </h4>
@@ -27,8 +27,11 @@ export function NuevoCodeudorSection() {
         title={'Telefono del codeudor'}
         type={'tel'}
       />
-      <InputSection name={ 'codeudor.direccion' } title={ 'Direccion del codeudor ' } type={ 'text' } />
-
+      <InputSection
+        name={'codeudor.direccion'}
+        title={'Direccion del codeudor '}
+        type={'text'}
+      />
     </section>
   );
 }

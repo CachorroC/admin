@@ -1,11 +1,13 @@
 'use client';
-import { Dispatch,
-         ReactNode,
-         SetStateAction,
-         createContext,
-         createRef,
-         useContext,
-         useState } from 'react';
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  createRef,
+  useContext,
+  useState
+} from 'react';
 
 const NuevaCarpetaContext = createContext<
   | [
@@ -13,30 +15,18 @@ const NuevaCarpetaContext = createContext<
       Dispatch<SetStateAction<Map<any, any>>>
     ]
   | null
->(
-  null 
-);
+>(null);
 
-export const NuevaCarpetaProvider = (
-  {
-    children
-  }: {
+export const NuevaCarpetaProvider = ({
+  children
+}: {
   children: ReactNode;
-} 
-) => {
-  const [
-    map,
-    setMap
-  ] = useState(
-    new Map() 
-  );
+}) => {
+  const [map, setMap] = useState(new Map());
 
   return (
     <NuevaCarpetaContext.Provider
-      value={[
-        map,
-        setMap
-      ]}
+      value={[map, setMap]}
     >
       {children}
     </NuevaCarpetaContext.Provider>
@@ -44,11 +34,9 @@ export const NuevaCarpetaProvider = (
 };
 
 export const useNuevaCarpetaContext = () => {
-  const context = useContext(
-    NuevaCarpetaContext 
-  );
+  const context = useContext(NuevaCarpetaContext);
 
-  if ( context === null ) {
+  if (context === null) {
     throw new Error(
       'useNavigator must be used within a NavProvider'
     );

@@ -1,24 +1,20 @@
 import { intProceso } from '#@/lib/types/procesos';
 import { carpetasCollection } from '#@/lib/Carpetas';
 
-export async function updateProceso(
-                {
-                  proceso,
-                  index
-                }: {
+export async function updateProceso({
+  proceso,
+  index
+}: {
   proceso: intProceso;
   index: number;
-}
-) {
+}) {
   const collection = await carpetasCollection();
 
-  const requestUpdate
-    = await collection.findOneAndUpdate(
+  const requestUpdate =
+    await collection.findOneAndUpdate(
       {
         idProceso: {
-          $all: [
-            proceso.idProceso
-          ]
+          $all: [proceso.idProceso]
         }
       },
       {
@@ -28,7 +24,7 @@ export async function updateProceso(
       },
       {
         returnDocument: 'after',
-        upsert        : true
+        upsert: true
       }
     );
 

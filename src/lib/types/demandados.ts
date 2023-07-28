@@ -7,8 +7,7 @@
 import { WithId } from 'mongodb';
 import { intActuacion } from './procesos';
 
-export interface IntCarpeta
-{
+export interface IntCarpeta {
   numero: number;
   llaveProceso: string;
   deudor: deudor;
@@ -19,96 +18,84 @@ export interface IntCarpeta
   tipoProceso: TipoProceso;
   capitalAdeudado: number;
   entregaGarantiasAbogado: Date;
-    grupo: string;
-    fechaIngreso: Date;
-    reparto: boolean;
-    etapaProcesal: EtapaProcesal;
-    idProceso: number[];
-    clase: string;
-    bien?: Bien;
-
+  grupo: string;
+  fechaIngreso: Date;
+  reparto: boolean;
+  etapaProcesal: EtapaProcesal;
+  idProceso: number[];
+  clase: string;
+  bien?: Bien;
 }
 
-export interface Obligacion
-{
+export interface Obligacion {
   texto?: string | number;
-  tipo?: string | number
+  tipo?: string | number;
 }
 
-export interface Bien
-{
-    tipo: string;
-    id?: string;
+export interface Bien {
+  tipo: string;
+  id?: string;
 }
 
-export interface Codeudor
-{
-    cedula: number | string;
-    nombre: string;
-    tel?: number | string;
-    direccion?: string;
+export interface Codeudor {
+  cedula: number | string;
+  nombre: string;
+  tel?: number | string;
+  direccion?: string;
 }
 
-export interface Demanda
-{
-    departamento: Departamento;
-    municipio: string;
-    juzgado: Juzgado;
-    ubicacion?: string;
-    radicado?: string;
+export interface Demanda {
+  departamento: Departamento;
+  municipio: string;
+  juzgado: Juzgado;
+  ubicacion?: string;
+  radicado?: string;
 }
 
 export type Departamento = 'CUNDINAMARCA';
 
-export interface Juzgado
-{
-    origen: Ejecucion;
-    ejecucion?: Ejecucion;
+export interface Juzgado {
+  origen: Ejecucion;
+  ejecucion?: Ejecucion;
 }
 
-export interface Ejecucion
-{
-    url?: string;
-    id: string;
+export interface Ejecucion {
+  url?: string;
+  id: string;
 }
 
-export interface deudor
-{
-    cedula?: number;
-    primerNombre: string;
-    segundoNombre?: string;
-    primerApellido: string;
-    tel?: Tel;
-    email?: string;
-    direccion?: string;
-    segundoApellido?: string;
+export interface deudor {
+  cedula?: number;
+  primerNombre: string;
+  segundoNombre?: string;
+  primerApellido: string;
+  tel?: Tel;
+  email?: string;
+  direccion?: string;
+  segundoApellido?: string;
 }
 
-export interface Tel
-{
-    celular?: number;
-    fijo?: number;
+export interface Tel {
+  celular?: number;
+  fijo?: number;
 }
 
 export type EtapaProcesal =
-    | 'EMPLAZAMIENTO'
-    | 'EJECUCION'
-    | 'CONTESTACION DEMANDA'
-    | 'ADMISION DE LA DEMANDA';
+  | 'EMPLAZAMIENTO'
+  | 'EJECUCION'
+  | 'CONTESTACION DEMANDA'
+  | 'ADMISION DE LA DEMANDA';
 
 export type TipoProceso =
-    | 'PRENDARIO'
-    | 'SINGULAR'
-    | 'HIPOTECARIO';
+  | 'PRENDARIO'
+  | 'SINGULAR'
+  | 'HIPOTECARIO';
 
-export interface MonCarpeta extends IntCarpeta
-{
+export interface MonCarpeta extends IntCarpeta {
   _id: string;
   nombre: string;
-  fecha? : Date | string
-    }
-
-
+  fecha?: Date ;
+}
 
 // Converts JSON strings to/from your types/ Converts JSON strings to/from your types
 export class carpetaConvert {
@@ -116,7 +103,7 @@ export class carpetaConvert {
     json: string
   ): IntCarpeta[] {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -124,7 +111,7 @@ export class carpetaConvert {
     value: IntCarpeta[]
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
@@ -132,8 +119,9 @@ export class carpetaConvert {
     carpeta: MonCarpeta
   ): IntCarpeta {
     const {
-      nombre, _id, ...newCarpeta
-    } = carpeta;
+      nombre, _id, ...newCarpeta 
+    }
+      = carpeta;
 
     return newCarpeta;
   }
@@ -142,13 +130,12 @@ export class carpetaConvert {
     value: IntCarpeta
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
   public static toMonCarpeta(
     carpeta: WithId<IntCarpeta>
   ): MonCarpeta {
-
     const nmb = carpeta.deudor.segundoApellido
       ? carpeta.deudor.segundoNombre
         ? `${ carpeta.deudor.primerNombre } ${ carpeta.deudor.segundoNombre } ${ carpeta.deudor.primerApellido } ${ carpeta.deudor.segundoApellido }`
@@ -168,10 +155,10 @@ export class carpetaConvert {
   ): MonCarpeta[] {
     const newCarpetas = carpetas.map(
       (
-        carpeta
+        carpeta 
       ) => {
         return this.toMonCarpeta(
-          carpeta
+          carpeta 
         );
       }
     );
@@ -179,13 +166,11 @@ export class carpetaConvert {
     return newCarpetas;
   }
 
-
-
   public static toCodeudor(
     json: string
   ): Codeudor {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -193,31 +178,31 @@ export class carpetaConvert {
     value: Codeudor
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toTel(
-    json: string
+    json: string 
   ): Tel {
     return JSON.parse(
-      json
+      json 
     );
   }
 
   public static telToJson(
-    value: Tel
+    value: Tel 
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toDemanda(
-    json: string
+    json: string 
   ): Demanda {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -225,15 +210,15 @@ export class carpetaConvert {
     value: Demanda
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toJuzgado(
-    json: string
+    json: string 
   ): Juzgado {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -241,7 +226,7 @@ export class carpetaConvert {
     value: Juzgado
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
@@ -249,7 +234,7 @@ export class carpetaConvert {
     json: string
   ): Ejecucion {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -257,10 +242,9 @@ export class carpetaConvert {
     value: Ejecucion
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
-
 }
 
 export class NombreCompleto {
@@ -276,7 +260,7 @@ export class NombreCompleto {
     primerApellido: string;
     segundoNombre?: string;
     segundoApellido?: string;
-  }
+  } 
   ) {
     this.Nombre = segundoApellido
       ? segundoNombre

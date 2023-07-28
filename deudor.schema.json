@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Deudor",
+  "definitions": {
+    "Deudor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cedula": {
+          "type": "integer"
+        },
+        "primerNombre": {
+          "type": "string"
+        },
+        "segundoNombre": {
+          "type": "string"
+        },
+        "primerApellido": {
+          "type": "string"
+        },
+        "segundoApellido": {
+          "type": "string"
+        },
+        "direccion": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "tel": {
+          "$ref": "#/definitions/Tel"
+        }
+      },
+      "required": [
+        "cedula",
+        "primerApellido",
+        "primerNombre"
+      ],
+      "title": "Deudor"
+    },
+    "Tel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fijo": {
+          "type": "integer"
+        },
+        "celular": {
+          "type": "integer"
+        }
+      },
+      "required": ["celular", "fijo"],
+      "title": "Tel"
+    }
+  }
+}

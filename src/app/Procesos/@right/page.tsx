@@ -5,8 +5,10 @@ import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { getNotas } from '#@/lib/notas';
 import { NotasList } from '#@/components/card/NotasCard';
 import { fetchFechas } from '#@/lib/Actuaciones';
-import { IntCarpeta,
-         MonCarpeta } from '#@/lib/types/demandados';
+import {
+  IntCarpeta,
+  MonCarpeta
+} from '#@/lib/types/demandados';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { Suspense } from 'react';
 import { Loader } from '#@/components/Loader';
@@ -21,7 +23,7 @@ export default async function PageProcesosRight() {
     <>
       <NewNota
         llaveProceso={'Procesos'}
-        uri={`${ getBaseUrl() }`}
+        uri={`${getBaseUrl()}`}
       />
       <Suspense fallback={<NotasListSkeleton />}>
         <NotasList notas={notas} />

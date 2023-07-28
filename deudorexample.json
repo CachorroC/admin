@@ -1,0 +1,13 @@
+{
+  "cedula": 1032488516,
+  "primerNombre": "Juan",
+  "segundoNombre": "Camilo",
+  "primerApellido": "Suarez",
+  "segundoApellido": "Ramirez",
+  "direccion": "Carrera 63 # 22 - 31",
+  "email": "juankpato87@gmail.com",
+  "tel": {
+    "fijo": 6051567,
+    "celular": 3506144932
+  }
+}

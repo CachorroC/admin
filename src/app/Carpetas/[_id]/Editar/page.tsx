@@ -1,6 +1,6 @@
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { getCarpetaById } from '#@/lib/Carpetas/index';
-import { NuevoProceso } from '#@/app/Carpetas/NuevaCarpeta/new-carpeta';
+import { NuevoProceso } from '#@/app/Carpetas/NuevaCarpeta/edit-carpeta';
 import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { Suspense } from 'react';
@@ -8,24 +8,18 @@ import { ListCardCarpetasNFechasServer } from '#@/components/card/CarpetasCard/s
 import { Loader } from '#@/components/Loader';
 import { NombreComponent } from '#@/components/card/Nombre';
 
-export default async function EditarCarpetabyId(
-                {
-                  params
-                }: {
+export default async function EditarCarpetabyId({
+  params
+}: {
   params: { _id: string };
-} 
-) {
-  const {
-    _id 
-  } = params;
+}) {
+  const { _id } = params;
 
-  const carpeta = await getCarpetaById(
-    {
-      _id: _id
-    } 
-  );
+  const carpeta = await getCarpetaById({
+    _id: _id
+  });
 
-  if ( carpeta ) {
+  if (carpeta) {
     return (
       <div className={layout.body}>
         <div className={layout.name}>
@@ -35,7 +29,7 @@ export default async function EditarCarpetabyId(
         </div>
         <div className={layout.left}>
           <NuevoProceso
-            uri={`${ getBaseUrl() }`}
+            uri={`${getBaseUrl()}`}
             carpeta={carpeta}
           />
         </div>
