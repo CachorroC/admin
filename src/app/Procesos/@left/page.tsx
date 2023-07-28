@@ -4,20 +4,34 @@ import { ListCardCarpetasNFechas } from '#@/components/card/CarpetasCard/list';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { fetchFecha, fetchFechas } from '#@/lib/Actuaciones';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
+import { MonCarpeta } from '#@/lib/types/demandados';
+import { CardSearchList } from '#@/components/search/CardSearchList';
 
-export default async function PageProcesosLeft() {
-  const carpetas = await getCarpetas();
 
+async function LeftFechas (
+  {
+    path, carpetas
+  }: { path: string;  carpetas: MonCarpeta[]}
+) {
   const fechas = await fetchFechas(
     { carpetas: carpetas }
   );
 
+  return (
+    <SearchOutputList
+      path={path}
+      fechas={fechas}
+    />
+  );
+}
 
+export default async function PageProcesosLeft() {
+  const carpetas = await getCarpetas();
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <SearchOutputList path={ '/Procesos' } fechas={ fechas} />
+      <Suspense fallback={<SearchOutputList path={ '/Procesos' } fechas={ carpetas} />}>
+        <LeftFechas path={ '/procesos' } carpetas={ carpetas } />
       </Suspense>
 
     </>

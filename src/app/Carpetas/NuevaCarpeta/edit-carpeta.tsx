@@ -1,15 +1,11 @@
 'use client';
-import React, {
-  useEffect,
-  useState
-} from 'react';
-import {
-  DefaultValues,
-  FormProvider,
-  FormState,
-  SubmitHandler,
-  useForm
-} from 'react-hook-form';
+import React, { useEffect,
+                useState } from 'react';
+import { DefaultValues,
+         FormProvider,
+         FormState,
+         SubmitHandler,
+         useForm } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
 import { NuevoDeudorSection } from '#@/app/Carpetas/NuevaCarpeta/nuevo-deudor';
 import { NuevaDemandaSection } from '#@/app/Carpetas/NuevaCarpeta/nueva-demanda';
@@ -23,26 +19,26 @@ import { NuevaSuspencionProcesoSection } from './nueva-suspencionProceso';
 import { NuevaTerminacionSection } from '#@/app/Carpetas/NuevaCarpeta/nueva-terminacion';
 
 import { InputSection } from '#@/components/form/InputSection';
-import {
-  IntCarpeta,
-  MonCarpeta
-} from '#@/lib/types/demandados';
+import { IntCarpeta,
+         MonCarpeta } from '#@/lib/types/demandados';
 import { ObligacionesArray } from './obligaciones-array';
 import typography from '#@/styles/fonts/typography.module.scss';
 type UnknownArrayOrObject =
   | unknown[]
   | Record<string, unknown>;
 
-export function EditProceso({
-  uri,
-  carpeta
-}: {
+export function EditProceso(
+  {
+    uri,
+    carpeta
+  }: {
   uri: string;
   carpeta: MonCarpeta;
-}) {
-  const methods = useForm<IntCarpeta>({
-    defaultValues: carpeta
-  });
+} 
+) {
+  const methods = useForm<IntCarpeta>(
+    { defaultValues: carpeta } 
+  );
 
   const {
     register,
@@ -63,33 +59,51 @@ export function EditProceso({
 
   const onSubmit: SubmitHandler<
     IntCarpeta
-  > = async (data) => {
-    alert(JSON.stringify(uri + dirtyFields));
-    alert(JSON.stringify(data));
+  > = async (
+    data 
+  ) => {
+    alert(
+      JSON.stringify(
+        uri + dirtyFields 
+      ) 
+    );
+    alert(
+      JSON.stringify(
+        data 
+      ) 
+    );
 
     const postNewNote = await fetch(
-      `${uri}/api/Carpetas`,
+      `${ uri }/api/Carpetas`,
       {
-        method: 'PUT',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify(data)
+        method : 'PUT',
+        headers: { 'content-type': 'application/json' },
+        body   : JSON.stringify(
+          data 
+        )
       }
     );
 
-    if (postNewNote.status === 201) {
+    if ( postNewNote.status === 201 ) {
       const message = await postNewNote.text();
-      alert(message);
+      alert(
+        message 
+      );
     }
 
-    if (postNewNote.status === 200) {
+    if ( postNewNote.status === 200 ) {
       const result = await postNewNote.json();
-      alert(JSON.stringify(result));
+      alert(
+        JSON.stringify(
+          result 
+        ) 
+      );
     }
 
-    if (postNewNote.status === 304) {
-      alert('nothing updated');
+    if ( postNewNote.status === 304 ) {
+      alert(
+        'nothing updated' 
+      );
     }
   };
 
@@ -99,7 +113,9 @@ export function EditProceso({
         <div className={form.container}>
           <form
             className={form.form}
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(
+              onSubmit 
+            )}
           >
             <section className={form.section}>
               <input
@@ -124,18 +140,20 @@ export function EditProceso({
                 : 'not submit successful'}{' '}
             </p>
             <p>
-              {isLoading ? 'loading' : 'loaded'}
+              {isLoading
+                ? 'loading'
+                : 'loaded'}
             </p>
             <p>
-              {errors && JSON.stringify(errors)}
+              {errors && JSON.stringify(
+                errors 
+              )}
             </p>
             <InputSection
               name={'numero'}
               title={'Carpeta numero'}
               type={'number'}
-              rls={{
-                required: true
-              }}
+              rls={{ required: true }}
             />
 
             <InputSection
@@ -143,7 +161,7 @@ export function EditProceso({
               title={'Expediente judicial'}
               type={'text'}
               rls={{
-                required: true,
+                required : true,
                 minLength: 23
               }}
             />
@@ -152,9 +170,7 @@ export function EditProceso({
                 name={'deudor.primerNombre'}
                 title={'Primer Nombre'}
                 type={'text'}
-                rls={{
-                  required: true
-                }}
+                rls={{ required: true }}
               />
               <InputSection
                 name={'deudor.segundoNombre'}
@@ -165,9 +181,7 @@ export function EditProceso({
                 name={'deudor.primerApellido'}
                 title={'Primer Apellido'}
                 type={'text'}
-                rls={{
-                  required: true
-                }}
+                rls={{ required: true }}
               />
               <InputSection
                 name={'deudor.segundoApellido'}
@@ -185,7 +199,7 @@ export function EditProceso({
                 type={'text'}
                 rls={{
                   required: false,
-                  pattern: /^\S+@\S+$/i
+                  pattern : /^\S+@\S+$/i
                 }}
               />
               <InputSection
@@ -193,7 +207,7 @@ export function EditProceso({
                 title={'Telefono fijo'}
                 type={'tel'}
                 rls={{
-                  required: false,
+                  required : false,
                   maxLength: 10,
                   minLength: 10
                 }}
@@ -203,7 +217,7 @@ export function EditProceso({
                 title={'Telefono celular'}
                 type={'tel'}
                 rls={{
-                  required: false,
+                  required : false,
                   minLength: 10,
                   maxLength: 10
                 }}
@@ -223,17 +237,13 @@ export function EditProceso({
               name={'vencimientoPagare'}
               title={'Vencimiento pagare'}
               type={'date'}
-              rls={{
-                required: true
-              }}
+              rls={{ required: true }}
             />
             <InputSection
               name={'capitalAdeudado'}
               title={'capital adeudado'}
               type={'number'}
-              rls={{
-                required: true
-              }}
+              rls={{ required: true }}
             />
 
             <section className={form.section}>
@@ -245,9 +255,9 @@ export function EditProceso({
               </label>
               <select
                 className={form.textArea}
-                {...register('tipoProceso', {
-                  required: true
-                })}
+                {...register(
+                  'tipoProceso', { required: true } 
+                )}
               >
                 <option value='HIPOTECARIO'>
                   HIPOTECARIO
@@ -266,9 +276,7 @@ export function EditProceso({
                 'Entrega de garantias abogado'
               }
               type={'date'}
-              rls={{
-                required: true
-              }}
+              rls={{ required: true }}
             />
             <InputSection
               name={'grupo'}
@@ -276,9 +284,7 @@ export function EditProceso({
                 'Es de bancolombia o reintegra o lios juridicos'
               }
               type={'text'}
-              rls={{
-                required: true
-              }}
+              rls={{ required: true }}
             />
             <InputSection
               name={'fechaIngreso'}
@@ -286,17 +292,13 @@ export function EditProceso({
                 'fecha de ingreso del deudor al sistema de RyS'
               }
               type={'date'}
-              rls={{
-                required: true
-              }}
+              rls={{ required: true }}
             />
             <InputSection
               name={'reparto'}
               title={'¿Ya se envió aa reparto?'}
               type={'checkbox'}
-              rls={{
-                required: true
-              }}
+              rls={{ required: true }}
             />
             <section className={form.section}>
               <label
@@ -307,9 +309,9 @@ export function EditProceso({
               </label>
               <select
                 className={form.textArea}
-                {...register('etapaProcesal', {
-                  required: true
-                })}
+                {...register(
+                  'etapaProcesal', { required: true } 
+                )}
               >
                 <option value='EMPLAZAMIENTO'>
                   emplazamiento
@@ -334,9 +336,9 @@ export function EditProceso({
               </label>
               <select
                 className={form.textArea}
-                {...register('clase', {
-                  required: true
-                })}
+                {...register(
+                  'clase', { required: true } 
+                )}
               >
                 <option value='INMUEBLE'>
                   inmueble

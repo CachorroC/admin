@@ -4,11 +4,18 @@ import { ReactNode,
          createContext,
          useContext,
          useState } from 'react';
-const CarpetaContext = createContext( null );
 
-export function CarpetaProvider( { children }: {
+const CarpetaContext = createContext(
+  null 
+);
+
+export function CarpetaProvider(
+  {
+    children 
+  }: {
   children: ReactNode;
-} ) {
+} 
+) {
   const [
     contextCarpeta,
     setContextCarpeta
@@ -28,10 +35,14 @@ export function CarpetaProvider( { children }: {
 }
 
 export function useCarpetaContext() {
-  const context = useContext( CarpetaContext );
+  const context = useContext(
+    CarpetaContext 
+  );
 
   if ( !context ) {
-    throw new Error( 'useNavigator must be used within a NavProvider' );
+    throw new Error(
+      'useNavigator must be used within a NavProvider' 
+    );
   }
 
   return context;

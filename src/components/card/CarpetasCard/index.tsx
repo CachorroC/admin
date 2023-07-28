@@ -11,9 +11,13 @@ import { ReactNode, Fragment } from 'react';
 import { Accordion } from '#@/components/Accordion';
 import { NombreComponent } from '../Nombre';
 
-export const DemandaContainer = ( { demanda }: {
+export const DemandaContainer = (
+  {
+    demanda 
+  }: {
   demanda: Demanda;
-} ) => {
+} 
+) => {
   const {
     departamento, municipio, radicado
   }
@@ -31,13 +35,15 @@ export const DemandaContainer = ( { demanda }: {
   );
 };
 
-export const CarpetaCard = ( {
-  carpeta,
-  children
-}: {
+export const CarpetaCard = (
+  {
+    carpeta,
+    children
+  }: {
   carpeta: MonCarpeta;
   children: ReactNode;
-} ) => {
+} 
+) => {
   const {
     llaveProceso,
     idProceso,
@@ -108,7 +114,9 @@ export const CarpetaCard = ( {
               <p
                 className={typography.labelMedium}
               >
-                {fixFechas( carpeta.vencimientoPagare )}
+                {fixFechas(
+                  carpeta.vencimientoPagare 
+                )}
               </p>
             )}
             {email && (
@@ -150,12 +158,16 @@ export const CarpetaCard = ( {
               <p
                 className={typography.labelSmall}
               >
-                {fixFechas( carpeta.entregaGarantiasAbogado )}
+                {fixFechas(
+                  carpeta.entregaGarantiasAbogado 
+                )}
               </p>
             )}
             <p>
               {carpeta.capitalAdeudado
-                && fixMoney( { valor: carpeta.capitalAdeudado } )}
+                && fixMoney(
+                  { valor: carpeta.capitalAdeudado } 
+                )}
             </p>
           </div>
         </div>

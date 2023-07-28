@@ -9,7 +9,8 @@ import { sleep } from '../fix';
 import { cache } from 'react';
 import clientPromise from '../mongodb';
 import { IntCarpeta,
-         MonCarpeta } from '../types/demandados';
+         MonCarpeta,
+         carpetaConvert } from '../types/demandados';
 import { Collection } from 'mongodb';
 
 export async function fetchActuaciones(
@@ -22,16 +23,12 @@ export async function fetchActuaciones(
 }
 ) {
 
-  const awaitTime = index * 1000;
+  const awaitTime = index * 1;
   await sleep(
     awaitTime
   );
 
-  if ( idProceso === 0 || idProceso === 404 ) {
-    console.log(
-      `este idProceso es: ${ idProceso }`
-    );
-
+  if ( !idProceso ) {
     return [];
   }
 
@@ -42,6 +39,10 @@ export async function fetchActuaciones(
     );
 
     if ( !Request.ok ) {
+      console.log(
+        ` ${ idProceso }: actuaciones not ok, status: ${ Request.status } with ${ Request.statusText } index: ${ index }`
+      );
+
       return [];
     }
 
@@ -80,12 +81,18 @@ export async function getActuaciones (
     };
 
     const updateCarpetawithActuaciones = await collection.updateOne(
-      { idProceso: idProceso }, { $addToSet: { ultimasActuaciones: ultimaActconIdProceso } }, { upsert: true, }
+      { idProceso: idProceso }, {
+        $set: {
+          fecha: new Date(
+            actuaciones[ 0 ].fechaActuacion
+          )
+        }
+      }, { upsert: true }
     );
 
-    if ( updateCarpetawithActuaciones.acknowledged ) {
+    if ( updateCarpetawithActuaciones.modifiedCount > 0 ) {
       console.log(
-        `the collection was updated with ${ updateCarpetawithActuaciones.modifiedCount } actuaciones modified or ${ updateCarpetawithActuaciones.upsertedCount }actuaciones upserted with a matched count of ${ updateCarpetawithActuaciones.matchedCount }`
+        `${ index }: the collection was updated with ${ updateCarpetawithActuaciones.modifiedCount } actuaciones modified or ${ updateCarpetawithActuaciones.upsertedCount }actuaciones upserted with a matched count of ${ updateCarpetawithActuaciones.matchedCount }`
       );
 
       return actuaciones;
@@ -97,4 +104,83 @@ export async function getActuaciones (
   return actuaciones;
 
 
+}
+
+export async function fetchFechas (
+  {
+    carpetas
+  }: { carpetas: MonCarpeta[] }
+) {
+  const mapCarpetaswithFechas: Map<string, MonCarpeta> = new Map();
+
+  for ( const carpeta of carpetas ) {
+    const index = carpetas.indexOf(
+      carpeta
+    );
+
+    const fecha = await fetchFecha(
+      {
+        carpeta: carpeta,
+        index  : index
+      }
+    );
+    mapCarpetaswithFechas.set(
+      carpeta._id, fecha
+    );
+  }
+
+  return Array.from(
+    mapCarpetaswithFechas.values()
+  );
+}
+
+export async function fetchFecha (
+  {
+    carpeta, index
+  }: { carpeta: MonCarpeta, index: number }
+) {
+  const collection = await carpetasCollection();
+
+
+  const actuaciones = await getActuaciones(
+    {
+      idProceso: carpeta.idProceso,
+      index    : index
+    }
+  );
+
+  if ( actuaciones.length > 0 ) {
+
+    const ultimaActuacion = actuaciones[ 0 ];
+
+    const updateCarpeta = await collection.findOneAndUpdate(
+      { idProceso: carpeta.idProceso }, {
+        $set: {
+          fecha: new Date(
+            ultimaActuacion.fechaActuacion
+          )
+        }
+      }, {
+        upsert        : true,
+        returnDocument: 'after'
+      }
+    );
+
+    if ( updateCarpeta.value ) {
+      const newCarpeta = carpetaConvert.toMonCarpeta(
+        updateCarpeta.value
+      );
+
+      return newCarpeta;
+    }
+
+    return {
+      ...carpeta,
+      fecha: new Date(
+        ultimaActuacion.fechaActuacion
+      )
+    };
+  }
+
+  return carpeta;
 }

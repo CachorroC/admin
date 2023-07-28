@@ -5,28 +5,23 @@ import { getActuaciones } from '#@/lib/Actuaciones';
 
 async function Acts(
   {
-    idProceso,
-    index
+    idProceso
   }: {
-  idProceso: number;
-  index: number;
-} 
+  idProceso: number
+}
 ) {
   const actuaciones = await getActuaciones(
-    {
-      idProceso: idProceso,
-      index    : index
-    } 
+    { idProceso: idProceso }
   );
 
   return (
     <>
       {actuaciones.map(
         (
-          act, i, arr 
+          act, i, arr
         ) => {
           const {
-            idRegActuacion 
+            idRegActuacion
           } = act;
 
           return (
@@ -35,7 +30,7 @@ async function Acts(
               key={idRegActuacion}
             />
           );
-        } 
+        }
       )}
     </>
   );
@@ -48,29 +43,26 @@ export default async function PageProcesosLeftllaveProceso(
   params: {
     llaveProceso: string;
   };
-} 
+}
 ) {
-  const Carpetas
+  const Carpeta
     = await getCarpetasByllaveProceso(
-      { llaveProceso: params.llaveProceso } 
+      { llaveProceso: params.llaveProceso }
     );
+
+  if ( !Carpeta ) {
+    return null;
+  }
 
   return (
     <>
       <p>page</p>
-      {Carpetas.map(
-        (
-          carpeta, index 
-        ) => {
-          return (
-            <Acts
-              key={carpeta.id}
-              index={index}
-              idProceso={carpeta.idProceso}
-            />
-          );
-        } 
-      )}
+
+      <Acts
+        key={Carpeta._id}
+        idProceso={Carpeta.idProceso}
+      />
+
     </>
   );
 }

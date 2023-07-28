@@ -1,41 +1,41 @@
-import {
-  getCarpetasByidProceso,
-  getCarpetasByllaveProceso
-} from '#@/lib/Carpetas';
+import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import { Name } from '#@/components/Headings/serverSideName';
+import { notFound } from 'next/navigation';
 
-export default async function PageProcesosllaveProcesoidProceso({
-  params
-}: {
+export default async function PageProcesosllaveProcesoidProceso(
+  {
+    params
+  }: {
   params: {
     llaveProceso: string;
     idProceso: number;
   };
-}) {
-  const carpetas =
-    await getCarpetasByllaveProceso({
-      llaveProceso: params.llaveProceso
-    });
+}
+) {
+  const carpeta
+    = await getCarpetasByllaveProceso(
+      { llaveProceso: params.llaveProceso }
+    );
+
+  if ( !carpeta ) {
+    return notFound();
+  }
 
   return (
     <>
       <Name llaveProceso={params.llaveProceso} />
-      {carpetas.map((carpeta) => {
-        const { _id, ...newCarpeta } = carpeta;
 
-        return (
-          <CarpetaCard
-            key={carpeta._id}
-            carpeta={carpeta}
-          >
-            {' '}
-            <span className='material-symbols-outlined'>
+      <CarpetaCard
+        key={carpeta._id}
+        carpeta={carpeta}
+      >
+        {' '}
+        <span className='material-symbols-outlined'>
               star
-            </span>
-          </CarpetaCard>
-        );
-      })}
+        </span>
+      </CarpetaCard>
+
     </>
   );
 }

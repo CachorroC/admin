@@ -1,29 +1,39 @@
 'use client';
-import {
-  Dispatch,
-  SetStateAction,
-  useMemo,
-  useState
-} from 'react';
+import { Dispatch,
+         SetStateAction,
+         useMemo,
+         useState } from 'react';
 
 export function usePrettyPrintedState<
   T extends object
 >(): [JSX.Element, Dispatch<SetStateAction<T>>] {
-  const [value, setValue] = useState<T>();
+  const [
+    value,
+    setValue
+  ] = useState<T>();
 
-  const resultValue = useMemo(() => {
-    return (
-      <>
-        {value && (
-          <pre>
+  const resultValue = useMemo(
+    () => {
+      return (
+        <>
+          {value && (
+            <pre>
             Value:
-            <br />
-            {JSON.stringify(value, null, 2)}
-          </pre>
-        )}
-      </>
-    );
-  }, [value]);
+              <br />
+              {JSON.stringify(
+                value, null, 2 
+              )}
+            </pre>
+          )}
+        </>
+      );
+    }, [
+      value
+    ] 
+  );
 
-  return [resultValue, setValue];
+  return [
+    resultValue,
+    setValue
+  ];
 }

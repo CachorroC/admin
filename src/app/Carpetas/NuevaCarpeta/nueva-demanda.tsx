@@ -1,23 +1,23 @@
 'use client';
 import form from '#@/components/form/form.module.scss';
 import { IntCarpeta } from '#@/lib/types/demandados';
-import {
-  UseFormRegister,
-  useFormContext
-} from 'react-hook-form';
+import { UseFormRegister,
+         useFormContext } from 'react-hook-form';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { Accordion } from '#@/components/Accordion';
 import { InputSection } from '#@/components/form/InputSection';
 import { ObligacionesArray } from './obligaciones-array';
 
 export function NuevaDemandaSection() {
-  const { register } =
-    useFormContext<IntCarpeta>();
+  const {
+    register 
+  }
+    = useFormContext<IntCarpeta>();
 
   return (
     <section className={form.section}>
       <h3
-        className={`${form.title} ${typography.displayMedium}`}
+        className={`${ form.title } ${ typography.displayMedium }`}
       >
         Demanda
       </h3>
@@ -31,9 +31,9 @@ export function NuevaDemandaSection() {
         </label>
         <select
           className={form.textArea}
-          {...register('demanda.departamento', {
-            required: false
-          })}
+          {...register(
+            'demanda.departamento', { required: false } 
+          )}
         >
           <option value='CO-AMA'>Amazonas</option>
           <option value='CO-ANT'>
@@ -105,7 +105,7 @@ export function NuevaDemandaSection() {
         type={'text'}
         rls={{
           required: false,
-          pattern: /\d\d\d\d\s+-\s+\d\d\d\d\d/gi
+          pattern : /\d\d\d\d\s+-\s+\d\d\d\d\d/gi
         }}
       />
 
@@ -120,9 +120,9 @@ export function NuevaDemandaSection() {
           className={form.textArea}
           type='text'
           placeholder='demanda.Ubicacion.Juzgado'
-          {...register('demanda.ubicacion', {
-            required: false
-          })}
+          {...register(
+            'demanda.ubicacion', { required: false } 
+          )}
         />
       </section>
       <section className={form.section}>
@@ -139,9 +139,7 @@ export function NuevaDemandaSection() {
             placeholder='Juzgado de Origen'
             {...register(
               'demanda.juzgado.origen.id',
-              {
-                required: false
-              }
+              { required: false }
             )}
           />
         </section>
@@ -158,9 +156,7 @@ export function NuevaDemandaSection() {
             placeholder='Link del juzgado'
             {...register(
               'demanda.juzgado.origen.url',
-              {
-                required: false
-              }
+              { required: false }
             )}
           />
         </section>

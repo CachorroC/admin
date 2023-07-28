@@ -1,5 +1,5 @@
-/** @type {import('next').NextConfig} */ const nextConfig =
-  {
+/** @type {import('next').NextConfig} */ const nextConfig
+  = {
     output: 'standalone',
     images: {
       remotePatterns: [
@@ -9,11 +9,13 @@
           pathname: '/250/200?image=**'
         }
       ],
-      domains: ['placekitten.com']
+      domains: [
+        'placekitten.com'
+      ]
     },
     experimental: {
-      typedRoutes: true,
-      serverActions: true,
+      typedRoutes                     : true,
+      serverActions                   : true,
       serverComponentsExternalPackages: [
         'mongodb'
       ]

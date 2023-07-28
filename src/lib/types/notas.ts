@@ -31,16 +31,24 @@ export class notaConvert {
   public static toMonNotas(
     notas: WithId<intNota>[]
   ): monNota[] {
-    const newNotas = notas.map((nota) => {
-      return this.toMonNota(nota);
-    });
+    const newNotas = notas.map(
+      (
+        nota 
+      ) => {
+        return this.toMonNota(
+          nota 
+        );
+      } 
+    );
 
     return newNotas;
   }
   public static monNotasToJson(
     value: monNota[]
   ): string {
-    return JSON.stringify(value);
+    return JSON.stringify(
+      value 
+    );
   }
 
   public static toMonNota(
@@ -56,14 +64,22 @@ export class notaConvert {
   public static monNotaToJson(
     value: monNota
   ): string {
-    return JSON.stringify(value);
+    return JSON.stringify(
+      value 
+    );
   }
-  public static toTarea(json: string): Tarea {
-    return JSON.parse(json);
+  public static toTarea(
+    json: string 
+  ): Tarea {
+    return JSON.parse(
+      json 
+    );
   }
   public static tareaToJson(
     value: Tarea
   ): string {
-    return JSON.stringify(value);
+    return JSON.stringify(
+      value 
+    );
   }
 }

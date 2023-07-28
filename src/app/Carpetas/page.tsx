@@ -8,16 +8,42 @@ import { CardSearchList } from '#@/components/search/CardSearchList';
 import type { Route } from 'next';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { Loader } from '#@/components/Loader';
-import { ListCardCarpetasNFechasServer } from '#@/components/card/CarpetasCard/server-list';
 import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
+import { MonCarpeta } from '#@/lib/types/demandados';
+
+export async function LeftCarpetas (
+  {
+    path, carpetas
+  }: { path: string; carpetas: MonCarpeta[] }
+) {
+  const fechas = await fetchFechas(
+    { carpetas: carpetas }
+  );
+
+  return (
+    <SearchOutputList path={ '/Carpetas' } fechas={fechas } />
+  );
+}
+
+export async function RightCarpetas (
+  {
+    path, carpetas
+  }: { path: string; carpetas: MonCarpeta[] }
+) {
+  const fechas = await fetchFechas(
+    { carpetas: carpetas }
+  );
+
+  return (
+    <CardSearchList path={ '/Carpetas' } fechas={ fechas } />
+  );
+}
 
 export default async function PageCarpetas() {
   const carpetas = await getCarpetas();
 
-  const fechas = await fetchFechas({
-    procesos: carpetas
-  });
+
 
   return (
     <div className={layout.body}>
@@ -27,13 +53,13 @@ export default async function PageCarpetas() {
         </h1>
       </div>
       <div className={layout.left}>
-        <Suspense fallback={<Loader />}>
-          <ListCardCarpetasNFechasServer />
+        <Suspense fallback={ <SearchOutputList path={ '/Carpetas' } fechas={ carpetas } /> }>
+          <LeftCarpetas path={ '/Carpetas' } carpetas={carpetas } />
         </Suspense>
       </div>
       <div className={layout.right}>
-        <Suspense fallback={<Loader />}>
-          <ListCardCarpetasNFechasServer />
+        <Suspense fallback={ <CardSearchList path={ '/Carpetas' } fechas={ carpetas } /> }>
+          <RightCarpetas path={ '/Carpetas' } carpetas={ carpetas } />
         </Suspense>
       </div>
     </div>

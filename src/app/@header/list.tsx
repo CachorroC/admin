@@ -4,11 +4,11 @@ import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 import Drawer from '#@/components/navbar/drawer';
 
 export async function ListDrawer() {
-  const procesos = await getCarpetas();
+  const carpetas = await getCarpetas();
 
-  const fechas = await fetchFechas({
-    procesos: procesos
-  });
+  const fechas = await fetchFechas(
+    { carpetas: carpetas } 
+  );
 
   return (
     <Drawer>

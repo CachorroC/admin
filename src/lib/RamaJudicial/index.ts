@@ -69,22 +69,18 @@ export async function getProceso(
     }
   );
 
-  const idProcesos = procesos.map(
-    (
-      proceso
-    ) => {
-      return proceso.idProceso;
-    }
-  );
-
-  const updateCarpetawithProceso = await collection.updateOne(
-    { llaveProceso: llaveProceso }, { $set: { idProceso: idProcesos } }, { upsert: true }
-  );
-
-  if ( updateCarpetawithProceso.acknowledged ) {
-    console.log(
-      `the collection was updated with ${ updateCarpetawithProceso.modifiedCount } documents modified or ${ updateCarpetawithProceso.upsertedCount } documents upserted with a matched count of ${ updateCarpetawithProceso.matchedCount }`
+  for ( const proceso of procesos ) {
+    const updateCarpetawithProceso = await collection.updateOne(
+      { idProceso: proceso.idProceso }, { $set: { idProceso: proceso.idProceso } }, { upsert: true }
     );
+
+    if ( updateCarpetawithProceso.acknowledged ) {
+      console.log(
+        `the collection was updated with ${ updateCarpetawithProceso.modifiedCount } documents modified or ${ updateCarpetawithProceso.upsertedCount } documents upserted with a matched count of ${ updateCarpetawithProceso.matchedCount }`
+      );
+    }
+
+
 
     return procesos;
   }

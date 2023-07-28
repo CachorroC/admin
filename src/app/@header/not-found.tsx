@@ -13,17 +13,13 @@ export default function NotFound() {
     >
       <h1
         className={typography.displayLarge}
-        style={{
-          color: 'var(--primary)'
-        }}
+        style={{ color: 'var(--primary)' }}
       >
         ¿Perdido?
       </h1>
       <p
         className={typography.bodyLarge}
-        style={{
-          color: 'var(--on-surface-container)'
-        }}
+        style={{ color: 'var(--on-surface-container)' }}
       >
         No pudimos resolver la consulta que
         realizaste. No existe el recurso

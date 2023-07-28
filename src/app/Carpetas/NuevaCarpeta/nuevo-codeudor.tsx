@@ -7,7 +7,7 @@ export function NuevoCodeudorSection() {
   return (
     <section className={form.section}>
       <h4
-        className={`${form.title} ${typography.displayMedium}`}
+        className={`${ form.title } ${ typography.displayMedium }`}
       >
         Codeudor
       </h4>

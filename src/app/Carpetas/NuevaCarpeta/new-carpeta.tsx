@@ -8,9 +8,13 @@ import { InputSection } from '#@/components/form/InputSection';
 import { IntCarpeta } from '#@/lib/types/demandados';
 import typography from '#@/styles/fonts/typography.module.scss';
 
-export const NuevoProceso = ( { uri }: {
+export const NuevoProceso = (
+  {
+    uri 
+  }: {
   uri: string;
-} ) => {
+} 
+) => {
   const methods = useForm<IntCarpeta>();
 
   const {
@@ -32,20 +36,34 @@ export const NuevoProceso = ( { uri }: {
 
   const onSubmit: SubmitHandler<
     IntCarpeta
-  > = async ( data ) => {
-    alert( JSON.stringify( dirtyFields ) );
-    alert( JSON.stringify( data ) );
+  > = async (
+    data 
+  ) => {
+    alert(
+      JSON.stringify(
+        dirtyFields 
+      ) 
+    );
+    alert(
+      JSON.stringify(
+        data 
+      ) 
+    );
 
     const postNewNote = await fetch(
       '/api/Carpetas',
       {
         method : 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body   : JSON.stringify( data )
+        body   : JSON.stringify(
+          data 
+        )
       }
     );
 
-    return console.log( data );
+    return console.log(
+      data 
+    );
   };
 
   return (
@@ -54,7 +72,9 @@ export const NuevoProceso = ( { uri }: {
         <div className={form.container}>
           <form
             className={form.form}
-            onSubmit={handleSubmit( onSubmit )}
+            onSubmit={handleSubmit(
+              onSubmit 
+            )}
           >
             <InputSection
               name={'numero'}

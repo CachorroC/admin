@@ -9,11 +9,19 @@ import { NombreComponent } from '#@/components/card/Nombre';
 import { notFound } from 'next/navigation';
 
 
-export default async function DefaultProcesosllaveProceso( { params: { llaveProceso } }: {
+export default async function DefaultProcesosllaveProceso(
+  {
+    params: {
+      llaveProceso 
+    } 
+  }: {
   params: { llaveProceso: string };
-} ) {
+} 
+) {
   const Carpeta
-    = await getCarpetasByllaveProceso( { llaveProceso: llaveProceso } );
+    = await getCarpetasByllaveProceso(
+      { llaveProceso: llaveProceso } 
+    );
 
   if ( !Carpeta ) {
     notFound();

@@ -2,15 +2,17 @@ import layout from '#@/styles/scss/layout.module.scss';
 import React from 'react';
 import { CarpetaProvider } from '../context/carpeta-context';
 
-export default function LayoutProcesos( {
-  children,
-  right,
-  left
-}: {
+export default function LayoutProcesos(
+  {
+    children,
+    right,
+    left
+  }: {
   children: React.ReactNode;
   right: React.ReactNode;
   left: React.ReactNode;
-} ) {
+} 
+) {
   return (
     <CarpetaProvider>
       <div className={layout.body}>

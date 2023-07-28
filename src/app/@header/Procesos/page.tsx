@@ -9,11 +9,11 @@ import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputS
 import { Loader } from '#@/components/Loader/index';
 
 export default async function Page() {
-  const procesos = await getCarpetas();
+  const carpetas = await getCarpetas();
 
-  const fechas = await fetchFechas({
-    procesos: procesos
-  });
+  const fechas = await fetchFechas(
+    { carpetas: carpetas } 
+  );
 
   return (
     <>

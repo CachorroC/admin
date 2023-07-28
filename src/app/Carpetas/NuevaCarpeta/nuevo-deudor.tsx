@@ -7,7 +7,7 @@ export function NuevoDeudorSection() {
   return (
     <section className={form.section}>
       <h3
-        className={`${form.title} ${typography.displayMedium}`}
+        className={`${ form.title } ${ typography.displayMedium }`}
       >
         Deudor
       </h3>
@@ -16,9 +16,7 @@ export function NuevoDeudorSection() {
         name={'Deudor.PrimerNombre'}
         title={'Nombre del deudor'}
         type={'text'}
-        rls={{
-          required: true
-        }}
+        rls={{ required: true }}
       />
       <InputSection
         name={'Deudor.SegundoNombre'}
@@ -29,9 +27,7 @@ export function NuevoDeudorSection() {
         name={'Deudor.PrimerApellido'}
         title={'Apellido del deudor'}
         type={'text'}
-        rls={{
-          required: true
-        }}
+        rls={{ required: true }}
       />
       <InputSection
         name={'Deudor.SegundoApellido'}
@@ -42,9 +38,7 @@ export function NuevoDeudorSection() {
         name={'Deudor.Id'}
         title={'Cedula del deudor'}
         type={'number'}
-        rls={{
-          required: true
-        }}
+        rls={{ required: true }}
       />
     </section>
   );

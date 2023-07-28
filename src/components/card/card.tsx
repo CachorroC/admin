@@ -12,15 +12,17 @@ import { IntCarpeta,
          MonCarpeta,
          NombreCompleto } from '#@/lib/types/demandados';
 
-export const Card = ( {
-  path,
-  carpeta,
-  children
-}: {
+export const Card = (
+  {
+    path,
+    carpeta,
+    children
+  }: {
   path: string;
   carpeta: MonCarpeta;
   children: ReactNode;
-} ) => {
+} 
+) => {
   const [
     isNavOpen,
     setIsNavOpen
@@ -33,8 +35,12 @@ export const Card = ( {
   ] = useModal();
 
   const clickHandler = () => {
-    setIsNavOpen( false );
-    setIsOpen( true );
+    setIsNavOpen(
+      false 
+    );
+    setIsOpen(
+      true 
+    );
   };
   const pathname = usePathname();
   const isInProcesos = pathname === path;
@@ -67,7 +73,13 @@ export const Card = ( {
         <h1
           className={`${ typography.titleMedium } ${ card.title }`}
         >
-          {toNameString( { nameRaw: new NombreCompleto( carpeta.deudor ).Nombre } )}
+          {toNameString(
+            {
+              nameRaw: new NombreCompleto(
+                carpeta.deudor 
+              ).Nombre 
+            } 
+          )}
         </h1>
         <div className={card.links}>
           <Link
@@ -108,7 +120,9 @@ export const Card = ( {
             }`}
             href={`/Notas/NuevaNota/${ carpeta.llaveProceso }`}
             onClick={() => {
-              setIsOpen( true );
+              setIsOpen(
+                true 
+              );
             }}
           >
             <span
