@@ -4,13 +4,16 @@ import { NextRequest,
 import clientPromise from '#@/lib/mongodb';
 import { monDemandado } from '#@/lib/types/mongodb';
 import { notFound } from 'next/navigation';
-import { procesosCollection } from '#@/lib/RamaJudicial';
-const collection = await procesosCollection();
+import { Collection } from 'mongodb';
+import { carpetaConvert } from '#@/lib/types/demandados';
+import { carpetasCollection } from '#@/lib/Carpetas';
 
-export async function GET() {
+export async function GET () {
+  const collection = await carpetasCollection();
+
   const procesos = await collection
         .find(
-          {} 
+          {}
         )
         .toArray();
 
@@ -20,7 +23,7 @@ export async function GET() {
 
   return new NextResponse(
     JSON.stringify(
-      procesos 
+      procesos
     ),
     {
       status : 200,
@@ -30,14 +33,14 @@ export async function GET() {
 }
 
 export async function POST(
-  Request: NextRequest 
+  Request: NextRequest
 ) {
   const incomingRequest = await Request.json();
-  const collection = await Collection();
+  const collection = await carpetasCollection();
 
   const outgoingRequest
     = await collection.insertOne(
-      incomingRequest 
+      incomingRequest
     );
 
   if ( outgoingRequest.acknowledged === false ) {
@@ -46,7 +49,7 @@ export async function POST(
         {
           Error:
           'server couldnt acknowledge the insert request'
-        } 
+        }
       ),
       { status: 500 }
     );

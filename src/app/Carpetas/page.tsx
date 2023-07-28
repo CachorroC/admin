@@ -12,7 +12,7 @@ import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { MonCarpeta } from '#@/lib/types/demandados';
 
-export async function LeftCarpetas (
+async function LeftCarpetas (
   {
     path, carpetas
   }: { path: string; carpetas: MonCarpeta[] }
@@ -26,7 +26,7 @@ export async function LeftCarpetas (
   );
 }
 
-export async function RightCarpetas (
+async function RightCarpetas (
   {
     path, carpetas
   }: { path: string; carpetas: MonCarpeta[] }

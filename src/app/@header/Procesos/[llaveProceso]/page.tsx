@@ -1,32 +1,23 @@
-import { Name } from '#@/components/Headings/serverSideName';
-import Title from '#@/components/Headings/title';
+import { NombreComponent } from '#@/components/card/Nombre';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
+import { notFound } from 'next/navigation';
 
 export default async function Page(
   {
     params
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   const proceso = await getCarpetasByllaveProceso(
     { llaveProceso: params.llaveProceso }
   );
 
-  const nombre = proceso
-        .map(
-          (
-            prc 
-          ) => {
-            return prc.Deudor.PrimerNombre;
-          } 
-        )
-        .toString();
+  if ( !proceso ) {
+    notFound();
+  }
 
   return (
-    <Title
-      key={params.llaveProceso}
-      helper={nombre}
-    />
+    <NombreComponent deudor={ proceso.deudor } />
   );
 }

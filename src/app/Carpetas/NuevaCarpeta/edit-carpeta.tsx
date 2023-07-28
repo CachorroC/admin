@@ -7,16 +7,8 @@ import { DefaultValues,
          SubmitHandler,
          useForm } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
-import { NuevoDeudorSection } from '#@/app/Carpetas/NuevaCarpeta/nuevo-deudor';
 import { NuevaDemandaSection } from '#@/app/Carpetas/NuevaCarpeta/nueva-demanda';
-import { NuevaEtapaProcesalSection } from '#@/app/Carpetas/NuevaCarpeta/nueva-etapaProcesal';
-import { NuevaLiquidacionSection } from '#@/app/Carpetas/NuevaCarpeta/nueva-liquidacion';
-import { NuevasMedidasCautelaresSection } from '#@/app/Carpetas/NuevaCarpeta/nuevas-medidasCautelares';
-import { NuevoAvaluoSection } from '#@/app/Carpetas/NuevaCarpeta/nuevo-avaluo';
 import { NuevoCodeudorSection } from '#@/app/Carpetas/NuevaCarpeta/nuevo-codeudor';
-import { NuevasNotificacionesSection } from '#@/app/Carpetas/NuevaCarpeta/nuevas-notificaciones';
-import { NuevaSuspencionProcesoSection } from './nueva-suspencionProceso';
-import { NuevaTerminacionSection } from '#@/app/Carpetas/NuevaCarpeta/nueva-terminacion';
 
 import { InputSection } from '#@/components/form/InputSection';
 import { IntCarpeta,
@@ -34,10 +26,10 @@ export function EditProceso(
   }: {
   uri: string;
   carpeta: MonCarpeta;
-} 
+}
 ) {
   const methods = useForm<IntCarpeta>(
-    { defaultValues: carpeta } 
+    { defaultValues: carpeta }
   );
 
   const {
@@ -60,17 +52,17 @@ export function EditProceso(
   const onSubmit: SubmitHandler<
     IntCarpeta
   > = async (
-    data 
+    data
   ) => {
     alert(
       JSON.stringify(
-        uri + dirtyFields 
-      ) 
+        uri + dirtyFields
+      )
     );
     alert(
       JSON.stringify(
-        data 
-      ) 
+        data
+      )
     );
 
     const postNewNote = await fetch(
@@ -79,7 +71,7 @@ export function EditProceso(
         method : 'PUT',
         headers: { 'content-type': 'application/json' },
         body   : JSON.stringify(
-          data 
+          data
         )
       }
     );
@@ -87,7 +79,7 @@ export function EditProceso(
     if ( postNewNote.status === 201 ) {
       const message = await postNewNote.text();
       alert(
-        message 
+        message
       );
     }
 
@@ -95,14 +87,14 @@ export function EditProceso(
       const result = await postNewNote.json();
       alert(
         JSON.stringify(
-          result 
-        ) 
+          result
+        )
       );
     }
 
     if ( postNewNote.status === 304 ) {
       alert(
-        'nothing updated' 
+        'nothing updated'
       );
     }
   };
@@ -114,7 +106,7 @@ export function EditProceso(
           <form
             className={form.form}
             onSubmit={handleSubmit(
-              onSubmit 
+              onSubmit
             )}
           >
             <section className={form.section}>
@@ -146,7 +138,7 @@ export function EditProceso(
             </p>
             <p>
               {errors && JSON.stringify(
-                errors 
+                errors
               )}
             </p>
             <InputSection
@@ -256,7 +248,7 @@ export function EditProceso(
               <select
                 className={form.textArea}
                 {...register(
-                  'tipoProceso', { required: true } 
+                  'tipoProceso', { required: true }
                 )}
               >
                 <option value='HIPOTECARIO'>
@@ -310,7 +302,7 @@ export function EditProceso(
               <select
                 className={form.textArea}
                 {...register(
-                  'etapaProcesal', { required: true } 
+                  'etapaProcesal', { required: true }
                 )}
               >
                 <option value='EMPLAZAMIENTO'>
@@ -337,7 +329,7 @@ export function EditProceso(
               <select
                 className={form.textArea}
                 {...register(
-                  'clase', { required: true } 
+                  'clase', { required: true }
                 )}
               >
                 <option value='INMUEBLE'>
