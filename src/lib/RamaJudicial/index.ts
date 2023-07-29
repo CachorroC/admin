@@ -71,7 +71,7 @@ export async function getProceso(
 
   for ( const proceso of procesos ) {
     const updateCarpetawithProceso = await collection.updateOne(
-      { idProceso: proceso.idProceso }, { $set: { idProceso: proceso.idProceso } }, { upsert: true }
+      { idProceso: proceso.idProceso }, { $set: { idProceso: proceso.idProceso } }, { upsert: false }
     );
 
     if ( updateCarpetawithProceso.acknowledged ) {

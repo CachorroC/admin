@@ -21,7 +21,7 @@ export const Card = (
   path: string;
   carpeta: MonCarpeta;
   children: ReactNode;
-} 
+}
 ) => {
   const [
     isNavOpen,
@@ -36,10 +36,10 @@ export const Card = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false 
+      false
     );
     setIsOpen(
-      true 
+      true
     );
   };
   const pathname = usePathname();
@@ -76,9 +76,9 @@ export const Card = (
           {toNameString(
             {
               nameRaw: new NombreCompleto(
-                carpeta.deudor 
-              ).Nombre 
-            } 
+                carpeta.deudor
+              ).Nombre
+            }
           )}
         </h1>
         <div className={card.links}>
@@ -121,7 +121,7 @@ export const Card = (
             href={`/Notas/NuevaNota/${ carpeta.llaveProceso }`}
             onClick={() => {
               setIsOpen(
-                true 
+                true
               );
             }}
           >

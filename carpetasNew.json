@@ -1,959 +1,1502 @@
 [
   {
-    "numero": 20,
-    "deudor": {
-      "cedula": 1077969975,
-      "primerNombre": "Yesid",
-      "segundoNombre": "Albeiro",
-      "primerApellido": "Ramos",
-      "tel": { "celular": 3212337597 },
-      "email": "yess_Id@hotmail.com",
-      "direccion": "CARRERA 77B No. 68B - 19 BARRIO SANTA HELENITA"
-    },
-    "vencimientoPagare": "2020-05-04T00:00:00.000Z",
-    "obligacion": [2530444],
-    "capitalAdeudado": 33791309,
-    "entregaGarantiasAbogado": "2017-05-11T00:00:00.000Z",
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-03-civil-municipal-de-bogota",
-          "id": "3 CM"
-        }
-      },
-      "ubicacion": "HMM PISO 5",
-      "radicado": "2017 - 00884"
-    },
-    "tipoProceso": "PRENDARIO",
-    "llaveProceso": "11001400300320170088400",
-    "etapaProcesal": "EMPLAZAMIENTO",
-    "clase": "VEHICULO",
+    "_id": "64b9d73c3446905cb666702e",
     "bien": {
-      "tipo": "VEHICULO",
-      "id": "IYM-870"
-    }
-  },
-  {
-    "numero": 86,
-    "deudor": {
-      "cedula": 1032432802,
-      "primerNombre": "Luis",
-      "segundoNombre": "Esneider",
-      "primerApellido": "Orduz",
-      "segundoApellido": "Farfan",
-      "tel": { "fijo": 4712921 },
-      "email": "orduzcrit2@hotmail.com",
-      "direccion": "CARRERA 95 # 138 - 58"
+      "id": "051-130616",
+      "tipo": "BANCOS"
     },
-    "codeudor": {
-      "cedula": 1015435620,
-      "nombre": "JESICA PAOLA GUZMAN OSPINA"
-    },
-    "vencimientoPagare": "2020-06-09T00:00:00.000Z",
-    "obligacion": [12330030],
-    "capitalAdeudado": 26515333,
-    "entregaGarantiasAbogado": "1899-12-30T00:00:00.000Z",
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-34-civil-municipal-de-bogota",
-          "id": "34 CM"
-        },
-        "ejecucion": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-12-de-ejecucion-civil-municipal-de-bogota",
-          "id": "12 CME"
-        }
-      },
-      "ubicacion": "JUZGADOS EJECUCION",
-      "radicado": "2017 - 00836"
-    },
-    "tipoProceso": "PRENDARIO",
-    "llaveProceso": "11001400303420170083600",
-    "etapaProcesal": "EJECUCION",
-    "clase": "VEHICULO",
-    "bien": {
-      "tipo": "VEHICULO",
-      "id": "UBK-333"
-    }
-  },
-  {
-    "numero": 98,
-    "deudor": {
-      "cedula": 1070329396,
-      "primerNombre": "Erika",
-      "segundoNombre": "Alejandra",
-      "primerApellido": "Quintero",
-      "segundoApellido": "Reyes",
-      "tel": { "celular": 3114456631 },
-      "direccion": "CALL 2 No. 8-40 EL COLEGIO"
-    },
-    "vencimientoPagare": "2019-07-05T00:00:00.000Z",
-    "obligacion": [7300080586],
-    "capitalAdeudado": 50000000,
-    "entregaGarantiasAbogado": "2017-06-12T00:00:00.000Z",
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "MESITAS",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-001-promiscuo-municipal-de-el-colegio",
-          "id": "001 PM"
-        }
-      },
-      "ubicacion": "EL COLEGIO",
-      "radicado": "2017-00239"
-    },
-    "tipoProceso": "SINGULAR",
-    "llaveProceso": "25245408900120170023900",
-    "etapaProcesal": "EJECUCION",
-    "clase": "BANCOS",
-    "bien": { "tipo": "BANCOS" }
-  },
-  {
-    "numero": 116,
-    "deudor": {
-      "cedula": 900212673,
-      "primerNombre": "Jencell",
-      "primerApellido": "E.U.",
-      "tel": { "fijo": 5753416 },
-      "direccion": "CARRERA 3 # 29A - 02"
-    },
+    "capitalAdeudado": 13906249,
+    "clase": "EMBARGO INMUEBLE DE LA CODEUDORA",
     "codeudor": {
       "cedula": 52771090,
+      "direccion": "CARRERA 3 # 29A - 02 LOCAL 1057",
       "nombre": "YENY ESPERANZA ARIAS MENDIETA",
-      "tel": 5753416,
-      "direccion": "CARRERA 3 # 29A - 02 LOCAL 1057"
+      "tel": 5753416
     },
-    "vencimientoPagare": "2021-04-12T00:00:00.000Z",
-    "obligacion": [6240082776],
-    "capitalAdeudado": 13906249,
-    "entregaGarantiasAbogado": "2017-08-04T00:00:00.000Z",
     "demanda": {
       "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "origen": {
+          "id": 3,
+          "tipo": "Pequeñas Causas y Competencias Multiples",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-03-municipal-de-pequenas-causas-y-competencia-multiple-de-soacha"
+        }
+      },
       "municipio": "SOACHA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-03-municipal-de-pequenas-causas-y-competencia-multiple-de-soacha",
-          "id": "003 PCYCM"
-        }
-      },
-      "ubicacion": "SOACHA",
-      "radicado": "2017 - 00755"
+      "radicado": "2017 - 00755",
+      "ubicacion": "SOACHA"
     },
-    "tipoProceso": "SINGULAR",
-    "llaveProceso": "25754418900320170075500",
+    "deudor": {
+      "cedula": 900212673,
+      "direccion": "CARRERA 3 # 29A - 02",
+      "primerApellido": "E.U.",
+      "primerNombre": "Jencell",
+      "tel": {
+        "fijo": 5753416
+      }
+    },
+    "entregaGarantiasAbogado": "2017-08-04T00:00:00.000Z",
     "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO INMUEBLE DE LA CODEUDORA",
-    "bien": {
-      "tipo": "BANCOS",
-      "id": "051-130616"
-    }
+    "fechaIngreso": "2023-07-21T17:34:48.604Z",
+    "grupo": "Bancolombia",
+    "idProceso": null,
+    "llaveProceso": "25754418900320170075500",
+    "numero": 116,
+    "obligacion": [
+      {
+        "texto": 6240082776,
+        "tipo": "Cuenta Bancaria"
+      }
+    ],
+    "reparto": true,
+    "tipoBien": "BANCOS",
+    "tipoProceso": "SINGULAR",
+    "vencimientoPagare": "2021-04-12T00:00:00.000Z"
   },
   {
-    "numero": 150,
-    "deudor": {
-      "cedula": 52189873,
-      "primerNombre": "Darnelly",
-      "primerApellido": "Hernandez",
-      "segundoApellido": "Martinez",
-      "tel": {
-        "fijo": 4530972,
-        "celular": 3144189224
-      },
-      "email": "darnelly-74@hotmail.com",
-      "direccion": "CALLE 74G # 80 - 58 SUR"
+    "_id": "64b9d73c3446905cb666702f",
+    "bien": {
+      "id": "SLJ234",
+      "tipo": "BANCOS"
     },
-    "vencimientoPagare": "2026-03-10T00:00:00.000Z",
-    "obligacion": [136962],
-    "capitalAdeudado": 14795921,
-    "entregaGarantiasAbogado": "2017-08-22T00:00:00.000Z",
+    "capitalAdeudado": 25833335,
+    "clase": "EMBARGO_BANCOS",
     "demanda": {
       "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
       "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-25-civil-municipal-de-bogota",
-          "id": "25 CM"
-        },
         "ejecucion": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-18-de-ejecucion-civil-municipal-de-bogota",
-          "id": "18 CME"
+          "id": 17,
+          "tipo": "Civil Municipal de Ejecucion",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-17-de-ejecucion-civil-municipal-de-bogota"
+        },
+        "origen": {
+          "id": 1,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-01-civil-municipal-de-bogota"
         }
       },
-      "ubicacion": "JUZGADOS EJECUCION",
-      "radicado": "2017 - 00903"
+      "municipio": "BOGOTA",
+      "radicado": "2017 - 01001",
+      "ubicacion": "JUZGADOS EJECUCION"
     },
-    "tipoProceso": "HIPOTECARIO",
-    "llaveProceso": "11001400302520170090300",
-    "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE INMUEBLE",
-    "bien": {
-      "tipo": "INMUEBLE APTO 504",
-      "id": "50S-40552545"
-    }
-  },
-  {
-    "numero": 178,
     "deudor": {
       "cedula": 11185630,
-      "primerNombre": "Wilson",
-      "segundoNombre": "Alfonso",
-      "primerApellido": "Jimenez",
-      "segundoApellido": "Mendieta",
-      "tel": { "fijo": 5714329 },
+      "direccion": "CARRERA 81C # 2B - 80 PISO 2",
       "email": "grupocomerciallasabana@hotmail.com",
-      "direccion": "CARRERA 81C # 2B - 80 PISO 2"
+      "primerApellido": "Jimenez",
+      "primerNombre": "Wilson",
+      "segundoApellido": "Mendieta",
+      "segundoNombre": "Alfonso",
+      "tel": {
+        "fijo": 5714329
+      }
     },
-    "vencimientoPagare": "2019-11-03T00:00:00.000Z",
-    "obligacion": [2150091504],
-    "capitalAdeudado": 25833335,
     "entregaGarantiasAbogado": "2017-08-01T00:00:00.000Z",
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-01-civil-municipal-de-bogota",
-          "id": "1 CM"
-        },
-        "ejecucion": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-17-de-ejecucion-civil-municipal-de-bogota",
-          "id": "17 CME"
-        }
-      },
-      "ubicacion": "JUZGADOS EJECUCION",
-      "radicado": "2017 - 01001"
-    },
-    "tipoProceso": "SINGULAR",
-    "llaveProceso": "11001400300120170100100",
     "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE DINEROS EN BANCOS",
-    "bien": { "tipo": "BANCOS", "id": "SLJ234" }
+    "fecha": "2023-07-17T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:50.123Z",
+    "grupo": "Bancolombia",
+    "idProceso": 50621670,
+    "llaveProceso": "11001400300120170100100",
+    "numero": 178,
+    "obligacion": [2150091504],
+    "reparto": true,
+    "tipoBien": "BANCOS",
+    "tipoProceso": "SINGULAR",
+    "ultimasActuaciones": [
+      {
+        "idProceso": 50621670,
+        "ultimaActuacion": {
+          "actuacion": "Constancia secretarial",
+          "anotacion": "SE HACE ENVIO DE OFICIO OOECM-0723WGG-1619     // JOSE ROJAS SE DIRECCIONA A LETRA",
+          "cant": 115,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 116,
+          "fechaActuacion": "2023-07-17T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2023-07-17T00:00:00",
+          "idRegActuacion": 1813276130,
+          "llaveProceso": "11001400300120170100100"
+        }
+      }
+    ],
+    "vencimientoPagare": "2019-11-03T00:00:00.000Z"
   },
   {
-    "numero": 231,
+    "_id": "64b9d73c3446905cb6667030",
+    "bien": {
+      "id": "50S-40590187",
+      "tipo": "INMUEBLE"
+    },
+    "capitalAdeudado": 27603821,
+    "clase": "EMBARGO DE INMUEBLE",
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "ejecucion": {
+          "id": 6,
+          "tipo": "Civil Municipal de Ejecucion",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-06-de-ejecucion-civil-municipal-de-bogota"
+        },
+        "origen": {
+          "id": 8,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-008-civil-municipal-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2017 - 01134",
+      "ubicacion": "JUZGADOS EJECUCION"
+    },
     "deudor": {
       "cedula": 79853115,
-      "primerNombre": "Fanor",
+      "direccion": "DIAGONAL 56 BIS 84 A 10 SUR TR 1",
+      "email": "fanor.diaz@gmail.com",
       "primerApellido": "Diaz",
+      "primerNombre": "Fanor",
       "segundoApellido": "Agudelo",
       "tel": {
-        "fijo": 8060271,
-        "celular": 3212406193
-      },
-      "email": "fanor.diaz@gmail.com",
-      "direccion": "DIAGONAL 56 BIS 84 A 10 SUR TR 1"
+        "celular": 3212406193,
+        "fijo": 8060271
+      }
     },
-    "vencimientoPagare": "2017-02-14T00:00:00.000Z",
-    "obligacion": [148931],
-    "capitalAdeudado": 27603821,
     "entregaGarantiasAbogado": "2017-09-06T00:00:00.000Z",
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-008-civil-municipal-de-bogota",
-          "id": "8 CM"
-        },
-        "ejecucion": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-06-de-ejecucion-civil-municipal-de-bogota",
-          "id": "6 CME"
-        }
-      },
-      "ubicacion": "JUZGADOS EJECUCION",
-      "radicado": "2017 - 01134"
-    },
-    "tipoProceso": "HIPOTECARIO",
+    "etapaProcesal": "EJECUCION",
+    "fecha": "2023-07-27T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:50.876Z",
+    "grupo": "Bancolombia",
+    "idProceso": 50716620,
     "llaveProceso": "11001400300820170113400",
-    "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE INMUEBLE",
-    "bien": {
-      "tipo": "INMUEBLE",
-      "id": "50S-40590187"
-    }
-  },
-  {
-    "numero": 274,
-    "deudor": {
-      "cedula": 35506033,
-      "primerNombre": "Luz",
-      "segundoNombre": "Dary",
-      "primerApellido": "Puerta",
-      "segundoApellido": "jaramillo",
-      "tel": {
-        "fijo": 4357832,
-        "celular": 3103430010
-      },
-      "email": "natis-rolita@hotmail.con",
-      "direccion": "CARRERA  101  No 71 B - 53"
-    },
-    "codeudor": {
-      "cedula": 4337296,
-      "nombre": "JOSE NOEL PUERTA PUERTA",
-      "tel": 3103431255,
-      "direccion": "CARRERA  115 No 89 A - 31 INT 12 APART 202"
-    },
-    "vencimientoPagare": null,
-    "obligacion": [4670083154],
-    "capitalAdeudado": 12347548,
-    "entregaGarantiasAbogado": null,
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-37-civil-municipal-de-bogota",
-          "id": "37 CM"
-        },
-        "ejecucion": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-11-de-ejecucion-civil-municipal-de-bogota",
-          "id": "11 CME"
-        }
-      },
-      "ubicacion": "JUZGADOS EJECUCION",
-      "radicado": "2017 - 01391"
-    },
-    "tipoProceso": "SINGULAR",
-    "llaveProceso": "11001400303720170139100",
-    "etapaProcesal": "EJECUCION"
-  },
-  {
-    "numero": 278,
-    "deudor": {
-      "cedula": 19255260,
-      "primerNombre": "Matias",
-      "segundoNombre": "Humberto",
-      "primerApellido": "Avila",
-      "segundoApellido": "Aguilar",
-      "tel": {
-        "fijo": 4170527,
-        "celular": 3125024008
-      },
-      "email": "maifren_13@yahoo.es",
-      "direccion": "CALLE 2 C No 62 - 20"
-    },
-    "codeudor": {
-      "cedula": "41759787- 39710157",
-      "nombre": "CARMELINA AGUILAR -  ANA LUCIA AGUILAR",
-      "tel": "3204613419-3107627120",
-      "direccion": "DG 3B No. 0-78 ESTE"
-    },
-    "vencimientoPagare": "2024-05-05T05:00:00.000Z",
-    "obligacion": [174366],
-    "capitalAdeudado": 66362959,
-    "entregaGarantiasAbogado": null,
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-015-civil-municipal-de-bogota",
-          "id": "15 CM"
-        },
-        "ejecucion": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-11-de-ejecucion-civil-municipal-de-bogota",
-          "id": "11 CME"
-        }
-      },
-      "ubicacion": "JUZGADOS EJECUCION",
-      "radicado": "2017 - 01394"
-    },
+    "numero": 231,
+    "obligacion": [148931],
+    "reparto": true,
+    "tipoBien": "INMUEBLE",
     "tipoProceso": "HIPOTECARIO",
-    "llaveProceso": "11001400301520170139400",
-    "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE INMUEBLE",
-    "bien": { "tipo": "CASA", "id": "50C-643759" }
+    "ultimasActuaciones": [
+      {
+        "idProceso": 50716620,
+        "ultimaActuacion": {
+          "actuacion": "Entrega de oficios",
+          "anotacion": "Remisión Oficio No. DCOECM-0723DG-126 ordenado en auto del 26 de junio de 2023 y 28 de agosto de 2018. JUZ 6 8-2017-1134//PASA A LETRA ALEXY VELASQUEZ//",
+          "cant": 82,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 82,
+          "fechaActuacion": "2023-07-27T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2023-07-27T00:00:00",
+          "idRegActuacion": 1824361210,
+          "llaveProceso": "11001400300820170113400"
+        }
+      }
+    ],
+    "vencimientoPagare": "2017-02-14T00:00:00.000Z"
   },
   {
-    "numero": 289,
-    "deudor": {
-      "cedula": 1032383389,
-      "primerNombre": "Anderson",
-      "primerApellido": "Revelo",
-      "segundoApellido": "Santos",
-      "tel": {
-        "fijo": 4725511,
-        "celular": 3118526428
-      },
-      "email": "ars.09@hotmail.com",
-      "direccion": "CALLE 64 SUR  No 85 B - 40  APARTAMENTO  104"
+    "_id": "64b9d73c3446905cb6667031",
+    "bien": {
+      "id": "WLQ-216",
+      "tipo": "VEHICULO"
     },
-    "vencimientoPagare": "2020-03-05T00:00:00.000Z",
-    "obligacion": [
-      320088443, 377813441863587, 4513070212799642
-    ],
-    "capitalAdeudado": 12249598,
-    "entregaGarantiasAbogado": "2017-09-19T00:00:00.000Z",
+    "capitalAdeudado": 40406421,
+    "clase": "EMBARGO DE VEHICULO",
+    "codeudor": null,
     "demanda": {
       "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
       "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-048-civil-municipal-de-bogota",
-          "id": "48 CM"
-        },
         "ejecucion": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-07-de-ejecucion-civil-municipal-de-bogota",
-          "id": "7 CME"
+          "id": 15,
+          "tipo": "Civil Municipal de Ejecucion",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-15-de-ejecucion-civil-municipal-de-bogota"
+        },
+        "origen": {
+          "id": 21,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-021-civil-municipal-de-bogota"
         }
       },
-      "ubicacion": "JUZGADOS EJECUCION",
-      "radicado": "2017 - 00974"
+      "municipio": "BOGOTA",
+      "radicado": "2017 - 01532",
+      "ubicacion": "JUZGADOS EJECUCION"
     },
-    "tipoProceso": "SINGULAR",
-    "llaveProceso": "11001400304820170097400",
-    "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE INMUEBLE",
-    "bien": {
-      "tipo": "APTO 104 TORRE 4",
-      "id": "50S-40606676"
-    }
-  },
-  {
-    "numero": 306,
     "deudor": {
       "cedula": 79388145,
-      "primerNombre": "Libardo",
-      "segundoNombre": "Alfonso",
-      "primerApellido": "Gonzalez",
-      "segundoApellido": "Trivino",
-      "tel": { "fijo": 2928108 },
+      "direccion": "CARRERA 72 A- No 9 - 44",
       "email": "li_bcar@hotmail.com",
-      "direccion": "CARRERA 72 A- No 9 - 44"
+      "primerApellido": "Gonzalez",
+      "primerNombre": "Libardo",
+      "segundoApellido": "Trivino",
+      "segundoNombre": "Alfonso",
+      "tel": {
+        "fijo": 2928108
+      }
     },
-    "vencimientoPagare": null,
+    "entregaGarantiasAbogado": "2017-04-10T05:00:00.000Z",
+    "etapaProcesal": "EJECUCION",
+    "fecha": "2023-05-15T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:54.312Z",
+    "grupo": "Bancolombia",
+    "idProceso": 50769660,
+    "llaveProceso": "11001400302120170153200",
+    "numero": 306,
     "obligacion": [
       "1740086734 4513073749673967",
       5303719549810730
     ],
-    "capitalAdeudado": 40406421,
-    "entregaGarantiasAbogado": "2017-04-10T05:00:00.000Z",
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-021-civil-municipal-de-bogota",
-          "id": "21 CM"
-        },
-        "ejecucion": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-15-de-ejecucion-civil-municipal-de-bogota",
-          "id": "15 CME"
-        }
-      },
-      "ubicacion": "JUZGADOS EJECUCION",
-      "radicado": "2017 - 01532"
-    },
+    "reparto": false,
+    "tipoBien": "VEHICULO",
     "tipoProceso": "SINGULAR",
-    "llaveProceso": "11001400302120170153200",
-    "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE VEHICULO",
-    "bien": {
-      "tipo": "VEHICULO",
-      "id": "WLQ-216"
-    }
-  },
-  {
-    "numero": 312,
-    "deudor": {
-      "cedula": 8799171,
-      "primerNombre": "Manuel",
-      "segundoNombre": "Enrique",
-      "primerApellido": "Arteaga",
-      "segundoApellido": "Orozco",
-      "tel": { "fijo": 5164071 },
-      "email": "saliradelante2012@hotmail.com",
-      "direccion": "CARRERA 18 B No 4 C -  20  SOACHA"
-    },
-    "vencimientoPagare": "2030-01-05T00:00:00.000Z",
-    "obligacion": [
-      "180049   53037120066499008",
-      "3778133433049336 -4513075801129044"
+    "ultimasActuaciones": [
+      {
+        "idProceso": 50769660,
+        "ultimaActuacion": {
+          "actuacion": "Constancia secretarial",
+          "anotacion": "SE RECEPCIONA EL PRESENTE ASUNTO EN EL AREA ESTADOS // CRISTIAN QUINTO     LETRA\r\n",
+          "cant": 77,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 77,
+          "fechaActuacion": "2023-05-15T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2023-05-15T00:00:00",
+          "idRegActuacion": 1742239800,
+          "llaveProceso": "11001400302120170153200"
+        }
+      }
     ],
-    "capitalAdeudado": 44944657,
-    "entregaGarantiasAbogado": "2017-10-26T00:00:00.000Z",
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "SOACHA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-01-civil-municipal-de-bogota",
-          "id": "1 CM"
-        }
-      },
-      "ubicacion": "REMATE DEL INMUEBLE",
-      "radicado": "2017 - 00323"
-    },
-    "tipoProceso": "HIPOTECARIO",
-    "llaveProceso": "25754400300120170032300",
-    "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE INMUEBLE",
+    "vencimientoPagare": "2023-07-21T17:34:54.312Z"
+  },
+  {
+    "_id": "64b9d73c3446905cb6667032",
     "bien": {
-      "tipo": "APTO 101 TORRE 20",
-      "id": "051-162001"
-    }
-  },
-  {
-    "numero": 366,
-    "deudor": {
-      "cedula": 79522009,
-      "primerNombre": "Jairo",
-      "segundoNombre": "Alfonso",
-      "primerApellido": "Pardo",
-      "segundoApellido": "Jaimes",
-      "tel": { "fijo": 7808590 },
-      "email": "jairopardo8-11-70@hotmail.com",
-      "direccion": "DIAGONAL 28 No 33-27  TORRE 7 APART 203  SOACHA"
+      "descripcion": "CASA 176",
+      "id": "50C-1645938",
+      "tipo": "INMUEBLE"
     },
-    "vencimientoPagare": null,
-    "obligacion": [1680097436, 148653],
-    "capitalAdeudado": 56987693,
-    "entregaGarantiasAbogado": null,
+    "capitalAdeudado": 22592583,
+    "clase": "EMBARGO DE INMUEBLE",
+    "codeudor": null,
     "demanda": {
       "departamento": "CUNDINAMARCA",
-      "municipio": "SOACHA",
       "juzgado": {
+        "ejecucion": {
+          "id": 13,
+          "tipo": "Civil Municipal de Ejecucion",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-13-de-ejecucion-civil-municipal-de-bogota"
+        },
         "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-04-municipal-de-pequenas-causas-y-competencia-multiple-de-soacha",
-          "id": "4 PCYCM"
+          "id": 21,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-021-civil-municipal-de-bogota"
         }
       },
-      "ubicacion": "SOACHA",
-      "radicado": "2018 - 00060"
+      "municipio": "BOGOTA",
+      "radicado": "2018 - 00236",
+      "ubicacion": "JUZGADOS EJECUCION"
     },
-    "tipoProceso": "HIPOTECARIO",
-    "llaveProceso": "2575440030042018000600 ",
-    "etapaProcesal": "EJECUCION"
-  },
-  {
-    "numero": 401,
     "deudor": {
       "cedula": 79396995,
-      "primerNombre": "Arturo",
+      "direccion": "CALLE 12 A No 71 B - 60",
+      "email": "arthurlingo64@hotmail.com",
       "primerApellido": "Lince",
+      "primerNombre": "Arturo",
       "segundoApellido": "Gomez",
       "tel": {
-        "fijo": 4244358,
-        "celular": 31088445603
-      },
-      "email": "arthurlingo64@hotmail.com",
-      "direccion": "CALLE 12 A No 71 B - 60"
+        "celular": 31088445603,
+        "fijo": 4244358
+      }
     },
-    "vencimientoPagare": null,
-    "obligacion": [87823],
-    "capitalAdeudado": 22592583,
-    "entregaGarantiasAbogado": null,
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-021-civil-municipal-de-bogota",
-          "id": "21 CM"
-        },
-        "ejecucion": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-13-de-ejecucion-civil-municipal-de-bogota",
-          "id": "13 CME"
-        }
-      },
-      "ubicacion": "JUZGADOS EJECUCION",
-      "radicado": "2018 - 00236"
-    },
-    "tipoProceso": "HIPOTECARIO",
-    "llaveProceso": "11001400302120180023600",
+    "entregaGarantiasAbogado": "2023-07-21T17:34:55.651Z",
     "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE INMUEBLE",
-    "bien": {
-      "tipo": "CASA 176",
-      "id": "50C-1645938"
-    }
+    "fecha": "2023-06-15T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:55.651Z",
+    "grupo": "Bancolombia",
+    "idProceso": 51029180,
+    "llaveProceso": "11001400302120180023600",
+    "numero": 401,
+    "obligacion": [87823],
+    "reparto": false,
+    "tipoBien": "INMUEBLE",
+    "tipoProceso": "HIPOTECARIO",
+    "ultimasActuaciones": [
+      {
+        "idProceso": 51029180,
+        "ultimaActuacion": {
+          "actuacion": "Recepción memorial",
+          "anotacion": "Radicado No. 5837-2023, No. Reloj Radicador: 9490, Entidad o Señor(a): CARMEN RAMIREZ - Tercer Interesado, Aportó Documento: Memorial, Con La Solucitud: Aportar liquidación de crédito",
+          "cant": 52,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 52,
+          "fechaActuacion": "2023-06-15T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2023-06-15T00:00:00",
+          "idRegActuacion": 1777434510,
+          "llaveProceso": "11001400302120180023600"
+        }
+      }
+    ],
+    "vencimientoPagare": "2023-07-21T17:34:55.651Z"
   },
   {
-    "numero": 405,
-    "deudor": {
-      "cedula": 900545720,
-      "primerNombre": "Crea",
-      "segundoNombre": "Soluciones",
-      "primerApellido": "S.A.S",
-      "tel": {
-        "fijo": 8626344,
-        "celular": 3107982028
-      },
-      "email": "andibarracosta@gmail.com",
-      "direccion": "CARRERA 50 1# 47 - 50 INT 1 APTO 101"
+    "_id": "64b9d73c3446905cb6667033",
+    "bien": {
+      "tipo": "BANCOS"
     },
+    "capitalAdeudado": 11949471,
+    "clase": "EMBARGO DE DINEROS EN BANCOS",
     "codeudor": {
       "cedula": 12192291,
+      "direccion": "CALLE 56 # 17 - 03 CASA 65 NEIVA",
       "nombre": "ANDRES ENRIQUE IBARRA ACOSTA",
-      "tel": 8626344,
-      "direccion": "CALLE 56 # 17 - 03 CASA 65 NEIVA"
+      "tel": 8626344
     },
-    "vencimientoPagare": "2018-06-20T00:00:00.000Z",
-    "obligacion": [4550087219],
-    "capitalAdeudado": 11949471,
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "ejecucion": {
+          "id": 7,
+          "tipo": "Civil Municipal de Ejecucion",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-07-de-ejecucion-civil-municipal-de-bogota"
+        },
+        "origen": {
+          "id": 56,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-056-civil-municipal-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2018 - 00221",
+      "ubicacion": "JUZGADOS EJECUCION"
+    },
+    "deudor": {
+      "cedula": 900545720,
+      "direccion": "CARRERA 50 1# 47 - 50 INT 1 APTO 101",
+      "email": "andibarracosta@gmail.com",
+      "primerApellido": "S.A.S",
+      "primerNombre": "Crea",
+      "segundoNombre": "Soluciones",
+      "tel": {
+        "celular": 3107982028,
+        "fijo": 8626344
+      }
+    },
     "entregaGarantiasAbogado": "2018-02-15T00:00:00.000Z",
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-056-civil-municipal-de-bogota",
-          "id": "56 CM"
-        },
-        "ejecucion": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-07-de-ejecucion-civil-municipal-de-bogota",
-          "id": "7 CME"
-        }
-      },
-      "ubicacion": "JUZGADOS EJECUCION",
-      "radicado": "2018 - 00221"
-    },
-    "tipoProceso": "SINGULAR",
+    "etapaProcesal": "EJECUCION",
+    "fecha": "2023-06-08T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:56.439Z",
+    "grupo": "Bancolombia",
+    "idProceso": 51042800,
     "llaveProceso": "11001400305620180022100",
-    "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE DINEROS EN BANCOS",
-    "bien": { "tipo": "BANCOS" }
-  },
-  {
-    "numero": 461,
-    "deudor": {
-      "cedula": 52883958,
-      "primerNombre": "Leidy",
-      "segundoNombre": "Yaneth",
-      "primerApellido": "Vidal",
-      "segundoApellido": "Rodriguez",
-      "tel": { "fijo": 7114516 },
-      "email": "leidyyaneth.lyv@gmail.com",
-      "direccion": "DIAGONAL 2 No 21 B-20"
-    },
-    "vencimientoPagare": null,
-    "obligacion": [
-      "AMERICAN 0377814037749057",
-      "VISA 4513083943843365- MASTER 5303729958258417"
-    ],
-    "capitalAdeudado": 24501535,
-    "entregaGarantiasAbogado": "2018-07-05T00:00:00.000Z",
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-014-de-pequenas-causas-y-competencia-multiple-de-bogota",
-          "id": "14 PCYCM"
-        }
-      },
-      "ubicacion": "JARAMILLO",
-      "radicado": "2019 - 00656"
-    },
+    "numero": 405,
+    "obligacion": [4550087219],
+    "reparto": false,
+    "tipoBien": "BANCOS",
     "tipoProceso": "SINGULAR",
-    "llaveProceso": "11001418901420190065600",
-    "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE INMUEBLE",
-    "bien": {
-      "tipo": "PREDIO RURAL",
-      "id": "372-19300"
-    }
+    "ultimasActuaciones": [
+      {
+        "idProceso": 51042800,
+        "ultimaActuacion": {
+          "actuacion": "Constancia secretarial",
+          "anotacion": "SE AGREGA MEMORIAL AL GESTOR  PARA LO PERTINENTE //EXPEDIENTE HIBRIDO, FISICO HASTA C1-92- C2-39//ART 109 - LETRA//JILL RIONDO Y JONATHAN C",
+          "cant": 65,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 65,
+          "fechaActuacion": "2023-06-08T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2023-06-08T00:00:00",
+          "idRegActuacion": 1769641810,
+          "llaveProceso": "11001400305620180022100"
+        }
+      }
+    ],
+    "vencimientoPagare": "2018-06-20T00:00:00.000Z"
   },
   {
-    "numero": 489,
-    "deudor": {
-      "cedula": 51987570,
-      "primerNombre": "Sandra",
-      "segundoNombre": "Patricia",
-      "primerApellido": "Pacheco",
-      "segundoApellido": "Ramirez",
-      "tel": { "fijo": 8121692 },
-      "email": "sandrabogota2007@yahoo.com",
-      "direccion": "CALLE 163 B No 50-80  INTERIOR 10 APT 231 CONJUNTO LA ESTANCIA III"
+    "_id": "64b9d73c3446905cb6667035",
+    "bien": {
+      "id": "UBK-333",
+      "tipo": "VEHICULO"
     },
-    "vencimientoPagare": null,
-    "obligacion": [
-      "AUDIOPRESTAMO",
-      "0377816345049476- 4513070259455355- 5303720114305077"
-    ],
-    "capitalAdeudado": 18100699,
-    "entregaGarantiasAbogado": "2018-03-09T05:00:00.000Z",
+    "capitalAdeudado": 26515333,
+    "clase": "VEHICULO",
+    "codeudor": {
+      "cedula": 1015435620,
+      "nombre": "JESICA PAOLA GUZMAN OSPINA"
+    },
     "demanda": {
       "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
       "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-08-de-pequenas-causas-laborales-de-bogota",
-          "id": "8 PCYCM"
-        },
         "ejecucion": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-05-de-ejecucion-civil-municipal-de-bogota",
-          "id": "5 CME"
+          "id": 12,
+          "tipo": "Civil Municipal de Ejecucion",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-12-de-ejecucion-civil-municipal-de-bogota"
+        },
+        "origen": {
+          "id": 34,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-34-civil-municipal-de-bogota"
         }
       },
-      "ubicacion": "JUZGADOS EJECUCION",
-      "radicado": "2018 - 00785"
+      "municipio": "BOGOTA",
+      "radicado": "2017 - 00836",
+      "ubicacion": "JUZGADOS EJECUCION"
     },
-    "tipoProceso": "SINGULAR",
-    "llaveProceso": "11001418900820180078500",
+    "deudor": {
+      "cedula": 1032432802,
+      "direccion": "CARRERA 95 # 138 - 58",
+      "email": "orduzcrit2@hotmail.com",
+      "primerApellido": "Orduz",
+      "primerNombre": "Luis",
+      "segundoApellido": "Farfan",
+      "segundoNombre": "Esneider",
+      "tel": {
+        "fijo": 4712921
+      }
+    },
+    "entregaGarantiasAbogado": "1899-12-30T00:00:00.000Z",
     "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE INMUEBLE",
-    "bien": {
-      "tipo": "APTO 231",
-      "id": "50N - 20247423"
-    }
+    "fecha": "2023-07-24T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:48.175Z",
+    "grupo": "Bancolombia",
+    "idProceso": 50521480,
+    "llaveProceso": "11001400303420170083600",
+    "numero": 86,
+    "obligacion": [12330030],
+    "reparto": false,
+    "tipoBien": "VEHICULO",
+    "tipoProceso": "PRENDARIO",
+    "ultimasActuaciones": [
+      {
+        "idProceso": 50521480,
+        "ultimaActuacion": {
+          "actuacion": "Recepción memorial",
+          "anotacion": "Radicado No. 7260-2023, No. Reloj Radicador: 11114, Entidad o Señor(a): CARMEN RAMIREZ MUÑOZ - Tercer Interesado, Aportó Documento: Memorial, Con La Solucitud: Otras",
+          "cant": 95,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 95,
+          "fechaActuacion": "2023-07-24T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2023-07-24T00:00:00",
+          "idRegActuacion": 1819703750,
+          "llaveProceso": "11001400303420170083600"
+        }
+      }
+    ],
+    "vencimientoPagare": "2020-06-09T00:00:00.000Z"
   },
   {
-    "numero": 494,
+    "_id": "64b9d73c3446905cb6667036",
+    "bien": {
+      "tipo": "BANCOS"
+    },
+    "capitalAdeudado": 50000000,
+    "clase": "BANCOS",
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "origen": {
+          "id": 1,
+          "tipo": "Promiscuo Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-001-promiscuo-municipal-de-el-colegio"
+        }
+      },
+      "municipio": "MESITAS",
+      "radicado": "2017-00239",
+      "ubicacion": "EL COLEGIO"
+    },
+    "deudor": {
+      "cedula": 1070329396,
+      "direccion": "CALL 2 No. 8-40 EL COLEGIO",
+      "primerApellido": "Quintero",
+      "primerNombre": "Erika",
+      "segundoApellido": "Reyes",
+      "segundoNombre": "Alejandra",
+      "tel": {
+        "celular": 3114456631
+      }
+    },
+    "entregaGarantiasAbogado": "2017-06-12T00:00:00.000Z",
+    "etapaProcesal": "EJECUCION",
+    "fechaIngreso": "2023-07-21T17:34:48.399Z",
+    "grupo": "Bancolombia",
+    "idProceso": null,
+    "llaveProceso": "25245408900120170023900",
+    "numero": 98,
+    "obligacion": [7300080586],
+    "reparto": false,
+    "tipoBien": "BANCOS",
+    "tipoProceso": "SINGULAR",
+    "vencimientoPagare": "2019-07-05T00:00:00.000Z"
+  },
+  {
+    "_id": "64b9d73c3446905cb6667037",
+    "bien": {
+      "descripcion": "APTO 504",
+      "id": "50S-40552545",
+      "tipo": "INMUEBLE"
+    },
+    "capitalAdeudado": 14795921,
+    "clase": "EMBARGO DE INMUEBLE",
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "ejecucion": {
+          "id": 18,
+          "tipo": "Civil Municipal de Ejecucion",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-18-de-ejecucion-civil-municipal-de-bogota"
+        },
+        "origen": {
+          "id": 25,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-25-civil-municipal-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2017 - 00903",
+      "ubicacion": "JUZGADOS EJECUCION"
+    },
+    "deudor": {
+      "cedula": 52189873,
+      "direccion": "CALLE 74G # 80 - 58 SUR",
+      "email": "darnelly-74@hotmail.com",
+      "primerApellido": "Hernandez",
+      "primerNombre": "Darnelly",
+      "segundoApellido": "Martinez",
+      "tel": {
+        "celular": 3144189224,
+        "fijo": 4530972
+      }
+    },
+    "entregaGarantiasAbogado": "2017-08-22T00:00:00.000Z",
+    "etapaProcesal": "EJECUCION",
+    "fecha": "2023-07-25T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:49.332Z",
+    "grupo": "Bancolombia",
+    "idProceso": 112048180,
+    "llaveProceso": "11001400302520170090300",
+    "numero": 150,
+    "obligacion": [136962],
+    "reparto": false,
+    "tipoBien": "INMUEBLE",
+    "tipoProceso": "HIPOTECARIO",
+    "ultimasActuaciones": [
+      {
+        "idProceso": 112048180,
+        "ultimaActuacion": {
+          "actuacion": "Constancia secretarial",
+          "anotacion": "PROCESO EN CONTROL DE TERMINOS //LILIANA MEDINA",
+          "cant": 85,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 85,
+          "fechaActuacion": "2023-07-25T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2023-07-25T00:00:00",
+          "idRegActuacion": 1822235640,
+          "llaveProceso": "11001400302520170090300"
+        }
+      }
+    ],
+    "vencimientoPagare": "2026-03-10T00:00:00.000Z"
+  },
+  {
+    "_id": "64b9d73c3446905cb6667038",
+    "bien": null,
+    "capitalAdeudado": 12347548,
+    "clase": "unknown",
+    "codeudor": {
+      "cedula": 4337296,
+      "direccion": "CARRERA  115 No 89 A - 31 INT 12 APART 202",
+      "nombre": "JOSE NOEL PUERTA PUERTA",
+      "tel": 3103431255
+    },
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "ejecucion": {
+          "id": 11,
+          "tipo": "Civil Municipal de Ejecucion",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-11-de-ejecucion-civil-municipal-de-bogota"
+        },
+        "origen": {
+          "id": 37,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-37-civil-municipal-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2017 - 01391",
+      "ubicacion": "JUZGADOS EJECUCION"
+    },
+    "deudor": {
+      "cedula": 35506033,
+      "direccion": "CARRERA  101  No 71 B - 53",
+      "email": "natis-rolita@hotmail.con",
+      "primerApellido": "Puerta",
+      "primerNombre": "Luz",
+      "segundoApellido": "jaramillo",
+      "segundoNombre": "Dary",
+      "tel": {
+        "celular": 3103430010,
+        "fijo": 4357832
+      }
+    },
+    "entregaGarantiasAbogado": "2023-07-21T17:34:51.665Z",
+    "etapaProcesal": "EJECUCION",
+    "fecha": "2022-03-09T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:51.665Z",
+    "grupo": "Bancolombia",
+    "idProceso": 112945420,
+    "llaveProceso": "11001400303720170139100",
+    "numero": 274,
+    "obligacion": [4670083154],
+    "reparto": true,
+    "tipoBien": null,
+    "tipoProceso": "SINGULAR",
+    "ultimasActuaciones": [
+      {
+        "idProceso": 112945420,
+        "ultimaActuacion": {
+          "actuacion": "Constancia secretarial",
+          "anotacion": "    SE RECEPCIONA EXPEDIENTE EN EL AREA DE ESTADOS PARA LO PERTINENTE LUIS G y ESTEFANNY ORTIZ--CUADERNOS 2\r\n",
+          "cant": 70,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 70,
+          "fechaActuacion": "2022-03-09T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2022-03-09T00:00:00",
+          "idRegActuacion": 1262270900,
+          "llaveProceso": "11001400303720170139100"
+        }
+      }
+    ],
+    "vencimientoPagare": "2023-07-21T17:34:51.665Z"
+  },
+  {
+    "_id": "64b9d73c3446905cb6667039",
+    "bien": {
+      "descripcion": "APTO 104 TORRE 4",
+      "id": "50S-40606676 ",
+      "tipo": "INMUEBLE"
+    },
+    "capitalAdeudado": 12249598,
+    "clase": "EMBARGO DE INMUEBLE",
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "ejecucion": {
+          "id": 7,
+          "tipo": "Civil Municipal de Ejecucion",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-07-de-ejecucion-civil-municipal-de-bogota"
+        },
+        "origen": {
+          "id": 48,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-048-civil-municipal-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2017 - 00974",
+      "ubicacion": "JUZGADOS EJECUCION"
+    },
+    "deudor": {
+      "cedula": 1032383389,
+      "direccion": "CALLE 64 SUR  No 85 B - 40  APARTAMENTO  104",
+      "email": "ars.09@hotmail.com",
+      "primerApellido": "Revelo",
+      "primerNombre": "Anderson",
+      "segundoApellido": "Santos",
+      "tel": {
+        "celular": 3118526428,
+        "fijo": 4725511
+      }
+    },
+    "entregaGarantiasAbogado": "2017-09-19T00:00:00.000Z",
+    "etapaProcesal": "EJECUCION",
+    "fecha": "2022-12-01T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:53.182Z",
+    "grupo": "Bancolombia",
+    "idProceso": 50762570,
+    "llaveProceso": "11001400304820170097400",
+    "numero": 289,
+    "obligacion": [
+      320088443, 377813441863587, 4513070212799642
+    ],
+    "reparto": false,
+    "tipoBien": "INMUEBLE",
+    "tipoProceso": "SINGULAR",
+    "ultimasActuaciones": [
+      {
+        "idProceso": 50762570,
+        "ultimaActuacion": {
+          "actuacion": "Constancia secretarial",
+          "anotacion": "SE RECEPCIONA EXPEDIENTE CON 2 CUADERNOS//JHONATHAN CAÑON, Y ESTEFANIA LOPEZ",
+          "cant": 76,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 76,
+          "fechaActuacion": "2022-12-01T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2022-12-01T00:00:00",
+          "idRegActuacion": 1535316390,
+          "llaveProceso": "11001400304820170097400"
+        }
+      }
+    ],
+    "vencimientoPagare": "2020-03-05T00:00:00.000Z"
+  },
+  {
+    "_id": "64b9d73c3446905cb666703a",
+    "bien": {
+      "id": "YESID",
+      "tipo": "INMUEBLE"
+    },
+    "capitalAdeudado": 27373832,
+    "clase": "EMBARGO DE INMUEBLE",
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "origen": {
+          "id": 3,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-003-civil-municipal-de-chia"
+        }
+      },
+      "municipio": "CHIA",
+      "radicado": "2018 - 00602",
+      "ubicacion": "CHIA"
+    },
     "deudor": {
       "cedula": 13222728,
-      "primerNombre": "Modesto",
-      "primerApellido": "Pineda",
-      "segundoApellido": "Perez",
-      "tel": { "fijo": 8852490 },
+      "direccion": "CARRERA 6 No 6-59",
       "email": "mopadinco@yahoo.com",
-      "direccion": "CARRERA 6 No 6-59"
+      "primerApellido": "Pineda",
+      "primerNombre": "Modesto",
+      "segundoApellido": "Perez",
+      "tel": {
+        "fijo": 8852490
+      }
     },
-    "vencimientoPagare": null,
+    "entregaGarantiasAbogado": "2023-07-21T17:34:58.843Z",
+    "etapaProcesal": "EJECUCION",
+    "fechaIngreso": "2023-07-21T17:34:58.843Z",
+    "grupo": "Bancolombia",
+    "idProceso": null,
+    "llaveProceso": "25175408900320180060200",
+    "numero": 494,
     "obligacion": [
       "AUDIOPRESTAMO",
       5491570347356810
     ],
-    "capitalAdeudado": 27373832,
-    "entregaGarantiasAbogado": null,
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "CHIA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-003-civil-municipal-de-chia",
-          "id": "3 CM"
-        }
-      },
-      "ubicacion": "CHIA",
-      "radicado": "2018 - 00602"
-    },
+    "reparto": false,
+    "tipoBien": "INMUEBLE",
     "tipoProceso": "SINGULAR",
-    "llaveProceso": "25175408900320180060200",
-    "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE INMUEBLE",
-    "bien": { "tipo": "CASA", "id": "YESID" }
+    "vencimientoPagare": "2023-07-21T17:34:58.843Z"
   },
   {
-    "numero": 497,
-    "deudor": {
-      "cedula": 3208569,
-      "primerNombre": "Floresmiro",
-      "primerApellido": "Aponte",
-      "segundoApellido": "Acosta",
-      "tel": { "fijo": 3208569 },
-      "email": "dcentro@pcpplasticos.com",
-      "direccion": "DIAGONAL 77B No 119 A-74 APTO 504 INT6"
-    },
-    "codeudor": {
-      "cedula": 51955296,
-      "nombre": "FLOR ANGELA RODRIGUEZ",
-      "tel": 2286617,
-      "direccion": "DIAGONAL 77B No 119 A-74 APTO 504 INT6"
-    },
-    "vencimientoPagare": null,
-    "obligacion": [
-      "20990123680  7-  377813468472239",
-      "4513079359765043- 53037220341399596"
-    ],
-    "capitalAdeudado": 24807317,
-    "entregaGarantiasAbogado": "2018-08-10T05:00:00.000Z",
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-13-de-pequenas-causas-y-competencias-multiples-de-bogota",
-          "id": "13 PCYCM"
-        }
-      },
-      "ubicacion": "HMM PISO 5",
-      "radicado": "2019 - 00708"
-    },
-    "tipoProceso": "HIPOTECARO",
-    "llaveProceso": "11001418901320190070800",
-    "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO DE INMUEBLE",
-    "bien": { "tipo": "APTO 504" }
-  },
-  {
-    "numero": 506,
-    "deudor": {
-      "cedula": 11230400,
-      "primerNombre": "Jose",
-      "segundoNombre": "Alfonso",
-      "primerApellido": "Vasquez",
-      "segundoApellido": "Tovar",
-      "tel": { "celular": 3123703828 },
-      "email": "joalvato09@hotmail.com",
-      "direccion": "CALLE 2 A No 5-22 APTO 503"
-    },
-    "vencimientoPagare": "2026-01-03T05:00:00.000Z",
-    "obligacion": [2490084469],
-    "capitalAdeudado": 29416113,
-    "entregaGarantiasAbogado": null,
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "LA CALERA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-01-promiscuo-municipal-de-la-calera",
-          "id": "001 PM"
-        }
-      },
-      "ubicacion": "LA CALERA",
-      "radicado": "2018 - 00371"
-    },
-    "tipoProceso": "SINGULAR",
-    "llaveProceso": "25377408900120180037100",
-    "etapaProcesal": "EJECUCION",
-    "clase": "EMBARGO INMUEBLES",
-    "bien": {
-      "tipo": "APTO 503",
-      "id": "50N - 20288831"
-    }
-  },
-  {
-    "numero": 529,
-    "deudor": {
-      "cedula": 51813018,
-      "primerNombre": "Sandra",
-      "segundoNombre": "Leonor",
-      "primerApellido": "Paez",
-      "segundoApellido": "Murcia",
-      "tel": {
-        "fijo": 6139147,
-        "celular": 3134386087
-      },
-      "email": "yadelcis@hotmail.com",
-      "direccion": "KR 81 No. 127 A - 46 CONJUNTO MONTE AZUL BOGOTA"
-    },
+    "_id": "64b9d73c3446905cb666703b",
+    "capitalAdeudado": 35608653,
+    "clase": "unknown",
     "codeudor": {
       "cedula": 19299851,
+      "direccion": "KR 81 No. 127 - 46 Torre 1 Apt 401",
       "nombre": "MARCO TULIO SANCHEZ MEDINA",
-      "tel": 6139147,
-      "direccion": "KR 81 No. 127 - 46 Torre 1 Apt 401"
+      "tel": 6139147
     },
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "origen": {
+          "id": 42,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-42-civil-municipal-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2020 - 00535",
+      "ubicacion": "HMM PISO 13"
+    },
+    "deudor": {
+      "cedula": 51813018,
+      "direccion": "KR 81 No. 127 A - 46 CONJUNTO MONTE AZUL BOGOTA",
+      "email": "yadelcis@hotmail.com",
+      "primerApellido": "Paez",
+      "primerNombre": "Sandra",
+      "segundoApellido": "Murcia",
+      "segundoNombre": "Leonor",
+      "tel": {
+        "celular": 3134386087,
+        "fijo": 6139147
+      }
+    },
+    "entregaGarantiasAbogado": "2020-10-07T00:00:00.000Z",
+    "etapaProcesal": "EJECUCION",
+    "fecha": "2023-03-13T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:59.954Z",
+    "grupo": "Bancolombia",
+    "idProceso": 128164881,
+    "llaveProceso": "11001400304220200053500",
+    "numero": 529,
     "obligacion": [
       2020084294,
       "2020087484- 4594250317705437-5303723260933890"
     ],
-    "capitalAdeudado": 35608653,
-    "entregaGarantiasAbogado": "2020-10-07T00:00:00.000Z",
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-42-civil-municipal-de-bogota",
-          "id": "42 CM"
-        }
-      },
-      "ubicacion": "HMM PISO 13",
-      "radicado": "2020 - 00535"
-    },
+    "reparto": false,
+    "tipoBien": "INMUEBLE",
     "tipoProceso": "SINGULAR",
-    "llaveProceso": "11001400304220200053500",
-    "etapaProcesal": "EJECUCION"
+    "ultimasActuaciones": [
+      {
+        "idProceso": 128164881,
+        "ultimaActuacion": {
+          "actuacion": "Fijacion estado",
+          "anotacion": "Actuación registrada el 13/03/2023 a las 08:19:44.",
+          "cant": 40,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 40,
+          "fechaActuacion": "2023-03-13T00:00:00",
+          "fechaFinal": "2023-03-14T00:00:00",
+          "fechaInicial": "2023-03-14T00:00:00",
+          "fechaRegistro": "2023-03-13T00:00:00",
+          "idRegActuacion": 1231752641,
+          "llaveProceso": "11001400304220200053500"
+        }
+      }
+    ],
+    "vencimientoPagare": "2023-07-21T17:34:59.954Z"
   },
   {
-    "numero": 530,
-    "deudor": {
-      "cedula": 900520023,
-      "primerNombre": "Dimoin",
-      "segundoNombre": "Colombia",
-      "primerApellido": "S.A.S",
-      "tel": { "fijo": 6708086 },
-      "direccion": "AV BOYACA 63D - 26 OFICINA 103"
+    "_id": "64b9d73c3446905cb666703d",
+    "bien": {
+      "descripcion": "APTO 101 TORRE 20",
+      "id": "051-162001",
+      "tipo": "INMUEBLE"
     },
-    "obligacion": [65886140334, 4594260446916180],
-    "capitalAdeudado": 15324570,
-    "entregaGarantiasAbogado": "2020-09-05T00:00:00.000Z",
+    "capitalAdeudado": 44944657,
+    "clase": "EMBARGO DE INMUEBLE",
+    "codeudor": null,
     "demanda": {
       "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
       "juzgado": {
         "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-068-civil-municipal-de-bogota",
-          "id": "50 PCYCM/ 68 CM"
+          "id": 1,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-01-civil-municipal-de-bogota"
         }
       },
-      "ubicacion": "HMM PISO 15",
-      "radicado": "2020-1021"
+      "municipio": "SOACHA",
+      "radicado": "2017 - 00323",
+      "ubicacion": "REMATE DEL INMUEBLE"
     },
-    "tipoProceso": "SINGULAR",
-    "llaveProceso": "11001400306820200102100",
-    "etapaProcesal": "CONTESTACION DEMANDA"
-  },
-  {
-    "numero": 531,
     "deudor": {
-      "primerNombre": "Pedro",
-      "segundoNombre": "Jonathan",
-      "primerApellido": "Ramirez",
-      "segundoApellido": "Gomez"
-    },
-    "entregaGarantiasAbogado": "2018-08-03T00:00:00.000Z",
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "FUSAGASUGA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-003-civil-municipal-de-fusagasuga",
-          "id": "3 CM"
-        }
-      },
-      "ubicacion": "PALACIO JUSTICIA",
-      "radicado": "2023 - 0371"
-    },
-    "tipoProceso": "SINGULAR",
-    "etapaProcesal": "ADMISION DE LA DEMANDA"
-  },
-  {
-    "numero": 532,
-    "deudor": {
-      "cedula": 1023874668,
-      "primerNombre": "Oscar",
-      "segundoNombre": "Mauricio",
-      "primerApellido": "Gomez",
-      "segundoApellido": "Mendosa"
-    },
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": {
-          "url": "https://www.ramajudicial.gov.co/web/juzgado-04-civil-municipal-de-bogota",
-          "id": "4 CM"
-        }
-      },
-      "radicado": "2023-622"
-    },
-    "tipoProceso": "SINGULAR",
-    "llaveProceso": "11001400300420230062200",
-    "etapaProcesal": "ADMISION DE LA DEMANDA"
-  },
-  {
-    "numero": 533,
-    "deudor": {
-      "primerNombre": "Jose",
-      "segundoNombre": "Alexander",
-      "primerApellido": "Laverde",
-      "segundoApellido": "Penagos"
-    },
-    "demanda": {
-      "departamento": "CUNDINAMARCA",
-      "municipio": "BOGOTA",
-      "juzgado": {
-        "origen": { "id": "83 CM 65 PCYCM" }
+      "cedula": 8799171,
+      "direccion": "CARRERA 18 B No 4 C -  20  SOACHA",
+      "email": "saliradelante2012@hotmail.com",
+      "primerApellido": "Arteaga",
+      "primerNombre": "Manuel",
+      "segundoApellido": "Orozco",
+      "segundoNombre": "Enrique",
+      "tel": {
+        "fijo": 5164071
       }
     },
+    "entregaGarantiasAbogado": "2017-10-26T00:00:00.000Z",
+    "etapaProcesal": "EJECUCION",
+    "fechaIngreso": "2023-07-21T17:34:54.588Z",
+    "grupo": "Bancolombia",
+    "idProceso": null,
+    "llaveProceso": "25754400300120170032300",
+    "numero": 312,
+    "obligacion": [
+      "180049   53037120066499008",
+      "3778133433049336 -4513075801129044"
+    ],
+    "reparto": false,
+    "tipoBien": "INMUEBLE",
+    "tipoProceso": "HIPOTECARIO",
+    "vencimientoPagare": "2030-01-05T00:00:00.000Z"
+  },
+  {
+    "_id": "64b9d73c3446905cb666703e",
+    "bien": {
+      "id": "50N - 20247423 apto 231",
+      "tipo": "INMUEBLE"
+    },
+    "capitalAdeudado": 18100699,
+    "clase": "EMBARGO DE INMUEBLE",
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "ejecucion": {
+          "id": 5,
+          "tipo": "Civil Municipal de Ejecucion",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-05-de-ejecucion-civil-municipal-de-bogota"
+        },
+        "origen": {
+          "id": 8,
+          "tipo": "Pequeñas Causas y Competencias Multiples",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-08-de-pequenas-causas-laborales-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2018 - 00785",
+      "ubicacion": "JUZGADOS EJECUCION"
+    },
+    "deudor": {
+      "cedula": 51987570,
+      "direccion": "CALLE 163 B No 50-80  INTERIOR 10 APT 231 CONJUNTO LA ESTANCIA III",
+      "email": "sandrabogota2007@yahoo.com",
+      "primerApellido": "Pacheco",
+      "primerNombre": "Sandra",
+      "segundoApellido": "Ramirez",
+      "segundoNombre": "Patricia",
+      "tel": {
+        "fijo": 8121692
+      }
+    },
+    "entregaGarantiasAbogado": "2018-03-09T05:00:00.000Z",
+    "etapaProcesal": "EJECUCION",
+    "fecha": "2023-07-24T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:58.606Z",
+    "grupo": "Bancolombia",
+    "idProceso": 87350810,
+    "llaveProceso": "11001418900820180078500",
+    "numero": 489,
+    "obligacion": [
+      "AUDIOPRESTAMO",
+      "0377816345049476- 4513070259455355- 5303720114305077"
+    ],
+    "reparto": false,
+    "tipoBien": "INMUEBLE",
     "tipoProceso": "SINGULAR",
-    "etapaProcesal": "ADMISION DE LA DEMANDA"
+    "ultimasActuaciones": [
+      {
+        "idProceso": 87350810,
+        "ultimaActuacion": {
+          "actuacion": "Recepción memorial",
+          "anotacion": "Radicado No. 5383-2023, No. Reloj Radicador: 9511, Entidad o Señor(a): REINTEGRA SAS - Tercer Interesado, Aportó Documento: Memorial, Con La Solucitud: Memorial, Observaciones: MEMORIAL DE CESION",
+          "cant": 28,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 28,
+          "fechaActuacion": "2023-07-24T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2023-07-24T00:00:00",
+          "idRegActuacion": 1820661360,
+          "llaveProceso": "11001418900820180078500"
+        }
+      }
+    ],
+    "vencimientoPagare": "2023-07-21T17:34:58.606Z"
+  },
+  {
+    "_id": "64b9d73c3446905cb666703f",
+    "bien": {
+      "descripcion": "apto 503",
+      "id": "50N - 20288831",
+      "tipo": "INMUEBLE"
+    },
+    "capitalAdeudado": 29416113,
+    "clase": "EMBARGO INMUEBLES",
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "origen": {
+          "id": 1,
+          "tipo": "Promiscuo Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-01-promiscuo-municipal-de-la-calera"
+        }
+      },
+      "municipio": "LA CALERA",
+      "radicado": "2018 - 00371",
+      "ubicacion": "LA CALERA"
+    },
+    "deudor": {
+      "cedula": 11230400,
+      "direccion": "CALLE 2 A No 5-22 APTO 503",
+      "email": "joalvato09@hotmail.com",
+      "primerApellido": "Vasquez",
+      "primerNombre": "Jose",
+      "segundoApellido": "Tovar",
+      "segundoNombre": "Alfonso",
+      "tel": {
+        "celular": 3123703828
+      }
+    },
+    "entregaGarantiasAbogado": "2023-07-21T17:34:59.227Z",
+    "etapaProcesal": "EJECUCION",
+    "fechaIngreso": "2023-07-21T17:34:59.227Z",
+    "grupo": "Bancolombia",
+    "idProceso": null,
+    "llaveProceso": "25377408900120180037100",
+    "numero": 506,
+    "obligacion": [2490084469],
+    "reparto": false,
+    "tipoBien": "INMUEBLE",
+    "tipoProceso": "SINGULAR",
+    "vencimientoPagare": "2026-01-03T05:00:00.000Z"
+  },
+  {
+    "_id": "64b9d73c3446905cb6667040",
+    "bien": {
+      "id": "50C-643759",
+      "tipo": "INMUEBLE"
+    },
+    "capitalAdeudado": 66362959,
+    "clase": "EMBARGO DE INMUEBLE",
+    "codeudor": {
+      "cedula": "41759787- 39710157",
+      "direccion": "DG 3B No. 0-78 ESTE",
+      "nombre": "CARMELINA AGUILAR -  ANA LUCIA AGUILAR",
+      "tel": "3204613419-3107627120"
+    },
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "ejecucion": {
+          "id": 11,
+          "tipo": "Civil Municipal de Ejecucion",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-11-de-ejecucion-civil-municipal-de-bogota"
+        },
+        "origen": {
+          "id": 15,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-015-civil-municipal-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2017 - 01394",
+      "ubicacion": "JUZGADOS EJECUCION"
+    },
+    "deudor": {
+      "cedula": 19255260,
+      "direccion": "CALLE 2 C No 62 - 20",
+      "email": "maifren_13@yahoo.es",
+      "primerApellido": "Avila",
+      "primerNombre": "Matias",
+      "segundoApellido": "Aguilar",
+      "segundoNombre": "Humberto",
+      "tel": {
+        "celular": 3125024008,
+        "fijo": 4170527
+      }
+    },
+    "entregaGarantiasAbogado": "2023-07-21T17:34:52.427Z",
+    "etapaProcesal": "EJECUCION",
+    "fecha": "2021-11-08T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:52.427Z",
+    "grupo": "Bancolombia",
+    "idProceso": 50777890,
+    "llaveProceso": "11001400301520170139400",
+    "numero": 278,
+    "obligacion": [174366],
+    "reparto": false,
+    "tipoBien": "INMUEBLE",
+    "tipoProceso": "HIPOTECARIO",
+    "ultimasActuaciones": [
+      {
+        "idProceso": 50777890,
+        "ultimaActuacion": {
+          "actuacion": "Constancia secretarial",
+          "anotacion": "   SE RECEPCIONA EXPEDIENTE EN EL AREA DE ESTADOS PARA LO PERTINENTE STEFY ORTIZ Y LUIS GIRALDO-- CUADERNOS 2\r\n",
+          "cant": 81,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 81,
+          "fechaActuacion": "2021-11-08T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2021-11-08T00:00:00",
+          "idRegActuacion": 1232366290,
+          "llaveProceso": "11001400301520170139400"
+        }
+      }
+    ],
+    "vencimientoPagare": "2024-05-05T05:00:00.000Z"
+  },
+  {
+    "_id": "64b9d73c3446905cb6667041",
+    "bien": {
+      "descripcion": "PREDIO RURAL",
+      "id": "372-19300",
+      "tipo": "INMUEBLE"
+    },
+    "capitalAdeudado": 24501535,
+    "clase": "EMBARGO DE INMUEBLE",
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "origen": {
+          "id": 14,
+          "tipo": "Pequeñas Causas y Competencias Multiples",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-014-de-pequenas-causas-y-competencia-multiple-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2019 - 00656",
+      "ubicacion": "JARAMILLO"
+    },
+    "deudor": {
+      "cedula": 52883958,
+      "direccion": "DIAGONAL 2 No 21 B-20",
+      "email": "leidyyaneth.lyv@gmail.com",
+      "primerApellido": "Vidal",
+      "primerNombre": "Leidy",
+      "segundoApellido": "Rodriguez",
+      "segundoNombre": "Yaneth",
+      "tel": {
+        "fijo": 7114516
+      }
+    },
+    "entregaGarantiasAbogado": "2018-07-05T00:00:00.000Z",
+    "etapaProcesal": "EJECUCION",
+    "fecha": "2023-06-27T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:57.864Z",
+    "grupo": "Bancolombia",
+    "idProceso": 51816100,
+    "llaveProceso": "11001418901420190065600",
+    "numero": 461,
+    "obligacion": [
+      "AMERICAN 0377814037749057",
+      "VISA 4513083943843365- MASTER 5303729958258417"
+    ],
+    "reparto": false,
+    "tipoBien": "INMUEBLE",
+    "tipoProceso": "SINGULAR",
+    "ultimasActuaciones": [
+      {
+        "idProceso": 51816100,
+        "ultimaActuacion": {
+          "actuacion": "Fijacion estado",
+          "anotacion": "Actuación registrada el 27/06/2023 a las 20:15:32.",
+          "cant": 97,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 97,
+          "fechaActuacion": "2023-06-27T00:00:00",
+          "fechaFinal": "2023-06-28T00:00:00",
+          "fechaInicial": "2023-06-28T00:00:00",
+          "fechaRegistro": "2023-06-27T00:00:00",
+          "idRegActuacion": 1791264470,
+          "llaveProceso": "11001418901420190065600"
+        }
+      }
+    ],
+    "vencimientoPagare": "2023-07-21T17:34:57.864Z"
+  },
+  {
+    "_id": "64b9d73c3446905cb6667042",
+    "bien": {
+      "id": "APTO 504",
+      "tipo": "INMUEBLE"
+    },
+    "capitalAdeudado": 24807317,
+    "clase": "EMBARGO DE INMUEBLE",
+    "codeudor": {
+      "cedula": 51955296,
+      "direccion": "DIAGONAL 77B No 119 A-74 APTO 504 INT6",
+      "nombre": "FLOR ANGELA RODRIGUEZ",
+      "tel": 2286617
+    },
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "origen": {
+          "id": 13,
+          "tipo": "Pequeñas Causas y Competencias Multiples",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-13-de-pequenas-causas-y-competencias-multiples-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2019 - 00708",
+      "ubicacion": "HMM PISO 5"
+    },
+    "deudor": {
+      "cedula": 3208569,
+      "direccion": "DIAGONAL 77B No 119 A-74 APTO 504 INT6",
+      "email": "dcentro@pcpplasticos.com",
+      "primerApellido": "Aponte",
+      "primerNombre": "Floresmiro",
+      "segundoApellido": "Acosta",
+      "tel": {
+        "fijo": 3208569
+      }
+    },
+    "entregaGarantiasAbogado": "2018-08-10T05:00:00.000Z",
+    "etapaProcesal": "EJECUCION",
+    "fechaIngreso": "2023-07-21T17:34:59.033Z",
+    "grupo": "Bancolombia",
+    "idProceso": null,
+    "llaveProceso": "11001418901320190070800",
+    "numero": 497,
+    "obligacion": [
+      "20990123680  7-  377813468472239",
+      "4513079359765043- 53037220341399596"
+    ],
+    "reparto": false,
+    "tipoBien": "INMUEBLE",
+    "tipoProceso": "HIPOTECARIO",
+    "vencimientoPagare": "2023-07-21T17:34:59.033Z"
+  },
+  {
+    "_id": "64b9d73c3446905cb6667043",
+    "bien": null,
+    "capitalAdeudado": 15324570,
+    "clase": "unknown",
+    "codeudor": null,
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "origen": {
+          "id": 68,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-068-civil-municipal-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2020-1021",
+      "ubicacion": "HMM PISO 15"
+    },
+    "deudor": {
+      "cedula": 900520023,
+      "direccion": "AV BOYACA 63D - 26 OFICINA 103",
+      "primerApellido": "S.A.S",
+      "primerNombre": "Dimoin",
+      "segundoNombre": "Colombia",
+      "tel": {
+        "fijo": 6708086
+      }
+    },
+    "entregaGarantiasAbogado": "2020-09-05T00:00:00.000Z",
+    "etapaProcesal": "CONTESTACION DEMANDA",
+    "fecha": "2023-07-21T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:35:00.689Z",
+    "grupo": "Bancolombia",
+    "idProceso": 112628300,
+    "llaveProceso": "11001400306820200102100",
+    "numero": 530,
+    "obligacion": [65886140334, 4594260446916180],
+    "reparto": false,
+    "tipoBien": null,
+    "tipoProceso": "SINGULAR",
+    "ultimasActuaciones": [
+      {
+        "idProceso": 112628300,
+        "ultimaActuacion": {
+          "actuacion": "Oficio Elaborado",
+          "anotacion": "ENVIO DESPACHO COMISORIO",
+          "cant": 29,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 29,
+          "fechaActuacion": "2023-07-21T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2023-07-21T00:00:00",
+          "idRegActuacion": 1818696410,
+          "llaveProceso": "11001400306820200102100"
+        }
+      }
+    ],
+    "vencimientoPagare": "2023-07-21T17:35:00.689Z"
+  },
+  {
+    "_id": "64babef1cae03534350bc2da",
+    "bien": {
+      "id": "IYM-870",
+      "tipo": "VEHICULO"
+    },
+    "capitalAdeudado": 33791309,
+    "clase": "VEHICULO",
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "origen": {
+          "id": 3,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-03-civil-municipal-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2017 - 00884",
+      "ubicacion": "HMM PISO 5"
+    },
+    "deudor": {
+      "cedula": 1077969975,
+      "direccion": "CARRERA 77B No. 68B - 19 BARRIO SANTA HELENITA",
+      "email": "yess_Id@hotmail.com",
+      "primerApellido": "Ramos",
+      "primerNombre": "Yesid",
+      "segundoNombre": "Albeiro",
+      "tel": {
+        "celular": 3212337597
+      }
+    },
+    "entregaGarantiasAbogado": "2017-05-11T00:00:00.000Z",
+    "etapaProcesal": "EMPLAZAMIENTO",
+    "fecha": "2023-07-18T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:34:47.057Z",
+    "grupo": "Bancolombia",
+    "idProceso": 50468620,
+    "llaveProceso": "11001400300320170088400",
+    "numero": 20,
+    "obligacion": [2530444],
+    "reparto": false,
+    "tipoBien": "VEHICULO",
+    "tipoProceso": "PRENDARIO",
+    "vencimientoPagare": "2020-05-04T00:00:00.000Z"
+  },
+  {
+    "_id": "64babef8cae03534350bcdfe",
+    "bien": null,
+    "capitalAdeudado": 56987693,
+    "clase": "unknown",
+    "codeudor": null,
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "origen": {
+          "id": 4,
+          "tipo": "Pequeñas Causas y Competencias Multiples",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-04-municipal-de-pequenas-causas-y-competencia-multiple-de-soacha"
+        }
+      },
+      "municipio": "SOACHA",
+      "radicado": "2018 - 00060",
+      "ubicacion": "SOACHA"
+    },
+    "deudor": {
+      "cedula": 79522009,
+      "direccion": "DIAGONAL 28 No 33-27  TORRE 7 APART 203  SOACHA",
+      "email": "jairopardo8-11-70@hotmail.com",
+      "primerApellido": "Pardo",
+      "primerNombre": "Jairo",
+      "segundoApellido": "Jaimes",
+      "segundoNombre": "Alfonso",
+      "tel": {
+        "fijo": 7808590
+      }
+    },
+    "entregaGarantiasAbogado": "2023-07-21T17:34:54.843Z",
+    "etapaProcesal": "EJECUCION",
+    "fechaIngreso": "2023-07-21T17:34:54.843Z",
+    "grupo": "Bancolombia",
+    "idProceso": null,
+    "llaveProceso": "2575440030042018000600 ",
+    "numero": 366,
+    "obligacion": [1680097436, 148653],
+    "reparto": false,
+    "tipoBien": null,
+    "tipoProceso": "HIPOTECARIO",
+    "vencimientoPagare": "2023-07-21T17:34:54.843Z"
+  },
+  {
+    "_id": "64babefdcae03534350bd570",
+    "bien": null,
+    "capitalAdeudado": 0,
+    "clase": "unknown",
+    "codeudor": null,
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "origen": {
+          "id": 83,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-083-civil-municipal-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA"
+    },
+    "deudor": {
+      "primerApellido": "Laverde",
+      "primerNombre": "Jose",
+      "segundoApellido": "Penagos",
+      "segundoNombre": "Alexander"
+    },
+    "entregaGarantiasAbogado": "2023-07-21T17:35:01.736Z",
+    "etapaProcesal": "ADMISION DE LA DEMANDA",
+    "fechaIngreso": "2023-07-21T17:35:01.736Z",
+    "grupo": "Bancolombia",
+    "idProceso": null,
+    "llaveProceso": "23",
+    "numero": 533,
+    "obligacion": [],
+    "reparto": false,
+    "tipoBien": null,
+    "tipoProceso": "SINGULAR",
+    "vencimientoPagare": "2023-07-21T17:35:01.736Z"
+  },
+  {
+    "_id": "64babefdcae03534350bd69e",
+    "bien": null,
+    "capitalAdeudado": 0,
+    "clase": null,
+    "codeudor": null,
+    "demanda": {
+      "departamento": "CUNDINAMARCA",
+      "juzgado": {
+        "origen": {
+          "id": 4,
+          "tipo": "Civil Municipal",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-04-civil-municipal-de-bogota"
+        }
+      },
+      "municipio": "BOGOTA",
+      "radicado": "2023-622"
+    },
+    "deudor": {
+      "cedula": 1023874668,
+      "primerApellido": "Gomez",
+      "primerNombre": "Oscar",
+      "segundoApellido": "Mendosa",
+      "segundoNombre": "Mauricio"
+    },
+    "entregaGarantiasAbogado": "2023-07-21T17:35:01.566Z",
+    "etapaProcesal": "ADMISION DE LA DEMANDA",
+    "fecha": "2023-06-29T05:00:00.000Z",
+    "fechaIngreso": "2023-07-21T17:35:01.566Z",
+    "grupo": "Bancolombia",
+    "idProceso": 130946630,
+    "llaveProceso": "11001400300420230062200",
+    "numero": 532,
+    "obligacion": [],
+    "reparto": false,
+    "tipoBien": null,
+    "tipoProceso": "SINGULAR",
+    "ultimasActuaciones": [
+      {
+        "idProceso": 130946630,
+        "ultimaActuacion": {
+          "actuacion": "Al Despacho Por Reparto",
+          "anotacion": null,
+          "cant": 2,
+          "codRegla": "00                              ",
+          "conDocumentos": false,
+          "consActuacion": 2,
+          "fechaActuacion": "2023-06-29T00:00:00",
+          "fechaFinal": null,
+          "fechaInicial": null,
+          "fechaRegistro": "2023-06-29T00:00:00",
+          "idRegActuacion": 1793220780,
+          "llaveProceso": "11001400300420230062200"
+        }
+      }
+    ],
+    "vencimientoPagare": "2023-07-21T17:35:01.566Z"
   }
 ]

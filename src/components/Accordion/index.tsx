@@ -8,24 +8,24 @@ export function Accordion(
     children
   }: {
   children: ReactNode;
-} 
+}
 ) {
   const [
     isActive,
     setIsActive
   ] = useState(
-    false 
+    false
   );
 
   return (
-    <div className={styles.accordion}>
+    <div className={`${ styles.accordion } ${ isActive && styles.isActive }`}>
       <div className={styles.item}>
         <button
           type='button'
           className={styles.title}
           onClick={() => {
             return setIsActive(
-              !isActive 
+              !isActive
             );
           }}
         >

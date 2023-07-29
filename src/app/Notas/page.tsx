@@ -4,37 +4,6 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { Nota } from '../../components/nota/notas';
 
-async function renderName(
-  {
-    llaveProceso
-  }: {
-  llaveProceso: string;
-} 
-) {
-  const carpetas
-    = await getCarpetasByllaveProceso(
-      { llaveProceso: llaveProceso } 
-    );
-
-  const names = carpetas.map(
-    (
-      carpeta, i, arr 
-    ) => {
-      const {
-        Deudor 
-      } = carpeta;
-
-      const {
-        PrimerNombre 
-      } = Deudor;
-
-      return PrimerNombre;
-    }
-  );
-
-  return names.toString();
-}
-
 export default async function PageNotas() {
   const notas = await getNotas();
 
@@ -48,10 +17,10 @@ export default async function PageNotas() {
       <div className={layout.left}>
         {notas.map(
           (
-            NotaM, index, arr 
+            NotaM, index, arr
           ) => {
             const {
-              id,
+              _id,
               llaveProceso,
               nota,
               pathname,
@@ -63,11 +32,11 @@ export default async function PageNotas() {
               <Nota
                 notaRaw={NotaM}
                 i={index}
-                key={id}
+                key={_id}
                 arr={arr}
               />
             );
-          } 
+          }
         )}
       </div>
     </div>

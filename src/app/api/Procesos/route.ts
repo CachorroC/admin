@@ -5,7 +5,6 @@ import clientPromise from '#@/lib/mongodb';
 import { monDemandado } from '#@/lib/types/mongodb';
 import { notFound } from 'next/navigation';
 import { Collection } from 'mongodb';
-import { carpetaConvert } from '#@/lib/types/demandados';
 import { carpetasCollection } from '#@/lib/Carpetas';
 
 export async function GET () {

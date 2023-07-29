@@ -9,7 +9,7 @@ export const ActuacionCard = (
     Actuacion
   }: {
   Actuacion: intActuacion;
-} 
+}
 ) => {
   const {
     idRegActuacion,
@@ -28,18 +28,23 @@ export const ActuacionCard = (
 
   return (
     <div
-      className={styles.container}
-      key={idRegActuacion}
-    >
+      className={styles.container}    >
       <div className={styles.card}>
         <h1
           className={`${ typography.titleMedium } ${ styles.title }`}
         >
-          {actuacion}
+          {actuacion.replace(
+            /\s+/g, ' '
+          )}
         </h1>
         {anotacion && (
           <p className={typography.bodyMedium}>
-            {anotacion}
+            {
+              anotacion.replace(
+                /\s+/g, ' '
+              )
+
+            }
           </p>
         )}
         <sub
@@ -59,7 +64,7 @@ export const ActuacionCard = (
           className={`${ typography.labelMedium } ${ styles.date }`}
         >
           {fixFechas(
-            fechaActuacion 
+            fechaActuacion
           )}
         </sup>
       </div>
@@ -72,16 +77,16 @@ export const ActuacionesList = (
     Actuaciones
   }: {
   Actuaciones: intActuacion[];
-} 
+}
 ) => {
   return (
     <>
       {Actuaciones.map(
         (
-          Actuacion, ind, arr 
+          Actuacion, ind, arr
         ) => {
           const {
-            idRegActuacion 
+            idRegActuacion
           } = Actuacion;
 
           return (
@@ -90,7 +95,7 @@ export const ActuacionesList = (
               key={idRegActuacion}
             />
           );
-        } 
+        }
       )}
     </>
   );

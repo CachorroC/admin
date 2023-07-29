@@ -1,3 +1,9 @@
+.accordion {
+  flex: 0 1 50%;
+}
+.isActive {
+  flex: 1 1 100%;
+}
 .content {
   padding: 1vmin;
   background-color: var(

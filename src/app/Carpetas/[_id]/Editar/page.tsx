@@ -7,6 +7,7 @@ import { Loader } from '#@/components/Loader';
 import { NombreComponent } from '#@/components/card/Nombre';
 import { notFound } from 'next/navigation';
 import { NuevoProceso } from '../../NuevaCarpeta/new-carpeta';
+import { EditProceso } from '../../NuevaCarpeta/edit-carpeta';
 
 export default async function EditarCarpetabyId(
   {
@@ -36,8 +37,9 @@ export default async function EditarCarpetabyId(
         />
       </div>
       <div className={layout.left}>
-        <NuevoProceso
-          uri={`${ getBaseUrl() }`}
+        <EditProceso
+          uri={ `${ getBaseUrl() }` }
+          carpeta={carpeta}
         />
       </div>
 

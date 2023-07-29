@@ -8,89 +8,91 @@ import { WithId } from 'mongodb';
 import { intActuacion } from './procesos';
 
 export interface IntCarpeta {
-  numero: number;
-  llaveProceso: string;
-  deudor: deudor;
-  codeudor?: Codeudor;
-  demanda: Demanda;
-  obligacion: Obligacion[];
-  vencimientoPagare: Date;
-  tipoProceso: TipoProceso;
+  bien?: Bien | null;
   capitalAdeudado: number;
+  clase: string |null;
+  codeudor?: Codeudor | null;
+  demanda: Demanda;
+  deudor: Deudor;
   entregaGarantiasAbogado: Date;
-  grupo: string;
-  fechaIngreso: Date;
-  reparto: boolean;
   etapaProcesal: EtapaProcesal;
+  fechaIngreso: Date;
+  grupo: Grupo;
   idProceso: number;
-  clase: string;
-  bien?: Bien;
+  llaveProceso: string;
+  numero: number;
+  obligacion:  Array<ObligacionClass | number | string>;
+  reparto: boolean;
+  tipoBien?: TipoBien | null;
+  tipoProceso: TipoProceso;
+  vencimientoPagare: Date;
     fecha?: Date ;
 }
 
-export interface Obligacion {
-  texto?: string | number;
-  tipo?: string | number;
-}
+export type TipoBien = 'BANCOS' | 'INMUEBLE' | 'VEHICULO' | 'SALARIO'|'ESTABLECIMIENTO'
 
 export interface Bien {
-  tipo: string;
-  id?: string;
+    id?:          string;
+    tipo:         TipoBien;
+    descripcion?: string;
 }
 
 export interface Codeudor {
-  cedula: number | string;
-  nombre: string;
-  tel?: number | string;
-  direccion?: string;
+    cedula:     number | string;
+    direccion?: string;
+    nombre:     string;
+    tel?:       number | string;
 }
 
 export interface Demanda {
-  departamento: Departamento;
-  municipio: string;
-  juzgado: Juzgado;
-  ubicacion?: string;
-  radicado?: string;
+    departamento: string;
+    juzgado:      Juzgado;
+    municipio:    string;
+    radicado?:    string;
+    ubicacion?:   string;
 }
 
-export type Departamento = 'CUNDINAMARCA';
+
 
 export interface Juzgado {
-  origen: Ejecucion;
-  ejecucion?: Ejecucion;
+    origen:     Despacho;
+    ejecucion?: Despacho;
 }
 
-export interface Ejecucion {
-  url?: string;
-  id: string;
+export interface Despacho {
+    id:   number;
+    tipo: Tipo;
+    url:  string;
 }
 
-export interface deudor {
-  cedula?: number;
-  primerNombre: string;
-  segundoNombre?: string;
-  primerApellido: string;
-  tel?: Tel;
-  email?: string;
-  direccion?: string;
-  segundoApellido?: string;
+export type Tipo = 'Civil Municipal de Ejecucion' | 'Pequeñas Causas y Competencias Multiples' | 'Civil Municipal' | 'Promiscuo Municipal';
+
+export interface Deudor {
+    cedula:          number;
+    direccion?:       string;
+    primerApellido:   string;
+    primerNombre:     string;
+    tel?:             Tel;
+    email?:           string;
+    segundoApellido?: string;
+    segundoNombre?:   string;
 }
 
 export interface Tel {
-  celular?: number;
-  fijo?: number;
+    fijo?:    number;
+    celular?: number;
 }
 
-export type EtapaProcesal =
-  | 'EMPLAZAMIENTO'
-  | 'EJECUCION'
-  | 'CONTESTACION DEMANDA'
-  | 'ADMISION DE LA DEMANDA';
+export type EtapaProcesal = 'EJECUCION' | 'CONTESTACION DEMANDA' | 'EMPLAZAMIENTO' | 'ADMISION DE LA DEMANDA';
 
-export type TipoProceso =
-  | 'PRENDARIO'
-  | 'SINGULAR'
-  | 'HIPOTECARIO';
+export type Grupo = 'Bancolombia' | 'Reintegra' | 'Lios Juridicos'| 'terminados';
+
+export interface ObligacionClass {
+    texto: number | string;
+    tipo:  number | string;
+}
+
+export type TipoProceso = 'SINGULAR' | 'HIPOTECARIO' | 'PRENDARIO' ;
 
 export interface MonCarpeta extends IntCarpeta {
   _id: string;
@@ -120,7 +122,7 @@ export class carpetaConvert {
     carpeta: MonCarpeta
   ): IntCarpeta {
     const {
-      nombre, _id, ...newCarpeta
+      nombre, ...newCarpeta
     }
       = carpeta;
 
@@ -137,16 +139,13 @@ export class carpetaConvert {
   public static toMonCarpeta(
     carpeta: WithId<IntCarpeta>
   ): MonCarpeta {
-    const nmb = carpeta.deudor.segundoApellido
-      ? carpeta.deudor.segundoNombre
-        ? `${ carpeta.deudor.primerNombre } ${ carpeta.deudor.segundoNombre } ${ carpeta.deudor.primerApellido } ${ carpeta.deudor.segundoApellido }`
-        : `${ carpeta.deudor.primerNombre } ${ carpeta.deudor.primerApellido } ${ carpeta.deudor.segundoApellido }`
-      : `${ carpeta.deudor.primerNombre } ${ carpeta.deudor.primerApellido }`;
+
+
 
     const fixedCarpeta: MonCarpeta = {
       ...carpeta,
       _id   : carpeta._id.toString(),
-      nombre: nmb
+      nombre: `${ carpeta.deudor.primerNombre } ${ carpeta.deudor.primerApellido }`
     };
 
     return fixedCarpeta;
@@ -233,14 +232,14 @@ export class carpetaConvert {
 
   public static toEjecucion(
     json: string
-  ): Ejecucion {
+  ): Despacho {
     return JSON.parse(
       json
     );
   }
 
   public static ejecucionToJson(
-    value: Ejecucion
+    value: Despacho
   ): string {
     return JSON.stringify(
       value
@@ -266,7 +265,7 @@ export class NombreCompleto {
     this.Nombre = segundoApellido
       ? segundoNombre
         ? `${ primerNombre } ${ segundoNombre } ${ primerApellido } ${ segundoApellido }`
-        : `${ primerNombre } ${ primerApellido } ${ segundoApellido }`
+        : `${ primerNombre } ${ primerApellido } ${ segundoApellido  }`
       : `${ primerNombre } ${ primerApellido }`;
   }
 }

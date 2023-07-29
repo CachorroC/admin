@@ -1,114 +1,447 @@
 {
-  "_id": "443",
-  "llaveProceso": "11001400300320170088400",
-  "idProceso": [10299384383, 10029383483],
-  "deudor": {
-    "id": 1032488516,
-    "email": "juankpato87@gmail.com",
-    "primerNombre": "Juan",
-    "segundoNombre": "Camilo",
-    "primerApellido": "Suarez",
-    "segundoApellido": "Ramirez",
-    "direccion": "carrera 63 # 22 - 31",
-    "tel": {
-      "fijo": 3193905254,
-      "celular": 3212337597
-    }
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/Carpeta"
   },
-  "codeudor": {
-    "id": 1022352429,
-    "primerNombre": "Melissa",
-    "segundoNombre": "Lorena",
-    "primerApellido": "Suarez",
-    "segundoApellido": "Ramirez",
-    "tel": {
-      "fijo": 6051567,
-      "celular": 3103032791
-    },
-    "direccion": "carrera 63 # 22 - 31"
-  },
-
-  "demanda": {
-    "vencimientoPagare": "2020-05-04",
-    "obligaciones": [2530444, 2530444],
-    "capitalAdeudado": "$ 33.791.309",
-    "entregaGarantiasAbogado": "2017-05-11",
-    "departamento": "CUNDINAMARCA",
-    "municipio": "BOGOTA",
-
-    "tipoProceso": "PRENDARIO",
-    "radicado": "2017 - 00884",
-    "expediente": "11001400300320170088400",
-    "ubicacion": "Juzgados de Ejecucion"
-  },
-
-  "etapaProcesal": {
-    "Etapa": "EMPLAZAMIENTO",
-    "fechas": {
-      "presentacionDemanda": "2018-01-03",
-      "mandamientoDePago": "2017-06-02"
-    }
-  },
-  "notificaciones": {
-    "certimail": false,
-    "fisico": true,
-    "notificacion291": {
-      "fechas": {
-        "recibo": "02-12-2018",
-        "aporta": "12-12-2013"
+  "definitions": {
+    "Carpeta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "deudor": {
+          "$ref": "#/definitions/Deudor"
+        },
+        "numero": {
+          "type": "integer"
+        },
+        "capitalAdeudado": {
+          "type": "integer"
+        },
+        "fechaIngreso": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reparto": {
+          "type": "boolean"
+        },
+        "clase": {
+          "type": "string"
+        },
+        "grupo": {
+          "$ref": "#/definitions/Grupo"
+        },
+        "codeudor": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Codeudor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tipoProceso": {
+          "$ref": "#/definitions/TipoProceso"
+        },
+        "tipoBien": {
+          "type": "string"
+        },
+        "obligacion": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ObligacionElement"
+          }
+        },
+        "llaveProceso": {
+          "type": "string"
+        },
+        "idProceso": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bien": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Bien"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "demanda": {
+          "$ref": "#/definitions/Demanda"
+        },
+        "entregaGarantiasAbogado": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "etapaProcesal": {
+          "$ref": "#/definitions/EtapaProcesal"
+        },
+        "vencimientoPagare": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "ultimasActuaciones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UltimasActuacione"
+          }
+        },
+        "fecha": {
+          "type": "string",
+          "format": "date-time"
+        }
       },
-      "resultado": true
+      "required": [
+        "_id",
+        "capitalAdeudado",
+        "clase",
+        "demanda",
+        "deudor",
+        "entregaGarantiasAbogado",
+        "etapaProcesal",
+        "fechaIngreso",
+        "grupo",
+        "idProceso",
+        "llaveProceso",
+        "nombre",
+        "numero",
+        "obligacion",
+        "reparto",
+        "tipoProceso",
+        "vencimientoPagare"
+      ],
+      "title": "Carpeta"
     },
-    "notificacion292": {
-      "fechas": {
-        "recibo": "02-12-2018",
-        "aporta": "12-12-2013"
+    "Bien": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tipo": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
       },
-      "resultado": false
+      "required": ["tipo"],
+      "title": "Bien"
     },
-    "publicacionEmplazamiento": "1999-01-01",
-    "NombramientoCurador": "199-01-01",
-    "tipoNotificacion": "CERTIMAIL",
-    "autoNotificado": "2018-07-11"
-  },
-  "MedidasCautelares": {
-    "fechas": {
-      "ordenaMedidasCautelares": "1999-01-01"
+    "Codeudor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cedula": {
+          "$ref": "#/definitions/Cedula"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "tel": {
+          "$ref": "#/definitions/Cedula"
+        },
+        "direccion": {
+          "type": "string"
+        }
+      },
+      "required": ["cedula", "nombre"],
+      "title": "Codeudor"
     },
-    "medidaSolicitada": "Embargo Vehiculo",
-    "Bienes": "VEHICULO",
-    "Extra": "LA PRINCIPAL SAS",
-    "PlacaoNumeroMatricula": "IYM-870",
-    "DescripcionMedida": "AUTOMOVIL MODELO 2017 MARCA CHEVROLET COLOR ROJO VELVET SERVICIOPARTICULAR  MINI SPARK",
-    "Fecha": {
-      "Captura": 43315,
-      "Secuestro": "PENDIENTE",
-      "DecretoSecuestrooCaptura": "2010-03-20"
+    "Demanda": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "departamento": {
+          "$ref": "#/definitions/Departamento"
+        },
+        "municipio": {
+          "type": "string"
+        },
+        "juzgado": {
+          "$ref": "#/definitions/Juzgado"
+        },
+        "ubicacion": {
+          "type": "string"
+        },
+        "radicado": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "departamento",
+        "juzgado",
+        "municipio"
+      ],
+      "title": "Demanda"
     },
-    "FechaRadicaccion": "2018-05-31",
-    "Oficios": {
-      "FechaRetiro": "2017-09-28"
+    "Juzgado": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "origen": {
+          "$ref": "#/definitions/Ejecucion"
+        },
+        "ejecucion": {
+          "$ref": "#/definitions/Ejecucion"
+        }
+      },
+      "required": ["origen"],
+      "title": "Juzgado"
     },
-    "RespuestaEmbargo": true
-  },
-  "Liquidacion": {
-    "Costas": {
-      "FechaAprobacion": "1999-01-01"
+    "Ejecucion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": ["https"]
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": ["id", "url"],
+      "title": "Ejecucion"
     },
-    "Fecha": {
-      "Aprobacion": "1999-01-01"
+    "Deudor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cedula": {
+          "type": "integer"
+        },
+        "primerNombre": {
+          "type": "string"
+        },
+        "primerApellido": {
+          "type": "string"
+        },
+        "tel": {
+          "$ref": "#/definitions/Tel"
+        },
+        "direccion": {
+          "type": "string"
+        },
+        "segundoNombre": {
+          "type": "string"
+        },
+        "segundoApellido": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "primerApellido",
+        "primerNombre"
+      ],
+      "title": "Deudor"
+    },
+    "Tel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fijo": {
+          "type": "integer"
+        },
+        "celular": {
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "title": "Tel"
+    },
+    "ObligacionClass": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "texto": {
+          "type": "integer"
+        },
+        "tipo": {
+          "type": "string"
+        }
+      },
+      "required": ["texto", "tipo"],
+      "title": "ObligacionClass"
+    },
+    "UltimasActuacione": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "idProceso": {
+          "type": "integer"
+        },
+        "ultimaActuacion": {
+          "$ref": "#/definitions/UltimaActuacion"
+        }
+      },
+      "required": [
+        "idProceso",
+        "ultimaActuacion"
+      ],
+      "title": "UltimasActuacione"
+    },
+    "UltimaActuacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "idRegActuacion": {
+          "type": "integer"
+        },
+        "llaveProceso": {
+          "type": "string"
+        },
+        "consActuacion": {
+          "type": "integer"
+        },
+        "fechaActuacion": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "actuacion": {
+          "type": "string"
+        },
+        "anotacion": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "fechaInicial": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fechaFinal": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fechaRegistro": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "codRegla": {
+          "$ref": "#/definitions/CodRegla"
+        },
+        "conDocumentos": {
+          "type": "boolean"
+        },
+        "cant": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "actuacion",
+        "anotacion",
+        "cant",
+        "codRegla",
+        "conDocumentos",
+        "consActuacion",
+        "fechaActuacion",
+        "fechaFinal",
+        "fechaInicial",
+        "fechaRegistro",
+        "idRegActuacion",
+        "llaveProceso"
+      ],
+      "title": "UltimaActuacion"
+    },
+    "Cedula": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Cedula"
+    },
+    "ObligacionElement": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ObligacionClass"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "ObligacionElement"
+    },
+    "Departamento": {
+      "type": "string",
+      "enum": ["CUNDINAMARCA"],
+      "title": "Departamento"
+    },
+    "EtapaProcesal": {
+      "type": "string",
+      "enum": [
+        "EJECUCION",
+        "CONTESTACION DEMANDA",
+        "EMPLAZAMIENTO",
+        "ADMISION DE LA DEMANDA"
+      ],
+      "title": "EtapaProcesal"
+    },
+    "Grupo": {
+      "type": "string",
+      "enum": ["Bancolombia"],
+      "title": "Grupo"
+    },
+    "TipoProceso": {
+      "type": "string",
+      "enum": [
+        "SINGULAR",
+        "HIPOTECARIO",
+        "PRENDARIO",
+        "HIPOTECARO"
+      ],
+      "title": "TipoProceso"
+    },
+    "CodRegla": {
+      "type": "string",
+      "enum": [
+        "00                              "
+      ],
+      "title": "CodRegla"
     }
-  },
-
-  "SuspencionProceso": {
-    "TerminoSuspencion": "N/A",
-    "Fecha": "1999-01-01"
-  },
-  "avaluo": {
-    "fechas": {
-      "adjudicacion": "1999-01-01",
-      "remate": "1999-01-01"
-    },
-    "costo": "$ 4'000.000.00"
   }
 }

@@ -8,6 +8,7 @@
 .card {
   box-sizing: border-box;
   padding: 2cqmin;
+  background-color: var(--primary);
   gap: 2cqmin;
   border-radius: 2cqmin;
   text-align: center;
@@ -19,9 +20,7 @@
   align-content: stretch;
   &Active {
     @extend .card;
-    background-color: var(
-      --surface-container-high
-    );
+    background-color: var(--secondary);
     border: solid 2px var(--outline-variant);
     color: var(--on-surface);
     box-shadow: var(--dp6);
@@ -138,4 +137,8 @@
     border: none;
     background: rgba(0, 0, 0, 0.1);
   }
+}
+
+.section {
+  box-shadow: var(--dp8);
 }

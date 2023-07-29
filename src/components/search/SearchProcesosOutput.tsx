@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 import { Name } from '../Headings/clientSideName';
 import type { Route } from 'next';
 import { useRef } from 'react';
-import { MonCarpeta } from '#@/lib/types/demandados';
+import { MonCarpeta, NombreCompleto } from '#@/lib/types/demandados';
 
 export default function SearchOutputList(
   {
@@ -128,10 +128,13 @@ export default function SearchOutputList(
         primerApellido,
         segundoApellido
       } = deudor;
-      const Nombre = `${ primerNombre } ${ segundoNombre } ${ primerApellido } ${ segundoApellido }`;
+
+      const name = new NombreCompleto(
+        deudor
+      );
 
       if (
-        Nombre.toLowerCase()
+        name.Nombre.toLowerCase()
               .indexOf(
                 search.toLowerCase()
               ) === -1

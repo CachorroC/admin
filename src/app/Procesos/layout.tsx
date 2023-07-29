@@ -11,7 +11,7 @@ export default function LayoutProcesos(
   children: React.ReactNode;
   right: React.ReactNode;
   left: React.ReactNode;
-} 
+}
 ) {
   return (
     <CarpetaProvider>

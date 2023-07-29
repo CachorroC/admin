@@ -237,42 +237,43 @@
 @container note (width < 100px) {
   .form,
   .nota {
-    background-color: red;
+    box-shadow: var(--dp1);
   }
 }
 @container note ( 100px < width < 200px) {
   .form,
   .nota {
-    background-color: orange;
+    box-shadow: var(--dp2);
   }
 }
 @container note ( 200px < width < 300px) {
   .form,
   .nota {
-    background-color: yellow;
+    box-shadow: var(--dp3);
   }
 }
 @container note ( 300px < width < 400px) {
   .form,
   .nota {
-    background-color: green;
+    box-shadow: var(--dp4);
   }
 }
 @container note ( 400px < width < 500px) {
   .form,
   .nota {
-    background-color: blue;
+    box-shadow: var(--dp5);
   }
 }
 @container note ( 500px < width < 600px) {
   .form,
   .nota {
-    background-color: purple;
+    box-shadow: var(--dp6);
   }
 }
 @container note ( 600px < width) {
   .form,
   .nota {
     background-color: var(--primary-container);
+    box-shadow: var(--dp7);
   }
 }

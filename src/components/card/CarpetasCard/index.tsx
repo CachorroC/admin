@@ -13,13 +13,13 @@ import { NombreComponent } from '../Nombre';
 
 export const DemandaContainer = (
   {
-    demanda 
+    demanda
   }: {
   demanda: Demanda;
-} 
+}
 ) => {
   const {
-    departamento, municipio, radicado
+    departamento, municipio, radicado, juzgado
   }
     = demanda;
 
@@ -30,7 +30,19 @@ export const DemandaContainer = (
       </h1>
       <h2
         className={typography.titleMedium}
-      >{`${ departamento }: ${ municipio }`}</h2>
+      >{ `${ departamento }: ${ municipio }` }</h2>
+      { juzgado.ejecucion && (
+        <Link href={ juzgado.ejecucion.url as Route }>
+          <span className='material-symbols-outlined'>enable</span>
+          <sub className={typography.displaySmall}>{juzgado.ejecucion.id}</sub>
+          <p className={typography.labelSmall}>{juzgado.ejecucion.tipo}</p>
+        </Link>
+      ) }
+      <Link href={ juzgado.origen.url as Route }>
+        <span className='material-symbols-outlined'>trip_origin</span>
+        <sub className={typography.displaySmall}>{juzgado.origen.id}</sub>
+        <p className={typography.labelSmall}>{juzgado.origen.tipo}</p>
+      </Link>
     </div>
   );
 };
@@ -42,7 +54,7 @@ export const CarpetaCard = (
   }: {
   carpeta: MonCarpeta;
   children: ReactNode;
-} 
+}
 ) => {
   const {
     llaveProceso,
@@ -115,7 +127,7 @@ export const CarpetaCard = (
                 className={typography.labelMedium}
               >
                 {fixFechas(
-                  carpeta.vencimientoPagare 
+                  carpeta.vencimientoPagare
                 )}
               </p>
             )}
@@ -159,14 +171,14 @@ export const CarpetaCard = (
                 className={typography.labelSmall}
               >
                 {fixFechas(
-                  carpeta.entregaGarantiasAbogado 
+                  carpeta.entregaGarantiasAbogado
                 )}
               </p>
             )}
             <p>
               {carpeta.capitalAdeudado
                 && fixMoney(
-                  { valor: carpeta.capitalAdeudado } 
+                  { valor: carpeta.capitalAdeudado }
                 )}
             </p>
           </div>

@@ -1,31 +1,68 @@
 import 'server-only';
-import { NewNota } from '#@/components/nota/NuevaNota';
-import { Notas } from '#@/components/nota/notas';
-import { getBaseUrl } from '#@/lib/getBaseUrl';
-import { getNotas } from '#@/lib/notas';
-import { NotasList } from '#@/components/card/NotasCard';
-import { fetchFechas } from '#@/lib/Actuaciones';
-import { IntCarpeta,
-         MonCarpeta } from '#@/lib/types/demandados';
+import { MonCarpeta } from '#@/lib/types/demandados';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { Suspense } from 'react';
-import { Loader } from '#@/components/Loader';
-import SearchOutputList from '#@/components/search/SearchProcesosOutput';
-import { NotasListSkeleton } from '#@/components/card/NotasCard/skeleton';
+import {  getProceso } from '#@/lib/RamaJudicial';
+import { ProcesoCard } from '#@/components/card/ProcesosCard';
+import { ProcesoCardSkeleton } from '#@/components/card/ProcesosCard/skeleton';
+
+
+async function ProcesoComponent (
+  {
+    carpeta, index
+  }: { carpeta: MonCarpeta; index: number }
+) {
+  const procesos = await getProceso(
+    {
+      llaveProceso: carpeta.llaveProceso,
+      index       : index
+    }
+  );
+
+
+
+  const proceso = procesos.find(
+    (
+      prc
+    ) => {
+      return prc.idProceso === carpeta.idProceso;
+    }
+  );
+
+  if ( procesos.length === 0 || !proceso ) {
+    return null;
+  }
+
+  return (
+
+    <ProcesoCard key={proceso.idProceso} proceso={ proceso } />
+
+
+  );
+}
 
 export default async function PageProcesosRight() {
-  const notas = await getNotas();
-  const procesos = await getCarpetas();
+
+  const carpetas = await getCarpetas();
+
+
 
   return (
     <>
-      <NewNota
-        llaveProceso={'Procesos'}
-        uri={`${ getBaseUrl() }`}
-      />
-      <Suspense fallback={<NotasListSkeleton />}>
-        <NotasList notas={notas} />
-      </Suspense>
+
+      { carpetas.map(
+        (
+          carpeta, index
+        ) => {
+          return(
+            <Suspense key={carpeta._id} fallback={<ProcesoCardSkeleton />}>
+              <ProcesoComponent key={carpeta._id} carpeta={ carpeta } index={ index } />
+            </Suspense>
+          );
+
+        }
+      )}
+
     </>
   );
 }

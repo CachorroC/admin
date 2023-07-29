@@ -12,6 +12,7 @@ import { Fragment, Suspense } from 'react';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import { ButtonsNuevaCarpeta } from '../NuevaCarpeta/new-carpeta-buttons';
 import { NuevoProceso } from '../NuevaCarpeta/new-carpeta';
+import { EditProceso } from '../NuevaCarpeta/edit-carpeta';
 
 export default async function CarpetasPageId(
   {
@@ -69,10 +70,12 @@ export default async function CarpetasPageId(
               </Link>
             </CarpetaCard>
             <NuevoProceso
-              key={carpeta._id}
+              key={ carpeta._id }
+              carpeta={carpeta}
               uri={`${ getBaseUrl() }`}
 
             />
+            <EditProceso uri={`${ getBaseUrl() }`} carpeta={ carpeta} />
           </Fragment>
         )}
       </div>

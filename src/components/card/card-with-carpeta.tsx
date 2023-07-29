@@ -9,8 +9,6 @@ import card from '#@/components/card/card.module.scss';
 import { useModal } from '#@/app/modal-context';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { useNavigator } from '#@/app/search-context';
-import { fixFechas,
-         toNameString } from '#@/lib/fix';
 import { Name } from '#@/components/Headings/clientSideName';
 import { useEffect } from 'react';
 import { Loader } from '#@/components/Loader';
@@ -26,7 +24,7 @@ export const Card = (
   path: string;
   carpeta: MonCarpeta;
   children: ReactNode;
-} 
+}
 ) => {
   const [
     isNavOpen,
@@ -41,10 +39,10 @@ export const Card = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false 
+      false
     );
     setIsOpen(
-      true 
+      true
     );
   };
   const pathname = usePathname();
@@ -116,7 +114,7 @@ export const Card = (
             }
             onClick={() => {
               setIsOpen(
-                true 
+                true
               );
             }}
           >

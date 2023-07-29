@@ -1,21 +1,80 @@
 'use client';
 
-import { FormProvider,
+import { DefaultValues, FormProvider,
          SubmitHandler,
          useForm } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
 import { InputSection } from '#@/components/form/InputSection';
-import { IntCarpeta } from '#@/lib/types/demandados';
+import { Demanda, Deudor, IntCarpeta } from '#@/lib/types/demandados';
 import typography from '#@/styles/fonts/typography.module.scss';
+import { SelectSection } from '#@/components/form/SelectSection';
+import { ObligacionesArray } from './obligaciones-array';
+
+const defaultDemanda: Demanda = {
+  departamento: 'CUNDINAMARCA',
+  juzgado     : {
+    origen: {
+      id  : 0,
+      tipo: 'Civil Municipal',
+      url : 'https://app.rsasesorjuridico.com'
+    }
+  },
+  municipio: 'Bogota',
+  radicado : '000 - 00000'
+};
+
+const defaultDeudor: Deudor = {
+  cedula         : 111111111,
+  primerApellido : 'Perez',
+  primerNombre   : 'Pepito',
+  segundoNombre  : 'Joaquin',
+  segundoApellido: 'Jimenez',
+  email          : 'juankpato87@gmail.com',
+  direccion      : 'carrera 63 # 22 - 31',
+  tel            : {
+    fijo   : 6051567,
+    celular: 3506144932
+  }
+};
+
+const defaultObligacion = [
+  {
+    texto: 100099987,
+    tipo : 'cuenta bancaria'
+  }
+];
+
+const defaultValues: DefaultValues<IntCarpeta> = {
+  bien                   : null,
+  capitalAdeudado        : 1000000,
+  clase                  : null,
+  codeudor               : null,
+  demanda                : defaultDemanda,
+  deudor                 : defaultDeudor,
+  entregaGarantiasAbogado: new Date(),
+  etapaProcesal          : 'ADMISION DE LA DEMANDA',
+  fechaIngreso           : new Date(),
+  grupo                  : 'Bancolombia',
+  idProceso              : 0,
+  llaveProceso           : '12345678912345678912345',
+  numero                 : 500,
+  obligacion             : defaultObligacion,
+  reparto                : false,
+  tipoBien               : 'VEHICULO',
+  tipoProceso            : 'SINGULAR',
+  vencimientoPagare      : new Date()
+};
 
 export const NuevoProceso = (
   {
-    uri 
+    uri, carpeta
   }: {
-  uri: string;
-} 
+  uri: string; carpeta?: IntCarpeta
+}
 ) => {
-  const methods = useForm<IntCarpeta>();
+  const methods = useForm<IntCarpeta>(
+    { defaultValues: carpeta ?? defaultValues }
+  );
 
   const {
     register,
@@ -37,17 +96,17 @@ export const NuevoProceso = (
   const onSubmit: SubmitHandler<
     IntCarpeta
   > = async (
-    data 
+    data
   ) => {
     alert(
       JSON.stringify(
-        dirtyFields 
-      ) 
+        dirtyFields
+      )
     );
     alert(
       JSON.stringify(
-        data 
-      ) 
+        data
+      )
     );
 
     const postNewNote = await fetch(
@@ -56,13 +115,13 @@ export const NuevoProceso = (
         method : 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body   : JSON.stringify(
-          data 
+          data
         )
       }
     );
 
     return console.log(
-      data 
+      data
     );
   };
 
@@ -73,21 +132,82 @@ export const NuevoProceso = (
           <form
             className={form.form}
             onSubmit={handleSubmit(
-              onSubmit 
+              onSubmit
             )}
           >
-            <InputSection
-              name={'numero'}
-              title={'Carpeta numero'}
-              type={'number'}
-              rls={{ required: true }}
-            />
-            <section className={form.section}>
+            <InputSection name={ 'capitalAdeudado' } title={ 'Capital Adeudado' } type={ 'number' } rls={{
+              required: true,
+              min     : 1000000
+            } } />
+            <SelectSection name={'clase'} title={ 'clase' } options={[
+              'EmbargoVehiculo',
+              'EmbargoInmueble',
+              'EmbargoSalario',
+              'EmbargoCuentasBancarias',
+              'EmbargoEstablecimientoComercial'
+            ] } />
+            <section className={ form.section }>
+              <SelectSection name={ 'demanda.departamento' } title={ 'Departamento' } options={ [
+                'AMAZONAS',
+                'ANTIOQUIA',
+                'ARAUCA',
+                'ATLANTICO',
+                'BOLIVAR',
+                'BOYACA',
+                'CALDAS',
+                'CAQUETA',
+                'CASANARE',
+                'CAUCA',
+                'CESAR',
+                'CHOCO',
+                'CORDOBA',
+                'CUNDINAMARCA',
+                'BOGOTA',
+                'GUAINIA',
+                'GUAVIARE',
+                'HUILA',
+                'LA GUAJIRA',
+                'MAGDALENA',
+                'META',
+                'NARIÑO',
+                'NORTE DE SANTANDER',
+                'PUTUMAYO',
+                'QUINDIO',
+                'RISARALDA',
+                'SAN ANDRES Y PROVIDENCIA',
+                'SANTANDER',
+                'SUCRE',
+                'TOLIMA',
+                'VALLE DEL CAUCA',
+                'VAUPES',
+                'VICHADA'
+              ] } />
+              <section className={form.section}>
+                <InputSection name={ 'demanda.juzgado.origen.id' } title={ 'despacho numero' } type={ 'number' } rls={ { required: true } } />
+                <SelectSection name={ 'demanda.juzgado.origen.tipo' } title={ 'tipo de despacho' } options={ [
+                  'Civil Municipal de Ejecucion',
+                  'Civil Municipal',
+                  'Promiscuo Municipal',
+                  'Pequeñas Causas y Competencias Multiples'
+                ] } />
+                <InputSection name={ 'demanda.juzgado.origen.url' } title={ 'link' } type={ 'url' } rls={{ required: true }} />
+              </section>
+              <InputSection name={ 'demanda.municipio' } title={ 'Municipio' } type={ 'text' } rls={ { required: true } } />
+              <InputSection name={ 'demanda.radicado' } title={ 'Radicado'} type={'text'} />
+            </section>
+            <section className={ form.section }>
               <InputSection
-                name={'deudor.primerNombre'}
-                title={'Primer Nombre'}
-                type={'text'}
+                name={'deudor.cedula'}
+                title={'cedula'}
+                type={'number'}
                 rls={{ required: true }}
+              />
+              <InputSection
+                name={'deudor.direccion'}
+                title={
+                  'Direccion de residencia o trabajo'
+                }
+                type={'text'}
               />
               <InputSection
                 name={'deudor.primerApellido'}
@@ -96,29 +216,10 @@ export const NuevoProceso = (
                 rls={{ required: true }}
               />
               <InputSection
-                name={'deudor.segundoNombre'}
-                title={'Segundo Nombre'}
+                name={'deudor.primerNombre'}
+                title={'Primer Nombre'}
                 type={'text'}
-              />
-              <InputSection
-                name={'deudor.segundoApellido'}
-                title={'Segundo Apellido'}
-                type={'text'}
-              />
-              <InputSection
-                name={'deudor.cedula'}
-                title={'cedula'}
-                type={'number'}
                 rls={{ required: true }}
-              />
-              <InputSection
-                name={'deudor.email'}
-                title={'Correo electrónico'}
-                type={'text'}
-                rls={{
-                  required: false,
-                  pattern : /^\S+@\S+$/i
-                }}
               />
               <InputSection
                 name={'deudor.tel.fijo'}
@@ -141,55 +242,65 @@ export const NuevoProceso = (
                 }}
               />
               <InputSection
-                name={'deudor.direccion'}
-                title={
-                  'Direccion de residencia o trabajo'
-                }
+                name={'deudor.email'}
+                title={'Correo electrónico'}
+                type={'email'}
+                rls={{
+                  required: false,
+                  pattern : /^\S+@\S+$/i
+                }}
+              />
+              <InputSection
+                name={'deudor.segundoApellido'}
+                title={'Segundo Apellido'}
+                type={'text'}
+              />
+              <InputSection
+                name={'deudor.segundoNombre'}
+                title={'Segundo Nombre'}
                 type={'text'}
               />
             </section>
+            <InputSection name={ 'entregaGarantiasAbogado' } title={ 'Entrega de las garantias al abogado' } type={ 'date' } rls={ { required: true } } />
+            <SelectSection name={ 'etapaProcesal' } title={ 'Etapa Procesal' } options={ [
+              'EJECUCION',
+              'CONTESTACION DEMANDA',
+              'EMPLAZAMIENTO',
+              'ADMISION DE LA DEMANDA'
+            ] } />
+            <InputSection name={ 'fechaIngreso' } title={ 'Fecha en que ingresa el proceso al sistema de RyS' } type={ 'date' } rls={ { required: true } } />
+            <SelectSection name={ 'grupo' } title={ 'Grupo al que pertenece' } options={ [
+              'Bancolombia',
+              'Reintegra',
+              'Lios Juridicos',
+              'Terminados'
+            ] } />
+            <InputSection name={ 'llaveProceso' } title={ 'llaveProceso' } type={ 'text' } rls={{
+              required : true,
+              maxLength: 23,
+              minLength: 23
+            }} />
             <InputSection
-              name={'fechaIngreso'}
-              title={
-                'fecha de ingreso del deudor al sistema de RyS'
-              }
-              type={'date'}
+              name={'numero'}
+              title={'Carpeta numero'}
+              type={'number'}
               rls={{ required: true }}
             />
-            <section className={form.section}>
-              <label
-                className={form.label}
-                htmlFor='tipoProceso'
-              >
-                Tipo de proceso
-              </label>
-              <select
-                className={form.textArea}
-                {...register(
-                  'tipoProceso', { required: true } 
-                )}
-              >
-                <option value='HIPOTECARIO'>
-                  HIPOTECARIO
-                </option>
-                <option value='PRENDARIO'>
-                  PRENDARIO
-                </option>
-                <option value='SINGULAR'>
-                  SINGULAR
-                </option>
-              </select>
-            </section>
-            <input
-              type='checkbox'
-              placeholder='1099'
-              {...register(
-                'reparto', { required: true } 
-              )}
-            />
-
-            <input type='submit' />
-
+            <ObligacionesArray />
+            <InputSection name={ 'reparto' } title={ '¿ya entró a reparto? o se envió el 1099' } type={ 'checkbox' }  />
+            <SelectSection name={ 'tipoBien' } title={ 'Bien' } options={ [
+              'BANCOS',
+              'VEHICULO',
+              'INMUEBLE',
+              'SALARIO',
+              'ESTABLECIMIENTO'
+            ] } />
+            <SelectSection name={ 'tipoProceso' } title={ 'Proceso del Tipo' } options={ [
+              'SINGULAR',
+              'HIPOTECARIO',
+              'PRENDARIO'
+            ] } />
+            <InputSection name={ 'vencimientoPagare' } title={ 'vencimiento del pagare' } type={ 'date' } rls={{ required: true }} />
             <button
               type='submit'
               className={form.button}
@@ -205,22 +316,24 @@ export const NuevoProceso = (
             </button>
           </form>
 
-          <pre>
-            {JSON.stringify(
-              {
-                errors,
-                dirtyFields,
-                submitCount,
-                isSubmitting,
-                isSubmitSuccessful,
-                isLoading
-              },
-              null,
-              2
-            )}
-          </pre>
+
         </div>
+
       </FormProvider>
+      <pre>
+        {JSON.stringify(
+          {
+            errors,
+            dirtyFields,
+            submitCount,
+            isSubmitting,
+            isSubmitSuccessful,
+            isLoading
+          },
+          null,
+          2
+        )}
+      </pre>
     </>
   );
 };

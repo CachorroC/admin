@@ -11,16 +11,16 @@ export const notasCollection = async () => {
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico' 
+      'no hay cliente mongólico'
     );
   }
 
   const db = client.db(
-    'RyS' 
+    'RyS'
   );
 
   const notas = db.collection<intNota>(
-    'Notas' 
+    'Notas'
   );
 
   return notas;
@@ -31,12 +31,12 @@ const Transform = async () => {
 
   const notasRaw = await collection
         .find(
-          {} 
+          {}
         )
         .toArray();
 
   const notas = notaConvert.toMonNotas(
-    notasRaw 
+    notasRaw
   );
 
   return notas;
@@ -53,16 +53,16 @@ export async function getNotasByllaveProceso(
     llaveProceso
   }: {
   llaveProceso: string;
-} 
+}
 ) {
   const notas = await Transform();
 
   const Notas = notas.filter(
     (
-      nota 
+      nota
     ) => {
       return nota.llaveProceso === llaveProceso;
-    } 
+    }
   );
 
   return Notas;
@@ -71,51 +71,19 @@ export async function getNotasByllaveProceso(
 export const getNotaById = cache(
   async (
     {
-      id 
-    }: { id: string } 
+      _id
+    }: { _id: string }
   ) => {
     const notas = await Transform();
 
     const Notas = notas.filter(
       (
-        nota 
+        nota
       ) => {
-        return nota.id === id;
-      } 
+        return nota._id === _id;
+      }
     );
 
     return Notas;
   }
 );
-
-export async function postNota(
-  {
-    nota
-  }: {
-  nota: intNota;
-} 
-) {
-  const collection = await Collection();
-
-  const outgoingRequest
-    = await collection.insertOne(
-      nota 
-    );
-
-  if ( !outgoingRequest.acknowledged ) {
-    return new NextResponse(
-      null, { status: 404 } 
-    );
-  }
-
-  return new NextResponse(
-    JSON.stringify(
-      outgoingRequest.insertedId
-        + `${ outgoingRequest.acknowledged }`
-    ),
-    {
-      status : 200,
-      headers: { 'content-type': 'application/json' }
-    }
-  );
-}

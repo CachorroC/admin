@@ -39,7 +39,7 @@ $MaxSW: 480px; //maximum sma width
   align-items: stretch;
   grid-area: name;
   & > * {
-    width: 100%;
+    flex: 1 1 100%;
   }
 }
 

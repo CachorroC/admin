@@ -8,13 +8,13 @@ export default async function page(
   {
     params
   }: {
-  params: { id: string };
-} 
+  params: { _id: string };
+}
 ) {
-  const id = params.id;
+  const _id = params._id;
 
   const nota = await getNotaById(
-    { id: id } 
+    { _id: _id }
   );
 
   return (
@@ -22,17 +22,17 @@ export default async function page(
       <div className={note.note}>
         {nota.map(
           (
-            ntext, i 
+            ntext, i
           ) => {
             return (
-              <Fragment key={ntext.id}>
+              <Fragment key={ntext._id}>
                 <Edit
                   uri={getBaseUrl()}
                   nota={ntext}
                 />
               </Fragment>
             );
-          } 
+          }
         )}
       </div>
     </div>

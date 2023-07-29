@@ -83,10 +83,9 @@
     }
   }
 }
-.textArea {
-  background-color: var(
-    --surface-container-highest
-  );
+.textArea,
+.selectArea {
+  background-color: var(--surface-container);
   color: var(--on-surface);
   box-shadow: var(--dp2);
   flex: 2;
@@ -105,6 +104,7 @@
     );
   }
 }
+
 .editButton {
   grid-area: editButton;
 }

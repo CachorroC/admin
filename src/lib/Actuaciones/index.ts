@@ -18,17 +18,21 @@ export async function fetchActuaciones(
     idProceso,
     index
   }: {
-  idProceso: number;
+  idProceso: number ;
   index: number;
 }
 ) {
 
-  const awaitTime = index * 1;
+  const awaitTime = index * 1000;
   await sleep(
     awaitTime
   );
 
-  if ( !idProceso ) {
+  if ( !idProceso || idProceso === 0 ) {
+    console.log(
+      `este idProceso es: ${ idProceso } con index ${ index }`
+    );
+
     return [];
   }
 
@@ -63,7 +67,7 @@ export async function fetchActuaciones(
 export async function getActuaciones (
   {
     idProceso, index
-  }: { idProceso: number; index?: number }
+  }: { idProceso: number ; index?: number }
 ) {
   const collection = await carpetasCollection();
 
@@ -87,10 +91,10 @@ export async function getActuaciones (
             actuaciones[ 0 ].fechaActuacion
           )
         }
-      }, { upsert: true }
+      }, { upsert: false }
     );
 
-    if ( updateCarpetawithActuaciones.modifiedCount > 0 ) {
+    if ( updateCarpetawithActuaciones.acknowledged ) {
       console.log(
         `${ index }: the collection was updated with ${ updateCarpetawithActuaciones.modifiedCount } actuaciones modified or ${ updateCarpetawithActuaciones.upsertedCount }actuaciones upserted with a matched count of ${ updateCarpetawithActuaciones.matchedCount }`
       );
