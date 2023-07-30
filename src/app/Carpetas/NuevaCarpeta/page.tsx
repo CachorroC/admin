@@ -17,6 +17,7 @@ export default function NuevaCarpetaPage() {
       <div className={layout.left}>
         <NuevoProceso uri={`${ getBaseUrl() }`} />
       </div>
+
     </div>
   );
 }

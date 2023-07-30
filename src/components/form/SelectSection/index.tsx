@@ -38,19 +38,7 @@ export const SelectSection = (
   ] = useNuevaCarpetaContext();
 
   return (
-    <section className={ form.section }   ref={(
-      node
-    ) => {
-      if ( node ) {
-        map.set(
-          name, node
-        );
-      } else {
-        map.delete(
-          name
-        );
-      }
-    } }>
+    <section className={ form.section }>
       <label  className={`${ form.label } ${ typography.titleLarge }`}
         htmlFor={ field.name }>{ title }</label>
 
@@ -67,15 +55,6 @@ export const SelectSection = (
           }
         )}
       </select>
-      <p>{fieldState.isTouched && 'Touched'}</p>
-      <p>{fieldState.error && 'error'}</p>
-      <p>{fieldState.isDirty && 'Dirty'}</p>
-      <p>
-        {fieldState.invalid
-          ? 'invalid'
-          : 'valid'}
-      </p>
-
     </section>
   );
 };

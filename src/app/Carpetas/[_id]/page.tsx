@@ -69,13 +69,13 @@ export default async function CarpetasPageId(
                 </span>
               </Link>
             </CarpetaCard>
-            <NuevoProceso
+            <EditProceso
               key={ carpeta._id }
               carpeta={carpeta}
               uri={`${ getBaseUrl() }`}
 
             />
-            <EditProceso uri={`${ getBaseUrl() }`} carpeta={ carpeta} />
+
           </Fragment>
         )}
       </div>

@@ -23,7 +23,7 @@ export async function fetchActuaciones(
 }
 ) {
 
-  const awaitTime = index * 1000;
+  const awaitTime = index * 200;
   await sleep(
     awaitTime
   );

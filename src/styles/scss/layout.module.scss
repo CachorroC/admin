@@ -270,10 +270,6 @@ $MaxSW: 480px; //maximum sma width
       'left left left left left left left left left right right right'
       'left left left left left left left left left right right right';
     grid-area: body;
-    @media screen and (min-width: 1920px) {
-      width: 1800px;
-      margin: 0 auto;
-    }
   }
 }
 

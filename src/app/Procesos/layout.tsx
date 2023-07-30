@@ -1,6 +1,5 @@
 import layout from '#@/styles/scss/layout.module.scss';
 import React from 'react';
-import { CarpetaProvider } from '../context/carpeta-context';
 
 export default function LayoutProcesos(
   {
@@ -14,16 +13,14 @@ export default function LayoutProcesos(
 }
 ) {
   return (
-    <CarpetaProvider>
-      <div className={layout.body}>
-        <div className={layout.name}>
-          {children}
-        </div>
-        <div className={layout.left}>{left}</div>
-        <div className={layout.right}>
-          {right}
-        </div>
+    <div className={layout.body}>
+      <div className={layout.name}>
+        {children}
       </div>
-    </CarpetaProvider>
+      <div className={layout.left}>{left}</div>
+      <div className={layout.right}>
+        {right}
+      </div>
+    </div>
   );
 }

@@ -1,37 +1,24 @@
 'use client';
-import React, { useEffect,
-                useState } from 'react';
-import { DefaultValues,
-         FormProvider,
-         FormState,
+
+import { DefaultValues, FormProvider,
          SubmitHandler,
          useForm } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
-
 import { InputSection } from '#@/components/form/InputSection';
-import { IntCarpeta,
-         MonCarpeta,
-         carpetaConvert } from '#@/lib/types/demandados';
-import { ObligacionesArray } from './obligaciones-array';
+import { Demanda, Deudor, IntCarpeta, MonCarpeta } from '#@/lib/types/demandados';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { SelectSection } from '#@/components/form/SelectSection';
+import { ObligacionesArray } from './obligaciones-array';
 
-
-export function EditProceso(
+export const EditProceso = (
   {
-    uri,
-    carpeta
+    uri, carpeta
   }: {
-  uri: string;
-  carpeta: MonCarpeta;
+  uri: string; carpeta: MonCarpeta
 }
-) {
-  const defaultValues: DefaultValues<IntCarpeta> = carpetaConvert.toIntCarpeta(
-    carpeta
-  );
-
+) => {
   const methods = useForm<IntCarpeta>(
-    { defaultValues }
+    { values: carpeta }
   );
 
   const {
@@ -58,7 +45,7 @@ export function EditProceso(
   ) => {
     alert(
       JSON.stringify(
-        uri + dirtyFields
+        dirtyFields
       )
     );
     alert(
@@ -68,41 +55,22 @@ export function EditProceso(
     );
 
     const postNewNote = await fetch(
-      `${ uri }/api/Carpetas`,
+      '/api/Carpetas',
       {
         method : 'PUT',
-        headers: { 'content-type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body   : JSON.stringify(
           data
         )
       }
     );
 
-    if ( postNewNote.status === 201 ) {
-      const message = await postNewNote.text();
-      alert(
-        message
-      );
-    }
-
-    if ( postNewNote.status === 200 ) {
-      const result = await postNewNote.json();
-      alert(
-        JSON.stringify(
-          result
-        )
-      );
-    }
-
-    if ( postNewNote.status === 304 ) {
-      alert(
-        'nothing updated'
-      );
-    }
+    return console.log(
+      data
+    );
   };
 
   return (
-
     <>
       <FormProvider {...methods}>
         <div className={form.container}>
@@ -264,6 +232,16 @@ export function EditProceso(
               rls={{ required: true }}
             />
             <ObligacionesArray />
+            <section className={ form.section }>
+              <div className={ form.switchBox }>
+
+                <input type={'checkbox'}  className={form.primaryInput} {...register(
+                  'reparto',
+                ) } />
+                <label htmlFor={'reparto'} className={form.switchBoxLabel}>Ya se envió a reparto o 1099?</label>
+              </div>
+
+            </section>
             <InputSection name={ 'reparto' } title={ '¿ya entró a reparto? o se envió el 1099' } type={ 'checkbox' }  />
             <SelectSection name={ 'tipoBien' } title={ 'Bien' } options={ [
               'BANCOS',
@@ -313,4 +291,4 @@ export function EditProceso(
       </pre>
     </>
   );
-}
+};

@@ -12,6 +12,7 @@ import { ProcesoCard } from '#@/components/card/ProcesosCard';
 import { Accordion } from '#@/components/Accordion';
 import Link from 'next/link';
 import card from '#@/components/card/card.module.scss';
+import { notFound } from 'next/navigation';
 
 function DemandadoNameBadge(
   {
@@ -20,7 +21,7 @@ function DemandadoNameBadge(
   }: {
   carpeta: MonCarpeta;
   proceso?: intProceso;
-} 
+}
 ) {
   if ( proceso ) {
     return (
@@ -68,53 +69,50 @@ export default async function PageProcesosllaveProceso(
     params
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   const Procesos = await getProceso(
-    { llaveProceso: params.llaveProceso } 
+    { llaveProceso: params.llaveProceso }
   );
 
-  const Carpetas
+  const Carpeta
     = await getCarpetasByllaveProceso(
-      { llaveProceso: params.llaveProceso } 
+      { llaveProceso: params.llaveProceso }
     );
+
+  if ( !Carpeta ) {
+    notFound();
+  }
+
+  const proceso = Procesos.find(
+    (
+      prc
+    ) => {
+      return (
+        prc.idProceso === Carpeta.idProceso
+      );
+    }
+  );
 
   return (
     <>
       <p>default</p>
-      {Carpetas.map(
-        (
-          carpeta, index, arr 
-        ) => {
-          const proceso = Procesos.find(
-            (
-              prc 
-            ) => {
-              return (
-                prc.idProceso === carpeta.idProceso
-              );
-            } 
-          );
 
-          return (
-            <Fragment key={carpeta._id}>
-              <DemandadoNameBadge
-                carpeta={carpeta}
-                key={carpeta._id}
-                proceso={proceso}
-              />
-              <Link
-                href={`/Carpetas/${ carpeta.llaveProceso }`}
-                className={card.link}
-              >
-                <span className='material-symbols-outlined'>
+      <Fragment key={Carpeta._id}>
+        <DemandadoNameBadge
+          carpeta={Carpeta}
+          key={Carpeta._id}
+          proceso={proceso}
+        />
+        <Link
+          href={`/Carpetas/${ Carpeta._id }`}
+          className={card.link}
+        >
+          <span className='material-symbols-outlined'>
                 folder_shared
-                </span>
-              </Link>
-            </Fragment>
-          );
-        } 
-      )}
+          </span>
+        </Link>
+      </Fragment>
     </>
   );
 }

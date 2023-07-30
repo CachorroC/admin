@@ -15,23 +15,23 @@ export function AccordionRow(
   tarea: string;
   dueDate: string;
   isDone: boolean;
-} 
+}
 ) {
   const [
     isActive,
     setIsActive
   ] = useState(
-    false 
+    false
   );
 
   return (
     <div className={accordion.accordion}>
       <div className={accordion.item}>
         <button
-          className={accordion.title}
+          className={accordion.button}
           onClick={() => {
             return setIsActive(
-              !isActive 
+              !isActive
             );
           }}
         >

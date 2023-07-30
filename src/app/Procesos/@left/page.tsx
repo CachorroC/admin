@@ -91,25 +91,7 @@ export default async function PageProcesosLeft() {
 
   return (
     <>
-      <Suspense fallback={<span>suspense antes de carpetas</span>}>
-        { carpetas.map(
-          (
-            carpeta, index
-          ) => {
-            return (
-              <Fragment key={carpeta._id}>
-                <Suspense key={ carpeta.idProceso } fallback={ <ActuacionCardSkeleton /> }>
-                  <CardComponent key={carpeta.idProceso} carpeta={carpeta} index={index}/>
-                </Suspense>
-                <CarpetaCard carpeta={ carpeta } key={ carpeta._id }>
-                  <NombreComponent deudor={ carpeta.deudor} />
-                </CarpetaCard>
-              </Fragment>
 
-            );
-          }
-        )}
-      </Suspense>
       <Suspense fallback={<CardSearchList path={ '/Procesos' } fechas={ carpetas} />}>
         <LeftFechas path={ '/Procesos' } carpetas={ carpetas } />
       </Suspense>

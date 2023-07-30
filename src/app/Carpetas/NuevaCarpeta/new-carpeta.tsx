@@ -2,13 +2,15 @@
 
 import { DefaultValues, FormProvider,
          SubmitHandler,
-         useForm } from 'react-hook-form';
+         useForm,
+         useWatch } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
 import { InputSection } from '#@/components/form/InputSection';
 import { Demanda, Deudor, IntCarpeta } from '#@/lib/types/demandados';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { SelectSection } from '#@/components/form/SelectSection';
 import { ObligacionesArray } from './obligaciones-array';
+let renderCount = 0;
 
 const defaultDemanda: Demanda = {
   departamento: 'CUNDINAMARCA',
@@ -45,10 +47,7 @@ const defaultObligacion = [
 ];
 
 const defaultValues: DefaultValues<IntCarpeta> = {
-  bien                   : null,
   capitalAdeudado        : 1000000,
-  clase                  : null,
-  codeudor               : null,
   demanda                : defaultDemanda,
   deudor                 : defaultDeudor,
   entregaGarantiasAbogado: new Date(),
@@ -59,7 +58,7 @@ const defaultValues: DefaultValues<IntCarpeta> = {
   llaveProceso           : '12345678912345678912345',
   numero                 : 500,
   obligacion             : defaultObligacion,
-  reparto                : false,
+  reparto                : true,
   tipoBien               : 'VEHICULO',
   tipoProceso            : 'SINGULAR',
   vencimientoPagare      : new Date()
@@ -67,19 +66,20 @@ const defaultValues: DefaultValues<IntCarpeta> = {
 
 export const NuevoProceso = (
   {
-    uri, carpeta
+    uri
   }: {
-  uri: string; carpeta?: IntCarpeta
+  uri: string;
 }
 ) => {
   const methods = useForm<IntCarpeta>(
-    { defaultValues: carpeta ?? defaultValues }
+    { }
   );
 
   const {
     register,
     getValues,
     setValue,
+    watch,
     handleSubmit,
     formState: {
       errors,
@@ -125,8 +125,16 @@ export const NuevoProceso = (
     );
   };
 
+  const isReparto = watch(
+    'reparto'
+  );
+  renderCount++;
+
   return (
     <>
+      <span className='counter'>
+        Render Count: {renderCount}
+      </span>
       <FormProvider {...methods}>
         <div className={form.container}>
           <form
@@ -287,6 +295,12 @@ export const NuevoProceso = (
               rls={{ required: true }}
             />
             <ObligacionesArray />
+            <section className={ form.switchBox }>
+              <input type={'checkbox'}  className={form.primaryInput} {...register(
+                'reparto',
+              ) } />
+              <label htmlFor={'reparto'} className={form.label}>Ya se envió a reparto o 1099?</label>
+            </section>
             <InputSection name={ 'reparto' } title={ '¿ya entró a reparto? o se envió el 1099' } type={ 'checkbox' }  />
             <SelectSection name={ 'tipoBien' } title={ 'Bien' } options={ [
               'BANCOS',
@@ -334,6 +348,7 @@ export const NuevoProceso = (
           2
         )}
       </pre>
+
     </>
   );
 };
