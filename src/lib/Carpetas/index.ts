@@ -5,7 +5,6 @@ import { ObjectId } from 'mongodb';
 import { IntCarpeta,
          MonCarpeta,
          carpetaConvert } from '../types/demandados';
-import { fetchActuaciones, getActuaciones } from '../Actuaciones';
 
 export const carpetasCollection = async () => {
   const client = await clientPromise;
@@ -28,7 +27,6 @@ export const carpetasCollection = async () => {
   return carpetas;
 };
 
-
 export async function fetchCarpetas() {
   const collection = await carpetasCollection();
 
@@ -46,7 +44,7 @@ export async function fetchCarpetas() {
   return carpetas;
 }
 
-export async function getCarpetas () {
+export async function getCarpetas() {
   const carpetas = await fetchCarpetas();
 
   return carpetas;
@@ -61,7 +59,7 @@ export const getCarpetasByllaveProceso = async (
 ) => {
   const carpetas = await getCarpetas();
 
-  const Carpetas = carpetas.find(
+  const Carpeta = carpetas.find(
     (
       carpeta
     ) => {
@@ -69,7 +67,11 @@ export const getCarpetasByllaveProceso = async (
     }
   );
 
-  return Carpetas;
+  if ( !Carpeta ) {
+    return null;
+  }
+
+  return Carpeta;
 };
 
 export const getCarpetaById = async (
@@ -94,4 +96,28 @@ export const getCarpetaById = async (
   }
 
   return Carpeta;
+};
+
+
+export const getCarpetaByidProceso = async (
+  {
+    idProceso
+  }: { idProceso: number }
+) => {
+  const carpetas = await getCarpetas();
+
+  const carpeta = carpetas.find(
+    (
+      carpeta
+    ) => {
+      return carpeta.idProceso === idProceso;
+    }
+  );
+
+  if ( !carpeta ) {
+    return null;
+  }
+
+  return carpeta;
+
 };

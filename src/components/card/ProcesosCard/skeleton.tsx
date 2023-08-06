@@ -1,4 +1,3 @@
-
 import styles from './procesos.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
@@ -8,9 +7,11 @@ export const ProcesoCardSkeleton = () => {
       <div className={styles.card}>
         <h1
           className={`${ typography.titleLarge } ${ styles.title }`}
-        >Cargando</h1>
+        >
+          Cargando
+        </h1>
         <button
-          className={ styles.button }
+          className={styles.button}
           type='button'
         >
           <span
@@ -24,7 +25,6 @@ export const ProcesoCardSkeleton = () => {
         >
           cargando
         </p>
-
       </div>
     </div>
   );

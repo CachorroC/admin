@@ -20,30 +20,28 @@ export const InputSection = (
   }: {
   name: string;
   title: string;
-      type:
-      HTMLInputTypeAttribute;
-  rls?: RegisterOptions
-
-}
+  type: HTMLInputTypeAttribute;
+  rls?: RegisterOptions;
+} 
 ) => {
   const sectionRef = useRef(
-    new Map()
+    new Map() 
   );
   const rules = rls ?? { required: false };
 
   const {
-    register, control
+    register, control 
   }
     = useFormContext<IntCarpeta>();
 
   const {
-    field, fieldState
+    field, fieldState 
   } = useController(
     {
       name,
       control,
       rules
-    }
+    } 
   );
 
   const [
@@ -55,15 +53,15 @@ export const InputSection = (
     <section
       className={form.section}
       ref={(
-        node
+        node 
       ) => {
         if ( node ) {
           map.set(
-            name, node
+            name, node 
           );
         } else {
           map.delete(
-            name
+            name 
           );
         }
       }}

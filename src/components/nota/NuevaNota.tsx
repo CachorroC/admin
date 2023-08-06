@@ -19,7 +19,7 @@ export function NewNota(
   }: {
   llaveProceso: string;
   uri: string;
-}
+} 
 ) {
   const pathname = usePathname();
 
@@ -30,7 +30,7 @@ export function NewNota(
     setValue,
     handleSubmit,
     formState: {
-      errors
+      errors 
     }
   } = useForm<intNotaFormValues>(
     {
@@ -46,17 +46,17 @@ export function NewNota(
         ]
       },
       mode: 'onBlur'
-    }
+    } 
   );
 
   const {
-    fields, append, remove
+    fields, append, remove 
   }
     = useFieldArray(
       {
         name: 'tareas',
         control
-      }
+      } 
     );
 
   const onSubmit = async (
@@ -71,8 +71,8 @@ export function NewNota(
     };
     alert(
       JSON.stringify(
-        newData
-      )
+        newData 
+      ) 
     );
 
     const postNewNote = await fetch(
@@ -81,26 +81,26 @@ export function NewNota(
         method : 'POST',
         headers: { 'content-type': 'application/json' },
         body   : JSON.stringify(
-          newData
+          newData 
         )
       }
     )
           .then(
             (
-              fullfilled
+              fullfilled 
             ) => {
               alert(
-                fullfilled.status
+                fullfilled.status 
               );
 
               return fullfilled;
-            }
+            } 
           );
 
     const responsePostNewNote
       = await postNewNote.json();
     alert(
-      responsePostNewNote
+      responsePostNewNote 
     );
 
     return responsePostNewNote;
@@ -110,7 +110,7 @@ export function NewNota(
     isActive,
     setIsActive
   ] = useState(
-    false
+    false 
   );
 
   return (
@@ -118,7 +118,7 @@ export function NewNota(
       <form
         className={note.form}
         onSubmit={handleSubmit(
-          onSubmit
+          onSubmit 
         )}
       >
         <div className={note.section}>
@@ -134,7 +134,7 @@ export function NewNota(
             id='nota'
             className={note.textArea}
             {...register(
-              'nota', { required: true }
+              'nota', { required: true } 
             )}
           />
         </div>
@@ -143,7 +143,7 @@ export function NewNota(
           type='button'
           onClick={() => {
             return setIsActive(
-              !isActive
+              !isActive 
             );
           }}
         >
@@ -160,7 +160,7 @@ export function NewNota(
           <div className={accordion.content}>
             {fields.map(
               (
-                field, index
+                field, index 
               ) => {
                 const watchIsDone = watch(
                   `tareas.${ index }.isDone`
@@ -239,7 +239,7 @@ export function NewNota(
                         type='button'
                         onClick={() => {
                           return remove(
-                            index
+                            index 
                           );
                         }}
                       >
@@ -260,7 +260,7 @@ export function NewNota(
                               dueDate:
                             new Date()
                                   .toISOString()
-                            }
+                            } 
                           );
                         }}
                       >
@@ -271,7 +271,7 @@ export function NewNota(
                     </div>
                   </Fragment>
                 );
-              }
+              } 
             )}
           </div>
         )}

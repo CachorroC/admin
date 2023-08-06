@@ -11,16 +11,16 @@ export const notasCollection = async () => {
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico'
+      'no hay cliente mongólico' 
     );
   }
 
   const db = client.db(
-    'RyS'
+    'RyS' 
   );
 
   const notas = db.collection<intNota>(
-    'Notas'
+    'Notas' 
   );
 
   return notas;
@@ -31,12 +31,12 @@ const Transform = async () => {
 
   const notasRaw = await collection
         .find(
-          {}
+          {} 
         )
         .toArray();
 
   const notas = notaConvert.toMonNotas(
-    notasRaw
+    notasRaw 
   );
 
   return notas;
@@ -53,16 +53,16 @@ export async function getNotasByllaveProceso(
     llaveProceso
   }: {
   llaveProceso: string;
-}
+} 
 ) {
   const notas = await Transform();
 
   const Notas = notas.filter(
     (
-      nota
+      nota 
     ) => {
       return nota.llaveProceso === llaveProceso;
-    }
+    } 
   );
 
   return Notas;
@@ -71,17 +71,17 @@ export async function getNotasByllaveProceso(
 export const getNotaById = cache(
   async (
     {
-      _id
-    }: { _id: string }
+      _id 
+    }: { _id: string } 
   ) => {
     const notas = await Transform();
 
     const Notas = notas.filter(
       (
-        nota
+        nota 
       ) => {
         return nota._id === _id;
-      }
+      } 
     );
 
     return Notas;

@@ -3,7 +3,8 @@ import { useCallback,
          useRef,
          useEffect } from 'react';
 import { usePathname,
-         useRouter } from 'next/navigation';
+         useRouter,
+         useSearchParams } from 'next/navigation';
 import React from 'react';
 import { useModal } from '#@/app/modal-context';
 import modal from '#@/components/modal/modal.module.scss';
@@ -18,17 +19,17 @@ export default function Modal(
     children
   }: {
   children: React.ReactNode;
-} 
+}
 ) {
   const params = useParams();
   const pathname = usePathname();
 
   const overlay = useRef(
-    null 
+    null
   );
 
   const wrapper = useRef(
-    null 
+    null
   );
   const router = useRouter();
 
@@ -40,16 +41,16 @@ export default function Modal(
   const onEnter = useCallback(
     () => {
       setIsOpen(
-        false 
+        false
       );
       router.push(
- pathname as Route 
+ pathname as Route
       );
     }, [
       router,
       pathname,
       setIsOpen
-    ] 
+    ]
   );
 
   const onDismiss = useCallback(
@@ -57,19 +58,19 @@ export default function Modal(
       setIsOpen(
         isOpen
           ? false
-          : true 
+          : true
       );
       router.back();
     }, [
       router,
       setIsOpen,
       isOpen
-    ] 
+    ]
   );
 
   const onClick = useCallback(
     (
-      e: { target: undefined } 
+      e: { target: undefined }
     ) => {
       if (
         e.target === overlay.current
@@ -94,7 +95,7 @@ export default function Modal(
 
   const onKeyDown = useCallback(
     (
-      e: { key: string } 
+      e: { key: string }
     ) => {
       if ( e.key === 'Escape' ) {
         onDismiss();
@@ -109,37 +110,24 @@ export default function Modal(
       onEnter
     ]
   );
+  const searchParams = useSearchParams();
   useEffect(
     () => {
-      if ( params ) {
-        console.log(
-          params 
-        );
-        setIsOpen(
-          true 
-        );
-      }
-      document.addEventListener(
-        'keydown',
-        onKeyDown
+      setIsOpen(
+        true 
       );
 
-      return () => {
-        setIsOpen(
-          false 
-        );
 
-        return document.removeEventListener(
-          'keydown',
-          onKeyDown
-        );
-      };
+
+
     }, [
-      onKeyDown,
-      setIsOpen,
-      params
-    ] 
+      pathname,
+      searchParams,
+      setIsOpen
+    ]
   );
+
+
 
   if ( isOpen ) {
     return (

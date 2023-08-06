@@ -17,7 +17,7 @@ export default async function PageNotas() {
       <div className={layout.left}>
         {notas.map(
           (
-            NotaM, index, arr
+            NotaM, index, arr 
           ) => {
             const {
               _id,
@@ -36,7 +36,7 @@ export default async function PageNotas() {
                 arr={arr}
               />
             );
-          }
+          } 
         )}
       </div>
     </div>

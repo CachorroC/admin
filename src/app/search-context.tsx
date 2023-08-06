@@ -10,18 +10,18 @@ const SearchContext = createContext<
   | [string, Dispatch<SetStateAction<string>>]
   | null
 >(
-  null
+  null 
 );
 
 const NavContext = createContext<
   | [boolean, Dispatch<SetStateAction<boolean>>]
   | undefined
 >(
-  undefined
+  undefined 
 );
 
 export const LevelContext = createContext(
-  0
+  0 
 );
 
 export function SearchProvider(
@@ -29,17 +29,17 @@ export function SearchProvider(
     children
   }: {
   children: ReactNode;
-}
+} 
 ) {
   const level = useContext(
-    LevelContext
+    LevelContext 
   );
 
   const [
     search,
     setSearch
   ] = useState(
-    ''
+    '' 
   );
 
   const [
@@ -47,7 +47,7 @@ export function SearchProvider(
     setIsNavOpen
   ]
     = useState(
-      false
+      false 
     );
 
   return (
@@ -73,7 +73,7 @@ export function SearchProvider(
 
 export function useSearch() {
   const context = useContext(
-    SearchContext
+    SearchContext 
   );
 
   if ( context === null ) {
@@ -87,7 +87,7 @@ export function useSearch() {
 
 export function useNavigator() {
   const context = useContext(
-    NavContext
+    NavContext 
   );
 
   if ( context === undefined ) {

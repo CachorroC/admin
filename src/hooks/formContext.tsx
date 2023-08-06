@@ -14,7 +14,7 @@ const NuevaCarpetaContext = createContext<
     ]
   | null
 >(
-  null 
+  null
 );
 
 export const NuevaCarpetaProvider = (
@@ -22,7 +22,7 @@ export const NuevaCarpetaProvider = (
     children
   }: {
   children: ReactNode;
-} 
+}
 ) => {
   const [
     map,
@@ -45,12 +45,12 @@ export const NuevaCarpetaProvider = (
 
 export const useNuevaCarpetaContext = () => {
   const context = useContext(
-    NuevaCarpetaContext 
+    NuevaCarpetaContext
   );
 
   if ( context === null ) {
     throw new Error(
-      'useNavigator must be used within a NavProvider'
+      'useNuevaCarpetaontext must be used within a NuevaCarpetaProvider'
     );
   }
 

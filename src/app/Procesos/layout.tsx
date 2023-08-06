@@ -10,7 +10,7 @@ export default function LayoutProcesos(
   children: React.ReactNode;
   right: React.ReactNode;
   left: React.ReactNode;
-}
+} 
 ) {
   return (
     <div className={layout.body}>
@@ -18,9 +18,7 @@ export default function LayoutProcesos(
         {children}
       </div>
       <div className={layout.left}>{left}</div>
-      <div className={layout.right}>
-        {right}
-      </div>
+      <div className={layout.right}>{right}</div>
     </div>
   );
 }

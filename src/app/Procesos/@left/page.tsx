@@ -1,42 +1,10 @@
+import 'server-only';
 import { Fragment, Suspense } from 'react';
-import { Loader } from '#@/components/Loader';
-import { ListCardCarpetasNFechas } from '#@/components/card/CarpetasCard/list';
 import { getCarpetas } from '#@/lib/Carpetas';
-import { fetchActuaciones, fetchFecha, fetchFechas, getActuaciones } from '#@/lib/Actuaciones';
-import SearchOutputList from '#@/components/search/SearchProcesosOutput';
-import { MonCarpeta } from '#@/lib/types/demandados';
-import { CardSearchList } from '#@/components/search/CardSearchList';
 import CardSkeleton from '#@/components/card/card-skeleton';
-import { ActuacionCard } from '#@/components/card/ActuacionesCard';
-import { Card } from '#@/components/card/card';
-import { ActuacionCardSkeleton } from '#@/components/card/ActuacionesCard/skeleton';
-import { NombreComponent } from '#@/components/card/Nombre';
-import form from '#@/components/form/form.module.scss';
-import { CarpetaCard } from '#@/components/card/CarpetasCard';
+import { FechaActuacionComponent } from '#@/components/ultima-actuacion-component';
 
-async function CardComponent (
-  {
-    carpeta, index
-  }: { carpeta: MonCarpeta; index: number }
-) {
-  const actuaciones = await getActuaciones(
-    {
-      idProceso: carpeta.idProceso,
-      index    : index
-    }
-  );
-
-  if ( actuaciones.length === 0 ) {
-    return null;
-  }
-
-  return (
-
-    <ActuacionCard Actuacion={ actuaciones[ 0 ] } key={carpeta.idProceso}/>
-
-  );
-}
-
+/*
 async function LeftFechas (
   {
     path, carpetas
@@ -52,7 +20,7 @@ async function LeftFechas (
       fechas={fechas}
     />
   );
-}
+} */
 
 export default async function PageProcesosLeft() {
   const carpetasRaw = await getCarpetas();
@@ -70,12 +38,8 @@ export default async function PageProcesosLeft() {
       if ( !b.fecha || b.fecha === undefined ) {
         return -1;
       }
-
-      const x
-      =  a.fecha.toISOString();
-
-      const y
-      =  b.fecha.toISOString();
+      const x = a.fecha.toISOString();
+      const y = b.fecha.toISOString();
 
       if ( x < y ) {
         return 1;
@@ -91,11 +55,32 @@ export default async function PageProcesosLeft() {
 
   return (
     <>
-
-      <Suspense fallback={<CardSearchList path={ '/Procesos' } fechas={ carpetas} />}>
+      {/* <Suspense fallback={<CardSearchList path={ '/Procesos' } fechas={ carpetas} />}>
         <LeftFechas path={ '/Procesos' } carpetas={ carpetas } />
-      </Suspense>
+      </Suspense> */}
+      {carpetas.map(
+        (
+          carpeta, index
+        ) => {
+          return (
+            <div key={ carpeta._id }>
+              <h1>{carpeta.deudor.primerNombre + carpeta.deudor.primerApellido}</h1>
 
+              <Suspense
+                key={carpeta._id}
+                fallback={<CardSkeleton />}
+              >
+                <FechaActuacionComponent
+                  key={carpeta._id}
+                  carpeta={carpeta}
+                  index={index}
+                />
+              </Suspense>
+            </div>
+
+          );
+        }
+      )}
     </>
   );
 }

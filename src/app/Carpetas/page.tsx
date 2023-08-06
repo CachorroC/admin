@@ -12,38 +12,53 @@ import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { MonCarpeta } from '#@/lib/types/demandados';
 
-async function LeftCarpetas (
+async function LeftCarpetas(
   {
-    path, carpetas
-  }: { path: string; carpetas: MonCarpeta[] }
+    path,
+    carpetas,
+    isFallback
+  }: {
+  path: string;
+  carpetas: MonCarpeta[];
+  isFallback: boolean;
+} 
 ) {
   const fechas = await fetchFechas(
-    { carpetas: carpetas }
+    { carpetas: carpetas } 
   );
 
   return (
-    <SearchOutputList path={ '/Carpetas' } fechas={fechas } />
+    <SearchOutputList
+      path={'/Carpetas'}
+      fechas={fechas}
+      isFallback={isFallback}
+    />
   );
 }
 
-async function RightCarpetas (
+async function RightCarpetas(
   {
-    path, carpetas
-  }: { path: string; carpetas: MonCarpeta[] }
+    path,
+    carpetas
+  }: {
+  path: string;
+  carpetas: MonCarpeta[];
+} 
 ) {
   const fechas = await fetchFechas(
-    { carpetas: carpetas }
+    { carpetas: carpetas } 
   );
 
   return (
-    <CardSearchList path={ '/Carpetas' } fechas={ fechas } />
+    <CardSearchList
+      path={'/Carpetas'}
+      fechas={fechas}
+    />
   );
 }
 
 export default async function PageCarpetas() {
   const carpetas = await getCarpetas();
-
-
 
   return (
     <div className={layout.body}>
@@ -53,13 +68,35 @@ export default async function PageCarpetas() {
         </h1>
       </div>
       <div className={layout.left}>
-        <Suspense fallback={ <SearchOutputList path={ '/Carpetas' } fechas={ carpetas } /> }>
-          <LeftCarpetas path={ '/Carpetas' } carpetas={carpetas } />
+        <Suspense
+          fallback={
+            <SearchOutputList
+              path={'/Carpetas'}
+              fechas={carpetas}
+              isFallback={true}
+            />
+          }
+        >
+          <LeftCarpetas
+            path={'/Carpetas'}
+            carpetas={carpetas}
+            isFallback={false}
+          />
         </Suspense>
       </div>
       <div className={layout.right}>
-        <Suspense fallback={ <CardSearchList path={ '/Carpetas' } fechas={ carpetas } /> }>
-          <RightCarpetas path={ '/Carpetas' } carpetas={ carpetas } />
+        <Suspense
+          fallback={
+            <CardSearchList
+              path={'/Carpetas'}
+              fechas={carpetas}
+            />
+          }
+        >
+          <RightCarpetas
+            path={'/Carpetas'}
+            carpetas={carpetas}
+          />
         </Suspense>
       </div>
     </div>

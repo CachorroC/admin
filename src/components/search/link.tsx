@@ -21,7 +21,7 @@ export const LinkCard = (
   }: {
   path: string;
   carpeta: MonCarpeta;
-}
+} 
 ) => {
   const [
     isOpen,
@@ -35,10 +35,12 @@ export const LinkCard = (
     idProceso,
     _id
   } = carpeta;
+  const isCarpeta = path === '/Carpetas';
 
   const {
-    cedula, direccion, tel, email
-  } = deudor;
+    cedula, direccion, tel, email 
+  }
+    = deudor;
   const params = useParams();
   const pathname = usePathname();
 
@@ -48,7 +50,10 @@ export const LinkCard = (
   ]
     = useNavigator();
 
-  const href = (
+  const carpetaHref
+    = `${ path }/${ carpeta._id }` as Route;
+
+  const procesosHref = (
     carpeta.llaveProceso
       ? carpeta.idProceso
         ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
@@ -57,22 +62,23 @@ export const LinkCard = (
   ) as Route;
 
   const isActive
-    = pathname === href
+    = pathname === procesosHref
     || pathname
       === `${ path }/${ llaveProceso }/${ idProceso }`
     || pathname === `${ path }/${ llaveProceso }`;
   const router = useRouter();
 
   return (
-    <div
-      className={searchbar.container}
-      key={_id}
-    >
+    <div className={searchbar.container}>
       <Link
-        href={href}
+        href={
+          isCarpeta
+            ? carpetaHref
+            : procesosHref
+        }
         onClick={() => {
           return setIsNavOpen(
-            false
+            false 
           );
         }}
         className={
@@ -84,7 +90,7 @@ export const LinkCard = (
         <NombreComponent deudor={deudor} />
         <sub className={searchbar.date}>
           {fixFechas(
-            fecha
+            fecha 
           )}
         </sub>
       </Link>

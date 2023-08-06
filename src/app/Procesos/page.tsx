@@ -9,7 +9,7 @@ import { getNotas } from '#@/lib/notas';
 import form from '#@/components/form/form.module.scss';
 import { Accordion } from '#@/components/Accordion';
 
-export default async function PageProcesos () {
+export default async function PageProcesos() {
   const notas = await getNotas();
 
   return (
@@ -23,11 +23,12 @@ export default async function PageProcesos () {
         uri={`${ getBaseUrl() }`}
       />
       <Accordion>
-        <Suspense fallback={<NotasListSkeleton />}>
+        <Suspense
+          fallback={<NotasListSkeleton />}
+        >
           <NotasList notas={notas} />
         </Suspense>
       </Accordion>
-
     </>
   );
 }

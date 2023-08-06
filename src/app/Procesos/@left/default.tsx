@@ -8,13 +8,17 @@ import type { Route } from 'next';
 import { CardSearchList } from '#@/components/search/CardSearchList';
 import { MonCarpeta } from '#@/lib/types/demandados';
 
-export async function Fechitas (
+export async function Fechitas(
   {
-    path, carpetas
-  }: { path: string;  carpetas: MonCarpeta[]}
+    path,
+    carpetas
+  }: {
+  path: string;
+  carpetas: MonCarpeta[];
+} 
 ) {
   const fechas = await fetchFechas(
-    { carpetas: carpetas }
+    { carpetas: carpetas } 
   );
 
   return (
@@ -28,13 +32,14 @@ export async function Fechitas (
 export default async function DefaultProcesosLeft() {
   const carpetas = await getCarpetas();
 
-
-
   return (
     <Suspense
       fallback={<SearchOutputListSkeleton />}
     >
-      <Fechitas path={ '/Procesos' } carpetas={ carpetas} />
+      <Fechitas
+        path={'/Procesos'}
+        carpetas={carpetas}
+      />
     </Suspense>
   );
 }

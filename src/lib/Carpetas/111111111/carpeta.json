@@ -1,1 +1,46 @@
-{"capitalAdeudado":1000000,"demanda":{"departamento":"BOLIVAR","juzgado":{"origen":{"id":0,"tipo":"Civil Municipal","url":"https://app.rsasesorjuridico.com"}},"municipio":"Bogota","radicado":"000 - 00000"},"deudor":{"cedula":111111111,"primerApellido":"Perez","primerNombre":"Pepito","segundoNombre":"Joaquin","segundoApellido":"Jimenez","email":"juankpato87@gmail.com","direccion":"carrera 63 # 22 - 31","tel":{"fijo":6051567,"celular":3506144932}},"entregaGarantiasAbogado":"2023-07-29T17:09:30.617Z","etapaProcesal":"ADMISION DE LA DEMANDA","fechaIngreso":"2023-07-29T17:09:30.617Z","grupo":"Bancolombia","idProceso":0,"llaveProceso":"12345678912345678912345","numero":500,"obligacion":[{"texto":100099987,"tipo":"cuenta bancaria"}],"reparto":true,"tipoBien":"VEHICULO","tipoProceso":"SINGULAR","vencimientoPagare":"2023-07-29T17:09:30.617Z","clase":"EmbargoInmueble"}
+{
+  "capitalAdeudado": 1000000,
+  "demanda": {
+    "departamento": "BOLIVAR",
+    "juzgado": {
+      "origen": {
+        "id": 0,
+        "tipo": "Civil Municipal",
+        "url": "https://app.rsasesorjuridico.com"
+      }
+    },
+    "municipio": "Bogota",
+    "radicado": "000 - 00000"
+  },
+  "deudor": {
+    "cedula": 111111111,
+    "primerApellido": "Perez",
+    "primerNombre": "Pepito",
+    "segundoNombre": "Joaquin",
+    "segundoApellido": "Jimenez",
+    "email": "juankpato87@gmail.com",
+    "direccion": "carrera 63 # 22 - 31",
+    "tel": {
+      "fijo": 6051567,
+      "celular": 3506144932
+    }
+  },
+  "entregaGarantiasAbogado": "2023-07-29T17:09:30.617Z",
+  "etapaProcesal": "ADMISION DE LA DEMANDA",
+  "fechaIngreso": "2023-07-29T17:09:30.617Z",
+  "grupo": "Bancolombia",
+  "idProceso": 0,
+  "llaveProceso": "12345678912345678912345",
+  "numero": 500,
+  "obligacion": [
+    {
+      "texto": 100099987,
+      "tipo": "cuenta bancaria"
+    }
+  ],
+  "reparto": true,
+  "tipoBien": "VEHICULO",
+  "tipoProceso": "SINGULAR",
+  "vencimientoPagare": "2023-07-29T17:09:30.617Z",
+  "clase": "EmbargoInmueble"
+}

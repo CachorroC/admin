@@ -14,8 +14,8 @@ import styles from './carpetas.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getActuaciones } from '#@/lib/Actuaciones';
 import { Loader } from '#@/components/Loader';
-import { Card } from '#@/components/card/card-with-carpeta';
-import { getProceso, } from '#@/lib/RamaJudicial';
+import { Card } from '#@/components/card/card';
+import { getProceso } from '#@/lib/RamaJudicial';
 import { ProcesoCard } from '../ProcesosCard';
 import { NombreComponent } from '../Nombre';
 
@@ -26,13 +26,13 @@ const ProcesosList = async (
   }: {
   llaveProceso: string;
   index: number;
-}
+} 
 ) => {
   const procesos = await getProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
-    }
+    } 
   );
 
   /*
@@ -59,7 +59,7 @@ const ProcesosList = async (
     <Fragment key={llaveProceso}>
       {procesos.map(
         (
-          proceso
+          proceso 
         ) => {
           return (
             <ProcesoCard
@@ -67,7 +67,7 @@ const ProcesosList = async (
               key={proceso.idProceso}
             />
           );
-        }
+        } 
       )}
     </Fragment>
   );
@@ -80,13 +80,13 @@ const Fecha = async (
   }: {
   idProceso: number;
   index: number;
-}
+} 
 ) => {
   const acts = await getActuaciones(
     {
       idProceso: idProceso,
       index    : index
-    }
+    } 
   );
 
   if ( acts.length === 0 ) {
@@ -109,7 +109,7 @@ export async function ListCardCarpetasNFechas() {
     ...carpetas
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -137,7 +137,7 @@ export async function ListCardCarpetasNFechas() {
     <>
       {sortedCarpetas.map(
         (
-          carpeta, index, arr
+          carpeta, index, arr 
         ) => {
           return (
             <Fragment key={carpeta._id}>
@@ -151,19 +151,11 @@ export async function ListCardCarpetasNFechas() {
                   key={carpeta._id}
                 />
                 <Suspense fallback={<Loader />}>
-                  {carpeta.idProceso.map(
-                    (
-                      idp
-                    ) => {
-                      return (
-                        <Fecha
-                          key={idp}
-                          idProceso={idp}
-                          index={index}
-                        />
-                      );
-                    }
-                  )}
+                  <Fecha
+                    key={carpeta.idProceso}
+                    idProceso={carpeta.idProceso}
+                    index={index}
+                  />
                 </Suspense>
               </Card>
               <Suspense fallback={<Loader />}>

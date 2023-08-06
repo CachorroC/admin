@@ -8,20 +8,18 @@ import card from '#@/components/card/card.module.scss';
 import { NombreComponent } from '#@/components/card/Nombre';
 import { notFound } from 'next/navigation';
 
-
 export default async function DefaultProcesosllaveProceso(
   {
     params: {
       llaveProceso 
-    } 
+    }
   }: {
   params: { llaveProceso: string };
 } 
 ) {
-  const Carpeta
-    = await getCarpetasByllaveProceso(
-      { llaveProceso: llaveProceso } 
-    );
+  const Carpeta = await getCarpetasByllaveProceso(
+    { llaveProceso: llaveProceso }
+  );
 
   if ( !Carpeta ) {
     notFound();
@@ -29,23 +27,20 @@ export default async function DefaultProcesosllaveProceso(
 
   return (
     <>
-      <NombreComponent deudor={ Carpeta.deudor } />
+      <NombreComponent deudor={Carpeta.deudor} />
       <Link
         href={`/Carpetas/${ llaveProceso }`}
         className={card.link}
       >
         <span className='material-symbols-outlined'>
-                folder_shared
+          folder_shared
         </span>
       </Link>
       <CarpetaCard carpeta={Carpeta}>
         <span className='material-symbols-outlined'>
-                star
+          star
         </span>
       </CarpetaCard>
     </>
   );
-
-
-
 }

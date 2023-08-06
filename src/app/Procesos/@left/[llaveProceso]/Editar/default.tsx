@@ -12,13 +12,13 @@ export default async function Default(
   }: {
   params: { llaveProceso: string };
   searchParams: { _id: string };
-}
+} 
 ) {
   const llaveProceso = params.llaveProceso;
   const _id = searchParams._id;
 
   const nota = await getNotaById(
-    { _id: _id }
+    { _id: _id } 
   );
 
   return (
@@ -26,7 +26,7 @@ export default async function Default(
       <div className={note.note}>
         {nota.map(
           (
-            ntext, i
+            ntext, i 
           ) => {
             return (
               <Fragment key={ntext._id}>
@@ -42,7 +42,7 @@ export default async function Default(
                 />
               </Fragment>
             );
-          }
+          } 
         )}
       </div>
     </div>

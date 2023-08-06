@@ -1,0 +1,121 @@
+{
+  "_id": "64ac755f1bba70937441daed",
+  "Numero": 489,
+  "Demanda": {
+    "Departamento": "CUNDINAMARCA",
+    "Municipio": "BOGOTA",
+    "VencimientoPagare": "2021-07-05T00:00:00.000Z",
+    "EntregadeGarantiasAbogado": "2018-09-03T00:00:00.000Z",
+    "Radicado": "2018 - 00785",
+    "CapitalAdeudado": "$ 18.100.699",
+    "Juzgado": {
+      "Origen": {
+        "id": "8 PCYCM",
+        "url": "https://www.ramajudicial.gov.co/web/juzgado-08-de-pequenas-causas-laborales-de-bogota"
+      },
+      "Ejecucion": {
+        "id": "5 CME",
+        "url": "https://www.ramajudicial.gov.co/web/juzgado-05-de-ejecucion-civil-municipal-de-bogota"
+      }
+    },
+    "Obligacion": [
+      "",
+      "AUDIOPRESTAMO",
+      "0377816345049476 // 4513070259455355 // 5303720114305077"
+    ],
+    "Proceso": { "Tipo": "PRENDARIO" },
+    "Ubicacion": {
+      "Juzgado": "JUZGADOS EJECUCION"
+    }
+  },
+  "Deudor": {
+    "Id": 51987570,
+    "Email": "sandrabogota2007@yahoo.com",
+    "PrimerNombre": "Sandra",
+    "SegundoNombre": "Patricia",
+    "PrimerApellido": "Pacheco",
+    "SegundoApellido": "Ramirez",
+    "Direccion": "CALLE 163 B No 50-80  INTERIOR 10 APT 231 CONJUNTO LA ESTANCIA III",
+    "Tel": { "Fijo": 8121692, "Celular": "" }
+  },
+  "EtapaProcesal": {
+    "Etapa": "EMBARGO DE REMANENTES JUZGADO 27 PROCESO 2019 - 00251",
+    "Fecha": {
+      "MandamientodePago": "2018-10-04",
+      "PresentacionDemanda": "2018-09-20"
+    }
+  },
+  "MedidasCautelares": {
+    "MedidaSolicitada": "EMBARGO DE INMUEBLE",
+    "Bienes": "APTO 231",
+    "FechaOrdena": "2018-11-20",
+    "Oficio": {
+      "Numero": 2288,
+      "Fecha": "2018-11-20"
+    },
+    "PlacaoNumeroMatricula": "50N - 20247423",
+    "RespuestaEmbargo": false,
+    "Extra": "",
+    "DescripcionMedida": "",
+    "Fecha": {
+      "Captura": "",
+      "Secuestro": "",
+      "DecretoSecuestrooCaptura": "",
+      "SolicitudCapturaoSecuestro": ""
+    }
+  },
+  "Notificaciones": {
+    "291": {
+      "AportaNotificacion": "2018-11-02",
+      "Recibo": "2018-11-02",
+      "Resultado": true
+    },
+    "292": { "Resultado": true },
+    "Certimail": true,
+    "Fisico": false,
+    "Tipo": "CORREO"
+  },
+  "idProceso": 87350810,
+  "llaveProceso": "11001418900820180078500",
+  "ultimaActuacion": {
+    "idRegActuacion": 1808835460,
+    "llaveProceso": "11001418900820180078500",
+    "consActuacion": 26,
+    "fechaActuacion": "2023-07-13T00:00:00",
+    "actuacion": "Constancia secretarial",
+    "anotacion": "DESPACHO COMISORIO FIRMADO, PROCESO PASA A BARANDA. ISABEL BOTERO ",
+    "fechaInicial": null,
+    "fechaFinal": null,
+    "fechaRegistro": "2023-07-13T00:00:00",
+    "codRegla": "00                              ",
+    "conDocumentos": false,
+    "cant": 26
+  },
+  "Codeudor": {
+    "Id": "",
+    "Nombre": "",
+    "Tel": { "Fijo": "", "Celular": "" }
+  },
+  "Avaluo": {
+    "Adjudicacion": { "Fecha": "" },
+    "Remate": { "Fecha": "" },
+    "Valor": ""
+  },
+  "SuspencionProceso": {
+    "TerminoSuspencion": "",
+    "Fecha": ""
+  },
+  "Liquidacion": {
+    "Costas": {
+      "FechaAprobacion": "",
+      "Valor": ""
+    },
+    "Fecha": {
+      "Aprobacion": "",
+      "Presentacion": "",
+      "Solicitud": "",
+      "Sentencia": ""
+    },
+    "ValorCredito": ""
+  }
+}

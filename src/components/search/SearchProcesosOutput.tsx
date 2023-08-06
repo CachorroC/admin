@@ -9,16 +9,19 @@ import { usePathname } from 'next/navigation';
 import { Name } from '../Headings/clientSideName';
 import type { Route } from 'next';
 import { useRef } from 'react';
-import { MonCarpeta, NombreCompleto } from '#@/lib/types/demandados';
+import { MonCarpeta,
+         NombreCompleto } from '#@/lib/types/demandados';
 
 export default function SearchOutputList(
   {
     path,
-    fechas
+    fechas,
+    isFallback
   }: {
   path: string;
   fechas: MonCarpeta[];
-}
+  isFallback: boolean;
+} 
 ) {
   const pathname = usePathname();
 
@@ -31,23 +34,23 @@ export default function SearchOutputList(
     any,
     any
   > | null>(
-    null
+    null 
   );
 
   function scrollToId(
-    _id: string
+    _id: string 
   ) {
     const map = getMap();
 
     const node = map.get(
-      _id
+      _id 
     );
     node.scrollIntoView(
       {
         behavior: 'smooth',
         block   : 'nearest',
         inline  : 'center'
-      }
+      } 
     );
     node.focus();
   }
@@ -62,7 +65,7 @@ export default function SearchOutputList(
 
   const clickHandler = () => {
     setIsNavOpen(
-      false
+      false 
     );
   };
 
@@ -79,7 +82,7 @@ export default function SearchOutputList(
     ...fechas
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -88,12 +91,8 @@ export default function SearchOutputList(
       if ( !b.fecha || b.fecha === undefined ) {
         return -1;
       }
-
-      const x
-      =  a.fecha.toISOString();
-
-      const y
-      =  b.fecha.toISOString();
+      const x = a.fecha.toISOString();
+      const y = b.fecha.toISOString();
 
       if ( x < y ) {
         return 1;
@@ -104,11 +103,11 @@ export default function SearchOutputList(
       }
 
       return 0;
-    }
+    } 
   );
   idk.forEach(
     (
-      proceso, index, array
+      proceso, index, array 
     ) => {
       const {
         idProceso,
@@ -118,19 +117,8 @@ export default function SearchOutputList(
         _id
       } = proceso;
 
-      const {
-        cedula,
-        tel,
-        email,
-        direccion,
-        primerNombre,
-        segundoNombre,
-        primerApellido,
-        segundoApellido
-      } = deudor;
-
       const name = new NombreCompleto(
-        deudor
+        deudor 
       );
 
       if (
@@ -148,61 +136,17 @@ export default function SearchOutputList(
           key={_id}
         />
       );
-    }
+    } 
   );
 
   return (
     <>
-      <div className={searchbar.container}>
-        <div
-          className={
-            isActive
-              ? searchbar.isActive
-              : searchbar.notActive
-          }
-        >
-          <Name helper={path} />
-          <div className={searchbar.section}>
-            <sub className={searchbar.date}>
-              {fixFechas(
-                new Date()
-                      .toISOString()
-              )}
-            </sub>
-          </div>
-          <div className={searchbar.links}>
-            <Link
-              className={
-                isActive
-                  ? searchbar.linkIsActive
-                  : searchbar.link
-              }
-              onClick={clickHandler}
-              href={href}
-            >
-              <span
-                className={`${ searchbar.icon } material-symbols-outlined`}
-              >
-                file_open
-              </span>
-            </Link>
-            <Link
-              className={
-                isActive
-                  ? searchbar.linkIsActive
-                  : searchbar.link
-              }
-              href='/Notas/NuevaNota'
-            >
-              <span
-                className={`material-symbols-outlined ${ searchbar.icon }`}
-              >
-                add
-              </span>
-            </Link>
-          </div>
-        </div>
-      </div>
+      <p>
+        {isFallback
+          ? 'es fallback'
+          : 'no es fallback'}
+      </p>
+
       {rows}
     </>
   );

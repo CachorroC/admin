@@ -9,11 +9,11 @@ export function sleep(
         JSON.stringify(
           new Date()
                 .getTime() 
-        ) 
+        )
       );
 
       return setTimeout(
-        resolve, ms
+        resolve, ms 
       );
     } 
   );
@@ -21,7 +21,7 @@ export function sleep(
 
 export function fixMoney(
   {
-    valor 
+    valor
   }: {
   valor: number;
 } 
@@ -39,7 +39,7 @@ export function fixMoney(
 
 export function unfixFechas(
   {
-    fecha 
+    fecha
   }: {
   fecha: string;
 } 
@@ -54,7 +54,7 @@ export function unfixFechas(
 }
 
 export function fixFechas(
-  fecha: Date | string | null | undefined 
+  fecha: Date | string | null | undefined
 ): string {
   if ( fecha === null ) {
     return 'no hay fechas: null';
@@ -94,7 +94,7 @@ function trimmer(
 ) {
   const locateDemandado
     = sujetosProcesales.search(
-      /(demandado|causante)+:(?:\s*?|'\s*?')/gi 
+      /(demandado|causante)+:(?:\s*?|'\s*?')/gi
     );
 
   const extractDemandado = sujetosProcesales
@@ -154,7 +154,7 @@ function trimmer(
             return str.toUpperCase();
           }
         );
-      } 
+      }
     );
 
   const unifyDemandado
@@ -166,7 +166,7 @@ function trimmer(
 }
 
 export const fixDemandado = (
-  sujetosProcesales: string 
+  sujetosProcesales: string
 ): string => {
   const mySubString = 'Demandado';
 
@@ -187,7 +187,7 @@ export const fixDemandado = (
 
 export const toNameString = (
   {
-    nameRaw 
+    nameRaw
   }: {
   nameRaw: string;
 } 

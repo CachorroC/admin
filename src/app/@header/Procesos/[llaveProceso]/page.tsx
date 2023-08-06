@@ -7,7 +7,7 @@ export default async function Page(
     params
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   const proceso = await getCarpetasByllaveProceso(
     { llaveProceso: params.llaveProceso }
@@ -18,6 +18,6 @@ export default async function Page(
   }
 
   return (
-    <NombreComponent deudor={ proceso.deudor } />
+    <NombreComponent deudor={proceso.deudor} />
   );
 }

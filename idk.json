@@ -1,0 +1,27 @@
+[
+        {
+                "id": 37,
+                "tipo": "Civil del Circuito",
+                "url": "https://www.ramajudicial.gov.co/web/juzgado-37-civil-del-circuito-de-bogota"
+        },
+        {
+                "id": 3,
+                "tipo": "Ejecucion Civil del Circuito",
+                "url": "https://www.ramajudicial.gov.co/web/juzgado-03-de-ejecucion-civil-del-circuito-de-bogota"
+        },
+        {
+                "id": 6,
+                "tipo": "Civil Municipal",
+                "url": "https://www.ramajudicial.gov.co/web/juzgado-006-civil-municipal-de-bogota"
+        },
+        {
+          "id": 17,
+          "tipo": "Civil Municipal de Ejecucion",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-17-de-ejecucion-civil-municipal-de-bogota"
+        },
+        {
+          "id": 14,
+          "tipo": " Pequeñas Causas y Competencias Multiples",
+          "url": "https://www.ramajudicial.gov.co/web/juzgado-014-de-pequenas-causas-y-competencia-multiple-de-bogota"
+        }
+]

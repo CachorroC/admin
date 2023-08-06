@@ -1,4 +1,4 @@
-import { Card } from '#@/components/card/card-with-carpeta';
+import { Card } from '#@/components/card/card';
 import Modal from '#@/components/modal';
 import ModalDialog from '#@/hooks/modal-state';
 import { getCarpetaById } from '#@/lib/Carpetas';
@@ -13,6 +13,8 @@ import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import { ButtonsNuevaCarpeta } from '../NuevaCarpeta/new-carpeta-buttons';
 import { NuevoProceso } from '../NuevaCarpeta/new-carpeta';
 import { EditProceso } from '../NuevaCarpeta/edit-carpeta';
+import { FechaActuacionComponent } from '#@/components/ultima-actuacion-component';
+import CardSkeleton from '#@/components/card/card-skeleton';
 
 export default async function CarpetasPageId(
   {
@@ -24,6 +26,10 @@ export default async function CarpetasPageId(
   const carpeta = await getCarpetaById(
     { _id: params._id }
   );
+
+  if ( !carpeta ){
+    return null;
+  }
 
   return (
     <div className={layout.body}>
@@ -70,19 +76,20 @@ export default async function CarpetasPageId(
               </Link>
             </CarpetaCard>
             <EditProceso
-              key={ carpeta._id }
+              key={carpeta._id}
               carpeta={carpeta}
               uri={`${ getBaseUrl() }`}
-
             />
-
           </Fragment>
         )}
       </div>
       <div className={layout.right}>
-        <ModalDialog>
-          <ButtonsNuevaCarpeta />
-        </ModalDialog>
+
+        <Suspense fallback={<CardSkeleton />}>
+          <FechaActuacionComponent carpeta={ carpeta } index={ 0 } key={carpeta._id}/>
+        </Suspense>
+        <ButtonsNuevaCarpeta />
+
       </div>
     </div>
   );

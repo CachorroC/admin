@@ -25,6 +25,7 @@ export default async function Page() {
           <SearchOutputList
             path='/Procesos'
             fechas={fechas}
+            isFallback={false}
           />
         </Suspense>
       </Drawer>

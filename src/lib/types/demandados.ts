@@ -7,96 +7,130 @@
 import { WithId } from 'mongodb';
 import { intActuacion } from './procesos';
 
-export interface IntCarpeta {
-  bien?: Bien | null;
+export interface IntCarpeta
+{
   capitalAdeudado: number;
-  clase: string |null;
-  codeudor?: Codeudor | null;
-  demanda: Demanda;
-  deudor: Deudor;
-  entregaGarantiasAbogado: Date;
-  etapaProcesal: EtapaProcesal;
-  fechaIngreso: Date;
-  grupo: Grupo;
-  idProceso: number;
-  llaveProceso: string;
-  numero: number;
-  obligacion:  Array<ObligacionClass | number | string>;
-  reparto: boolean;
-  tipoBien?: TipoBien | null;
-  tipoProceso: TipoProceso;
-  vencimientoPagare: Date;
-    fecha?: Date ;
+    demanda:         Demanda;
+    deudor:          Deudor;
+    grupo:           Grupo;
+    id:              number | null;
+    idProceso?:       number;
+    llaveProceso?:   string;
+    numero:          number;
+  tipoProceso?: TipoProceso;
+  fecha?: Date | string
 }
 
-export type TipoBien = 'BANCOS' | 'INMUEBLE' | 'VEHICULO' | 'SALARIO'|'ESTABLECIMIENTO'
+export type TipoBien =
+  | 'BANCOS'
+  | 'INMUEBLE'
+  | 'VEHICULO'
+  | 'SALARIO'
+  | 'ESTABLECIMIENTO';
 
 export interface Bien {
-    id?:          string;
-    tipo:         TipoBien;
-    descripcion?: string;
+  id?: string;
+  tipo: TipoBien;
+  descripcion?: string;
 }
 
 export interface Codeudor {
-    cedula:     number | string;
-    direccion?: string;
-    nombre:     string;
-    tel?:       number | string;
+  cedula: number | string;
+  direccion?: string;
+  nombre: string;
+  tel?: number | string;
 }
 
-export interface Demanda {
-    departamento: string;
-    juzgado:      Juzgado;
-    municipio:    string;
-    radicado?:    string;
-    ubicacion?:   string;
+export interface Demanda
+{
+   ciudad?:                 string;
+    departamento?:           Departamento;
+    entregaGarantiasAbogado: Date | null;
+    etapaProcesal?:          string;
+    juzgado:                 Juzgado[];
+    obligacion?:             Array<number | null | string>;
+    radicado?:               number | string;
+    vencimientoPagare:       Date | null;
 }
 
 
+export type Departamento = 'CUNDINAMARCA' | 'BOYACÁ' | 'TOLIMA';
 
 export interface Juzgado {
-    origen:     Despacho;
-    ejecucion?: Despacho;
-}
-
-export interface Despacho {
     id:   number;
-    tipo: Tipo;
-    url:  string;
+    tipo: string;
+    url?: string;
 }
-
-export type Tipo = 'Civil Municipal de Ejecucion' | 'Pequeñas Causas y Competencias Multiples' | 'Civil Municipal' | 'Promiscuo Municipal';
 
 export interface Deudor {
-    cedula:          number;
+    cedula:           number ;
     direccion?:       string;
     primerApellido:   string;
     primerNombre:     string;
-    tel?:             Tel;
-    email?:           string;
     segundoApellido?: string;
     segundoNombre?:   string;
+    tel:              Tel;
+    email?:           number | string;
 }
 
 export interface Tel {
-    fijo?:    number;
-    celular?: number;
+    celular: number | null;
+    fijo:    number | null;
 }
 
-export type EtapaProcesal = 'EJECUCION' | 'CONTESTACION DEMANDA' | 'EMPLAZAMIENTO' | 'ADMISION DE LA DEMANDA';
+export type TipoProceso = 'PRENDARIO' | 'SINGULAR' | 'HIPOTECARIO'
 
-export type Grupo = 'Bancolombia' | 'Reintegra' | 'Lios Juridicos'| 'terminados';
+export type Tipo =
+  | 'Civil Municipal de Ejecucion'
+  | 'Pequeñas Causas y Competencias Multiples'
+  | 'Civil Municipal'
+  | 'Promiscuo Municipal'
+  | 'unknown'
+  | 'Civil Municipal de Ejecucion'
+  | 'Civil Municipal'
+  | ' CCTO EJ'
+  | ' CIVIL CTO'
+  | ' PM'
+  | ' C CTO E'
+  | 'Pequeñas Causas y Competencias Multiples'
+  | 'Civil Municipal/ Civil Municipal'
+  | ' CCTOEJ'
+  | 'Civil Municipal // Civil Municipal'
+  | ' CCTO/ CCTOE'
+  | 'Civil Municipal //  PCCivil Municipal'
+  | 'Civil Municipal DESG / Civil Municipal'
+  | '  Pequeñas Causas y Competencias Multiples'
+  | 'SINGULAR'
+  | ' Pequeñas Causas y Competencias Multiples'
+  | ' Pequeñas Causas y Competencias Multiples/ Civil Municipal'
+  | 'Civil Municipal / PCC'
+  | ' CCTO'
+  | 'Civil Municipal/Civil Municipal'
+  | ' CC'
+  | 'Civil Municipal/Civil Municipal de Ejecucion'
+  | ' Civil Municipal';
+
+export type EtapaProcesal =
+  | 'EJECUCION'
+  | 'CONTESTACION DEMANDA'
+  | 'EMPLAZAMIENTO'
+  | 'ADMISION DE LA DEMANDA';
+
+export type Grupo =
+  | 'Bancolombia'
+  | 'Reintegra'
+  | 'Lios Juridicos'
+  | 'terminados';
 
 export interface ObligacionClass {
-    texto: number | string;
-    tipo:  number | string;
+  texto: number | string;
+  tipo: number | string;
 }
-
-export type TipoProceso = 'SINGULAR' | 'HIPOTECARIO' | 'PRENDARIO' ;
 
 export interface MonCarpeta extends IntCarpeta {
   _id: string;
   nombre: string;
+  fecha?: Date
 
 }
 
@@ -118,17 +152,6 @@ export class carpetaConvert {
     );
   }
 
-  public static toIntCarpeta(
-    carpeta: MonCarpeta
-  ): IntCarpeta {
-    const {
-      nombre, ...newCarpeta
-    }
-      = carpeta;
-
-    return newCarpeta;
-  }
-
   public static intCarpetaToJson(
     value: IntCarpeta
   ): string {
@@ -139,13 +162,15 @@ export class carpetaConvert {
   public static toMonCarpeta(
     carpeta: WithId<IntCarpeta>
   ): MonCarpeta {
-
-
-
     const fixedCarpeta: MonCarpeta = {
       ...carpeta,
-      _id   : carpeta._id.toString(),
-      nombre: `${ carpeta.deudor.primerNombre } ${ carpeta.deudor.primerApellido }`
+      _id  : carpeta._id.toString(),
+      fecha: new Date(
+        carpeta.fecha ?? '1990'
+      ),
+      get nombre(){
+        return this.deudor.primerNombre + ' ' + this.deudor.primerApellido;
+      }
     };
 
     return fixedCarpeta;
@@ -230,21 +255,7 @@ export class carpetaConvert {
     );
   }
 
-  public static toEjecucion(
-    json: string
-  ): Despacho {
-    return JSON.parse(
-      json
-    );
-  }
 
-  public static ejecucionToJson(
-    value: Despacho
-  ): string {
-    return JSON.stringify(
-      value
-    );
-  }
 }
 
 export class NombreCompleto {
@@ -265,7 +276,7 @@ export class NombreCompleto {
     this.Nombre = segundoApellido
       ? segundoNombre
         ? `${ primerNombre } ${ segundoNombre } ${ primerApellido } ${ segundoApellido }`
-        : `${ primerNombre } ${ primerApellido } ${ segundoApellido  }`
+        : `${ primerNombre } ${ primerApellido } ${ segundoApellido }`
       : `${ primerNombre } ${ primerApellido }`;
   }
 }

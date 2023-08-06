@@ -19,9 +19,11 @@ export const DemandaContainer = (
 }
 ) => {
   const {
-    departamento, municipio, radicado, juzgado
-  }
-    = demanda;
+    departamento,
+    ciudad,
+    radicado,
+    juzgado
+  } = demanda;
 
   return (
     <div className={styles.section}>
@@ -30,19 +32,51 @@ export const DemandaContainer = (
       </h1>
       <h2
         className={typography.titleMedium}
-      >{ `${ departamento }: ${ municipio }` }</h2>
-      { juzgado.ejecucion && (
-        <Link href={ juzgado.ejecucion.url as Route }>
-          <span className='material-symbols-outlined'>enable</span>
-          <sub className={typography.displaySmall}>{juzgado.ejecucion.id}</sub>
-          <p className={typography.labelSmall}>{juzgado.ejecucion.tipo}</p>
-        </Link>
-      ) }
-      <Link href={ juzgado.origen.url as Route }>
-        <span className='material-symbols-outlined'>trip_origin</span>
-        <sub className={typography.displaySmall}>{juzgado.origen.id}</sub>
-        <p className={typography.labelSmall}>{juzgado.origen.tipo}</p>
-      </Link>
+      >{ `${ departamento }: ${ ciudad }` }</h2>
+      { juzgado.map(
+        (
+          despacho, index
+        ) => {
+          switch ( index ) {
+            case 0:
+              return (
+
+                <Link
+                  href={juzgado[ 0 ].url as Route}
+                >
+                  <span className='material-symbols-outlined'>
+            enable
+                  </span>
+                  <sub
+                    className={typography.displaySmall}
+                  >
+                    {juzgado[ 0 ].id}
+                  </sub>
+                  <p className={typography.labelSmall}>
+                    {`Juzgado de origen: ${ juzgado[ 0 ].tipo }`}
+                  </p>
+                </Link>
+
+              );
+            case 1:
+              return (  <Link href={juzgado[ 1 ].url as Route}>
+                <span className='material-symbols-outlined'>
+          trip_origin
+                </span>
+                <sub className={typography.displaySmall}>
+                  {juzgado[ 1 ].id}
+                </sub>
+                <p className={typography.labelSmall}>
+                  {`Juzgado de origen: ${ juzgado[ 1 ].tipo }`}
+                </p>
+              </Link> );
+          }
+
+          return null;
+        }
+      )}
+
+
     </div>
   );
 };
@@ -57,14 +91,14 @@ export const CarpetaCard = (
 }
 ) => {
   const {
-    llaveProceso,
-    idProceso,
-    _id
-  } = carpeta;
+    llaveProceso, idProceso, _id
+  }
+    = carpeta;
 
   const {
     tel, direccion, email
-  } = carpeta.deudor;
+  }
+    = carpeta.deudor;
   const path = '/Procesos';
 
   const href = (
@@ -77,7 +111,9 @@ export const CarpetaCard = (
 
   return (
     <Fragment key={_id}>
-      <DemandaContainer demanda={carpeta.demanda} />
+      <DemandaContainer
+        demanda={carpeta.demanda}
+      />
       <div
         className={styles.container}
         key={_id}
@@ -90,8 +126,7 @@ export const CarpetaCard = (
           <div className={styles.links}>
             <Link
               className={styles.button}
-              href={ href }
-
+              href={href}
             >
               <span
                 className={`material-symbols-outlined ${ styles.icon }`}

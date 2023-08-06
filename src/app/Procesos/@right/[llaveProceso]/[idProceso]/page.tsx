@@ -6,13 +6,12 @@ import { getNotas,
 import { NewNota } from '#@/components/nota/NuevaNota';
 import { Notas } from '#@/components/nota/notas';
 
-
 export default async function PageProcesosRightllaveProcesoidProceso(
   {
     params
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   const carpeta = await getCarpetasByllaveProceso(
     { llaveProceso: params.llaveProceso }
@@ -20,7 +19,7 @@ export default async function PageProcesosRightllaveProcesoidProceso(
 
   const notasllaveProceso
     = await getNotasByllaveProceso(
-      { llaveProceso: params.llaveProceso }
+      { llaveProceso: params.llaveProceso } 
     );
   const cantidadNotas = notasllaveProceso.length;
   const notas = await getNotas();

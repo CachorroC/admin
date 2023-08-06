@@ -1,6 +1,5 @@
 import 'server-only';
-import { NextRequest,
-         NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { Collection, ObjectId } from 'mongodb';
 import { getCarpetas } from '#@/lib/Carpetas';
@@ -11,8 +10,6 @@ import * as fs from 'fs/promises';
 export async function GET(
   Request: NextRequest
 ) {
-
-
   const {
     searchParams
   } = new URL(
@@ -20,10 +17,38 @@ export async function GET(
   );
   const collection = await carpetasCollection();
 
-  const carpetas = await collection.find(
-    {}
-  )
+  const carpetas = await collection
+        .find(
+          {}
+        )
         .toArray();
+
+  const onlyJuzgado  = searchParams.get(
+    'juzgado'
+  );
+
+  if ( onlyJuzgado ) {
+    const juzgados = carpetas.map(
+      (
+        carpeta
+      ) => {
+        const juzgado = carpeta.demanda?.juzgado.origen.tipo;
+
+        return juzgado;
+      }
+    );
+
+    return new NextResponse(
+      JSON.stringify(
+        juzgados
+      ),
+      {
+        status : 200,
+        headers: { 'content-type': 'application/json' }
+      }
+    );
+  }
+
 
   const llaveProceso = searchParams.get(
     'llaveProceso'
@@ -119,26 +144,34 @@ export async function PUT(
     = ( await request.json() ) as IntCarpeta;
   const client = await carpetasCollection();
   fs.mkdir(
-    `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }`, { recursive: true }
+    `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }`,
+    { recursive: true }
   );
-
-
 
   fs.cp(
-    './src/lib/global', `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }`, { recursive: true }
+    './src/lib/global',
+    `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }`,
+    { recursive: true }
   );
   fs.writeFile(
-    `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }/carpeta.json`, JSON.stringify(
+    `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }/carpeta.json`,
+    JSON.stringify(
       incomingRequest
     )
   );
 
-  const outgoingRequest = await client.findOneAndUpdate(
-    { 'deudor.cedula': incomingRequest.deudor.cedula }, { $set: incomingRequest }, {
-      upsert        : true,
-      returnDocument: 'after'
-    }
-  );
+  const outgoingRequest
+    = await client.findOneAndUpdate(
+      {
+        'deudor.cedula':
+          incomingRequest.deudor.cedula
+      },
+      { $set: incomingRequest },
+      {
+        upsert        : true,
+        returnDocument: 'after'
+      }
+    );
 
   if ( !outgoingRequest.ok ) {
     throw new Error(

@@ -7,7 +7,7 @@ export async function Name(
     llaveProceso
   }: {
   llaveProceso: string;
-}
+} 
 ) {
   const proceso = await getCarpetasByllaveProceso(
     { llaveProceso: llaveProceso }
@@ -18,6 +18,6 @@ export async function Name(
   }
 
   return (
-    <NombreComponent deudor={ proceso.deudor } />
+    <NombreComponent deudor={proceso.deudor} />
   );
 }

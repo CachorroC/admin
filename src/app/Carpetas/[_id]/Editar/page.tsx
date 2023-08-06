@@ -14,20 +14,19 @@ export default async function EditarCarpetabyId(
     params
   }: {
   params: { _id: string };
-}
+} 
 ) {
   const {
-    _id
+    _id 
   } = params;
 
   const carpeta = await getCarpetaById(
-    { _id: _id }
+    { _id: _id } 
   );
 
   if ( !carpeta ) {
     notFound();
   }
-
 
   return (
     <div className={layout.body}>
@@ -38,12 +37,10 @@ export default async function EditarCarpetabyId(
       </div>
       <div className={layout.left}>
         <EditProceso
-          uri={ `${ getBaseUrl() }` }
+          uri={`${ getBaseUrl() }`}
           carpeta={carpeta}
         />
       </div>
-
     </div>
   );
-
 }

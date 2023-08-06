@@ -3,7 +3,29 @@ import { notFound } from 'next/navigation';
 import { intConsultaNumeroRadicacion,
          intProceso } from '#@/lib/types/procesos';
 import { sleep } from '#@/lib/fix';
-import { carpetasCollection } from '../Carpetas';
+import { carpetasCollection, getCarpetaById, getCarpetaByidProceso, getCarpetasByllaveProceso } from '../Carpetas';
+import clientPromise from '../mongodb';
+
+export const procesosCollection = async () => {
+  const client = await clientPromise;
+
+  if ( !client ) {
+    throw new Error(
+      'no hay cliente mongólico'
+    );
+  }
+
+  const db = client.db(
+    'RyS'
+  );
+
+  const carpetas
+    = db.collection<intProceso>(
+      'Procesos'
+    );
+
+  return carpetas;
+};
 
 export async function fetchProceso(
   {
@@ -12,15 +34,15 @@ export async function fetchProceso(
   }: {
   llaveProceso: string;
   index: number;
-  }
+}
 ) {
+  const collection = await procesosCollection();
   const awaitTime = index * 1000;
   await sleep(
     awaitTime
   );
 
   if ( llaveProceso.length < 23 ) {
-
     console.log(
       `esta llaveProceso es menos de 23: ${ llaveProceso }`
     );
@@ -51,6 +73,37 @@ export async function fetchProceso(
   }
 }
 
+export async function updaterProceso (
+  {
+    idProceso, llaveProceso
+  }: { idProceso: number; llaveProceso: string }
+) {
+  const carpeta = await getCarpetasByllaveProceso(
+    { llaveProceso: llaveProceso }
+  );
+
+  const {
+    _id, ...newCarpeta
+  } = carpeta;
+  const collection = await carpetasCollection();
+
+  const updated = await collection.updateOne(
+    {
+      idProceso   : idProceso,
+      llaveProceso: llaveProceso
+    },
+    {
+      $set: {
+        ...newCarpeta,
+        idProceso: idProceso
+      }
+    },
+    { upsert: true }
+  );
+
+  return updated.acknowledged;
+}
+
 export async function getProceso(
   {
     llaveProceso,
@@ -60,7 +113,14 @@ export async function getProceso(
   index?: number;
 }
 ) {
-  const collection = await carpetasCollection();
+
+
+
+
+  if ( llaveProceso.length !== 23 ) {
+    return [];
+  }
+
 
   const procesos = await fetchProceso(
     {
@@ -70,19 +130,15 @@ export async function getProceso(
   );
 
   for ( const proceso of procesos ) {
-    const updateCarpetawithProceso = await collection.updateOne(
-      { idProceso: proceso.idProceso }, { $set: { idProceso: proceso.idProceso } }, { upsert: false }
+    const updt = await updaterProceso(
+      {
+        idProceso   : proceso.idProceso,
+        llaveProceso: llaveProceso
+      }
     );
-
-    if ( updateCarpetawithProceso.acknowledged ) {
-      console.log(
-        `the collection was updated with ${ updateCarpetawithProceso.modifiedCount } documents modified or ${ updateCarpetawithProceso.upsertedCount } documents upserted with a matched count of ${ updateCarpetawithProceso.matchedCount }`
-      );
-    }
-
-
-
-    return procesos;
+    console.log(
+      `${ llaveProceso } update was ${ updt } `
+    );
   }
 
   return procesos;

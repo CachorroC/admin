@@ -21,7 +21,7 @@ function DemandadoNameBadge(
   }: {
   carpeta: MonCarpeta;
   proceso?: intProceso;
-}
+} 
 ) {
   if ( proceso ) {
     return (
@@ -69,16 +69,15 @@ export default async function PageProcesosllaveProceso(
     params
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   const Procesos = await getProceso(
-    { llaveProceso: params.llaveProceso }
+    { llaveProceso: params.llaveProceso } 
   );
 
-  const Carpeta
-    = await getCarpetasByllaveProceso(
-      { llaveProceso: params.llaveProceso }
-    );
+  const Carpeta = await getCarpetasByllaveProceso(
+    { llaveProceso: params.llaveProceso }
+  );
 
   if ( !Carpeta ) {
     notFound();
@@ -86,12 +85,10 @@ export default async function PageProcesosllaveProceso(
 
   const proceso = Procesos.find(
     (
-      prc
+      prc 
     ) => {
-      return (
-        prc.idProceso === Carpeta.idProceso
-      );
-    }
+      return prc.idProceso === Carpeta.idProceso;
+    } 
   );
 
   return (
@@ -109,7 +106,7 @@ export default async function PageProcesosllaveProceso(
           className={card.link}
         >
           <span className='material-symbols-outlined'>
-                folder_shared
+            folder_shared
           </span>
         </Link>
       </Fragment>
