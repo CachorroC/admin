@@ -10,15 +10,16 @@ import { intActuacion } from './procesos';
 export interface IntCarpeta
 {
   capitalAdeudado: number;
-    demanda:         Demanda;
+    demanda?:         Demanda;
     deudor:          Deudor;
     grupo:           Grupo;
-    id:              number | null;
+    id:              number;
     idProceso?:       number;
     llaveProceso?:   string;
     numero:          number;
   tipoProceso?: TipoProceso;
-  fecha?: Date | string
+  fecha?: Date;
+
 }
 
 export type TipoBien =
@@ -162,16 +163,24 @@ export class carpetaConvert {
   public static toMonCarpeta(
     carpeta: WithId<IntCarpeta>
   ): MonCarpeta {
+    delete carpeta.fechas;
+    delete carpeta.idProcesos
+
     const fixedCarpeta: MonCarpeta = {
       ...carpeta,
       _id  : carpeta._id.toString(),
       fecha: new Date(
         carpeta.fecha ?? '1990'
       ),
-      get nombre(){
-        return this.deudor.primerNombre + ' ' + this.deudor.primerApellido;
+      get nombre () {
+
+        return this.deudor.primerNombre + ' ' + this.deudor.segundoNombre ?? ' ' +  ' ' + this.deudor.primerApellido + this.deudor.segundoApellido ?? ' ' ;
       }
     };
+     delete fixedCarpeta.fechas;
+    delete fixedCarpeta.idProcesos
+
+
 
     return fixedCarpeta;
   }
