@@ -14,17 +14,15 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { SelectSection } from '#@/components/form/SelectSection';
 import { ObligacionesArray } from './obligaciones-array';
 
-
-
 export const NuevoProceso = (
   {
     uri
   }: {
   uri: string;
-}
+} 
 ) => {
   const methods = useForm<IntCarpeta>(
-    {}
+    {} 
   );
 
   const {
@@ -48,17 +46,17 @@ export const NuevoProceso = (
   const onSubmit: SubmitHandler<
     IntCarpeta
   > = async (
-    data
+    data 
   ) => {
     alert(
       JSON.stringify(
-        dirtyFields
-      )
+        dirtyFields 
+      ) 
     );
     alert(
       JSON.stringify(
-        data
-      )
+        data 
+      ) 
     );
 
     const postNewNote = await fetch(
@@ -67,17 +65,15 @@ export const NuevoProceso = (
         method : 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body   : JSON.stringify(
-          data
+          data 
         )
       }
     );
 
     return console.log(
-      data
+      data 
     );
   };
-
-
 
   return (
     <>
@@ -86,7 +82,7 @@ export const NuevoProceso = (
           <form
             className={form.form}
             onSubmit={handleSubmit(
-              onSubmit
+              onSubmit 
             )}
           >
             <InputSection
@@ -304,7 +300,7 @@ export const NuevoProceso = (
                 type={'checkbox'}
                 className={form.primaryInput}
                 {...register(
-                  'reparto'
+                  'reparto' 
                 )}
               />
               <label

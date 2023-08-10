@@ -6,68 +6,76 @@
 
 import { intProceso } from './procesos';
 
-export interface Carpeta
-{
-  procesos?: intProceso[];
-
-    _id:             string;
-    capitalAdeudado: number;
-    demanda:         Demanda;
-    deudor:          Deudor;
-    fecha?:          Date;
-    grupo:           Grupo;
-    id:              number;
-    idProceso?:      number[];
-    llaveProceso?:   string;
-    numero:          number;
+export interface Carpeta {
+  capitalAdeudado: number;
+  demanda: Demanda;
+  deudor: Deudor;
+  fecha?: Date;
+  grupo: Grupo;
+  id: number;
+  idProceso?: number[];
+  llaveProceso?: string;
+  numero: number;
 }
 
 export interface Demanda {
-    ciudad:                 string | null;
-    departamento:           Departamento | null;
-    entregaGarantiasAbogado: Date | null;
-    etapaProcesal:          string | null;
-    juzgado:                 Juzgado[];
-    obligacion:             Array<number | null | string>| null;
-    radicado:               number | string | null;
-    vencimientoPagare:       Date | null;
+  ciudad: string | null;
+  departamento: Departamento | null;
+  entregaGarantiasAbogado: Date | null;
+  etapaProcesal: string | null;
+  juzgado: Juzgado[];
+  obligacion: Array<
+    number | null | string
+  > | null;
+  radicado: number | string | null;
+  vencimientoPagare: Date | null;
 }
 
-export type Departamento = 'CUNDINAMARCA' | 'BOYACÁ' | 'TOLIMA';
+export type Departamento =
+  | 'CUNDINAMARCA'
+  | 'BOYACÁ'
+  | 'TOLIMA';
 
 export interface Juzgado {
-    id:   number;
-    tipo: string;
-    url?: string;
+  id: number;
+  tipo: string;
+  url: string;
 }
 
 export interface Deudor {
-    cedula:           number;
-    direccion:       string | null;
-    primerApellido:   string;
-    primerNombre:     string;
-    segundoApellido: string | null;
-    segundoNombre:   string | null;
-    tel:              Tel;
-    email:            string| null;
+  cedula: number;
+  direccion: string | null;
+  primerApellido: string;
+  primerNombre: string;
+  segundoApellido: string | null;
+  segundoNombre: string | null;
+  tel: Tel;
+  email: string | null;
 }
 
 export interface Tel {
-    celular: number ;
+  celular: number;
   fijo: number;
 }
 
-export type Grupo = 'Reintegra' | 'Insolvencia' | 'Bancolombia' | 'LiosJuridicos';
+export type Grupo =
+  | 'Reintegra'
+  | 'Insolvencia'
+  | 'Bancolombia'
+  | 'LiosJuridicos';
 
-export type TipoProceso = 'PRENDARIO' | 'SINGULAR' | 'HIPOTECARIO';
+export type TipoProceso =
+  | 'PRENDARIO'
+  | 'SINGULAR'
+  | 'HIPOTECARIO';
 
 // Converts JSON strings to/from your types
 export class Convert {
   public static toCarpeta(
-    json: string
+    json: string 
   ): Carpeta {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -75,15 +83,15 @@ export class Convert {
     value: Carpeta
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toDemanda(
-    json: string
+    json: string 
   ): Demanda {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -91,15 +99,15 @@ export class Convert {
     value: Demanda
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toJuzgado(
-    json: string
+    json: string 
   ): Juzgado {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -107,15 +115,15 @@ export class Convert {
     value: Juzgado
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toDeudor(
-    json: string
+    json: string 
   ): Deudor {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -123,23 +131,23 @@ export class Convert {
     value: Deudor
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toTel(
-    json: string
+    json: string 
   ): Tel {
     return JSON.parse(
-      json
+      json 
     );
   }
 
   public static telToJson(
-    value: Tel
+    value: Tel 
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 }

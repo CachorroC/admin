@@ -7,10 +7,10 @@ export function NombreComponent(
     deudor
   }: {
   deudor: Deudor;
-}
+} 
 ) {
   const newName = new NombreCompleto(
-    deudor
+    deudor 
   );
 
   return (

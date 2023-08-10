@@ -3,6 +3,8 @@ import { Fragment, Suspense } from 'react';
 import { getCarpetas } from '#@/lib/Carpetas';
 import CardSkeleton from '#@/components/card/card-skeleton';
 import { FechaActuacionComponent } from '#@/components/ultima-actuacion-component';
+import typography from '#@/styles/fonts/typography.module.scss';
+import card from '#@/components/card/card.module.scss';
 
 /*
 async function LeftFechas (
@@ -24,7 +26,7 @@ async function LeftFechas (
 
 export default async function PageProcesosLeft() {
   const carpetasRaw = await getCarpetas();
-
+  /*
   const carpetas = [
     ...carpetasRaw
   ].sort(
@@ -51,20 +53,38 @@ export default async function PageProcesosLeft() {
 
       return 0;
     }
-  );
+  ); */
 
   return (
     <>
-      {/* <Suspense fallback={<CardSearchList path={ '/Procesos' } fechas={ carpetas} />}>
-        <LeftFechas path={ '/Procesos' } carpetas={ carpetas } />
-      </Suspense> */}
-      {carpetas.map(
+      {carpetasRaw.map(
         (
           carpeta, index
         ) => {
+          const segundoNombre
+          = carpeta.deudor.segundoNombre ?? ' ';
+
+          const segundoApellido
+          = carpeta.deudor.segundoApellido ?? ' ';
+
+          const {
+            cedula,
+            primerNombre,
+            primerApellido,
+            email,
+            tel,
+            direccion
+          } = carpeta.deudor;
+          const nombre = `${ primerNombre }   ${ segundoNombre }   ${ primerApellido }   ${ segundoApellido }`;
+
           return (
-            <div key={ carpeta._id }>
-              <h1>{carpeta.deudor.primerNombre + carpeta.deudor.primerApellido}</h1>
+            <div key={carpeta._id}>
+              <h1
+                className={`${ typography.titleMedium } ${ card.title }`}
+              >
+                {nombre}
+              </h1>
+              <sub className={card.sub}>{`${ carpeta.numero } de ${ carpetasRaw.length - 1 }`}</sub>
 
               <Suspense
                 key={carpeta._id}
@@ -77,7 +97,6 @@ export default async function PageProcesosLeft() {
                 />
               </Suspense>
             </div>
-
           );
         }
       )}

@@ -50,28 +50,29 @@ export async function getCarpetas() {
   return carpetas;
 }
 
-export const getCarpetasByllaveProceso = async (
+export async function getCarpetasByllaveProceso(
   {
     llaveProceso
   }: {
   llaveProceso: string;
 }
-) => {
-  const carpetas = await getCarpetas();
+){
+  const collection = await carpetasCollection();
 
-  const Carpeta = carpetas.find(
-    (
+  const carpeta = await collection
+        .findOne(
+          { llaveProceso: llaveProceso }
+        );
+
+  if ( carpeta ) {
+    const newCarpeta = carpetaConvert.toMonCarpeta(
       carpeta
-    ) => {
-      return carpeta.llaveProceso === llaveProceso;
-    }
-  );
+    );
 
-  if ( !Carpeta ) {
-    return null;
+    return newCarpeta;
   }
 
-  return Carpeta;
+  return null;
 };
 
 export const getCarpetaById = async (
@@ -81,13 +82,13 @@ export const getCarpetaById = async (
   _id: string;
 }
 ) => {
-  const carpetas = await getCarpetas();
+  const collection = await carpetasCollection();
 
-  const Carpeta = carpetas.find(
-    (
-      carpeta
-    ) => {
-      return carpeta._id === _id;
+  const Carpeta = await collection.findOne(
+    {
+      _id: new ObjectId(
+        _id
+      )
     }
   );
 
@@ -98,20 +99,17 @@ export const getCarpetaById = async (
   return Carpeta;
 };
 
-
 export const getCarpetaByidProceso = async (
   {
     idProceso
-  }: { idProceso: number }
+  }: {
+  idProceso: number;
+}
 ) => {
-  const carpetas = await getCarpetas();
+  const collection = await carpetasCollection();
 
-  const carpeta = carpetas.find(
-    (
-      carpeta
-    ) => {
-      return carpeta.idProceso === idProceso;
-    }
+  const carpeta = await collection.findOne(
+    { idProceso: idProceso }
   );
 
   if ( !carpeta ) {
@@ -119,5 +117,4 @@ export const getCarpetaByidProceso = async (
   }
 
   return carpeta;
-
 };

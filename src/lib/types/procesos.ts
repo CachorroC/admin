@@ -75,3 +75,9 @@ export interface ActuacionCollectionItem {
   idProceso: number;
   ultimaActuacion?: intActuacion;
 }
+
+
+export interface monActuacion extends intActuacion
+{
+idProceso: number
+}

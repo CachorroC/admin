@@ -1,5 +1,6 @@
 import 'server-only';
-import { NextResponse, type NextRequest } from 'next/server';
+import { NextResponse,
+         type NextRequest } from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { Collection, ObjectId } from 'mongodb';
 import { getCarpetas } from '#@/lib/Carpetas';
@@ -8,39 +9,40 @@ import { IntCarpeta } from '#@/lib/types/demandados';
 import * as fs from 'fs/promises';
 
 export async function GET(
-  Request: NextRequest
+  Request: NextRequest 
 ) {
   const {
-    searchParams
+    searchParams 
   } = new URL(
-    Request.url
+    Request.url 
   );
   const collection = await carpetasCollection();
 
   const carpetas = await collection
         .find(
-          {}
+          {} 
         )
         .toArray();
 
-  const onlyJuzgado  = searchParams.get(
-    'juzgado'
+  const onlyJuzgado = searchParams.get(
+    'juzgado' 
   );
 
   if ( onlyJuzgado ) {
     const juzgados = carpetas.map(
       (
-        carpeta
+        carpeta 
       ) => {
-        const juzgado = carpeta.demanda?.juzgado.origen.tipo;
+        const juzgado
+        = carpeta.demanda?.juzgado.origen.tipo;
 
         return juzgado;
-      }
+      } 
     );
 
     return new NextResponse(
       JSON.stringify(
-        juzgados
+        juzgados 
       ),
       {
         status : 200,
@@ -49,7 +51,6 @@ export async function GET(
     );
   }
 
-
   const llaveProceso = searchParams.get(
     'llaveProceso'
   );
@@ -57,7 +58,7 @@ export async function GET(
   if ( llaveProceso ) {
     const Demandados = carpetas.filter(
       (
-        carpeta
+        carpeta 
       ) => {
         return (
           carpeta.llaveProceso === llaveProceso
@@ -67,7 +68,7 @@ export async function GET(
 
     return new NextResponse(
       JSON.stringify(
-        Demandados
+        Demandados 
       ),
       {
         status : 200,
@@ -77,13 +78,13 @@ export async function GET(
   }
 
   const idProceso = searchParams.get(
-    'idProceso'
+    'idProceso' 
   );
 
   if ( idProceso ) {
     const Demandados = carpetas.filter(
       (
-        carpeta
+        carpeta 
       ) => {
         return (
           carpeta.llaveProceso === llaveProceso
@@ -93,7 +94,7 @@ export async function GET(
 
     return new NextResponse(
       JSON.stringify(
-        Demandados
+        Demandados 
       ),
       {
         status : 200,
@@ -103,21 +104,21 @@ export async function GET(
   }
 
   const _id = searchParams.get(
-    '_id'
+    '_id' 
   );
 
   if ( _id ) {
     const Carpeta = carpetas.filter(
       (
-        carpeta
+        carpeta 
       ) => {
         return carpeta._id.toString() === _id;
-      }
+      } 
     );
 
     return new NextResponse(
       JSON.stringify(
-        Carpeta
+        Carpeta 
       ),
       {
         status : 200,
@@ -128,7 +129,7 @@ export async function GET(
 
   return new NextResponse(
     JSON.stringify(
-      carpetas
+      carpetas 
     ),
     {
       status : 200,
@@ -138,7 +139,7 @@ export async function GET(
 }
 
 export async function PUT(
-  request: NextRequest
+  request: NextRequest 
 ) {
   const incomingRequest
     = ( await request.json() ) as IntCarpeta;
@@ -156,7 +157,7 @@ export async function PUT(
   fs.writeFile(
     `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }/carpeta.json`,
     JSON.stringify(
-      incomingRequest
+      incomingRequest 
     )
   );
 
@@ -175,13 +176,13 @@ export async function PUT(
 
   if ( !outgoingRequest.ok ) {
     throw new Error(
-      `${ outgoingRequest.ok }`
+      `${ outgoingRequest.ok }` 
     );
   }
 
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.value
+      outgoingRequest.value 
     ),
     {
       status : 200,

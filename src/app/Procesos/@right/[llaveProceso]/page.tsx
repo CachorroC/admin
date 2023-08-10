@@ -1,6 +1,6 @@
 import { ProcesoCard } from '#@/components/card/ProcesosCard';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import { getProceso } from '#@/lib/RamaJudicial';
+import { getProceso } from '#@/lib/Procesos';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default async function PageProcesosRightllaveProceso(
@@ -10,14 +10,14 @@ export default async function PageProcesosRightllaveProceso(
   params: {
     llaveProceso: string;
   };
-} 
+}
 ) {
   const carpeta = await getCarpetasByllaveProceso(
     { llaveProceso: params.llaveProceso }
   );
 
   const Procesos = await getProceso(
-    { llaveProceso: params.llaveProceso } 
+    { llaveProceso: params.llaveProceso }
   );
 
   return (
@@ -28,7 +28,7 @@ export default async function PageProcesosRightllaveProceso(
       </h1>
       {Procesos.map(
         (
-          proceso 
+          proceso
         ) => {
           return (
             <ProcesoCard
@@ -36,7 +36,7 @@ export default async function PageProcesosRightllaveProceso(
               key={proceso.idProceso}
             />
           );
-        } 
+        }
       )}
     </>
   );

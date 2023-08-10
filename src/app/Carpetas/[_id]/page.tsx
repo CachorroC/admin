@@ -21,13 +21,13 @@ export default async function CarpetasPageId(
     params
   }: {
   params: { _id: string };
-}
+} 
 ) {
   const carpeta = await getCarpetaById(
-    { _id: params._id }
+    { _id: params._id } 
   );
 
-  if ( !carpeta ){
+  if ( !carpeta ) {
     return null;
   }
 
@@ -84,12 +84,14 @@ export default async function CarpetasPageId(
         )}
       </div>
       <div className={layout.right}>
-
         <Suspense fallback={<CardSkeleton />}>
-          <FechaActuacionComponent carpeta={ carpeta } index={ 0 } key={carpeta._id}/>
+          <FechaActuacionComponent
+            carpeta={carpeta}
+            index={0}
+            key={carpeta._id}
+          />
         </Suspense>
         <ButtonsNuevaCarpeta />
-
       </div>
     </div>
   );

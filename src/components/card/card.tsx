@@ -8,9 +8,95 @@ import { useModal } from '#@/app/modal-context';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { useNavigator } from '#@/app/search-context';
 import { toNameString } from '#@/lib/fix';
-import { IntCarpeta,
+import { Deudor,
+         IntCarpeta,
          MonCarpeta,
          NombreCompleto } from '#@/lib/types/demandados';
+
+export const DeudorComponent = (
+  {
+    deudor,
+    isActive
+  }: {
+  deudor: Deudor;
+  isActive: boolean;
+} 
+) => {
+  const segundoNombre
+    = deudor.segundoNombre ?? ' ';
+
+  const segundoApellido
+    = deudor.segundoApellido ?? ' ';
+
+  const {
+    cedula,
+    primerNombre,
+    primerApellido,
+    email,
+    tel,
+    direccion
+  } = deudor;
+  const nombre = `${ primerNombre }   ${ segundoNombre }   ${ primerApellido }   ${ segundoApellido }`;
+
+  return (
+    <section
+      className={card.section}
+      key={cedula}
+    >
+      {email && (
+        <Link
+          className={`${ card.link } ${
+            isActive && card.isActive
+          }`}
+          href={email as Route}
+        >
+          <span
+            className={`material-symbols-outlined ${ card.icon }`}
+          >
+            mail
+          </span>
+          <span className={card.tooltiptext}>
+            Correo Electrónico
+          </span>
+        </Link>
+      )}
+      {tel.celular !== 0 && (
+        <Link
+          className={`${ card.link } ${
+            isActive && card.isActive
+          }`}
+          href={tel.celular.toString() as Route}
+        >
+          <span
+            className={`material-symbols-outlined ${ card.icon }`}
+          >
+            phone_iphone
+          </span>
+          <span className={card.tooltiptext}>
+            Telefono celular
+          </span>
+        </Link>
+      )}
+      {tel.fijo !== 0 && (
+        <Link
+          className={`${ card.link } ${
+            isActive && card.isActive
+          }`}
+          href={tel.fijo.toString() as Route}
+        >
+          <span
+            className={`material-symbols-outlined ${ card.icon }`}
+          >
+            phone
+          </span>
+          <span className={card.tooltiptext}>
+            Telefono fijo
+          </span>
+        </Link>
+      )}
+    </section>
+  );
+};
 
 export const Card = (
   {
@@ -47,8 +133,8 @@ export const Card = (
 
   const href = (
     carpeta.llaveProceso
-      ? carpeta.idProceso
-        ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
+      ? carpeta.idProcesos
+        ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProcesos }`
         : `${ path }/${ carpeta.llaveProceso }`
       : `${ path }`
   ) as Route;
@@ -56,12 +142,15 @@ export const Card = (
   const isActive
     = pathname === href
     || pathname
-      === `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
+      === `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProcesos[ 0 ] }`
     || pathname
       === `${ path }/${ carpeta.llaveProceso }`;
 
   return (
-    <div className={card.container}>
+    <div
+      className={card.container}
+      key={carpeta._id}
+    >
       <div
         className={
           isActive
@@ -69,17 +158,13 @@ export const Card = (
             : card.notActive
         }
       >
-        <h1
-          className={`${ typography.titleMedium } ${ card.title }`}
-        >
-          {toNameString(
-            {
-              nameRaw: new NombreCompleto(
-                carpeta.deudor
-              ).Nombre
-            } 
-          )}
-        </h1>
+        <DeudorComponent
+          deudor={carpeta.deudor}
+          key={carpeta.deudor.cedula}
+          isActive={isActive}
+        />
+
+        {children}
         <div className={card.links}>
           <Link
             className={`${ card.link } ${
@@ -110,7 +195,7 @@ export const Card = (
               badge
             </span>
             <span className={card.tooltiptext}>
-              Perfil del Demandado
+              Procesos
             </span>
           </Link>
           <Link
@@ -150,15 +235,6 @@ export const Card = (
             </span>
           </Link>
         </div>
-
-        {children}
-        {carpeta.demanda.radicado && (
-          <div
-            className={`${ typography.bodySmall } ${ card.content }`}
-          >
-            {carpeta.demanda.radicado}
-          </div>
-        )}
       </div>
     </div>
   );

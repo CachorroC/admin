@@ -8,20 +8,20 @@ async function Acts(
     idProceso
   }: {
   idProceso: number;
-} 
+}
 ) {
   const actuaciones = await getActuaciones(
-    { idProceso: idProceso } 
+    { idProceso: idProceso }
   );
 
   return (
     <>
       {actuaciones.map(
         (
-          act, i, arr 
+          act, i, arr
         ) => {
           const {
-            idRegActuacion 
+            idRegActuacion
           } = act;
 
           return (
@@ -30,7 +30,7 @@ async function Acts(
               key={idRegActuacion}
             />
           );
-        } 
+        }
       )}
     </>
   );
@@ -43,7 +43,7 @@ export default async function PageProcesosLeftllaveProceso(
   params: {
     llaveProceso: string;
   };
-} 
+}
 ) {
   const Carpeta = await getCarpetasByllaveProceso(
     { llaveProceso: params.llaveProceso }

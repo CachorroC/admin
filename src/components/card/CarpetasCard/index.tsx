@@ -16,7 +16,7 @@ export const DemandaContainer = (
     demanda
   }: {
   demanda: Demanda;
-}
+} 
 ) => {
   const {
     departamento,
@@ -32,51 +32,65 @@ export const DemandaContainer = (
       </h1>
       <h2
         className={typography.titleMedium}
-      >{ `${ departamento }: ${ ciudad }` }</h2>
-      { juzgado.map(
+      >{`${ departamento }: ${ ciudad }`}</h2>
+      {juzgado.map(
         (
-          despacho, index
+          despacho, index 
         ) => {
           switch ( index ) {
             case 0:
               return (
-
                 <Link
                   href={juzgado[ 0 ].url as Route}
                 >
                   <span className='material-symbols-outlined'>
-            enable
+                  enable
                   </span>
                   <sub
-                    className={typography.displaySmall}
+                    className={
+                      typography.displaySmall
+                    }
                   >
                     {juzgado[ 0 ].id}
                   </sub>
-                  <p className={typography.labelSmall}>
+                  <p
+                    className={
+                      typography.labelSmall
+                    }
+                  >
                     {`Juzgado de origen: ${ juzgado[ 0 ].tipo }`}
                   </p>
                 </Link>
-
               );
             case 1:
-              return (  <Link href={juzgado[ 1 ].url as Route}>
-                <span className='material-symbols-outlined'>
-          trip_origin
-                </span>
-                <sub className={typography.displaySmall}>
-                  {juzgado[ 1 ].id}
-                </sub>
-                <p className={typography.labelSmall}>
-                  {`Juzgado de origen: ${ juzgado[ 1 ].tipo }`}
-                </p>
-              </Link> );
+              return (
+                <Link
+                  href={juzgado[ 1 ].url as Route}
+                >
+                  <span className='material-symbols-outlined'>
+                  trip_origin
+                  </span>
+                  <sub
+                    className={
+                      typography.displaySmall
+                    }
+                  >
+                    {juzgado[ 1 ].id}
+                  </sub>
+                  <p
+                    className={
+                      typography.labelSmall
+                    }
+                  >
+                    {`Juzgado de origen: ${ juzgado[ 1 ].tipo }`}
+                  </p>
+                </Link>
+              );
           }
 
           return null;
-        }
+        } 
       )}
-
-
     </div>
   );
 };
@@ -88,15 +102,15 @@ export const CarpetaCard = (
   }: {
   carpeta: MonCarpeta;
   children: ReactNode;
-}
+} 
 ) => {
   const {
-    llaveProceso, idProceso, _id
+    llaveProceso, idProceso, _id 
   }
     = carpeta;
 
   const {
-    tel, direccion, email
+    tel, direccion, email 
   }
     = carpeta.deudor;
   const path = '/Procesos';
@@ -213,7 +227,7 @@ export const CarpetaCard = (
             <p>
               {carpeta.capitalAdeudado
                 && fixMoney(
-                  { valor: carpeta.capitalAdeudado }
+                  { valor: carpeta.capitalAdeudado } 
                 )}
             </p>
           </div>

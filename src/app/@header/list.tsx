@@ -8,7 +8,6 @@ import { MonCarpeta } from '#@/lib/types/demandados';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 import { Loader } from '#@/components/Loader';
 
-
 export async function ListDrawer() {
   const carpetasRaw = await getCarpetas();
 
@@ -16,7 +15,7 @@ export async function ListDrawer() {
     ...carpetasRaw
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -42,11 +41,7 @@ export async function ListDrawer() {
 
   return (
     <Drawer>
-      <Suspense
-        fallback={
-          <Loader />
-        }
-      >
+      <Suspense fallback={<Loader />}>
         <SearchOutputList
           path={'/Procesos'}
           fechas={carpetas}

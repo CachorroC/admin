@@ -15,7 +15,10 @@ export default function CardSkeleton() {
           momento
         </p>
         <div className={card.links}>
-          <button className={card.link} type='button'>
+          <button
+            className={card.link}
+            type='button'
+          >
             <span
               className={`${ card.icon }  material-symbols-outlined`}
             >
@@ -23,10 +26,10 @@ export default function CardSkeleton() {
             </span>
           </button>
         </div>
-        <div
-          className={ card.content }
-        >
-          <p className={typography.bodySmall}>cargando</p>
+        <div className={card.content}>
+          <p className={typography.bodySmall}>
+            cargando
+          </p>
         </div>
       </div>
     </div>
