@@ -2,7 +2,7 @@ import { getNotas } from '#@/lib/notas';
 import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import { Nota } from '../../components/nota/notas';
+import { Nota } from '#@/components/nota/notas';
 
 export default async function PageNotas() {
   const notas = await getNotas();
@@ -17,7 +17,7 @@ export default async function PageNotas() {
       <div className={layout.left}>
         {notas.map(
           (
-            NotaM, index, arr 
+            NotaM, index, arr
           ) => {
             const {
               _id,
@@ -36,7 +36,7 @@ export default async function PageNotas() {
                 arr={arr}
               />
             );
-          } 
+          }
         )}
       </div>
     </div>

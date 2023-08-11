@@ -2,7 +2,7 @@ import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { Fragment, Suspense } from 'react';
 import { IntCarpeta,
-         MonCarpeta } from '#@/lib/types/demandados';
+         MonCarpeta } from '#@/lib/types/carpeta';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import { getProceso } from '#@/lib/RamaJudicial';
 import { intProceso } from '#@/lib/types/procesos';
@@ -21,7 +21,7 @@ function DemandadoNameBadge(
   }: {
   carpeta: MonCarpeta;
   proceso?: intProceso;
-} 
+}
 ) {
   if ( proceso ) {
     return (
@@ -69,14 +69,18 @@ export default async function PageProcesosllaveProceso(
     params
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   const Procesos = await getProceso(
-    { llaveProceso: params.llaveProceso } 
+    {
+      llaveProceso: params.llaveProceso 
+    }
   );
 
   const Carpeta = await getCarpetasByllaveProceso(
-    { llaveProceso: params.llaveProceso }
+    {
+      llaveProceso: params.llaveProceso 
+    }
   );
 
   if ( !Carpeta ) {
@@ -85,10 +89,10 @@ export default async function PageProcesosllaveProceso(
 
   const proceso = Procesos.find(
     (
-      prc 
+      prc
     ) => {
       return prc.idProceso === Carpeta.idProceso;
-    } 
+    }
   );
 
   return (

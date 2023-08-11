@@ -1,6 +1,6 @@
 import styles from './notas.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
-import { ButtonSkeleton } from '#@/components/navbar/ButtonSkeleton';
+import { ButtonSkeleton } from '#@/components/Buttons/ButtonSkeleton';
 
 export function NotasListSkeleton() {
   return (
@@ -23,7 +23,7 @@ export function NotaSkeleton(
     index
   }: {
   index: number;
-} 
+}
 ) {
   return (
     <div

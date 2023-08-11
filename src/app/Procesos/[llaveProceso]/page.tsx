@@ -18,7 +18,9 @@ export default async function DefaultProcesosllaveProceso(
 } 
 ) {
   const Carpeta = await getCarpetasByllaveProceso(
-    { llaveProceso: llaveProceso }
+    {
+      llaveProceso: llaveProceso 
+    }
   );
 
   if ( !Carpeta ) {

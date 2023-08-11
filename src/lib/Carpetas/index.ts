@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import { ObjectId } from 'mongodb';
 import { IntCarpeta,
          MonCarpeta,
-         carpetaConvert } from '../types/demandados';
+         carpetaConvert } from '../types/carpeta';
 
 export const carpetasCollection = async () => {
   const client = await clientPromise;
@@ -61,7 +61,9 @@ export async function getCarpetasByllaveProceso(
 
   const carpeta = await collection
         .findOne(
-          { llaveProceso: llaveProceso }
+          {
+            llaveProceso: llaveProceso
+          }
         );
 
   if ( carpeta ) {
@@ -96,7 +98,12 @@ export const getCarpetaById = async (
     return null;
   }
 
-  return Carpeta;
+  const carpeta
+    = carpetaConvert.toMonCarpeta(
+      Carpeta
+    );
+
+  return carpeta;
 };
 
 export const getCarpetaByidProceso = async (
@@ -109,12 +116,19 @@ export const getCarpetaByidProceso = async (
   const collection = await carpetasCollection();
 
   const carpeta = await collection.findOne(
-    { idProceso: idProceso }
+    {
+      idProceso: idProceso
+    }
   );
 
   if ( !carpeta ) {
     return null;
   }
 
-  return carpeta;
+  const Carpeta
+    = carpetaConvert.toMonCarpeta(
+      carpeta
+    );
+
+  return Carpeta;
 };

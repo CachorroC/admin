@@ -24,13 +24,17 @@ export default function Error(
     <div className={layout.header}>
       <h1
         className={typography.displayLarge}
-        style={{ color: 'var(--error)' }}
+        style={{
+          color: 'var(--error)' 
+        }}
       >
         Error
       </h1>
       <p
         className={typography.bodyLarge}
-        style={{ color: 'var(--on-surface-container)' }}
+        style={{
+          color: 'var(--on-surface-container)' 
+        }}
       >
         {error?.message}
       </p>

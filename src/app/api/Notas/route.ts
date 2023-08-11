@@ -83,7 +83,9 @@ export async function GET(
       ),
       {
         status : 200,
-        headers: { 'content-type': 'application/json' }
+        headers: {
+          'content-type': 'application/json' 
+        }
       }
     );
   }
@@ -107,7 +109,9 @@ export async function GET(
       ),
       {
         status : 200,
-        headers: { 'content-type': 'application/json' }
+        headers: {
+          'content-type': 'application/json' 
+        }
       }
     );
   }
@@ -117,7 +121,9 @@ export async function GET(
       notas 
     ), {
       status : 200,
-      headers: { 'content-type': 'application/json' }
+      headers: {
+        'content-type': 'application/json' 
+      }
     } 
   );
 }
@@ -135,7 +141,9 @@ export async function POST(
 
   if ( !outgoingRequest.acknowledged ) {
     return new NextResponse(
-      null, { status: 404 } 
+      null, {
+        status: 404 
+      } 
     );
   }
 
@@ -146,7 +154,9 @@ export async function POST(
     ),
     {
       status : 200,
-      headers: { 'content-type': 'application/json' }
+      headers: {
+        'content-type': 'application/json' 
+      }
     }
   );
 }
@@ -176,7 +186,9 @@ export async function PUT(
 
     const result = await collection.updateOne(
       query,
-      { $set: updatedNote }
+      {
+        $set: updatedNote 
+      }
     );
 
     if ( result.acknowledged ) {
@@ -184,7 +196,9 @@ export async function PUT(
         `Successfully updated game with id ${ id }`,
         {
           status : 200,
-          headers: { 'content-type': 'text/html' }
+          headers: {
+            'content-type': 'text/html' 
+          }
         }
       );
     }
@@ -197,13 +211,17 @@ export async function PUT(
       } with ${ result.modifiedCount.toString() }`,
       {
         status : 200,
-        headers: { 'content-type': 'text/html' }
+        headers: {
+          'content-type': 'text/html' 
+        }
       }
     );
   }
 
   return new NextResponse(
-    null, { status: 404 } 
+    null, {
+      status: 404 
+    } 
   );
 }
 
@@ -248,7 +266,9 @@ export async function DELETE(
         ),
         {
           status : 202,
-          headers: { 'content-type': 'application/json' }
+          headers: {
+            'content-type': 'application/json' 
+          }
         }
       );
     }
@@ -258,7 +278,9 @@ export async function DELETE(
         JSON.stringify(
           `error 400 ${ id } not deleted`
         ),
-        { status: 400 }
+        {
+          status: 400 
+        }
       );
     }
 
@@ -266,7 +288,9 @@ export async function DELETE(
       JSON.stringify(
         Result 
       ),
-      { status: 200 }
+      {
+        status: 200 
+      }
     );
   }
 }

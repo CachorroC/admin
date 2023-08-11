@@ -30,7 +30,9 @@ export async function POST(
 
     if ( !result.acknowledged ) {
       return new NextResponse(
-        null, { status: 400 } 
+        null, {
+          status: 400 
+        } 
       );
     }
 
@@ -40,14 +42,18 @@ export async function POST(
           result.insertedId 
         )
       ),
-      { status: 200 }
+      {
+        status: 200 
+      }
     );
   } catch ( error ) {
     return new NextResponse(
       JSON.stringify(
         error 
       ),
-      { status: 505 }
+      {
+        status: 505 
+      }
     );
   }
 }

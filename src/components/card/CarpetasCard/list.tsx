@@ -3,7 +3,7 @@ import { getCarpetas } from '#@/lib/Carpetas';
 import { fixFechas } from '#@/lib/fix';
 import type { Demanda,
               IntCarpeta,
-              MonCarpeta } from '#@/lib/types/demandados';
+              MonCarpeta } from '#@/lib/types/carpeta';
 import Link from 'next/link';
 import { Fragment,
          ReactNode,
@@ -26,13 +26,13 @@ const ProcesosList = async (
   }: {
   llaveProceso: string;
   index: number;
-} 
+}
 ) => {
   const procesos = await getProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
-    } 
+    }
   );
 
   /*
@@ -59,7 +59,7 @@ const ProcesosList = async (
     <Fragment key={llaveProceso}>
       {procesos.map(
         (
-          proceso 
+          proceso
         ) => {
           return (
             <ProcesoCard
@@ -67,7 +67,7 @@ const ProcesosList = async (
               key={proceso.idProceso}
             />
           );
-        } 
+        }
       )}
     </Fragment>
   );
@@ -80,13 +80,13 @@ const Fecha = async (
   }: {
   idProceso: number;
   index: number;
-} 
+}
 ) => {
   const acts = await getActuaciones(
     {
       idProceso: idProceso,
       index    : index
-    } 
+    }
   );
 
   if ( acts.length === 0 ) {
@@ -109,7 +109,7 @@ export async function ListCardCarpetasNFechas() {
     ...carpetas
   ].sort(
     (
-      a, b 
+      a, b
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -137,7 +137,7 @@ export async function ListCardCarpetasNFechas() {
     <>
       {sortedCarpetas.map(
         (
-          carpeta, index, arr 
+          carpeta, index, arr
         ) => {
           return (
             <Fragment key={carpeta._id}>

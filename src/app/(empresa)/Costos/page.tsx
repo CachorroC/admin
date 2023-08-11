@@ -111,7 +111,9 @@ export default function Costos() {
                     placeholder='name'
                     {...register(
                     `cart.${ index }.name` as const,
-                    { required: true }
+                    {
+                      required: true 
+                    }
                     )}
                     className={
                       errors?.cart?.[ index ]?.name

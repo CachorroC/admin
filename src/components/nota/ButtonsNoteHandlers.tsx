@@ -15,7 +15,9 @@ export function DeleteNoteButton(
   async function deleteRequestHandler() {
     const Request = await fetch(
       `/api/Notas?id=${ id }`,
-      { method: 'DELETE' }
+      {
+        method: 'DELETE' 
+      }
     );
 
     if ( !Request.ok ) {
@@ -57,8 +59,10 @@ export function AddNoteButton(
       `${ uri }/api/Notas`,
       {
         method : 'POST',
-        headers: { 'content-type': 'application/json' },
-        body   : JSON.stringify(
+        headers: {
+          'content-type': 'application/json' 
+        },
+        body: JSON.stringify(
           nota 
         )
       }

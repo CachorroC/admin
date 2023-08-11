@@ -10,7 +10,7 @@ export default function NuevaNotallaveProceso(
     params
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   return (
     <Modal>

@@ -18,7 +18,9 @@ export default async function Default(
   const _id = searchParams._id;
 
   const nota = await getNotaById(
-    { _id: _id } 
+    {
+      _id: _id 
+    } 
   );
 
   return (

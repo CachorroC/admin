@@ -14,7 +14,9 @@ export default async function Page(
 } 
 ) {
   const actuaciones = await getActuaciones(
-    { idProceso: params.idProceso } 
+    {
+      idProceso: params.idProceso 
+    } 
   );
 
   return (

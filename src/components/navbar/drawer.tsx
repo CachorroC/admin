@@ -10,23 +10,23 @@ import SearchOutputListSkeleton from '../search/SearchProcesosOutputSkeleton';
 import { BackwardsButton,
          DrawerMenuButton,
          ForwardButton,
-         HomeButton } from './Buttons';
+         HomeButton } from '../Buttons/NavButtons';
 import Title from '#@/components/Headings/title';
-import { ButtonSkeleton } from './ButtonSkeleton';
+import { ButtonSkeleton } from '../Buttons/ButtonSkeleton';
 
 export default function Drawer(
   {
     children
   }: {
   children: ReactNode;
-} 
+}
 ) {
   const isDesktop = useMedia(
-    2 
+    2
   );
 
   const isMobile = useMedia(
-    0 
+    0
   );
 
   const [
@@ -39,24 +39,24 @@ export default function Drawer(
     if ( isMobile ) {
       return (
         <nav className={navbar.drawer}>
-          <Suspense fallback={<ButtonSkeleton />}>
-            <DrawerMenuButton />
-          </Suspense>
-          <Suspense fallback={<ButtonSkeleton />}>
-            <Title />
-          </Suspense>
-          <Suspense fallback={<ButtonSkeleton />}>
-            <ForwardButton />
-          </Suspense>
-          <Suspense fallback={<ButtonSkeleton />}>
-            <BackwardsButton />
-          </Suspense>
-          <Suspense fallback={<ButtonSkeleton />}>
-            <InputSearchBar />
-          </Suspense>
-          <Suspense fallback={<ButtonSkeleton />}>
-            <HomeButton />
-          </Suspense>
+
+          <DrawerMenuButton />
+
+
+          <Title />
+
+
+          <ForwardButton />
+
+
+          <BackwardsButton />
+
+
+          <InputSearchBar />
+
+
+          <HomeButton />
+
           <div className={navbar.sidenav}>
             {children}
           </div>
@@ -66,15 +66,15 @@ export default function Drawer(
 
     return (
       <nav className={navbar.drawer}>
-        <Suspense fallback={<ButtonSkeleton />}>
-          <InputSearchBar />
-        </Suspense>
-        <Suspense fallback={<ButtonSkeleton />}>
-          <DrawerMenuButton />
-        </Suspense>
-        <Suspense fallback={<ButtonSkeleton />}>
-          <Title />
-        </Suspense>
+
+        <InputSearchBar />
+
+
+        <DrawerMenuButton />
+
+
+        <Title />
+
         <div className={navbar.sidenav}>
           {children}
         </div>

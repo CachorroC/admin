@@ -2,96 +2,147 @@
 //
 //   import { Convert } from "./file";
 //
-//   const carpeta = Convert.toCarpeta(json);
+//   const intCarpeta = Convert.toIntCarpeta(json);
 
-import { intProceso } from './procesos';
+import { WithId } from 'mongodb';
 
-export interface Carpeta {
+export interface IntCarpeta {
   capitalAdeudado: number;
-  demanda: Demanda;
-  deudor: Deudor;
-  fecha?: Date;
-  grupo: Grupo;
-  id: number;
-  idProceso?: number[];
-  llaveProceso?: string;
-  numero: number;
+  demanda:         Demanda;
+  deudor:          Deudor;
+    idProceso:       number;
+    llaveProceso:    null | string;
+    grupo:           Grupo;
+    id:              number;
+    numero:          number;
+    tipoProceso:     TipoProceso | null;
+    fecha?:          Date;
 }
 
 export interface Demanda {
-  ciudad: string | null;
-  departamento: Departamento | null;
-  entregaGarantiasAbogado: Date | null;
-  etapaProcesal: string | null;
-  juzgado: Juzgado[];
-  obligacion: Array<
-    number | null | string
-  > | null;
-  radicado: number | string | null;
-  vencimientoPagare: Date | null;
+  departamento:            Departamento | null;
+    ciudad:                  null | string;
+    entregaGarantiasAbogado: Date;
+    etapaProcesal:           null | string;
+    juzgado:                 Juzgado[];
+    obligacion:              ( number | string )[] | null;
+    radicado:                number | null | string;
+    vencimientoPagare:       Date;
 }
 
-export type Departamento =
-  | 'CUNDINAMARCA'
-  | 'BOYACÁ'
-  | 'TOLIMA';
+export type Departamento = 'CUNDINAMARCA' |'AMAZONAS'|'ANTIOQUIA'|'ARAUCA'|'ATLANTICO'|'BOLIVAR'|'BOYACA'|'CALDAS'|'CAQUETA'|'CASANARE'|'CAUCA'|'CESAR'|'CHOCO'|'CORDOBA'|'BOGOTA'|'GUAINIA'|'GUAVIARE'|'HUILA'|'LA GUAJIRA'|'MAGDALENA'|'META'|'NARIÑO'|'NORTE DE SANTANDER'|'PUTUMAYO'|'QUINDIO'|'RISARALDA'|'SAN ANDRES Y PROVIDENCIA'|'SANTANDER'|'SUCRE'|'TOLIMA'|'VALLE DEL CAUCA'|'VAUPES'|'VICHADA'
 
 export interface Juzgado {
-  id: number;
-  tipo: string;
-  url: string;
+    id:   number;
+    tipo: string;
+    url:  string;
 }
 
 export interface Deudor {
-  cedula: number;
-  direccion: string | null;
-  primerApellido: string;
-  primerNombre: string;
-  segundoApellido: string | null;
-  segundoNombre: string | null;
-  tel: Tel;
-  email: string | null;
+    cedula:          number;
+    primerNombre:    string;
+    segundoNombre:   null | string;
+    primerApellido:  string;
+    segundoApellido: null | string;
+    tel:             Tel;
+    email:           null | string;
+    direccion:       null | string;
 }
 
 export interface Tel {
-  celular: number;
-  fijo: number;
+    celular: number;
+    fijo:    number;
 }
 
-export type Grupo =
-  | 'Reintegra'
-  | 'Insolvencia'
-  | 'Bancolombia'
-  | 'LiosJuridicos';
+export type Grupo = 'Reintegra' | 'Insolvencia' | 'Bancolombia' | 'LiosJuridicos' | 'todo';
 
-export type TipoProceso =
-  | 'PRENDARIO'
-  | 'SINGULAR'
-  | 'HIPOTECARIO';
+export type TipoProceso = 'PRENDARIO' | 'SINGULAR' | 'HIPOTECARIO';
+
+export interface MonCarpeta extends IntCarpeta
+{
+  _id: string;
+  nombre: string;
+  fecha?: Date;
+}
 
 // Converts JSON strings to/from your types
-export class Convert {
-  public static toCarpeta(
-    json: string 
-  ): Carpeta {
+export class carpetaConvert {
+
+  public static toMonCarpeta(
+    carpeta: WithId<IntCarpeta>
+  ): MonCarpeta {
+    const fixedCarpeta: MonCarpeta = {
+      ...carpeta,
+      _id: carpeta._id.toString(),
+      get nombre() {
+        return (
+          this.deudor.primerNombre
+            + ' '
+            + this.deudor.segundoNombre
+          ?? ' '
+            + ' '
+            + this.deudor.primerApellido
+            + this.deudor.segundoApellido
+          ?? ' '
+        );
+      }
+    };
+
+    return fixedCarpeta;
+  }
+  public static toMonCarpetas(
+    carpetas: WithId<IntCarpeta>[]
+  ): MonCarpeta[] {
+    const newCarpetas = carpetas.map(
+      (
+        carpeta
+      ) => {
+        return this.toMonCarpeta(
+          carpeta
+        );
+      }
+    );
+
+    return newCarpetas;
+  }
+  public static toIntCarpetas(
+    json: string
+  ): IntCarpeta[] {
     return JSON.parse(
-      json 
+      json
     );
   }
 
-  public static carpetaToJson(
-    value: Carpeta
+  public static intCarpetasToJson(
+    value: IntCarpeta[]
   ): string {
     return JSON.stringify(
-      value 
+      value
+    );
+  }
+
+
+  public static toIntCarpeta(
+    json: string
+  ): IntCarpeta {
+    return JSON.parse(
+      json
+    );
+  }
+
+  public static intCarpetaToJson(
+    value: IntCarpeta
+  ): string {
+    return JSON.stringify(
+      value
     );
   }
 
   public static toDemanda(
-    json: string 
+    json: string
   ): Demanda {
     return JSON.parse(
-      json 
+      json
     );
   }
 
@@ -99,15 +150,15 @@ export class Convert {
     value: Demanda
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 
   public static toJuzgado(
-    json: string 
+    json: string
   ): Juzgado {
     return JSON.parse(
-      json 
+      json
     );
   }
 
@@ -115,15 +166,15 @@ export class Convert {
     value: Juzgado
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 
   public static toDeudor(
-    json: string 
+    json: string
   ): Deudor {
     return JSON.parse(
-      json 
+      json
     );
   }
 
@@ -131,23 +182,46 @@ export class Convert {
     value: Deudor
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 
   public static toTel(
-    json: string 
+    json: string
   ): Tel {
     return JSON.parse(
-      json 
+      json
     );
   }
 
   public static telToJson(
-    value: Tel 
+    value: Tel
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
+  }
+}
+
+export class NombreCompleto {
+  Nombre: string;
+  constructor(
+    {
+      primerNombre,
+      segundoNombre,
+      primerApellido,
+      segundoApellido
+    }: {
+    primerNombre: string;
+    primerApellido: string;
+    segundoNombre?: string;
+    segundoApellido?: string;
+  }
+  ) {
+    this.Nombre = segundoApellido
+      ? segundoNombre
+        ? `${ primerNombre } ${ segundoNombre } ${ primerApellido } ${ segundoApellido }`
+        : `${ primerNombre } ${ primerApellido } ${ segundoApellido }`
+      : `${ primerNombre } ${ primerApellido }`;
   }
 }

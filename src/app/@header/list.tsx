@@ -1,12 +1,12 @@
 import { getCarpetas } from '#@/lib/Carpetas';
-import { fetchFechas,
-         getActuaciones } from '#@/lib/Actuaciones';
 import Drawer from '#@/components/navbar/drawer';
 import { Fragment, Suspense } from 'react';
-import { ActuacionCard } from '#@/components/card/ActuacionesCard';
-import { MonCarpeta } from '#@/lib/types/demandados';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 import { Loader } from '#@/components/Loader';
+import { LinkCard } from '#@/components/search/link';
+import { fixFechas } from '#@/lib/fix';
+import CardSkeleton from '#@/components/card/card-skeleton';
+import { FechaActuacionComponent } from '#@/components/ultima-actuacion-component';
 
 export async function ListDrawer() {
   const carpetasRaw = await getCarpetas();
@@ -15,7 +15,7 @@ export async function ListDrawer() {
     ...carpetasRaw
   ].sort(
     (
-      a, b 
+      a, b
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -40,14 +40,18 @@ export async function ListDrawer() {
   );
 
   return (
-    <Drawer>
-      <Suspense fallback={<Loader />}>
-        <SearchOutputList
-          path={'/Procesos'}
-          fechas={carpetas}
-          isFallback={true}
-        />
-      </Suspense>
-    </Drawer>
+    <>
+      {
+        carpetas.map(
+          (
+            carpeta, index
+          ) => {
+            return (
+              <LinkCard key={carpeta._id} path={ '/Procesos' } carpeta={ carpeta } />
+            );
+          }
+        )
+      }
+    </>
   );
 }

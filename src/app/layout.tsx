@@ -36,7 +36,9 @@ export const metadata: Metadata = {
     'JavaScript'
   ],
   authors: [
-    { name: 'cam' },
+    {
+      name: 'cam' 
+    },
     {
       name: 'Cachorro Cami',
       url : `https://${ hostname }`
@@ -86,7 +88,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/icons/favicon.png' },
+      {
+        url: '/icons/favicon.png' 
+      },
       new URL(
         '/favicon.svg',
         `https://${ hostname }`

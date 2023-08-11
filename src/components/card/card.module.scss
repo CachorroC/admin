@@ -56,6 +56,17 @@
   font-size: 0.5rem;
   font-family: var(--josefa);
 }
+.updated{
+
+  grid-area: date;
+  background-color: var(--surface-container-highest);
+  box-shadow: var(--dp12);
+  padding: 2cqmin;
+  color: var(--on-surface);
+  font-family: var(--font-poiret);
+  border-radius: 2cqmin;
+  align-self: center;
+}
 .date {
   grid-area: date;
   background-color: var(--surface);
@@ -71,7 +82,7 @@
   background: rgba(0, 0, 0, 0.1);
 }
 .title {
-  color: var(--primary);
+  color: var(--on-primary);
   grid-area: title;
   text-align: center;
   font-family: var(--font-poiret);

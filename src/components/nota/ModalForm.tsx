@@ -17,12 +17,18 @@ export const ModalForm = (
     register, reset, handleSubmit 
   }
     = useForm<FormValues>(
-      { defaultValues: { mail } } 
+      {
+        defaultValues: {
+          mail 
+        } 
+      } 
     );
   React.useEffect(
     () => {
       reset(
-        { mail } 
+        {
+          mail 
+        } 
       );
     }, [
       reset,
@@ -46,7 +52,9 @@ export const ModalForm = (
       <input
         placeholder='mail'
         {...register(
-          'mail', { required: true } 
+          'mail', {
+            required: true 
+          } 
         )}
       />
       <input type='submit' />

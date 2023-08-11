@@ -5,48 +5,50 @@ import clientPromise from '#@/lib/mongodb';
 import { Collection, ObjectId } from 'mongodb';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { carpetasCollection } from '#@/lib/Carpetas';
-import { IntCarpeta } from '#@/lib/types/demandados';
 import * as fs from 'fs/promises';
+import { IntCarpeta } from '#@/lib/types/carpeta';
 
 export async function GET(
-  Request: NextRequest 
+  Request: NextRequest
 ) {
   const {
-    searchParams 
+    searchParams
   } = new URL(
-    Request.url 
+    Request.url
   );
   const collection = await carpetasCollection();
 
   const carpetas = await collection
         .find(
-          {} 
+          {}
         )
         .toArray();
 
   const onlyJuzgado = searchParams.get(
-    'juzgado' 
+    'juzgado'
   );
 
   if ( onlyJuzgado ) {
     const juzgados = carpetas.map(
       (
-        carpeta 
+        carpeta
       ) => {
         const juzgado
         = carpeta.demanda?.juzgado.origen.tipo;
 
         return juzgado;
-      } 
+      }
     );
 
     return new NextResponse(
       JSON.stringify(
-        juzgados 
+        juzgados
       ),
       {
         status : 200,
-        headers: { 'content-type': 'application/json' }
+        headers: {
+          'content-type': 'application/json' 
+        }
       }
     );
   }
@@ -58,7 +60,7 @@ export async function GET(
   if ( llaveProceso ) {
     const Demandados = carpetas.filter(
       (
-        carpeta 
+        carpeta
       ) => {
         return (
           carpeta.llaveProceso === llaveProceso
@@ -68,23 +70,25 @@ export async function GET(
 
     return new NextResponse(
       JSON.stringify(
-        Demandados 
+        Demandados
       ),
       {
         status : 200,
-        headers: { 'content-type': 'application/json' }
+        headers: {
+          'content-type': 'application/json' 
+        }
       }
     );
   }
 
   const idProceso = searchParams.get(
-    'idProceso' 
+    'idProceso'
   );
 
   if ( idProceso ) {
     const Demandados = carpetas.filter(
       (
-        carpeta 
+        carpeta
       ) => {
         return (
           carpeta.llaveProceso === llaveProceso
@@ -94,70 +98,80 @@ export async function GET(
 
     return new NextResponse(
       JSON.stringify(
-        Demandados 
+        Demandados
       ),
       {
         status : 200,
-        headers: { 'content-type': 'application/json' }
+        headers: {
+          'content-type': 'application/json' 
+        }
       }
     );
   }
 
   const _id = searchParams.get(
-    '_id' 
+    '_id'
   );
 
   if ( _id ) {
     const Carpeta = carpetas.filter(
       (
-        carpeta 
+        carpeta
       ) => {
         return carpeta._id.toString() === _id;
-      } 
+      }
     );
 
     return new NextResponse(
       JSON.stringify(
-        Carpeta 
+        Carpeta
       ),
       {
         status : 200,
-        headers: { 'content-type': 'application/json' }
+        headers: {
+          'content-type': 'application/json' 
+        }
       }
     );
   }
 
   return new NextResponse(
     JSON.stringify(
-      carpetas 
+      carpetas
     ),
     {
       status : 200,
-      headers: { 'content-type': 'application/json' }
+      headers: {
+        'content-type': 'application/json' 
+      }
     }
   );
 }
 
 export async function PUT(
-  request: NextRequest 
+  request: NextRequest
 ) {
   const incomingRequest
     = ( await request.json() ) as IntCarpeta;
   const client = await carpetasCollection();
   fs.mkdir(
     `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }`,
-    { recursive: true }
+    {
+      recursive: true 
+    }
   );
 
   fs.cp(
     './src/lib/global',
     `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }`,
-    { recursive: true }
+    {
+      recursive: true 
+    }
   );
   fs.writeFile(
     `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }/carpeta.json`,
     JSON.stringify(
-      incomingRequest 
+      incomingRequest
     )
   );
 
@@ -167,7 +181,9 @@ export async function PUT(
         'deudor.cedula':
           incomingRequest.deudor.cedula
       },
-      { $set: incomingRequest },
+      {
+        $set: incomingRequest 
+      },
       {
         upsert        : true,
         returnDocument: 'after'
@@ -176,17 +192,19 @@ export async function PUT(
 
   if ( !outgoingRequest.ok ) {
     throw new Error(
-      `${ outgoingRequest.ok }` 
+      `${ outgoingRequest.ok }`
     );
   }
 
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.value 
+      outgoingRequest.value
     ),
     {
       status : 200,
-      headers: { 'content-type': 'application/json' }
+      headers: {
+        'content-type': 'application/json' 
+      }
     }
   );
 }

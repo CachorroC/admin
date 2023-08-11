@@ -26,7 +26,9 @@ export async function GET() {
     ),
     {
       status : 200,
-      headers: { 'content-type': 'application/json' }
+      headers: {
+        'content-type': 'application/json' 
+      }
     }
   );
 }
@@ -50,7 +52,9 @@ export async function POST(
           'server couldnt acknowledge the insert request'
         } 
       ),
-      { status: 500 }
+      {
+        status: 500 
+      }
     );
   }
 
@@ -61,7 +65,9 @@ export async function POST(
     ),
     {
       status : 200,
-      headers: { 'content-type': 'application/json' }
+      headers: {
+        'content-type': 'application/json' 
+      }
     }
   );
 }

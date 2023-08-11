@@ -1,16 +1,16 @@
 import typography from '#@/styles/fonts/typography.module.scss';
 import { NombreCompleto,
-         Deudor } from '#@/lib/types/demandados';
+         Deudor } from '#@/lib/types/carpeta';
 
 export function NombreComponent(
   {
     deudor
   }: {
   deudor: Deudor;
-} 
+}
 ) {
   const newName = new NombreCompleto(
-    deudor 
+    deudor
   );
 
   return (

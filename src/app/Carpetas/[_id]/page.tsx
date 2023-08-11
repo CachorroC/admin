@@ -21,10 +21,12 @@ export default async function CarpetasPageId(
     params
   }: {
   params: { _id: string };
-} 
+}
 ) {
   const carpeta = await getCarpetaById(
-    { _id: params._id } 
+    {
+      _id: params._id 
+    }
   );
 
   if ( !carpeta ) {

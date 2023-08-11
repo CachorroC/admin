@@ -5,7 +5,9 @@ export async function deleteTerminados() {
 
   const deleteTerminadoCarpetas
     = await collection.deleteMany(
-      { grupo: 'terminados' } 
+      {
+        grupo: 'terminados' 
+      } 
     );
 
   return deleteTerminadoCarpetas;

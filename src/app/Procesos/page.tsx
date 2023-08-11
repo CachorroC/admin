@@ -8,6 +8,7 @@ import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { getNotas } from '#@/lib/notas';
 import form from '#@/components/form/form.module.scss';
 import { Accordion } from '#@/components/Accordion';
+import { CategoryFilterButton } from '#@/components/Buttons/FilteringButtons';
 
 export default async function PageProcesos() {
   const notas = await getNotas();
@@ -17,18 +18,13 @@ export default async function PageProcesos() {
       <h1 className={typography.displayLarge}>
         Procesos
       </h1>
+      <CategoryFilterButton />
+
 
       <NewNota
         llaveProceso={'Procesos'}
         uri={`${ getBaseUrl() }`}
       />
-      <Accordion>
-        <Suspense
-          fallback={<NotasListSkeleton />}
-        >
-          <NotasList notas={notas} />
-        </Suspense>
-      </Accordion>
     </>
   );
 }

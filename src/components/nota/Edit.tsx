@@ -63,8 +63,10 @@ export function Edit(
       `${ uri }/api/Notas?id=${ nota.id }`,
       {
         method : 'PUT',
-        headers: { 'content-type': 'application/json' },
-        body   : JSON.stringify(
+        headers: {
+          'content-type': 'application/json' 
+        },
+        body: JSON.stringify(
           newData 
         )
       }
@@ -109,7 +111,9 @@ export function Edit(
             className={note.textArea}
             defaultValue={nota.nota}
             {...register(
-              'nota', { required: true } 
+              'nota', {
+                required: true 
+              } 
             )}
           />
         </div>

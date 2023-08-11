@@ -13,7 +13,9 @@ export default function NotFound() {
       >
         <Title helper='perdido' />
         <p
-          style={{ color: 'var(--on-error-container)' }}
+          style={{
+            color: 'var(--on-error-container)' 
+          }}
         >
           No pudimos resolver la consulta que
           realizaste. No existe el recurso

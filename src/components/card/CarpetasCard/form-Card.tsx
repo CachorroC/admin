@@ -78,7 +78,11 @@ export const PersonalInfo = (
     },
     register
   } = useForm(
-    { defaultValues: { email: 'admin@example.com' } } 
+    {
+      defaultValues: {
+        email: 'admin@example.com' 
+      } 
+    } 
   );
 
   const onSubmit = (
@@ -108,7 +112,9 @@ export const PersonalInfo = (
             type='email'
             id='email'
             {...register(
-              'email', { required: true } 
+              'email', {
+                required: true 
+              } 
             )}
           />
           {errors.email && (
@@ -143,7 +149,11 @@ export const ConfirmPurchase = (
     },
     register
   } = useForm(
-    { defaultValues: { checkbox: false } } 
+    {
+      defaultValues: {
+        checkbox: false 
+      } 
+    } 
   );
 
   const onSubmit = (
@@ -172,7 +182,9 @@ export const ConfirmPurchase = (
             <input
               type='checkbox'
               {...register(
-                'checkbox', { required: true } 
+                'checkbox', {
+                  required: true 
+                } 
               )}
             />
             Ready to buy?
@@ -209,7 +221,11 @@ export const BillingInfo = (
     },
     register
   } = useForm(
-    { defaultValues: { address: 'calle 12c # 6 - 21' } } 
+    {
+      defaultValues: {
+        address: 'calle 12c # 6 - 21' 
+      } 
+    } 
   );
 
   const onSubmit = (
@@ -239,7 +255,9 @@ export const BillingInfo = (
             type='address'
             id='address'
             {...register(
-              'address', { required: true } 
+              'address', {
+                required: true 
+              } 
             )}
           />
           {errors.address && (

@@ -21,7 +21,9 @@ export default async function EditarCarpetabyId(
   } = params;
 
   const carpeta = await getCarpetaById(
-    { _id: _id } 
+    {
+      _id: _id 
+    } 
   );
 
   if ( !carpeta ) {

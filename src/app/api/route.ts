@@ -22,7 +22,9 @@ export async function GET(
     ),
     {
       status : 200,
-      headers: { 'content-type': 'application/json' }
+      headers: {
+        'content-type': 'application/json' 
+      }
     }
   );
 }

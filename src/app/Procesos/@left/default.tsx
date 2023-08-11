@@ -6,7 +6,7 @@ import { fetchFechas } from '#@/lib/Actuaciones';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import type { Route } from 'next';
 import { CardSearchList } from '#@/components/search/CardSearchList';
-import { MonCarpeta } from '#@/lib/types/demandados';
+import { MonCarpeta } from '#@/lib/types/carpeta';
 
 export async function Fechitas(
   {
@@ -15,10 +15,12 @@ export async function Fechitas(
   }: {
   path: string;
   carpetas: MonCarpeta[];
-} 
+}
 ) {
   const fechas = await fetchFechas(
-    { carpetas: carpetas } 
+    {
+      carpetas: carpetas 
+    }
   );
 
   return (

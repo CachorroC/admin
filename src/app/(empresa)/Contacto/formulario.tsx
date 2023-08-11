@@ -78,7 +78,9 @@ export default function Formulario() {
       />
       <select
         {...register(
-          'Title', { required: true } 
+          'Title', {
+            required: true 
+          } 
         )}
       >
         <option value='Mr'>Mr</option>
@@ -88,14 +90,18 @@ export default function Formulario() {
       </select>
       <input
         {...register(
-          'RecibirInfo', { required: true } 
+          'RecibirInfo', {
+            required: true 
+          } 
         )}
         type='radio'
         value='Yes'
       />
       <input
         {...register(
-          'RecibirInfo', { required: true } 
+          'RecibirInfo', {
+            required: true 
+          } 
         )}
         type='radio'
         value='No'

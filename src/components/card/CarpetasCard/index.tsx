@@ -1,7 +1,7 @@
 import styles from './carpetas.module.scss';
 import type { Demanda,
               IntCarpeta,
-              MonCarpeta } from '#@/lib/types/demandados';
+              MonCarpeta } from '#@/lib/types/carpeta';
 import typography from '#@/styles/fonts/typography.module.scss';
 import Link from 'next/link';
 import type { Route } from 'next';
@@ -16,7 +16,7 @@ export const DemandaContainer = (
     demanda
   }: {
   demanda: Demanda;
-} 
+}
 ) => {
   const {
     departamento,
@@ -35,7 +35,7 @@ export const DemandaContainer = (
       >{`${ departamento }: ${ ciudad }`}</h2>
       {juzgado.map(
         (
-          despacho, index 
+          despacho, index
         ) => {
           switch ( index ) {
             case 0:
@@ -89,7 +89,7 @@ export const DemandaContainer = (
           }
 
           return null;
-        } 
+        }
       )}
     </div>
   );
@@ -102,15 +102,15 @@ export const CarpetaCard = (
   }: {
   carpeta: MonCarpeta;
   children: ReactNode;
-} 
+}
 ) => {
   const {
-    llaveProceso, idProceso, _id 
+    llaveProceso, idProceso, _id
   }
     = carpeta;
 
   const {
-    tel, direccion, email 
+    tel, direccion, email
   }
     = carpeta.deudor;
   const path = '/Procesos';
@@ -227,7 +227,9 @@ export const CarpetaCard = (
             <p>
               {carpeta.capitalAdeudado
                 && fixMoney(
-                  { valor: carpeta.capitalAdeudado } 
+                  {
+                    valor: carpeta.capitalAdeudado 
+                  }
                 )}
             </p>
           </div>

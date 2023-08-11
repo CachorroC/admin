@@ -14,7 +14,9 @@ export default async function page(
   const _id = params._id;
 
   const nota = await getNotaById(
-    { _id: _id } 
+    {
+      _id: _id 
+    } 
   );
 
   return (

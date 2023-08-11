@@ -13,7 +13,9 @@ export async function GET(
   try {
     const req = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ params.idProceso }`,
-      { mode: 'cors' }
+      {
+        mode: 'cors' 
+      }
     );
 
     if ( !req.ok ) {
@@ -37,7 +39,9 @@ export async function GET(
         ),
         {
           status : 200,
-          headers: { 'content-type': 'application/json' }
+          headers: {
+            'content-type': 'application/json' 
+          }
         }
       );
     }
@@ -61,7 +65,9 @@ export async function GET(
         ),
         {
           status : 200,
-          headers: { 'content-type': 'application/json' }
+          headers: {
+            'content-type': 'application/json' 
+          }
         }
       );
     }
@@ -80,7 +86,9 @@ export async function GET(
       ),
       {
         status : 200,
-        headers: { 'content-type': 'application/json' }
+        headers: {
+          'content-type': 'application/json' 
+        }
       }
     );
   } catch {
@@ -101,7 +109,9 @@ export async function GET(
         ),
         {
           status : 200,
-          headers: { 'content-type': 'application/json' }
+          headers: {
+            'content-type': 'application/json' 
+          }
         }
       );
     };
@@ -121,7 +131,9 @@ export async function GET(
     ),
     {
       status : 200,
-      headers: { 'content-type': 'application/json' }
+      headers: {
+        'content-type': 'application/json' 
+      }
     }
   );
 }

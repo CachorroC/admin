@@ -6,8 +6,8 @@ import { monDemandado } from './types/mongodb';
 import { monNota } from '#@/lib/types/notas';
 import { IntCarpeta,
          MonCarpeta,
-         UltimaActuacion } from './types/demandados';
-import { intFecha } from '#@/lib/types/demandados';
+         UltimaActuacion } from './types/carpeta';
+import { intFecha } from '#@/lib/types/carpeta';
 
 export function arrayMergerByidProceso(
   {
@@ -24,40 +24,40 @@ export function arrayMergerByidProceso(
     | IntActuaciones[]
     | monDemandado[]
     | intFecha[];
-} 
+}
 ) {
   const map = new Map();
   a.forEach(
     (
-      item 
+      item
     ) => {
       return map.set(
-        item.idProceso, item 
+        item.idProceso, item
       );
-    } 
+    }
   );
   b.forEach(
     (
-      item 
+      item
     ) => {
       return map.set(
         item.idProceso, {
           ...map.get(
-            item.idProceso 
+            item.idProceso
           ),
           ...item
-        } 
+        }
       );
-    } 
+    }
   );
 
   const mergedArr = Array.from(
-    map.values() 
+    map.values()
   );
   console.log(
     JSON.stringify(
-      mergedArr 
-    ) 
+      mergedArr
+    )
   );
 
   return mergedArr;
@@ -70,17 +70,17 @@ export function arrayMergerByllaveProceso(
   }: {
   carpetas: MonCarpeta[];
   actuaciones: intActuacion[];
-} 
+}
 ) {
   const map = new Map();
   carpetas.forEach(
     (
-      carpeta 
+      carpeta
     ) => {
       return map.set(
-        carpeta._id, carpeta 
+        carpeta._id, carpeta
       );
-    } 
+    }
   );
 
   for ( const crp of map ) {
@@ -90,12 +90,12 @@ export function arrayMergerByllaveProceso(
     ] = crp;
 
     const {
-      llaveProceso 
+      llaveProceso
     } = carpeta;
 
     const actsByMap = actuaciones.filter(
       (
-        actuacion 
+        actuacion
       ) => {
         return (
           actuacion.llaveProceso === llaveProceso
@@ -106,17 +106,17 @@ export function arrayMergerByllaveProceso(
       _id, {
         ...carpeta,
         UltimaActuacion: actsByMap
-      } 
+      }
     );
   }
 
   const mergedArr = Array.from(
-    map.values() 
+    map.values()
   );
   console.log(
     JSON.stringify(
-      mergedArr 
-    ) 
+      mergedArr
+    )
   );
 
   return mergedArr;

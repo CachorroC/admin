@@ -1,4 +1,5 @@
 import 'server-only';
+import { cache } from 'react';
 import { monDemandado } from '../types/mongodb';
 import { ActuacionCollectionItem,
          IntActuaciones,
@@ -7,77 +8,83 @@ import { ActuacionCollectionItem,
          monActuacion } from '../types/procesos';
 import { carpetasCollection, getCarpetaById, getCarpetaByidProceso } from '../Carpetas';
 import { sleep } from '../fix';
-import { cache } from 'react';
 import clientPromise from '../mongodb';
 import { IntCarpeta,
          MonCarpeta,
-         carpetaConvert } from '../types/demandados';
+         carpetaConvert } from '../types/carpeta';
 import { Collection } from 'mongodb';
 
-export const actuacionesCollection = async () => {
-  const client = await clientPromise;
+export const actuacionesCollection = cache(
+  async () => {
+    const client = await clientPromise;
 
-  if ( !client ) {
-    throw new Error(
-      'no hay cliente mongólico'
+    if ( !client ) {
+      throw new Error(
+        'no hay cliente mongólico'
+      );
+    }
+
+    const db = client.db(
+      'RyS'
     );
+
+    const actuaciones = db.collection<monActuacion>(
+      'Actuaciones'
+    );
+
+    return actuaciones;
   }
+);
 
-  const db = client.db(
-    'RyS'
-  );
-
-  const actuaciones = db.collection<monActuacion>(
-    'Actuaciones'
-  );
-
-  return actuaciones;
-};
-
-export async function fetchActuaciones(
-  {
-    idProceso,
-    index
-  }: {
+export const fetchActuaciones= cache(
+  async(
+    {
+      idProceso,
+      index
+    }: {
   idProceso: number;
   index: number;
 }
-) {
-  const awaitTime = index * 1000;
-  await sleep(
-    awaitTime
-  );
-
-  if ( !idProceso || idProceso === 0 ) {
-    console.log(
-      `este idProceso es: ${ idProceso } con index ${ index }`
+  ) => {
+    const awaitTime = index * 1000;
+    await sleep(
+      awaitTime
     );
 
-    return [];
-  }
-  const actsColl = await actuacionesCollection();
-
-  try {
-    const Request = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
-      { next: { revalidate: 32000 } }
-    );
-
-    if ( !Request.ok ) {
+    if ( !idProceso || idProceso === 0 ) {
       console.log(
-        ` ${ idProceso }: actuaciones not ok, status: ${ Request.status } with ${ Request.statusText } index: ${ index }`
+        `este idProceso es: ${ idProceso } con index ${ index }`
       );
 
       return [];
     }
+    const actsColl = await actuacionesCollection();
 
-    const Response
+    try {
+      const Request = await fetch(
+        `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
+        {
+          next: {
+            revalidate: 32000
+          }
+        }
+      );
+
+      if ( !Request.ok ) {
+        console.log(
+          ` ${ idProceso }: actuaciones not ok, status: ${ Request.status } with ${ Request.statusText } index: ${ index }`
+        );
+
+        return [];
+      }
+
+      const Response
       = ( await Request.json() ) as intConsultaActuaciones;
-    const actuaciones = Response.actuaciones;
+      const actuaciones = Response.actuaciones;
 
-    if ( actuaciones.length >= 1 ) {
+      if ( actuaciones.length >= 1 ) {
 
-      const updateActsinMongo
+        const updateActsinMongo
       = await actsColl.updateOne(
         {
           idProceso: idProceso,
@@ -90,25 +97,28 @@ export async function fetchActuaciones(
             idProceso: idProceso
           }
         },
-        { upsert: true }
+        {
+          upsert: true
+        }
       );
 
-      if ( updateActsinMongo.acknowledged ) {
-        console.log(
-          `${ index }: the actuaciones collection was updated with ${ updateActsinMongo.modifiedCount } actuaciones modified or ${ updateActsinMongo.upsertedCount }actuaciones upserted with a matched count of ${ updateActsinMongo.matchedCount }`
-        );
+        if ( updateActsinMongo.acknowledged ) {
+          console.log(
+            `${ index }: the actuaciones collection was updated with ${ updateActsinMongo.modifiedCount } actuaciones modified or ${ updateActsinMongo.upsertedCount }actuaciones upserted with a matched count of ${ updateActsinMongo.matchedCount }`
+          );
+        }
       }
+
+      return actuaciones;
+    } catch ( error ) {
+      console.log(
+        error
+      );
+
+      return [];
     }
-
-    return actuaciones;
-  } catch ( error ) {
-    console.log(
-      error
-    );
-
-    return [];
   }
-}
+);
 
 export async function getActuaciones(
   {
@@ -121,11 +131,6 @@ export async function getActuaciones(
 ) {
   const collection = await carpetasCollection();
 
-  const carpeta = await getCarpetaByidProceso(
-    { idProceso: idProceso }
-  );
-
-
   const actuaciones = await fetchActuaciones(
     {
       idProceso: idProceso,
@@ -133,10 +138,12 @@ export async function getActuaciones(
     }
   );
 
-  if ( actuaciones.length >= 1 ) {
+  if ( actuaciones.length > 0 ) {
     const updateCarpetawithActuaciones
       = await collection.updateOne(
-        { idProceso: idProceso },
+        {
+          idProceso: idProceso
+        },
         {
           $set: {
             fecha: new Date(
@@ -144,7 +151,9 @@ export async function getActuaciones(
             )
           }
         },
-        { upsert: false }
+        {
+          upsert: false
+        }
       );
 
     if (
@@ -205,8 +214,6 @@ export async function fetchFecha(
     idProceso
   }
     = carpeta;
-  const collection = await carpetasCollection();
-
 
   const actuaciones = await getActuaciones(
     {
@@ -217,9 +224,11 @@ export async function fetchFecha(
 
   if ( actuaciones.length >= 1 ) {
 
-    const newCarpeta = {
+    const newCarpeta: MonCarpeta = {
       ...carpeta,
-      fecha: actuaciones[ 0 ].fechaActuacion
+      fecha: new Date(
+        actuaciones[ 0 ].fechaActuacion
+      )
     };
 
     return newCarpeta;

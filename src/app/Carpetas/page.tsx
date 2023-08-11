@@ -10,7 +10,7 @@ import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { Loader } from '#@/components/Loader';
 import layout from '#@/styles/scss/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
-import { MonCarpeta } from '#@/lib/types/demandados';
+import { MonCarpeta } from '#@/lib/types/carpeta';
 
 async function LeftCarpetas(
   {
@@ -21,10 +21,12 @@ async function LeftCarpetas(
   path: string;
   carpetas: MonCarpeta[];
   isFallback: boolean;
-} 
+}
 ) {
   const fechas = await fetchFechas(
-    { carpetas: carpetas } 
+    {
+      carpetas: carpetas 
+    }
   );
 
   return (
@@ -43,10 +45,12 @@ async function RightCarpetas(
   }: {
   path: string;
   carpetas: MonCarpeta[];
-} 
+}
 ) {
   const fechas = await fetchFechas(
-    { carpetas: carpetas } 
+    {
+      carpetas: carpetas 
+    }
   );
 
   return (

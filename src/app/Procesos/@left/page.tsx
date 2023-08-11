@@ -5,6 +5,9 @@ import CardSkeleton from '#@/components/card/card-skeleton';
 import { FechaActuacionComponent } from '#@/components/ultima-actuacion-component';
 import typography from '#@/styles/fonts/typography.module.scss';
 import card from '#@/components/card/card.module.scss';
+import { fixFechas } from '#@/lib/fix';
+import { Card } from '#@/components/card/card';
+import { NombreComponent } from '#@/components/card/Nombre';
 
 /*
 async function LeftFechas (
@@ -26,7 +29,7 @@ async function LeftFechas (
 
 export default async function PageProcesosLeft() {
   const carpetasRaw = await getCarpetas();
-  /*
+
   const carpetas = [
     ...carpetasRaw
   ].sort(
@@ -53,11 +56,11 @@ export default async function PageProcesosLeft() {
 
       return 0;
     }
-  ); */
+  );
 
   return (
     <>
-      {carpetasRaw.map(
+      {carpetas.map(
         (
           carpeta, index
         ) => {
@@ -78,13 +81,15 @@ export default async function PageProcesosLeft() {
           const nombre = `${ primerNombre }   ${ segundoNombre }   ${ primerApellido }   ${ segundoApellido }`;
 
           return (
-            <div key={carpeta._id}>
+            <Card path={ '/Procesos' } carpeta={ carpeta } key={ carpeta._id }>
+              <NombreComponent deudor={ carpeta.deudor}  key={carpeta._id}/>
               <h1
                 className={`${ typography.titleMedium } ${ card.title }`}
               >
                 {nombre}
               </h1>
-              <sub className={card.sub}>{`${ carpeta.numero } de ${ carpetasRaw.length - 1 }`}</sub>
+              <sub className={ card.sub }>{ `${ index + 1 } de ${ carpetasRaw.length }` }</sub>
+
 
               <Suspense
                 key={carpeta._id}
@@ -96,7 +101,12 @@ export default async function PageProcesosLeft() {
                   index={index}
                 />
               </Suspense>
-            </div>
+              <sub className={ card.date }>
+                {`fecha de la ultima actuacion registrada en el servidor: ${ fixFechas(
+                  carpeta.fecha
+                ) } `}
+              </sub>
+            </Card>
           );
         }
       )}

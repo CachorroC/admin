@@ -2,10 +2,10 @@ import React, { Fragment } from 'react';
 import { useFieldArray,
          useFormContext } from 'react-hook-form';
 import form from '#@/components/form/form.module.scss';
-import { IntCarpeta } from '#@/lib/types/demandados';
+import { IntCarpeta } from '#@/lib/types/carpeta';
 let renderCount = 0;
 
-export function ObligacionesArray() {
+export function JuzgadosArray() {
   const {
     register,
     control,
@@ -14,13 +14,13 @@ export function ObligacionesArray() {
   } = useFormContext<IntCarpeta>();
 
   const {
-    fields, append, remove, prepend 
+    fields, append, remove, prepend
   }
     = useFieldArray(
       {
-        name: 'obligacion',
+        name: 'demanda.juzgado',
         control
-      } 
+      }
     );
 
   renderCount++;
@@ -29,7 +29,7 @@ export function ObligacionesArray() {
     <>
       {fields.map(
         (
-          item, index 
+          item, index
         ) => {
           return (
             <Fragment key={item.id}>
@@ -39,23 +39,23 @@ export function ObligacionesArray() {
               >
                 <label
                   className={form.label}
-                  htmlFor={`obligacion.${ index }.texto`}
+                  htmlFor={`demanda.juzgado.${ index }.tipo`}
                 >
                 Obligacion 1
                 </label>
                 <input
                   className={form.textArea}
                   type='text'
-                  placeholder={`obligacion.${ index }.texto`}
+                  placeholder={`demanda.juzgado.${ index }.tipo`}
                   {...register(
-                  `obligacion.${ index }.texto` as const
+                  `demanda.juzgado.${ index }.tipo` as const
                   )}
                 />
                 <button
                   type='button'
                   onClick={() => {
                     return remove(
-                      index 
+                      index
                     );
                   }}
                 >
@@ -68,24 +68,58 @@ export function ObligacionesArray() {
               >
                 <label
                   className={form.label}
-                  htmlFor={`obligacion.${ index }.tipo`}
+                  htmlFor={`demanda.juzgado.${ index }.id`}
                 >
                 Obligacion 1
                 </label>
                 <input
                   className={form.textArea}
-                  type='text'
-                  placeholder={`obligacion.${ index }.tipo`}
+                  type='number'
+                  placeholder={`demanda.juzgado.${ index }.id`}
                   {...register(
-                  `obligacion.${ index }.tipo` as const,
-                  { required: false }
+                  `demanda.juzgado.${ index }.id` as const,
+                  {
+                    required: false
+                  }
                   )}
                 />
                 <button
                   type='button'
                   onClick={() => {
                     return remove(
-                      index 
+                      index
+                    );
+                  }}
+                >
+                Delete
+                </button>
+              </section>
+              <section
+                key={item.id}
+                className={form.section}
+              >
+                <label
+                  className={form.label}
+                  htmlFor={`demanda.juzgado.${ index }.url`}
+                >
+                Obligacion 1
+                </label>
+                <input
+                  className={form.textArea}
+                  type='number'
+                  placeholder={`demanda.juzgado.${ index }.url`}
+                  {...register(
+                    `demanda.juzgado.${ index }.url` as const,
+                    {
+                      required: false
+                    }
+                  )}
+                />
+                <button
+                  type='button'
+                  onClick={() => {
+                    return remove(
+                      index
                     );
                   }}
                 >
@@ -94,7 +128,7 @@ export function ObligacionesArray() {
               </section>
             </Fragment>
           );
-        } 
+        }
       )}
 
       <section className={form.section}>
@@ -103,9 +137,10 @@ export function ObligacionesArray() {
           onClick={() => {
             append(
               {
-                texto: 'obligacion',
-                tipo : 'obligacion'
-              } 
+                id  : 0,
+                tipo: 'juzgado',
+                url : 'https://www.ramajudicial.gov.co/'
+              }
             );
           }}
         >

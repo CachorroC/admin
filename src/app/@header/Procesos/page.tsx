@@ -12,7 +12,9 @@ export default async function Page() {
   const carpetas = await getCarpetas();
 
   const fechas = await fetchFechas(
-    { carpetas: carpetas } 
+    {
+      carpetas: carpetas 
+    } 
   );
 
   return (

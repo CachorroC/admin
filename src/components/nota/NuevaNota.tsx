@@ -79,8 +79,10 @@ export function NewNota(
       '/api/Notas',
       {
         method : 'POST',
-        headers: { 'content-type': 'application/json' },
-        body   : JSON.stringify(
+        headers: {
+          'content-type': 'application/json' 
+        },
+        body: JSON.stringify(
           newData 
         )
       }
@@ -134,7 +136,9 @@ export function NewNota(
             id='nota'
             className={note.textArea}
             {...register(
-              'nota', { required: true } 
+              'nota', {
+                required: true 
+              } 
             )}
           />
         </div>

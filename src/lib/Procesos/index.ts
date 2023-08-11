@@ -69,8 +69,12 @@ export async function fetchProceso(
           llaveProceso: llaveProceso,
           idProceso   : proceso.idProceso
         },
-        { $set: proceso },
-        { upsert: true, }
+        {
+          $set: proceso 
+        },
+        {
+          upsert: true, 
+        }
       );
 
     }
@@ -106,20 +110,18 @@ export async function getProceso(
 
   for ( const proceso of fetchP ) {
 
-    const carpeta = await getCarpetasByllaveProceso(
-      { llaveProceso: llaveProceso }
-    );
-
-    const newCarpeta = {
-      ...carpeta,
-      idProceso: proceso.idProceso
-    };
-
     const updtCarpeta
       = await carpsColl.updateOne(
         {
-          llaveProceso: llaveProceso
-        }, { $set: newCarpeta }, { upsert: true }
+          llaveProceso: llaveProceso,
+          idProceso   : proceso.idProceso
+        }, {
+          $set: {
+            idProceso: proceso.idProceso 
+          } 
+        }, {
+          upsert: false 
+        }
       );
     console.log(
       `${ llaveProceso } update was modified ${ updtCarpeta.matchedCount } and ${ updtCarpeta.upsertedCount } upserted with ${ updtCarpeta.matchedCount } matched`
@@ -140,7 +142,9 @@ export async function getProcesoByidProceso(
   const collection = await procesosCollection();
 
   const proceso = await collection.findOne(
-    { idProceso: idProceso }
+    {
+      idProceso: idProceso 
+    }
   );
 
   return proceso;
@@ -157,7 +161,9 @@ export async function getProcesosByllaveProceso(
 
   const proceso = await collection
         .find(
-          { llaveProceso: llaveProceso }
+          {
+            llaveProceso: llaveProceso 
+          }
         )
         .toArray();
 

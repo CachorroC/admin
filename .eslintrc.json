@@ -90,18 +90,18 @@
       "error",
       {
         "ExportDeclaration": {
-          "consistent": false,
+          "consistent": true,
           "minProperties": 1,
           "multiline": true
         },
         "ImportDeclaration": "never",
         "ObjectExpression": {
-          "consistent": false,
-          "minProperties": 2,
+          "consistent": true,
+          "minProperties": 1,
           "multiline": true
         },
         "ObjectPattern": {
-          "consistent": false,
+          "consistent": true,
           "minProperties": 1,
           "multiline": true
         }

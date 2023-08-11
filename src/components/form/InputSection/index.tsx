@@ -1,47 +1,54 @@
 'use client';
 import form from '#@/components/form/form.module.scss';
-import { IntCarpeta } from '#@/lib/types/demandados';
 import { HTMLInputTypeAttribute,
+         JSXElementConstructor,
          MutableRefObject,
+         PromiseLikeOfReactNode,
+         ReactElement,
+         ReactNode,
+         ReactPortal,
          useRef,
          useState } from 'react';
-import { RegisterOptions,
+import { ControllerProps, Field, FieldName, RegisterOptions,
+         UseControllerProps,
          useController,
          useFormContext } from 'react-hook-form';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { useNuevaCarpetaContext } from '#@/hooks/formContext';
+import { IntCarpeta } from '#@/lib/types/carpeta';
 
-export const InputSection = (
+export function InputSection (
   {
     name,
-    rls,
-    title,
-    type
+    type, title, rls
   }: {
-  name: string;
+
+  name: UseControllerProps<IntCarpeta>;
   title: string;
   type: HTMLInputTypeAttribute;
   rls?: RegisterOptions;
-} 
-) => {
-  const sectionRef = useRef(
-    new Map() 
-  );
-  const rules = rls ?? { required: false };
-
-  const {
-    register, control 
   }
-    = useFormContext<IntCarpeta>();
+) {
+  const sectionRef = useRef(
+    new Map()
+  );
+
+  const rules = rls ?? {
+    required: false
+  };
 
   const {
-    field, fieldState 
+    register, control
+  } = useFormContext<IntCarpeta>();
+
+  const {
+    field, fieldState
   } = useController(
     {
       name,
       control,
       rules
-    } 
+    }
   );
 
   const [
@@ -51,33 +58,32 @@ export const InputSection = (
 
   return (
     <section
-      className={form.section}
-      ref={(
-        node 
+      className={ form.section }
+      ref={ (
+        node
       ) => {
         if ( node ) {
           map.set(
-            name, node 
+            name, node
           );
         } else {
           map.delete(
-            name 
+            name
           );
         }
-      }}
+      } }
     >
       <label
-        className={`${ form.label } ${ typography.titleLarge }`}
-        htmlFor={field.name}
+        className={ `${ form.label } ${ typography.titleLarge }` }
+        htmlFor={ field.name }
       >
-        {title}
+        { title }
       </label>
       <input
-        {...field}
-        className={form.textArea}
-        type={type}
-        placeholder={field.name}
-      />
+        { ...field }
+        className={ form.textArea }
+        type={ type }
+        placeholder={ field.name } />
     </section>
   );
-};
+}

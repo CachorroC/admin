@@ -13,11 +13,15 @@ export default async function PageProcesosRightllaveProceso(
 }
 ) {
   const carpeta = await getCarpetasByllaveProceso(
-    { llaveProceso: params.llaveProceso }
+    {
+      llaveProceso: params.llaveProceso 
+    }
   );
 
   const Procesos = await getProceso(
-    { llaveProceso: params.llaveProceso }
+    {
+      llaveProceso: params.llaveProceso 
+    }
   );
 
   return (

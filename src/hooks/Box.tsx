@@ -27,7 +27,9 @@ export default function Box() {
         }
       );
       observer.observe(
-        div, { threshold: 1.0 } 
+        div, {
+          threshold: 1.0 
+        } 
       );
 
       return () => {

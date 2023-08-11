@@ -8,17 +8,17 @@ export const ButtonsNuevaCarpeta = () => {
   ] = useNuevaCarpetaContext();
 
   function scrollToId(
-    name: string 
+    name: string
   ) {
     const node = map.get(
-      name 
+      name
     );
     node.scrollIntoView(
       {
         behavior: 'smooth',
         block   : 'nearest',
         inline  : 'center'
-      } 
+      }
     );
   }
 
@@ -27,21 +27,21 @@ export const ButtonsNuevaCarpeta = () => {
       <button
         onClick={() => {
           return scrollToId(
-            'Numero' 
+            'Numero'
           );
         }}
       ></button>
       <button
         onClick={() => {
           return scrollToId(
-            'idProceso' 
+            'idProceso'
           );
         }}
       ></button>
       <button
         onClick={() => {
           return scrollToId(
-            'llaveProceso' 
+            'llaveProceso'
           );
         }}
       ></button>
@@ -69,7 +69,7 @@ export const ButtonsNuevaCarpeta = () => {
       <button
         onClick={() => {
           return scrollToId(
-            'Terminacion.Causal' 
+            'Terminacion.Causal'
           );
         }}
       ></button>
@@ -237,28 +237,28 @@ export const ButtonsNuevaCarpeta = () => {
       <button
         onClick={() => {
           return scrollToId(
-            'Avaluo.Valor' 
+            'Avaluo.Valor'
           );
         }}
       ></button>
       <button
         onClick={() => {
           return scrollToId(
-            'Codeudor.Id' 
+            'Codeudor.Id'
           );
         }}
       ></button>
       <button
         onClick={() => {
           return scrollToId(
-            'Codeudor.Nombre' 
+            'Codeudor.Nombre'
           );
         }}
       ></button>
       <button
         onClick={() => {
           return scrollToId(
-            'Codeudor.Tel.Fijo' 
+            'Codeudor.Tel.Fijo'
           );
         }}
       ></button>
@@ -300,35 +300,35 @@ export const ButtonsNuevaCarpeta = () => {
       <button
         onClick={() => {
           return scrollToId(
-            'Deudor.Id' 
+            'Deudor.Id'
           );
         }}
       ></button>
       <button
         onClick={() => {
           return scrollToId(
-            'Deudor.Email' 
+            'Deudor.Email'
           );
         }}
       ></button>
       <button
         onClick={() => {
           return scrollToId(
-            'Deudor.Tel.Fijo' 
+            'Deudor.Tel.Fijo'
           );
         }}
       ></button>
       <button
         onClick={() => {
           return scrollToId(
-            'Deudor.Tel.Celular' 
+            'Deudor.Tel.Celular'
           );
         }}
       ></button>
       <button
         onClick={() => {
           return scrollToId(
-            'Deudor.Direccion' 
+            'Deudor.Direccion'
           );
         }}
       ></button>

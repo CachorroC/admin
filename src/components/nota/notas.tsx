@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 import { EditNoteButton,
          DeleteNoteButton } from '#@/components/nota/ButtonsNoteHandlers';
 import { AccordionRow } from '#@/components/nota/accordion';
-import { ButtonSkeleton } from '../navbar/ButtonSkeleton';
+import { ButtonSkeleton } from '../Buttons/ButtonSkeleton';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getNotas,
          getNotasByllaveProceso } from '#@/lib/notas';
@@ -21,10 +21,10 @@ export function Nota(
   notaRaw: monNota;
   i: number;
   arr: monNota[];
-} 
+}
 ) {
   const {
-    id, nota, tareas, fecha 
+    id, nota, tareas, fecha
   } = notaRaw;
 
   return (
@@ -47,7 +47,7 @@ export function Nota(
           className={`${ typography.labelSmall } ${ note.fecha }`}
         >
           {fixFechas(
-            fecha.toString() 
+            fecha.toString()
           )}
         </sub>
         <div className={note.buttonsRow}>
@@ -67,7 +67,7 @@ export function Nota(
         <div className={note.tareas}>
           {tareas.map(
             (
-              tr 
+              tr
             ) => {
               return (
                 <AccordionRow
@@ -77,7 +77,7 @@ export function Nota(
                   isDone={tr.isDone}
                 />
               );
-            } 
+            }
           )}
         </div>
       </div>
@@ -90,11 +90,13 @@ export async function Notas(
     llaveProceso
   }: {
   llaveProceso?: string;
-} 
+}
 ) {
   if ( llaveProceso ) {
     const notas = await getNotasByllaveProceso(
-      { llaveProceso: llaveProceso } 
+      {
+        llaveProceso: llaveProceso 
+      }
     );
 
     if ( notas.length === 0 ) {
@@ -102,7 +104,7 @@ export async function Notas(
 
       const NotasRow = nts.map(
         (
-          nota, i, arr 
+          nota, i, arr
         ) => {
           return (
             <Nota
@@ -112,7 +114,7 @@ export async function Notas(
               key={nota.id}
             />
           );
-        } 
+        }
       );
 
       return <>{NotasRow}</>;
@@ -120,7 +122,7 @@ export async function Notas(
 
     const NotasRow = notas.map(
       (
-        nota, i, arr 
+        nota, i, arr
       ) => {
         return (
           <Nota
@@ -130,7 +132,7 @@ export async function Notas(
             key={nota.id}
           />
         );
-      } 
+      }
     );
 
     return <>{NotasRow}</>;
@@ -139,7 +141,7 @@ export async function Notas(
 
   const NotasRow = notas.map(
     (
-      nota, i, arr 
+      nota, i, arr
     ) => {
       return (
         <Nota
@@ -149,7 +151,7 @@ export async function Notas(
           key={nota.id}
         />
       );
-    } 
+    }
   );
 
   return <>{NotasRow}</>;

@@ -162,3 +162,11 @@ CCE: es civil circuito de ejecución de sentencias
 [x]copia resolucion superfinanciera sobre taza de interes de usura
 [x]copia tarjeta profesional profesional de carmelita
 [x]certificado de antecedentes disciplinarios de la abogada
+
+
+
+
+Don’t confuse e.stopPropagation() and e.preventDefault(). They are both useful, but are unrelated:
+
+    e.stopPropagation() stops the event handlers attached to the tags above from firing.
+    e.preventDefault() prevents the default browser behavior for the few events that have it.

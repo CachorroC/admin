@@ -14,12 +14,16 @@ export default async function PageProcesosRightllaveProcesoidProceso(
 } 
 ) {
   const carpeta = await getCarpetasByllaveProceso(
-    { llaveProceso: params.llaveProceso }
+    {
+      llaveProceso: params.llaveProceso 
+    }
   );
 
   const notasllaveProceso
     = await getNotasByllaveProceso(
-      { llaveProceso: params.llaveProceso } 
+      {
+        llaveProceso: params.llaveProceso 
+      } 
     );
   const cantidadNotas = notasllaveProceso.length;
   const notas = await getNotas();

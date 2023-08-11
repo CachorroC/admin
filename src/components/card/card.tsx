@@ -6,12 +6,12 @@ import { ReactNode } from 'react';
 import card from '#@/components/card/card.module.scss';
 import { useModal } from '#@/app/modal-context';
 import typography from '#@/styles/fonts/typography.module.scss';
-import { useNavigator } from '#@/app/search-context';
+import { useCategory, useNavigator } from '#@/app/search-context';
 import { toNameString } from '#@/lib/fix';
 import { Deudor,
          IntCarpeta,
          MonCarpeta,
-         NombreCompleto } from '#@/lib/types/demandados';
+         NombreCompleto } from '#@/lib/types/carpeta';
 
 export const DeudorComponent = (
   {
@@ -20,8 +20,9 @@ export const DeudorComponent = (
   }: {
   deudor: Deudor;
   isActive: boolean;
-} 
+}
 ) => {
+
   const segundoNombre
     = deudor.segundoNombre ?? ' ';
 
@@ -107,8 +108,13 @@ export const Card = (
   path: string;
   carpeta: MonCarpeta;
   children: ReactNode;
-} 
+}
 ) => {
+  const [
+    category,
+    setCategory
+  ] = useCategory();
+
   const [
     isNavOpen,
     setIsNavOpen
@@ -122,10 +128,10 @@ export const Card = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false 
+      false
     );
     setIsOpen(
-      true 
+      false
     );
   };
   const pathname = usePathname();
@@ -133,8 +139,8 @@ export const Card = (
 
   const href = (
     carpeta.llaveProceso
-      ? carpeta.idProcesos
-        ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProcesos }`
+      ? carpeta.idProceso
+        ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
         : `${ path }/${ carpeta.llaveProceso }`
       : `${ path }`
   ) as Route;
@@ -142,9 +148,15 @@ export const Card = (
   const isActive
     = pathname === href
     || pathname
-      === `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProcesos[ 0 ] }`
+      === `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
     || pathname
-      === `${ path }/${ carpeta.llaveProceso }`;
+    === `${ path }/${ carpeta.llaveProceso }`;
+
+  if ( category !== 'todos' ) {
+    if (  category !== carpeta.grupo ) {
+      return null;
+    }
+  }
 
   return (
     <div
@@ -158,13 +170,13 @@ export const Card = (
             : card.notActive
         }
       >
+        {children}
         <DeudorComponent
           deudor={carpeta.deudor}
           key={carpeta.deudor.cedula}
           isActive={isActive}
         />
 
-        {children}
         <div className={card.links}>
           <Link
             className={`${ card.link } ${
@@ -205,7 +217,7 @@ export const Card = (
             href={`/Notas/NuevaNota/${ carpeta.llaveProceso }`}
             onClick={() => {
               setIsOpen(
-                true 
+                true
               );
             }}
           >

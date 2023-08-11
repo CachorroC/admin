@@ -9,7 +9,7 @@ import form from '#@/components/form/form.module.scss';
 import { InputSection } from '#@/components/form/InputSection';
 import { Demanda,
          Deudor,
-         IntCarpeta } from '#@/lib/types/demandados';
+         IntCarpeta } from '#@/lib/types/carpeta';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { SelectSection } from '#@/components/form/SelectSection';
 import { ObligacionesArray } from './obligaciones-array';
@@ -72,10 +72,10 @@ export const NuevoProceso = (
     uri
   }: {
   uri: string;
-} 
+}
 ) => {
   const methods = useForm<IntCarpeta>(
-    {} 
+    {}
   );
 
   const {
@@ -99,37 +99,39 @@ export const NuevoProceso = (
   const onSubmit: SubmitHandler<
     IntCarpeta
   > = async (
-    data 
+    data
   ) => {
     alert(
       JSON.stringify(
-        dirtyFields 
-      ) 
+        dirtyFields
+      )
     );
     alert(
       JSON.stringify(
-        data 
-      ) 
+        data
+      )
     );
 
     const postNewNote = await fetch(
       '/api/Carpetas',
       {
         method : 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body   : JSON.stringify(
-          data 
+        headers: {
+          'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify(
+          data
         )
       }
     );
 
     return console.log(
-      data 
+      data
     );
   };
 
   const isReparto = watch(
-    'reparto' 
+    'reparto'
   );
   renderCount++;
 
@@ -143,7 +145,7 @@ export const NuevoProceso = (
           <form
             className={form.form}
             onSubmit={handleSubmit(
-              onSubmit 
+              onSubmit
             )}
           >
             <InputSection
@@ -213,7 +215,9 @@ export const NuevoProceso = (
                   }
                   title={'despacho numero'}
                   type={'number'}
-                  rls={{ required: true }}
+                  rls={{
+                    required: true 
+                  }}
                 />
                 <SelectSection
                   name={
@@ -233,14 +237,18 @@ export const NuevoProceso = (
                   }
                   title={'link'}
                   type={'url'}
-                  rls={{ required: true }}
+                  rls={{
+                    required: true 
+                  }}
                 />
               </section>
               <InputSection
                 name={'demanda.municipio'}
                 title={'Municipio'}
                 type={'text'}
-                rls={{ required: true }}
+                rls={{
+                  required: true 
+                }}
               />
               <InputSection
                 name={'demanda.radicado'}
@@ -253,7 +261,9 @@ export const NuevoProceso = (
                 name={'deudor.cedula'}
                 title={'cedula'}
                 type={'number'}
-                rls={{ required: true }}
+                rls={{
+                  required: true 
+                }}
               />
               <InputSection
                 name={'deudor.direccion'}
@@ -266,13 +276,17 @@ export const NuevoProceso = (
                 name={'deudor.primerApellido'}
                 title={'Primer Nombre'}
                 type={'text'}
-                rls={{ required: true }}
+                rls={{
+                  required: true 
+                }}
               />
               <InputSection
                 name={'deudor.primerNombre'}
                 title={'Primer Nombre'}
                 type={'text'}
-                rls={{ required: true }}
+                rls={{
+                  required: true 
+                }}
               />
               <InputSection
                 name={'deudor.tel.fijo'}
@@ -320,7 +334,9 @@ export const NuevoProceso = (
                 'Entrega de las garantias al abogado'
               }
               type={'date'}
-              rls={{ required: true }}
+              rls={{
+                required: true 
+              }}
             />
             <SelectSection
               name={'etapaProcesal'}
@@ -338,7 +354,9 @@ export const NuevoProceso = (
                 'Fecha en que ingresa el proceso al sistema de RyS'
               }
               type={'date'}
-              rls={{ required: true }}
+              rls={{
+                required: true 
+              }}
             />
             <SelectSection
               name={'grupo'}
@@ -364,7 +382,9 @@ export const NuevoProceso = (
               name={'numero'}
               title={'Carpeta numero'}
               type={'number'}
-              rls={{ required: true }}
+              rls={{
+                required: true 
+              }}
             />
             <ObligacionesArray />
             <section className={form.switchBox}>
@@ -372,7 +392,7 @@ export const NuevoProceso = (
                 type={'checkbox'}
                 className={form.primaryInput}
                 {...register(
-                  'reparto' 
+                  'reparto'
                 )}
               />
               <label
@@ -413,7 +433,9 @@ export const NuevoProceso = (
               name={'vencimientoPagare'}
               title={'vencimiento del pagare'}
               type={'date'}
-              rls={{ required: true }}
+              rls={{
+                required: true 
+              }}
             />
             <button
               type='submit'

@@ -1,7 +1,7 @@
 'use client';
 
 import { useNuevaCarpetaContext } from '#@/hooks/formContext';
-import { IntCarpeta } from '#@/lib/types/demandados';
+import { IntCarpeta } from '#@/lib/types/carpeta';
 import { HTMLInputTypeAttribute } from 'react';
 import { RegisterOptions,
          useController,
@@ -18,23 +18,25 @@ export const SelectSection = (
   name: string;
   title: string;
   options: string[];
-} 
+}
 ) => {
-  const rules = { required: true };
+  const rules = {
+    required: true 
+  };
 
   const {
-    register, control 
+    register, control
   }
     = useFormContext<IntCarpeta>();
 
   const {
-    field, fieldState 
+    field, fieldState
   } = useController(
     {
       name,
       control,
       rules
-    } 
+    }
   );
 
   const [
@@ -57,7 +59,7 @@ export const SelectSection = (
       >
         {options.map(
           (
-            option, index 
+            option, index
           ) => {
             return (
               <option
@@ -67,7 +69,7 @@ export const SelectSection = (
                 {option}
               </option>
             );
-          } 
+          }
         )}
       </select>
     </section>

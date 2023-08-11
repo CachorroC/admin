@@ -16,14 +16,14 @@ export default function InputProceso() {
     register,
     handleSubmit,
     formState: {
-      errors 
+      errors
     }
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<
     FormValues
   > = async (
-    data 
+    data
   ) => {
     const Request = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ data.llaveProceso }&SoloActivos=false`
@@ -41,14 +41,14 @@ export default function InputProceso() {
     }
     const procesos = Response.procesos;
     alert(
-      procesos 
+      procesos
     );
 
     return (
       <Modal>
         {procesos.map(
           (
-            proceso 
+            proceso
           ) => {
             return (
               <ProcesoCard
@@ -56,18 +56,18 @@ export default function InputProceso() {
                 proceso={proceso}
               />
             );
-          } 
+          }
         )}
       </Modal>
     );
   };
   console.log(
-    errors 
+    errors
   );
 
   return (
     <form onSubmit={handleSubmit(
-      onSubmit 
+      onSubmit
     )}>
       <input
         type='text'
@@ -76,7 +76,7 @@ export default function InputProceso() {
           'llaveProceso', {
             required : true,
             maxLength: 23
-          } 
+          }
         )}
       />
 
