@@ -65,10 +65,10 @@ export default async function PageProcesosLeft() {
           carpeta, index
         ) => {
           const segundoNombre
-          = carpeta.deudor.segundoNombre ?? ' ';
+          = carpeta.deudor.segundoNombre ?? '';
 
           const segundoApellido
-          = carpeta.deudor.segundoApellido ?? ' ';
+          = carpeta.deudor.segundoApellido ?? '';
 
           const {
             cedula,
@@ -78,15 +78,13 @@ export default async function PageProcesosLeft() {
             tel,
             direccion
           } = carpeta.deudor;
-          const nombre = `${ primerNombre }   ${ segundoNombre }   ${ primerApellido }   ${ segundoApellido }`;
 
           return (
             <Card path={ '/Procesos' } carpeta={ carpeta } key={ carpeta._id }>
-              <NombreComponent deudor={ carpeta.deudor}  key={carpeta._id}/>
               <h1
                 className={`${ typography.titleMedium } ${ card.title }`}
               >
-                {nombre}
+                { carpeta.nombre }
               </h1>
               <sub className={ card.sub }>{ `${ index + 1 } de ${ carpetasRaw.length }` }</sub>
 

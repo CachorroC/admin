@@ -1,5 +1,5 @@
 import Title from '#@/components/Headings/title';
-import layout from '#@/styles/scss/layout.module.scss';
+import layout from '#@/styles/layout.module.scss';
 import Link from 'next/link';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { getCarpetas } from '#@/lib/Carpetas';

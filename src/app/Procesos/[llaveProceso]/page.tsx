@@ -11,15 +11,15 @@ import { notFound } from 'next/navigation';
 export default async function DefaultProcesosllaveProceso(
   {
     params: {
-      llaveProceso 
+      llaveProceso
     }
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   const Carpeta = await getCarpetasByllaveProceso(
     {
-      llaveProceso: llaveProceso 
+      llaveProceso: llaveProceso
     }
   );
 
@@ -31,7 +31,14 @@ export default async function DefaultProcesosllaveProceso(
     <>
       <NombreComponent deudor={Carpeta.deudor} />
       <Link
-        href={`/Carpetas/${ llaveProceso }`}
+        href={
+          {
+            pathname: `/Procesos/${ llaveProceso }`,
+            query   : {
+              nombre: Carpeta.nombre
+            }
+          }
+        }
         className={card.link}
       >
         <span className='material-symbols-outlined'>

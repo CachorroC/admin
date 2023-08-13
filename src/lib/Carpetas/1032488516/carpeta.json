@@ -1,0 +1,46 @@
+{
+    "capitalAdeudado": "37000000000",
+    "demanda": {
+        "ciudad": "Bogota",
+        "departamento": "Bolivar",
+        "entregaGarantiasAbogado": "2023-08-30",
+        "etapaProcesal": "",
+        "juzgado": [
+            {
+                "id": "3",
+                "tipo": " Pequeñas Causas y CompetenciasMultiples",
+                "url": "https://app.rsasesorjuridico.com"
+            },
+            {
+                "id": "",
+                "tipo": "Civil Municipal de Ejecucion",
+                "url": ""
+            }
+        ],
+        "obligacion": [
+            "8767858767968",
+            ""
+        ],
+        "radicado": "",
+        "vencimientoPagare": "2023-08-22"
+    },
+    "deudor": {
+        "cedula": "1032488516",
+        "direccion": "carrera 63 # 22 - 31 ",
+        "email": "juankpato87@gmail.com",
+        "primerApellido": "Paramo",
+        "primerNombre": "Juan",
+        "segundoApellido": "Perez",
+        "segundoNombre": "Pedro",
+        "tel": {
+            "celular": "3506144932",
+            "fijo": "6051567"
+        }
+    },
+    "grupo": "Bancolombia",
+    "id": "1022352429",
+    "idProceso": "",
+    "llaveProceso": "",
+    "numero": "588",
+    "tipoProceso": "HIPOTECARIO"
+}

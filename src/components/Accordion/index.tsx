@@ -1,20 +1,19 @@
 'use client';
 import { ReactNode, useState } from 'react';
-import styles from './accordion.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import styles from './accordion.module.css';
 
 export function Accordion(
   {
     children
   }: {
   children: ReactNode;
-} 
+}
 ) {
   const [
     isActive,
     setIsActive
   ] = useState(
-    false 
+    false
   );
 
   return (
@@ -26,10 +25,10 @@ export function Accordion(
       <div className={styles.item}>
         <button
           type='button'
-          className={styles.title}
+          className={styles.button}
           onClick={() => {
             return setIsActive(
-              !isActive 
+              !isActive
             );
           }}
         >

@@ -171,12 +171,12 @@ export const CarpetaCard = (
                 </span>
               </Link>
             )}
-            {carpeta.vencimientoPagare && (
+            {carpeta.demanda.vencimientoPagare && (
               <p
                 className={typography.labelMedium}
               >
                 {fixFechas(
-                  carpeta.vencimientoPagare
+                  carpeta.demanda.vencimientoPagare
                 )}
               </p>
             )}
@@ -215,12 +215,12 @@ export const CarpetaCard = (
                 </span>
               </Link>
             )}
-            {carpeta.entregaGarantiasAbogado && (
+            {carpeta.demanda.entregaGarantiasAbogado && (
               <p
                 className={typography.labelSmall}
               >
                 {fixFechas(
-                  carpeta.entregaGarantiasAbogado
+                  carpeta.demanda.entregaGarantiasAbogado
                 )}
               </p>
             )}
@@ -228,7 +228,7 @@ export const CarpetaCard = (
               {carpeta.capitalAdeudado
                 && fixMoney(
                   {
-                    valor: carpeta.capitalAdeudado 
+                    valor: carpeta.capitalAdeudado
                   }
                 )}
             </p>

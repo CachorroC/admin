@@ -1,54 +1,4 @@
 // Colors
-$switch-default-color: #eeeeee !default;
-$switch-primary-color: #1abc9c !default;
-$switch-info-color: #3498db !default;
-$switch-success-color: #2ecc71 !default;
-$switch-danger-color: #e74c3c !default;
-$switch-warning-color: #e67e22 !default;
-$switch-disabled-color: #d5d5d5 !default;
-$slider-default-color: darken(
-  $switch-default-color,
-  10%
-) !default;
-$slider-primary-color: lighten(
-  $switch-primary-color,
-  30%
-) !default;
-$slider-info-color: lighten(
-  $switch-info-color,
-  30%
-) !default;
-$slider-success-color: lighten(
-  $switch-success-color,
-  30%
-) !default;
-$slider-danger-color: lighten(
-  $switch-danger-color,
-  30%
-) !default;
-$slider-warning-color: lighten(
-  $switch-warning-color,
-  30%
-) !default;
-$slider-disabled-color: lighten(
-  $switch-disabled-color,
-  5%
-) !default;
-
-// Sizes
-$slider-height: 1.125rem !default; // 18px
-$slider-width: $slider-height * 2 !default; // 36px
-$switch-height: $slider-height !default; // 18px
-$switch-width: $switch-height !default; // 18px
-
-// margin between switch and label text
-$switch-end-margin: 1rem;
-
-// Transitions
-$transition-duration: 0.2s !default;
-$transition-function: ease !default;
-$transition: all $transition-duration
-  $transition-function !default;
 .container {
   container-name: note;
   container-type: inline-size;
@@ -284,38 +234,38 @@ $transition: all $transition-duration
   .switchBoxLabel {
     position: relative;
     display: inline-block;
-    height: $slider-height;
-    padding-left: $slider-width +
-      $switch-end-margin;
+    height: 1.125rem;
+    padding-left: 1.125rem * 2 +
+      1rem;
     cursor: pointer;
-    transition: $transition;
+    transition: all 0.2s ease;
 
     &:before {
       position: absolute;
       left: 0;
-      top: ($slider-height - $switch-height) / 2;
+      top: calc((1.125rem - 1.125rem) / 2);
       display: block;
-      width: $slider-width;
-      height: $slider-height;
-      border-radius: $slider-height;
-      background: $switch-default-color;
+      width: 1.125rem * 2;
+      height: 1.125rem;
+      border-radius: 1.125rem;
+      background: var(--secondary);
       box-shadow: 0px 2px 2px rgba(#000, 0.2);
       content: '';
-      transition: $transition;
+      transition: all 0.2s ease;
     }
 
     &:after {
       position: absolute;
       left: 0;
-      top: ($slider-height - $switch-height) / 2;
+      top: calc((1.125rem - 1.125rem) / 2);
       display: block;
-      width: $switch-width;
-      height: $switch-height;
+      width: 1.125rem;
+      height: 1.125rem;
       border-radius: 50%;
-      background: $switch-default-color;
+      background: var(--secondary);
       box-shadow: 0px 2px 2px rgba(#000, 0.2);
       content: '';
-      transition: $transition;
+      transition: all 0.2s ease;
     }
   }
 
@@ -323,30 +273,30 @@ $transition: all $transition-duration
     display: none;
     &:checked ~ .switchBoxLabel {
       &:after {
-        background-color: $slider-default-color;
-        left: $slider-width - $switch-width;
+        background-color: var(--primary);
+        left: 1.125rem * 2 - 1.125rem;
       }
     }
 
     &:disabled ~ .switchBoxLabel {
       &:before {
-        background: $slider-disabled-color;
+        background: var(--outlined);
       }
       cursor: default;
 
       &:after {
-        background: $switch-disabled-color;
+        background: var(--outlined);
       }
     }
   }
 
   input:checked:not(:disabled) ~ .switchBoxLabel {
     &:before {
-      background: $slider-primary-color;
+      background: var(--secondary);
     }
 
     &:after {
-      background: $switch-primary-color;
+      background: var(--secondary);
     }
   }
 }

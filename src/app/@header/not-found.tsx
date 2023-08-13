@@ -1,5 +1,5 @@
 import Title from '#@/components/Headings/title';
-import layout from '#@/styles/scss/layout.module.scss';
+import layout from '#@/styles/layout.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
 
 export default function NotFound() {
@@ -14,7 +14,7 @@ export default function NotFound() {
       <h1
         className={typography.displayLarge}
         style={{
-          color: 'var(--primary)' 
+          color: 'var(--primary)'
         }}
       >
         ¿Perdido?
@@ -22,7 +22,7 @@ export default function NotFound() {
       <p
         className={typography.bodyLarge}
         style={{
-          color: 'var(--on-surface-container)' 
+          color: 'var(--on-surface-container)'
         }}
       >
         No pudimos resolver la consulta que

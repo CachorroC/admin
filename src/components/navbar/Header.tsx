@@ -1,5 +1,5 @@
 'use client';
-import layout from '#@/styles/scss/layout.module.scss';
+import layout from '#@/styles/layout.module.scss';
 import useMedia from './mediaQuery';
 import InputSearchBar from '#@/components/search/InputSearchBar';
 import { Suspense } from 'react';

@@ -1,6 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import navbar from '#@/components/navbar/navbar.module.scss';
+import navbar from '#@/components/navbar/navbar.module.css';
 import Link from 'next/link';
 import { useModal } from '#@/app/modal-context';
 import { useNavigator } from '#@/app/search-context';
@@ -21,7 +21,7 @@ export const ForwardButton = () => {
       onClick={() => {
         router.forward();
         setIsNavOpen(
-          false 
+          false
         );
       }}
     >
@@ -52,10 +52,10 @@ export const BackwardsButton = () => {
 
   const clickHandler = () => {
     setIsNavOpen(
-      false 
+      false
     );
     setIsOpen(
-      false 
+      false
     );
     router.back();
   };
@@ -92,7 +92,7 @@ export const DrawerMenuButton = () => {
         className={navbar.buttonDrawerMenu}
         onClick={() => {
           return setIsNavOpen(
-            false 
+            false
           );
         }}
       >
@@ -114,7 +114,7 @@ export const DrawerMenuButton = () => {
       className={navbar.buttonDrawerMenu}
       onClick={() => {
         return setIsNavOpen(
-          true 
+          true
         );
       }}
     >
@@ -143,7 +143,7 @@ export const HomeButton = () => {
       className={navbar.buttonHome}
       onClick={() => {
         setIsNavOpen(
-          false 
+          false
         );
       }}
     >
@@ -170,7 +170,7 @@ export const ModalButton = () => {
       className={navbar.buttonModal}
       onClick={() => {
         return setIsOpen(
-          true 
+          true
         );
       }}
     >

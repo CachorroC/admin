@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "URL=beta.rsasesorjuridico.com NEXTAUTH_URL=https://beta.rsasesorjuridico.com next dev",
-    "build": "next build",
+    "build": "pnpm fix && next build",
     "start": "next start",
     "lint": "next lint --fix && next lint",
-    "sass": "cd src/styles && sass --watch scss:css"
+    "sass": "sass src:src && tcm src",
+    "fix": "pnpm sass && pnpm lint"
   },
   "dependencies": {
     "@prisma/client": "^5.1.1",
@@ -27,6 +28,7 @@
     "react-hook-form": "^7.45.1",
     "sass": "^1.63.6",
     "server-only": "^0.0.1",
+    "typed-css-modules": "^0.7.2",
     "typescript": "5.1.6",
     "zod": "^3.21.4"
   },

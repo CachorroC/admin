@@ -22,8 +22,6 @@ export function InputSection (
     name,
     type, title, rls
   }: {
-
-  name: UseControllerProps<IntCarpeta>;
   title: string;
   type: HTMLInputTypeAttribute;
   rls?: RegisterOptions;
@@ -42,7 +40,7 @@ export function InputSection (
   } = useFormContext<IntCarpeta>();
 
   const {
-    field, fieldState
+    field, fieldState,
   } = useController(
     {
       name,
@@ -59,19 +57,6 @@ export function InputSection (
   return (
     <section
       className={ form.section }
-      ref={ (
-        node
-      ) => {
-        if ( node ) {
-          map.set(
-            name, node
-          );
-        } else {
-          map.delete(
-            name
-          );
-        }
-      } }
     >
       <label
         className={ `${ form.label } ${ typography.titleLarge }` }

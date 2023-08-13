@@ -51,9 +51,9 @@ export const fetchActuaciones= cache(
       awaitTime
     );
 
-    if ( !idProceso || idProceso === 0 ) {
+    if (  idProceso === 0 ) {
       console.log(
-        `este idProceso es: ${ idProceso } con index ${ index }`
+        `${ index }: este idProceso es: ${ idProceso }`
       );
 
       return [];
@@ -72,7 +72,7 @@ export const fetchActuaciones= cache(
 
       if ( !Request.ok ) {
         console.log(
-          ` ${ idProceso }: actuaciones not ok, status: ${ Request.status } with ${ Request.statusText } index: ${ index }`
+          ` ${ index }: actuaciones not ok, status: ${ Request.status } with ${ Request.statusText } idProceso: ${ idProceso }`
         );
 
         return [];
@@ -82,7 +82,7 @@ export const fetchActuaciones= cache(
       = ( await Request.json() ) as intConsultaActuaciones;
       const actuaciones = Response.actuaciones;
 
-      if ( actuaciones.length >= 1 ) {
+      if ( actuaciones.length > 0 ) {
 
         const updateActsinMongo
       = await actsColl.updateOne(
@@ -102,9 +102,9 @@ export const fetchActuaciones= cache(
         }
       );
 
-        if ( updateActsinMongo.acknowledged ) {
+        if ( updateActsinMongo.modifiedCount >= 1 || updateActsinMongo.upsertedCount >= 1 ) {
           console.log(
-            `${ index }: the actuaciones collection was updated with ${ updateActsinMongo.modifiedCount } actuaciones modified or ${ updateActsinMongo.upsertedCount }actuaciones upserted with a matched count of ${ updateActsinMongo.matchedCount }`
+            `${ index }: la coleccion de Actuaciones modificó ${ updateActsinMongo.modifiedCount } documentos. se insertaron  ${ updateActsinMongo.upsertedCount }actuaciones; y se hizo match con ${ updateActsinMongo.matchedCount } documentos`
           );
         }
       }
@@ -112,7 +112,7 @@ export const fetchActuaciones= cache(
       return actuaciones;
     } catch ( error ) {
       console.log(
-        error
+        `Error creado en fetchActuaciones: ${ error }`
       );
 
       return [];
@@ -120,26 +120,27 @@ export const fetchActuaciones= cache(
   }
 );
 
-export async function getActuaciones(
-  {
-    idProceso,
-    index
-  }: {
+export const getActuaciones = cache(
+  async(
+    {
+      idProceso,
+      index
+    }: {
   idProceso: number;
   index?: number;
 }
-) {
-  const collection = await carpetasCollection();
+  ) => {
+    const collection = await carpetasCollection();
 
-  const actuaciones = await fetchActuaciones(
-    {
-      idProceso: idProceso,
-      index    : index ?? 0
-    }
-  );
+    const actuaciones = await fetchActuaciones(
+      {
+        idProceso: idProceso,
+        index    : index ?? 0
+      }
+    );
 
-  if ( actuaciones.length > 0 ) {
-    const updateCarpetawithActuaciones
+    if ( actuaciones.length > 0 ) {
+      const updateCarpetawithActuaciones
       = await collection.updateOne(
         {
           idProceso: idProceso
@@ -156,17 +157,18 @@ export async function getActuaciones(
         }
       );
 
-    if (
-      updateCarpetawithActuaciones.acknowledged
-    ) {
-      console.log(
-        `${ index }: the  carpetas collection was updated with ${ updateCarpetawithActuaciones.modifiedCount } actuaciones modified or ${ updateCarpetawithActuaciones.upsertedCount }actuaciones upserted with a matched count of ${ updateCarpetawithActuaciones.matchedCount }`
-      );
+      if (
+        updateCarpetawithActuaciones.modifiedCount >= 1 || updateCarpetawithActuaciones.upsertedCount >= 1
+      ) {
+        console.log(
+          `${ index }: la coleccion de Carpetas modificó ${ updateCarpetawithActuaciones.modifiedCount } documentos. se insertaron  ${ updateCarpetawithActuaciones.upsertedCount }actuaciones; y se hizo match con ${ updateCarpetawithActuaciones.matchedCount } documentos`
+        );
+      }
     }
-  }
 
-  return actuaciones;
-}
+    return actuaciones;
+  }
+);
 
 export async function fetchFechas(
   {

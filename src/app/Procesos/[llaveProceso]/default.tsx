@@ -4,15 +4,15 @@ import { Fragment, Suspense } from 'react';
 import { IntCarpeta,
          MonCarpeta } from '#@/lib/types/carpeta';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
-import { getProceso } from '#@/lib/RamaJudicial';
 import { intProceso } from '#@/lib/types/procesos';
-import box from '#@/styles/scss/box.module.scss';
+import box from '#@/styles/box.module.scss';
 import { Name } from '#@/components/Headings/serverSideName';
 import { ProcesoCard } from '#@/components/card/ProcesosCard';
 import { Accordion } from '#@/components/Accordion';
 import Link from 'next/link';
 import card from '#@/components/card/card.module.scss';
 import { notFound } from 'next/navigation';
+import { getProceso } from '#@/lib/Procesos';
 
 function DemandadoNameBadge(
   {
@@ -33,7 +33,7 @@ function DemandadoNameBadge(
         }
       >
         <Name
-          llaveProceso={carpeta.llaveProceso}
+          llaveProceso={carpeta.llaveProceso ?? ''}
         />
         <Accordion>
           <p className={typography.bodySmall}>
@@ -52,7 +52,7 @@ function DemandadoNameBadge(
 
   return (
     <Fragment key={carpeta._id}>
-      <Name llaveProceso={carpeta.llaveProceso} />
+      <Name llaveProceso={carpeta.llaveProceso ?? ''} />
       <Accordion>
         <CarpetaCard carpeta={carpeta}>
           <span className='material-symbols-outlined'>
@@ -73,13 +73,13 @@ export default async function PageProcesosllaveProceso(
 ) {
   const Procesos = await getProceso(
     {
-      llaveProceso: params.llaveProceso 
+      llaveProceso: params.llaveProceso
     }
   );
 
   const Carpeta = await getCarpetasByllaveProceso(
     {
-      llaveProceso: params.llaveProceso 
+      llaveProceso: params.llaveProceso
     }
   );
 
@@ -105,14 +105,7 @@ export default async function PageProcesosllaveProceso(
           key={Carpeta._id}
           proceso={proceso}
         />
-        <Link
-          href={`/Carpetas/${ Carpeta._id }`}
-          className={card.link}
-        >
-          <span className='material-symbols-outlined'>
-            folder_shared
-          </span>
-        </Link>
+
       </Fragment>
     </>
   );

@@ -16,18 +16,25 @@
     "plugins": [
       {
         "name": "next"
+      }, {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "customMatcher": "\\.module\\.(c|le|sa|sc)ss$",
+          "goToDefinition": true
+        }
       }
     ],
+
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext"
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", ".vscode"],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ]
+, ".vscode/old/Carpetas/NuevaCarpeta/validar-archivo.ts"  ]
 }

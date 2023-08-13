@@ -15,9 +15,9 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import { getActuaciones } from '#@/lib/Actuaciones';
 import { Loader } from '#@/components/Loader';
 import { Card } from '#@/components/card/card';
-import { getProceso } from '#@/lib/RamaJudicial';
 import { ProcesoCard } from '../ProcesosCard';
 import { NombreComponent } from '../Nombre';
+import { getProceso } from '#@/lib/Procesos';
 
 const ProcesosList = async (
   {
@@ -161,7 +161,7 @@ export async function ListCardCarpetasNFechas() {
               <Suspense fallback={<Loader />}>
                 <ProcesosList
                   llaveProceso={
-                    carpeta.llaveProceso
+                    carpeta.llaveProceso ?? ''
                   }
                   key={carpeta.llaveProceso}
                   index={index}

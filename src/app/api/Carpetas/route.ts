@@ -3,7 +3,7 @@ import { NextResponse,
          type NextRequest } from 'next/server';
 import clientPromise from '#@/lib/mongodb';
 import { Collection, ObjectId } from 'mongodb';
-import { getCarpetas } from '#@/lib/Carpetas';
+import { getCarpetaById, getCarpetaByidProceso, getCarpetas, getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { carpetasCollection } from '#@/lib/Carpetas';
 import * as fs from 'fs/promises';
 import { IntCarpeta } from '#@/lib/types/carpeta';
@@ -18,55 +18,29 @@ export async function GET(
   );
   const collection = await carpetasCollection();
 
-  const carpetas = await collection
-        .find(
-          {}
-        )
-        .toArray();
-
-  const onlyJuzgado = searchParams.get(
-    'juzgado'
-  );
-
-  if ( onlyJuzgado ) {
-    const juzgados = carpetas.map(
-      (
-        carpeta
-      ) => {
-        const juzgado
-        = carpeta.demanda?.juzgado.origen.tipo;
-
-        return juzgado;
-      }
-    );
-
-    return new NextResponse(
-      JSON.stringify(
-        juzgados
-      ),
-      {
-        status : 200,
-        headers: {
-          'content-type': 'application/json' 
-        }
-      }
-    );
-  }
 
   const llaveProceso = searchParams.get(
     'llaveProceso'
   );
 
   if ( llaveProceso ) {
-    const Demandados = carpetas.filter(
-      (
-        carpeta
-      ) => {
-        return (
-          carpeta.llaveProceso === llaveProceso
-        );
+    const Demandados = await getCarpetasByllaveProceso(
+      {
+        llaveProceso: llaveProceso
       }
     );
+
+    if ( !Demandados ) {
+
+
+      return new NextResponse(
+        null,
+        {
+          status: 404
+        }
+      );
+
+    }
 
     return new NextResponse(
       JSON.stringify(
@@ -75,7 +49,7 @@ export async function GET(
       {
         status : 200,
         headers: {
-          'content-type': 'application/json' 
+          'content-type': 'application/json'
         }
       }
     );
@@ -86,24 +60,31 @@ export async function GET(
   );
 
   if ( idProceso ) {
-    const Demandados = carpetas.filter(
-      (
-        carpeta
-      ) => {
-        return (
-          carpeta.llaveProceso === llaveProceso
-        );
+    const carpetaByIdProceso = await getCarpetaByidProceso(
+      {
+        idProceso: Number(
+          idProceso
+        )
       }
     );
 
+    if ( !carpetaByIdProceso ) {
+      return new NextResponse(
+        null,
+        {
+          status: 404
+        }
+      );
+    }
+
     return new NextResponse(
       JSON.stringify(
-        Demandados
+        carpetaByIdProceso
       ),
       {
         status : 200,
         headers: {
-          'content-type': 'application/json' 
+          'content-type': 'application/json'
         }
       }
     );
@@ -114,13 +95,20 @@ export async function GET(
   );
 
   if ( _id ) {
-    const Carpeta = carpetas.filter(
-      (
-        carpeta
-      ) => {
-        return carpeta._id.toString() === _id;
+    const Carpeta = await getCarpetaById(
+      {
+        _id: _id
       }
     );
+
+    if ( !Carpeta ) {
+      return new NextResponse(
+        null,
+        {
+          status: 404
+        }
+      );
+    }
 
     return new NextResponse(
       JSON.stringify(
@@ -129,11 +117,18 @@ export async function GET(
       {
         status : 200,
         headers: {
-          'content-type': 'application/json' 
+          'content-type': 'application/json'
         }
       }
     );
   }
+
+  const carpetas = await collection
+        .find(
+          {}
+        )
+        .toArray();
+
 
   return new NextResponse(
     JSON.stringify(
@@ -142,7 +137,7 @@ export async function GET(
     {
       status : 200,
       headers: {
-        'content-type': 'application/json' 
+        'content-type': 'application/json'
       }
     }
   );
@@ -157,7 +152,7 @@ export async function PUT(
   fs.mkdir(
     `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }`,
     {
-      recursive: true 
+      recursive: true
     }
   );
 
@@ -165,7 +160,7 @@ export async function PUT(
     './src/lib/global',
     `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }`,
     {
-      recursive: true 
+      recursive: true
     }
   );
   fs.writeFile(
@@ -182,7 +177,7 @@ export async function PUT(
           incomingRequest.deudor.cedula
       },
       {
-        $set: incomingRequest 
+        $set: incomingRequest
       },
       {
         upsert        : true,
@@ -203,7 +198,7 @@ export async function PUT(
     {
       status : 200,
       headers: {
-        'content-type': 'application/json' 
+        'content-type': 'application/json'
       }
     }
   );

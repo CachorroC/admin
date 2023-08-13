@@ -1,4 +1,4 @@
-import layout from '#@/styles/scss/layout.module.scss';
+import layout from '#@/styles/layout.module.scss';
 
 export default function Page() {
   const lrs = [
@@ -13,10 +13,10 @@ export default function Page() {
       <div className={layout.main}>
         {lrs.map(
           (
-            lr, i 
+            lr, i
           ) => {
             return <p key={i}>{lr}</p>;
-          } 
+          }
         )}
       </div>
     </>

@@ -1,23 +1,23 @@
 'use client';
-import box from '#@/styles/scss/box.module.scss';
+
 import React from 'react';
-import layout from '#@/styles/scss/layout.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import layout from '#@/styles/layout.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 
 export default function Error(
   {
     error,
     reset
-  }: any 
+  }: any
 ) {
   React.useEffect(
     () => {
       console.log(
-        'logging error:', error 
+        'logging error:', error
       );
     }, [
       error
-    ] 
+    ]
   );
 
   return (
@@ -25,7 +25,7 @@ export default function Error(
       <h1
         className={typography.displayLarge}
         style={{
-          color: 'var(--error)' 
+          color: 'var(--error)'
         }}
       >
         Error
@@ -33,7 +33,7 @@ export default function Error(
       <p
         className={typography.bodyLarge}
         style={{
-          color: 'var(--on-surface-container)' 
+          color: 'var(--on-surface-container)'
         }}
       >
         {error?.message}

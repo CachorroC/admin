@@ -5,6 +5,7 @@
 //   const intCarpeta = Convert.toIntCarpeta(json);
 
 import { WithId } from 'mongodb';
+import { toNameString } from '../fix';
 
 export interface IntCarpeta {
   capitalAdeudado: number;
@@ -74,16 +75,17 @@ export class carpetaConvert {
     const fixedCarpeta: MonCarpeta = {
       ...carpeta,
       _id: carpeta._id.toString(),
-      get nombre() {
-        return (
-          this.deudor.primerNombre
-            + ' '
-            + this.deudor.segundoNombre
-          ?? ' '
-            + ' '
-            + this.deudor.primerApellido
-            + this.deudor.segundoApellido
-          ?? ' '
+      get nombre () {
+        let segundoNombre
+          = this.deudor.segundoNombre ?? '';
+
+        let segundoApellido
+          = this.deudor.segundoApellido ?? '';
+
+        return toNameString(
+          {
+            nameRaw: `${ this.deudor.primerNombre } ${ segundoNombre } ${ this.deudor.primerApellido } ${ segundoApellido }`
+          }
         );
       }
     };

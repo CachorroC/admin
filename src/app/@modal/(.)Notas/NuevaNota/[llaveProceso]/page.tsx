@@ -1,6 +1,6 @@
 import { NewNota } from '#@/components/nota/NuevaNota';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
-import layout from '#@/styles/scss/layout.module.scss';
+import layout from '#@/styles/layout.module.scss';
 import { getNotas } from '#@/lib/notas';
 import { Notas } from '#@/components/nota/notas';
 import Modal from '#@/components/modal';
