@@ -55,77 +55,7 @@
   & > * {
     width: calc(50% - 2vmin);
   }
-}
-.button {
-  border: none;
-  border-radius: 2vmin;
-  flex: 1 1 auto;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-items: center;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  transition: all 0.3s;
-  &Forward {
-    @extend .button;
-    grid-area: forwardButton;
-    background-color: var(--primary-container);
-    & > .icon {
-      color: var(--on-primary-container);
-    }
-  }
-  &Backwards {
-    @extend .button;
-    background-color: var(--primary-container);
-    grid-area: backwardsButton;
-    & > .icon {
-      color: var(--on-primary-container);
-    }
-  }
-  &DrawerMenu {
-    @extend .button;
-    grid-area: drawerMenuButton;
-    background-color: var(--primary-container);
-    & > .icon {
-      color: var(--on-primary-container);
-    }
-  }
-  &Home {
-    @extend .button;
-    grid-area: homeButton;
-    box-shadow: var(--dp2);
-    background-color: var(--primary);
-    & > .icon {
-      color: var(--on-primary);
-    }
-  }
-  & > .ButtonTextHelper {
-    display: none;
-    opacity: 0;
-    transition: all 1s;
-  }
-  &:hover,
-  &:active {
-    background-color: var(--primary-fixed);
-    box-shadow: var(--dp6);
-    border: 2px solid var(--outline);
-    & > span {
-      font-variation-settings:
-        'FILL' 1,
-        'wght' 400,
-        'GRAD' 200,
-        'opsz' 24;
-      color: var(--on-primary-fixed);
-    }
-  }
-}
-.home {
-  text-align: center;
-  display: flex;
-  flex-flow: row nowrap;
-  padding: 2vmin;
-} /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+}/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (width <=600px) {
   .sidenav {
     & > * {

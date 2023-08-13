@@ -1,6 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import navbar from '#@/components/navbar/navbar.module.css';
+import navbar from '#@/components/navbar/navbar.module.scss';
 import Link from 'next/link';
 import { useModal } from '#@/app/modal-context';
 import { useNavigator } from '#@/app/search-context';

@@ -42,7 +42,7 @@ export default function Error(
         onClick={() => {
           return reset();
         }}
-        className={layout.button}
+        className={styles.button}
       >
         Try Again
       </button>
