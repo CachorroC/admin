@@ -1,0 +1,315 @@
+.container {
+  container-name: note;
+  container-type: inline-size;
+  display: flex;
+  box-shadow: var(--dp2);
+  border-radius: 2vmin;
+  flex-flow: column nowrap;
+  background-color: var(--surface-container);
+}
+.container .form,
+.container .nota {
+  border-radius: 2vmin;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 2vmin;
+  gap: 2vmin;
+}
+.container .form sub,
+.container .nota sub {
+  color: var(--primary);
+}
+.container .form .buttonsRow,
+.container .nota .buttonsRow {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.container .form .section,
+.container .nota .section {
+  gap: 1cqmin;
+  padding: 2cqmin;
+  flex: 1;
+  display: flex;
+  flex-flow: column wrap;
+  border: 1px solid var(--primary);
+}
+.container .form .section > .section,
+.container .nota .section > .section {
+  border: 1px dashed var(--secondary);
+  gap: 5cqmin;
+  padding: 0;
+  display: flex;
+  flex: 1;
+  flex-flow: row wrap;
+}
+.container .form .section > .section > .section,
+.container .nota .section > .section > .section {
+  border: 1px doted var(--tertiary);
+  gap: 2cqmin;
+  padding: 0;
+  display: flex;
+  flex: 1;
+  flex-flow: column nowrap;
+}
+.container .form .section .label,
+.container .nota .section .label {
+  font-family: var(--font-poiret);
+  flex: 1;
+}
+.container .form .section .titleInput,
+.container .form .section .title,
+.container .nota .section .titleInput,
+.container .nota .section .title {
+  flex: 2;
+}
+
+.submitButton {
+  border: none;
+  box-shadow: var(--dp5);
+  border-radius: 2vmax;
+  flex-grow: 1;
+  width: 20em;
+  background-color: var(--secondary);
+}
+.submitButton > span {
+  color: var(--on-secondary);
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+}
+.submitButton:hover, .submitButton:active {
+  background-color: var(--secondary);
+  box-shadow: var(--dp8);
+}
+.submitButton:hover > span, .submitButton:active > span {
+  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 200, "opsz" 48;
+  color: var(--on-secondary);
+}
+
+.textArea,
+.selectArea {
+  background-color: var(--surface-container);
+  color: var(--on-surface);
+  box-shadow: var(--dp2);
+  flex: 2;
+  border: solid 2px var(--outline);
+  border-radius: 2vmin;
+  resize: both;
+  text-align: center;
+  padding: 1vmin;
+}
+.textArea:hover,
+.selectArea:hover {
+  box-shadow: var(--dp8);
+  border: var(--surface-tint) solid 2px;
+}
+.textArea:focus,
+.selectArea:focus {
+  background-color: var(--surface-container-lowest);
+}
+
+.editButton {
+  grid-area: editButton;
+}
+
+.deleteButton {
+  grid-area: deleteButton;
+}
+
+.addButton {
+  grid-area: addButton;
+}
+
+.HomeButton {
+  grid-area: HomeButton;
+}
+
+.button,
+.editButton,
+.deleteButton,
+.addButton,
+.HomeButton {
+  border: none;
+  box-shadow: var(--dp5);
+  border-radius: 2vmin;
+  padding: 1vmin;
+  flex-grow: 1;
+  background-color: var(--secondary);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.button > .ButtonTextHelper,
+.editButton > .ButtonTextHelper,
+.deleteButton > .ButtonTextHelper,
+.addButton > .ButtonTextHelper,
+.HomeButton > .ButtonTextHelper {
+  display: none;
+  opacity: 0;
+  transition: all 1s;
+}
+.button > span,
+.editButton > span,
+.deleteButton > span,
+.addButton > span,
+.HomeButton > span {
+  color: var(--on-secondary);
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+}
+.button:hover, .button:active,
+.editButton:hover,
+.editButton:active,
+.deleteButton:hover,
+.deleteButton:active,
+.addButton:hover,
+.addButton:active,
+.HomeButton:hover,
+.HomeButton:active {
+  background-color: var(--tertiary-container);
+  box-shadow: var(--dp8);
+}
+.button:hover > span, .button:active > span,
+.editButton:hover > span,
+.editButton:active > span,
+.deleteButton:hover > span,
+.deleteButton:active > span,
+.addButton:hover > span,
+.addButton:active > span,
+.HomeButton:hover > span,
+.HomeButton:active > span {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 200, "opsz" 24;
+  color: var(--tertiary);
+}
+
+.content {
+  align-self: stretch;
+}
+
+.checkboxItem {
+  padding: 15px;
+}
+
+.tareas {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.select {
+  background-color: var(--primary-container);
+}
+
+.innactive {
+  background-color: var(--outline-variant);
+  color: var(--outline);
+}
+
+.active {
+  background-color: var(--secondary);
+  color: var(--on-secondary);
+} /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.switch .checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.switch .checkbox:checked + .slider {
+  background-color: #2196f3;
+}
+.switch .checkbox:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.switch .checkbox:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+.switch .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+/* The slider */
+.switchBox {
+  display: block;
+}
+.switchBox .switchBoxLabel {
+  position: relative;
+  display: inline-block;
+  height: 1.125rem;
+  padding-left: 3.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.switchBox .switchBoxLabel:before {
+  position: absolute;
+  left: 0;
+  top: 0rem;
+  display: block;
+  width: 2.25rem;
+  height: 1.125rem;
+  border-radius: 1.125rem;
+  background: #eeeeee;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  content: "";
+  transition: all 0.2s ease;
+}
+.switchBox .switchBoxLabel:after {
+  position: absolute;
+  left: 0;
+  top: 0rem;
+  display: block;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  background: #eeeeee;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  content: "";
+  transition: all 0.2s ease;
+}
+.switchBox input {
+  display: none;
+}
+.switchBox input:checked ~ .switchBoxLabel:after {
+  background-color: #d5d5d5;
+  left: 1.125rem;
+}
+.switchBox input:disabled ~ .switchBoxLabel {
+  cursor: default;
+}
+.switchBox input:disabled ~ .switchBoxLabel:before {
+  background: #e2e2e2;
+}
+.switchBox input:disabled ~ .switchBoxLabel:after {
+  background: #d5d5d5;
+}
+.switchBox input:checked:not(:disabled) ~ .switchBoxLabel:before {
+  background: #81eed8;
+}
+.switchBox input:checked:not(:disabled) ~ .switchBoxLabel:after {
+  background: #1abc9c;
+}

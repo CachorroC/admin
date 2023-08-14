@@ -8,16 +8,16 @@ export default function Error(
   {
     error,
     reset
-  }: any 
+  }: any
 ) {
   React.useEffect(
     () => {
       console.log(
-        'logging error:', error 
+        'logging error:', error
       );
     }, [
       error
-    ] 
+    ]
   );
 
   return (
@@ -32,7 +32,7 @@ export default function Error(
         <h2
           className={typography.displayLarge}
           style={{
-            color: 'var(--on-error-container)' 
+            color: 'var(--on-error-container)'
           }}
         >
           Error
@@ -46,7 +46,7 @@ export default function Error(
           onClick={() => {
             return reset();
           }}
-          className={layout.button}
+          className={navbar.button}
         >
           Try Again
         </button>

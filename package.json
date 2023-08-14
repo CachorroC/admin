@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "URL=beta.rsasesorjuridico.com NEXTAUTH_URL=https://beta.rsasesorjuridico.com next dev",
-    "build": "next build",
-    "start": "next start",
+    "sass": "sass --no-source-map src:src && tcm src",
     "lint": "next lint --fix && next lint",
-    "sass": "cd src/styles && sass --watch scss:css"
+    "prebuild": "pnpm sass && pnpm lint",
+    "build": "pnpm prebuild && next build",
+    "dev": "URL=beta.rsasesorjuridico.com NEXTAUTH_URL=https://beta.rsasesorjuridico.com next dev",
+    "start": "next start"
+
   },
   "dependencies": {
     "@prisma/client": "^5.1.1",

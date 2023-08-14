@@ -1,0 +1,95 @@
+.modal {
+  container-name: modal;
+  container-type: inline-size;
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  width: 80vw;
+  overflow: auto;
+  margin: 0 auto;
+  z-index: 10;
+  height: 80vh;
+}
+
+.wrapper {
+  z-index: 10;
+  height: 100%;
+  box-sizing: border-box;
+  box-shadow: var(--dp24);
+  background-color: var(--primary-container);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 2vmin;
+  padding: 2vmin;
+  display: grid;
+  grid-template-areas: "forwardButton . backwardsButton" "forwardButton . backwardsButton" ". . ." ". . ." ". . ." ". . .";
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+  overflow: scroll;
+}
+.wrapper > * {
+  display: block;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 20%;
+  align-self: stretch;
+  order: 0;
+}
+.wrapper .content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  box-shadow: var(--dp20);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+.wrapper .content .header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+.wrapper .content .header > span {
+  color: white;
+  font-weight: bold;
+}
+.wrapper .content .header:hover > span, .wrapper .content .header:active > span {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.wrapper .content .body {
+  padding: 2px 16px;
+}
+.wrapper .content .footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+/* Modal Content */ /* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
