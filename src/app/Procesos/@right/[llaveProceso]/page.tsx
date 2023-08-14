@@ -1,7 +1,7 @@
 import { ProcesoCard } from '#@/components/card/ProcesosCard';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { getProceso } from '#@/lib/Procesos';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 
 export default async function PageProcesosRightllaveProceso(
   {

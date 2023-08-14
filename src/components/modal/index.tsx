@@ -7,7 +7,7 @@ import { usePathname,
          useSearchParams } from 'next/navigation';
 import React from 'react';
 import { useModal } from '#@/app/modal-context';
-import modal from '#@/components/modal/modal.module.scss';
+import modal from '#@/components/modal/modal.module.css';
 import { BackwardsButton,
          ForwardButton } from '../Buttons/NavButtons';
 import { useParams } from 'next/navigation';

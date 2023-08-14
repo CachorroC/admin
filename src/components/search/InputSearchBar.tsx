@@ -1,6 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import searchbar from '#@/components/search/searchbar.module.scss';
+import searchbar from '#@/components/search/searchbar.module.css';
 import { useNavigator,
          useSearch } from '#@/app/search-context';
 
@@ -32,17 +32,17 @@ export default function InputSearchBar() {
         : pathname}
       onBeforeInput={() => {
         pathname === '/' && setIsNavOpen(
-          true 
+          true
         );
       }}
       onChange={(
-        input 
+        input
       ) => {
         setIsNavOpen(
-          true 
+          true
         );
         setSearch(
-          input.target.value 
+          input.target.value
         );
       }}
     />

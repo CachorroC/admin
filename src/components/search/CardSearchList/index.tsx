@@ -5,7 +5,7 @@ import { Card } from '#@/components/card/card';
 import { useParams,
          usePathname,
          useRouter } from 'next/navigation';
-import card from '#@/components/card/card.module.scss';
+import card from '#@/components/card/card.module.css';
 import { fixFechas } from '#@/lib/fix';
 import { MonCarpeta } from '#@/lib/types/carpeta';
 

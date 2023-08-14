@@ -1,5 +1,5 @@
 import Title from '#@/components/Headings/title';
-import layout from '#@/styles/scss/layout.module.scss';
+import layout from '#@/styles/scss/layout.module.css';
 
 export default function NotFound() {
   return (
@@ -14,7 +14,7 @@ export default function NotFound() {
         <Title helper='perdido' />
         <p
           style={{
-            color: 'var(--on-error-container)' 
+            color: 'var(--on-error-container)'
           }}
         >
           No pudimos resolver la consulta que

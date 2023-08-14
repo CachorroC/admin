@@ -3,9 +3,9 @@ import { Route } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
-import card from '#@/components/card/card.module.scss';
+import card from '#@/components/card/card.module.css';
 import { useModal } from '#@/app/modal-context';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 import { useCategory, useNavigator } from '#@/app/search-context';
 import { toNameString } from '#@/lib/fix';
 import { Deudor,

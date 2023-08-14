@@ -4,7 +4,7 @@ import { SelectSection } from '#@/components/form/SelectSection';
 import { NuevaCarpetaProvider } from '#@/hooks/formContext';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { NuevoProceso } from '../../sinEspecificar/new-carpeta';
-import form from '#@/components/form/form.module.scss';
+import form from '#@/components/form/form.module.css';
 import { getDepartamentos } from '#@/lib/RamaJudicial';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { notFound } from 'next/navigation';

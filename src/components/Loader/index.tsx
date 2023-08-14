@@ -1,6 +1,6 @@
-import layout from '#@/styles/scss/layout.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
-import card from '#@/components/card/card.module.scss';
+import layout from '#@/styles/scss/layout.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
+import card from '#@/components/card/card.module.css';
 
 export function Loader() {
   return (

@@ -1,4 +1,4 @@
-import navbar from '#@/components/navbar/navbar.module.scss';
+import navbar from '#@/components/navbar/navbar.module.css';
 
 export function ButtonSkeleton() {
   return (

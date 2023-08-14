@@ -1,10 +1,10 @@
 'use client';
 import { useState } from 'react';
 import { fixFechas } from '#@/lib/fix';
-import accordion from './accordion.module.scss';
-import typeface from '#@/components/typográficos/typeface.module.scss';
-import note from '#@/components/nota/note.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import accordion from './accordion.module.css';
+import typeface from '#@/components/typográficos/typeface.module.css';
+import note from '#@/components/nota/note.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 
 export function AccordionRow(
   {
@@ -15,13 +15,13 @@ export function AccordionRow(
   tarea: string;
   dueDate: string;
   isDone: boolean;
-} 
+}
 ) {
   const [
     isActive,
     setIsActive
   ] = useState(
-    false 
+    false
   );
 
   return (
@@ -31,7 +31,7 @@ export function AccordionRow(
           className={accordion.button}
           onClick={() => {
             return setIsActive(
-              !isActive 
+              !isActive
             );
           }}
         >

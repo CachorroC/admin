@@ -1,8 +1,8 @@
-import styles from './carpetas.module.scss';
+import styles from './carpetas.module.css';
 import type { Demanda,
               IntCarpeta,
               MonCarpeta } from '#@/lib/types/carpeta';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 import Link from 'next/link';
 import type { Route } from 'next';
 import { fixFechas, fixMoney } from '#@/lib/fix';
@@ -228,7 +228,7 @@ export const CarpetaCard = (
               {carpeta.capitalAdeudado
                 && fixMoney(
                   {
-                    valor: carpeta.capitalAdeudado 
+                    valor: carpeta.capitalAdeudado
                   }
                 )}
             </p>

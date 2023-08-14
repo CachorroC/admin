@@ -1,4 +1,4 @@
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 import { NombreCompleto,
          Deudor } from '#@/lib/types/carpeta';
 

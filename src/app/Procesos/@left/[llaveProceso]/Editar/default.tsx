@@ -1,6 +1,6 @@
 import { getBaseUrl } from '#@/lib/getBaseUrl';
-import typeface from '#@/styles/fonts/typeface.module.scss';
-import note from '#@/components/nota/note.module.scss';
+import typeface from '#@/styles/fonts/typeface.module.css';
+import note from '#@/components/nota/note.module.css';
 import { getNotaById } from '#@/lib/notas';
 import { Edit } from '#@/components/nota/Edit';
 import { Fragment } from 'react';
@@ -12,15 +12,15 @@ export default async function Default(
   }: {
   params: { llaveProceso: string };
   searchParams: { _id: string };
-} 
+}
 ) {
   const llaveProceso = params.llaveProceso;
   const _id = searchParams._id;
 
   const nota = await getNotaById(
     {
-      _id: _id 
-    } 
+      _id: _id
+    }
   );
 
   return (
@@ -28,7 +28,7 @@ export default async function Default(
       <div className={note.note}>
         {nota.map(
           (
-            ntext, i 
+            ntext, i
           ) => {
             return (
               <Fragment key={ntext._id}>
@@ -44,7 +44,7 @@ export default async function Default(
                 />
               </Fragment>
             );
-          } 
+          }
         )}
       </div>
     </div>

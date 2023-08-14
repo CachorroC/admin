@@ -4,7 +4,7 @@ import { useSearch,
 import { LinkCard } from './link';
 import { fixFechas } from '#@/lib/fix';
 import Link from 'next/link';
-import searchbar from '#@/components/search/searchbar.module.scss';
+import searchbar from '#@/components/search/searchbar.module.css';
 import { usePathname } from 'next/navigation';
 import { Name } from '../Headings/clientSideName';
 import type { Route } from 'next';

@@ -10,8 +10,8 @@ import { Fragment,
          Suspense,
          useEffect,
          useState } from 'react';
-import styles from './carpetas.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import styles from './carpetas.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 import { getActuaciones } from '#@/lib/Actuaciones';
 import { Loader } from '#@/components/Loader';
 import { Card } from '#@/components/card/card';

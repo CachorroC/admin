@@ -6,8 +6,8 @@ import { HTMLInputTypeAttribute } from 'react';
 import { FieldPath, RegisterOptions,
          useController,
          useFormContext } from 'react-hook-form';
-import form from '#@/components/form/form.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import form from '#@/components/form/form.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 
 export const SelectSection = (
   {

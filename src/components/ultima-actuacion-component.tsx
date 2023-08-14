@@ -1,6 +1,6 @@
 import 'server-only';
 import { fetchActuaciones, getActuaciones } from '#@/lib/Actuaciones';
-import card from '#@/components/card/card.module.scss';
+import card from '#@/components/card/card.module.css';
 import { fixFechas } from '#@/lib/fix';
 import { Card } from './card/card';
 import { NombreComponent } from './card/Nombre';

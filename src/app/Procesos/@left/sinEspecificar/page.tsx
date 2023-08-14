@@ -1,14 +1,14 @@
 import 'server-only';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
-import layout from '#@/styles/scss/layout.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import layout from '#@/styles/scss/layout.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 import { Suspense } from 'react';
 import { Loader } from '#@/components/Loader';
 import { NuevoProceso } from './new-carpeta';
 import { InputSection } from '#@/components/form/InputSection';
 import { SelectSection } from '#@/components/form/SelectSection';
 import { getDepartamentos } from '#@/lib/RamaJudicial';
-import form from '#@/components/form/form.module.scss';
+import form from '#@/components/form/form.module.css';
 import { NuevaCarpetaProvider } from '#@/hooks/formContext';
 
 export default async function NuevaCarpetaPage () {

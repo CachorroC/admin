@@ -1,5 +1,5 @@
 'use client';
-import note from '#@/components/nota/note.module.scss';
+import note from '#@/components/nota/note.module.css';
 import { intNota,
          monNota } from '#@/lib/types/notas';
 import type { Route } from 'next';
@@ -10,13 +10,13 @@ export function DeleteNoteButton(
     id
   }: {
   id: string;
-} 
+}
 ) {
   async function deleteRequestHandler() {
     const Request = await fetch(
       `/api/Notas?id=${ id }`,
       {
-        method: 'DELETE' 
+        method: 'DELETE'
       }
     );
 
@@ -26,8 +26,8 @@ export function DeleteNoteButton(
     const Response = await Request.json();
     alert(
       JSON.stringify(
-        Response 
-      ) 
+        Response
+      )
     );
   }
 
@@ -52,7 +52,7 @@ export function AddNoteButton(
   }: {
   nota: intNota;
   uri: string;
-} 
+}
 ) {
   async function addRequestHandler() {
     const Request = await fetch(
@@ -60,23 +60,23 @@ export function AddNoteButton(
       {
         method : 'POST',
         headers: {
-          'content-type': 'application/json' 
+          'content-type': 'application/json'
         },
         body: JSON.stringify(
-          nota 
+          nota
         )
       }
     )
       .then(
         (
-          fullfilled 
+          fullfilled
         ) => {
           alert(
-            fullfilled.status 
+            fullfilled.status
           );
 
           return fullfilled;
-        } 
+        }
       );
 
     if ( !Request.ok ) {
@@ -85,8 +85,8 @@ export function AddNoteButton(
     const Response = await Request.json();
     alert(
       JSON.stringify(
-        Response 
-      ) 
+        Response
+      )
     );
   }
 
@@ -109,7 +109,7 @@ export function EditNoteButton(
     nota
   }: {
   nota: monNota;
-} 
+}
 ) {
   return (
     <Link

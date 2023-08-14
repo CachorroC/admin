@@ -1,13 +1,13 @@
 import 'server-only';
 import { monNota } from '#@/lib/types/notas';
-import note from '#@/components/nota/note.module.scss';
+import note from '#@/components/nota/note.module.css';
 import { fixFechas } from '#@/lib/fix';
 import { Suspense } from 'react';
 import { EditNoteButton,
          DeleteNoteButton } from '#@/components/nota/ButtonsNoteHandlers';
 import { AccordionRow } from '#@/components/nota/accordion';
 import { ButtonSkeleton } from '../Buttons/ButtonSkeleton';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 import { getNotas,
          getNotasByllaveProceso } from '#@/lib/notas';
 import { Name } from '#@/components/Headings/serverSideName';
@@ -95,7 +95,7 @@ export async function Notas(
   if ( llaveProceso ) {
     const notas = await getNotasByllaveProceso(
       {
-        llaveProceso: llaveProceso 
+        llaveProceso: llaveProceso
       }
     );
 

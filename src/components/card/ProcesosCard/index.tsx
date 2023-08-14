@@ -2,8 +2,8 @@ import { fixDemandado,
          fixFechas } from '#@/lib/fix';
 import { intProceso } from '#@/lib/types/procesos';
 import Link from 'next/link';
-import styles from './procesos.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import styles from './procesos.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 import type { Route } from 'next';
 
 export const ProcesoCard = (
@@ -11,7 +11,7 @@ export const ProcesoCard = (
     proceso
   }: {
   proceso: intProceso;
-} 
+}
 ) => {
   if ( !proceso ) {
     return null;
@@ -33,11 +33,11 @@ export const ProcesoCard = (
   const juzgado = despacho
     ? despacho
       .replace(
-        / /g, '-' 
+        / /g, '-'
       )
       .toLocaleLowerCase()
       .slice(
-        0, -1 
+        0, -1
       )
     : null;
 
@@ -48,7 +48,7 @@ export const ProcesoCard = (
           className={`${ typography.titleLarge } ${ styles.title }`}
         >
           {fixDemandado(
-            sujetosProcesales 
+            sujetosProcesales
           )}
         </h1>
         <Link
@@ -71,7 +71,7 @@ export const ProcesoCard = (
         {fechaUltimaActuacion && (
           <sub className={styles.date}>
             {fixFechas(
-              fechaUltimaActuacion 
+              fechaUltimaActuacion
             )}
           </sub>
         )}
@@ -85,7 +85,7 @@ export const ProcesoCard = (
           >
             <p className={typography.bodySmall}>
               {juzgado.replaceAll(
-                'á', 'a' 
+                'á', 'a'
               )}
             </p>
           </Link>

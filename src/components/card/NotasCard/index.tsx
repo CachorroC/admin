@@ -1,8 +1,8 @@
 'use client';
 import { Name } from '#@/components/Headings/clientSideName';
 import { monNota } from '#@/lib/types/notas';
-import styles from './notas.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import styles from './notas.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 import { fixFechas } from '#@/lib/fix';
 import { Suspense,
          forwardRef,

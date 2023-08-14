@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-import layout from '#@/styles/scss/layout.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
-import navbar from '#@/components/navbar/navbar.module.scss';
+import layout from '#@/styles/scss/layout.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
+import navbar from '#@/components/navbar/navbar.module.css';
 
 export default function Error(
   {

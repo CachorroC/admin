@@ -1,4 +1,4 @@
-import card from '#@/components/card/card.module.scss';
+import card from '#@/components/card/card.module.css';
 
 export default function Loading() {
   return (

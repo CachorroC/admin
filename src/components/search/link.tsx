@@ -5,7 +5,7 @@ import { useSelectedLayoutSegment,
          useSelectedLayoutSegments,
          useParams } from 'next/navigation';
 import type { Route } from 'next';
-import searchbar from '#@/components/search/searchbar.module.scss';
+import searchbar from '#@/components/search/searchbar.module.css';
 import { fixFechas } from '#@/lib/fix';
 import { useNavigator } from '#@/app/search-context';
 import { useModal } from '#@/app/modal-context';

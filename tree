@@ -1,0 +1,30 @@
+[01;34m.[0m
+└── [01;34m./src[0m
+    ├── [01;34m./src/components[0m
+    │   ├── [01;34m./src/components/card[0m
+    │   │   ├── [01;34m./src/components/card/CarpetasCard[0m
+    │   │   │   └── ./src/components/card/CarpetasCard/carpetas.module.css.d.ts
+    │   │   ├── [01;34m./src/components/card/NotasCard[0m
+    │   │   │   └── ./src/components/card/NotasCard/notas.module.css.d.ts
+    │   │   └── [01;34m./src/components/card/ProcesosCard[0m
+    │   │       └── ./src/components/card/ProcesosCard/procesos.module.css.d.ts
+    │   ├── [01;34m./src/components/modal[0m
+    │   │   └── ./src/components/modal/modal.module.css.d.ts
+    │   ├── [01;34m./src/components/navbar[0m
+    │   │   └── ./src/components/navbar/navbar.module.css.d.ts
+    │   ├── [01;34m./src/components/nota[0m
+    │   │   ├── ./src/components/nota/accordion.module.css.d.ts
+    │   │   └── ./src/components/nota/note.module.css.d.ts
+    │   └── [01;34m./src/components/search[0m
+    │       └── ./src/components/search/searchbar.module.css.d.ts
+    └── [01;34m./src/styles[0m
+        ├── [01;34m./src/styles/fonts[0m
+        │   ├── ./src/styles/fonts/typeface.module.css.d.ts
+        │   └── ./src/styles/fonts/typography.module.css.d.ts
+        └── [01;34m./src/styles/scss[0m
+            ├── ./src/styles/scss/box.module.css.d.ts
+            ├── ./src/styles/scss/globals.css.d.ts
+            ├── ./src/styles/scss/layout.module.css.d.ts
+            └── ./src/styles/scss/variables.module.css.d.ts
+
+13 directories, 14 files

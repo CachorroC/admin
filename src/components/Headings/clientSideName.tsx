@@ -2,14 +2,14 @@
 import { useSelectedLayoutSegment,
          usePathname } from 'next/navigation';
 import { fixFechas } from '#@/lib/fix';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 
 export const Name = (
   {
     helper
   }: {
   helper?: string;
-} 
+}
 ) => {
   const pathname = usePathname();
   const segment = useSelectedLayoutSegment();

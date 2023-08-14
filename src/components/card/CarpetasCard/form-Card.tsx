@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import styles from './carpetas.module.scss';
+import styles from './carpetas.module.css';
 import { useFormData } from './Context';
 import { useForm } from 'react-hook-form';
 
@@ -18,7 +18,7 @@ export const FormCard = (
   children: ReactNode;
   currentStep: number;
   prevFormStep: () => void;
-} 
+}
 ) => {
   return (
     <div className={styles.formCard}>
@@ -45,14 +45,14 @@ export const FormCard = (
 
 export const FormCompleted = () => {
   const {
-    data 
+    data
   } = useFormData();
 
   return (
     <>
       <h2>Thank you for your purchase! 🎉</h2>
       <pre>{JSON.stringify(
-        data 
+        data
       )}</pre>
     </>
   );
@@ -65,31 +65,31 @@ export const PersonalInfo = (
   }: {
   formStep: number;
   nextFormStep: () => void;
-} 
+}
 ) => {
   const {
-    setFormValues 
+    setFormValues
   } = useFormData();
 
   const {
     handleSubmit,
     formState: {
-      errors 
+      errors
     },
     register
   } = useForm(
     {
       defaultValues: {
-        email: 'admin@example.com' 
-      } 
-    } 
+        email: 'admin@example.com'
+      }
+    }
   );
 
   const onSubmit = (
-    values: any 
+    values: any
   ) => {
     setFormValues(
-      values 
+      values
     );
     nextFormStep();
   };
@@ -104,7 +104,7 @@ export const PersonalInfo = (
     >
       <h2>Personal Info</h2>
       <form onSubmit={handleSubmit(
-        onSubmit 
+        onSubmit
       )}>
         <div className={styles.formRow}>
           <label htmlFor='email'>Email</label>
@@ -113,8 +113,8 @@ export const PersonalInfo = (
             id='email'
             {...register(
               'email', {
-                required: true 
-              } 
+                required: true
+              }
             )}
           />
           {errors.email && (
@@ -136,31 +136,31 @@ export const ConfirmPurchase = (
   }: {
   formStep: number;
   nextFormStep: () => void;
-} 
+}
 ) => {
   const {
-    setFormValues 
+    setFormValues
   } = useFormData();
 
   const {
     handleSubmit,
     formState: {
-      errors 
+      errors
     },
     register
   } = useForm(
     {
       defaultValues: {
-        checkbox: false 
-      } 
-    } 
+        checkbox: false
+      }
+    }
   );
 
   const onSubmit = (
-    values: any 
+    values: any
   ) => {
     setFormValues(
-      values 
+      values
     );
     nextFormStep();
   };
@@ -175,7 +175,7 @@ export const ConfirmPurchase = (
     >
       <h2>Confirm Purchase</h2>
       <form onSubmit={handleSubmit(
-        onSubmit 
+        onSubmit
       )}>
         <div className={styles.formRow}>
           <label htmlFor='checkbox'>
@@ -183,8 +183,8 @@ export const ConfirmPurchase = (
               type='checkbox'
               {...register(
                 'checkbox', {
-                  required: true 
-                } 
+                  required: true
+                }
               )}
             />
             Ready to buy?
@@ -208,31 +208,31 @@ export const BillingInfo = (
   }: {
   formStep: number;
   nextFormStep: () => void;
-} 
+}
 ) => {
   const {
-    setFormValues 
+    setFormValues
   } = useFormData();
 
   const {
     handleSubmit,
     formState: {
-      errors 
+      errors
     },
     register
   } = useForm(
     {
       defaultValues: {
-        address: 'calle 12c # 6 - 21' 
-      } 
-    } 
+        address: 'calle 12c # 6 - 21'
+      }
+    }
   );
 
   const onSubmit = (
-    values: any 
+    values: any
   ) => {
     setFormValues(
-      values 
+      values
     );
     nextFormStep();
   };
@@ -247,7 +247,7 @@ export const BillingInfo = (
     >
       <h2>Billing Info</h2>
       <form onSubmit={handleSubmit(
-        onSubmit 
+        onSubmit
       )}>
         <div className={styles.formRow}>
           <label htmlFor='address'>Address</label>
@@ -256,8 +256,8 @@ export const BillingInfo = (
             id='address'
             {...register(
               'address', {
-                required: true 
-              } 
+                required: true
+              }
             )}
           />
           {errors.address && (

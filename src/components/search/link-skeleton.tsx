@@ -1,6 +1,6 @@
 'use client';
-import searchbar from '#@/components/search/searchbar.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import searchbar from '#@/components/search/searchbar.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 
 export default function LinkCardSkeleton() {
   return (

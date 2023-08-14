@@ -5,12 +5,12 @@ import { DefaultValues,
          SubmitHandler,
          useForm,
          useWatch } from 'react-hook-form';
-import form from '#@/components/form/form.module.scss';
+import form from '#@/components/form/form.module.css';
 import { InputSection } from '#@/components/form/InputSection';
 import { Demanda,
          Deudor,
          IntCarpeta } from '#@/lib/types/carpeta';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 import { SelectSection } from '#@/components/form/SelectSection';
 import { ReactNode } from 'react';
 let renderCount = 0;

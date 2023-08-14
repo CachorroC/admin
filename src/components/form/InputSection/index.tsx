@@ -1,5 +1,5 @@
 'use client';
-import form from '#@/components/form/form.module.scss';
+import form from '#@/components/form/form.module.css';
 import { HTMLInputTypeAttribute,
          MutableRefObject,
          useRef,
@@ -8,7 +8,7 @@ import { FieldPath, FieldValues, RegisterOptions,
          UseControllerProps,
          useController,
          useFormContext } from 'react-hook-form';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 import { useNuevaCarpetaContext } from '#@/hooks/formContext';
 import { CarpetaKeys, IntCarpeta } from '#@/lib/types/carpeta';
 

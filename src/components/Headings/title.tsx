@@ -1,7 +1,7 @@
 'use client';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 import { fixFechas } from '#@/lib/fix';
-import typeface from '#@/styles/fonts/typeface.module.scss';
+import typeface from '#@/styles/fonts/typeface.module.css';
 import { useOnlineStatus } from '#@/hooks/online-state';
 
 export default function Title(
@@ -9,7 +9,7 @@ export default function Title(
     helper
   }: {
   helper?: string;
-} 
+}
 ) {
   const isOnline = useOnlineStatus();
   const today = new Date();
@@ -74,7 +74,7 @@ export default function Title(
     : days[ today.getDay() ]
       + ' '
       + fixFechas(
-        today.toString() 
+        today.toString()
       );
 
   return (

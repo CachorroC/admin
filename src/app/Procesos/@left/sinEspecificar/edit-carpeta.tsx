@@ -4,13 +4,13 @@ import { DefaultValues,
          FormProvider,
          SubmitHandler,
          useForm } from 'react-hook-form';
-import form from '#@/components/form/form.module.scss';
+import form from '#@/components/form/form.module.css';
 import { InputSection } from '#@/components/form/InputSection';
 import { Demanda,
          Deudor,
          IntCarpeta,
          MonCarpeta } from '#@/lib/types/carpeta';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 import { SelectSection } from '#@/components/form/SelectSection';
 import { ObligacionesArray } from './obligaciones-array';
 
@@ -25,7 +25,7 @@ export const EditProceso = (
 ) => {
   const methods = useForm<IntCarpeta>(
     {
-      values: carpeta 
+      values: carpeta
     }
   );
 
@@ -67,7 +67,7 @@ export const EditProceso = (
       {
         method : 'PUT',
         headers: {
-          'Content-Type': 'application/json' 
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(
           data
@@ -158,7 +158,7 @@ export const EditProceso = (
                   title={'despacho numero'}
                   type={'number'}
                   rls={{
-                    required: true 
+                    required: true
                   }}
                 />
                 <SelectSection
@@ -180,7 +180,7 @@ export const EditProceso = (
                   title={'link'}
                   type={'url'}
                   rls={{
-                    required: true 
+                    required: true
                   }}
                 />
               </section>
@@ -189,7 +189,7 @@ export const EditProceso = (
                 title={'Municipio'}
                 type={'text'}
                 rls={{
-                  required: true 
+                  required: true
                 }}
               />
               <InputSection
@@ -204,7 +204,7 @@ export const EditProceso = (
                 title={'cedula'}
                 type={'number'}
                 rls={{
-                  required: true 
+                  required: true
                 }}
               />
               <InputSection
@@ -219,7 +219,7 @@ export const EditProceso = (
                 title={'Primer Nombre'}
                 type={'text'}
                 rls={{
-                  required: true 
+                  required: true
                 }}
               />
               <InputSection
@@ -227,7 +227,7 @@ export const EditProceso = (
                 title={'Primer Nombre'}
                 type={'text'}
                 rls={{
-                  required: true 
+                  required: true
                 }}
               />
               <InputSection
@@ -277,7 +277,7 @@ export const EditProceso = (
               }
               type={'date'}
               rls={{
-                required: true 
+                required: true
               }}
             />
             <SelectSection
@@ -297,7 +297,7 @@ export const EditProceso = (
               }
               type={'date'}
               rls={{
-                required: true 
+                required: true
               }}
             />
             <SelectSection
@@ -325,7 +325,7 @@ export const EditProceso = (
               title={'Carpeta numero'}
               type={'number'}
               rls={{
-                required: true 
+                required: true
               }}
             />
             <ObligacionesArray />
@@ -378,7 +378,7 @@ export const EditProceso = (
               title={'vencimiento del pagare'}
               type={'date'}
               rls={{
-                required: true 
+                required: true
               }}
             />
             <button

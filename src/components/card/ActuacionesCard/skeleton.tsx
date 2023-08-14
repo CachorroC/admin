@@ -1,5 +1,5 @@
-import styles from './actuaciones.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import styles from './actuaciones.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 
 export const ActuacionCardSkeleton = () => {
   return (

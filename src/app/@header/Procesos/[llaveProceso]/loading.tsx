@@ -1,6 +1,6 @@
-import layout from '#@/styles/scss/layout.module.scss';
-import navbar from '#@/components/navbar/navbar.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import layout from '#@/styles/scss/layout.module.css';
+import navbar from '#@/components/navbar/navbar.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 import { Loader } from '#@/components/Loader';
 
 export default function Loading() {

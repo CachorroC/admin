@@ -1,6 +1,6 @@
 import { getNotas } from '#@/lib/notas';
-import layout from '#@/styles/scss/layout.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import layout from '#@/styles/scss/layout.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { Nota } from '#@/components/nota/notas';
 

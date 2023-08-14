@@ -1,5 +1,5 @@
-import card from '#@/components/card/card.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import card from '#@/components/card/card.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 
 export default function CardSkeleton() {
   return (

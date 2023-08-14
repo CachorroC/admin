@@ -1,5 +1,5 @@
-import styles from './notas.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import styles from './notas.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 import { ButtonSkeleton } from '#@/components/Buttons/ButtonSkeleton';
 
 export function NotasListSkeleton() {

@@ -1,5 +1,5 @@
 'use client';
-import layout from '#@/styles/scss/layout.module.scss';
+import layout from '#@/styles/scss/layout.module.css';
 import useMedia from './mediaQuery';
 import InputSearchBar from '#@/components/search/InputSearchBar';
 import { Suspense } from 'react';
@@ -9,7 +9,7 @@ import { BackwardsButton,
          HomeButton } from '../Buttons/NavButtons';
 import Drawer from './drawer';
 import { ButtonSkeleton } from '../Buttons/ButtonSkeleton';
-import typeface from '#@/styles/fonts/typeface.module.scss';
+import typeface from '#@/styles/fonts/typeface.module.css';
 
 export default function Header(
   {

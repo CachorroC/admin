@@ -1,8 +1,8 @@
 'use client';
-import box from '#@/styles/scss/box.module.scss';
+import box from '#@/styles/scss/box.module.css';
 import React from 'react';
-import layout from '#@/styles/scss/layout.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import layout from '#@/styles/scss/layout.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 
 export default function Error(
   {

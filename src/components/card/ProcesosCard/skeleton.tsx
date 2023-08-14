@@ -1,5 +1,5 @@
-import styles from './procesos.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import styles from './procesos.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 
 export const ProcesoCardSkeleton = () => {
   return (

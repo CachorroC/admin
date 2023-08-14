@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import layout from '#@/styles/scss/layout.module.scss';
+import layout from '#@/styles/scss/layout.module.css';
 
 export default function Install() {
   const [
@@ -8,15 +8,15 @@ export default function Install() {
     setIsInstalled
   ]
     = useState(
-      false 
+      false
     );
   useEffect(
     () => {
       function handleScroll(
-        e: any 
+        e: any
       ) {
         console.log(
-          window.scrollX, window.scrollY 
+          window.scrollX, window.scrollY
         );
       }
       window.addEventListener(
@@ -30,7 +30,7 @@ export default function Install() {
         );
         navigator.serviceWorker
           .register(
-            '/service-worker.js' 
+            '/service-worker.js'
           )
           .then(
             function () {
@@ -58,7 +58,7 @@ export default function Install() {
       };
     }, [
       setIsInstalled
-    ] 
+    ]
   );
 
   return (

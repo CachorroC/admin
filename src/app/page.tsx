@@ -1,7 +1,7 @@
 import Title from '#@/components/Headings/title';
-import layout from '#@/styles/scss/layout.module.scss';
+import layout from '#@/styles/scss/layout.module.css';
 import Link from 'next/link';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { Suspense } from 'react';
 import type { Route } from 'next';

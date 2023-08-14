@@ -1,7 +1,7 @@
-import layout from '#@/styles/scss/layout.module.scss';
+import layout from '#@/styles/scss/layout.module.css';
 import type { Route } from 'next';
-import typography from '#@/styles/fonts/typography.module.scss';
-import typeface from '#@/styles/fonts/typeface.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
+import typeface from '#@/styles/fonts/typeface.module.css';
 import Link from 'next/link';
 import { Loader } from '#@/components/Loader';
 

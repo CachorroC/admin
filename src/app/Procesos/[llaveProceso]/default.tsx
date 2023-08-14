@@ -1,17 +1,17 @@
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 import { Fragment, Suspense } from 'react';
 import { IntCarpeta,
          MonCarpeta } from '#@/lib/types/carpeta';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import { getProceso } from '#@/lib/RamaJudicial';
 import { intProceso } from '#@/lib/types/procesos';
-import box from '#@/styles/scss/box.module.scss';
+import box from '#@/styles/scss/box.module.css';
 import { Name } from '#@/components/Headings/serverSideName';
 import { ProcesoCard } from '#@/components/card/ProcesosCard';
 import { Accordion } from '#@/components/Accordion';
 import Link from 'next/link';
-import card from '#@/components/card/card.module.scss';
+import card from '#@/components/card/card.module.css';
 import { notFound } from 'next/navigation';
 
 function DemandadoNameBadge(
@@ -73,13 +73,13 @@ export default async function PageProcesosllaveProceso(
 ) {
   const Procesos = await getProceso(
     {
-      llaveProceso: params.llaveProceso 
+      llaveProceso: params.llaveProceso
     }
   );
 
   const Carpeta = await getCarpetasByllaveProceso(
     {
-      llaveProceso: params.llaveProceso 
+      llaveProceso: params.llaveProceso
     }
   );
 

@@ -1,7 +1,7 @@
 import { fixFechas } from '#@/lib/fix';
 import { intActuacion } from '#@/lib/types/procesos';
-import styles from './actuaciones.module.scss';
-import typography from '#@/styles/fonts/typography.module.scss';
+import styles from './actuaciones.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 import Link from 'next/link';
 
 export const ActuacionCard = (
@@ -9,7 +9,7 @@ export const ActuacionCard = (
     Actuacion
   }: {
   Actuacion: intActuacion;
-} 
+}
 ) => {
   const {
     idRegActuacion,
@@ -33,13 +33,13 @@ export const ActuacionCard = (
           className={`${ typography.titleMedium } ${ styles.title }`}
         >
           {actuacion.replace(
-            /\s+/g, ' ' 
+            /\s+/g, ' '
           )}
         </h1>
         {anotacion && (
           <p className={typography.bodyMedium}>
             {anotacion.replace(
-              /\s+/g, ' ' 
+              /\s+/g, ' '
             )}
           </p>
         )}
@@ -60,7 +60,7 @@ export const ActuacionCard = (
           className={`${ typography.labelMedium } ${ styles.date }`}
         >
           {fixFechas(
-            fechaActuacion 
+            fechaActuacion
           )}
         </sup>
       </div>
@@ -73,16 +73,16 @@ export const ActuacionesList = (
     Actuaciones
   }: {
   Actuaciones: intActuacion[];
-} 
+}
 ) => {
   return (
     <>
       {Actuaciones.map(
         (
-          Actuacion, ind, arr 
+          Actuacion, ind, arr
         ) => {
           const {
-            idRegActuacion 
+            idRegActuacion
           } = Actuacion;
 
           return (
@@ -91,7 +91,7 @@ export const ActuacionesList = (
               key={idRegActuacion}
             />
           );
-        } 
+        }
       )}
     </>
   );

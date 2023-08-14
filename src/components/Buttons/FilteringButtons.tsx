@@ -1,7 +1,7 @@
 'use client';
 
 import { useCategory } from '#@/app/search-context';
-import styles from './buttons.module.scss';
+import styles from './buttons.module.css';
 
 export const CategoryFilterButton = () => {
   const [

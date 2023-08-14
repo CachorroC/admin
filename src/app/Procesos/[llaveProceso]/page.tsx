@@ -1,25 +1,25 @@
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 import { Fragment, Suspense } from 'react';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import Link from 'next/link';
-import card from '#@/components/card/card.module.scss';
+import card from '#@/components/card/card.module.css';
 import { NombreComponent } from '#@/components/card/Nombre';
 import { notFound } from 'next/navigation';
 
 export default async function DefaultProcesosllaveProceso(
   {
     params: {
-      llaveProceso 
+      llaveProceso
     }
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   const Carpeta = await getCarpetasByllaveProceso(
     {
-      llaveProceso: llaveProceso 
+      llaveProceso: llaveProceso
     }
   );
 
