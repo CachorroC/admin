@@ -29,29 +29,29 @@ export function useServiceWorker() {
             sw.register(
               './serviceworker.js' 
             )
-                  .then(
-                    () => {
-                      return sw.ready;
-                    } 
-                  )
-                  .then(
-                    () => {
-                      sw.addEventListener(
-                        'message',
-                        (
-                          {
-                            data 
-                          } 
-                        ) => {
-                          if ( data?.state !== undefined ) {
-                            setCounter(
-                              data.state 
-                            );
-                          }
-                        }
-                      );
-                    } 
+              .then(
+                () => {
+                  return sw.ready;
+                } 
+              )
+              .then(
+                () => {
+                  sw.addEventListener(
+                    'message',
+                    (
+                      {
+                        data 
+                      } 
+                    ) => {
+                      if ( data?.state !== undefined ) {
+                        setCounter(
+                          data.state 
+                        );
+                      }
+                    }
                   );
+                } 
+              );
           } 
         );
       }

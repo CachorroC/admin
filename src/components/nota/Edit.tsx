@@ -71,17 +71,17 @@ export function Edit(
         )
       }
     )
-          .then(
-            (
-              fullfilled 
-            ) => {
-              alert(
-                fullfilled.status 
-              );
-
-              return fullfilled;
-            } 
+      .then(
+        (
+          fullfilled 
+        ) => {
+          alert(
+            fullfilled.status 
           );
+
+          return fullfilled;
+        } 
+      );
 
     const responsePostNewNote
       = await postNewNote.json();
@@ -198,7 +198,7 @@ export function Edit(
                           isDone: false,
                           dueDate:
                         new Date()
-                              .toISOString()
+                          .toISOString()
                         } 
                       );
                     }}

@@ -50,7 +50,7 @@ export const useNuevaCarpetaContext = () => {
 
   if ( context === null ) {
     throw new Error(
-      'useNavigator must be used within a NavProvider'
+      'useNuevaCarpetaContext and the NuevaCarpetaContexte need to be used within a NuevaCarpetaProvider'
     );
   }
 

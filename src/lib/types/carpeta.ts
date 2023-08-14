@@ -25,7 +25,7 @@ export interface Demanda {
     entregaGarantiasAbogado: Date;
     etapaProcesal:           null | string;
     juzgado:                 Juzgado[];
-    obligacion:              ( number | string )[] | null;
+    obligacion:              ( number | string )[] ;
     radicado:                number | null | string;
     vencimientoPagare:       Date;
 }
@@ -64,6 +64,8 @@ export interface MonCarpeta extends IntCarpeta
   nombre: string;
   fecha?: Date;
 }
+
+export type CarpetaKeys = keyof IntCarpeta;
 
 // Converts JSON strings to/from your types
 export class carpetaConvert {

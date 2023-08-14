@@ -6,10 +6,10 @@ export function validarArchivo(
   var tamanioArchivo = $(
     '#' + idarchivo 
   )
-        .get(
-          0 
-        )
-        .files[ 0 ].size;
+    .get(
+      0 
+    )
+    .files[ 0 ].size;
   var capacidad = convertir * CapacidadActual;
   total
     = ( capacidad - tamanioArchivo ) / convertir;
@@ -17,14 +17,14 @@ export function validarArchivo(
   var archivo = $(
     '#' + idarchivo 
   )
-        .val();
+    .val();
   var nombreExtension
     = archivo.split(
       '\\' 
     )[
-          archivo.split(
-            '\\' 
-          ).length - 1
+      archivo.split(
+        '\\' 
+      ).length - 1
     ];
   var separador
     = nombreExtension.lastIndexOf(
@@ -39,7 +39,7 @@ export function validarArchivo(
   );
   var acepta = GetExtension(
     extension.toUpperCase()
-          .toString()
+      .toString()
   );
 
   var caract = new RegExp(
@@ -52,10 +52,10 @@ export function validarArchivo(
     $(
       '#spnmsg' 
     )
-          .text(
-            'NO se permiten caracteres especiales en el nombre del archivo ($%&..?¿:)'
-          )
-          .show();
+      .text(
+        'NO se permiten caracteres especiales en el nombre del archivo ($%&..?¿:)'
+      )
+      .show();
 
     return false;
   }
@@ -66,10 +66,10 @@ export function validarArchivo(
     $(
       '#spnmsg' 
     )
-          .text(
-            'La Extensión del archivo no esta permitido'
-          )
-          .show();
+      .text(
+        'La Extensión del archivo no esta permitido'
+      )
+      .show();
 
     return false;
   }
@@ -78,20 +78,20 @@ export function validarArchivo(
     $(
       '#' + idarchivo 
     )
-          .get(
-            0 
-          ).files[ 0 ].size
+      .get(
+        0 
+      ).files[ 0 ].size
     > convertir * ( limite + extender )
   ) {
     $(
       '#spnmsg' 
     )
-          .text(
-            'El archivo supera los '
+      .text(
+        'El archivo supera los '
           + limite
           + ' MB de capacidad'
-          )
-          .show();
+      )
+      .show();
 
     return false;
     //Disable Submit Button
@@ -101,28 +101,28 @@ export function validarArchivo(
     $(
       '#Adicionar' 
     )
-          .show();
+      .show();
     var valor = extender + total;
 
     if ( total > -10 ) {
       $(
         '#Capacidad' 
       )
-            .text(
-              valor.toFixed(
-                4 
-              ) 
-            );
+        .text(
+          valor.toFixed(
+            4 
+          ) 
+        );
     }
 
     if ( total < -10 ) {
       $(
         '#spnmsg' 
       )
-            .text(
-              'El archivo sobrepasa la capacidad actual'
-            )
-            .show();
+        .text(
+          'El archivo sobrepasa la capacidad actual'
+        )
+        .show();
 
       return false;
     }
@@ -134,31 +134,31 @@ export function validarArchivo(
     $(
       '#' + idarchivo 
     )
-          .get(
-            0 
-          ).files[ 0 ].size == 0
+      .get(
+        0 
+      ).files[ 0 ].size == 0
   ) {
     $(
       '#spnmsg' 
     )
-          .text(
-            'El archivo se encuentra dañado' 
-          )
-          .show();
+      .text(
+        'El archivo se encuentra dañado' 
+      )
+      .show();
     $(
       '#' + idarchivo 
     )
-          .replaceWith(
-            $(
-              '#' + idarchivo 
-            )
-                  .val(
-                    '' 
-                  )
-                  .clone(
-                    true 
-                  )
-          );
+      .replaceWith(
+        $(
+          '#' + idarchivo 
+        )
+          .val(
+            '' 
+          )
+          .clone(
+            true 
+          )
+      );
 
     //Disable Submit Button
     return false;

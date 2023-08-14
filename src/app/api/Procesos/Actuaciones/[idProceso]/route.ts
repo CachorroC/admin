@@ -7,25 +7,22 @@ import { IntActuaciones,
 export async function GET(
   Request: NextRequest,
   {
-    params 
+    params
   }: { params: { idProceso: number } }
 ) {
   try {
     const req = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ params.idProceso }`,
-      {
-        mode: 'cors' 
-      }
+      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ params.idProceso }`
     );
 
     if ( !req.ok ) {
-      const text = await Request.text();
+      const text = await req.text();
 
       const Response: IntActuaciones = {
         idProceso: params.idProceso,
         text     : text
           ? JSON.parse(
-            text 
+            text
           )
           : {
               statusCode: req.status,
@@ -35,12 +32,12 @@ export async function GET(
 
       return new NextResponse(
         JSON.stringify(
-          Response 
+          Response
         ),
         {
           status : 200,
           headers: {
-            'content-type': 'application/json' 
+            'content-type': 'application/json'
           }
         }
       );
@@ -61,12 +58,12 @@ export async function GET(
 
       return new NextResponse(
         JSON.stringify(
-          Response 
+          Response
         ),
         {
           status : 200,
           headers: {
-            'content-type': 'application/json' 
+            'content-type': 'application/json'
           }
         }
       );
@@ -76,24 +73,24 @@ export async function GET(
     const Response: IntActuaciones = {
       idProceso: params.idProceso,
       text     : JSON.parse(
-        text 
+        text
       )
     };
 
     return new NextResponse(
       JSON.stringify(
-        Response 
+        Response
       ),
       {
         status : 200,
         headers: {
-          'content-type': 'application/json' 
+          'content-type': 'application/json'
         }
       }
     );
   } catch {
     (
-      error: unknown | any 
+      error: unknown | any
     ) => {
       const Response: IntActuaciones = {
         idProceso: params.idProceso,
@@ -105,12 +102,12 @@ export async function GET(
 
       return new NextResponse(
         JSON.stringify(
-          Response 
+          Response
         ),
         {
           status : 200,
           headers: {
-            'content-type': 'application/json' 
+            'content-type': 'application/json'
           }
         }
       );
@@ -127,12 +124,12 @@ export async function GET(
 
   return new NextResponse(
     JSON.stringify(
-      Response 
+      Response
     ),
     {
       status : 200,
       headers: {
-        'content-type': 'application/json' 
+        'content-type': 'application/json'
       }
     }
   );

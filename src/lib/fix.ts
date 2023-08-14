@@ -8,7 +8,7 @@ export function sleep(
       console.log(
         JSON.stringify(
           new Date()
-                .getTime() 
+            .getTime() 
         )
       );
 
@@ -98,10 +98,10 @@ function trimmer(
     );
 
   const extractDemandado = sujetosProcesales
-        .slice(
-          locateDemandado + 10 
-        )
-        .toLowerCase();
+    .slice(
+      locateDemandado + 10 
+    )
+    .toLowerCase();
 
   const trimDemandado = extractDemandado.replace(
     /^\s+|\s+$/gm,
@@ -203,7 +203,7 @@ export const toNameString = (
       = arr[ i ].charAt(
         0 
       )
-            .toUpperCase()
+        .toUpperCase()
       + arr[ i ].slice(
         1 
       );

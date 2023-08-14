@@ -182,7 +182,7 @@ export const Card = (
             className={`${ card.link } ${
               isActive && card.isActive
             }`}
-            href={`/Carpetas/${ carpeta._id }`}
+            href={`/Procesos/${ carpeta.llaveProceso }/Editar`}
           >
             <span
               className={`material-symbols-outlined ${ card.icon }`}

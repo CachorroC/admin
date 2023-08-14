@@ -8,9 +8,9 @@
 .isActive,
 .notActive {
   box-sizing: border-box;
-  padding: 2vmin;
+  padding: 2cqmin;
   gap: 5cqmin;
-  border-radius: 2vmin;
+  border-radius: 2cqmin;
   height: 100%;
   text-align: center;
   display: flex;
@@ -82,17 +82,15 @@
   background: rgba(0, 0, 0, 0.1);
 }
 .title {
-  color: var(--on-primary);
+  color: var(--primary);
   grid-area: title;
   text-align: center;
-  font-family: var(--font-poiret);
 }
 .content {
   text-align: center;
   grid-area: content;
   font-family: var(--roboto);
   color: var(--on-background);
-  font-weight: 400;
 }
 .links {
   display: flex;
@@ -283,11 +281,5 @@
   .isActive,
   .notActive {
     flex-flow: column nowrap;
-  }
-}
-@container card ( 500px < width < 600px) {
-  .isActive,
-  .notActive {
-    background-color: var(--primary);
   }
 }

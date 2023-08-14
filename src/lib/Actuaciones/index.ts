@@ -63,11 +63,6 @@ export const fetchActuaciones= cache(
     try {
       const Request = await fetch(
         `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
-        {
-          next: {
-            revalidate: 32000
-          }
-        }
       );
 
       if ( !Request.ok ) {

@@ -74,9 +74,9 @@ export const CardSearchList = (
 
       if (
         Nombre.toLowerCase()
-              .indexOf(
-                search.toLowerCase()
-              ) === -1
+          .indexOf(
+            search.toLowerCase()
+          ) === -1
       ) {
         return;
       }

@@ -11,10 +11,10 @@ export async function GET() {
   const collection = await carpetasCollection();
 
   const procesos = await collection
-        .find(
-          {} 
-        )
-        .toArray();
+    .find(
+      {} 
+    )
+    .toArray();
 
   if ( !procesos.length ) {
     notFound();

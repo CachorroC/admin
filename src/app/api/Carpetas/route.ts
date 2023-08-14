@@ -19,10 +19,10 @@ export async function GET(
   const collection = await carpetasCollection();
 
   const carpetas = await collection
-        .find(
-          {}
-        )
-        .toArray();
+    .find(
+      {}
+    )
+    .toArray();
 
   const onlyJuzgado = searchParams.get(
     'juzgado'

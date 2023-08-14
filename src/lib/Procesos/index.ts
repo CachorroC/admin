@@ -1,6 +1,6 @@
 import { Collection } from 'mongodb';
 import { carpetasCollection, getCarpetasByllaveProceso } from '../Carpetas';
-import { fetchDespachos } from '../Despachos';
+import { fetchDespachos } from '../global/Despachos';
 import { sleep } from '../fix';
 import clientPromise from '../mongodb';
 import { intProceso,
@@ -42,7 +42,7 @@ export async function fetchProceso(
   );
   const collection = await procesosCollection();
 
-  if ( llaveProceso.length < 23 ) {
+  if ( llaveProceso.length < 23 || llaveProceso === 'sinEspecificar' ) {
     console.log(
       `esta llaveProceso es menos de 23: ${ llaveProceso }`
     );
@@ -70,10 +70,10 @@ export async function fetchProceso(
           idProceso   : proceso.idProceso
         },
         {
-          $set: proceso 
+          $set: proceso
         },
         {
-          upsert: true, 
+          upsert: true,
         }
       );
 
@@ -117,10 +117,10 @@ export async function getProceso(
           idProceso   : proceso.idProceso
         }, {
           $set: {
-            idProceso: proceso.idProceso 
-          } 
+            idProceso: proceso.idProceso
+          }
         }, {
-          upsert: false 
+          upsert: false
         }
       );
     console.log(
@@ -143,7 +143,7 @@ export async function getProcesoByidProceso(
 
   const proceso = await collection.findOne(
     {
-      idProceso: idProceso 
+      idProceso: idProceso
     }
   );
 
@@ -160,12 +160,12 @@ export async function getProcesosByllaveProceso(
   const collection = await procesosCollection();
 
   const proceso = await collection
-        .find(
-          {
-            llaveProceso: llaveProceso 
-          }
-        )
-        .toArray();
+    .find(
+      {
+        llaveProceso: llaveProceso
+      }
+    )
+    .toArray();
 
   return proceso;
 }

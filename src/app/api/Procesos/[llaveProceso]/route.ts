@@ -20,16 +20,16 @@ export async function GET(
   const client = await clientPromise;
 
   const procesos = ( await client
-        .db(
-          'RyS' 
-        )
-        .collection(
-          'Procesos' 
-        )
-        .find(
-          {} 
-        )
-        .toArray() ) as unknown as monDemandado[];
+    .db(
+      'RyS' 
+    )
+    .collection(
+      'Procesos' 
+    )
+    .find(
+      {} 
+    )
+    .toArray() ) as unknown as monDemandado[];
 
   const delay = searchParams.get(
     'delay' 

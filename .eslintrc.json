@@ -56,7 +56,7 @@
         },
         "ImportDeclaration": "first",
         "ObjectExpression": "first",
-        "MemberExpression": 3,
+        "MemberExpression": 1,
         "SwitchCase": 1,
         "VariableDeclarator": "first",
         "offsetTernaryExpressions": true

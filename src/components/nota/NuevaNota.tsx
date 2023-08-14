@@ -41,7 +41,7 @@ export function NewNota(
             tarea  : '',
             isDone : false,
             dueDate: new Date()
-                  .toISOString()
+              .toISOString()
           }
         ]
       },
@@ -67,7 +67,7 @@ export function NewNota(
       llaveProceso: llaveProceso,
       pathname    : pathname,
       fecha       : new Date()
-            .toString()
+        .toString()
     };
     alert(
       JSON.stringify(
@@ -87,17 +87,17 @@ export function NewNota(
         )
       }
     )
-          .then(
-            (
-              fullfilled 
-            ) => {
-              alert(
-                fullfilled.status 
-              );
-
-              return fullfilled;
-            } 
+      .then(
+        (
+          fullfilled 
+        ) => {
+          alert(
+            fullfilled.status 
           );
+
+          return fullfilled;
+        } 
+      );
 
     const responsePostNewNote
       = await postNewNote.json();
@@ -263,7 +263,7 @@ export function NewNota(
                               isDone: false,
                               dueDate:
                             new Date()
-                                  .toISOString()
+                              .toISOString()
                             } 
                           );
                         }}

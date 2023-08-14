@@ -10,13 +10,13 @@ export default function Page() {
 
   return (
     <>
-      <div className={layout.main}>
+      <div className={layout.body}>
         {lrs.map(
           (
-            lr, i 
+            lr, i
           ) => {
             return <p key={i}>{lr}</p>;
-          } 
+          }
         )}
       </div>
     </>

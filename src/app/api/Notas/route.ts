@@ -35,10 +35,10 @@ const Transform = cache(
     const collection = await notasCollection();
 
     const notasRaw = await collection
-          .find(
-            {} 
-          )
-          .toArray();
+      .find(
+        {} 
+      )
+      .toArray();
 
     const notas = notaConvert.toMonNotas(
       notasRaw 

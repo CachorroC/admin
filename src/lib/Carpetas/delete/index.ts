@@ -14,22 +14,22 @@ export async function deleteTerminados() {
 }
 
 deleteTerminados()
-      .then(
-        (
-          ff 
-        ) => {
-          console.log(
-            ff 
-          );
-        },
-        (
-          rr 
-        ) => {
-          console.log(
-            rr 
-          );
-        }
+  .then(
+    (
+      ff 
+    ) => {
+      console.log(
+        ff 
       );
+    },
+    (
+      rr 
+    ) => {
+      console.log(
+        rr 
+      );
+    }
+  );
 
 console.log(
   deleteTerminados() 

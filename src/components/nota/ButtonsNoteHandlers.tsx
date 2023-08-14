@@ -67,17 +67,17 @@ export function AddNoteButton(
         )
       }
     )
-          .then(
-            (
-              fullfilled 
-            ) => {
-              alert(
-                fullfilled.status 
-              );
-
-              return fullfilled;
-            } 
+      .then(
+        (
+          fullfilled 
+        ) => {
+          alert(
+            fullfilled.status 
           );
+
+          return fullfilled;
+        } 
+      );
 
     if ( !Request.ok ) {
       return;

@@ -134,7 +134,7 @@ export default function Costos() {
                     )}
                     className={
                       errors?.cart?.[ index ]
-                            ?.quantity
+                        ?.quantity
                         ? 'error'
                         : ''
                     }

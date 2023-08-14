@@ -1,5 +1,5 @@
 import { Despacho,
-         despachosConvert } from '../types/despachos';
+         despachosConvert } from '../../types/despachos';
 
 export async function fetchDespachos() {
   const despachos = await fetch(

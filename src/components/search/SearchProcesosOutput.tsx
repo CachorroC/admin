@@ -123,9 +123,9 @@ export default function SearchOutputList(
 
       if (
         name.Nombre.toLowerCase()
-              .indexOf(
-                search.toLowerCase()
-              ) === -1
+          .indexOf(
+            search.toLowerCase()
+          ) === -1
       ) {
         return;
       }

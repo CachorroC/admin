@@ -11,7 +11,6 @@ import { Accordion } from '#@/components/Accordion';
 import { CategoryFilterButton } from '#@/components/Buttons/FilteringButtons';
 
 export default async function PageProcesos() {
-  const notas = await getNotas();
 
   return (
     <>

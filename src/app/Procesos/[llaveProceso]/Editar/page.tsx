@@ -20,16 +20,16 @@ export default async function Page(
   );
 
   const ntext = nota
-        .map(
-          (
-            nt 
-          ) => {
-            const name = nt.nota;
+    .map(
+      (
+        nt 
+      ) => {
+        const name = nt.nota;
 
-            return name;
-          } 
-        )
-        .toString();
+        return name;
+      } 
+    )
+    .toString();
 
   return (
     <h1
