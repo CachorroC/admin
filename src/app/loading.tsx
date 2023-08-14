@@ -1,4 +1,4 @@
-import layout from '#@/styles/scss/layout.module.css';
+import layout from '#@/styles/layout.module.css';
 import type { Route } from 'next';
 import typography from '#@/styles/fonts/typography.module.css';
 import typeface from '#@/styles/fonts/typeface.module.css';

@@ -5,6 +5,19 @@
     width: 100%;
   }
 }
+.date{
+    background-color: var(--surface-container-high);
+  border: none;
+  color: var(--on-surface-variant);
+  border-radius: 2vmin;
+  resize: both;
+  text-align: center;
+  padding: 5cqmin;
+  flex-grow: 3;
+  &:focus {
+    background-color: var(--surface);
+  }
+}
 .card {
   box-sizing: border-box;
   box-shadow: var(--dp3);

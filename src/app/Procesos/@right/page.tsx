@@ -14,23 +14,23 @@ async function ProcesoComponent(
     index
   }: {
   llaveProceso: string;
-  idProceso?: number[];
+  idProceso?: number;
   index: number;
-} 
+}
 ) {
   const procesos = await getProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
-    } 
+    }
   );
 
   const proceso = procesos.find(
     (
-      prc 
+      prc
     ) => {
       return prc.idProceso === idProceso;
-    } 
+    }
   );
 
   if ( procesos.length === 0 || !proceso ) {
@@ -52,7 +52,7 @@ export default async function PageProcesosRight() {
     <>
       {carpetas.map(
         (
-          carpeta, index 
+          carpeta, index
         ) => {
           if ( !carpeta.llaveProceso ) {
             return (
@@ -81,7 +81,7 @@ export default async function PageProcesosRight() {
               />
             </Suspense>
           );
-        } 
+        }
       )}
     </>
   );

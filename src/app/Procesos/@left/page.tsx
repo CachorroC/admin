@@ -62,11 +62,15 @@ export async function  FechaActuacionComponent(
     }
     const ultimaActuacion = actuaciones[ 0 ];
     rowsActs.push(
-      <sub className={card.updated} key={carpeta._id}>
-        {fixFechas(
-          ultimaActuacion.fechaActuacion
-        )}
-      </sub>
+      <Fragment key={ carpeta._id }>
+        <p className={card.content}>{ultimaActuacion.anotacion}</p>
+
+        <sub className={card.updated} key={carpeta._id}>
+          {`fecha de la ultima actuacion: ${ fixFechas(
+            ultimaActuacion.fechaActuacion
+          ) }`}
+        </sub>
+      </Fragment>
     );
 
 
@@ -151,7 +155,11 @@ export default async function PageProcesosLeft() {
 
               <Suspense
                 key={carpeta._id}
-                fallback={<CardSkeleton />}
+                fallback={  <sub className={ card.date }>
+                  {`fecha de la ultima actuacion registrada en el servidor: ${ fixFechas(
+                    carpeta.fecha
+                  ) } `}
+                </sub>}
               >
                 <FechaActuacionComponent
                   key={carpeta._id}
@@ -159,11 +167,7 @@ export default async function PageProcesosLeft() {
                   index={index}
                 />
               </Suspense>
-              <sub className={ card.date }>
-                {`fecha de la ultima actuacion registrada en el servidor: ${ fixFechas(
-                  carpeta.fecha
-                ) } `}
-              </sub>
+
             </Card>
           );
         }

@@ -34,7 +34,7 @@ export async function GET(
         carpeta
       ) => {
         const juzgado
-        = carpeta.demanda?.juzgado.origen.tipo;
+        = carpeta.demanda?.juzgado[ 0 ].tipo;
 
         return juzgado;
       }
@@ -47,7 +47,7 @@ export async function GET(
       {
         status : 200,
         headers: {
-          'content-type': 'application/json' 
+          'content-type': 'application/json'
         }
       }
     );
@@ -75,7 +75,7 @@ export async function GET(
       {
         status : 200,
         headers: {
-          'content-type': 'application/json' 
+          'content-type': 'application/json'
         }
       }
     );
@@ -103,7 +103,7 @@ export async function GET(
       {
         status : 200,
         headers: {
-          'content-type': 'application/json' 
+          'content-type': 'application/json'
         }
       }
     );
@@ -129,7 +129,7 @@ export async function GET(
       {
         status : 200,
         headers: {
-          'content-type': 'application/json' 
+          'content-type': 'application/json'
         }
       }
     );
@@ -142,7 +142,7 @@ export async function GET(
     {
       status : 200,
       headers: {
-        'content-type': 'application/json' 
+        'content-type': 'application/json'
       }
     }
   );
@@ -157,7 +157,7 @@ export async function PUT(
   fs.mkdir(
     `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }`,
     {
-      recursive: true 
+      recursive: true
     }
   );
 
@@ -165,7 +165,7 @@ export async function PUT(
     './src/lib/global',
     `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }`,
     {
-      recursive: true 
+      recursive: true
     }
   );
   fs.writeFile(
@@ -182,7 +182,7 @@ export async function PUT(
           incomingRequest.deudor.cedula
       },
       {
-        $set: incomingRequest 
+        $set: incomingRequest
       },
       {
         upsert        : true,
@@ -203,7 +203,7 @@ export async function PUT(
     {
       status : 200,
       headers: {
-        'content-type': 'application/json' 
+        'content-type': 'application/json'
       }
     }
   );

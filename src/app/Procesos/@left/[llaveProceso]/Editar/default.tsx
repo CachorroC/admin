@@ -1,9 +1,9 @@
 import { getBaseUrl } from '#@/lib/getBaseUrl';
-import typeface from '#@/styles/fonts/typeface.module.css';
 import note from '#@/components/nota/note.module.css';
 import { getNotaById } from '#@/lib/notas';
 import { Edit } from '#@/components/nota/Edit';
 import { Fragment } from 'react';
+import typography from '#@/styles/fonts/typography.module.css';
 
 export default async function Default(
   {
@@ -25,7 +25,7 @@ export default async function Default(
 
   return (
     <div className={note.container}>
-      <div className={note.note}>
+      <div className={note.nota}>
         {nota.map(
           (
             ntext, i
@@ -34,7 +34,7 @@ export default async function Default(
               <Fragment key={ntext._id}>
                 <h1
                   key={i}
-                  className={typeface.title}
+                  className={typography.titleMedium}
                 >
                   {ntext.nota}
                 </h1>

@@ -1,5 +1,5 @@
 import Title from '#@/components/Headings/title';
-import layout from '#@/styles/scss/layout.module.css';
+import layout from '#@/styles/layout.module.css';
 
 export default function NotFound() {
   return (

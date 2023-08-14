@@ -10,11 +10,11 @@
 }
 .form,
 .nota {
-  border-radius: 2vmin;
+  border-radius: 2cqmin;
   display: flex;
   flex-flow: column nowrap;
-  padding: 2vmin;
-  gap: 2vmin;
+  padding: 2cqmin;
+  gap: 2cqmin;
   sub {
     color: var(--primary);
   }
@@ -28,8 +28,8 @@
     flex-flow: row nowrap;
   }
   .section {
-    gap: 2vmin;
-    padding: 1vmin;
+    gap: 2cqmin;
+    padding: 1cqmin;
     display: flex;
     flex-flow: column wrap;
     .label {
@@ -43,7 +43,7 @@
 }
 .submitButton {
   border: none;
-  border-radius: 2vmin;
+  border-radius: 2cqmax;
   box-shadow: var(--dp5);
   flex: 1 0 25%;
   background-color: var(--secondary);
@@ -70,7 +70,20 @@
   }
 }
 .textArea {
-  background-color: var(--surface-variant);
+  background-color: var(--surface-container);
+  border: none;
+  color: var(--on-surface-variant);
+  border-radius: 2vmin;
+  resize: both;
+  text-align: center;
+  padding: 5cqmin;
+  flex-grow: 3;
+  &:focus {
+    background-color: var(--surface);
+  }
+}
+.date{
+    background-color: var(--surface-container-high);
   border: none;
   color: var(--on-surface-variant);
   border-radius: 2vmin;

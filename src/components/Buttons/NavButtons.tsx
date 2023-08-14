@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useModal } from '#@/app/modal-context';
 import { useNavigator } from '#@/app/search-context';
 import type { Route } from 'next';
+import buttons from '#@/components/Buttons/buttons.module.css';
 
 export const ForwardButton = () => {
   const [
@@ -167,7 +168,7 @@ export const ModalButton = () => {
 
   return (
     <button
-      className={navbar.buttonModal}
+      className={buttons.buttonModal}
       onClick={() => {
         return setIsOpen(
           true

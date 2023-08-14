@@ -1,4 +1,4 @@
-import layout from '#@/styles/scss/layout.module.css';
+import layout from '#@/styles/layout.module.css';
 import typography from '#@/styles/fonts/typography.module.css';
 import card from '#@/components/card/card.module.css';
 

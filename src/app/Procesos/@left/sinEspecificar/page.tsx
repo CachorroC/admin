@@ -1,6 +1,6 @@
 import 'server-only';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
-import layout from '#@/styles/scss/layout.module.css';
+import layout from '#@/styles/layout.module.css';
 import typography from '#@/styles/fonts/typography.module.css';
 import { Suspense } from 'react';
 import { Loader } from '#@/components/Loader';
@@ -46,6 +46,7 @@ export default async function NuevaCarpetaPage () {
               }}
             />
 
+
             <section className={ form.section }>
 
               <SelectSection
@@ -64,6 +65,7 @@ export default async function NuevaCarpetaPage () {
                     required: true
                   }}
                 />
+
                 <SelectSection
                   name={
                     'demanda.juzgado.0.tipo'

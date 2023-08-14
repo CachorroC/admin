@@ -7,6 +7,7 @@ import Link from 'next/link';
 import card from '#@/components/card/card.module.css';
 import { NombreComponent } from '#@/components/card/Nombre';
 import { notFound } from 'next/navigation';
+import { Route } from 'next';
 
 export default async function DefaultProcesosllaveProceso(
   {
@@ -31,7 +32,7 @@ export default async function DefaultProcesosllaveProceso(
     <>
       <NombreComponent deudor={Carpeta.deudor} />
       <Link
-        href={`/Carpetas/${ llaveProceso }`}
+        href={`/Procesos/${ llaveProceso }` as Route}
         className={card.link}
       >
         <span className='material-symbols-outlined'>

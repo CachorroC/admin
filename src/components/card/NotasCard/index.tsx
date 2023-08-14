@@ -110,7 +110,7 @@ export const NotasList = (
                   className={`${ typography.bodySmall } ${ styles.textArea }`}
                 >{`Nota: ${ nota.nota }`}</p>
                 <sub
-                  className={`${ typography.labelSmall } ${ styles.fecha }`}
+                  className={`${ typography.labelSmall } ${ styles.date }`}
                 >
                   {fixFechas(
                     nota.fecha.toString()
@@ -177,7 +177,7 @@ export const NotaFRef = forwardRef(
             className={`${ typography.bodySmall } ${ styles.textArea }`}
           >{`Nota: ${ nota.nota }`}</p>
           <sub
-            className={`${ typography.labelSmall } ${ styles.fecha }`}
+            className={`${ typography.labelSmall } ${ styles.date }`}
           >
             {fixFechas(
               nota.fecha.toString()

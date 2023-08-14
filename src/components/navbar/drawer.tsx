@@ -2,7 +2,7 @@
 import { useNavigator } from '#@/app/search-context';
 import { ReactNode, Suspense } from 'react';
 import navbar from '#@/components/navbar/navbar.module.css';
-import layout from '#@/styles/css/layout.module.css';
+import layout from '#@/styles/layout.module.css';
 import InputSearchBar from '#@/components/search/InputSearchBar';
 import useMedia from './mediaQuery';
 import typeface from '#@/components/typográficos/typeface.module.css';

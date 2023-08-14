@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import layout from '#@/styles/scss/layout.module.css';
+import layout from '#@/styles/layout.module.css';
 import typography from '#@/styles/fonts/typography.module.css';
 import navbar from '#@/components/navbar/navbar.module.css';
 

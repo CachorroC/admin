@@ -1,23 +1,18 @@
 import 'server-only';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { fixFechas } from '#@/lib/fix';
-import type { Demanda,
-              IntCarpeta,
-              MonCarpeta } from '#@/lib/types/carpeta';
-import Link from 'next/link';
 import { Fragment,
          ReactNode,
          Suspense,
          useEffect,
          useState } from 'react';
 import styles from './carpetas.module.css';
-import typography from '#@/styles/fonts/typography.module.css';
 import { getActuaciones } from '#@/lib/Actuaciones';
 import { Loader } from '#@/components/Loader';
 import { Card } from '#@/components/card/card';
-import { getProceso } from '#@/lib/RamaJudicial';
 import { ProcesoCard } from '../ProcesosCard';
 import { NombreComponent } from '../Nombre';
+import { getProceso } from '#@/lib/Procesos';
 
 const ProcesosList = async (
   {
@@ -161,7 +156,7 @@ export async function ListCardCarpetasNFechas() {
               <Suspense fallback={<Loader />}>
                 <ProcesosList
                   llaveProceso={
-                    carpeta.llaveProceso
+                    carpeta.llaveProceso ?? ''
                   }
                   key={carpeta.llaveProceso}
                   index={index}

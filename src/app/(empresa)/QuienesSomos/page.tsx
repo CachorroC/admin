@@ -1,4 +1,4 @@
-import layout from '#@/styles/scss/layout.module.css';
+import layout from '#@/styles/layout.module.css';
 
 export default function Page() {
   const lrs = [

@@ -1,1 +1,66 @@
+.buttonsRow {
+  flex: 1 1 100%;
+}
 
+.button, .buttonHome, .buttonModal, .buttonDrawerMenu, .buttonBackwards, .buttonForward {
+  border: none;
+  border-radius: 2vmin;
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  transition: all 0.3s;
+}
+.buttonForward {
+  grid-area: forwardButton;
+  background-color: var(--primary-container);
+}
+.buttonForward > .icon, .buttonForward > .text {
+  color: var(--on-primary-container);
+}
+.buttonBackwards {
+  background-color: var(--primary-container);
+  grid-area: backwardsButton;
+}
+.buttonBackwards > .icon, .buttonBackwards > .text {
+  color: var(--on-primary-container);
+}
+.buttonDrawerMenu {
+  grid-area: drawerMenuButton;
+  background-color: var(--primary-container);
+}
+.buttonDrawerMenu > .icon, .buttonDrawerMenu > .text {
+  color: var(--on-primary-container);
+}
+.buttonModal {
+  grid-area: drawerMenuButton;
+  background-color: var(--primary-container);
+}
+.buttonModal > .icon, .buttonModal > .text {
+  color: var(--on-primary-container);
+}
+.buttonHome {
+  grid-area: homeButton;
+  box-shadow: var(--dp2);
+  background-color: var(--primary);
+}
+.buttonHome > .icon, .buttonHome > .text {
+  color: var(--on-primary);
+}
+.button > .ButtonTextHelper, .buttonForward > .ButtonTextHelper, .buttonBackwards > .ButtonTextHelper, .buttonDrawerMenu > .ButtonTextHelper, .buttonModal > .ButtonTextHelper, .buttonHome > .ButtonTextHelper {
+  display: none;
+  opacity: 0;
+  transition: all 1s;
+}
+.button:hover, .buttonForward:hover, .buttonBackwards:hover, .buttonDrawerMenu:hover, .buttonModal:hover, .buttonHome:hover, .button:active, .buttonForward:active, .buttonBackwards:active, .buttonDrawerMenu:active, .buttonModal:active, .buttonHome:active {
+  background-color: var(--primary-fixed);
+  box-shadow: var(--dp6);
+  border: 2px solid var(--outline);
+}
+.button:hover > span, .buttonForward:hover > span, .buttonBackwards:hover > span, .buttonDrawerMenu:hover > span, .buttonModal:hover > span, .buttonHome:hover > span, .button:active > span, .buttonForward:active > span, .buttonBackwards:active > span, .buttonDrawerMenu:active > span, .buttonModal:active > span, .buttonHome:active > span {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 200, "opsz" 24;
+  color: var(--on-primary-fixed);
+}

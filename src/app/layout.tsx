@@ -1,4 +1,4 @@
-import '#@/styles/css/globals.css';
+import '#@/styles/globals.css';
 import 'material-symbols';
 import type { Metadata } from 'next';
 import Script from 'next/script';
@@ -11,7 +11,7 @@ import { ReactNode } from 'react';
 import { SearchProvider } from './search-context';
 import { ModalProvider } from './modal-context';
 import { NoteProvider } from './notes-context';
-import layout from '#@/styles/scss/layout.module.css';
+import layout from '#@/styles/layout.module.css';
 import typography from '#@/styles/fonts/typography.module.css';
 import { NoteSliderProvider } from './context/note-slider-context';
 

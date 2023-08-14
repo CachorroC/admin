@@ -21,7 +21,7 @@ export default async function page(
 
   return (
     <div className={note.container}>
-      <div className={note.note}>
+      <div className={note.nota}>
         {nota.map(
           (
             ntext, i

@@ -216,8 +216,8 @@ export class NombreCompleto {
     }: {
     primerNombre: string;
     primerApellido: string;
-    segundoNombre?: string;
-    segundoApellido?: string;
+    segundoNombre: string | null;
+    segundoApellido: string | null;
   }
   ) {
     this.Nombre = segundoApellido

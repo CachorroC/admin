@@ -15,7 +15,7 @@ export function NombreComponent(
 
   return (
     <h4 className={typography.displaySmall}>
-      {newName.Nombre}
+      {deudor.primerNombre}
     </h4>
   );
 }

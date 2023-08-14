@@ -21,10 +21,10 @@
         ├── [01;34m./src/styles/fonts[0m
         │   ├── ./src/styles/fonts/typeface.module.css.d.ts
         │   └── ./src/styles/fonts/typography.module.css.d.ts
-        └── [01;34m./src/styles/scss[0m
-            ├── ./src/styles/scss/box.module.css.d.ts
-            ├── ./src/styles/scss/globals.css.d.ts
-            ├── ./src/styles/scss/layout.module.css.d.ts
-            └── ./src/styles/scss/variables.module.css.d.ts
+        └── [01;34mstyless/scss[0m
+            ├── styless/scss/box.module.css.d.ts
+            ├── styless/scss/globals.css.d.ts
+            ├── styless/scss/layout.module.css.d.ts
+            └── styless/scss/variables.module.css.d.ts
 
 13 directories, 14 files

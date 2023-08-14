@@ -40,7 +40,7 @@ export function NotaSkeleton(
           Nota: ... cargando
         </p>
         <sub
-          className={`${ typography.labelSmall } ${ styles.fecha }`}
+          className={ `${ typography.labelSmall } ${ styles.date }` }
         >
           ... cargando
         </sub>

@@ -1,6 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
-import layout from '#@/styles/scss/layout.module.css';
+import layout from '#@/styles/layout.module.css';
+import navbar from '#@/components/navbar/navbar.module.css';
+import { installButton } from '#@/styles/globals.css';
 
 export default function Install() {
   const [
@@ -63,7 +65,7 @@ export default function Install() {
 
   return (
     <button
-      className={layout.installButton}
+      className={installButton}
       onClick={() => {
         setIsInstalled(
           isInstalled

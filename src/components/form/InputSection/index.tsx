@@ -12,19 +12,17 @@ import typography from '#@/styles/fonts/typography.module.css';
 import { useNuevaCarpetaContext } from '#@/hooks/formContext';
 import { CarpetaKeys, IntCarpeta } from '#@/lib/types/carpeta';
 
+
+interface improvCarp extends UseControllerProps<IntCarpeta>
+{
+  title: string;
+  type: HTMLInputTypeAttribute;
+}
+
 export const InputSection = (
   {
-    title,
-    type, name, rules
-  }: { title: string; type: HTMLInputTypeAttribute;
-      name: FieldPath<IntCarpeta>;
-      rules?:
-    | Omit<
-        RegisterOptions<IntCarpeta, CarpetaKeys>,
-        'setValueAs' | 'disabled' | 'valueAsNumber' | 'valueAsDate'
-      >
-    | undefined;
-    }
+    name, rules, title, type
+  }: improvCarp
 ) => {
 
 
@@ -59,10 +57,11 @@ export const InputSection = (
         {title}
       </label>
       <input
-        {...field}
+        { ...field }
+        /*
         className={form.textArea}
         type={type}
-        placeholder={field.name}
+        placeholder={field.name} */
       />
     </section>
   );

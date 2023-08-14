@@ -1,5 +1,6 @@
 import { getNotaById } from '#@/lib/notas';
 import typeface from '#@/styles/fonts/typeface.module.css';
+import typography from '#@/styles/fonts/typography.module.css';
 
 export default async function Page(
   {
@@ -33,7 +34,7 @@ export default async function Page(
 
   return (
     <h1
-      className={typeface.title}
+      className={typography.titleSmall}
     >{`Editar: ${ ntext }`}</h1>
   );
 }

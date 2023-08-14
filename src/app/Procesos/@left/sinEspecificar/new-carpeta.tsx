@@ -6,7 +6,6 @@ import { DefaultValues,
          useForm,
          useWatch } from 'react-hook-form';
 import form from '#@/components/form/form.module.css';
-import { InputSection } from '#@/components/form/InputSection';
 import { Demanda,
          Deudor,
          IntCarpeta } from '#@/lib/types/carpeta';
