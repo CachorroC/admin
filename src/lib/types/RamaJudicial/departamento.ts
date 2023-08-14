@@ -30,23 +30,39 @@ export interface Result {
     confirmarCorreoElectronico: null;
 }
 
-export type Valor = "framosg@deaj.ramajudicial.gov.co" | "gruizh@deaj.ramajudicial.gov.co" | " ";
+export type Valor = 'framosg@deaj.ramajudicial.gov.co' | 'gruizh@deaj.ramajudicial.gov.co' | ' ';
 
 // Converts JSON strings to/from your types
 export class Convert {
-    public static toIntDepartamentos(json: string): IntDepartamentos {
-        return JSON.parse(json);
-    }
+  public static toIntDepartamentos(
+    json: string 
+  ): IntDepartamentos {
+    return JSON.parse(
+      json 
+    );
+  }
 
-    public static intDepartamentosToJson(value: IntDepartamentos): string {
-        return JSON.stringify(value);
-    }
+  public static intDepartamentosToJson(
+    value: IntDepartamentos 
+  ): string {
+    return JSON.stringify(
+      value 
+    );
+  }
 
-    public static toResult(json: string): Result {
-        return JSON.parse(json);
-    }
+  public static toResult(
+    json: string 
+  ): Result {
+    return JSON.parse(
+      json 
+    );
+  }
 
-    public static resultToJson(value: Result): string {
-        return JSON.stringify(value);
-    }
+  public static resultToJson(
+    value: Result 
+  ): string {
+    return JSON.stringify(
+      value 
+    );
+  }
 }
