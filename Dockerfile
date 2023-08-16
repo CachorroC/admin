@@ -14,8 +14,9 @@ RUN \
   elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
   # Allow install without lockfile, so example works even without Node.js installed locally
   else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
-  fi
+  fidock
 
+RUN pnpm add typescript-plugin-css-modules -g
 COPY src ./src
 COPY public ./public
 COPY next.config.js .

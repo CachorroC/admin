@@ -115,7 +115,7 @@ export function EditNoteButton(
     <Link
       className={note.buttonEdit}
       href={
-        `/Procesos/${ nota.llaveProceso }/Editar?id=${ nota.id }` as Route
+        `/Procesos/${ nota.llaveProceso }/Editar?id=${ nota._id }` as Route
       }
     >
       <span

@@ -60,7 +60,7 @@ export function Edit(
     );
 
     const postNewNote = await fetch(
-      `${ uri }/api/Notas?id=${ nota.id }`,
+      `${ uri }/api/Notas?id=${ nota._id }`,
       {
         method : 'PUT',
         headers: {

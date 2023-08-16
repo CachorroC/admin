@@ -24,27 +24,27 @@ export function Nota(
 }
 ) {
   const {
-    id, nota, tareas, fecha
+    _id, nota, tareas, fecha
   } = notaRaw;
 
   return (
     <div
       className={note.container}
-      key={id}
+      key={_id}
     >
       <div className={note.nota}>
         <sup className={note.sup}>{`${
           i + 1
         }`}</sup>
         <Name
-          key={id}
+          key={_id}
           llaveProceso={notaRaw.llaveProceso}
         />
         <p
           className={`${ typography.bodySmall } ${ note.textArea }`}
         >{`Nota: ${ nota }`}</p>
         <sub
-          className={`${ typography.labelSmall } ${ note.fecha }`}
+          className={`${ typography.labelSmall } ${ note.textArea }`}
         >
           {fixFechas(
             fecha.toString()
@@ -53,14 +53,14 @@ export function Nota(
         <div className={note.buttonsRow}>
           <Suspense fallback={<ButtonSkeleton />}>
             <EditNoteButton
-              key={id}
+              key={_id}
               nota={notaRaw}
             />
           </Suspense>
           <Suspense fallback={<ButtonSkeleton />}>
             <DeleteNoteButton
-              key={id}
-              id={id}
+              key={_id}
+              id={_id}
             />
           </Suspense>
         </div>
@@ -111,7 +111,7 @@ export async function Notas(
               notaRaw={nota}
               i={i}
               arr={arr}
-              key={nota.id}
+              key={nota._id}
             />
           );
         }
@@ -129,7 +129,7 @@ export async function Notas(
             notaRaw={nota}
             i={i}
             arr={arr}
-            key={nota.id}
+            key={nota._id}
           />
         );
       }
@@ -148,7 +148,7 @@ export async function Notas(
           notaRaw={nota}
           i={i}
           arr={arr}
-          key={nota.id}
+          key={nota._id}
         />
       );
     }

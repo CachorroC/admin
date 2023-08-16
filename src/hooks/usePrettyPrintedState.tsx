@@ -6,7 +6,7 @@ import { Dispatch,
 
 export function usePrettyPrintedState<
   T extends object
->(): [JSX.Element, Dispatch<SetStateAction<T>>] {
+>(): [JSX.Element, Dispatch<SetStateAction<T | undefined>>] {
   const [
     value,
     setValue
@@ -21,7 +21,7 @@ export function usePrettyPrintedState<
             Value:
               <br />
               {JSON.stringify(
-                value, null, 2 
+                value, null, 2
               )}
             </pre>
           )}
@@ -29,7 +29,7 @@ export function usePrettyPrintedState<
       );
     }, [
       value
-    ] 
+    ]
   );
 
   return [

@@ -208,29 +208,29 @@
   background-color: var(--secondary);
   color: var(--on-secondary);
 } /* The switch - the box around the slider */
-.switch {
+.switchBox {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
 }
-.switch .checkbox {
+.switchBox .checkbox {
   opacity: 0;
   width: 0;
   height: 0;
 }
-.switch .checkbox:checked + .slider {
+.switchBox .checkbox:checked + .slider {
   background-color: #2196f3;
 }
-.switch .checkbox:checked + .slider:before {
+.switchBox .checkbox:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-.switch .checkbox:focus + .slider {
+.switchBox .checkbox:focus + .slider {
   box-shadow: 0 0 1px #2196f3;
 }
-.switch .slider {
+.switchBox .slider {
   position: absolute;
   top: 0;
   left: 0;
@@ -241,7 +241,7 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
-.switch .slider:before {
+.switchBox .slider:before {
   position: absolute;
   content: "";
   height: 26px;
@@ -254,62 +254,3 @@
 }
 
 /* The slider */
-.switchBox {
-  display: block;
-}
-.switchBox .switchBoxLabel {
-  position: relative;
-  display: inline-block;
-  height: 1.125rem;
-  padding-left: 3.25rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.switchBox .switchBoxLabel:before {
-  position: absolute;
-  left: 0;
-  top: 0rem;
-  display: block;
-  width: 2.25rem;
-  height: 1.125rem;
-  border-radius: 1.125rem;
-  background: #eeeeee;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
-  content: "";
-  transition: all 0.2s ease;
-}
-.switchBox .switchBoxLabel:after {
-  position: absolute;
-  left: 0;
-  top: 0rem;
-  display: block;
-  width: 1.125rem;
-  height: 1.125rem;
-  border-radius: 50%;
-  background: #eeeeee;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
-  content: "";
-  transition: all 0.2s ease;
-}
-.switchBox input {
-  display: none;
-}
-.switchBox input:checked ~ .switchBoxLabel:after {
-  background-color: #d5d5d5;
-  left: 1.125rem;
-}
-.switchBox input:disabled ~ .switchBoxLabel {
-  cursor: default;
-}
-.switchBox input:disabled ~ .switchBoxLabel:before {
-  background: #e2e2e2;
-}
-.switchBox input:disabled ~ .switchBoxLabel:after {
-  background: #d5d5d5;
-}
-.switchBox input:checked:not(:disabled) ~ .switchBoxLabel:before {
-  background: #81eed8;
-}
-.switchBox input:checked:not(:disabled) ~ .switchBoxLabel:after {
-  background: #1abc9c;
-}

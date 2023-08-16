@@ -22,11 +22,9 @@ declare const styles: {
   readonly 'select': string;
   readonly 'innactive': string;
   readonly 'active': string;
-  readonly 'switch': string;
+  readonly 'switchBox': string;
   readonly 'checkbox': string;
   readonly 'slider': string;
-  readonly 'switchBox': string;
-  readonly 'switchBoxLabel': string;
 };
 export = styles;
 

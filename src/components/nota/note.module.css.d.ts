@@ -8,11 +8,13 @@ declare const styles: {
   readonly 'label': string;
   readonly 'titleInput': string;
   readonly 'submitButton': string;
+  readonly 'icon': string;
   readonly 'textArea': string;
   readonly 'deleteButton': string;
   readonly 'addButton': string;
   readonly 'HomeButton': string;
   readonly 'button': string;
+  readonly 'buttonAdd': string;
   readonly 'buttonDelete': string;
   readonly 'buttonEdit': string;
   readonly 'ButtonTextHelper': string;

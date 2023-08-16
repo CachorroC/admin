@@ -1,6 +1,8 @@
 'use client';
 import searchbar from '#@/components/search/searchbar.module.css';
 import typography from '#@/styles/fonts/typography.module.css';
+import  form  from '#@/components/form/form.module.css';
+import { link, links } from '../card/card.module.css';
 
 export default function LinkCardSkeleton() {
   return (
@@ -9,27 +11,27 @@ export default function LinkCardSkeleton() {
         <h1 className={typography.titleMedium}>
           Cargando
         </h1>
-        <div className={searchbar.section}>
+        <div className={form.section}>
           <sub className={searchbar.date}>
             00-00-0000
           </sub>
         </div>
-        <div className={searchbar.links}>
-          <p className={searchbar.link}>
+        <div className={links}>
+          <p className={link}>
             <span
               className={`material-symbols-outlined ${ searchbar.icon }`}
             >
               badge
             </span>
           </p>
-          <p className={searchbar.link}>
+          <p className={link}>
             <span
               className={`material-symbols-outlined ${ searchbar.icon }`}
             >
               add
             </span>
           </p>
-          <p className={searchbar.link}>
+          <p className={link}>
             <span
               className={`material-symbols-outlined ${ searchbar.icon }`}
             >

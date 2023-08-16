@@ -47,7 +47,7 @@
   box-shadow: var(--dp5);
   flex: 1 0 25%;
   background-color: var(--secondary);
-  & > span {
+  & > span, & > .icon {
     color: var(--on-secondary);
     font-variation-settings:
       'FILL' 0,
@@ -59,7 +59,7 @@
   &:active {
     background-color: var(--secondary);
     box-shadow: var(--dp8);
-    & > span {
+    & > span, & > .icon {
       font-variation-settings:
         'FILL' 1,
         'wght' 600,
@@ -100,6 +100,10 @@
     @extend .button;
     grid-area: deleteButton;
   }
+  &Add{
+    @extend .button;
+    grid-area: addButton;
+  }
   border: none;
   box-shadow: var(--dp5);
   border-radius: 2vmin;
@@ -116,7 +120,7 @@
     opacity: 0;
     transition: all 1s;
   }
-  & > span {
+  & > span, & > .icon {
     color: var(--on-secondary);
     font-variation-settings:
       'FILL' 0,
@@ -128,7 +132,7 @@
   &:active {
     background-color: var(--tertiary-container);
     box-shadow: var(--dp8);
-    & > span {
+    & > span, & > .icon {
       font-variation-settings:
         'FILL' 1,
         'wght' 400,

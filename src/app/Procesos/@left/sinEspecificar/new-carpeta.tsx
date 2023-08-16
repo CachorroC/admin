@@ -14,7 +14,6 @@ import { SelectSection } from '#@/components/form/SelectSection';
 import { ReactNode } from 'react';
 import { getCarpetaById } from '#@/lib/Carpetas';
 import { DeudorFormComponent } from '#@/components/form/deudor-form';
-import { InputSection } from '#@/components/form/InputSection';
 import Fields from './fieldArray-juzgados';
 import { Despacho } from '#@/lib/types/despachos';
 import { NuevaCarpetaProvider } from '#@/hooks/formContext';
@@ -173,59 +172,13 @@ export const NuevoProceso = (
             <section className={ form.section }>
               <DeudorFormComponent />
             </section>
-            <InputSection
-              name={'capitalAdeudado'}
-              title={'Capital Adeudado'}
-              type={'number'}
-              rules={{
-                required: true,
-                min     : 1000000
-              }}
-            />
 
-            <section className={ form.section }>
-
-
-              <SelectSection
-                name={'demanda.departamento'}
-                title={'Departamento'}
-                options={descripciones}
-              />
-              <Fields options={ despachos} />
-              <InputSection
-                name={'demanda.ciudad'}
-                title={'Municipio'}
-                type={'text'}
-                rules={{
-                  required: true
-                }}
-              />
-              <InputSection
-                name={'demanda.radicado'}
-                title={'Radicado'}
-                type={'text'}
-              />
-            </section>
-            <InputSection
-              name={'demanda.entregaGarantiasAbogado'}
-              title={
-                'Entrega de las garantias al abogado'
-              }
-              type={'date'}
-              rules={{
-                required: true
-              }}
-            />
             <SelectSection
-              name={'demanda.etapaProcesal'}
-              title={'Etapa Procesal'}
-              options={[
-                'EJECUCION',
-                'CONTESTACION DEMANDA',
-                'EMPLAZAMIENTO',
-                'ADMISION DE LA DEMANDA'
-              ]}
+              name={'demanda.departamento'}
+              title={'Departamento'}
+              options={descripciones}
             />
+            <Fields options={ despachos} />
 
             <SelectSection
               name={'grupo'}
@@ -236,24 +189,6 @@ export const NuevoProceso = (
                 'Lios Juridicos',
                 'Terminados'
               ]}
-            />
-            <InputSection
-              name={'llaveProceso'}
-              title={'llaveProceso'}
-              type={'text'}
-              rules={{
-                required : true,
-                maxLength: 23,
-                minLength: 23
-              }}
-            />
-            <InputSection
-              name={'numero'}
-              title={'Carpeta numero'}
-              type={'number'}
-              rules={{
-                required: true
-              }}
             />
 
 
@@ -266,15 +201,6 @@ export const NuevoProceso = (
                 'PRENDARIO'
               ]}
             />
-            <InputSection
-              name={'demanda.vencimientoPagare'}
-              title={'vencimiento del pagare'}
-              type={'date'}
-              rules={{
-                required: true
-              }}
-            />
-
             <button
               type='submit'
               className={form.button}
