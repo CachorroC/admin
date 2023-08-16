@@ -1,4 +1,6 @@
+import { notFound } from 'next/navigation';
 import { IntDepartamentos } from '../types/RamaJudicial/departamento';
+import { Despacho } from '../types/despachos';
 
 export async function getDepartamentos () {
   try {
@@ -20,5 +22,29 @@ export async function getDepartamentos () {
     );
 
     return null;
+  }
+}
+
+
+
+export async function getDespachos () {
+  try {
+
+    const Request = await fetch(
+      'https://www.ramajudicial.gov.co/directorioPortal-portlet/api/jsonws/servicioapidirectorio/get-despacho-distritos.18'
+    );
+
+    if ( !Request.ok ) {
+      return [];
+    }
+    const Response = ( await Request.json() ) as Despacho[];
+
+    return Response;
+  } catch ( error ) {
+    console.log(
+      `error en el despacho: ${ error }`
+    );
+
+    return [];
   }
 }

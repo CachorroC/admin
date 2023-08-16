@@ -6,7 +6,7 @@ import { ActuacionCollectionItem,
          intActuacion,
          intConsultaActuaciones,
          monActuacion } from '../types/procesos';
-import { carpetasCollection, getCarpetaById, getCarpetaByidProceso } from '../Carpetas';
+import { carpetasCollection, getCarpetaByidProceso } from '../Carpetas';
 import { sleep } from '../fix';
 import clientPromise from '../mongodb';
 import { IntCarpeta,
@@ -53,7 +53,7 @@ export const fetchActuaciones= cache(
 
     if ( !idProceso || idProceso === 0 ) {
       console.log(
-        `este idProceso es: ${ idProceso } con index ${ index }`
+        `${ index }: este idProceso es: ${ idProceso }`
       );
 
       return [];
@@ -67,7 +67,7 @@ export const fetchActuaciones= cache(
 
       if ( !Request.ok ) {
         console.log(
-          ` ${ idProceso }: actuaciones not ok, status: ${ Request.status } with ${ Request.statusText } index: ${ index }`
+          ` ${ index }: actuaciones not ok, status: ${ Request.status } with ${ Request.statusText } idProceso: ${ idProceso }`
         );
 
         return [];
@@ -97,7 +97,7 @@ export const fetchActuaciones= cache(
         }
       );
 
-        if ( updateActsinMongo.acknowledged ) {
+        if ( updateActsinMongo.modifiedCount > 0 || updateActsinMongo.upsertedCount > 0 ) {
           console.log(
             `${ index }: the actuaciones collection was updated with ${ updateActsinMongo.modifiedCount } actuaciones modified or ${ updateActsinMongo.upsertedCount }actuaciones upserted with a matched count of ${ updateActsinMongo.matchedCount }`
           );
@@ -107,7 +107,7 @@ export const fetchActuaciones= cache(
       return actuaciones;
     } catch ( error ) {
       console.log(
-        error
+        `${ index }: error en de red en el try catch de getActuaciones`
       );
 
       return [];

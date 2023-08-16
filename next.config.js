@@ -1,21 +1,10 @@
 /** @type {import('next').NextConfig} */ const nextConfig
   = {
-    output: 'standalone',
-    images: {
-      remotePatterns: [
-        {
-          protocol: 'https',
-          hostname: 'placekitten.com',
-          pathname: '/250/200?image=**'
-        }
-      ],
-      domains: [
-        'placekitten.com'
-      ]
-    },
-    experimental: {
+    output      : 'standalone',
+  experimental: {
+
       typedRoutes                     : true,
-      serverActions                   : true,
+      /*   serverActions                   : true, */
       serverComponentsExternalPackages: [
         'mongodb'
       ]

@@ -11,11 +11,11 @@ export interface IntCarpeta {
   demanda:         Demanda;
   deudor:          Deudor;
     idProceso:       number;
-    llaveProceso:    null | string;
+    llaveProceso:    string;
     grupo:           Grupo;
     id:              number;
     numero:          number;
-    tipoProceso:     TipoProceso | null;
+    tipoProceso?:     TipoProceso | null;
     fecha?:          Date;
 }
 

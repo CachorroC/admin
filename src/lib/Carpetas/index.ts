@@ -103,7 +103,7 @@ export const getCarpetaById = async (
       Carpeta
     );
 
-  return carpeta;
+  return Carpeta;
 };
 
 export const getCarpetaByidProceso = async (

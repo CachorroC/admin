@@ -1,6 +1,7 @@
 'use client';
 import form from '#@/components/form/form.module.css';
 import { HTMLInputTypeAttribute,
+         InputHTMLAttributes,
          MutableRefObject,
          useRef,
          useState } from 'react';
@@ -13,16 +14,17 @@ import { useNuevaCarpetaContext } from '#@/hooks/formContext';
 import { CarpetaKeys, IntCarpeta } from '#@/lib/types/carpeta';
 
 
-interface improvCarp extends UseControllerProps<IntCarpeta>
+interface improvProps extends UseControllerProps<IntCarpeta>
 {
   title: string;
-  type: HTMLInputTypeAttribute;
+  type: HTMLInputTypeAttribute
+
 }
 
 export const InputSection = (
   {
-    name, rules, title, type
-  }: improvCarp
+    name, title, rules, type
+  }: improvProps
 ) => {
 
 
@@ -54,14 +56,16 @@ export const InputSection = (
         className={`${ form.label } ${ typography.titleLarge }`}
         htmlFor={field.name}
       >
-        {title}
+        {`${ name.replace(
+          '.', ' '
+        ) } y ${ title }`}
       </label>
       <input
-        { ...field }
-        /*
+        type={`${ type }`}
         className={form.textArea}
-        type={type}
-        placeholder={field.name} */
+        placeholder={field.name}
+        { ...field }
+
       />
     </section>
   );

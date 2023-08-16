@@ -25,7 +25,7 @@ export const SelectSection = (
   };
 
   const {
-    register, control
+    register, control,
   }
     = useFormContext<IntCarpeta>();
 
@@ -39,11 +39,6 @@ export const SelectSection = (
     }
   );
 
-  const [
-    map,
-    setMap
-  ] = useNuevaCarpetaContext();
-
   return (
     <section className={form.section}>
       <label
@@ -54,7 +49,7 @@ export const SelectSection = (
       </label>
 
       <select
-        {...field}
+        { ...register }
         className={form.selectArea}
       >
         {options.map(
