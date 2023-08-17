@@ -34,6 +34,11 @@ export async function fetchCarpetas() {
     .find(
       {}
     )
+    .sort(
+      {
+        numero: 1
+      }
+    )
     .toArray();
 
 

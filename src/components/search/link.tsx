@@ -35,6 +35,7 @@ export const LinkCard = (
     idProceso,
     _id
   } = carpeta;
+  const Nombre = carpeta.nombre;
   const isCarpeta = path === '/Carpetas';
 
   const {
@@ -87,7 +88,10 @@ export const LinkCard = (
             : searchbar.notActive
         }
       >
-        <NombreComponent deudor={deudor} />
+        <sup>{carpeta.numero}</sup>
+        <NombreComponent deudor={ deudor } />
+        { Nombre }
+
         <sub className={searchbar.date}>
           {fixFechas(
             fecha

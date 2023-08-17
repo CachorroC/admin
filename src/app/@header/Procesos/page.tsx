@@ -12,19 +12,8 @@ export default async function Page() {
   const carpetas = await getCarpetas();
 
   return (
-    <Header>
-      <Title />
-      <Drawer>
-        { carpetas.map(
-          (
-            carpeta, index
-          ) => {
-            return (
-              <LinkCard key={carpeta._id} path={'/Procesos'} carpeta={carpeta}/>
-            );
-          }
-        ) }
-      </Drawer>
-    </Header>
+
+    <Title />
+
   );
 }

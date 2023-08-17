@@ -22,7 +22,11 @@ export async function  fetchActuaciones(
 
   try {
     const Request = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
+      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`, {
+        next: {
+          revalidate: 86400
+        }
+      }
     );
 
     if ( !Request.ok ) {
