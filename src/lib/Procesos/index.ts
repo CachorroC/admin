@@ -36,11 +36,6 @@ export async function fetchProceso(
   index: number;
 }
 ) {
-  const awaitTime = index * 1000;
-  await sleep(
-    awaitTime
-  );
-  const collection = await procesosCollection();
 
   if ( llaveProceso.length < 23 || llaveProceso === 'sinEspecificar' ) {
     console.log(
@@ -63,22 +58,6 @@ export async function fetchProceso(
       = ( await req.json() ) as intConsultaNumeroRadicacion;
     const procesos = res.procesos;
 
-    for ( const proceso of procesos ) {
-      await collection.updateOne(
-        {
-          llaveProceso: llaveProceso,
-          idProceso   : proceso.idProceso
-        },
-        {
-          $set: proceso
-        },
-        {
-          upsert: true,
-        }
-      );
-
-    }
-
     return procesos;
   } catch ( error ) {
     console.log(
@@ -99,8 +78,6 @@ export async function getProceso(
 }
 ) {
 
-  const carpsColl = await carpetasCollection();
-
   const fetchP = await fetchProceso(
     {
       llaveProceso: llaveProceso,
@@ -108,64 +85,6 @@ export async function getProceso(
     }
   );
 
-  for ( const proceso of fetchP ) {
-
-    const updtCarpeta
-      = await carpsColl.updateOne(
-        {
-          llaveProceso: llaveProceso,
-          idProceso   : proceso.idProceso
-        }, {
-          $set: {
-            idProceso: proceso.idProceso
-          }
-        }, {
-          upsert: false
-        }
-      );
-    console.log(
-      `${ llaveProceso } update was modified ${ updtCarpeta.matchedCount } and ${ updtCarpeta.upsertedCount } upserted with ${ updtCarpeta.matchedCount } matched`
-    );
-
-  }
 
   return fetchP;
-}
-
-export async function getProcesoByidProceso(
-  {
-    idProceso
-  }: {
-  idProceso: number;
-}
-) {
-  const collection = await procesosCollection();
-
-  const proceso = await collection.findOne(
-    {
-      idProceso: idProceso
-    }
-  );
-
-  return proceso;
-}
-
-export async function getProcesosByllaveProceso(
-  {
-    llaveProceso
-  }: {
-  llaveProceso: string;
-}
-) {
-  const collection = await procesosCollection();
-
-  const proceso = await collection
-    .find(
-      {
-        llaveProceso: llaveProceso
-      }
-    )
-    .toArray();
-
-  return proceso;
 }

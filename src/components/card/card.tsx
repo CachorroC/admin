@@ -37,7 +37,6 @@ export const DeudorComponent = (
     tel,
     direccion
   } = deudor;
-  const nombre = `${ primerNombre }   ${ segundoNombre }   ${ primerApellido }   ${ segundoApellido }`;
 
   return (
     <section

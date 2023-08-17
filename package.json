@@ -6,7 +6,8 @@
     "sass": "sass --no-source-map src:src && tcm src",
     "lint": "next lint --fix && next lint",
     "prebuild": "pnpm sass && pnpm lint",
-    "build": "pnpm prebuild && next build",
+    "devbuild" : "pnpm prebuild && next build",
+    "build": "next build",
     "dev": "URL=beta.rsasesorjuridico.com NEXTAUTH_URL=https://beta.rsasesorjuridico.com next dev",
     "start": "next start"
   },

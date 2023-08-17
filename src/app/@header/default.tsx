@@ -1,19 +1,15 @@
+import { DrawerMenuButton } from '#@/components/Buttons/NavButtons';
 import Title from '#@/components/Headings/title';
 import Header from '#@/components/navbar/Header';
-import { Suspense } from 'react';
-import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-import { Loader } from '#@/components/Loader';
-import { ListDrawer } from './list';
 import Drawer from '#@/components/navbar/drawer';
+import { LinkCard } from '#@/components/search/link';
 
-export default function Default() {
+export default function DefaultHEader () {
   return (
     <Header>
-      <Title />
+      <Title/>
       <Drawer>
-        <Suspense fallback={<Loader />}>
-          <ListDrawer />
-        </Suspense>
+        <DrawerMenuButton />
       </Drawer>
     </Header>
   );

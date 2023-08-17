@@ -12,7 +12,7 @@ async function Acts(
 ) {
   const actuaciones = await getActuaciones(
     {
-      idProceso: idProceso 
+      idProceso: idProceso
     }
   );
 
@@ -49,7 +49,7 @@ export default async function PageProcesosLeftllaveProceso(
 ) {
   const Carpeta = await getCarpetasByllaveProceso(
     {
-      llaveProceso: params.llaveProceso 
+      llaveProceso: params.llaveProceso
     }
   );
 
@@ -59,7 +59,7 @@ export default async function PageProcesosLeftllaveProceso(
 
   return (
     <>
-      <p>page</p>
+      <p>Page Left llaveProceso</p>
 
       <Acts
         key={Carpeta._id}

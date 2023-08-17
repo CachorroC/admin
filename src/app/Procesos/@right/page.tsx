@@ -4,7 +4,7 @@ import { ProcesoCard } from '#@/components/card/ProcesosCard';
 import { ProcesoCardSkeleton } from '#@/components/card/ProcesosCard/skeleton';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { getProceso } from '#@/lib/Procesos';
-import { Suspense } from 'react';
+import { Fragment, Suspense } from 'react';
 import 'server-only';
 
 async function ProcesoComponent(
@@ -25,23 +25,21 @@ async function ProcesoComponent(
     }
   );
 
-  const proceso = procesos.find(
-    (
-      prc
-    ) => {
-      return prc.idProceso === idProceso;
-    }
-  );
-
-  if ( procesos.length === 0 || !proceso ) {
-    return null;
-  }
-
   return (
-    <ProcesoCard
-      key={proceso.idProceso}
-      proceso={proceso}
-    />
+    <>
+      { procesos.map(
+        (
+          proceso
+        ) => {
+          return (
+            <ProcesoCard
+              key={proceso.idProceso}
+              proceso={proceso}
+            />
+          );
+        }
+      )}
+    </>
   );
 }
 
@@ -54,24 +52,10 @@ export default async function PageProcesosRight() {
         (
           carpeta, index
         ) => {
-          if ( !carpeta.llaveProceso ) {
-            return (
-              <CarpetaCard
-                key={carpeta._id}
-                carpeta={carpeta}
-              >
-                <NombreComponent
-                  key={carpeta._id}
-                  deudor={carpeta.deudor}
-                />
-              </CarpetaCard>
-            );
-          }
-
           return (
             <Suspense
               key={carpeta._id}
-              fallback={<ProcesoCardSkeleton />}
+              fallback={<ProcesoCardSkeleton key={carpeta._id} />}
             >
               <ProcesoComponent
                 key={carpeta._id}

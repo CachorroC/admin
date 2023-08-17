@@ -36,16 +36,18 @@ export async function fetchCarpetas() {
     )
     .toArray();
 
+
+
+  return carpetasRaw;
+}
+
+export async function getCarpetas() {
+  const carpetasRaw = await fetchCarpetas();
+
   const carpetas
     = carpetaConvert.toMonCarpetas(
       carpetasRaw
     );
-
-  return carpetas;
-}
-
-export async function getCarpetas() {
-  const carpetas = await fetchCarpetas();
 
   return carpetas;
 }

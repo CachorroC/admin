@@ -10,8 +10,12 @@ import { NombreComponent } from '#@/components/card/Nombre';
 import { MonCarpeta } from '#@/lib/types/carpeta';
 import { intConsultaActuaciones } from '#@/lib/types/procesos';
 
-export const revalidate = 43200;
+import { Metadata } from 'next';
+import { getActuaciones } from '#@/lib/Actuaciones';
 
+export const metadata: Metadata = {
+  title: 'Procesos',
+};
 
 export async function  FechaActuacionComponent(
   {
@@ -20,78 +24,41 @@ export async function  FechaActuacionComponent(
   }: {
   carpeta: MonCarpeta;
   index: number;
-}
+} 
 ) {
-  const rowsActs = [];
 
   const {
     idProceso
   } = carpeta;
-  const awaitTime = index * 1000;
-  await sleep(
-    awaitTime
+
+  const actuaciones = await getActuaciones(
+    {
+      idProceso: idProceso
+    } 
   );
 
-  if ( !idProceso || idProceso === 0 ) {
-    console.log(
-      `este idProceso es: ${ idProceso } con index ${ index }`
-    );
-
+  if ( actuaciones.length === 0 ) {
     return null;
   }
+  const ultimaActuacion = actuaciones[ 0 ];
 
-  try {
-    const Request = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
-    );
+  return(
+    <Fragment key={ carpeta._id }>
+      <p className={card.content}>{ultimaActuacion.anotacion}</p>
 
-    if ( !Request.ok ) {
-      console.log(
-        ` ${ idProceso }: actuaciones not ok, status: ${ Request.status } with ${ Request.statusText } index: ${ index }`
-      );
-
-      return null;
-    }
-
-    const Response
-      = ( await Request.json() ) as intConsultaActuaciones;
-    const actuaciones = Response.actuaciones;
-
-    if ( actuaciones.length === 0 ) {
-      return null;
-    }
-    const ultimaActuacion = actuaciones[ 0 ];
-    rowsActs.push(
-      <Fragment key={ carpeta._id }>
-        <p className={card.content}>{ultimaActuacion.anotacion}</p>
-
-        <sub className={card.updated} key={carpeta._id}>
-          {`fecha de la ultima actuacion: ${ fixFechas(
-            ultimaActuacion.fechaActuacion
-          ) }`}
-        </sub>
-      </Fragment>
-    );
-
-
-    return (
-      <Fragment key={carpeta._id}>
-        {rowsActs}
-      </Fragment>
-    );
-  } catch ( error ) {
-    console.log(
-      error
-    );
-
-    return null;
-  }
-
+      <sub className={card.updated} key={carpeta._id}>
+        {`fecha de la ultima actuacion: ${ fixFechas(
+          ultimaActuacion.fechaActuacion 
+        ) }`
+        }
+      </sub>
+    </Fragment>
+  );
 
 };
 
 
-export default async function PageProcesosLeft() {
+export default async function PageProcesosLeft () {
   const carpetasRaw = await getCarpetas();
 
   const carpetas = [
@@ -119,7 +86,7 @@ export default async function PageProcesosLeft() {
       }
 
       return 0;
-    }
+    } 
   );
 
   return (
@@ -155,11 +122,13 @@ export default async function PageProcesosLeft() {
 
               <Suspense
                 key={carpeta._id}
-                fallback={  <sub className={ card.date }>
-                  {`fecha de la ultima actuacion registrada en el servidor: ${ fixFechas(
-                    carpeta.fecha
-                  ) } `}
-                </sub>}
+                fallback={
+                  <sub className={ card.date }>
+                    { `fecha de la ultima actuacion registrada en el servidor: ${ fixFechas(
+                      carpeta.fecha 
+                    ) } `}
+                  </sub>
+                }
               >
                 <FechaActuacionComponent
                   key={carpeta._id}
@@ -170,7 +139,7 @@ export default async function PageProcesosLeft() {
 
             </Card>
           );
-        }
+        } 
       )}
     </>
   );
