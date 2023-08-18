@@ -28,6 +28,9 @@
     border-radius: 2cqmin;
     align-self: center;
   }
+  .sub{
+    color: var(--secondary);
+  }
 }
 .notActive {
   &:link {

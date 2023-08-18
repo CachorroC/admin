@@ -2,8 +2,19 @@
   container-type: inline-size;
   container-name: card;
   & > * {
-    width: 100%;
+    width: 33%;
   }
+
+  &:hover {
+    .links{
+      display: flex;
+
+    }
+  }
+}
+.divider{
+  border: dashed 5px var(--primary);
+
 }
 .isActive,
 .notActive {
@@ -124,7 +135,7 @@
   color: var(--on-background);
 }
 .links {
-  display: flex;
+  display: none;
   flex-flow: row wrap;
   grid-area: links;
   width: 100%;

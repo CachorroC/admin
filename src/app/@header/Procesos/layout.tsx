@@ -3,7 +3,9 @@ import Header from '#@/components/navbar/Header';
 import Drawer from '#@/components/navbar/drawer';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { LinkCard } from '#@/components/search/link';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
+import SearchOutputList from '#@/components/search/SearchProcesosOutput';
+import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 
 export default async function Layout (
   {
@@ -16,15 +18,9 @@ export default async function Layout (
     <Header>
       {children}
       <Drawer>
-        { carpetas.map(
-          (
-            carpeta, index
-          ) => {
-            return (
-              <LinkCard key={carpeta._id} path={'/Procesos'} carpeta={carpeta}/>
-            );
-          }
-        ) }
+        <Suspense fallback={<SearchOutputListSkeleton />}>
+          <SearchOutputList path={ '/Procesos' } fechas={ carpetas} />
+        </Suspense>
       </Drawer>
     </Header>
   );

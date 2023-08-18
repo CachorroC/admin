@@ -3,9 +3,9 @@ import { Route } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
-import card from '#@/components/card/card.module.css';
+import card from '#@/components/card/card.module.scss';
 import { useModal } from '#@/app/modal-context';
-import typography from '#@/styles/fonts/typography.module.css';
+import typography from '#@/styles/fonts/typography.module.scss';
 import { useCategory, useNavigator } from '#@/app/search-context';
 import { toNameString } from '#@/lib/fix';
 import { Deudor,
@@ -39,10 +39,7 @@ export const DeudorComponent = (
   } = deudor;
 
   return (
-    <section
-      className={card.section}
-      key={cedula}
-    >
+    <>
       {email && (
         <Link
           className={`${ card.link } ${
@@ -94,7 +91,7 @@ export const DeudorComponent = (
           </span>
         </Link>
       )}
-    </section>
+    </>
   );
 };
 
@@ -169,7 +166,8 @@ export const Card = (
             : card.notActive
         }
       >
-        {children}
+        { children }
+        <hr className={card.divider}/>
         <DeudorComponent
           deudor={carpeta.deudor}
           key={carpeta.deudor.cedula}

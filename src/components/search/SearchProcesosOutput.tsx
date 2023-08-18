@@ -16,11 +16,9 @@ export default function SearchOutputList(
   {
     path,
     fechas,
-    isFallback
   }: {
   path: string;
   fechas: MonCarpeta[];
-  isFallback: boolean;
 }
 ) {
   const pathname = usePathname();
@@ -109,20 +107,8 @@ export default function SearchOutputList(
     (
       proceso, index, array
     ) => {
-      const {
-        idProceso,
-        llaveProceso,
-        deudor,
-        fecha,
-        _id
-      } = proceso;
-
-      const name = new NombreCompleto(
-        deudor
-      );
-
       if (
-        name.Nombre.toLowerCase()
+        proceso.nombre.toLowerCase()
           .indexOf(
             search.toLowerCase()
           ) === -1
@@ -133,7 +119,7 @@ export default function SearchOutputList(
         <LinkCard
           path={path}
           carpeta={proceso}
-          key={_id}
+          key={proceso._id}
         />
       );
     }
@@ -141,11 +127,6 @@ export default function SearchOutputList(
 
   return (
     <>
-      <p>
-        {isFallback
-          ? 'es fallback'
-          : 'no es fallback'}
-      </p>
 
       {rows}
     </>

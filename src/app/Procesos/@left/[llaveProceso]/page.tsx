@@ -12,7 +12,8 @@ async function Acts(
 ) {
   const actuaciones = await getActuaciones(
     {
-      idProceso: idProceso
+      idProceso: idProceso,
+      index    : 1
     }
   );
 

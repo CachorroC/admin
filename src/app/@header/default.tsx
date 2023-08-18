@@ -4,12 +4,9 @@ import Drawer from '#@/components/navbar/drawer';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { LinkCard } from '#@/components/search/link';
 import { ReactNode } from 'react';
+import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 
-export default async function Default (
-  {
-    children
-  }: {children: ReactNode}
-) {
+export default async function Default () {
   const carpetasRaw = await getCarpetas();
 
   const carpetas = [
@@ -42,17 +39,9 @@ export default async function Default (
 
   return (
     <Header>
-      {children}
+      <Title/>
       <Drawer>
-        { carpetas.map(
-          (
-            carpeta, index
-          ) => {
-            return (
-              <LinkCard key={carpeta._id} path={'/Procesos'} carpeta={carpeta}/>
-            );
-          }
-        ) }
+        <SearchOutputList path={ '/Procesos' } fechas={ carpetas } />
       </Drawer>
     </Header>
   );

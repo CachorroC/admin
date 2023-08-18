@@ -12,6 +12,7 @@ import { intConsultaActuaciones } from '#@/lib/types/procesos';
 
 import { Metadata } from 'next';
 import { getActuaciones } from '#@/lib/Actuaciones';
+import { Loader } from '#@/components/Loader';
 
 export const metadata: Metadata = {
   title: 'Procesos',
@@ -24,7 +25,7 @@ export async function  FechaActuacionComponent(
   }: {
   carpeta: MonCarpeta;
   index: number;
-} 
+}
 ) {
 
   const {
@@ -33,8 +34,9 @@ export async function  FechaActuacionComponent(
 
   const actuaciones = await getActuaciones(
     {
-      idProceso: idProceso
-    } 
+      idProceso: idProceso,
+      index    : index
+    }
   );
 
   if ( actuaciones.length === 0 ) {
@@ -48,7 +50,7 @@ export async function  FechaActuacionComponent(
 
       <sub className={card.updated} key={carpeta._id}>
         {`fecha de la ultima actuacion: ${ fixFechas(
-          ultimaActuacion.fechaActuacion 
+          ultimaActuacion.fechaActuacion
         ) }`
         }
       </sub>
@@ -86,7 +88,7 @@ export default async function PageProcesosLeft () {
       }
 
       return 0;
-    } 
+    }
   );
 
   return (
@@ -119,15 +121,12 @@ export default async function PageProcesosLeft () {
                 {nombre}
               </h1>
               <sub className={ card.sub }>{ `${ index + 1 } de ${ carpetasRaw.length }` }</sub>
+              <sub className={ card.sub }>{ `carpeta numero ${ carpeta.numero }` }</sub>
 
               <Suspense
                 key={carpeta._id}
                 fallback={
-                  <sub className={ card.date }>
-                    { `fecha de la ultima actuacion registrada en el servidor: ${ fixFechas(
-                      carpeta.fecha 
-                    ) } `}
-                  </sub>
+                  <Loader/>
                 }
               >
                 <FechaActuacionComponent
@@ -139,7 +138,7 @@ export default async function PageProcesosLeft () {
 
             </Card>
           );
-        } 
+        }
       )}
     </>
   );

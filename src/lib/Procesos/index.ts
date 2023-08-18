@@ -1,5 +1,5 @@
-import { Collection } from 'mongodb';
-import { carpetasCollection, getCarpetasByllaveProceso } from '../Carpetas';
+import { Collection, ObjectId } from 'mongodb';
+import { carpetasCollection, getCarpetas, getCarpetasByllaveProceso } from '../Carpetas';
 import { fetchDespachos } from '../global/Despachos';
 import { sleep } from '../fix';
 import clientPromise from '../mongodb';
@@ -39,7 +39,7 @@ export async function fetchProceso(
 
   if ( llaveProceso.length < 23 || llaveProceso === 'sinEspecificar' ) {
     console.log(
-      `esta llaveProceso es menos de 23: ${ llaveProceso }`
+      `${ index }: esta llaveProceso es menos de 23: ${ llaveProceso }`
     );
 
     return [];
@@ -51,6 +51,10 @@ export async function fetchProceso(
     );
 
     if ( !req.ok ) {
+      console.log(
+        `${ index }: el request procesos returned not ok ${ llaveProceso }`
+      );
+
       return [];
     }
 
@@ -61,7 +65,7 @@ export async function fetchProceso(
     return procesos;
   } catch ( error ) {
     console.log(
-      error ?? 'error'
+      `${ index }: error en la conexion network del fetchProceso ${ error }`
     );
 
     return [];
@@ -74,17 +78,69 @@ export async function getProceso(
     index
   }: {
   llaveProceso: string;
-  index?: number;
+  index: number;
 }
 ) {
+  const awaitTime = index * 10;
+  await sleep(
+    awaitTime
+  );
 
   const fetchP = await fetchProceso(
     {
       llaveProceso: llaveProceso,
-      index       : index ?? 0
+      index       : index
     }
   );
 
+  if ( fetchP.length > 0 ) {
+    const collection = await carpetasCollection();
+    const carpetas = await getCarpetas();
+
+
+
+    const carpeta = carpetas.find(
+      (
+        carp
+      ) => {
+        return carp.llaveProceso === llaveProceso;
+      }
+    );
+
+    if ( carpeta ) {
+
+      const {
+        _id, ...oldCarpeta
+      } = carpeta;
+
+      for ( let i = 0; i < fetchP.length; i++ ) {
+        const proceso = fetchP[ i ];
+
+        const newCarp = {
+          ...oldCarpeta,
+          idProceso   : proceso.idProceso,
+          llaveProceso: llaveProceso
+        };
+
+        const updt = await collection.updateOne(
+          {
+            idProceso   : proceso.idProceso
+          },
+          {
+            $set: newCarp
+          },
+          {
+            upsert: true
+          }
+        );
+        console.log(
+          ` se actualizaron ${ updt.modifiedCount } carpetas con proceso y se insertaron ${ updt.upsertedCount } carpetas nuevas `
+        );
+      }
+    }
+
+    return fetchP;
+  }
 
   return fetchP;
 }

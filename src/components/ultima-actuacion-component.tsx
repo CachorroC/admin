@@ -23,7 +23,7 @@ export const FechaActuacionComponent = async (
   } = carpeta;
 
 
-  const actuaciones = await fetchActuaciones(
+  const actuaciones = await getActuaciones(
     {
       idProceso: idProceso,
       index    : index
@@ -34,18 +34,14 @@ export const FechaActuacionComponent = async (
     return null;
   }
   const ultimaActuacion = actuaciones[ 0 ];
-  rowsActs.push(
-    <sub className={card.updated} key={carpeta._id}>
-      {fixFechas(
-        ultimaActuacion.fechaActuacion
-      )}
-    </sub>
+
+  const fixedfecha = fixFechas(
+    ultimaActuacion.fechaActuacion
   );
 
-
   return (
-    <Fragment key={carpeta._id}>
-      {rowsActs}
-    </Fragment>
+    <sub className={card.updated} key={carpeta._id}>
+      {`actuacion registrada el ${ fixedfecha }`}
+    </sub>
   );
 };

@@ -1,7 +1,7 @@
 .buttonsRow{
   flex: 1 1 100%;
 }
-.button {
+.button, .active {
   border: none;
   border-radius: 2vmin;
   flex: 1 1 auto;
@@ -74,4 +74,7 @@
       color: var(--on-primary-fixed);
     }
   }
+}
+.active{
+  background-color: var(--tertiary-container);
 }

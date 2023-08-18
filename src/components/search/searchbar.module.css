@@ -31,6 +31,10 @@
   border-radius: 2cqmin;
   align-self: center;
 }
+.isActive .sub,
+.notActive .sub {
+  color: var(--secondary);
+}
 
 .notActive:link {
   background-color: var(--surface-container);

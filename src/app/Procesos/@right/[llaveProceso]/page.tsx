@@ -15,7 +15,8 @@ export default async function PageProcesosRightllaveProceso(
 
   const Procesos = await getProceso(
     {
-      llaveProceso: params.llaveProceso
+      llaveProceso: params.llaveProceso,
+      index       : 1
     }
   );
 

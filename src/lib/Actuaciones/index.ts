@@ -1,7 +1,7 @@
 import 'server-only';
 import { carpetasCollection } from '../Carpetas';
 import { sleep } from '../fix';
-import { intConsultaActuaciones } from '../types/procesos';
+import { intConsultaActuaciones } from '#@/lib/types/procesos';
 
 export async function  fetchActuaciones(
   {
@@ -12,21 +12,21 @@ export async function  fetchActuaciones(
   index: number;
 }
 ) {
-  if (  idProceso === 0 ) {
-    console.log(
-      `${ index }: este idProceso es: ${ idProceso }`
-    );
-
-    return [];
-  }
 
   try {
+    console.log(
+      `${ index }: try fetch actuaciones started`
+    );
+
     const Request = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`, {
         next: {
           revalidate: 86400
         }
       }
+    );
+    console.log(
+      `${ index }: try fetch resulto: ${ Request.status } con el mensaje: ${ Request.statusText }`
     );
 
     if ( !Request.ok ) {
@@ -57,15 +57,31 @@ export async function getActuaciones(
     index
   }: {
   idProceso: number;
-  index?: number;
+  index: number;
 }
 ) {
+  const awaitTime = index * 10;
+  console.log(
+    awaitTime
+  );
+  await sleep(
+    awaitTime
+  );
+
+  if (  idProceso === 0 ) {
+    console.log(
+      `${ index ?? idProceso }: este idProceso es: ${ idProceso }`
+    );
+
+    return [];
+  }
+
 
 
   const actuaciones = await fetchActuaciones(
     {
       idProceso: idProceso,
-      index    : index ?? 0
+      index    : index ?? idProceso
     }
   );
 

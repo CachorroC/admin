@@ -5,9 +5,9 @@ import { useSelectedLayoutSegment,
          useSelectedLayoutSegments,
          useParams } from 'next/navigation';
 import type { Route } from 'next';
-import searchbar from '#@/components/search/searchbar.module.css';
+import searchbar from '#@/components/search/searchbar.module.scss';
 import { fixFechas } from '#@/lib/fix';
-import { useNavigator } from '#@/app/search-context';
+import { useNavigator, useSearch } from '#@/app/search-context';
 import { useModal } from '#@/app/modal-context';
 import { Name } from '../Headings/clientSideName';
 import { useRouter } from 'next/navigation';
@@ -27,6 +27,11 @@ export const LinkCard = (
     isOpen,
     setIsOpen
   ] = useModal();
+
+  const [
+    search,
+    setSearch
+  ] = useSearch();
 
   const {
     deudor,
@@ -69,6 +74,11 @@ export const LinkCard = (
     || pathname === `${ path }/${ llaveProceso }`;
   const router = useRouter();
 
+  const isSearch = carpeta.nombre.toLowerCase()
+    .indexOf(
+      search.toLowerCase()
+    ) === -1;
+
   return (
     <div className={searchbar.container}>
       <Link
@@ -88,7 +98,7 @@ export const LinkCard = (
             : searchbar.notActive
         }
       >
-        <sup>{carpeta.numero}</sup>
+        <sup className={`${ !isSearch && searchbar.sub }`}>{carpeta.numero}</sup>
         <NombreComponent deudor={ deudor } />
         { Nombre }
 

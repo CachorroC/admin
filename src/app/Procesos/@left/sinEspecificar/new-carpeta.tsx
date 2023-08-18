@@ -76,7 +76,8 @@ export const NuevoProceso = (
 ) => {
   const methods = useForm<IntCarpeta>(
     {
-      defaultValues: carpeta ?? defaultValues
+      defaultValues,
+      values: carpeta
     }
   );
 
@@ -138,29 +139,23 @@ export const NuevoProceso = (
     <NuevaCarpetaProvider>
       <FormProvider {...methods}>
         <div className={form.container}>
-          <span className='counter'>
-        Render Count: {renderCount}
-          </span>
+
           <pre>
-            {JSON.stringify(
-              {
-                errors,
-                dirtyFields,
-                submitCount,
-                isSubmitting,
-                isSubmitSuccessful,
-                isLoading
-              },
-              null,
-              2
-            )}
-          </pre>
-          <pre>{
-            JSON.stringify(
-              {
-                carpeta
-              }, null, 2
-            )}</pre>
+            {
+              JSON.stringify(
+                {
+                  errors,
+                  dirtyFields,
+                  submitCount,
+                  isSubmitting,
+                  isSubmitSuccessful,
+                  isLoading,
+                  carpeta
+                },
+                null,
+                2
+              )
+            }</pre>
 
           <form
             className={form.form}
