@@ -12,9 +12,18 @@ export async function GET(
   Request: NextRequest
 ) {
   const {
-    searchParams
+    searchParams, host, hostname, pathname
   } = new URL(
     Request.url
+  );
+  console.log(
+    host
+  );
+  console.log(
+    hostname
+  );
+  console.log(
+    pathname
   );
   const collection = await carpetasCollection();
 
@@ -34,7 +43,7 @@ export async function GET(
         carpeta
       ) => {
         const juzgado
-        = carpeta.demanda?.juzgado[ 0 ].tipo;
+        = carpeta.demanda.juzgados[ 0 ].tipo;
 
         return juzgado;
       }

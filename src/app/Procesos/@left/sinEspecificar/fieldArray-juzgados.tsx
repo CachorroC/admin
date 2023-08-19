@@ -26,7 +26,7 @@ export default function Fields(
   } = useFieldArray(
     {
       control,
-      name: 'demanda.juzgado'
+      name: 'demanda.juzgados'
     }
   );
 
@@ -47,18 +47,18 @@ export default function Fields(
                     : 'Juzgado de Ejecucion'}
                 </h2>
                 <section className={form.section}>
-                  <label className={form.label} htmlFor={`demanda.juzgado.${ index }.id`}>Juzgado número</label>
+                  <label className={form.label} htmlFor={`demanda.juzgados.${ index }.id`}>Juzgado número</label>
                   <input type={'number'} {...register(
-                    `demanda.juzgado.${ index }.id`
+                    `demanda.juzgados.${ index }.id`
                   )} />
 
                 </section>
 
                 <section className={ form.section }>
 
-                  <label className={form.label} htmlFor={`demanda.juzgado.${ index }.id`}>Juzgado número</label>
+                  <label className={form.label} htmlFor={`demanda.juzgados.${ index }.id`}>Juzgado número</label>
                   <select  {...register(
-                    `demanda.juzgado.${ index }.tipo`
+                    `demanda.juzgados.${ index }.tipo`
                   ) } >
                     { options.map(
                       (
@@ -79,10 +79,10 @@ export default function Fields(
 
                 </section>
                 <section className={form.section}>
-                  <label className={form.label} htmlFor={`demanda.juzgado.${ index }.url`}>url</label>
+                  <label className={form.label} htmlFor={`demanda.juzgados.${ index }.url`}>url</label>
 
                   <input type={ 'text' } { ...register(
-                    `demanda.juzgado.${ index }.url`
+                    `demanda.juzgados.${ index }.url`
                   )} />
 
                 </section>
@@ -97,8 +97,8 @@ export default function Fields(
                         return (
                           <button type={'button'} key={i} onClick={ () => {
                             setValue(
-                              'demanda.juzgado', [
-                                ...( getValues().demanda.juzgado || [] ),
+                              'demanda.juzgados', [
+                                ...( getValues().demanda.juzgados || [] ),
                                 {
                                   tipo: option.nombre,
                                   id  : Number(
@@ -154,8 +154,8 @@ export default function Fields(
           type="button"
           onClick={() => {
             setValue(
-              'demanda.juzgado', [
-                ...( getValues().demanda.juzgado || [] ),
+              'demanda.juzgados', [
+                ...( getValues().demanda.juzgados || [] ),
                 {
                   tipo: 'Civil Municipal',
                   id  : 0,
@@ -187,13 +187,13 @@ export default function Fields(
           type="button"
           onClick={() => {
             setValue(
-              'demanda.juzgado', [
+              'demanda.juzgados', [
                 {
                   tipo: 'Civil Municipal',
                   id  : 0,
                   url : 'https://ramajudicial.gov.co'
                 },
-                ...( getValues().demanda.juzgado || [] )
+                ...( getValues().demanda.juzgados || [] )
               ]
             );
           }}

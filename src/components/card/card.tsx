@@ -12,6 +12,7 @@ import { Deudor,
          IntCarpeta,
          MonCarpeta,
          NombreCompleto } from '#@/lib/types/carpeta';
+import styles from './CarpetasCard/carpetas.module.css';
 
 export const DeudorComponent = (
   {
@@ -56,40 +57,50 @@ export const DeudorComponent = (
             Correo Electrónico
           </span>
         </Link>
-      )}
-      {tel.celular !== 0 && (
-        <Link
-          className={`${ card.link } ${
-            isActive && card.isActive
-          }`}
-          href={tel.celular.toString() as Route}
-        >
-          <span
-            className={`material-symbols-outlined ${ card.icon }`}
-          >
-            phone_iphone
-          </span>
-          <span className={card.tooltiptext}>
-            Telefono celular
-          </span>
-        </Link>
-      )}
-      {tel.fijo !== 0 && (
-        <Link
-          className={`${ card.link } ${
-            isActive && card.isActive
-          }`}
-          href={tel.fijo.toString() as Route}
-        >
-          <span
-            className={`material-symbols-outlined ${ card.icon }`}
-          >
-            phone
-          </span>
-          <span className={card.tooltiptext}>
-            Telefono fijo
-          </span>
-        </Link>
+      ) }
+      {tel.celular && tel.celular.map(
+        (
+          cel, i
+        ) => {
+          return (
+            <Link key={i}
+              className={styles.button}
+              href={`tel:${ cel }`}
+            >
+              <span
+                className={`material-symbols-outlined ${ card.icon }`}
+              >
+                  phone_iphone
+              </span>
+              <span
+                className={card.tooltiptext}
+              >
+                {cel.toString()}
+              </span>
+            </Link> );
+        }
+      ) }
+      {tel.fijo && tel.fijo.map(
+        (
+          f, i
+        ) => {
+          return (
+            <Link key={i}
+              className={styles.button}
+              href={`tel:${ f }`}
+            >
+              <span
+                className={`material-symbols-outlined ${ card.icon }`}
+              >
+                  call
+              </span>
+              <span
+                className={card.tooltiptext}
+              >
+                {f.toString()}
+              </span>
+            </Link> );
+        }
       )}
     </>
   );
@@ -149,7 +160,7 @@ export const Card = (
     === `${ path }/${ carpeta.llaveProceso }`;
 
   if ( category !== 'todos' ) {
-    if (  category !== carpeta.grupo ) {
+    if (  category !== carpeta.category ) {
       return null;
     }
   }

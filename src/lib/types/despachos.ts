@@ -70,7 +70,7 @@ export class despachosConvert {
     json: string
   ): Despacho[] {
     return JSON.parse(
-      json 
+      json
     );
   }
 
@@ -78,7 +78,7 @@ export class despachosConvert {
     value: Despacho[]
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 }

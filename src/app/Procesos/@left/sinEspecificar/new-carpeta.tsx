@@ -7,6 +7,7 @@ import { DefaultValues,
          useWatch } from 'react-hook-form';
 import form from '#@/components/form/form.module.css';
 import { Demanda,
+         Departamento,
          Deudor,
          IntCarpeta } from '#@/lib/types/carpeta';
 import typography from '#@/styles/fonts/typography.module.css';
@@ -20,24 +21,34 @@ import { NuevaCarpetaProvider } from '#@/hooks/formContext';
 let renderCount = 0;
 
 const defaultDemanda: Demanda = {
-  departamento           : 'CUNDINAMARCA',
-  entregaGarantiasAbogado: new Date(),
-  juzgado                : [
+  entregagarantiasAbogado: new Date(),
+  juzgados               : [
     {
       id  : 0,
       tipo: 'Civil Municipal',
       url : 'https://app.rsasesorjuridico.com'
     }
   ],
-  obligacion: [
-    '1772345678',
-    654567890
-  ],
-  ciudad  : 'Bogota',
-  radicado: '000 - 00000',
+  obligacion: {
+    '1': '1772345678',
+    '2': 654567890
+  },
+  municipio: 'Bogota',
+  radicado : '000 - 00000',
 
   etapaProcesal    : 'ADMISION DE LA DEMANDA',
-  vencimientoPagare: new Date()
+  vencimientoPagare: new Date(),
+  fechaPresentacion: new Date(),
+  departamento     : {
+    descripcion           : 'CUNDINAMARCA',
+    idCatalogoDetallePadre: 1,
+    idCatalogoDetalle     : 13,
+    codigo                : '25'
+
+
+  },
+  capitalAdeudado: 10000000,
+  expediente     : '12345678912345678912345'
 };
 
 const defaultDeudor: Deudor = {
@@ -48,22 +59,26 @@ const defaultDeudor: Deudor = {
   email          : 'juankpato87@gmail.com',
   direccion      : 'carrera 63 # 22 - 31',
   tel            : {
-    fijo   : 6051567,
-    celular: 3506144932
+    fijo: [
+      6051567
+    ],
+    celular: [
+      3506144932
+    ]
   },
   cedula: 1022352429
 };
 
 
 const defaultValues: DefaultValues<IntCarpeta> = {
-  capitalAdeudado: 1000000,
-  demanda        : defaultDemanda,
-  deudor         : defaultDeudor,
-  grupo          : 'Bancolombia',
-  idProceso      : 0,
-  llaveProceso   : '12345678912345678912345',
-  numero         : 500,
-  tipoProceso    : 'SINGULAR',
+
+  demanda     : defaultDemanda,
+  deudor      : defaultDeudor,
+  category    : 'Bancolombia',
+  idProceso   : 0,
+  llaveProceso: '12345678912345678912345',
+  numero      : 574,
+  tipoProceso : 'SINGULAR',
 
 };
 
@@ -71,7 +86,7 @@ export const NuevoProceso = (
   {
     uri, descripciones, despachos, carpeta
   }: {
-      uri: string; descripciones: string[]; despachos: Despacho[], carpeta?: IntCarpeta
+      uri: string; descripciones: Departamento[]; despachos: Despacho[], carpeta?: IntCarpeta
 }
 ) => {
   const methods = useForm<IntCarpeta>(
@@ -167,21 +182,34 @@ export const NuevoProceso = (
             <section className={ form.section }>
               <DeudorFormComponent />
             </section>
+            <section className={ form.section }>
+              { descripciones.map(
+                (
+                  descr, i
+                ) => {
+                  return (
+                    <button key={ descr.codigo } type='button' className={ form.selectArea } onClick={ () => {
+                      setValue(
+                        'demanda.departamento', descr
+                      );
+                    } }>
+                      <strong>{ descr.descripcion}</strong>
 
-            <SelectSection
-              name={'demanda.departamento'}
-              title={'Departamento'}
-              options={descripciones}
-            />
+                    </button>
+                  );
+                }
+              )}
+            </section>
             <Fields options={ despachos} />
 
             <SelectSection
-              name={'grupo'}
+              name={'category'}
               title={'Grupo al que pertenece'}
               options={[
                 'Bancolombia',
+                'Insolvencia',
                 'Reintegra',
-                'Lios Juridicos',
+                'LiosJuridicos',
                 'Terminados'
               ]}
             />

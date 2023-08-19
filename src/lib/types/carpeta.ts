@@ -7,30 +7,39 @@
 import { WithId } from 'mongodb';
 
 export interface IntCarpeta {
-  capitalAdeudado: number;
-  demanda:         Demanda;
-  deudor:          Deudor;
-    idProceso:       number;
-    llaveProceso:    string;
-    grupo:           Grupo;
-    id:              number;
-    numero:          number;
-    tipoProceso?:     TipoProceso | null;
-    fecha?:          Date;
+    demanda:      Demanda;
+    category:     Category;
+    deudor:       Deudor;
+    numero:       number;
+    llaveProceso: string;
+    tipoProceso:  TipoProceso;
+    idProceso:   number;
 }
+
+export type Category = 'Terminados' | 'LiosJuridicos' | 'Bancolombia' | 'Reintegra' | 'Insolvencia';
 
 export interface Demanda {
-  departamento:            Departamento | null;
-    ciudad:                  null | string;
-    entregaGarantiasAbogado: Date;
+    departamento:            Departamento | null;
+    capitalAdeudado:         number | null;
+    entregagarantiasAbogado: Date;
     etapaProcesal:           null | string;
-    juzgado:                 Juzgado[];
-    obligacion:              ( number | string )[] ;
-    radicado:                number | null | string;
-    vencimientoPagare:       Date;
+    fechaPresentacion?:       Date;
+    municipio:               string;
+    obligacion:              { [key: string]: number | string };
+    radicado:                string;
+    vencimientoPagare?:       Date ;
+    expediente:              string;
+    juzgados:                Juzgado[];
 }
 
-export type Departamento = 'CUNDINAMARCA' |'AMAZONAS'|'ANTIOQUIA'|'ARAUCA'|'ATLANTICO'|'BOLIVAR'|'BOYACA'|'CALDAS'|'CAQUETA'|'CASANARE'|'CAUCA'|'CESAR'|'CHOCO'|'CORDOBA'|'BOGOTA'|'GUAINIA'|'GUAVIARE'|'HUILA'|'LA GUAJIRA'|'MAGDALENA'|'META'|'NARIÑO'|'NORTE DE SANTANDER'|'PUTUMAYO'|'QUINDIO'|'RISARALDA'|'SAN ANDRES Y PROVIDENCIA'|'SANTANDER'|'SUCRE'|'TOLIMA'|'VALLE DEL CAUCA'|'VAUPES'|'VICHADA'
+export interface Departamento {
+    idCatalogoDetalle:      number;
+    idCatalogoDetallePadre: number;
+    descripcion:            string;
+    codigo:                 string;
+}
+
+export type Descripcion = 'CUNDINAMARCA' | 'TOLIMA';
 
 export interface Juzgado {
     id:   number;
@@ -39,24 +48,22 @@ export interface Juzgado {
 }
 
 export interface Deudor {
-    cedula:          number;
-    primerNombre:    string;
-    segundoNombre:   null | string;
-    primerApellido:  string;
-    segundoApellido: null | string;
     tel:             Tel;
-    email:           null | string;
-    direccion:       null | string;
+    primerNombre:    string;
+    segundoNombre:   string;
+    primerApellido:  string;
+    segundoApellido: string;
+    cedula:          number | null;
+    direccion?:       string;
+    email?:           string;
 }
 
 export interface Tel {
-    celular: number;
-    fijo:    number;
+    fijo:    number[] | null;
+    celular: number[] | null;
 }
 
-export type Grupo = 'Reintegra' | 'Insolvencia' | 'Bancolombia' | 'LiosJuridicos' | 'todo';
-
-export type TipoProceso = 'PRENDARIO' | 'SINGULAR' | 'HIPOTECARIO';
+export type TipoProceso = 'HIPOTECARIO' | 'PRENDARIO' | 'SINGULAR' | 'SINGULAR ACUMULADO CON HIPOTECARIO' | 'SINGULAR ACUM HIPOTECARIO' | '11001400308320170071700' | '25473418900120170092400' | 'PRENDARO' | ' HIPOTECARIO' | 'HMM PISO 1' | '  SINGULAR' | 'HIPOTECARIA' | 'HIPOTECARO' | 'SINGULAR ACUMULADO CON HIPOTECARIO CAJA SOCIAL' | 'SOACHA';
 
 export interface MonCarpeta extends IntCarpeta
 {

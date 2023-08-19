@@ -27,7 +27,12 @@ export default async function PageProcesosEditarLeft (
     (
       res
     ) => {
-      return res.descripcion;
+      return{
+        descripcion           : res.descripcion,
+        idCatalogoDetalle     : res.idCatalogoDetalle,
+        codigo                : res.codigo,
+        idCatalogoDetallePadre: res.idCatalogoDetallePadre
+      };
     }
   );
 

@@ -2,8 +2,8 @@ import 'server-only';
 import { Fragment, Suspense } from 'react';
 import { getCarpetas } from '#@/lib/Carpetas';
 import CardSkeleton from '#@/components/card/card-skeleton';
-import typography from '#@/styles/fonts/typography.module.css';
-import card from '#@/components/card/card.module.css';
+import typography from '#@/styles/fonts/typography.module.scss';
+import card from '#@/components/card/card.module.scss';
 import { fixFechas, sleep } from '#@/lib/fix';
 import { Card } from '#@/components/card/card';
 import { NombreComponent } from '#@/components/card/Nombre';
@@ -97,36 +97,19 @@ export default async function PageProcesosLeft () {
         (
           carpeta, index
         ) => {
-          const segundoNombre
-          = carpeta.deudor.segundoNombre ?? ' ';
-
-          const segundoApellido
-          = carpeta.deudor.segundoApellido ?? ' ';
-
-          const {
-            cedula,
-            primerNombre,
-            primerApellido,
-            email,
-            tel,
-            direccion
-          } = carpeta.deudor;
-          const nombre = `${ primerNombre }   ${ segundoNombre }   ${ primerApellido }   ${ segundoApellido }`;
-
           return (
             <Card path={ '/Procesos' } carpeta={ carpeta } key={ carpeta._id }>
               <h1
-                className={`${ typography.displaySmall } ${ card.title }`}
+                className={`${ typography.displaySmall } ${ card.title }`} key={carpeta._id}
               >
-                {nombre}
+                {carpeta.nombre}
               </h1>
-              <sub className={ card.sub }>{ `${ index + 1 } de ${ carpetasRaw.length }` }</sub>
               <sub className={ card.sub }>{ `carpeta numero ${ carpeta.numero }` }</sub>
 
               <Suspense
                 key={carpeta._id}
                 fallback={
-                  <Loader/>
+                  <Loader key={carpeta._id}/>
                 }
               >
                 <FechaActuacionComponent

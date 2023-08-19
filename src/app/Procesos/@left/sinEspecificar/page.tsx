@@ -19,7 +19,12 @@ export default async function NuevaCarpetaPage () {
     (
       res
     ) => {
-      return res.descripcion;
+      return {
+        descripcion           : res.descripcion,
+        idCatalogoDetalle     : res.idCatalogoDetalle,
+        codigo                : res.codigo,
+        idCatalogoDetallePadre: res.idCatalogoDetallePadre
+      };
     }
   );
 

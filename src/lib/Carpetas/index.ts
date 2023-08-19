@@ -5,6 +5,7 @@ import { ObjectId } from 'mongodb';
 import { IntCarpeta,
          MonCarpeta,
          carpetaConvert } from '../types/carpeta';
+import { getBaseUrl } from '../getBaseUrl';
 
 export const carpetasCollection = async () => {
   const client = await clientPromise;
@@ -47,14 +48,17 @@ export async function fetchCarpetas() {
 }
 
 export async function getCarpetas() {
-  const carpetasRaw = await fetchCarpetas();
-
+  const carpetasRaw = await fetch(
+    `${ getBaseUrl() }/api/Carpetas`
+  );
+  const res = ( await carpetasRaw.json() ) as MonCarpeta[];
+  /*
   const carpetas
     = carpetaConvert.toMonCarpetas(
       carpetasRaw
-    );
+    ); */
 
-  return carpetas;
+  return res;
 }
 
 export async function getCarpetasByllaveProceso(

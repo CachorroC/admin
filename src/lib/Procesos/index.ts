@@ -124,7 +124,7 @@ export async function getProceso(
 
         const updt = await collection.updateOne(
           {
-            idProceso   : proceso.idProceso
+            idProceso: proceso.idProceso
           },
           {
             $set: newCarp

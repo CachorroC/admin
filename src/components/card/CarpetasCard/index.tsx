@@ -20,9 +20,9 @@ export const DemandaContainer = (
 ) => {
   const {
     departamento,
-    ciudad,
+    municipio,
     radicado,
-    juzgado
+    juzgados
   } = demanda;
 
   return (
@@ -32,8 +32,8 @@ export const DemandaContainer = (
       </h1>
       <h2
         className={typography.titleMedium}
-      >{`${ departamento }: ${ ciudad }`}</h2>
-      {juzgado.map(
+      >{`${ departamento }: ${ municipio }`}</h2>
+      {juzgados.map(
         (
           despacho, index
         ) => {
@@ -41,7 +41,7 @@ export const DemandaContainer = (
             case 0:
               return (
                 <Link
-                  href={juzgado[ 0 ].url as Route}
+                  href={juzgados[ 0 ].url as Route}
                 >
                   <span className='material-symbols-outlined'>
                   enable
@@ -51,21 +51,21 @@ export const DemandaContainer = (
                       typography.displaySmall
                     }
                   >
-                    {juzgado[ 0 ].id}
+                    {juzgados[ 0 ].id}
                   </sub>
                   <p
                     className={
                       typography.labelSmall
                     }
                   >
-                    {`Juzgado de origen: ${ juzgado[ 0 ].tipo }`}
+                    {`Juzgado de origen: ${ juzgados[ 0 ].tipo }`}
                   </p>
                 </Link>
               );
             case 1:
               return (
                 <Link
-                  href={juzgado[ 1 ].url as Route}
+                  href={juzgados[ 1 ].url as Route}
                 >
                   <span className='material-symbols-outlined'>
                   trip_origin
@@ -75,14 +75,14 @@ export const DemandaContainer = (
                       typography.displaySmall
                     }
                   >
-                    {juzgado[ 1 ].id}
+                    {juzgados[ 1 ].id}
                   </sub>
                   <p
                     className={
                       typography.labelSmall
                     }
                   >
-                    {`Juzgado de origen: ${ juzgado[ 1 ].tipo }`}
+                    {`Juzgado de origen: ${ juzgados[ 1 ].tipo }`}
                   </p>
                 </Link>
               );
@@ -154,22 +154,49 @@ export const CarpetaCard = (
               </span>
             </Link>
             <Accordion>{children}</Accordion>
-            {tel && tel.celular && (
-              <Link
-                className={styles.button}
-                href={`tel:${ tel.celular }`}
-              >
-                <span
-                  className={`material-symbols-outlined ${ styles.icon }`}
-                >
+            {tel.celular && tel.celular.map(
+              (
+                cel, i
+              ) => {
+                return (
+                  <Link key={i}
+                    className={styles.button}
+                    href={`tel:${ cel }`}
+                  >
+                    <span
+                      className={`material-symbols-outlined ${ styles.icon }`}
+                    >
                   phone_iphone
-                </span>
-                <span
-                  className={styles.tooltiptext}
-                >
-                  Numero Celular
-                </span>
-              </Link>
+                    </span>
+                    <span
+                      className={styles.tooltiptext}
+                    >
+                      {cel.toString()}
+                    </span>
+                  </Link> );
+              }
+            ) }
+            {tel.fijo && tel.fijo.map(
+              (
+                f, i
+              ) => {
+                return (
+                  <Link key={i}
+                    className={styles.button}
+                    href={`tel:${ f }`}
+                  >
+                    <span
+                      className={`material-symbols-outlined ${ styles.icon }`}
+                    >
+                  call
+                    </span>
+                    <span
+                      className={styles.tooltiptext}
+                    >
+                      {f.toString()}
+                    </span>
+                  </Link> );
+              }
             )}
             {carpeta.demanda.vencimientoPagare && (
               <p
@@ -198,37 +225,21 @@ export const CarpetaCard = (
               </Link>
             )}
 
-            {tel && tel.fijo && (
-              <Link
-                className={styles.button}
-                href={`tel:${ tel.fijo }`}
-              >
-                <span
-                  className={`material-symbols-outlined ${ styles.icon }`}
-                >
-                  call
-                </span>
-                <span
-                  className={styles.tooltiptext}
-                >
-                  Numero Fijo
-                </span>
-              </Link>
-            )}
-            {carpeta.demanda.entregaGarantiasAbogado && (
+
+            {carpeta.demanda.entregagarantiasAbogado && (
               <p
                 className={typography.labelSmall}
               >
                 {fixFechas(
-                  carpeta.demanda.entregaGarantiasAbogado
+                  carpeta.demanda.entregagarantiasAbogado
                 )}
               </p>
             )}
             <p>
-              {carpeta.capitalAdeudado
+              {carpeta.demanda.capitalAdeudado
                 && fixMoney(
                   {
-                    valor: carpeta.capitalAdeudado
+                    valor: carpeta.demanda.capitalAdeudado
                   }
                 )}
             </p>

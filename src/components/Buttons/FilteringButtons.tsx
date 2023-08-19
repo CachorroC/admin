@@ -17,6 +17,15 @@ export const CategoryFilterButton = () => {
     'todos'
   ];
 
+  const icons = [
+    'integration_instructions',
+    'account_balance_wallet',
+    'gavel',
+    'money_off',
+    'clear_all'
+
+  ];
+
   return (
     <>{
       categorias.map(
@@ -33,8 +42,8 @@ export const CategoryFilterButton = () => {
             } type='button' className={ category === categoria
               ? styles.active
               : styles.button }>
-              <span className={`material-symbols-outlined ${ styles.icon }`}>
-          integration_instructions
+              <span className={ `material-symbols-outlined ${ styles.icon }` }>
+                {icons[ index ]}
               </span>
               <p className={styles.text}>{categoria}</p>
             </button>
@@ -42,55 +51,6 @@ export const CategoryFilterButton = () => {
         }
       )
     }
-
-    <button onClick={
-      () => {
-        setCategory(
-          'Insolvencia'
-        );
-      }
-    } type='button' className={ styles.button }>
-      <span className={`material-symbols-outlined ${ styles.icon }`}>
-          money_off
-      </span>
-      <p className={styles.text}>Insolvencia</p>
-    </button>
-    <button onClick={
-      () => {
-        setCategory(
-          'Bancolombia'
-        );
-      }
-    } type='button' className={ styles.button }>
-      <span className={`material-symbols-outlined ${ styles.icon }`}>
-          account_balance_wallet
-      </span>
-      <p className={styles.text}>Bancolombia</p>
-    </button>
-    <button onClick={
-      () => {
-        setCategory(
-          'LiosJuridicos'
-        );
-      }
-    } type='button' className={ styles.button }>
-      <span className={`material-symbols-outlined ${ styles.icon }`}>
-          gavel
-      </span>
-      <p className={styles.text}>Lios Juridicos</p>
-    </button>
-    <button onClick={
-      () => {
-        setCategory(
-          'todos'
-        );
-      }
-    } type='button' className={ styles.button }>
-      <span className={`material-symbols-outlined ${ styles.icon }`}>
-clear_all
-      </span>
-      <p className={styles.text}>Mostrar todo</p>
-    </button>
     </>
   );
 };
