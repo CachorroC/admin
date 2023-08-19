@@ -4,7 +4,7 @@ import { getCarpetas } from '#@/lib/Carpetas';
 import CardSkeleton from '#@/components/card/card-skeleton';
 import typography from '#@/styles/fonts/typography.module.scss';
 import card from '#@/components/card/card.module.scss';
-import { fixFechas, sleep } from '#@/lib/fix';
+import { fixFechas, sleep, toNameString } from '#@/lib/fix';
 import { Card } from '#@/components/card/card';
 import { NombreComponent } from '#@/components/card/Nombre';
 import { MonCarpeta } from '#@/lib/types/carpeta';
@@ -88,9 +88,9 @@ export default async function PageProcesosLeft () {
         return -1;
       }
 
-      const x = a.fecha.toString();
+      const x = a.fecha.toISOString();
 
-      const y = b.fecha.toString();
+      const y = b.fecha.toISOString();
 
       if ( x < y ) {
         return 1;
@@ -110,12 +110,24 @@ export default async function PageProcesosLeft () {
         (
           carpeta, index
         ) => {
+          const {
+            deudor
+          } = carpeta;
+
+          const {
+            primerNombre, segundoNombre, primerApellido, segundoApellido
+          } = deudor;
+
           return (
             <Card path={ '/Procesos' } carpeta={ carpeta } key={ carpeta._id }>
               <h1
-                className={`${ typography.displaySmall } ${ card.title }`} key={carpeta._id}
+                className={ card.title } key={carpeta._id}
               >
-                {carpeta.nombre}
+                {toNameString(
+                  {
+                    nameRaw: `${ primerNombre } ${ segundoNombre } ${ primerApellido } ${ segundoApellido }`
+                  }
+                )}
               </h1>
               <sub className={ card.sub }>{ `carpeta numero ${ carpeta.numero }` }</sub>
 

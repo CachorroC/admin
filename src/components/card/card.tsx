@@ -12,7 +12,6 @@ import { Deudor,
          IntCarpeta,
          MonCarpeta,
          NombreCompleto } from '#@/lib/types/carpeta';
-import styles from './CarpetasCard/carpetas.module.css';
 
 export const DeudorComponent = (
   {
@@ -64,7 +63,7 @@ export const DeudorComponent = (
         ) => {
           return (
             <Link key={i}
-              className={styles.button}
+              className={card.link}
               href={`tel:${ cel }`}
             >
               <span
@@ -86,7 +85,7 @@ export const DeudorComponent = (
         ) => {
           return (
             <Link key={i}
-              className={styles.button}
+              className={card.link}
               href={`tel:${ f }`}
             >
               <span
@@ -179,15 +178,15 @@ export const Card = (
             : card.notActive
         }
       >
-        { children }
-        <hr className={card.divider}/>
+
+
         <DeudorComponent
           deudor={carpeta.deudor}
           key={carpeta.deudor.cedula}
           isActive={isActive}
         />
-
-        <div className={card.links}>
+        { children }
+        <div className={card.section}>
           <Link
             className={`${ card.link } ${
               isActive && card.isActive
