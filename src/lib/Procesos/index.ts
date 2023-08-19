@@ -81,7 +81,7 @@ export async function getProceso(
   index: number;
 }
 ) {
-  const awaitTime = index * 10;
+  const awaitTime = index * 100;
   await sleep(
     awaitTime
   );
@@ -95,17 +95,15 @@ export async function getProceso(
 
   if ( fetchP.length > 0 ) {
     const collection = await carpetasCollection();
-    const carpetas = await getCarpetas();
 
-
-
-    const carpeta = carpetas.find(
-      (
-        carp
-      ) => {
-        return carp.llaveProceso === llaveProceso;
+    const carpeta = await getCarpetasByllaveProceso(
+      {
+        llaveProceso: llaveProceso
       }
     );
+
+
+
 
     if ( carpeta ) {
 
@@ -124,7 +122,8 @@ export async function getProceso(
 
         const updt = await collection.updateOne(
           {
-            idProceso: proceso.idProceso
+            idProceso   : proceso.idProceso,
+            llaveProceso: proceso.llaveProceso
           },
           {
             $set: newCarp

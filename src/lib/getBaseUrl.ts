@@ -18,9 +18,9 @@ export const getBaseUrl = cache(
     = `https://${ hostname }`
     ?? `http://localhost:${ basePort }`;
     console.log(
-      uri 
+      uri
     );
 
     return uri;
-  } 
+  }
 );

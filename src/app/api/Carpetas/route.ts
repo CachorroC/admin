@@ -33,34 +33,6 @@ export async function GET(
     )
     .toArray();
 
-  const onlyJuzgado = searchParams.get(
-    'juzgado'
-  );
-
-  if ( onlyJuzgado ) {
-    const juzgados = carpetas.map(
-      (
-        carpeta
-      ) => {
-        const juzgado
-        = carpeta.demanda.juzgados[ 0 ].tipo;
-
-        return juzgado;
-      }
-    );
-
-    return new NextResponse(
-      JSON.stringify(
-        juzgados
-      ),
-      {
-        status : 200,
-        headers: {
-          'content-type': 'application/json'
-        }
-      }
-    );
-  }
 
   const llaveProceso = searchParams.get(
     'llaveProceso'
@@ -147,67 +119,6 @@ export async function GET(
   return new NextResponse(
     JSON.stringify(
       carpetas
-    ),
-    {
-      status : 200,
-      headers: {
-        'content-type': 'application/json'
-      }
-    }
-  );
-}
-
-export async function PUT(
-  request: NextRequest
-) {
-  const incomingRequest
-    = ( await request.json() ) as IntCarpeta;
-  const client = await carpetasCollection();
-  fs.mkdir(
-    `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }`,
-    {
-      recursive: true
-    }
-  );
-
-  fs.cp(
-    './src/lib/global',
-    `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }`,
-    {
-      recursive: true
-    }
-  );
-  fs.writeFile(
-    `./src/lib/Carpetas/${ incomingRequest.deudor.cedula }/carpeta.json`,
-    JSON.stringify(
-      incomingRequest
-    )
-  );
-
-  const outgoingRequest
-    = await client.findOneAndUpdate(
-      {
-        'deudor.cedula':
-          incomingRequest.deudor.cedula
-      },
-      {
-        $set: incomingRequest
-      },
-      {
-        upsert        : true,
-        returnDocument: 'after'
-      }
-    );
-
-  if ( !outgoingRequest.ok ) {
-    throw new Error(
-      `${ outgoingRequest.ok }`
-    );
-  }
-
-  return new NextResponse(
-    JSON.stringify(
-      outgoingRequest.value
     ),
     {
       status : 200,

@@ -5,6 +5,23 @@ export function sleep(
     (
       resolve
     ) => {
+      const now = new Date()
+        .getTime();
+      const masTarde = now + ms;
+
+      const outputTime = new Date(
+        masTarde
+      )
+        .toLocaleDateString(
+          'es-CO', {
+            hour  : 'numeric',
+            minute: 'numeric',
+            hour12: true
+          }
+        );
+      console.log(
+        `estará listo a las ${ outputTime }`
+      );
 
       return setTimeout(
         resolve, ms

@@ -35,11 +35,6 @@ export async function fetchCarpetas() {
     .find(
       {}
     )
-    .sort(
-      {
-        numero: 1
-      }
-    )
     .toArray();
 
 
@@ -47,18 +42,15 @@ export async function fetchCarpetas() {
   return carpetasRaw;
 }
 
-export async function getCarpetas() {
-  const carpetasRaw = await fetch(
-    `${ getBaseUrl() }/api/Carpetas`
-  );
-  const res = ( await carpetasRaw.json() ) as MonCarpeta[];
-  /*
+export async function getCarpetas () {
+  const carpetasRaw = await fetchCarpetas();
+
   const carpetas
     = carpetaConvert.toMonCarpetas(
       carpetasRaw
-    ); */
+    );
 
-  return res;
+  return carpetas;
 }
 
 export async function getCarpetasByllaveProceso(

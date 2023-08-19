@@ -69,6 +69,15 @@ export default async function PageProcesosLeft () {
     (
       a, b
     ) => {
+      const typeofA = typeof a.fecha;
+      console.log(
+        typeofA
+      );
+      const typeofB = typeof b.fecha;
+      console.log(
+        typeofB
+      );
+
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
       }
@@ -76,8 +85,8 @@ export default async function PageProcesosLeft () {
       if ( !b.fecha || b.fecha === undefined ) {
         return -1;
       }
-      const x = a.fecha.toISOString();
-      const y = b.fecha.toISOString();
+      const x = a.fecha.toString();
+      const y = b.fecha.toString();
 
       if ( x < y ) {
         return 1;

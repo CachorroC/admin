@@ -60,7 +60,7 @@ export async function getActuaciones(
   index: number;
 }
 ) {
-  const awaitTime = index * 10;
+  const awaitTime = index * 200;
   console.log(
     awaitTime
   );
@@ -70,7 +70,7 @@ export async function getActuaciones(
 
   if (  idProceso === 0 ) {
     console.log(
-      `${ index ?? idProceso }: este idProceso es: ${ idProceso }`
+      `${ index }: este idProceso es: ${ idProceso }`
     );
 
     return [];
@@ -81,7 +81,7 @@ export async function getActuaciones(
   const actuaciones = await fetchActuaciones(
     {
       idProceso: idProceso,
-      index    : index ?? idProceso
+      index    : index
     }
   );
 
