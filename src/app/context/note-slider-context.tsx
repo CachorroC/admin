@@ -6,6 +6,7 @@ import { Dispatch,
          useContext,
          useRef,
          useState } from 'react';
+
 const notasMap = new Map();
 
 const NoteSliderContext = createContext<

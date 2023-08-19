@@ -141,7 +141,9 @@ export const Card = (
       false
     );
   };
+
   const pathname = usePathname();
+
   const isInProcesos = pathname === path;
 
   const href = (

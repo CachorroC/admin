@@ -14,9 +14,6 @@ export async function  fetchActuaciones(
 ) {
 
   try {
-    console.log(
-      `${ index }: try fetch actuaciones started`
-    );
 
     const Request = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`, {
@@ -24,9 +21,6 @@ export async function  fetchActuaciones(
           revalidate: 86400
         }
       }
-    );
-    console.log(
-      `${ index }: try fetch resulto: ${ Request.status } con el mensaje: ${ Request.statusText }`
     );
 
     if ( !Request.ok ) {
@@ -39,12 +33,15 @@ export async function  fetchActuaciones(
 
     const Response
       = ( await Request.json() ) as intConsultaActuaciones;
+
     const actuaciones = Response.actuaciones;
 
     return actuaciones;
   } catch ( error ) {
     console.log(
-      `${ index }: error en de red en el try catch de getActuaciones`
+      `${ index }: error en de red en el try catch de getActuaciones: ${ JSON.stringify(
+        error
+      ) }`
     );
 
     return [];
@@ -60,15 +57,12 @@ export async function getActuaciones(
   index: number;
 }
 ) {
-  const awaitTime = index * 200;
-  console.log(
-    awaitTime
-  );
+  const awaitTime = 10000;
   await sleep(
     awaitTime
   );
 
-  if (  idProceso === 0 ) {
+  if ( !idProceso || idProceso === 0 || idProceso === 1 ) {
     console.log(
       `${ index }: este idProceso es: ${ idProceso }`
     );
@@ -104,9 +98,12 @@ export async function getActuaciones(
           upsert: false
         }
       );
-    console.log(
-      `se modificaron ${ updateCarpetawithActuaciones.modifiedCount } carpetas y se insertaron ${ updateCarpetawithActuaciones.upsertedCount } carpetas`
-    );
+
+    if ( updateCarpetawithActuaciones.modifiedCount > 0 || updateCarpetawithActuaciones.upsertedCount > 0 ) {
+      console.log(
+        `se modificaron ${ updateCarpetawithActuaciones.modifiedCount } carpetas y se insertaron ${ updateCarpetawithActuaciones.upsertedCount } carpetas`
+      );
+    }
 
 
   }

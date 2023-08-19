@@ -25,55 +25,57 @@ export default async function PageProcesosRightllaveProcesoidProceso(
         llaveProceso: params.llaveProceso 
       } 
     );
+
   const cantidadNotas = notasllaveProceso.length;
+
   const notas = await getNotas();
 
   switch ( cantidadNotas ) {
-    case 0:
-      return (
-        <>
-          <NewNota
-            llaveProceso={params.llaveProceso}
-            uri={`${ getBaseUrl() }`}
-          />
-          <Notas />
-        </>
-      );
-    case 1:
-      return (
-        <>
-          <NewNota
-            llaveProceso={params.llaveProceso}
-            uri={`${ getBaseUrl() }`}
-          />
-          <Notas
-            llaveProceso={params.llaveProceso}
-          />
-        </>
-      );
-    case 2:
-      return (
-        <>
-          <NewNota
-            llaveProceso={params.llaveProceso}
-            uri={`${ getBaseUrl() }`}
-          />
-          <Notas
-            llaveProceso={params.llaveProceso}
-          />
-        </>
-      );
-    default:
-      return (
-        <>
-          <NewNota
-            llaveProceso={params.llaveProceso}
-            uri={`${ getBaseUrl() }`}
-          />
-          <Notas
-            llaveProceso={params.llaveProceso}
-          />
-        </>
-      );
+          case 0:
+            return (
+              <>
+                <NewNota
+                  llaveProceso={params.llaveProceso}
+                  uri={`${ getBaseUrl() }`}
+                />
+                <Notas />
+              </>
+            );
+          case 1:
+            return (
+              <>
+                <NewNota
+                  llaveProceso={params.llaveProceso}
+                  uri={`${ getBaseUrl() }`}
+                />
+                <Notas
+                  llaveProceso={params.llaveProceso}
+                />
+              </>
+            );
+          case 2:
+            return (
+              <>
+                <NewNota
+                  llaveProceso={params.llaveProceso}
+                  uri={`${ getBaseUrl() }`}
+                />
+                <Notas
+                  llaveProceso={params.llaveProceso}
+                />
+              </>
+            );
+          default:
+            return (
+              <>
+                <NewNota
+                  llaveProceso={params.llaveProceso}
+                  uri={`${ getBaseUrl() }`}
+                />
+                <Notas
+                  llaveProceso={params.llaveProceso}
+                />
+              </>
+            );
   }
 }

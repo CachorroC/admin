@@ -6,19 +6,20 @@ export function sleep(
       resolve
     ) => {
       const now = new Date()
-        .getTime();
+            .getTime();
+
       const masTarde = now + ms;
 
       const outputTime = new Date(
         masTarde
       )
-        .toLocaleDateString(
-          'es-CO', {
-            hour  : 'numeric',
-            minute: 'numeric',
-            hour12: true
-          }
-        );
+            .toLocaleDateString(
+              'es-CO', {
+                hour  : 'numeric',
+                minute: 'numeric',
+                hour12: true
+              }
+            );
       console.log(
         `estará listo a las ${ outputTime }`
       );
@@ -29,6 +30,8 @@ export function sleep(
     }
   );
 }
+
+
 
 export function fixMoney(
   {
@@ -93,8 +96,11 @@ export function fixFechas(
     'noviembre',
     'diciembre'
   ];
+
   const month = months[ date.getMonth() ];
+
   const dia = date.getDate();
+
   const ano = date.getFullYear();
 
   return dia + ' de ' + month + ' de ' + ano;
@@ -109,10 +115,10 @@ function trimmer(
     );
 
   const extractDemandado = sujetosProcesales
-    .slice(
-      locateDemandado + 10
-    )
-    .toLowerCase();
+        .slice(
+          locateDemandado + 10
+        )
+        .toLowerCase();
 
   const trimDemandado = extractDemandado.replace(
     /^\s+|\s+$/gm,
@@ -214,7 +220,7 @@ export const toNameString = (
       = arr[ i ].charAt(
         0
       )
-        .toUpperCase()
+            .toUpperCase()
       + arr[ i ].slice(
         1
       );

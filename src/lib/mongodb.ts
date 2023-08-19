@@ -4,6 +4,7 @@ import { MongoClient } from 'mongodb';
 const uri
   = process.env.MONGODB_URI
   || 'mongodb+srv://cachorro_cami:Tengo1amo@cluster0.ffbyjzl.mongodb.net/?retryWrites=true&w=majority';
+
 const options = {};
 let client;
 let clientPromise: Promise<MongoClient>;

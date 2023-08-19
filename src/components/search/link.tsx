@@ -40,14 +40,18 @@ export const LinkCard = (
     idProceso,
     _id
   } = carpeta;
+
   const Nombre = carpeta.nombre;
+
   const isCarpeta = path === '/Carpetas';
 
   const {
     cedula, direccion, tel, email
   }
     = deudor;
+
   const params = useParams();
+
   const pathname = usePathname();
 
   const [
@@ -72,12 +76,13 @@ export const LinkCard = (
     || pathname
       === `${ path }/${ llaveProceso }/${ idProceso }`
     || pathname === `${ path }/${ llaveProceso }`;
+
   const router = useRouter();
 
   const isSearch = carpeta.nombre.toLowerCase()
-    .indexOf(
-      search.toLowerCase()
-    ) === -1;
+        .indexOf(
+          search.toLowerCase()
+        ) === -1;
 
   return (
     <div className={searchbar.container}>

@@ -12,6 +12,7 @@ export default async function Page(
 }
 ) {
   const llaveProceso = params.llaveProceso;
+
   const _id = searchParams._id;
 
   const nota = await getNotaById(
@@ -21,16 +22,16 @@ export default async function Page(
   );
 
   const ntext = nota
-    .map(
-      (
-        nt
-      ) => {
-        const name = nt.nota;
+        .map(
+          (
+            nt
+          ) => {
+            const name = nt.nota;
 
-        return name;
-      }
-    )
-    .toString();
+            return name;
+          }
+        )
+        .toString();
 
   return (
     <h1

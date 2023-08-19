@@ -24,7 +24,9 @@ export async function ListDrawer() {
       if ( !b.fecha || b.fecha === undefined ) {
         return -1;
       }
+
       const x = a.fecha.toISOString();
+
       const y = b.fecha.toISOString();
 
       if ( x < y ) {

@@ -39,6 +39,7 @@ export default function InputProceso() {
     if ( Response.procesos.length === 0 ) {
       return notFound();
     }
+
     const procesos = Response.procesos;
     alert(
       procesos

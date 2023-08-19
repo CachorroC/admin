@@ -13,6 +13,7 @@ export const ForwardButton = () => {
     setIsNavOpen
   ]
     = useNavigator();
+
   const router = useRouter();
 
   return (
@@ -49,6 +50,7 @@ export const BackwardsButton = () => {
     isOpen,
     setIsOpen
   ] = useModal();
+
   const router = useRouter();
 
   const clickHandler = () => {

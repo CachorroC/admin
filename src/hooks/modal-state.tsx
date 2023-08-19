@@ -28,6 +28,7 @@ export default function ModalDialog(
       if ( !isOpen ) {
         return;
       }
+
       const dialog = ref.current;
       dialog && dialog.showModal();
 

@@ -52,7 +52,7 @@ export async function fetchProceso(
 
     if ( !req.ok ) {
       console.log(
-        `${ index }: el request procesos returned not ok ${ llaveProceso }`
+        `${ index }: el request procesos returned not ok ${ llaveProceso }: ${ req.status }`
       );
 
       return [];
@@ -60,6 +60,7 @@ export async function fetchProceso(
 
     const res
       = ( await req.json() ) as intConsultaNumeroRadicacion;
+
     const procesos = res.procesos;
 
     return procesos;
@@ -81,10 +82,12 @@ export async function getProceso(
   index: number;
 }
 ) {
-  const awaitTime = index * 100;
+  const awaitTime = 1000;
   await sleep(
     awaitTime
   );
+
+  const collection = await procesosCollection();
 
   const fetchP = await fetchProceso(
     {
@@ -94,51 +97,28 @@ export async function getProceso(
   );
 
   if ( fetchP.length > 0 ) {
-    const collection = await carpetasCollection();
 
-    const carpeta = await getCarpetasByllaveProceso(
-      {
-        llaveProceso: llaveProceso
-      }
-    );
+    for ( let i = 0; i < fetchP.length; i++ ) {
+      const proceso = fetchP[ i ];
 
+      const updt = await collection.updateOne(
+        {
+          idProceso: proceso.idProceso
+        },
+        {
+          $set: proceso
+        },
+        {
+          upsert: true
+        }
+      );
 
-
-
-    if ( carpeta ) {
-
-      const {
-        _id, ...oldCarpeta
-      } = carpeta;
-
-      for ( let i = 0; i < fetchP.length; i++ ) {
-        const proceso = fetchP[ i ];
-
-        const newCarp = {
-          ...oldCarpeta,
-          idProceso   : proceso.idProceso,
-          llaveProceso: llaveProceso
-        };
-
-        const updt = await collection.updateOne(
-          {
-            idProceso   : proceso.idProceso,
-            llaveProceso: proceso.llaveProceso
-          },
-          {
-            $set: newCarp
-          },
-          {
-            upsert: true
-          }
-        );
+      if ( updt.modifiedCount > 0 || updt.upsertedCount > 0 ) {
         console.log(
           ` se actualizaron ${ updt.modifiedCount } carpetas con proceso y se insertaron ${ updt.upsertedCount } carpetas nuevas `
         );
       }
     }
-
-    return fetchP;
   }
 
   return fetchP;

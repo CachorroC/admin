@@ -21,7 +21,9 @@ export default async function Default () {
       if ( !b.numero || b.numero === undefined ) {
         return -1;
       }
+
       const x = a.numero.toString();
+
       const y = b.numero.toString();
 
       if ( x < y ) {

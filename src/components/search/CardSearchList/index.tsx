@@ -34,6 +34,7 @@ export const CardSearchList = (
       false
     );
   };
+
   const rows: any[] = [];
 
   const sortedFechas = [
@@ -49,7 +50,9 @@ export const CardSearchList = (
       if ( !b.fecha || b.fecha === undefined ) {
         return -1;
       }
+
       const x = a.fecha.toISOString();
+
       const y = b.fecha.toISOString();
 
       if ( x < y ) {
@@ -70,13 +73,14 @@ export const CardSearchList = (
       const {
         fecha
       } = Fecha;
+
       const Nombre = Fecha.nombre ?? 'sin nombre';
 
       if (
         Nombre.toLowerCase()
-          .indexOf(
-            search.toLowerCase()
-          ) === -1
+              .indexOf(
+                search.toLowerCase()
+              ) === -1
       ) {
         return;
       }

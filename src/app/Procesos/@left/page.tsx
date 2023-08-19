@@ -42,6 +42,7 @@ export async function  FechaActuacionComponent(
   if ( actuaciones.length === 0 ) {
     return null;
   }
+
   const ultimaActuacion = actuaciones[ 0 ];
 
   return(
@@ -73,6 +74,7 @@ export default async function PageProcesosLeft () {
       console.log(
         typeofA
       );
+
       const typeofB = typeof b.fecha;
       console.log(
         typeofB
@@ -85,7 +87,9 @@ export default async function PageProcesosLeft () {
       if ( !b.fecha || b.fecha === undefined ) {
         return -1;
       }
+
       const x = a.fecha.toString();
+
       const y = b.fecha.toString();
 
       if ( x < y ) {

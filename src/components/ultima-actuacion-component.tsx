@@ -33,6 +33,7 @@ export const FechaActuacionComponent = async (
   if ( actuaciones.length === 0 ) {
     return null;
   }
+
   const ultimaActuacion = actuaciones[ 0 ];
 
   const fixedfecha = fixFechas(

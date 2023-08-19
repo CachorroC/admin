@@ -72,8 +72,11 @@ export default function SearchOutputList(
     setIsNavOpen
   ]
     = useNavigator();
+
   const isActive = pathname === path;
+
   const href = path as Route;
+
   const rows: any[] = [];
 
   const idk = [
@@ -89,7 +92,9 @@ export default function SearchOutputList(
       if ( !b.fecha || b.fecha === undefined ) {
         return -1;
       }
+
       const x = a.fecha.toISOString();
+
       const y = b.fecha.toISOString();
 
       if ( x < y ) {
@@ -109,9 +114,9 @@ export default function SearchOutputList(
     ) => {
       if (
         proceso.nombre.toLowerCase()
-          .indexOf(
-            search.toLowerCase()
-          ) === -1
+              .indexOf(
+                search.toLowerCase()
+              ) === -1
       ) {
         return;
       }

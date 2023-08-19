@@ -25,13 +25,14 @@ export async function GET(
   console.log(
     pathname
   );
+
   const collection = await carpetasCollection();
 
   const carpetas = await collection
-    .find(
-      {}
-    )
-    .toArray();
+        .find(
+          {}
+        )
+        .toArray();
 
 
   const llaveProceso = searchParams.get(

@@ -9,6 +9,7 @@ import { NuevaCarpetaProvider } from '#@/hooks/formContext';
 
 export default async function NuevaCarpetaPage () {
   const despachos = await getDespachos();
+
   const departamentos = await getDepartamentos();
 
   if ( !departamentos ) {

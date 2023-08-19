@@ -32,13 +32,13 @@ export const ProcesoCard = (
 
   const juzgado = despacho
     ? despacho
-      .replace(
-        / /g, '-'
-      )
-      .toLocaleLowerCase()
-      .slice(
-        0, -1
-      )
+          .replace(
+            / /g, '-'
+          )
+          .toLocaleLowerCase()
+          .slice(
+            0, -1
+          )
     : null;
 
   return (

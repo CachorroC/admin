@@ -38,54 +38,54 @@ export const DemandaContainer = (
           despacho, index
         ) => {
           switch ( index ) {
-            case 0:
-              return (
-                <Link
-                  href={juzgados[ 0 ].url as Route}
-                >
-                  <span className='material-symbols-outlined'>
+                  case 0:
+                    return (
+                      <Link
+                        href={juzgados[ 0 ].url as Route}
+                      >
+                        <span className='material-symbols-outlined'>
                   enable
-                  </span>
-                  <sub
-                    className={
-                      typography.displaySmall
-                    }
-                  >
-                    {juzgados[ 0 ].id}
-                  </sub>
-                  <p
-                    className={
-                      typography.labelSmall
-                    }
-                  >
-                    {`Juzgado de origen: ${ juzgados[ 0 ].tipo }`}
-                  </p>
-                </Link>
-              );
-            case 1:
-              return (
-                <Link
-                  href={juzgados[ 1 ].url as Route}
-                >
-                  <span className='material-symbols-outlined'>
+                        </span>
+                        <sub
+                          className={
+                            typography.displaySmall
+                          }
+                        >
+                          {juzgados[ 0 ].id}
+                        </sub>
+                        <p
+                          className={
+                            typography.labelSmall
+                          }
+                        >
+                          {`Juzgado de origen: ${ juzgados[ 0 ].tipo }`}
+                        </p>
+                      </Link>
+                    );
+                  case 1:
+                    return (
+                      <Link
+                        href={juzgados[ 1 ].url as Route}
+                      >
+                        <span className='material-symbols-outlined'>
                   trip_origin
-                  </span>
-                  <sub
-                    className={
-                      typography.displaySmall
-                    }
-                  >
-                    {juzgados[ 1 ].id}
-                  </sub>
-                  <p
-                    className={
-                      typography.labelSmall
-                    }
-                  >
-                    {`Juzgado de origen: ${ juzgados[ 1 ].tipo }`}
-                  </p>
-                </Link>
-              );
+                        </span>
+                        <sub
+                          className={
+                            typography.displaySmall
+                          }
+                        >
+                          {juzgados[ 1 ].id}
+                        </sub>
+                        <p
+                          className={
+                            typography.labelSmall
+                          }
+                        >
+                          {`Juzgado de origen: ${ juzgados[ 1 ].tipo }`}
+                        </p>
+                      </Link>
+                    );
           }
 
           return null;
@@ -113,6 +113,7 @@ export const CarpetaCard = (
     tel, direccion, email
   }
     = carpeta.deudor;
+
   const path = '/Procesos';
 
   const href = (

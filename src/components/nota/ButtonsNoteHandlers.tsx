@@ -23,6 +23,7 @@ export function DeleteNoteButton(
     if ( !Request.ok ) {
       return;
     }
+
     const Response = await Request.json();
     alert(
       JSON.stringify(
@@ -67,21 +68,22 @@ export function AddNoteButton(
         )
       }
     )
-      .then(
-        (
-          fullfilled
-        ) => {
-          alert(
-            fullfilled.status
-          );
+          .then(
+            (
+              fullfilled
+            ) => {
+              alert(
+                fullfilled.status
+              );
 
-          return fullfilled;
-        }
-      );
+              return fullfilled;
+            }
+          );
 
     if ( !Request.ok ) {
       return;
     }
+
     const Response = await Request.json();
     alert(
       JSON.stringify(

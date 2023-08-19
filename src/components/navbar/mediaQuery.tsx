@@ -18,26 +18,26 @@ export default function useMedia(
         let media;
 
         switch ( query ) {
-          case 0:
-            media = '(max-width: 600px)';
+                case 0:
+                  media = '(max-width: 600px)';
 
-            break;
-          case 1:
-            media
+                  break;
+                case 1:
+                  media
             = '(min-width: 600px) and (max-width: 1200px)';
 
-            break;
-          case 2:
-            media
+                  break;
+                case 2:
+                  media
             = '(min-width: 1200px) and (max-width: 1920px)';
 
-            break;
-          case 3:
-            media = '(min-width: 1920px)';
+                  break;
+                case 3:
+                  media = '(min-width: 1920px)';
 
-            break;
-          default:
-            media = '';
+                  break;
+                default:
+                  media = '';
         }
 
         return media;

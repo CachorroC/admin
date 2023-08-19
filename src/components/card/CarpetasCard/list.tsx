@@ -113,7 +113,9 @@ export async function ListCardCarpetasNFechas() {
       if ( !b.fecha || b.fecha === undefined ) {
         return -1;
       }
+
       const x = a.fecha;
+
       const y = b.fecha;
 
       if ( x < y ) {

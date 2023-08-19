@@ -35,10 +35,10 @@ const Transform = cache(
     const collection = await notasCollection();
 
     const notasRaw = await collection
-      .find(
-        {} 
-      )
-      .toArray();
+          .find(
+            {} 
+          )
+          .toArray();
 
     const notas = notaConvert.toMonNotas(
       notasRaw 
@@ -56,6 +56,7 @@ export async function GET(
   } = new URL(
     Request.url 
   );
+
   const notas = await Transform();
 
   if ( !notas.length ) {
@@ -132,6 +133,7 @@ export async function POST(
   request: NextRequest 
 ) {
   const incomingRequest = await request.json();
+
   const collection = await notasCollection();
 
   const outgoingRequest
@@ -165,6 +167,7 @@ export async function PUT(
   Request: NextRequest 
 ) {
   const collection = await notasCollection();
+
   const updatedNote = await Request.json();
 
   const {

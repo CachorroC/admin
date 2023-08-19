@@ -15,6 +15,7 @@ export default function InputSearchBar() {
     setIsNavOpen
   ]
     = useNavigator();
+
   const pathname = usePathname();
 
   const isHome = pathname === '/'

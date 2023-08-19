@@ -22,6 +22,7 @@ export default function Modal(
 }
 ) {
   const params = useParams();
+
   const pathname = usePathname();
 
   const overlay = useRef(
@@ -31,6 +32,7 @@ export default function Modal(
   const wrapper = useRef(
     null
   );
+
   const router = useRouter();
 
   const [
@@ -110,6 +112,7 @@ export default function Modal(
       onEnter
     ]
   );
+
   const searchParams = useSearchParams();
   useEffect(
     () => {

@@ -13,6 +13,7 @@ export async function getDepartamentos () {
         'no pudimos obtener la lista de departamentos disponibles'
       );
     }
+
     const Respose = ( await Request.json() ) as IntDepartamentos;
 
     return Respose;
@@ -37,6 +38,7 @@ export async function getDespachos () {
     if ( !Request.ok ) {
       return [];
     }
+
     const Response = ( await Request.json() ) as Despacho[];
 
     return Response;

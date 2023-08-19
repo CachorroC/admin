@@ -137,6 +137,7 @@ export async function Notas(
 
     return <>{NotasRow}</>;
   }
+
   const notas = await getNotas();
 
   const NotasRow = notas.map(

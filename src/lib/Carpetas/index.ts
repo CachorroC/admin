@@ -32,10 +32,16 @@ export async function fetchCarpetas() {
   const collection = await carpetasCollection();
 
   const carpetasRaw = await collection
-    .find(
-      {}
-    )
-    .toArray();
+        .find(
+          {}
+        )
+        .sort(
+          {
+            fecha: 1
+          }
+        )
+        .allowDiskUse()
+        .toArray();
 
 
 
@@ -63,11 +69,11 @@ export async function getCarpetasByllaveProceso(
   const collection = await carpetasCollection();
 
   const carpeta = await collection
-    .findOne(
-      {
-        llaveProceso: llaveProceso
-      }
-    );
+        .findOne(
+          {
+            llaveProceso: llaveProceso
+          }
+        );
 
   if ( carpeta ) {
     const newCarpeta = carpetaConvert.toMonCarpeta(

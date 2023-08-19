@@ -16,7 +16,9 @@ export default async function PageProcesosEditarLeft (
       llaveProceso: params.llaveProceso
     }
   );
+
   const despachos = await getDespachos();
+
   const departamentos = await getDepartamentos();
 
   if ( !departamentos ) {
