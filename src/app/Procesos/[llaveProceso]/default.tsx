@@ -23,7 +23,7 @@ export default async function PageProcesosRightllaveProcesoidProceso(
   const cantidadNotas = notasllaveProceso.length;
 
   if ( cantidadNotas === 0 ) {
-    return <NewNota llaveProceso={ params.llaveProceso } uri={ getBaseUrl() } />
+    return <NewNota llaveProceso={ params.llaveProceso } uri={ getBaseUrl() } />;
   }
 
   return (

@@ -2,7 +2,7 @@
 import { Route } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import card from '#@/components/card/card.module.scss';
 import { useModal } from '#@/app/modal-context';
 import typography from '#@/styles/fonts/typography.module.scss';
@@ -87,9 +87,11 @@ export const Card = (
     primerNombre, segundoNombre, primerApellido, segundoApellido
   } = carpeta.deudor;
 
+
+
   return (
     <div
-      className={card.container}
+      className={  card.container }
     >
       <div
         className={
@@ -105,7 +107,7 @@ export const Card = (
         </div>
         <div className={ card.content }>
           {children}
-        di</div>
+        </div>
         <div className={ card.links }>
 
           {email && (

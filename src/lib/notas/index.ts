@@ -70,7 +70,11 @@ export async function getNotasByllaveProceso(
         )
         .toArray();
 
-  return Notas;
+  const convert = notaConvert.toMonNotas(
+    Notas
+  );
+
+  return convert;
 }
 
 export const getNotaById = cache(

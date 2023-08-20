@@ -10,7 +10,7 @@ export default function NotFound() {
         color: 'var(--on-error-container)'
       }}
     >
-          {'¿Perdido?'}
+      {'¿Perdido?'}
     </h1>
   );
 }

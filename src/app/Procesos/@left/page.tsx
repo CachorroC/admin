@@ -48,9 +48,6 @@ export async function  FechaActuacionComponent(
   return(
     <div className={card.section}>
       <p className={ card.content }>{ ultimaActuacion.anotacion }</p>
-      <sub className={ card.date }>
-        {'Ultima Actuacion registrada:'}
-      </sub>
       <sub className={card.updated} key={carpeta._id}>
         { fixFechas(
           ultimaActuacion.fechaActuacion
@@ -125,7 +122,11 @@ export default async function PageProcesosLeft () {
               <Suspense
                 key={carpeta._id}
                 fallback={
-                  <Loader key={carpeta._id}/>
+                  <sub className={ card.date }>
+                    {`Ultima Actuacion registrada: ${ fixFechas(
+                      carpeta.fecha
+                    ) }`}
+                  </sub>
                 }
               >
                 <FechaActuacionComponent
