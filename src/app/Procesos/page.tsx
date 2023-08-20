@@ -1,22 +1,72 @@
-import { NewNota } from '#@/components/nota/NuevaNota';
-import typography from '#@/styles/fonts/typography.module.css';
-import { getBaseUrl } from '#@/lib/getBaseUrl';
-import { CategoryFilterButton } from '#@/components/Buttons/FilteringButtons';
+import { CarpetaCard } from '#@/components/card/CarpetasCard';
+import { NombreComponent } from '#@/components/card/Nombre';
+import { ProcesoCard } from '#@/components/card/ProcesosCard';
+import { ProcesoCardSkeleton } from '#@/components/card/ProcesosCard/skeleton';
+import { getCarpetas } from '#@/lib/Carpetas';
+import { getProceso } from '#@/lib/Procesos';
+import { Fragment, Suspense } from 'react';
+import 'server-only';
 
-export default async function PageProcesos() {
+async function ProcesoComponent(
+  {
+    llaveProceso,
+    idProceso,
+    index
+  }: {
+  llaveProceso: string;
+  idProceso?: number;
+  index: number;
+}
+) {
+  const procesos = await getProceso(
+    {
+      llaveProceso: llaveProceso,
+      index       : index
+    }
+  );
 
   return (
     <>
-      <h1 className={typography.displayLarge}>
-        Procesos
-      </h1>
-      <CategoryFilterButton />
+      { procesos.map(
+        (
+          proceso
+        ) => {
+          return (
+            <ProcesoCard
+              key={proceso.idProceso}
+              proceso={proceso}
+            />
+          );
+        }
+      )}
+    </>
+  );
+}
 
+export default async function PageProcesosRight() {
+  const carpetas = await getCarpetas();
 
-      <NewNota
-        llaveProceso={'Procesos'}
-        uri={`${ getBaseUrl() }`}
-      />
+  return (
+    <>
+      {carpetas.map(
+        (
+          carpeta, index
+        ) => {
+          return (
+            <Suspense
+              key={carpeta._id}
+              fallback={<ProcesoCardSkeleton key={carpeta._id} />}
+            >
+              <ProcesoComponent
+                key={carpeta._id}
+                llaveProceso={carpeta.llaveProceso}
+                idProceso={carpeta.idProceso}
+                index={index}
+              />
+            </Suspense>
+          );
+        }
+      )}
     </>
   );
 }

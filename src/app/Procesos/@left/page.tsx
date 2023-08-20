@@ -46,16 +46,17 @@ export async function  FechaActuacionComponent(
   const ultimaActuacion = actuaciones[ 0 ];
 
   return(
-    <Fragment key={ carpeta._id }>
-      <p className={card.content}>{ultimaActuacion.anotacion}</p>
-
-      <sub className={card.updated} key={carpeta._id}>
-        {`fecha de la ultima actuacion: ${ fixFechas(
-          ultimaActuacion.fechaActuacion
-        ) }`
-        }
+    <div className={card.section}>
+      <p className={ card.content }>{ ultimaActuacion.anotacion }</p>
+      <sub className={ card.date }>
+        {'Ultima Actuacion registrada:'}
       </sub>
-    </Fragment>
+      <sub className={card.updated} key={carpeta._id}>
+        { fixFechas(
+          ultimaActuacion.fechaActuacion
+        ) }
+      </sub>
+    </div>
   );
 
 };
@@ -120,16 +121,6 @@ export default async function PageProcesosLeft () {
 
           return (
             <Card path={ '/Procesos' } carpeta={ carpeta } key={ carpeta._id }>
-              <h1
-                className={ card.title } key={carpeta._id}
-              >
-                {toNameString(
-                  {
-                    nameRaw: `${ primerNombre } ${ segundoNombre } ${ primerApellido } ${ segundoApellido }`
-                  }
-                )}
-              </h1>
-              <sub className={ card.sub }>{ `carpeta numero ${ carpeta.numero }` }</sub>
 
               <Suspense
                 key={carpeta._id}

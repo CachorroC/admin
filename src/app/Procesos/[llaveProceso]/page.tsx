@@ -1,49 +1,43 @@
+import { ProcesoCard } from '#@/components/card/ProcesosCard';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
+import { getProceso } from '#@/lib/Procesos';
 import typography from '#@/styles/fonts/typography.module.css';
-import { Fragment, Suspense } from 'react';
-import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-import { CarpetaCard } from '#@/components/card/CarpetasCard';
-import Link from 'next/link';
-import card from '#@/components/card/card.module.css';
-import { NombreComponent } from '#@/components/card/Nombre';
-import { notFound } from 'next/navigation';
-import { Route } from 'next';
 
-export default async function DefaultProcesosllaveProceso(
+export default async function PageProcesosRightllaveProceso(
   {
-    params: {
-      llaveProceso
-    }
+    params
   }: {
-  params: { llaveProceso: string };
+  params: {
+    llaveProceso: string;
+  };
 }
 ) {
-  const Carpeta = await getCarpetasByllaveProceso(
+
+  const Procesos = await getProceso(
     {
-      llaveProceso: llaveProceso
+      llaveProceso: params.llaveProceso,
+      index       : 1
     }
   );
 
-  if ( !Carpeta ) {
-    notFound();
-  }
-
   return (
     <>
-      <NombreComponent deudor={Carpeta.deudor} />
-      <Link
-        href={`/Procesos/${ llaveProceso }` as Route}
-        className={card.link}
-      >
-        <span className='material-symbols-outlined'>
-          folder_shared
-        </span>
-      </Link>
-      <CarpetaCard carpeta={Carpeta}>
-        <span className='material-symbols-outlined'>
-          star
-        </span>
-      </CarpetaCard>
+      <p>page</p>
+      <h1 className={typography.displayMedium}>
+        Procesos Disponibles
+      </h1>
+      {Procesos.map(
+        (
+          proceso
+        ) => {
+          return (
+            <ProcesoCard
+              proceso={proceso}
+              key={proceso.idProceso}
+            />
+          );
+        }
+      )}
     </>
   );
 }

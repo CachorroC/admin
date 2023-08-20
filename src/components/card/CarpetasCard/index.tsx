@@ -97,11 +97,9 @@ export const DemandaContainer = (
 
 export const CarpetaCard = (
   {
-    carpeta,
-    children
+    carpeta
   }: {
   carpeta: MonCarpeta;
-  children: ReactNode;
 }
 ) => {
   const {
@@ -154,7 +152,7 @@ export const CarpetaCard = (
                 Abrir
               </span>
             </Link>
-            <Accordion>{children}</Accordion>
+
             {tel.celular && tel.celular.map(
               (
                 cel, i

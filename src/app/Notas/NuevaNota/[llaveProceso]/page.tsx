@@ -15,12 +15,14 @@ export default function NuevaNotallaveProceso(
     <div className={layout.body}>
       <div className={layout.left}>
         <NewNota
-          llaveProceso={''}
+          key={params.llaveProceso}
+          llaveProceso={params.llaveProceso}
           uri={`${ getBaseUrl() }`}
         />
       </div>
       <div className={layout.right}>
         <Notas
+          key={params.llaveProceso}
           llaveProceso={params.llaveProceso}
         />
       </div>

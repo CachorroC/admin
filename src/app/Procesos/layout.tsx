@@ -4,21 +4,21 @@ import React from 'react';
 export default function LayoutProcesos(
   {
     children,
-    right,
+    top,
     left
   }: {
   children: React.ReactNode;
-  right: React.ReactNode;
+  top: React.ReactNode;
   left: React.ReactNode;
 }
 ) {
   return (
     <div className={layout.body}>
-      <div className={layout.name}>
-        {children}
+      <div className={ layout.name }>
+        {top}
       </div>
       <div className={layout.left}>{left}</div>
-      <div className={layout.right}>{right}</div>
+      <div className={layout.right}>{children}</div>
     </div>
   );
 }

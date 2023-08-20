@@ -3,32 +3,29 @@ import typography from '#@/styles/fonts/typography.module.css';
 
 export default function NotFound() {
   return (
-    <div className={layout.body}>
-      <div
-        className={layout.name}
+    <div
+      className={layout.right}
+      style={{
+        backgroundColor: 'var(--error-container)'
+      }}
+    >
+      <h1
+        className={typography.displayLarge}
         style={{
-          backgroundColor:
-            'var(--error-container)'
+          color: 'var(--on-error-container)'
         }}
       >
-        <h1
-          className={typography.displayLarge}
-          style={{
-            color: 'var(--on-error-container)'
-          }}
-        >
-          ¿Perdido?
-        </h1>
-        <p
-          className={typography.bodyLarge}
-          style={{
-            color: 'var(--on-error-container)'
-          }}
-        >
-          No pudimos resolver la consulta que
-          realizaste. No existe el recurso
-        </p>
-      </div>
+        ¿Perdido?
+      </h1>
+      <p
+        className={typography.bodyLarge}
+        style={{
+          color: 'var(--on-error-container)'
+        }}
+      >
+        No pudimos resolver la consulta que
+        realizaste. No existe el recurso
+      </p>
     </div>
   );
 }

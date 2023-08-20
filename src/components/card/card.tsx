@@ -12,98 +12,7 @@ import { Deudor,
          IntCarpeta,
          MonCarpeta,
          NombreCompleto } from '#@/lib/types/carpeta';
-
-export const DeudorComponent = (
-  {
-    deudor,
-    isActive
-  }: {
-  deudor: Deudor;
-  isActive: boolean;
-}
-) => {
-
-  const segundoNombre
-    = deudor.segundoNombre ?? ' ';
-
-  const segundoApellido
-    = deudor.segundoApellido ?? ' ';
-
-  const {
-    cedula,
-    primerNombre,
-    primerApellido,
-    email,
-    tel,
-    direccion
-  } = deudor;
-
-  return (
-    <>
-      {email && (
-        <Link
-          className={`${ card.link } ${
-            isActive && card.isActive
-          }`}
-          href={email as Route}
-        >
-          <span
-            className={`material-symbols-outlined ${ card.icon }`}
-          >
-            mail
-          </span>
-          <span className={card.tooltiptext}>
-            Correo Electrónico
-          </span>
-        </Link>
-      ) }
-      {tel.celular && tel.celular.map(
-        (
-          cel, i
-        ) => {
-          return (
-            <Link key={i}
-              className={card.link}
-              href={`tel:${ cel }`}
-            >
-              <span
-                className={`material-symbols-outlined ${ card.icon }`}
-              >
-                  phone_iphone
-              </span>
-              <span
-                className={card.tooltiptext}
-              >
-                {cel.toString()}
-              </span>
-            </Link> );
-        }
-      ) }
-      {tel.fijo && tel.fijo.map(
-        (
-          f, i
-        ) => {
-          return (
-            <Link key={i}
-              className={card.link}
-              href={`tel:${ f }`}
-            >
-              <span
-                className={`material-symbols-outlined ${ card.icon }`}
-              >
-                  call
-              </span>
-              <span
-                className={card.tooltiptext}
-              >
-                {f.toString()}
-              </span>
-            </Link> );
-        }
-      )}
-    </>
-  );
-};
+import { NombreComponent } from './Nombre';
 
 export const Card = (
   {
@@ -116,6 +25,14 @@ export const Card = (
   children: ReactNode;
 }
 ) => {
+  const {
+    deudor
+  } = carpeta;
+
+  const {
+    email, tel
+  } = deudor;
+
   const [
     category,
     setCategory
@@ -166,10 +83,13 @@ export const Card = (
     }
   }
 
+  const {
+    primerNombre, segundoNombre, primerApellido, segundoApellido
+  } = carpeta.deudor;
+
   return (
     <div
       className={card.container}
-      key={carpeta._id}
     >
       <div
         className={
@@ -179,14 +99,76 @@ export const Card = (
         }
       >
 
+        <div className={ card.section }>
+          <sub className={ card.sub }>{ `carpeta numero ${ carpeta.numero }` }</sub>
+          <NombreComponent key={ carpeta._id } deudor={ carpeta.deudor } />
+        </div>
+        <div className={ card.content }>
+          {children}
+        di</div>
+        <div className={ card.links }>
 
-        <DeudorComponent
-          deudor={carpeta.deudor}
-          key={carpeta.deudor.cedula}
-          isActive={isActive}
-        />
-        { children }
-        <div className={card.section}>
+          {email && (
+            <Link
+              className={`${ card.link } ${
+                isActive && card.isActive
+              }`}
+              href={email as Route}
+            >
+              <span
+                className={`material-symbols-outlined ${ card.icon }`}
+              >
+            mail
+              </span>
+              <span className={card.tooltiptext}>
+            Correo Electrónico
+              </span>
+            </Link>
+          ) }
+          {tel.celular && tel.celular.map(
+            (
+              cel, i
+            ) => {
+              return (
+                <Link key={i}
+                  className={card.link}
+                  href={`tel:${ cel }`}
+                >
+                  <span
+                    className={`material-symbols-outlined ${ card.icon }`}
+                  >
+                  phone_iphone
+                  </span>
+                  <span
+                    className={card.tooltiptext}
+                  >
+                    {cel.toString()}
+                  </span>
+                </Link> );
+            }
+          ) }
+          {tel.fijo && tel.fijo.map(
+            (
+              f, i
+            ) => {
+              return (
+                <Link key={i}
+                  className={card.link}
+                  href={`tel:${ f }`}
+                >
+                  <span
+                    className={`material-symbols-outlined ${ card.icon }`}
+                  >
+                  call
+                  </span>
+                  <span
+                    className={card.tooltiptext}
+                  >
+                    {f.toString()}
+                  </span>
+                </Link> );
+            }
+          )}
           <Link
             className={`${ card.link } ${
               isActive && card.isActive
@@ -258,5 +240,6 @@ export const Card = (
         </div>
       </div>
     </div>
+
   );
 };

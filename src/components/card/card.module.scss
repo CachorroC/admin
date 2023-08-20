@@ -8,7 +8,9 @@
   &:hover {
     .links{
       display: flex;
-
+    }
+    .content{
+      display: none;
     }
   }
 }
