@@ -1,4 +1,5 @@
 
-export default async function DefaultProcesosRight() {
+export default function DefaultProcesosLeft() {
+
   return null;
 }

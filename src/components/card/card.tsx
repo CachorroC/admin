@@ -13,6 +13,7 @@ import { Deudor,
          MonCarpeta,
          NombreCompleto } from '#@/lib/types/carpeta';
 import { NombreComponent } from './Nombre';
+import { Router } from 'next/router';
 
 export const Card = (
   {
@@ -90,9 +91,7 @@ export const Card = (
 
 
   return (
-    <div
-      className={  card.container }
-    >
+    <div className={ card.container }   >
       <div
         className={
           isActive

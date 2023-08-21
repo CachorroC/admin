@@ -17,6 +17,7 @@ $MaxSW: 480px; //maximum sma width
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+  box-shadow: var(--dp10);
   justify-content: space-between;
   align-items: stretch;
   border-radius: 2vmin;
@@ -31,6 +32,7 @@ $MaxSW: 480px; //maximum sma width
 }
 
 .name {
+  box-shadow: var(--dp1);
   display: flex;
   flex-flow: row nowrap;
   padding: 2vmin;
@@ -46,7 +48,7 @@ $MaxSW: 480px; //maximum sma width
 .left {
   grid-area: left;
   background-color: var(--surface-container);
-  box-shadow: var(--dp1);
+  box-shadow: var(--dp5);
   border-radius: 2vmin;
   display: flex;
   flex-flow: row wrap;
@@ -57,7 +59,6 @@ $MaxSW: 480px; //maximum sma width
   align-content: stretch;
   overflow: auto;
   & > * {
-    display: block;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 20%;

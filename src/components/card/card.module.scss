@@ -1,14 +1,16 @@
 .container {
+   box-sizing: border-box;
   container-type: inline-size;
   container-name: card;
+  border-radius: 2vmin;
+  text-align: center;
   & > * {
     width: 100%;
   }
-
   &:hover {
     background-color: var(--primary-container);
-  color: var(--on-primary-container);
-  box-shadow: var(--dp20);
+    color: var(--on-primary-container);
+    box-shadow: var(--dp20);
     .links{
       display: flex;
     }
@@ -23,13 +25,18 @@
 }
 .isActive,
 .notActive {
-  box-sizing: border-box;
-  padding: 2cqmin;
+    display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr [dividervert] 1fr 1fr 1fr;
+  grid-template-rows: 1fr [divider1] 1fr 1fr [divider2] 1fr;
   gap: 5cqmin;
+  grid-template-areas:
+    "sub title title title title title index"
+    ". content content content category category ."
+    ". content content content category category ."
+    ". date date date date date .";
+  padding: 2cqmin;
   border-radius: 2cqmin;
-  height: 100%;
   text-align: center;
-  display: flex;
   align-items: center;
   justify-content: space-between;
   align-content: stretch;

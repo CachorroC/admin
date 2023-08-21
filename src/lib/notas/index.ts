@@ -16,6 +16,7 @@ export const notasCollection = async () => {
     );
   }
 
+
   const db = client.db(
     'RyS'
   );

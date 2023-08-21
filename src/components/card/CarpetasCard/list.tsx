@@ -84,7 +84,7 @@ const Fecha = async (
     }
   );
 
-  if ( acts.length === 0 ) {
+  if ( !acts ) {
     return null;
   }
 

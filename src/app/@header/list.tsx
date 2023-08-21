@@ -6,7 +6,7 @@ import { Loader } from '#@/components/Loader';
 import { LinkCard } from '#@/components/search/link';
 import { fixFechas } from '#@/lib/fix';
 import CardSkeleton from '#@/components/card/card-skeleton';
-import { FechaActuacionComponent } from '#@/components/ultima-actuacion-component';
+import { FechaActuacionComponent } from '#@/components/Actuacion/ultima-actuacion-component';
 
 export async function ListDrawer() {
   const carpetasRaw = await getCarpetas();

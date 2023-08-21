@@ -1,6 +1,7 @@
 declare const styles: {
   readonly 'container': string;
   readonly 'links': string;
+  readonly 'content': string;
   readonly 'divider': string;
   readonly 'isActive': string;
   readonly 'notActive': string;
@@ -14,7 +15,6 @@ declare const styles: {
   readonly 'titleInput': string;
   readonly 'title': string;
   readonly 'dummytxt': string;
-  readonly 'content': string;
   readonly 'icon': string;
   readonly 'link': string;
   readonly 'tooltiptext': string;

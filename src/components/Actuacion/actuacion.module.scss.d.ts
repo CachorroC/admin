@@ -1,9 +1,10 @@
 export type Styles = {
-  card: string;
-  cardBack: string;
-  cardFront: string;
-  cardInner: string;
-  cardIsActive: string;
+  actuacion: string;
+  anotacion: string;
+  container: string;
+  content: string;
+  date: string;
+  links: string;
 };
 
 export type ClassNames = keyof Styles;

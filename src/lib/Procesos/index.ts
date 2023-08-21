@@ -3,8 +3,7 @@ import { carpetasCollection, getCarpetas, getCarpetasByllaveProceso } from '../C
 import { fetchDespachos } from '../global/Despachos';
 import { sleep } from '../fix';
 import clientPromise from '../mongodb';
-import { intProceso,
-         intConsultaNumeroRadicacion } from '../types/procesos';
+import {  procesosConvert } from '../types/procesos';
 
 export const procesosCollection = async () => {
   const client = await clientPromise;
@@ -42,7 +41,7 @@ export async function fetchProceso(
       `${ index }: esta llaveProceso es menos de 23: ${ llaveProceso }`
     );
 
-    return [];
+    return null;
   }
 
   try {
@@ -55,25 +54,33 @@ export async function fetchProceso(
         `${ index }: el request procesos returned not ok ${ llaveProceso }: ${ req.status }`
       );
 
-      return [];
+      return null;
     }
 
-    const res
-      = ( await req.json() ) as intConsultaNumeroRadicacion;
+    const json = await req.json();
+
+    const res = procesosConvert.toConsultaNumeroRadicacion(
+      json
+    );
 
     const procesos = res.procesos;
 
     return procesos;
-  } catch ( error ) {
+  } catch ( e ) {
+    if ( e instanceof Error ) {
+      console.log(
+        `${ index }: error en la conexion network del fetchProceso ${ e.name } : ${ e.message }`
+      );
+    }
     console.log(
-      `${ index }: error en la conexion network del fetchProceso ${ error }`
+      `${ e }`
     );
 
-    return [];
+    return null;
   }
 }
 
-export async function getProceso(
+export async function  getProceso(
   {
     llaveProceso,
     index
@@ -82,6 +89,13 @@ export async function getProceso(
   index: number;
 }
 ) {
+  console.time(
+    `proceso ${ index }`
+  );
+  console.log(
+    `inicia el tiempo para proceso ${ index }`
+  );
+
   const awaitTime = 1000;
   await sleep(
     awaitTime
@@ -96,7 +110,7 @@ export async function getProceso(
     }
   );
 
-  if ( fetchP.length > 0 ) {
+  if ( fetchP ) {
 
     for ( let i = 0; i < fetchP.length; i++ ) {
       const proceso = fetchP[ i ];
@@ -120,6 +134,9 @@ export async function getProceso(
       }
     }
   }
+  console.timeEnd(
+    `proceso ${ index }`
+  );
 
   return fetchP;
 }

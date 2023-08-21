@@ -1,83 +1,111 @@
-export interface intConsultaNumeroRadicacion {
-  tipoConsulta: string;
-  procesos: intProceso[];
-  parametros: intParametros;
-  paginacion: intPaginacion;
+// To parse this data:
+//
+//   import { Convert, ConsultaNumeroRadicacion } from "./file";
+//
+//   const consultaNumeroRadicacion = Convert.toConsultaNumeroRadicacion(json);
+
+export interface ConsultaNumeroRadicacion {
+    tipoConsulta: string;
+    procesos:     Proceso[];
+    parametros:   Parametros;
+    paginacion:   Paginacion;
 }
 
-export interface intPaginacion {
-  cantidadRegistros: number;
-  registrosPagina: number;
-  cantidadPaginas: number;
-  pagina: number;
-  paginas: null;
+export interface Paginacion {
+    cantidadRegistros: number;
+    registrosPagina:   number;
+    cantidadPaginas:   number;
+    pagina:            number;
+    paginas:           null;
 }
 
-export interface intParametros {
-  numero: string;
-  nombre: null;
-  tipoPersona: null;
-  idSujeto: null;
-  ponente: null;
-  claseProceso: null;
-  codificacionDespacho: null;
-  soloActivos: boolean;
+export interface Parametros {
+    numero:               string;
+    nombre:               null;
+    tipoPersona:          null;
+    idSujeto:             null;
+    ponente:              null;
+    claseProceso:         null;
+    codificacionDespacho: null;
+    soloActivos:          boolean;
 }
 
-export interface intProceso {
-  idProceso: number;
-  idConexion: number;
-  llaveProceso: string;
-  fechaProceso?: string | null;
-  fechaUltimaActuacion?: string | null;
-  despacho: string;
-  departamento: string;
-  sujetosProcesales: string;
-  esPrivado: boolean;
-  cantFilas: number;
+export interface Proceso {
+    idProceso:            number;
+    idConexion:           number;
+    llaveProceso:         string;
+    fechaProceso:         Date;
+    fechaUltimaActuacion: Date;
+    despacho:             string;
+    departamento:         string;
+    sujetosProcesales:    string;
+    esPrivado:            boolean;
+    cantFilas:            number;
 }
 
-export interface intConsultaActuaciones {
-  actuaciones: intActuacion[];
-  paginacion: intPaginacion;
-}
+// Converts JSON strings to/from your types
+export class procesosConvert {
+  public static toConsultaNumeroRadicacion(
+    json: string
+  ): ConsultaNumeroRadicacion {
+    return JSON.parse(
+      json
+    );
+  }
 
-export interface intActuacion {
-  idRegActuacion: number;
-  llaveProceso: string;
-  consActuacion: number;
-  fechaActuacion: string;
-  actuacion: string;
-  anotacion: null | string;
-  fechaInicial: null | string;
-  fechaFinal: null | string;
-  fechaRegistro: string;
-  codRegla: string;
-  conDocumentos: boolean;
-  cant: number;
-}
+  public static consultaNumeroRadicacionToJson(
+    value: ConsultaNumeroRadicacion
+  ): string {
+    return JSON.stringify(
+      value
+    );
+  }
 
-export interface intErrorActuacion {
-  message: string;
-  errHead: Headers;
-  err: number;
-  idProceso: number;
-}
+  public static toPaginacion(
+    json: string
+  ): Paginacion {
+    return JSON.parse(
+      json
+    );
+  }
 
-export interface IntActuaciones {
-  idProceso: number;
-  text: { statusCode: number; message: string };
-  acts?: intActuacion[];
-}
+  public static paginacionToJson(
+    value: Paginacion
+  ): string {
+    return JSON.stringify(
+      value
+    );
+  }
 
-export interface ActuacionCollectionItem {
-  lastFetch: Date | string;
-  idProceso: number;
-  ultimaActuacion?: intActuacion;
-}
+  public static toParametros(
+    json: string
+  ): Parametros {
+    return JSON.parse(
+      json
+    );
+  }
 
+  public static parametrosToJson(
+    value: Parametros
+  ): string {
+    return JSON.stringify(
+      value
+    );
+  }
 
-export interface monActuacion extends intActuacion
-{
-idProceso: number
+  public static toProceso(
+    json: string
+  ): Proceso {
+    return JSON.parse(
+      json
+    );
+  }
+
+  public static procesoToJson(
+    value: Proceso
+  ): string {
+    return JSON.stringify(
+      value
+    );
+  }
 }

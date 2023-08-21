@@ -23,7 +23,7 @@ export default function Error(
 
   return (
     <div style={{
-      backgroundColor: 'var(--error-comntainer)'
+      backgroundColor: 'var(--error-container)'
     }}>
       <h2
         className={typography.displayLarge}

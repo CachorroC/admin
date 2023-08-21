@@ -1,85 +1,105 @@
 import 'server-only';
 import { carpetasCollection } from '../Carpetas';
 import { sleep } from '../fix';
-import { intConsultaActuaciones } from '#@/lib/types/procesos';
+import { cache } from 'react';
+import { Actuacion, actuacionConvert } from '../types/actuaciones';
 
-export async function  fetchActuaciones(
-  {
-    idProceso,
-    index
-  }: {
-  idProceso: number;
-  index: number;
-}
-) {
+export const fetchActuaciones = cache(
+  async (
+    idProceso: number
+  ) => {
+    try {
 
-  try {
-
-    const Request = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`, {
-        next: {
-          revalidate: 86400
+      const Request = await fetch(
+        `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`, {
+          next: {
+            revalidate: 259200
+          }
         }
-      }
-    );
-
-    if ( !Request.ok ) {
-      console.log(
-        ` ${ index }: actuaciones not ok, status: ${ Request.status } with ${ Request.statusText } idProceso: ${ idProceso }`
       );
 
-      return [];
+      if ( !Request.ok ) {
+        console.log(
+          ` actuaciones not ok, status: ${ Request.status } with ${ Request.statusText } idProceso: ${ idProceso }`
+        );
+
+        return null;
+      }
+
+      const json = await Request.json();
+
+      const consulta = actuacionConvert.toConsultaActuacion(
+        json
+      );
+
+      const actuaciones = consulta.actuaciones;
+
+      return actuaciones;
+    } catch ( error ) {
+      console.log(
+        `error en de red en el try catch de getActuaciones: ${
+          error }`
+      );
+
+      return null;
     }
-
-    const Response
-      = ( await Request.json() ) as intConsultaActuaciones;
-
-    const actuaciones = Response.actuaciones;
-
-    return actuaciones;
-  } catch ( error ) {
-    console.log(
-      `${ index }: error en de red en el try catch de getActuaciones: ${ JSON.stringify(
-        error
-      ) }`
-    );
-
-    return [];
   }
-}
 
-export async function getActuaciones(
-  {
-    idProceso,
-    index
-  }: {
+);
+
+export const getActuaciones= cache(
+  async(
+    {
+      idProceso,
+      index
+    }: {
   idProceso: number;
   index: number;
 }
-) {
-  const awaitTime = 10000;
-  await sleep(
-    awaitTime
-  );
-
-  if ( !idProceso || idProceso === 0 || idProceso === 1 ) {
-    console.log(
-      `${ index }: este idProceso es: ${ idProceso }`
+  ) => {
+    console.time(
+      `actuacion ${ index }`
+    );  console.log(
+      `inicia el tiempo para actuacion ${ index }`
     );
 
-    return [];
-  }
 
 
+    const awaitTime = 1000;
+    await sleep(
+      awaitTime
+    );
 
-  const actuaciones = await fetchActuaciones(
-    {
-      idProceso: idProceso,
-      index    : index
+
+    const actuaciones = await fetchActuaciones(
+      idProceso
+    );
+
+    if ( actuaciones ){
+
+      await updateActuaciones(
+        {
+          idProceso  : idProceso,
+          actuaciones: actuaciones
+        }
+      );
     }
-  );
+    console.timeEnd(
+      `actuacion numero ${ index }`
+    );
 
-  if ( actuaciones.length > 0 ) {
+    return actuaciones;
+  }
+);
+
+
+export const updateActuaciones = cache(
+  async (
+    {
+      idProceso, actuaciones
+    }: {idProceso: number; actuaciones: Actuacion[]}
+  ) => {
+
     const collection = await carpetasCollection();
 
     const updateCarpetawithActuaciones
@@ -104,9 +124,5 @@ export async function getActuaciones(
         `se modificaron ${ updateCarpetawithActuaciones.modifiedCount } carpetas y se insertaron ${ updateCarpetawithActuaciones.upsertedCount } carpetas`
       );
     }
-
-
   }
-
-  return actuaciones;
-}
+);

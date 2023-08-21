@@ -1,9 +1,49 @@
-import { ProcesoCard } from '#@/components/card/ProcesosCard';
-import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import { getProceso } from '#@/lib/Procesos';
-import typography from '#@/styles/fonts/typography.module.css';
+import { getCarpetas,
+         getCarpetasByllaveProceso } from '#@/lib/Carpetas';
+import { ActuacionCard } from '#@/components/card/ActuacionesCard';
+import { getActuaciones } from '#@/lib/Actuaciones';
+import { Suspense } from 'react';
+import { Loader } from '#@/components/Loader';
 
-export default async function PageProcesosRightllaveProceso(
+async function Acts(
+  {
+    idProceso
+  }: {
+  idProceso: number;
+}
+) {
+  const actuaciones = await getActuaciones(
+    {
+      idProceso: idProceso,
+      index    : 1
+    }
+  );
+
+  return (
+    <>
+      {
+        actuaciones && actuaciones.map(
+          (
+            act, i, arr
+          ) => {
+            const {
+              idRegActuacion
+            } = act;
+
+            return (
+              <ActuacionCard
+                Actuacion={act}
+                key={i}
+              />
+            );
+          }
+        )
+      }
+    </>
+  );
+}
+
+export default async function PageProcesosLeftllaveProceso(
   {
     params
   }: {
@@ -12,32 +52,26 @@ export default async function PageProcesosRightllaveProceso(
   };
 }
 ) {
-
-  const Procesos = await getProceso(
+  const Carpeta = await getCarpetasByllaveProceso(
     {
-      llaveProceso: params.llaveProceso,
-      index       : 1
+      llaveProceso: params.llaveProceso
     }
   );
 
+  if ( !Carpeta ) {
+    return null;
+  }
+
   return (
     <>
-      <p>page</p>
-      <h1 className={typography.displayMedium}>
-        Procesos Disponibles
-      </h1>
-      {Procesos.map(
-        (
-          proceso
-        ) => {
-          return (
-            <ProcesoCard
-              proceso={proceso}
-              key={proceso.idProceso}
-            />
-          );
-        }
-      )}
+      <p>Page Left llaveProceso</p>
+
+      <Suspense fallback={<Loader />}>
+        <Acts
+          key={Carpeta._id}
+          idProceso={Carpeta.idProceso}
+        />
+      </Suspense>
     </>
   );
 }
