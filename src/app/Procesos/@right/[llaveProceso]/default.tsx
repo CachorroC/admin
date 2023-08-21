@@ -11,19 +11,24 @@ export default async function PageProcesosRightllaveProcesoidProceso(
     params
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   const notasllaveProceso
     = await getNotasByllaveProceso(
       {
         llaveProceso: params.llaveProceso
-      }
+      } 
     );
 
   const cantidadNotas = notasllaveProceso.length;
 
   if ( cantidadNotas === 0 ) {
-    return <NewNota llaveProceso={ params.llaveProceso } uri={ getBaseUrl() } />;
+    return (
+      <NewNota
+        llaveProceso={params.llaveProceso}
+        uri={getBaseUrl()}
+      />
+    );
   }
 
   return (
@@ -32,9 +37,7 @@ export default async function PageProcesosRightllaveProcesoidProceso(
         llaveProceso={params.llaveProceso}
         uri={`${ getBaseUrl() }`}
       />
-      <Notas
-        llaveProceso={params.llaveProceso}
-      />
+      <Notas llaveProceso={params.llaveProceso} />
     </>
   );
 }

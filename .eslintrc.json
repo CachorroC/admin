@@ -7,10 +7,7 @@
         "minItems": 1
       }
     ],
-    "array-bracket-spacing": [
-      "error",
-      "always"
-    ],
+    "array-bracket-spacing": ["error", "always"],
     "array-callback-return": "error",
     "array-element-newline": [
       "error",
@@ -19,10 +16,7 @@
         "multiline": true
       }
     ],
-    "arrow-body-style": [
-      "error",
-      "always"
-    ],
+    "arrow-body-style": ["error", "always"],
     "arrow-spacing": "error",
     "brace-style": "error",
     "comma-spacing": [
@@ -38,10 +32,7 @@
     ],
     "consistent-return": "error",
     "curly": "error",
-    "func-call-spacing": [
-      "error",
-      "never"
-    ],
+    "func-call-spacing": ["error", "never"],
     "function-paren-newline": [
       "error",
       {
@@ -79,14 +70,8 @@
         "align": "colon"
       }
     ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "multiline-ternary": [
-      "error",
-      "always"
-    ],
+    "linebreak-style": ["error", "unix"],
+    "multiline-ternary": ["error", "always"],
     "newline-per-chained-call": [
       "error",
       {
@@ -123,15 +108,9 @@
         }
       }
     ],
-    "object-curly-spacing": [
-      "error",
-      "always"
-    ],
+    "object-curly-spacing": ["error", "always"],
     "object-property-newline": "error",
-    "operator-linebreak": [
-      "error",
-      "before"
-    ],
+    "operator-linebreak": ["error", "before"],
     "padding-line-between-statements": [
       "error",
       {
@@ -151,22 +130,10 @@
         "prev": "*"
       }
     ],
-    "quotes": [
-      "error",
-      "single"
-    ],
+    "quotes": ["error", "single"],
     "semi": "error",
-    "space-in-parens": [
-      "error",
-      "always"
-    ],
-    "template-curly-spacing": [
-      "error",
-      "always"
-    ],
-    "template-tag-spacing": [
-      "error",
-      "always"
-    ]
+    "space-in-parens": ["error", "always"],
+    "template-curly-spacing": ["error", "always"],
+    "template-tag-spacing": ["error", "always"]
   }
 }

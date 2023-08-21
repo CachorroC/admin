@@ -9,23 +9,32 @@ export function NombreComponent(
     deudor
   }: {
   deudor: Deudor;
-}
+} 
 ) {
   const newName = new NombreCompleto(
-    deudor
+    deudor 
   );
 
-  const isSegundoNombrePrimerApellido = deudor.segundoNombre === deudor.primerApellido;
+  const isSegundoNombrePrimerApellido
+    = deudor.segundoNombre
+    === deudor.primerApellido;
 
   if ( isSegundoNombrePrimerApellido ) {
     const name = toNameString(
       {
-        nameRaw: deudor.primerNombre + ' ' + deudor.primerApellido + ' ' + deudor.segundoApellido
-      }
+        nameRaw:
+        deudor.primerNombre
+        + ' '
+        + deudor.primerApellido
+        + ' '
+        + deudor.segundoApellido
+      } 
     );
 
     return (
-      <h4 className={`${ typography.displaySmall } ${ card.title }`}>
+      <h4
+        className={`${ typography.displaySmall } ${ card.title }`}
+      >
         {name}
       </h4>
     );
@@ -33,12 +42,21 @@ export function NombreComponent(
 
   const name = toNameString(
     {
-      nameRaw: deudor.primerNombre + ' ' + deudor.segundoNombre + ' '+ deudor.primerApellido + ' ' + deudor.segundoApellido
-    }
+      nameRaw:
+      deudor.primerNombre
+      + ' '
+      + deudor.segundoNombre
+      + ' '
+      + deudor.primerApellido
+      + ' '
+      + deudor.segundoApellido
+    } 
   );
 
   return (
-    <h4 className={`${ typography.displaySmall } ${ card.title }`}>
+    <h4
+      className={`${ typography.displaySmall } ${ card.title }`}
+    >
       {name}
     </h4>
   );

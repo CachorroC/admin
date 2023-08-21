@@ -85,7 +85,7 @@ export async function GET(
       {
         status : 200,
         headers: {
-          'content-type': 'application/json' 
+          'content-type': 'application/json'
         }
       }
     );
@@ -111,7 +111,7 @@ export async function GET(
       {
         status : 200,
         headers: {
-          'content-type': 'application/json' 
+          'content-type': 'application/json'
         }
       }
     );
@@ -123,7 +123,7 @@ export async function GET(
     ), {
       status : 200,
       headers: {
-        'content-type': 'application/json' 
+        'content-type': 'application/json'
       }
     } 
   );
@@ -144,7 +144,7 @@ export async function POST(
   if ( !outgoingRequest.acknowledged ) {
     return new NextResponse(
       null, {
-        status: 404 
+        status: 404
       } 
     );
   }
@@ -157,7 +157,7 @@ export async function POST(
     {
       status : 200,
       headers: {
-        'content-type': 'application/json' 
+        'content-type': 'application/json'
       }
     }
   );
@@ -184,13 +184,13 @@ export async function PUT(
     const query = {
       _id: new ObjectId(
         id 
-      ) 
+      )
     };
 
     const result = await collection.updateOne(
       query,
       {
-        $set: updatedNote 
+        $set: updatedNote
       }
     );
 
@@ -200,7 +200,7 @@ export async function PUT(
         {
           status : 200,
           headers: {
-            'content-type': 'text/html' 
+            'content-type': 'text/html'
           }
         }
       );
@@ -215,7 +215,7 @@ export async function PUT(
       {
         status : 200,
         headers: {
-          'content-type': 'text/html' 
+          'content-type': 'text/html'
         }
       }
     );
@@ -223,7 +223,7 @@ export async function PUT(
 
   return new NextResponse(
     null, {
-      status: 404 
+      status: 404
     } 
   );
 }
@@ -247,7 +247,7 @@ export async function DELETE(
     const query = {
       _id: new ObjectId(
         id 
-      ) 
+      )
     };
 
     const Result = await notas.deleteOne(
@@ -270,7 +270,7 @@ export async function DELETE(
         {
           status : 202,
           headers: {
-            'content-type': 'application/json' 
+            'content-type': 'application/json'
           }
         }
       );
@@ -282,7 +282,7 @@ export async function DELETE(
           `error 400 ${ id } not deleted`
         ),
         {
-          status: 400 
+          status: 400
         }
       );
     }
@@ -292,7 +292,7 @@ export async function DELETE(
         Result 
       ),
       {
-        status: 200 
+        status: 200
       }
     );
   }

@@ -6,7 +6,8 @@ import { ReactNode, useState } from 'react';
 import card from '#@/components/card/card.module.scss';
 import { useModal } from '#@/app/modal-context';
 import typography from '#@/styles/fonts/typography.module.scss';
-import { useCategory, useNavigator } from '#@/app/search-context';
+import { useCategory,
+         useNavigator } from '#@/app/search-context';
 import { toNameString } from '#@/lib/fix';
 import { Deudor,
          IntCarpeta,
@@ -24,14 +25,14 @@ export const Card = (
   path: string;
   carpeta: MonCarpeta;
   children: ReactNode;
-}
+} 
 ) => {
   const {
-    deudor
+    deudor 
   } = carpeta;
 
   const {
-    email, tel
+    email, tel 
   } = deudor;
 
   const [
@@ -52,10 +53,10 @@ export const Card = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false
+      false 
     );
     setIsOpen(
-      false
+      false 
     );
   };
 
@@ -76,22 +77,23 @@ export const Card = (
     || pathname
       === `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
     || pathname
-    === `${ path }/${ carpeta.llaveProceso }`;
+      === `${ path }/${ carpeta.llaveProceso }`;
 
   if ( category !== 'todos' ) {
-    if (  category !== carpeta.category ) {
+    if ( category !== carpeta.category ) {
       return null;
     }
   }
 
   const {
-    primerNombre, segundoNombre, primerApellido, segundoApellido
+    primerNombre,
+    segundoNombre,
+    primerApellido,
+    segundoApellido
   } = carpeta.deudor;
 
-
-
   return (
-    <div className={ card.container }   >
+    <div className={card.container}>
       <div
         className={
           isActive
@@ -99,16 +101,19 @@ export const Card = (
             : card.notActive
         }
       >
-
-        <div className={ card.section }>
-          <sub className={ card.sub }>{ `carpeta numero ${ carpeta.numero }` }</sub>
-          <NombreComponent key={ carpeta._id } deudor={ carpeta.deudor } />
+        <div className={card.section}>
+          <sub
+            className={card.sub}
+          >{`carpeta numero ${ carpeta.numero }`}</sub>
+          <NombreComponent
+            key={carpeta._id}
+            deudor={carpeta.deudor}
+          />
         </div>
-        <div className={ card.content }>
+        <div className={card.content}>
           {children}
         </div>
-        <div className={ card.links }>
-
+        <div className={card.links}>
           {email && (
             <Link
               className={`${ card.link } ${
@@ -119,62 +124,73 @@ export const Card = (
               <span
                 className={`material-symbols-outlined ${ card.icon }`}
               >
-            mail
+                mail
               </span>
               <span className={card.tooltiptext}>
-            Correo Electrónico
+                Correo Electrónico
               </span>
             </Link>
-          ) }
-          {tel.celular && tel.celular.map(
-            (
-              cel, i
-            ) => {
-              return (
-                <Link key={i}
-                  className={card.link}
-                  href={`tel:${ cel }`}
-                >
-                  <span
-                    className={`material-symbols-outlined ${ card.icon }`}
-                  >
-                  phone_iphone
-                  </span>
-                  <span
-                    className={card.tooltiptext}
-                  >
-                    {cel.toString()}
-                  </span>
-                </Link> );
-            }
-          ) }
-          {tel.fijo && tel.fijo.map(
-            (
-              f, i
-            ) => {
-              return (
-                <Link key={i}
-                  className={card.link}
-                  href={`tel:${ f }`}
-                >
-                  <span
-                    className={`material-symbols-outlined ${ card.icon }`}
-                  >
-                  call
-                  </span>
-                  <span
-                    className={card.tooltiptext}
-                  >
-                    {f.toString()}
-                  </span>
-                </Link> );
-            }
           )}
+          {tel.celular
+            && tel.celular.map(
+              (
+                cel, i 
+              ) => {
+                return (
+                  <Link
+                    key={i}
+                    className={card.link}
+                    href={`tel:${ cel }`}
+                  >
+                    <span
+                      className={`material-symbols-outlined ${ card.icon }`}
+                    >
+                    phone_iphone
+                    </span>
+                    <span
+                      className={card.tooltiptext}
+                    >
+                      {cel.toString()}
+                    </span>
+                  </Link>
+                );
+              } 
+            )}
+          {tel.fijo
+            && tel.fijo.map(
+              (
+                f, i 
+              ) => {
+                return (
+                  <Link
+                    key={i}
+                    className={card.link}
+                    href={`tel:${ f }`}
+                  >
+                    <span
+                      className={`material-symbols-outlined ${ card.icon }`}
+                    >
+                    call
+                    </span>
+                    <span
+                      className={card.tooltiptext}
+                    >
+                      {f.toString()}
+                    </span>
+                  </Link>
+                );
+              } 
+            )}
           <Link
             className={`${ card.link } ${
               isActive && card.isActive
             }`}
-            href={`/Procesos/${ carpeta.llaveProceso  ?? 'sinEspecificar' }/Editar` as Route}
+            href={
+              `/Procesos/${
+                carpeta.llaveProceso
+                ?? 'sinEspecificar'
+              }/Editar` as Route
+            }
           >
             <span
               className={`material-symbols-outlined ${ card.icon }`}
@@ -209,7 +225,7 @@ export const Card = (
             href={`/Notas/NuevaNota/${ carpeta.llaveProceso }`}
             onClick={() => {
               setIsOpen(
-                true
+                true 
               );
             }}
           >
@@ -241,6 +257,5 @@ export const Card = (
         </div>
       </div>
     </div>
-
   );
 };

@@ -7,7 +7,8 @@ import { useSelectedLayoutSegment,
 import type { Route } from 'next';
 import searchbar from '#@/components/search/searchbar.module.scss';
 import { fixFechas } from '#@/lib/fix';
-import { useNavigator, useSearch } from '#@/app/search-context';
+import { useNavigator,
+         useSearch } from '#@/app/search-context';
 import { useModal } from '#@/app/modal-context';
 import { Name } from '../Headings/clientSideName';
 import { useRouter } from 'next/navigation';
@@ -21,7 +22,7 @@ export const LinkCard = (
   }: {
   path: string;
   carpeta: MonCarpeta;
-}
+} 
 ) => {
   const [
     isOpen,
@@ -46,7 +47,7 @@ export const LinkCard = (
   const isCarpeta = path === '/Carpetas';
 
   const {
-    cedula, direccion, tel, email
+    cedula, direccion, tel, email 
   }
     = deudor;
 
@@ -79,10 +80,12 @@ export const LinkCard = (
 
   const router = useRouter();
 
-  const isSearch = carpeta.nombre.toLowerCase()
-        .indexOf(
-          search.toLowerCase()
-        ) === -1;
+  const isSearch
+    = carpeta.nombre
+          .toLowerCase()
+          .indexOf(
+            search.toLowerCase() 
+          ) === -1;
 
   return (
     <div className={searchbar.container}>
@@ -94,7 +97,7 @@ export const LinkCard = (
         }
         onClick={() => {
           return setIsNavOpen(
-            false
+            false 
           );
         }}
         className={
@@ -103,13 +106,19 @@ export const LinkCard = (
             : searchbar.notActive
         }
       >
-        <sup className={`${ !isSearch && searchbar.sub }`}>{carpeta.numero}</sup>
-        <NombreComponent deudor={ deudor } />
-        { Nombre }
+        <sup
+          className={`${
+            !isSearch && searchbar.sub
+          }`}
+        >
+          {carpeta.numero}
+        </sup>
+        <NombreComponent deudor={deudor} />
+        {Nombre}
 
         <sub className={searchbar.date}>
           {fixFechas(
-            fecha
+            fecha 
           )}
         </sub>
       </Link>

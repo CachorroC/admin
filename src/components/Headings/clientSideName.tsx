@@ -9,7 +9,7 @@ export const Name = (
     helper
   }: {
   helper?: string;
-}
+} 
 ) => {
   const pathname = usePathname();
 

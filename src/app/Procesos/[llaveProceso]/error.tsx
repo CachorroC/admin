@@ -9,41 +9,47 @@ export default function Error(
   {
     error,
     reset
-  }: any
+  }: any 
 ) {
   useEffect(
     () => {
       console.log(
-        'logging error:', error
+        'logging error:', error 
       );
     }, [
       error
-    ]
+    ] 
   );
 
   return (
-    <div style={{
-      backgroundColor: 'var(--error-comntainer)'
-    }}>
+    <div
+      style={{
+        backgroundColor: 'var(--error-comntainer)'
+      }}
+    >
       <h2
         className={typography.displayLarge}
         style={{
           color: 'var(--on-error-container)'
         }}
       >
-          Error
+        Error
       </h2>
       <p className={typography.bodyLarge}>
         {error?.message}
       </p>
-      <button style={{
-        backgroundColor: 'var(--error)',
-        color          : 'var(--on-error)',
-        borderRadius   : '2vmin',
-        boxShadow      : 'var(--dp16)'
-      }} type={'button'} onClick={() => {
-        return reset();
-      }}>
+      <button
+        style={{
+          backgroundColor: 'var(--error)',
+          color          : 'var(--on-error)',
+          borderRadius   : '2vmin',
+          boxShadow      : 'var(--dp16)'
+        }}
+        type={'button'}
+        onClick={() => {
+          return reset();
+        }}
+      >
         <span className='material-symbols-outlined'>
           refresh
         </span>

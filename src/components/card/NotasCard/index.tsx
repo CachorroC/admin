@@ -18,7 +18,7 @@ export const NotasList = (
     notas
   }: {
   notas: monNota[];
-}
+} 
 ) => {
   const linkRef = useRef<Map<any, any>>();
 
@@ -31,19 +31,19 @@ export const NotasList = (
   }
 
   function scrollToId(
-    notaId: string
+    notaId: string 
   ) {
     const map = getMap();
 
     const node = map.get(
-      notaId
+      notaId 
     );
     node.scrollIntoView(
       {
         behavior: 'smooth',
         block   : 'nearest',
         inline  : 'center'
-      }
+      } 
     );
   }
 
@@ -52,10 +52,10 @@ export const NotasList = (
       <nav>
         {notas.map(
           (
-            nt
+            nt 
           ) => {
             const {
-              _id, nota
+              _id, nota 
             } = nt;
 
             return (
@@ -64,7 +64,7 @@ export const NotasList = (
                 type='button'
                 onClick={() => {
                   return scrollToId(
-                    _id
+                    _id 
                   );
                 }}
               >
@@ -74,30 +74,30 @@ export const NotasList = (
                 <p>{nota}</p>
               </button>
             );
-          }
+          } 
         )}
       </nav>
 
       {notas.map(
         (
-          nota, index, arr
+          nota, index, arr 
         ) => {
           return (
             <div
               className={styles.container}
               key={nota._id}
               ref={(
-                node
+                node 
               ) => {
                 const map = getMap();
 
                 if ( node ) {
                   map.set(
-                    nota._id, node
+                    nota._id, node 
                   );
                 } else {
                   map.delete(
-                    nota._id
+                    nota._id 
                   );
                 }
               }}
@@ -113,7 +113,7 @@ export const NotasList = (
                   className={`${ typography.labelSmall } ${ styles.date }`}
                 >
                   {fixFechas(
-                    nota.fecha.toString()
+                    nota.fecha.toString() 
                   )}
                 </sub>
                 <div className={styles.buttonsRow}>
@@ -133,7 +133,7 @@ export const NotasList = (
                 <div className={styles.tareas}>
                   {nota.tareas.map(
                     (
-                      nt
+                      nt 
                     ) => {
                       return (
                         <AccordionRow
@@ -143,13 +143,13 @@ export const NotasList = (
                           isDone={nt.isDone}
                         />
                       );
-                    }
+                    } 
                   )}
                 </div>
               </div>
             </div>
           );
-        }
+        } 
       )}
     </>
   );
@@ -161,7 +161,7 @@ export const NotaFRef = forwardRef(
     ref
   ) {
     const {
-      nota, index
+      nota, index 
     } = props;
 
     return (
@@ -180,7 +180,7 @@ export const NotaFRef = forwardRef(
             className={`${ typography.labelSmall } ${ styles.date }`}
           >
             {fixFechas(
-              nota.fecha.toString()
+              nota.fecha.toString() 
             )}
           </sub>
           <div className={styles.buttonsRow}>
@@ -198,7 +198,7 @@ export const NotaFRef = forwardRef(
           <div className={styles.tareas}>
             {nota.tareas.map(
               (
-                nt
+                nt 
               ) => {
                 return (
                   <AccordionRow
@@ -208,7 +208,7 @@ export const NotaFRef = forwardRef(
                     isDone={nt.isDone}
                   />
                 );
-              }
+              } 
             )}
           </div>
         </div>
@@ -222,13 +222,13 @@ export function Form(
     notas
   }: {
   notas: monNota[];
-}
+} 
 ) {
   return (
     <form>
       {notas.map(
         (
-          nt, i
+          nt, i 
         ) => {
           return (
             <NotaFRef
@@ -237,7 +237,7 @@ export function Form(
               index={i}
             />
           );
-        }
+        } 
       )}
     </form>
   );

@@ -1,5 +1,5 @@
 .container {
-   box-sizing: border-box;
+  box-sizing: border-box;
   container-type: inline-size;
   container-name: card;
   border-radius: 2vmin;
@@ -11,29 +11,20 @@
     background-color: var(--primary-container);
     color: var(--on-primary-container);
     box-shadow: var(--dp20);
-    .links{
+    .links {
       display: flex;
     }
-    .content{
+    .content {
       display: none;
     }
   }
 }
-.divider{
+.divider {
   border: dashed 5px var(--primary);
-
 }
 .isActive,
 .notActive {
-    display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr [dividervert] 1fr 1fr 1fr;
-  grid-template-rows: 1fr [divider1] 1fr 1fr [divider2] 1fr;
-  gap: 5cqmin;
-  grid-template-areas:
-    "sub title title title title title index"
-    ". content content content category category ."
-    ". content content content category category ."
-    ". date date date date date .";
+  display: flex;
   padding: 2cqmin;
   border-radius: 2cqmin;
   text-align: center;
@@ -79,10 +70,11 @@
   font-size: 0.5rem;
   font-family: var(--josefa);
 }
-.updated{
-
+.updated {
   grid-area: date;
-  background-color: var(--surface-container-highest);
+  background-color: var(
+    --surface-container-highest
+  );
   box-shadow: var(--dp12);
   padding: 2cqmin;
   color: var(--on-surface);
@@ -98,38 +90,39 @@
   font-family: var(--font-poiret);
   border-radius: 2cqmin;
   align-self: center;
-}  .section {
-      gap: 1cqmin;
-      padding: 2cqmin;
-      flex: 1;
+}
+.section {
+  gap: 1cqmin;
+  padding: 2cqmin;
+  flex: 1;
+  display: flex;
+  flex-flow: column wrap;
+  border: 1px solid var(--primary);
+  & > .section {
+    border: 1px dashed var(--secondary);
+    gap: 5cqmin;
+    padding: 0;
+    display: flex;
+    flex: 1;
+    flex-flow: row wrap;
+    & > .section {
+      border: 1px doted var(--tertiary);
+      gap: 2cqmin;
+      padding: 0;
       display: flex;
-      flex-flow: column wrap;
-      border: 1px solid var(--primary);
-      & > .section {
-        border: 1px dashed var(--secondary);
-        gap: 5cqmin;
-        padding: 0;
-        display: flex;
-        flex: 1;
-        flex-flow: row wrap;
-        & > .section {
-          border: 1px doted var(--tertiary);
-          gap: 2cqmin;
-          padding: 0;
-          display: flex;
-          flex: 1;
-          flex-flow: column nowrap;
-        }
-      }
-      .label {
-        font-family: var(--font-poiret);
-        flex: 1;
-      }
-      .titleInput,
-      .title {
-        flex: 2;
-      }
+      flex: 1;
+      flex-flow: column nowrap;
     }
+  }
+  .label {
+    font-family: var(--font-poiret);
+    flex: 1;
+  }
+  .titleInput,
+  .title {
+    flex: 2;
+  }
+}
 .dummytxt {
   height: 6px;
   border: none;
@@ -277,24 +270,6 @@
   background-color: var(--error-container);
   color: var(--on-error-container);
 }
-@container card (width < 100px) {
-  .isActive,
-  .notActive {
-    background-color: red;
-  }
-}
-@container card ( 100px < width < 200px) {
-  .isActive,
-  .notActive {
-    background-color: orange;
-  }
-}
-@container card ( 200px < width < 300px) {
-  .isActive,
-  .notActive {
-    background-color: yellow;
-  }
-}
 @container card ( 300px < width < 400px) {
   .isActive,
   .notActive {
@@ -307,30 +282,7 @@
     flex-flow: row wrap;
   }
 }
-@container card (300px < width < 320px) {
-  .isActive,
-  .notActive {
-    border: solid 5px red;
-  }
-}
-@container card (320px < width < 340px) {
-  .isActive,
-  .notActive {
-    border: solid 5px violet;
-  }
-}
-@container card (340px < width < 360px) {
-  .isActive,
-  .notActive {
-    border: solid 5px magenta;
-  }
-}
-@container card (360px < width < 380px) {
-  .isActive,
-  .notActive {
-    border: solid 5px cyan;
-  }
-}
+
 @container card (380px < width < 400px) {
   .isActive,
   .notActive {

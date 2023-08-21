@@ -2,7 +2,18 @@
   flex: 1 1 100%;
 }
 
-.button, .buttonHome, .activeHome, .buttonModal, .activeModal, .buttonDrawerMenu, .activeDrawerMenu, .buttonBackwards, .activeBackwards, .buttonForward, .activeForward, .active {
+.button,
+.buttonHome,
+.activeHome,
+.buttonModal,
+.activeModal,
+.buttonDrawerMenu,
+.activeDrawerMenu,
+.buttonBackwards,
+.activeBackwards,
+.buttonForward,
+.activeForward,
+.active {
   border: none;
   border-radius: 2vmin;
   flex: 1 1 auto;
@@ -14,54 +25,135 @@
   align-content: center;
   transition: all 0.3s;
 }
-.buttonForward, .activeForward {
+.buttonForward,
+.activeForward {
   grid-area: forwardButton;
   background-color: var(--primary-container);
 }
-.buttonForward > .icon, .buttonForward > .text, .activeForward > .icon, .activeForward > .text {
+.buttonForward > .icon,
+.buttonForward > .text,
+.activeForward > .icon,
+.activeForward > .text {
   color: var(--on-primary-container);
 }
-.buttonBackwards, .activeBackwards {
+.buttonBackwards,
+.activeBackwards {
   background-color: var(--primary-container);
   grid-area: backwardsButton;
 }
-.buttonBackwards > .icon, .buttonBackwards > .text, .activeBackwards > .icon, .activeBackwards > .text {
+.buttonBackwards > .icon,
+.buttonBackwards > .text,
+.activeBackwards > .icon,
+.activeBackwards > .text {
   color: var(--on-primary-container);
 }
-.buttonDrawerMenu, .activeDrawerMenu {
+.buttonDrawerMenu,
+.activeDrawerMenu {
   grid-area: drawerMenuButton;
   background-color: var(--primary-container);
 }
-.buttonDrawerMenu > .icon, .buttonDrawerMenu > .text, .activeDrawerMenu > .icon, .activeDrawerMenu > .text {
+.buttonDrawerMenu > .icon,
+.buttonDrawerMenu > .text,
+.activeDrawerMenu > .icon,
+.activeDrawerMenu > .text {
   color: var(--on-primary-container);
 }
-.buttonModal, .activeModal {
+.buttonModal,
+.activeModal {
   grid-area: drawerMenuButton;
   background-color: var(--primary-container);
 }
-.buttonModal > .icon, .buttonModal > .text, .activeModal > .icon, .activeModal > .text {
+.buttonModal > .icon,
+.buttonModal > .text,
+.activeModal > .icon,
+.activeModal > .text {
   color: var(--on-primary-container);
 }
-.buttonHome, .activeHome {
+.buttonHome,
+.activeHome {
   grid-area: homeButton;
   box-shadow: var(--dp2);
   background-color: var(--primary);
 }
-.buttonHome > .icon, .buttonHome > .text, .activeHome > .icon, .activeHome > .text {
+.buttonHome > .icon,
+.buttonHome > .text,
+.activeHome > .icon,
+.activeHome > .text {
   color: var(--on-primary);
 }
-.button > .ButtonTextHelper, .buttonForward > .ButtonTextHelper, .activeForward > .ButtonTextHelper, .buttonBackwards > .ButtonTextHelper, .activeBackwards > .ButtonTextHelper, .buttonDrawerMenu > .ButtonTextHelper, .activeDrawerMenu > .ButtonTextHelper, .buttonModal > .ButtonTextHelper, .activeModal > .ButtonTextHelper, .buttonHome > .ButtonTextHelper, .activeHome > .ButtonTextHelper, .active > .ButtonTextHelper {
+.button > .ButtonTextHelper,
+.buttonForward > .ButtonTextHelper,
+.activeForward > .ButtonTextHelper,
+.buttonBackwards > .ButtonTextHelper,
+.activeBackwards > .ButtonTextHelper,
+.buttonDrawerMenu > .ButtonTextHelper,
+.activeDrawerMenu > .ButtonTextHelper,
+.buttonModal > .ButtonTextHelper,
+.activeModal > .ButtonTextHelper,
+.buttonHome > .ButtonTextHelper,
+.activeHome > .ButtonTextHelper,
+.active > .ButtonTextHelper {
   display: none;
   opacity: 0;
   transition: all 1s;
 }
-.button:hover, .buttonForward:hover, .activeForward:hover, .buttonBackwards:hover, .activeBackwards:hover, .buttonDrawerMenu:hover, .activeDrawerMenu:hover, .buttonModal:hover, .activeModal:hover, .buttonHome:hover, .activeHome:hover, .button:active, .buttonForward:active, .activeForward:active, .buttonBackwards:active, .activeBackwards:active, .buttonDrawerMenu:active, .activeDrawerMenu:active, .buttonModal:active, .activeModal:active, .buttonHome:active, .activeHome:active, .active:hover, .active:active {
+.button:hover,
+.buttonForward:hover,
+.activeForward:hover,
+.buttonBackwards:hover,
+.activeBackwards:hover,
+.buttonDrawerMenu:hover,
+.activeDrawerMenu:hover,
+.buttonModal:hover,
+.activeModal:hover,
+.buttonHome:hover,
+.activeHome:hover,
+.button:active,
+.buttonForward:active,
+.activeForward:active,
+.buttonBackwards:active,
+.activeBackwards:active,
+.buttonDrawerMenu:active,
+.activeDrawerMenu:active,
+.buttonModal:active,
+.activeModal:active,
+.buttonHome:active,
+.activeHome:active,
+.active:hover,
+.active:active {
   background-color: var(--primary-fixed);
   box-shadow: var(--dp6);
   border: 2px solid var(--outline);
 }
-.button:hover > span, .buttonForward:hover > span, .activeForward:hover > span, .buttonBackwards:hover > span, .activeBackwards:hover > span, .buttonDrawerMenu:hover > span, .activeDrawerMenu:hover > span, .buttonModal:hover > span, .activeModal:hover > span, .buttonHome:hover > span, .activeHome:hover > span, .button:active > span, .buttonForward:active > span, .activeForward:active > span, .buttonBackwards:active > span, .activeBackwards:active > span, .buttonDrawerMenu:active > span, .activeDrawerMenu:active > span, .buttonModal:active > span, .activeModal:active > span, .buttonHome:active > span, .activeHome:active > span, .active:hover > span, .active:active > span {
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 200, "opsz" 24;
+.button:hover > span,
+.buttonForward:hover > span,
+.activeForward:hover > span,
+.buttonBackwards:hover > span,
+.activeBackwards:hover > span,
+.buttonDrawerMenu:hover > span,
+.activeDrawerMenu:hover > span,
+.buttonModal:hover > span,
+.activeModal:hover > span,
+.buttonHome:hover > span,
+.activeHome:hover > span,
+.button:active > span,
+.buttonForward:active > span,
+.activeForward:active > span,
+.buttonBackwards:active > span,
+.activeBackwards:active > span,
+.buttonDrawerMenu:active > span,
+.activeDrawerMenu:active > span,
+.buttonModal:active > span,
+.activeModal:active > span,
+.buttonHome:active > span,
+.activeHome:active > span,
+.active:hover > span,
+.active:active > span {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 200,
+    'opsz' 24;
   color: var(--on-primary-fixed);
 }
 

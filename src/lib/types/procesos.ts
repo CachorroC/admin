@@ -5,42 +5,42 @@
 //   const consultaNumeroRadicacion = Convert.toConsultaNumeroRadicacion(json);
 
 export interface ConsultaNumeroRadicacion {
-    tipoConsulta: string;
-    procesos:     Proceso[];
-    parametros:   Parametros;
-    paginacion:   Paginacion;
+  tipoConsulta: string;
+  procesos: Proceso[];
+  parametros: Parametros;
+  paginacion: Paginacion;
 }
 
 export interface Paginacion {
-    cantidadRegistros: number;
-    registrosPagina:   number;
-    cantidadPaginas:   number;
-    pagina:            number;
-    paginas:           null;
+  cantidadRegistros: number;
+  registrosPagina: number;
+  cantidadPaginas: number;
+  pagina: number;
+  paginas: null;
 }
 
 export interface Parametros {
-    numero:               string;
-    nombre:               null;
-    tipoPersona:          null;
-    idSujeto:             null;
-    ponente:              null;
-    claseProceso:         null;
-    codificacionDespacho: null;
-    soloActivos:          boolean;
+  numero: string;
+  nombre: null;
+  tipoPersona: null;
+  idSujeto: null;
+  ponente: null;
+  claseProceso: null;
+  codificacionDespacho: null;
+  soloActivos: boolean;
 }
 
 export interface Proceso {
-    idProceso:            number;
-    idConexion:           number;
-    llaveProceso:         string;
-    fechaProceso:         Date;
-    fechaUltimaActuacion: Date;
-    despacho:             string;
-    departamento:         string;
-    sujetosProcesales:    string;
-    esPrivado:            boolean;
-    cantFilas:            number;
+  idProceso: number;
+  idConexion: number;
+  llaveProceso: string;
+  fechaProceso: Date;
+  fechaUltimaActuacion: Date;
+  despacho: string;
+  departamento: string;
+  sujetosProcesales: string;
+  esPrivado: boolean;
+  cantFilas: number;
 }
 
 // Converts JSON strings to/from your types
@@ -49,7 +49,7 @@ export class procesosConvert {
     json: string
   ): ConsultaNumeroRadicacion {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -57,7 +57,7 @@ export class procesosConvert {
     value: ConsultaNumeroRadicacion
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
@@ -65,7 +65,7 @@ export class procesosConvert {
     json: string
   ): Paginacion {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -73,7 +73,7 @@ export class procesosConvert {
     value: Paginacion
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
@@ -81,7 +81,7 @@ export class procesosConvert {
     json: string
   ): Parametros {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -89,15 +89,15 @@ export class procesosConvert {
     value: Parametros
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toProceso(
-    json: string
+    json: string 
   ): Proceso {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -105,7 +105,7 @@ export class procesosConvert {
     value: Proceso
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 }

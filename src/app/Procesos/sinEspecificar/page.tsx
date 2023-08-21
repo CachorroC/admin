@@ -3,11 +3,11 @@ import { getBaseUrl } from '#@/lib/getBaseUrl';
 import layout from '#@/styles/layout.module.css';
 import typography from '#@/styles/fonts/typography.module.css';
 import { NuevoProceso } from './new-carpeta';
-import { getDepartamentos, getDespachos } from '#@/lib/RamaJudicial';
+import { getDepartamentos,
+         getDespachos } from '#@/lib/RamaJudicial';
 import { NuevaCarpetaProvider } from '#@/hooks/formContext';
 
-
-export default async function NuevaCarpetaPage () {
+export default async function NuevaCarpetaPage() {
   const despachos = await getDespachos();
 
   const departamentos = await getDepartamentos();
@@ -18,13 +18,14 @@ export default async function NuevaCarpetaPage () {
 
   const descripciones = departamentos.result.map(
     (
-      res
+      res 
     ) => {
       return {
-        descripcion           : res.descripcion,
-        idCatalogoDetalle     : res.idCatalogoDetalle,
-        codigo                : res.codigo,
-        idCatalogoDetallePadre: res.idCatalogoDetallePadre
+        descripcion      : res.descripcion,
+        idCatalogoDetalle: res.idCatalogoDetalle,
+        codigo           : res.codigo,
+        idCatalogoDetallePadre:
+          res.idCatalogoDetallePadre
       };
     }
   );
@@ -36,9 +37,13 @@ export default async function NuevaCarpetaPage () {
           Nueva Carpeta
         </h1>
       </div>
-      <div className={ layout.left }>
+      <div className={layout.left}>
         <NuevaCarpetaProvider>
-          <NuevoProceso uri={ `${ getBaseUrl() }` } descripciones={ descripciones} despachos={ despachos } />
+          <NuevoProceso
+            uri={`${ getBaseUrl() }`}
+            descripciones={descripciones}
+            despachos={despachos}
+          />
         </NuevaCarpetaProvider>
       </div>
     </div>

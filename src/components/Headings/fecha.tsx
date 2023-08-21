@@ -7,14 +7,14 @@ export function Fecha(
     helper
   }: {
   helper: string | null | undefined;
-}
+} 
 ) {
   return (
     <sub
       className={`${ typography.labelSmall } ${ card.date }`}
     >
       {fixFechas(
-        helper
+        helper 
       )}
     </sub>
   );

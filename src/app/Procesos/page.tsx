@@ -4,7 +4,9 @@ import { getCarpetas } from '#@/lib/Carpetas';
 import CardSkeleton from '#@/components/card/card-skeleton';
 import typography from '#@/styles/fonts/typography.module.scss';
 import card from '#@/components/card/card.module.scss';
-import { fixFechas, sleep, toNameString } from '#@/lib/fix';
+import { fixFechas,
+         sleep,
+         toNameString } from '#@/lib/fix';
 import { Card } from '#@/components/card/card';
 import { NombreComponent } from '#@/components/card/Nombre';
 import { MonCarpeta } from '#@/lib/types/carpeta';
@@ -15,27 +17,26 @@ import { Loader } from '#@/components/Loader';
 import { FechaActuacionComponent } from '#@/components/Actuacion/server-components';
 
 export const metadata: Metadata = {
-  title: 'Procesos',
+  title: 'Procesos'
 };
 
-
-export default async function PageProcesosLeft () {
+export default async function PageProcesosLeft() {
   const carpetasRaw = await getCarpetas();
 
   const carpetas = [
     ...carpetasRaw
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       const typeofA = typeof a.fecha;
       console.log(
-        typeofA
+        typeofA 
       );
 
       const typeofB = typeof b.fecha;
       console.log(
-        typeofB
+        typeofB 
       );
 
       if ( !a.fecha || a.fecha === undefined ) {
@@ -66,23 +67,29 @@ export default async function PageProcesosLeft () {
     <>
       {carpetas.map(
         (
-          carpeta, index
+          carpeta, index 
         ) => {
           const {
-            deudor
+            deudor 
           } = carpeta;
 
           const {
-            primerNombre, segundoNombre, primerApellido, segundoApellido
+            primerNombre,
+            segundoNombre,
+            primerApellido,
+            segundoApellido
           } = deudor;
 
           return (
-            <Card path={ '/Procesos' } carpeta={ carpeta } key={ carpeta._id }>
-
+            <Card
+              path={'/Procesos'}
+              carpeta={carpeta}
+              key={carpeta._id}
+            >
               <Suspense
                 key={carpeta._id}
                 fallback={
-                  <sub className={ card.date }>
+                  <sub className={card.date}>
                     {`Ultima Actuacion registrada guardada en el servidor: ${ fixFechas(
                       carpeta.fecha
                     ) }`}
@@ -95,10 +102,9 @@ export default async function PageProcesosLeft () {
                   index={index}
                 />
               </Suspense>
-
             </Card>
           );
-        }
+        } 
       )}
     </>
   );

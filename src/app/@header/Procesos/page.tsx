@@ -11,9 +11,5 @@ import { LinkCard } from '#@/components/search/link';
 export default async function Page() {
   const carpetas = await getCarpetas();
 
-  return (
-
-    <Title />
-
-  );
+  return <Title />;
 }

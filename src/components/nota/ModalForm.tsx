@@ -19,15 +19,15 @@ export const ModalForm = (
     = useForm<FormValues>(
       {
         defaultValues: {
-          mail 
-        } 
+          mail
+        }
       } 
     );
   React.useEffect(
     () => {
       reset(
         {
-          mail 
+          mail
         } 
       );
     }, [
@@ -53,7 +53,7 @@ export const ModalForm = (
         placeholder='mail'
         {...register(
           'mail', {
-            required: true 
+            required: true
           } 
         )}
       />

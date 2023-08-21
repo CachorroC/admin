@@ -23,7 +23,7 @@ export const ForwardButton = () => {
       onClick={() => {
         router.forward();
         setIsNavOpen(
-          false
+          false 
         );
       }}
     >
@@ -55,10 +55,10 @@ export const BackwardsButton = () => {
 
   const clickHandler = () => {
     setIsNavOpen(
-      false
+      false 
     );
     setIsOpen(
-      false
+      false 
     );
     router.back();
   };
@@ -95,7 +95,7 @@ export const DrawerMenuButton = () => {
         className={navbar.buttonDrawerMenu}
         onClick={() => {
           return setIsNavOpen(
-            false
+            false 
           );
         }}
       >
@@ -117,7 +117,7 @@ export const DrawerMenuButton = () => {
       className={navbar.buttonDrawerMenu}
       onClick={() => {
         return setIsNavOpen(
-          true
+          true 
         );
       }}
     >
@@ -146,7 +146,7 @@ export const HomeButton = () => {
       className={navbar.buttonHome}
       onClick={() => {
         setIsNavOpen(
-          false
+          false 
         );
       }}
     >
@@ -173,7 +173,7 @@ export const ModalButton = () => {
       className={buttons.buttonModal}
       onClick={() => {
         return setIsOpen(
-          true
+          true 
         );
       }}
     >

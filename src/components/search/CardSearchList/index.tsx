@@ -16,7 +16,7 @@ export const CardSearchList = (
   }: {
   path: string;
   fechas: MonCarpeta[];
-}
+} 
 ) => {
   const [
     search,
@@ -31,7 +31,7 @@ export const CardSearchList = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false
+      false 
     );
   };
 
@@ -41,7 +41,7 @@ export const CardSearchList = (
     ...fechas
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -68,10 +68,10 @@ export const CardSearchList = (
   );
   sortedFechas.forEach(
     (
-      Fecha, i, arr
+      Fecha, i, arr 
     ) => {
       const {
-        fecha
+        fecha 
       } = Fecha;
 
       const Nombre = Fecha.nombre ?? 'sin nombre';
@@ -97,13 +97,13 @@ export const CardSearchList = (
           {fecha && (
             <sub className={card.date}>
               {fixFechas(
-                fecha
+                fecha 
               )}
             </sub>
           )}
         </Card>
       );
-    }
+    } 
   );
 
   return <>{rows}</>;

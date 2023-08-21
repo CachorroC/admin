@@ -7,13 +7,13 @@ export function Accordion(
     children
   }: {
   children: ReactNode;
-}
+} 
 ) {
   const [
     isActive,
     setIsActive
   ] = useState(
-    false
+    false 
   );
 
   return (
@@ -28,7 +28,7 @@ export function Accordion(
           className={styles.title}
           onClick={() => {
             return setIsActive(
-              !isActive
+              !isActive 
             );
           }}
         >

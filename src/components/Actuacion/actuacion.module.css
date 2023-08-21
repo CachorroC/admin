@@ -14,15 +14,12 @@
   color: var(--on-primary-container);
   box-shadow: var(--dp20);
 }
-.container:hover .links {
-  display: flex;
-}
-.container:hover .content {
-  display: none;
-}
 
 .date {
-  grid-area: date;
+  display: flex;
+}
+
+.fecha {
   background-color: var(--surface-container-high);
   padding: 2cqmin;
   color: var(--on-surface);

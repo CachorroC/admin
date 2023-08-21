@@ -33,17 +33,17 @@ export default function InputSearchBar() {
         : pathname}
       onBeforeInput={() => {
         pathname === '/' && setIsNavOpen(
-          true
+          true 
         );
       }}
       onChange={(
-        input
+        input 
       ) => {
         setIsNavOpen(
-          true
+          true 
         );
         setSearch(
-          input.target.value
+          input.target.value 
         );
       }}
     />

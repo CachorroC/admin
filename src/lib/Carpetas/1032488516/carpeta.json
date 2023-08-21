@@ -1,40 +1,37 @@
 {
-    "capitalAdeudado": "37000000000",
-    "demanda": {
-        "ciudad": "Bogota",
-        "departamento": "CUNDINAMARCA",
-        "entregaGarantiasAbogado": "2023-08-13",
-        "etapaProcesal": "ADMISION DE LA DEMANDA",
-        "juzgado": [
-            {
-                "id": "3",
-                "tipo": "Promiscuo Municipal",
-                "url": "https://app.rsasesorjuridico.com"
-            }
-        ],
-        "obligacion": [
-            "1772345678",
-            654567890
-        ],
-        "radicado": "000 - 00000",
-        "vencimientoPagare": "2023-12-22"
-    },
-    "deudor": {
-        "cedula": "1032488516",
-        "direccion": "carrera 63 # 22 - 31",
-        "email": "juankpato87@gmail.com",
-        "primerApellido": "Suarez",
-        "primerNombre": "Juan",
-        "segundoApellido": "Ramirez",
-        "segundoNombre": "Camilo",
-        "tel": {
-            "celular": 3506144932,
-            "fijo": 6051567
-        }
-    },
-    "grupo": "Lios Juridicos",
-    "idProceso": 0,
-    "llaveProceso": "12345678912345678912345",
-    "numero": "600",
-    "tipoProceso": "SINGULAR"
+  "capitalAdeudado": "37000000000",
+  "demanda": {
+    "ciudad": "Bogota",
+    "departamento": "CUNDINAMARCA",
+    "entregaGarantiasAbogado": "2023-08-13",
+    "etapaProcesal": "ADMISION DE LA DEMANDA",
+    "juzgado": [
+      {
+        "id": "3",
+        "tipo": "Promiscuo Municipal",
+        "url": "https://app.rsasesorjuridico.com"
+      }
+    ],
+    "obligacion": ["1772345678", 654567890],
+    "radicado": "000 - 00000",
+    "vencimientoPagare": "2023-12-22"
+  },
+  "deudor": {
+    "cedula": "1032488516",
+    "direccion": "carrera 63 # 22 - 31",
+    "email": "juankpato87@gmail.com",
+    "primerApellido": "Suarez",
+    "primerNombre": "Juan",
+    "segundoApellido": "Ramirez",
+    "segundoNombre": "Camilo",
+    "tel": {
+      "celular": 3506144932,
+      "fijo": 6051567
+    }
+  },
+  "grupo": "Lios Juridicos",
+  "idProceso": 0,
+  "llaveProceso": "12345678912345678912345",
+  "numero": "600",
+  "tipoProceso": "SINGULAR"
 }

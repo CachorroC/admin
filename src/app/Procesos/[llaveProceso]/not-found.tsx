@@ -1,4 +1,3 @@
-
 import typography from '#@/styles/fonts/typography.module.css';
 
 export default function NotFound() {
@@ -9,8 +8,8 @@ export default function NotFound() {
         color: 'var(--on-error-container)'
       }}
     >
-          No pudimos resolver la consulta que
-          realizaste. No existe el recurso
+      No pudimos resolver la consulta que
+      realizaste. No existe el recurso
     </p>
   );
 }

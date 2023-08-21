@@ -5,7 +5,7 @@ import Header from '#@/components/navbar/Header';
 
 export default function NotFound() {
   return (
-    <Header >
+    <Header>
       <h1
         className={typography.displayLarge}
         style={{
@@ -20,7 +20,9 @@ export default function NotFound() {
           color: 'var(--on-surface-container)'
         }}
       >
-        {'No pudimos resolver la consulta que realizaste. No existe el recurso'}
+        {
+          'No pudimos resolver la consulta que realizaste. No existe el recurso'
+        }
       </p>
     </Header>
   );

@@ -11,14 +11,13 @@ export default async function PageProcesosRightllaveProceso(
   params: {
     llaveProceso: string;
   };
-}
+} 
 ) {
-
   const Procesos = await getProceso(
     {
       llaveProceso: params.llaveProceso,
       index       : 1
-    }
+    } 
   );
 
   if ( !Procesos ) {
@@ -33,7 +32,7 @@ export default async function PageProcesosRightllaveProceso(
       </h1>
       {Procesos.map(
         (
-          proceso
+          proceso 
         ) => {
           return (
             <ProcesoCard
@@ -41,7 +40,7 @@ export default async function PageProcesosRightllaveProceso(
               key={proceso.idProceso}
             />
           );
-        }
+        } 
       )}
     </>
   );

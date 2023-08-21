@@ -10,18 +10,21 @@ const SearchContext = createContext<
   | [string, Dispatch<SetStateAction<string>>]
   | null
 >(
-  null
+  null 
 );
 
 const NavContext = createContext<
   | [boolean, Dispatch<SetStateAction<boolean>>]
   | undefined
 >(
-  undefined
+  undefined 
 );
 
-const CategoryContext = createContext< | [string, Dispatch<SetStateAction<string>>] | null>(
-  null
+const CategoryContext = createContext<
+  | [string, Dispatch<SetStateAction<string>>]
+  | null
+>(
+  null 
 );
 
 export function SearchProvider(
@@ -29,13 +32,13 @@ export function SearchProvider(
     children
   }: {
   children: ReactNode;
-}
+} 
 ) {
   const [
     search,
     setSearch
   ] = useState(
-    ''
+    '' 
   );
 
   const [
@@ -43,38 +46,35 @@ export function SearchProvider(
     setIsNavOpen
   ]
     = useState(
-      false
+      false 
     );
 
   const [
     category,
     setCategory
-  ]= useState(
-    'todos'
-  );
+  ]
+    = useState(
+      'todos' 
+    );
 
   return (
-    <CategoryContext.Provider value = {
-      [
+    <CategoryContext.Provider
+      value={[
         category,
         setCategory
-      ]
-    }>
+      ]}
+    >
       <SearchContext.Provider
-        value={
-          [
-            search,
-            setSearch
-          ]
-        }
+        value={[
+          search,
+          setSearch
+        ]}
       >
         <NavContext.Provider
-          value={
-            [
-              isNavOpen,
-              setIsNavOpen
-            ]
-          }
+          value={[
+            isNavOpen,
+            setIsNavOpen
+          ]}
         >
           {children}
         </NavContext.Provider>
@@ -85,7 +85,7 @@ export function SearchProvider(
 
 export function useSearch() {
   const context = useContext(
-    SearchContext
+    SearchContext 
   );
 
   if ( context === null ) {
@@ -99,7 +99,7 @@ export function useSearch() {
 
 export function useNavigator() {
   const context = useContext(
-    NavContext
+    NavContext 
   );
 
   if ( context === undefined ) {
@@ -111,10 +111,9 @@ export function useNavigator() {
   return context;
 }
 
-
-export function useCategory () {
+export function useCategory() {
   const context = useContext(
-    CategoryContext
+    CategoryContext 
   );
 
   if ( context === null ) {

@@ -5,14 +5,14 @@ import { getCarpetas } from '#@/lib/Carpetas';
 import { LinkCard } from '#@/components/search/link';
 import { ReactNode } from 'react';
 
-export default async function Default () {
+export default async function Default() {
   const carpetasRaw = await getCarpetas();
 
   const carpetas = [
     ...carpetasRaw
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       if ( !a.numero || a.numero === undefined ) {
         return 1;
@@ -38,7 +38,5 @@ export default async function Default () {
     }
   );
 
-  return (
-    <Title/>
-  );
+  return <Title />;
 }

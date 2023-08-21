@@ -9,11 +9,11 @@ import { Route } from 'next';
 export default async function DefaultProcesosllaveProceso(
   {
     params: {
-      llaveProceso
+      llaveProceso 
     }
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   const Carpeta = await getCarpetasByllaveProceso(
     {
@@ -27,17 +27,25 @@ export default async function DefaultProcesosllaveProceso(
 
   return (
     <>
-      <NombreComponent key={Carpeta._id} deudor={Carpeta.deudor} />
+      <NombreComponent
+        key={Carpeta._id}
+        deudor={Carpeta.deudor}
+      />
       <Link
         target={'_blank'}
-        href={`/Procesos/${ llaveProceso }` as Route}
+        href={
+          `/Procesos/${ llaveProceso }` as Route
+        }
         className={card.link}
       >
         <span className='material-symbols-outlined'>
           folder_shared
         </span>
       </Link>
-      <CarpetaCard key={Carpeta._id} carpeta={Carpeta}/>
+      <CarpetaCard
+        key={Carpeta._id}
+        carpeta={Carpeta}
+      />
     </>
   );
 }

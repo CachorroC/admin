@@ -9,7 +9,7 @@ export default async function Page(
   }: {
   params: { llaveProceso: string };
   searchParams: { _id: string };
-}
+} 
 ) {
   const llaveProceso = params.llaveProceso;
 
@@ -18,18 +18,18 @@ export default async function Page(
   const nota = await getNotaById(
     {
       _id: _id
-    }
+    } 
   );
 
   const ntext = nota
         .map(
           (
-            nt
+            nt 
           ) => {
             const name = nt.nota;
 
             return name;
-          }
+          } 
         )
         .toString();
 

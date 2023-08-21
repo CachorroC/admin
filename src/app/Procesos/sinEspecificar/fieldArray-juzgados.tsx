@@ -1,8 +1,10 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { useFieldArray, useFormContext } from 'react-hook-form';
+import React, { useEffect,
+                useState } from 'react';
+import { useFieldArray,
+         useFormContext } from 'react-hook-form';
 import { IntCarpeta } from '#@/lib/types/carpeta';
-import  form  from '#@/components/form/form.module.css';
+import form from '#@/components/form/form.module.css';
 import { Despacho } from '#@/lib/types/despachos';
 import { Accordion } from '#@/components/Accordion';
 let renderCount = 0;
@@ -10,25 +12,32 @@ let renderCount = 0;
 export default function Fields(
   {
     options
-  }: {options: Despacho[]}
+  }: {
+  options: Despacho[];
+} 
 ) {
   const [
     despachoSelected,
     setDespachoSelected
-  ] = useState<Despacho>();
+  ]
+    = useState<Despacho>();
 
   const {
-    register, control, setValue, getValues
+    register,
+    control,
+    setValue,
+    getValues
   } = useFormContext<IntCarpeta>();
 
   const {
-    fields, append, remove, prepend
-  } = useFieldArray(
-    {
-      control,
-      name: 'demanda.juzgados'
-    }
-  );
+    fields, append, remove, prepend 
+  }
+    = useFieldArray(
+      {
+        control,
+        name: 'demanda.juzgados'
+      } 
+    );
 
   renderCount++;
 
@@ -37,32 +46,48 @@ export default function Fields(
       <ul>
         {fields.map(
           (
-            item, index
+            item, index 
           ) => {
             return (
-              <section className={ form.section } key={ item.id }>
+              <section
+                className={form.section}
+                key={item.id}
+              >
                 <h2 className={form.label}>
                   {index === 0
                     ? 'Juzgado de Origen'
                     : 'Juzgado de Ejecucion'}
                 </h2>
                 <section className={form.section}>
-                  <label className={form.label} htmlFor={`demanda.juzgados.${ index }.id`}>Juzgado número</label>
-                  <input type={'number'} {...register(
-                    `demanda.juzgados.${ index }.id`
-                  )} />
-
+                  <label
+                    className={form.label}
+                    htmlFor={`demanda.juzgados.${ index }.id`}
+                  >
+                  Juzgado número
+                  </label>
+                  <input
+                    type={'number'}
+                    {...register(
+                      `demanda.juzgados.${ index }.id`
+                    )}
+                  />
                 </section>
 
-                <section className={ form.section }>
-
-                  <label className={form.label} htmlFor={`demanda.juzgados.${ index }.id`}>Juzgado número</label>
-                  <select  {...register(
-                    `demanda.juzgados.${ index }.tipo`
-                  ) } >
-                    { options.map(
+                <section className={form.section}>
+                  <label
+                    className={form.label}
+                    htmlFor={`demanda.juzgados.${ index }.id`}
+                  >
+                  Juzgado número
+                  </label>
+                  <select
+                    {...register(
+                      `demanda.juzgados.${ index }.tipo`
+                    )}
+                  >
+                    {options.map(
                       (
-                        option, i
+                        option, i 
                       ) => {
                         return (
                           <option
@@ -72,78 +97,93 @@ export default function Fields(
                             {option.nombre}
                           </option>
                         );
-                      }
+                      } 
                     )}
                   </select>
-
-
                 </section>
                 <section className={form.section}>
-                  <label className={form.label} htmlFor={`demanda.juzgados.${ index }.url`}>url</label>
+                  <label
+                    className={form.label}
+                    htmlFor={`demanda.juzgados.${ index }.url`}
+                  >
+                  url
+                  </label>
 
-                  <input type={ 'text' } { ...register(
-                    `demanda.juzgados.${ index }.url`
-                  )} />
-
+                  <input
+                    type={'text'}
+                    {...register(
+                      `demanda.juzgados.${ index }.url`
+                    )}
+                  />
                 </section>
 
-                <section className={ form.section }>
+                <section className={form.section}>
                   <Accordion>
-
-                    { options.map(
+                    {options.map(
                       (
-                        option, i
+                        option, i 
                       ) => {
                         return (
-                          <button type={'button'} key={i} onClick={ () => {
-                            setValue(
-                              'demanda.juzgados', [
-                                ...( getValues().demanda.juzgados || [] ),
-                                {
-                                  tipo: option.nombre,
-                                  id  : Number(
-                                    option.nombre.replace(
-                                      /[^0-9]/g, ''
-                                    )
-                                  ),
-                                  url: `https://www.ramajudicial.gov.co${ option.url }`
-                                }
-                              ]
-                            );
-                          }}>
-                            <h2>{option.especialidad}</h2>
+                          <button
+                            type={'button'}
+                            key={i}
+                            onClick={() => {
+                              setValue(
+                                'demanda.juzgados',
+                                [
+                                  ...( getValues()
+                                        .demanda
+                                        .juzgados || [] ),
+                                  {
+                                    tipo: option.nombre,
+                                    id  : Number(
+                                      option.nombre.replace(
+                                        /[^0-9]/g,
+                                        ''
+                                      )
+                                    ),
+                                    url: `https://www.ramajudicial.gov.co${ option.url }`
+                                  }
+                                ]
+                              );
+                            }}
+                          >
+                            <h2>
+                              {option.especialidad}
+                            </h2>
                             <p>{option.nombre}</p>
                           </button>
                         );
-                      }
-                    ) }
-
+                      } 
+                    )}
                   </Accordion>
                 </section>
-                <button type="button" onClick={() => {
-                  return remove(
-                    index
-                  );
-                }}>
+                <button
+                  type='button'
+                  onClick={() => {
+                    return remove(
+                      index 
+                    );
+                  }}
+                >
                 Delete
                 </button>
-
               </section>
             );
-          }
+          } 
         )}
       </ul>
 
       <section>
         <button
-          type="button"
+          type='button'
           onClick={() => {
             append(
               {
                 tipo: 'Civil Municipal',
                 id  : 0,
                 url : 'https://ramajudicial.gov.co'
-              }
+              } 
             );
           }}
         >
@@ -151,17 +191,18 @@ export default function Fields(
         </button>
 
         <button
-          type="button"
+          type='button'
           onClick={() => {
             setValue(
               'demanda.juzgados', [
-                ...( getValues().demanda.juzgados || [] ),
+                ...( getValues().demanda.juzgados
+                || [] ),
                 {
                   tipo: 'Civil Municipal',
                   id  : 0,
                   url : 'https://ramajudicial.gov.co'
                 }
-              ]
+              ] 
             );
           }}
         >
@@ -169,14 +210,14 @@ export default function Fields(
         </button>
 
         <button
-          type="button"
+          type='button'
           onClick={() => {
             prepend(
               {
                 tipo: 'Civil Municipal',
                 id  : 0,
                 url : 'https://ramajudicial.gov.co'
-              }
+              } 
             );
           }}
         >
@@ -184,7 +225,7 @@ export default function Fields(
         </button>
 
         <button
-          type="button"
+          type='button'
           onClick={() => {
             setValue(
               'demanda.juzgados', [
@@ -193,8 +234,9 @@ export default function Fields(
                   id  : 0,
                   url : 'https://ramajudicial.gov.co'
                 },
-                ...( getValues().demanda.juzgados || [] )
-              ]
+                ...( getValues().demanda.juzgados
+                || [] )
+              ] 
             );
           }}
         >
@@ -202,7 +244,9 @@ export default function Fields(
         </button>
       </section>
 
-      <span className="counter">Render Count: {renderCount}</span>
+      <span className='counter'>
+        Render Count: {renderCount}
+      </span>
     </>
   );
 }

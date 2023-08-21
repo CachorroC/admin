@@ -12,12 +12,17 @@ export default function NuevaNotallaveProceso(
     params
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   return (
-    <Suspense fallback={ <Loader key={params.llaveProceso}/>}>
+    <Suspense
+      fallback={
+        <Loader key={params.llaveProceso} />
+      }
+    >
       <Modal key={params.llaveProceso}>
-        <NewNota key={params.llaveProceso}
+        <NewNota
+          key={params.llaveProceso}
           llaveProceso={params.llaveProceso}
           uri={`${ getBaseUrl() }`}
         />

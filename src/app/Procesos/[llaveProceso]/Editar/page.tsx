@@ -1,16 +1,18 @@
 import 'server-only';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { NuevoProceso } from '../../sinEspecificar/new-carpeta';
-import { getDepartamentos, getDespachos } from '#@/lib/RamaJudicial';
+import { getDepartamentos,
+         getDespachos } from '#@/lib/RamaJudicial';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { notFound } from 'next/navigation';
 
-export default async function PageProcesosEditarLeft (
+export default async function PageProcesosEditarLeft(
   {
     params
-  }: { params: { llaveProceso: string } }
+  }: {
+  params: { llaveProceso: string };
+} 
 ) {
-
   const carpeta = await getCarpetasByllaveProceso(
     {
       llaveProceso: params.llaveProceso
@@ -27,13 +29,14 @@ export default async function PageProcesosEditarLeft (
 
   const descripciones = departamentos.result.map(
     (
-      res
+      res 
     ) => {
-      return{
-        descripcion           : res.descripcion,
-        idCatalogoDetalle     : res.idCatalogoDetalle,
-        codigo                : res.codigo,
-        idCatalogoDetallePadre: res.idCatalogoDetallePadre
+      return {
+        descripcion      : res.descripcion,
+        idCatalogoDetalle: res.idCatalogoDetalle,
+        codigo           : res.codigo,
+        idCatalogoDetallePadre:
+          res.idCatalogoDetallePadre
       };
     }
   );
@@ -43,9 +46,11 @@ export default async function PageProcesosEditarLeft (
   }
 
   return (
-
-    <NuevoProceso carpeta={ carpeta } uri={ `${ getBaseUrl() }` } descripciones={ descripciones} despachos={ despachos } />
-
-
+    <NuevoProceso
+      carpeta={carpeta}
+      uri={`${ getBaseUrl() }`}
+      descripciones={descripciones}
+      despachos={despachos}
+    />
   );
 }

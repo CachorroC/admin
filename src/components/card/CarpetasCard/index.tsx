@@ -16,7 +16,7 @@ export const DemandaContainer = (
     demanda
   }: {
   demanda: Demanda;
-}
+} 
 ) => {
   const {
     departamento,
@@ -35,7 +35,7 @@ export const DemandaContainer = (
       >{`${ departamento }: ${ municipio }`}</h2>
       {juzgados.map(
         (
-          despacho, index
+          despacho, index 
         ) => {
           switch ( index ) {
                   case 0:
@@ -89,7 +89,7 @@ export const DemandaContainer = (
           }
 
           return null;
-        }
+        } 
       )}
     </div>
   );
@@ -100,15 +100,15 @@ export const CarpetaCard = (
     carpeta
   }: {
   carpeta: MonCarpeta;
-}
+} 
 ) => {
   const {
-    llaveProceso, idProceso, _id
+    llaveProceso, idProceso, _id 
   }
     = carpeta;
 
   const {
-    tel, direccion, email
+    tel, direccion, email 
   }
     = carpeta.deudor;
 
@@ -153,56 +153,68 @@ export const CarpetaCard = (
               </span>
             </Link>
 
-            {tel.celular && tel.celular.map(
-              (
-                cel, i
-              ) => {
-                return (
-                  <Link key={i}
-                    className={styles.button}
-                    href={`tel:${ cel }`}
-                  >
-                    <span
-                      className={`material-symbols-outlined ${ styles.icon }`}
+            {tel.celular
+              && tel.celular.map(
+                (
+                  cel, i 
+                ) => {
+                  return (
+                    <Link
+                      key={i}
+                      className={styles.button}
+                      href={`tel:${ cel }`}
                     >
-                  phone_iphone
-                    </span>
-                    <span
-                      className={styles.tooltiptext}
+                      <span
+                        className={`material-symbols-outlined ${ styles.icon }`}
+                      >
+                      phone_iphone
+                      </span>
+                      <span
+                        className={
+                          styles.tooltiptext
+                        }
+                      >
+                        {cel.toString()}
+                      </span>
+                    </Link>
+                  );
+                } 
+              )}
+            {tel.fijo
+              && tel.fijo.map(
+                (
+                  f, i 
+                ) => {
+                  return (
+                    <Link
+                      key={i}
+                      className={styles.button}
+                      href={`tel:${ f }`}
                     >
-                      {cel.toString()}
-                    </span>
-                  </Link> );
-              }
-            ) }
-            {tel.fijo && tel.fijo.map(
-              (
-                f, i
-              ) => {
-                return (
-                  <Link key={i}
-                    className={styles.button}
-                    href={`tel:${ f }`}
-                  >
-                    <span
-                      className={`material-symbols-outlined ${ styles.icon }`}
-                    >
-                  call
-                    </span>
-                    <span
-                      className={styles.tooltiptext}
-                    >
-                      {f.toString()}
-                    </span>
-                  </Link> );
-              }
-            )}
-            {carpeta.demanda.vencimientoPagare && (
+                      <span
+                        className={`material-symbols-outlined ${ styles.icon }`}
+                      >
+                      call
+                      </span>
+                      <span
+                        className={
+                          styles.tooltiptext
+                        }
+                      >
+                        {f.toString()}
+                      </span>
+                    </Link>
+                  );
+                } 
+              )}
+            {carpeta.demanda
+                  .vencimientoPagare && (
               <p
                 className={typography.labelMedium}
               >
                 {fixFechas(
-                  carpeta.demanda.vencimientoPagare
+                  carpeta.demanda
+                        .vencimientoPagare
                 )}
               </p>
             )}
@@ -224,13 +236,14 @@ export const CarpetaCard = (
               </Link>
             )}
 
-
-            {carpeta.demanda.entregagarantiasAbogado && (
+            {carpeta.demanda
+                  .entregagarantiasAbogado && (
               <p
                 className={typography.labelSmall}
               >
                 {fixFechas(
-                  carpeta.demanda.entregagarantiasAbogado
+                  carpeta.demanda
+                        .entregagarantiasAbogado
                 )}
               </p>
             )}
@@ -238,8 +251,10 @@ export const CarpetaCard = (
               {carpeta.demanda.capitalAdeudado
                 && fixMoney(
                   {
-                    valor: carpeta.demanda.capitalAdeudado
-                  }
+                    valor:
+                    carpeta.demanda
+                          .capitalAdeudado
+                  } 
                 )}
             </p>
           </div>

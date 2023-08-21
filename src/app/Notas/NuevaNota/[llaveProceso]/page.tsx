@@ -9,7 +9,7 @@ export default function NuevaNotallaveProceso(
     params
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   return (
     <div className={layout.body}>

@@ -16,18 +16,18 @@ export default function Header(
     children
   }: {
   children: React.ReactNode;
-}
+} 
 ) {
   const isDesktop = useMedia(
-    2
+    2 
   );
 
   const isMobile = useMedia(
-    0
+    0 
   );
 
   const isBigDesktop = useMedia(
-    3
+    3 
   );
 
   if ( isDesktop || isBigDesktop ) {

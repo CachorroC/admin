@@ -2,9 +2,8 @@ export type Styles = {
   actuacion: string;
   anotacion: string;
   container: string;
-  content: string;
   date: string;
-  links: string;
+  fecha: string;
 };
 
 export type ClassNames = keyof Styles;

@@ -1,29 +1,26 @@
 import { Loader } from '#@/components/Loader';
 import layout from '#@/styles/layout.module.css';
-import React, { ReactNode, Suspense } from 'react';
+import React, { ReactNode,
+                Suspense } from 'react';
 
 export default function LayoutProcesos(
   {
     children,
-    top, right,
-
+    top,
+    right
   }: {
-  children:ReactNode;
-      top: ReactNode;
-  right: ReactNode
-
-}
+  children: ReactNode;
+  top: ReactNode;
+  right: ReactNode;
+} 
 ) {
   return (
     <div className={layout.body}>
-      <div className={ layout.name }>
-        {top}
+      <div className={layout.name}>{top}</div>
+      <div className={layout.left}>
+        {children}
       </div>
-      <div className={ layout.left }>
-        { children }
-      </div>
-      <div className={ layout.right }>{ right }</div>
-
+      <div className={layout.right}>{right}</div>
     </div>
   );
 }

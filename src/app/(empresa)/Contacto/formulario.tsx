@@ -79,7 +79,7 @@ export default function Formulario() {
       <select
         {...register(
           'Title', {
-            required: true 
+            required: true
           } 
         )}
       >
@@ -91,7 +91,7 @@ export default function Formulario() {
       <input
         {...register(
           'RecibirInfo', {
-            required: true 
+            required: true
           } 
         )}
         type='radio'
@@ -100,7 +100,7 @@ export default function Formulario() {
       <input
         {...register(
           'RecibirInfo', {
-            required: true 
+            required: true
           } 
         )}
         type='radio'

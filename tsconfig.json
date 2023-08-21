@@ -17,7 +17,8 @@
     "plugins": [
       {
         "name": "next"
-      }, {
+      },
+      {
         "name": "typescript-plugin-css-modules",
         "options": {
           "customMatcher": "\\.module\\.(c|le|sa|sc)ss$",
@@ -35,6 +36,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "src/app/Procesos/@left/sinEspecificar/Judicial/validar-archivo"  ]
+    ".next/types/**/*.ts",
+    "src/app/Procesos/@left/sinEspecificar/Judicial/validar-archivo"
+  ]
 }

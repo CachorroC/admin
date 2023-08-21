@@ -23,7 +23,7 @@ export function NotaSkeleton(
     index
   }: {
   index: number;
-}
+} 
 ) {
   return (
     <div
@@ -40,7 +40,7 @@ export function NotaSkeleton(
           Nota: ... cargando
         </p>
         <sub
-          className={ `${ typography.labelSmall } ${ styles.date }` }
+          className={`${ typography.labelSmall } ${ styles.date }`}
         >
           ... cargando
         </sub>

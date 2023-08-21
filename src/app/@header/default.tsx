@@ -6,14 +6,14 @@ import { LinkCard } from '#@/components/search/link';
 import { ReactNode } from 'react';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 
-export default async function Default () {
+export default async function Default() {
   const carpetasRaw = await getCarpetas();
 
   const carpetas = [
     ...carpetasRaw
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       if ( !a.numero || a.numero === undefined ) {
         return 1;
@@ -41,9 +41,12 @@ export default async function Default () {
 
   return (
     <Header>
-      <Title/>
+      <Title />
       <Drawer>
-        <SearchOutputList path={ '/Procesos' } fechas={ carpetas } />
+        <SearchOutputList
+          path={'/Procesos'}
+          fechas={carpetas}
+        />
       </Drawer>
     </Header>
   );

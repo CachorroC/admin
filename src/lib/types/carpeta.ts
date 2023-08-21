@@ -7,66 +7,87 @@
 import { WithId } from 'mongodb';
 
 export interface IntCarpeta {
-    demanda:      Demanda;
-    category:     Category;
-    deudor:       Deudor;
-    numero:       number;
-    llaveProceso: string;
-    tipoProceso:  TipoProceso;
-    idProceso:   number;
+  demanda: Demanda;
+  category: Category;
+  deudor: Deudor;
+  numero: number;
+  llaveProceso: string;
+  tipoProceso: TipoProceso;
+  idProceso: number;
 }
 
-export type Category = 'Terminados' | 'LiosJuridicos' | 'Bancolombia' | 'Reintegra' | 'Insolvencia';
+export type Category =
+  | 'Terminados'
+  | 'LiosJuridicos'
+  | 'Bancolombia'
+  | 'Reintegra'
+  | 'Insolvencia';
 
 export interface Demanda {
-    departamento:            Departamento | null;
-    capitalAdeudado:         number | null;
-    entregagarantiasAbogado: Date;
-    etapaProcesal:           null | string;
-    fechaPresentacion?:       Date;
-    municipio:               string;
-    obligacion:              { [key: string]: number | string };
-    radicado:                string;
-    vencimientoPagare?:       Date ;
-    expediente:              string;
-    juzgados:                Juzgado[];
+  departamento: Departamento | null;
+  capitalAdeudado: number | null;
+  entregagarantiasAbogado: Date;
+  etapaProcesal: null | string;
+  fechaPresentacion?: Date;
+  municipio: string;
+  obligacion: { [key: string]: number | string };
+  radicado: string;
+  vencimientoPagare?: Date;
+  expediente: string;
+  juzgados: Juzgado[];
 }
 
 export interface Departamento {
-    idCatalogoDetalle:      number;
-    idCatalogoDetallePadre: number;
-    descripcion:            string;
-    codigo:                 string;
+  idCatalogoDetalle: number;
+  idCatalogoDetallePadre: number;
+  descripcion: string;
+  codigo: string;
 }
 
-export type Descripcion = 'CUNDINAMARCA' | 'TOLIMA';
+export type Descripcion =
+  | 'CUNDINAMARCA'
+  | 'TOLIMA';
 
 export interface Juzgado {
-    id:   number;
-    tipo: string;
-    url:  string;
+  id: number;
+  tipo: string;
+  url: string;
 }
 
 export interface Deudor {
-    tel:             Tel;
-    primerNombre:    string;
-    segundoNombre:   string;
-    primerApellido:  string;
-    segundoApellido: string;
-    cedula:          number | null;
-    direccion?:       string;
-    email?:           string;
+  tel: Tel;
+  primerNombre: string;
+  segundoNombre: string;
+  primerApellido: string;
+  segundoApellido: string;
+  cedula: number | null;
+  direccion?: string;
+  email?: string;
 }
 
 export interface Tel {
-    fijo:    number[] | null;
-    celular: number[] | null;
+  fijo: number[] | null;
+  celular: number[] | null;
 }
 
-export type TipoProceso = 'HIPOTECARIO' | 'PRENDARIO' | 'SINGULAR' | 'SINGULAR ACUMULADO CON HIPOTECARIO' | 'SINGULAR ACUM HIPOTECARIO' | '11001400308320170071700' | '25473418900120170092400' | 'PRENDARO' | ' HIPOTECARIO' | 'HMM PISO 1' | '  SINGULAR' | 'HIPOTECARIA' | 'HIPOTECARO' | 'SINGULAR ACUMULADO CON HIPOTECARIO CAJA SOCIAL' | 'SOACHA';
+export type TipoProceso =
+  | 'HIPOTECARIO'
+  | 'PRENDARIO'
+  | 'SINGULAR'
+  | 'SINGULAR ACUMULADO CON HIPOTECARIO'
+  | 'SINGULAR ACUM HIPOTECARIO'
+  | '11001400308320170071700'
+  | '25473418900120170092400'
+  | 'PRENDARO'
+  | ' HIPOTECARIO'
+  | 'HMM PISO 1'
+  | '  SINGULAR'
+  | 'HIPOTECARIA'
+  | 'HIPOTECARO'
+  | 'SINGULAR ACUMULADO CON HIPOTECARIO CAJA SOCIAL'
+  | 'SOACHA';
 
-export interface MonCarpeta extends IntCarpeta
-{
+export interface MonCarpeta extends IntCarpeta {
   _id: string;
   nombre: string;
   fecha?: Date;
@@ -76,7 +97,6 @@ export type CarpetaKeys = keyof IntCarpeta;
 
 // Converts JSON strings to/from your types
 export class carpetaConvert {
-
   public static toMonCarpeta(
     carpeta: WithId<IntCarpeta>
   ): MonCarpeta {
@@ -104,10 +124,10 @@ export class carpetaConvert {
   ): MonCarpeta[] {
     const newCarpetas = carpetas.map(
       (
-        carpeta
+        carpeta 
       ) => {
         return this.toMonCarpeta(
-          carpeta
+          carpeta 
         );
       }
     );
@@ -118,7 +138,7 @@ export class carpetaConvert {
     json: string
   ): IntCarpeta[] {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -126,16 +146,15 @@ export class carpetaConvert {
     value: IntCarpeta[]
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
-
 
   public static toIntCarpeta(
     json: string
   ): IntCarpeta {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -143,15 +162,15 @@ export class carpetaConvert {
     value: IntCarpeta
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toDemanda(
-    json: string
+    json: string 
   ): Demanda {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -159,15 +178,15 @@ export class carpetaConvert {
     value: Demanda
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toJuzgado(
-    json: string
+    json: string 
   ): Juzgado {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -175,15 +194,15 @@ export class carpetaConvert {
     value: Juzgado
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toDeudor(
-    json: string
+    json: string 
   ): Deudor {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -191,23 +210,23 @@ export class carpetaConvert {
     value: Deudor
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toTel(
-    json: string
+    json: string 
   ): Tel {
     return JSON.parse(
-      json
+      json 
     );
   }
 
   public static telToJson(
-    value: Tel
+    value: Tel 
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 }
@@ -225,7 +244,7 @@ export class NombreCompleto {
     primerApellido: string;
     segundoNombre: string | null;
     segundoApellido: string | null;
-  }
+  } 
   ) {
     this.Nombre = segundoApellido
       ? segundoNombre

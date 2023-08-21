@@ -10,7 +10,7 @@ export function DeleteNoteButton(
     id
   }: {
   id: string;
-}
+} 
 ) {
   async function deleteRequestHandler() {
     const Request = await fetch(
@@ -27,8 +27,8 @@ export function DeleteNoteButton(
     const Response = await Request.json();
     alert(
       JSON.stringify(
-        Response
-      )
+        Response 
+      ) 
     );
   }
 
@@ -53,7 +53,7 @@ export function AddNoteButton(
   }: {
   nota: intNota;
   uri: string;
-}
+} 
 ) {
   async function addRequestHandler() {
     const Request = await fetch(
@@ -64,20 +64,20 @@ export function AddNoteButton(
           'content-type': 'application/json'
         },
         body: JSON.stringify(
-          nota
+          nota 
         )
       }
     )
           .then(
             (
-              fullfilled
+              fullfilled 
             ) => {
               alert(
-                fullfilled.status
+                fullfilled.status 
               );
 
               return fullfilled;
-            }
+            } 
           );
 
     if ( !Request.ok ) {
@@ -87,8 +87,8 @@ export function AddNoteButton(
     const Response = await Request.json();
     alert(
       JSON.stringify(
-        Response
-      )
+        Response 
+      ) 
     );
   }
 
@@ -111,7 +111,7 @@ export function EditNoteButton(
     nota
   }: {
   nota: monNota;
-}
+} 
 ) {
   return (
     <Link

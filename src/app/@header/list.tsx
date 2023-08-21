@@ -6,7 +6,6 @@ import { Loader } from '#@/components/Loader';
 import { LinkCard } from '#@/components/search/link';
 import { fixFechas } from '#@/lib/fix';
 import CardSkeleton from '#@/components/card/card-skeleton';
-import { FechaActuacionComponent } from '#@/components/Actuacion/ultima-actuacion-component';
 
 export async function ListDrawer() {
   const carpetasRaw = await getCarpetas();
@@ -15,7 +14,7 @@ export async function ListDrawer() {
     ...carpetasRaw
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -43,17 +42,19 @@ export async function ListDrawer() {
 
   return (
     <>
-      {
-        carpetas.map(
-          (
-            carpeta, index
-          ) => {
-            return (
-              <LinkCard key={carpeta._id} path={ '/Procesos' } carpeta={ carpeta } />
-            );
-          }
-        )
-      }
+      {carpetas.map(
+        (
+          carpeta, index 
+        ) => {
+          return (
+            <LinkCard
+              key={carpeta._id}
+              path={'/Procesos'}
+              carpeta={carpeta}
+            />
+          );
+        } 
+      )}
     </>
   );
 }

@@ -11,7 +11,7 @@ export default async function PageProcesosllaveProcesoidProceso(
     llaveProceso: string;
     idProceso: number;
   };
-}
+} 
 ) {
   const carpeta = await getCarpetasByllaveProceso(
     {

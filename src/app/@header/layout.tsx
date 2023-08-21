@@ -7,10 +7,12 @@ import { ReactNode, Suspense } from 'react';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 
-export default async function Layout (
+export default async function Layout(
   {
     children
-  }: {children: ReactNode}
+  }: {
+  children: ReactNode;
+} 
 ) {
   const carpetas = await getCarpetas();
 
@@ -18,8 +20,13 @@ export default async function Layout (
     <Header>
       {children}
       <Drawer>
-        <Suspense fallback={<SearchOutputListSkeleton />}>
-          <SearchOutputList path={ '/Procesos' } fechas={ carpetas} />
+        <Suspense
+          fallback={<SearchOutputListSkeleton />}
+        >
+          <SearchOutputList
+            path={'/Procesos'}
+            fechas={carpetas}
+          />
         </Suspense>
       </Drawer>
     </Header>

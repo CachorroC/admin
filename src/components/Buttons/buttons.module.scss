@@ -1,7 +1,8 @@
-.buttonsRow{
+.buttonsRow {
   flex: 1 1 100%;
 }
-.button, .active {
+.button,
+.active {
   border: none;
   border-radius: 2vmin;
   flex: 1 1 auto;
@@ -16,7 +17,8 @@
     @extend .button;
     grid-area: forwardButton;
     background-color: var(--primary-container);
-    & > .icon, & > .text {
+    & > .icon,
+    & > .text {
       color: var(--on-primary-container);
     }
   }
@@ -24,7 +26,8 @@
     @extend .button;
     background-color: var(--primary-container);
     grid-area: backwardsButton;
-    & > .icon, & > .text {
+    & > .icon,
+    & > .text {
       color: var(--on-primary-container);
     }
   }
@@ -33,7 +36,8 @@
     @extend .button;
     grid-area: drawerMenuButton;
     background-color: var(--primary-container);
-    & > .icon, & > .text {
+    & > .icon,
+    & > .text {
       color: var(--on-primary-container);
     }
   }
@@ -42,7 +46,8 @@
     @extend .button;
     grid-area: drawerMenuButton;
     background-color: var(--primary-container);
-    & > .icon, & > .text {
+    & > .icon,
+    & > .text {
       color: var(--on-primary-container);
     }
   }
@@ -51,7 +56,8 @@
     grid-area: homeButton;
     box-shadow: var(--dp2);
     background-color: var(--primary);
-    & > .icon, & > .text {
+    & > .icon,
+    & > .text {
       color: var(--on-primary);
     }
   }
@@ -75,6 +81,6 @@
     }
   }
 }
-.active{
+.active {
   background-color: var(--tertiary-container);
 }

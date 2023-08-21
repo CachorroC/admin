@@ -1,6 +1,6 @@
 import searchbar from '#@/components/search/searchbar.module.scss';
 import typography from '#@/styles/fonts/typography.module.scss';
-import  form  from '#@/components/form/form.module.scss';
+import form from '#@/components/form/form.module.scss';
 import styles from '#@/components/card/card.module.scss';
 
 export default function LinkCardSkeleton() {

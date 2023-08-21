@@ -19,14 +19,14 @@ export default function Drawer(
     children
   }: {
   children: ReactNode;
-}
+} 
 ) {
   const isDesktop = useMedia(
-    2
+    2 
   );
 
   const isMobile = useMedia(
-    0
+    0 
   );
 
   const [
@@ -39,21 +39,15 @@ export default function Drawer(
     if ( isMobile ) {
       return (
         <nav className={navbar.drawer}>
-
           <DrawerMenuButton />
-
 
           <Title />
 
-
           <ForwardButton />
-
 
           <BackwardsButton />
 
-
           <InputSearchBar />
-
 
           <HomeButton />
 
@@ -66,12 +60,9 @@ export default function Drawer(
 
     return (
       <nav className={navbar.drawer}>
-
         <InputSearchBar />
 
-
         <DrawerMenuButton />
-
 
         <Title />
 

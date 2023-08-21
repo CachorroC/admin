@@ -10,17 +10,17 @@ export default function ModalDialog(
     children
   }: {
   children: ReactNode;
-}
+} 
 ) {
   const [
     isOpen,
     setShow
   ] = useState(
-    false
+    false 
   );
 
   const ref = useRef<HTMLDialogElement>(
-    null
+    null 
   );
 
   useEffect(
@@ -37,7 +37,7 @@ export default function ModalDialog(
       };
     }, [
       isOpen
-    ]
+    ] 
   );
 
   return (
@@ -45,7 +45,7 @@ export default function ModalDialog(
       <button
         onClick={() => {
           setShow(
-            false
+            false 
           );
         }}
       >
@@ -62,7 +62,7 @@ export default function ModalDialog(
       <button
         onClick={() => {
           return setShow(
-            true
+            true 
           );
         }}
       >

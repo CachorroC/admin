@@ -44,8 +44,6 @@ const defaultDemanda: Demanda = {
     idCatalogoDetallePadre: 1,
     idCatalogoDetalle     : 13,
     codigo                : '25'
-
-
   },
   capitalAdeudado: 10000000,
   expediente     : '12345678912345678912345'
@@ -69,31 +67,34 @@ const defaultDeudor: Deudor = {
   cedula: 1022352429
 };
 
-
 const defaultValues: DefaultValues<IntCarpeta> = {
-
   demanda     : defaultDemanda,
   deudor      : defaultDeudor,
   category    : 'Bancolombia',
   idProceso   : 0,
   llaveProceso: '12345678912345678912345',
   numero      : 574,
-  tipoProceso : 'SINGULAR',
-
+  tipoProceso : 'SINGULAR'
 };
 
 export const NuevoProceso = (
   {
-    uri, descripciones, despachos, carpeta
+    uri,
+    descripciones,
+    despachos,
+    carpeta
   }: {
-      uri: string; descripciones: Departamento[]; despachos: Despacho[], carpeta?: IntCarpeta
-}
+  uri: string;
+  descripciones: Departamento[];
+  despachos: Despacho[];
+  carpeta?: IntCarpeta;
+} 
 ) => {
   const methods = useForm<IntCarpeta>(
     {
       defaultValues,
       values: carpeta
-    }
+    } 
   );
 
   const {
@@ -117,17 +118,17 @@ export const NuevoProceso = (
   const onSubmit: SubmitHandler<
     IntCarpeta
   > = async (
-    data
+    data 
   ) => {
     alert(
       JSON.stringify(
-        dirtyFields
-      )
+        dirtyFields 
+      ) 
     );
     alert(
       JSON.stringify(
-        data
-      )
+        data 
+      ) 
     );
 
     const postNewNote = await fetch(
@@ -138,13 +139,13 @@ export const NuevoProceso = (
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(
-          data
+          data 
         )
       }
     );
 
     return console.log(
-      data
+      data 
     );
   };
 
@@ -154,53 +155,57 @@ export const NuevoProceso = (
     <NuevaCarpetaProvider>
       <FormProvider {...methods}>
         <div className={form.container}>
-
           <pre>
-            {
-              JSON.stringify(
-                {
-                  errors,
-                  dirtyFields,
-                  submitCount,
-                  isSubmitting,
-                  isSubmitSuccessful,
-                  isLoading,
-                  carpeta
-                },
-                null,
-                2
-              )
-            }</pre>
+            {JSON.stringify(
+              {
+                errors,
+                dirtyFields,
+                submitCount,
+                isSubmitting,
+                isSubmitSuccessful,
+                isLoading,
+                carpeta
+              },
+              null,
+              2
+            )}
+          </pre>
 
           <form
             className={form.form}
             onSubmit={handleSubmit(
-              onSubmit
+              onSubmit 
             )}
           >
-
-            <section className={ form.section }>
+            <section className={form.section}>
               <DeudorFormComponent />
             </section>
-            <section className={ form.section }>
-              { descripciones.map(
+            <section className={form.section}>
+              {descripciones.map(
                 (
-                  descr, i
+                  descr, i 
                 ) => {
                   return (
-                    <button key={ descr.codigo } type='button' className={ form.selectArea } onClick={ () => {
-                      setValue(
-                        'demanda.departamento', descr
-                      );
-                    } }>
-                      <strong>{ descr.descripcion}</strong>
-
+                    <button
+                      key={descr.codigo}
+                      type='button'
+                      className={form.selectArea}
+                      onClick={() => {
+                        setValue(
+                          'demanda.departamento',
+                          descr
+                        );
+                      }}
+                    >
+                      <strong>
+                        {descr.descripcion}
+                      </strong>
                     </button>
                   );
-                }
+                } 
               )}
             </section>
-            <Fields options={ despachos} />
+            <Fields options={despachos} />
 
             <SelectSection
               name={'category'}
@@ -213,7 +218,6 @@ export const NuevoProceso = (
                 'Terminados'
               ]}
             />
-
 
             <SelectSection
               name={'tipoProceso'}
@@ -240,7 +244,6 @@ export const NuevoProceso = (
           </form>
         </div>
       </FormProvider>
-
     </NuevaCarpetaProvider>
   );
 };

@@ -1,26 +1,28 @@
 import { Collection, ObjectId } from 'mongodb';
-import { carpetasCollection, getCarpetas, getCarpetasByllaveProceso } from '../Carpetas';
+import { carpetasCollection,
+         getCarpetas,
+         getCarpetasByllaveProceso } from '../Carpetas';
 import { fetchDespachos } from '../global/Despachos';
 import { sleep } from '../fix';
 import clientPromise from '../mongodb';
-import {  procesosConvert } from '../types/procesos';
+import { procesosConvert } from '../types/procesos';
 
 export const procesosCollection = async () => {
   const client = await clientPromise;
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico'
+      'no hay cliente mongólico' 
     );
   }
 
   const db = client.db(
-    'RyS'
+    'RyS' 
   );
 
   const carpetas
     = db.collection<intProceso>(
-      'Procesos'
+      'Procesos' 
     );
 
   return carpetas;
@@ -33,10 +35,12 @@ export async function fetchProceso(
   }: {
   llaveProceso: string;
   index: number;
-}
+} 
 ) {
-
-  if ( llaveProceso.length < 23 || llaveProceso === 'sinEspecificar' ) {
+  if (
+    llaveProceso.length < 23
+    || llaveProceso === 'sinEspecificar'
+  ) {
     console.log(
       `${ index }: esta llaveProceso es menos de 23: ${ llaveProceso }`
     );
@@ -59,9 +63,10 @@ export async function fetchProceso(
 
     const json = await req.json();
 
-    const res = procesosConvert.toConsultaNumeroRadicacion(
-      json
-    );
+    const res
+      = procesosConvert.toConsultaNumeroRadicacion(
+        json
+      );
 
     const procesos = res.procesos;
 
@@ -73,24 +78,24 @@ export async function fetchProceso(
       );
     }
     console.log(
-      `${ e }`
+      `${ e }` 
     );
 
     return null;
   }
 }
 
-export async function  getProceso(
+export async function getProceso(
   {
     llaveProceso,
     index
   }: {
   llaveProceso: string;
   index: number;
-}
+} 
 ) {
   console.time(
-    `proceso ${ index }`
+    `proceso ${ index }` 
   );
   console.log(
     `inicia el tiempo para proceso ${ index }`
@@ -98,7 +103,7 @@ export async function  getProceso(
 
   const awaitTime = 1000;
   await sleep(
-    awaitTime
+    awaitTime 
   );
 
   const collection = await procesosCollection();
@@ -107,11 +112,10 @@ export async function  getProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
-    }
+    } 
   );
 
   if ( fetchP ) {
-
     for ( let i = 0; i < fetchP.length; i++ ) {
       const proceso = fetchP[ i ];
 
@@ -127,7 +131,10 @@ export async function  getProceso(
         }
       );
 
-      if ( updt.modifiedCount > 0 || updt.upsertedCount > 0 ) {
+      if (
+        updt.modifiedCount > 0
+        || updt.upsertedCount > 0
+      ) {
         console.log(
           ` se actualizaron ${ updt.modifiedCount } carpetas con proceso y se insertaron ${ updt.upsertedCount } carpetas nuevas `
         );
@@ -135,7 +142,7 @@ export async function  getProceso(
     }
   }
   console.timeEnd(
-    `proceso ${ index }`
+    `proceso ${ index }` 
   );
 
   return fetchP;

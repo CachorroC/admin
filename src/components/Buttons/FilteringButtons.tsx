@@ -23,34 +23,41 @@ export const CategoryFilterButton = () => {
     'gavel',
     'money_off',
     'clear_all'
-
   ];
 
   return (
-    <>{
-      categorias.map(
+    <>
+      {categorias.map(
         (
-          categoria, index
+          categoria, index 
         ) => {
           return (
-            <button key={index} onClick={
-              () => {
+            <button
+              key={index}
+              onClick={() => {
                 setCategory(
-                  categoria
+                  categoria 
                 );
+              }}
+              type='button'
+              className={
+                category === categoria
+                  ? styles.active
+                  : styles.button
               }
-            } type='button' className={ category === categoria
-              ? styles.active
-              : styles.button }>
-              <span className={ `material-symbols-outlined ${ styles.icon }` }>
+            >
+              <span
+                className={`material-symbols-outlined ${ styles.icon }`}
+              >
                 {icons[ index ]}
               </span>
-              <p className={styles.text}>{categoria}</p>
+              <p className={styles.text}>
+                {categoria}
+              </p>
             </button>
           );
-        }
-      )
-    }
+        } 
+      )}
     </>
   );
 };

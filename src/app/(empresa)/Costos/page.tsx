@@ -112,7 +112,7 @@ export default function Costos() {
                     {...register(
                     `cart.${ index }.name` as const,
                     {
-                      required: true 
+                      required: true
                     }
                     )}
                     className={

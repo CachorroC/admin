@@ -4,7 +4,6 @@ import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { CategoryFilterButton } from '#@/components/Buttons/FilteringButtons';
 
 export default async function PageProcesos() {
-
   return (
     <>
       <h1 className={typography.displayLarge}>
@@ -12,10 +11,9 @@ export default async function PageProcesos() {
       </h1>
       <CategoryFilterButton />
 
-
       <NewNota
         llaveProceso={'Procesos'}
-        uri={ getBaseUrl() }
+        uri={getBaseUrl()}
       />
     </>
   );

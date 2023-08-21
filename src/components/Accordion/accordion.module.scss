@@ -1,9 +1,9 @@
 .accordion {
   flex: 0 1 50%;
-  .item{
+  .item {
     background-color: var(--primary-container);
-    .title{
-      color: var(--on-primary-container)
+    .title {
+      color: var(--on-primary-container);
     }
   }
 }

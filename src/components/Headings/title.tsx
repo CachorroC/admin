@@ -9,7 +9,7 @@ export default function Title(
     helper
   }: {
   helper?: string;
-}
+} 
 ) {
   const isOnline = useOnlineStatus();
 
@@ -75,7 +75,7 @@ export default function Title(
     : days[ today.getDay() ]
       + ' '
       + fixFechas(
-        today.toString()
+        today.toString() 
       );
 
   return (

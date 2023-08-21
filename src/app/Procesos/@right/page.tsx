@@ -14,24 +14,24 @@ async function ProcesoComponent(
   }: {
   llaveProceso: string;
   index: number;
-}
+} 
 ) {
   const procesos = await getProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
-    }
+    } 
   );
 
-  if ( !procesos ){
+  if ( !procesos ) {
     return null;
   }
 
   return (
     <>
-      { procesos.map(
+      {procesos.map(
         (
-          proceso
+          proceso 
         ) => {
           return (
             <ProcesoCard
@@ -39,7 +39,7 @@ async function ProcesoComponent(
               proceso={proceso}
             />
           );
-        }
+        } 
       )}
     </>
   );
@@ -52,13 +52,16 @@ export default async function PageProcesosRight() {
     <>
       {carpetas.map(
         (
-
-          carpeta, index
+          carpeta, index 
         ) => {
           return (
             <Suspense
               key={carpeta._id}
-              fallback={<ProcesoCardSkeleton key={carpeta._id} />}
+              fallback={
+                <ProcesoCardSkeleton
+                  key={carpeta._id}
+                />
+              }
             >
               <ProcesoComponent
                 key={carpeta._id}
@@ -67,7 +70,7 @@ export default async function PageProcesosRight() {
               />
             </Suspense>
           );
-        }
+        } 
       )}
     </>
   );

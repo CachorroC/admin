@@ -3,7 +3,8 @@
 import { useNuevaCarpetaContext } from '#@/hooks/formContext';
 import { IntCarpeta } from '#@/lib/types/carpeta';
 import { HTMLInputTypeAttribute } from 'react';
-import { FieldPath, RegisterOptions,
+import { FieldPath,
+         RegisterOptions,
          useController,
          useFormContext } from 'react-hook-form';
 import form from '#@/components/form/form.module.css';
@@ -15,28 +16,28 @@ export const SelectSection = (
     title,
     options
   }: {
-  name:  FieldPath<IntCarpeta>;
+  name: FieldPath<IntCarpeta>;
   title: string;
   options: string[];
-}
+} 
 ) => {
   const rules = {
     required: true
   };
 
   const {
-    register, control,
+    register, control 
   }
     = useFormContext<IntCarpeta>();
 
   const {
-    field, fieldState
+    field, fieldState 
   } = useController(
     {
       name,
       control,
       rules
-    }
+    } 
   );
 
   return (
@@ -49,12 +50,12 @@ export const SelectSection = (
       </label>
 
       <select
-        { ...register }
+        {...register}
         className={form.selectArea}
       >
         {options.map(
           (
-            option, index
+            option, index 
           ) => {
             return (
               <option
@@ -64,7 +65,7 @@ export const SelectSection = (
                 {option}
               </option>
             );
-          }
+          } 
         )}
       </select>
     </section>

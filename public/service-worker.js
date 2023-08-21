@@ -1,5 +1,7 @@
 const OFFLINE_VERSION = 1;
+
 const CACHE_NAME = 'offline';
+
 const OFFLINE_URL = 'offline.html';
 self.addEventListener(
   'install', (
@@ -12,7 +14,9 @@ self.addEventListener(
         );
         await cache.add(
           new Request(
-            OFFLINE_URL, { cache: 'reload' } 
+            OFFLINE_URL, {
+              cache: 'reload'
+            } 
           )
         );
       } )()

@@ -1,5 +1,4 @@
 declare const styles: {
-  readonly 'primaryColor': string;
+  readonly primaryColor: string;
 };
 export = styles;
-

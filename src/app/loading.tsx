@@ -16,7 +16,9 @@ export default function Loading() {
         </h1>
       </div>
       <div className={layout.left}>
-        <Loader key={0} /> <Loader key={1}/> <Loader key={2} /><Loader  key={3}/>
+        <Loader key={0} /> <Loader key={1} />{' '}
+        <Loader key={2} />
+        <Loader key={3} />
       </div>
     </div>
   );
