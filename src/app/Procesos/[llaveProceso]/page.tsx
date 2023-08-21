@@ -10,13 +10,13 @@ async function Acts(
     idProceso
   }: {
   idProceso: number;
-} 
+}
 ) {
   const actuaciones = await getActuaciones(
     {
       idProceso: idProceso,
       index    : 1
-    } 
+    }
   );
 
   return (
@@ -24,22 +24,41 @@ async function Acts(
       {actuaciones
         && actuaciones.map(
           (
-            act, i, arr 
+            act, i, arr
           ) => {
             const {
-              idRegActuacion 
+              idRegActuacion
             } = act;
+
 
             return (
               <ActuacionCard
-                Actuacion={act}
+                act={act}
                 key={i}
               />
             );
-          } 
+          }
         )}
     </>
   );
+}
+
+export async function generateMetadata(
+  {
+    params
+  }: {params: {llaveProceso: string}}
+) {
+  const carpeta = await getCarpetasByllaveProceso(
+    {
+      llaveProceso: params.llaveProceso
+    }
+  );
+
+  return {
+    title: `${ carpeta
+      ? carpeta.nombre
+      : 'Null' }`,
+  };
 }
 
 export default async function PageProcesosLeftllaveProceso(
@@ -49,7 +68,7 @@ export default async function PageProcesosLeftllaveProceso(
   params: {
     llaveProceso: string;
   };
-} 
+}
 ) {
   const Carpeta = await getCarpetasByllaveProceso(
     {

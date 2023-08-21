@@ -1,15 +1,15 @@
 import { fixFechas } from '#@/lib/fix';
-import { intActuacion } from '#@/lib/types/procesos';
 import styles from './actuaciones.module.css';
 import typography from '#@/styles/fonts/typography.module.css';
 import Link from 'next/link';
+import { Actuacion } from '#@/lib/types/actuaciones';
 
 export const ActuacionCard = (
   {
-    Actuacion
+    act
   }: {
-  Actuacion: intActuacion;
-} 
+  act:  Actuacion;
+}
 ) => {
   const {
     idRegActuacion,
@@ -24,7 +24,7 @@ export const ActuacionCard = (
     codRegla,
     conDocumentos,
     cant
-  } = Actuacion;
+  } = act;
 
   return (
     <div className={styles.container}>
@@ -33,13 +33,13 @@ export const ActuacionCard = (
           className={`${ typography.titleMedium } ${ styles.title }`}
         >
           {actuacion.replace(
-            /\s+/g, ' ' 
+            /\s+/g, ' '
           )}
         </h1>
         {anotacion && (
           <p className={typography.bodyMedium}>
             {anotacion.replace(
-              /\s+/g, ' ' 
+              /\s+/g, ' '
             )}
           </p>
         )}
@@ -47,7 +47,7 @@ export const ActuacionCard = (
           className={`${ typography.labelSmall } ${ styles.sub }`}
         >{`${ consActuacion } de ${ cant }`}</sub>
         <Link
-          href={`/Notas/NuevaNota/${ llaveProceso }`}
+          href={`/Notas/${ llaveProceso }/NuevaNota`}
           className={styles.button}
         >
           <span
@@ -60,7 +60,7 @@ export const ActuacionCard = (
           className={`${ typography.labelMedium } ${ styles.date }`}
         >
           {fixFechas(
-            fechaActuacion 
+            fechaActuacion
           )}
         </sup>
       </div>
@@ -70,28 +70,28 @@ export const ActuacionCard = (
 
 export const ActuacionesList = (
   {
-    Actuaciones
+    actuaciones
   }: {
-  Actuaciones: intActuacion[];
-} 
+  actuaciones: Actuacion[];
+}
 ) => {
   return (
     <>
-      {Actuaciones.map(
+      {actuaciones.map(
         (
-          Actuacion, ind, arr 
+          act, ind, arr
         ) => {
           const {
-            idRegActuacion 
-          } = Actuacion;
+            idRegActuacion
+          } = act;
 
           return (
             <ActuacionCard
-              Actuacion={Actuacion}
+              act={act}
               key={idRegActuacion}
             />
           );
-        } 
+        }
       )}
     </>
   );

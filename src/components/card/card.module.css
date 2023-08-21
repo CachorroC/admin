@@ -47,9 +47,7 @@
 }
 .isActive .cardFront,
 .notActive .cardFront {
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
   color: var(--on-surface-variant);
 }
 .isActive .cardBack,
@@ -59,17 +57,13 @@
 }
 
 .notActive {
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
   color: var(--on-surface);
   box-shadow: none;
 }
 
 .isActive {
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
   color: var(--on-secondary-container);
   box-shadow: none;
   border: 2px solid var(--outline-variant);
@@ -83,9 +77,7 @@
 
 .updated {
   grid-area: date;
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
   box-shadow: var(--dp12);
   padding: 2cqmin;
   color: var(--on-surface);
@@ -167,22 +159,16 @@
   width: 48%;
 }
 
-.isActive:link,
-.isActive:visited {
+.isActive:link, .isActive:visited {
   background-color: var(--primary-container);
   color: var(--on-primary-container);
   box-shadow: var(--dp0);
 }
-.isActive:link .icon,
-.isActive:visited .icon {
+.isActive:link .icon, .isActive:visited .icon {
   margin: 0;
   grid-area: icon;
   color: var(--on-primary-container);
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 300,
-    'GRAD' 0,
-    'opsz' 24;
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
 }
 
 .link {
@@ -197,17 +183,11 @@
   margin: 0;
   grid-area: icon;
   color: var(--secondary);
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 300,
-    'GRAD' 0,
-    'opsz' 24;
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
 }
 .link:hover {
   box-shadow: var(--dp8);
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
 }
 .link:hover > p {
   color: var(--primary);
@@ -215,23 +195,15 @@
 }
 .link:hover .icon {
   color: var(--tertiary);
-  font-variation-settings:
-    'FILL' 1,
-    'wght' 500,
-    'GRAD' 200,
-    'opsz' 48;
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 200, "opsz" 48;
 }
 .link:focus {
   box-shadow: var(--dp20);
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
   border: 2px dashed var(--primary-container);
 }
 .link:active {
-  background-color: var(
-    --ssurface-container-high
-  );
+  background-color: var(--ssurface-container-high);
   box-shadow: var(--dp3);
 }
 .link > .tooltiptext {
@@ -251,29 +223,23 @@
   transition: all 0.5s;
 }
 .link > .tooltiptext::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 100%;
   left: 50%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent
-    transparent;
+  border-color: #555 transparent transparent transparent;
 }
 .link > .icon {
   margin: 0;
   grid-area: icon;
   color: var(--on-tertiary-container);
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 300,
-    'GRAD' 0,
-    'opsz' 24;
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
   font-size: 1.5rem;
 }
-.link:hover .tooltiptext,
-.link:active .tooltiptext {
+.link:hover .tooltiptext, .link:active .tooltiptext {
   visibility: visible;
   opacity: 1;
 }

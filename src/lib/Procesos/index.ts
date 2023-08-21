@@ -5,24 +5,25 @@ import { carpetasCollection,
 import { fetchDespachos } from '../global/Despachos';
 import { sleep } from '../fix';
 import clientPromise from '../mongodb';
-import { procesosConvert } from '../types/procesos';
+import { Proceso,
+         procesosConvert } from '../types/procesos';
 
 export const procesosCollection = async () => {
   const client = await clientPromise;
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico' 
+      'no hay cliente mongólico'
     );
   }
 
   const db = client.db(
-    'RyS' 
+    'RyS'
   );
 
   const carpetas
-    = db.collection<intProceso>(
-      'Procesos' 
+    = db.collection<Proceso>(
+      'Procesos'
     );
 
   return carpetas;
@@ -35,7 +36,7 @@ export async function fetchProceso(
   }: {
   llaveProceso: string;
   index: number;
-} 
+}
 ) {
   if (
     llaveProceso.length < 23
@@ -65,7 +66,9 @@ export async function fetchProceso(
 
     const res
       = procesosConvert.toConsultaNumeroRadicacion(
-        json
+        JSON.stringify(
+          json
+        )
       );
 
     const procesos = res.procesos;
@@ -78,7 +81,7 @@ export async function fetchProceso(
       );
     }
     console.log(
-      `${ e }` 
+      `${ e }`
     );
 
     return null;
@@ -92,10 +95,10 @@ export async function getProceso(
   }: {
   llaveProceso: string;
   index: number;
-} 
+}
 ) {
   console.time(
-    `proceso ${ index }` 
+    `proceso ${ index }`
   );
   console.log(
     `inicia el tiempo para proceso ${ index }`
@@ -103,7 +106,7 @@ export async function getProceso(
 
   const awaitTime = 1000;
   await sleep(
-    awaitTime 
+    awaitTime
   );
 
   const collection = await procesosCollection();
@@ -112,7 +115,7 @@ export async function getProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
-    } 
+    }
   );
 
   if ( fetchP ) {
@@ -136,13 +139,13 @@ export async function getProceso(
         || updt.upsertedCount > 0
       ) {
         console.log(
-          ` se actualizaron ${ updt.modifiedCount } carpetas con proceso y se insertaron ${ updt.upsertedCount } carpetas nuevas `
+          ` se actualizaron ${ updt.modifiedCount } procesos y se insertaron ${ updt.upsertedCount } procesosn nuevos  `
         );
       }
     }
   }
   console.timeEnd(
-    `proceso ${ index }` 
+    `proceso ${ index }`
   );
 
   return fetchP;

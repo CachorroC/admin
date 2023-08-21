@@ -7,17 +7,13 @@ import styles from '#@/components/Actuacion/actuacion.module.scss';
 
 export const FechaActuacionComponent = async (
   {
-    carpeta,
+    idProceso,
     index
   }: {
-  carpeta: MonCarpeta;
+  idProceso: number;
   index: number;
 } 
 ) => {
-  const {
-    idProceso 
-  } = carpeta;
-
   const actuaciones = await getActuaciones(
     {
       idProceso: idProceso,
@@ -48,10 +44,7 @@ export const FechaActuacionComponent = async (
             {ultimaActuacion.anotacion}
           </p>
         )}
-        <sub
-          className={styles.fecha}
-          key={carpeta._id}
-        >
+        <sub className={styles.fecha}>
           {`actuacion registrada el: ${ fixFechas(
             ultimaActuacion.fechaActuacion
           ) }`}

@@ -12,13 +12,13 @@ export default async function Page(
     llaveProceso: string;
     idProceso: number;
   };
-} 
+}
 ) {
   const actuaciones = await getActuaciones(
     {
       idProceso: params.idProceso,
       index    : 1
-    } 
+    }
   );
 
   if ( params.idProceso === 1 || !actuaciones ) {
@@ -29,11 +29,11 @@ export default async function Page(
     <>
       {actuaciones.map(
         (
-          actuacion, index, arr 
+          actuacion, index, arr
         ) => {
           return (
             <ActuacionCard
-              Actuacion={actuacion}
+              act={actuacion}
               key={actuacion.idRegActuacion}
             />
           );

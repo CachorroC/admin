@@ -7,10 +7,10 @@ import { Actuacion,
 
 export const fetchActuaciones = cache(
   async (
-    idProceso: number 
+    idProceso: number
   ) => {
     try {
-      const Request = await fetch(
+      const request = await fetch(
         `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
         {
           next: {
@@ -19,27 +19,37 @@ export const fetchActuaciones = cache(
         }
       );
 
-      if ( !Request.ok ) {
-        console.log(
-          ` actuaciones not ok, status: ${ Request.status } with ${ Request.statusText } idProceso: ${ idProceso }`
-        );
+      if ( !request.ok ) {
+        /*  console.log(
+          ` actuaciones not ok, status: ${ request.status } with ${ request.statusText } idProceso: ${ idProceso }`
+        ); */
 
-        return null;
+        throw new Error(
+          ` actuaciones not ok, status: ${ request.status } with ${ request.statusText } idProceso: ${ idProceso }`
+        );
       }
 
-      const json = await Request.json();
+      const json = await request.json();
 
       const consulta
         = actuacionConvert.toConsultaActuacion(
-          json
+          JSON.stringify(
+            json
+          )
         );
 
       const actuaciones = consulta.actuaciones;
 
       return actuaciones;
     } catch ( error ) {
+      if ( error instanceof Error ) {
+        console.log(
+          `${ idProceso }: error en la conexion network del fetchActuaciones ${ error.name } : ${ error.message }`
+        );
+      }
       console.log(
-        `error en de red en el try catch de getActuaciones: ${ error }`
+        `error en de red en el try catch de fetchActuaciones  =>
+         ${ error }`
       );
 
       return null;
@@ -55,18 +65,20 @@ export const getActuaciones = cache(
     }: {
     idProceso: number;
     index: number;
-  } 
+  }
   ) => {
     console.time(
-      `actuacion ${ index }` 
+      `actuacion ${ index === 1
+        ? idProceso
+        : index }`
     );
     console.log(
       `inicia el tiempo para actuacion ${ index }`
     );
 
-    const awaitTime = 1000;
+    const awaitTime = index * 1000;
     await sleep(
-      awaitTime 
+      awaitTime
     );
 
     const actuaciones = await fetchActuaciones(
@@ -78,11 +90,13 @@ export const getActuaciones = cache(
         {
           idProceso  : idProceso,
           actuaciones: actuaciones
-        } 
+        }
       );
     }
     console.timeEnd(
-      `actuacion ${ index }` 
+      `actuacion ${ index === 1
+        ? idProceso
+        : index }`
     );
 
     return actuaciones;
@@ -97,7 +111,7 @@ export const updateActuaciones = cache(
     }: {
     idProceso: number;
     actuaciones: Actuacion[];
-  } 
+  }
   ) => {
     const collection = await carpetasCollection();
 

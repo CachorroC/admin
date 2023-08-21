@@ -27,16 +27,16 @@ export default async function PageProcesosLeft() {
     ...carpetasRaw
   ].sort(
     (
-      a, b 
+      a, b
     ) => {
       const typeofA = typeof a.fecha;
       console.log(
-        typeofA 
+        typeofA
       );
 
       const typeofB = typeof b.fecha;
       console.log(
-        typeofB 
+        typeofB
       );
 
       if ( !a.fecha || a.fecha === undefined ) {
@@ -67,10 +67,10 @@ export default async function PageProcesosLeft() {
     <>
       {carpetas.map(
         (
-          carpeta, index 
+          carpeta, index
         ) => {
           const {
-            deudor 
+            deudor
           } = carpeta;
 
           const {
@@ -98,13 +98,13 @@ export default async function PageProcesosLeft() {
               >
                 <FechaActuacionComponent
                   key={carpeta._id}
-                  carpeta={carpeta}
+                  idProceso={carpeta.idProceso}
                   index={index}
                 />
               </Suspense>
             </Card>
           );
-        } 
+        }
       )}
     </>
   );
