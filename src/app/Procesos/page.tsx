@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: 'Procesos'
 };
 
-export default async function PageProcesosLeft() {
+export default async function PageProcesosLeft () {
   const carpetasRaw = await getCarpetas();
 
   const carpetas = [
@@ -30,14 +30,10 @@ export default async function PageProcesosLeft() {
       a, b
     ) => {
       const typeofA = typeof a.fecha;
-      console.log(
-        typeofA
-      );
+
 
       const typeofB = typeof b.fecha;
-      console.log(
-        typeofB
-      );
+
 
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -65,7 +61,7 @@ export default async function PageProcesosLeft() {
 
   return (
     <>
-      {carpetas.map(
+      { carpetas.map(
         (
           carpeta, index
         ) => {
@@ -82,30 +78,30 @@ export default async function PageProcesosLeft() {
 
           return (
             <Card
-              path={'/Procesos'}
-              carpeta={carpeta}
-              key={carpeta._id}
+              path={ '/Procesos' }
+              carpeta={ carpeta }
+              key={ carpeta._id }
             >
               <Suspense
-                key={carpeta._id}
+                key={ carpeta._id }
                 fallback={
-                  <sub className={card.date}>
-                    {`Ultima Actuacion registrada guardada en el servidor: ${ fixFechas(
+                  <sub className={ card.date }>
+                    { `Ultima Actuacion registrada guardada en el servidor: ${ fixFechas(
                       carpeta.fecha
-                    ) }`}
+                    ) }` }
                   </sub>
                 }
               >
                 <FechaActuacionComponent
-                  key={carpeta._id}
-                  idProceso={carpeta.idProceso}
-                  index={index}
+                  key={ carpeta._id }
+                  idProceso={ carpeta.idProceso }
+                  index={ index }
                 />
               </Suspense>
             </Card>
           );
         }
-      )}
+      ) }
     </>
   );
 }

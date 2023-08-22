@@ -76,7 +76,7 @@ export const getActuaciones = cache(
       `inicia el tiempo para actuacion ${ index }`
     );
 
-    const awaitTime = index * 1000;
+    const awaitTime = index * 60;
     await sleep(
       awaitTime
     );

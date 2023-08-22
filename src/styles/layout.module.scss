@@ -32,10 +32,10 @@ $MaxSW: 480px; //maximum sma width
 }
 
 .name {
-  box-shadow: var(--dp1);
-  background-color: var(--surface-bridght);
   display: flex;
   flex-flow: row nowrap;
+  border-radius: 2vmin;
+  box-shadow: var(--dp1);
   padding: 2vmin;
   gap: 2vmin;
   justify-content: space-between;
