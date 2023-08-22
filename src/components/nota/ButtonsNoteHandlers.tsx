@@ -116,9 +116,7 @@ export function EditNoteButton(
   return (
     <Link
       className={note.buttonEdit}
-      href={
-        `/Procesos/${ nota.llaveProceso }/Editar?id=${ nota._id }` as Route
-      }
+      href={`/Notas/${ nota.llaveProceso }/Editar?_id=${ nota._id }`}
     >
       <span
         className={`material-symbols-outlined ${ note.icon }`}

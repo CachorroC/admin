@@ -4,6 +4,7 @@ import { ProcesoCard } from '#@/components/card/ProcesosCard';
 import { ProcesoCardSkeleton } from '#@/components/card/ProcesosCard/skeleton';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { getProceso } from '#@/lib/Procesos';
+import { sleep } from '#@/lib/fix';
 import { Fragment, Suspense } from 'react';
 import 'server-only';
 
@@ -14,13 +15,19 @@ async function ProcesoComponent(
   }: {
   llaveProceso: string;
   index: number;
-} 
+}
 ) {
+
+  const awaitTime = index * 500;
+  await sleep(
+    awaitTime
+  );
+
   const procesos = await getProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
-    } 
+    }
   );
 
   if ( !procesos ) {
@@ -31,7 +38,7 @@ async function ProcesoComponent(
     <>
       {procesos.map(
         (
-          proceso 
+          proceso
         ) => {
           return (
             <ProcesoCard
@@ -39,7 +46,7 @@ async function ProcesoComponent(
               proceso={proceso}
             />
           );
-        } 
+        }
       )}
     </>
   );
@@ -52,25 +59,25 @@ export default async function PageProcesosRight() {
     <>
       {carpetas.map(
         (
-          carpeta, index 
+          carpeta, index
         ) => {
           return (
-            <Suspense
-              key={carpeta._id}
-              fallback={
+            <Fragment key={ carpeta._id }>
+              <Suspense fallback={
                 <ProcesoCardSkeleton
                   key={carpeta._id}
                 />
               }
-            >
-              <ProcesoComponent
-                key={carpeta._id}
-                llaveProceso={carpeta.llaveProceso}
-                index={index}
-              />
-            </Suspense>
+              >
+                <ProcesoComponent
+                  key={carpeta._id}
+                  llaveProceso={carpeta.llaveProceso}
+                  index={index}
+                />
+              </Suspense>
+            </Fragment>
           );
-        } 
+        }
       )}
     </>
   );

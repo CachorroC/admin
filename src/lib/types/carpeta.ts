@@ -104,26 +104,24 @@ export class carpetaConvert {
     const fixedCarpeta: MonCarpeta = {
       ...carpeta,
       _id: carpeta._id.toString(),
-      get nombre () {
-        const rawName = (
-          this.deudor.primerNombre
+      get nombre() {
+        const rawName
+          = this.deudor.primerNombre
             + ' '
             + this.deudor.segundoNombre
           ?? ' '
             + ' '
             + this.deudor.primerApellido
             + this.deudor.segundoApellido
-          ?? ' '
-        );
+          ?? ' ';
 
         const nameOutput = toNameString(
           {
             nameRaw: rawName
-          }
+          } 
         );
 
-        return ( nameOutput
-        );
+        return nameOutput;
       }
     };
 
@@ -134,10 +132,10 @@ export class carpetaConvert {
   ): MonCarpeta[] {
     const newCarpetas = carpetas.map(
       (
-        carpeta
+        carpeta 
       ) => {
         return this.toMonCarpeta(
-          carpeta
+          carpeta 
         );
       }
     );
@@ -148,7 +146,7 @@ export class carpetaConvert {
     json: string
   ): IntCarpeta[] {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -156,7 +154,7 @@ export class carpetaConvert {
     value: IntCarpeta[]
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
@@ -164,7 +162,7 @@ export class carpetaConvert {
     json: string
   ): IntCarpeta {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -172,15 +170,15 @@ export class carpetaConvert {
     value: IntCarpeta
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toDemanda(
-    json: string
+    json: string 
   ): Demanda {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -188,15 +186,15 @@ export class carpetaConvert {
     value: Demanda
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toJuzgado(
-    json: string
+    json: string 
   ): Juzgado {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -204,15 +202,15 @@ export class carpetaConvert {
     value: Juzgado
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toDeudor(
-    json: string
+    json: string 
   ): Deudor {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -220,23 +218,23 @@ export class carpetaConvert {
     value: Deudor
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toTel(
-    json: string
+    json: string 
   ): Tel {
     return JSON.parse(
-      json
+      json 
     );
   }
 
   public static telToJson(
-    value: Tel
+    value: Tel 
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 }
@@ -254,7 +252,7 @@ export class NombreCompleto {
     primerApellido: string;
     segundoNombre: string | null;
     segundoApellido: string | null;
-  }
+  } 
   ) {
     this.Nombre = segundoApellido
       ? segundoNombre

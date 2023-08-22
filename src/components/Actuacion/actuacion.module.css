@@ -14,18 +14,29 @@
   color: var(--on-primary-container);
   box-shadow: var(--dp20);
 }
-
-.date {
+.container:hover .actuacion, .container:hover .anotacion {
   display: flex;
 }
 
 .fecha {
+  display: flex;
+}
+
+.date {
   background-color: var(--surface-container-high);
   padding: 2cqmin;
   color: var(--on-surface);
   font-family: var(--font-poiret);
   border-radius: 2cqmin;
   align-self: center;
+}
+
+.actuacion {
+  display: none;
+}
+
+.anotacion {
+  display: none;
 }
 
 @container actuacion (width < 100px) {

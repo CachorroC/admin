@@ -38,28 +38,24 @@ export async function fetchProceso(
   index: number;
 }
 ) {
-  if (
-    llaveProceso.length < 23
-    || llaveProceso === 'sinEspecificar'
-  ) {
-    console.log(
-      `${ index }: esta llaveProceso es menos de 23: ${ llaveProceso }`
-    );
-
-    return null;
-  }
-
   try {
+    if (
+      llaveProceso.length < 23
+      || llaveProceso === 'sinEspecificar'
+    ) {
+      throw new Error(
+        `${ index }: esta llaveProceso es menos de 23: ${ llaveProceso }`
+      );
+    }
+
     const req = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=true`
     );
 
     if ( !req.ok ) {
-      console.log(
-        `${ index }: el request procesos returned not ok ${ llaveProceso }: ${ req.status }`
+      throw new Error(
+        `${ index }: procesos not ok, status: ${ req.status } with ${ req.statusText } llaveProceso: ${ llaveProceso } => headers: ${ req.headers }`
       );
-
-      return null;
     }
 
     const json = await req.json();
@@ -77,11 +73,11 @@ export async function fetchProceso(
   } catch ( e ) {
     if ( e instanceof Error ) {
       console.log(
-        `${ index }: error en la conexion network del fetchProceso ${ e.name } : ${ e.message }`
+        `${ index }: ${ llaveProceso }: error en la conexion network del fetchProceso ${ e.name } : ${ e.message }`
       );
     }
     console.log(
-      `${ e }`
+      `${ index }: ${ llaveProceso }: : error en la conexion network del fetchProceso  =>  ${ e }`
     );
 
     return null;
@@ -97,17 +93,6 @@ export async function getProceso(
   index: number;
 }
 ) {
-  console.time(
-    `proceso ${ index }`
-  );
-  console.log(
-    `inicia el tiempo para proceso ${ index }`
-  );
-
-  const awaitTime = 1000;
-  await sleep(
-    awaitTime
-  );
 
   const collection = await procesosCollection();
 
@@ -144,9 +129,6 @@ export async function getProceso(
       }
     }
   }
-  console.timeEnd(
-    `proceso ${ index }`
-  );
 
   return fetchP;
 }

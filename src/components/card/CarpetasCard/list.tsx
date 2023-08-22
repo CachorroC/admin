@@ -1,6 +1,6 @@
 import 'server-only';
 import { getCarpetas } from '#@/lib/Carpetas';
-import { fixFechas } from '#@/lib/fix';
+import { fixFechas, sleep } from '#@/lib/fix';
 import { Fragment,
          ReactNode,
          Suspense,
@@ -81,6 +81,13 @@ const Fecha = async (
   index: number;
 }
 ) => {
+  const awaitTime = index > 200
+    ? index/2 * 1000
+    : index * 1000;
+  await sleep(
+    awaitTime
+  );
+
   const acts = await getActuaciones(
     {
       idProceso: idProceso,

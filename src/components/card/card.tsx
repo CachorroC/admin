@@ -222,7 +222,7 @@ export const Card = (
             className={`${ card.link } ${
               isActive && card.isActive
             }`}
-            href={`/Notas/NuevaNota/${ carpeta.llaveProceso }`}
+            href={`/Notas/${ carpeta.llaveProceso }`}
             onClick={() => {
               setIsOpen(
                 true 

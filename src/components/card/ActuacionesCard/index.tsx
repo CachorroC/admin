@@ -8,8 +8,8 @@ export const ActuacionCard = (
   {
     act
   }: {
-  act:  Actuacion;
-}
+  act: Actuacion;
+} 
 ) => {
   const {
     idRegActuacion,
@@ -33,13 +33,13 @@ export const ActuacionCard = (
           className={`${ typography.titleMedium } ${ styles.title }`}
         >
           {actuacion.replace(
-            /\s+/g, ' '
+            /\s+/g, ' ' 
           )}
         </h1>
         {anotacion && (
           <p className={typography.bodyMedium}>
             {anotacion.replace(
-              /\s+/g, ' '
+              /\s+/g, ' ' 
             )}
           </p>
         )}
@@ -60,7 +60,7 @@ export const ActuacionCard = (
           className={`${ typography.labelMedium } ${ styles.date }`}
         >
           {fixFechas(
-            fechaActuacion
+            fechaActuacion 
           )}
         </sup>
       </div>
@@ -73,16 +73,16 @@ export const ActuacionesList = (
     actuaciones
   }: {
   actuaciones: Actuacion[];
-}
+} 
 ) => {
   return (
     <>
       {actuaciones.map(
         (
-          act, ind, arr
+          act, ind, arr 
         ) => {
           const {
-            idRegActuacion
+            idRegActuacion 
           } = act;
 
           return (
@@ -91,7 +91,7 @@ export const ActuacionesList = (
               key={idRegActuacion}
             />
           );
-        }
+        } 
       )}
     </>
   );

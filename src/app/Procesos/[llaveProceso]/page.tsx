@@ -4,6 +4,7 @@ import { ActuacionCard } from '#@/components/card/ActuacionesCard';
 import { getActuaciones } from '#@/lib/Actuaciones';
 import { Suspense } from 'react';
 import { Loader } from '#@/components/Loader';
+import { sleep } from '#@/lib/fix';
 
 async function Acts(
   {
@@ -12,6 +13,11 @@ async function Acts(
   idProceso: number;
 }
 ) {
+  const awaitTime = 1000;
+  await sleep(
+    awaitTime
+  );
+
   const actuaciones = await getActuaciones(
     {
       idProceso: idProceso,
@@ -30,7 +36,6 @@ async function Acts(
               idRegActuacion
             } = act;
 
-
             return (
               <ActuacionCard
                 act={act}
@@ -46,7 +51,9 @@ async function Acts(
 export async function generateMetadata(
   {
     params
-  }: {params: {llaveProceso: string}}
+  }: {
+  params: { llaveProceso: string };
+}
 ) {
   const carpeta = await getCarpetasByllaveProceso(
     {
@@ -57,7 +64,7 @@ export async function generateMetadata(
   return {
     title: `${ carpeta
       ? carpeta.nombre
-      : 'Null' }`,
+      : 'Null' }`
   };
 }
 

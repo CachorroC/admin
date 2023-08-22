@@ -1,5 +1,5 @@
 import { getActuaciones } from '#@/lib/Actuaciones';
-import { fixFechas } from '#@/lib/fix';
+import { fixFechas, sleep } from '#@/lib/fix';
 import { MonCarpeta } from '#@/lib/types/carpeta';
 import typography from '#@/styles/fonts/typography.module.css';
 import { Fragment } from 'react';
@@ -12,13 +12,21 @@ export const FechaActuacionComponent = async (
   }: {
   idProceso: number;
   index: number;
-} 
+}
 ) => {
+
+  const awaitTime =  index > 250
+    ? index /2 * 1000
+    : index * 1000;
+  await sleep(
+    awaitTime
+  );
+
   const actuaciones = await getActuaciones(
     {
       idProceso: idProceso,
       index    : index
-    } 
+    }
   );
 
   if ( !actuaciones || actuaciones.length === 0 ) {

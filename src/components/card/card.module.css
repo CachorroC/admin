@@ -16,9 +16,6 @@
 .container:hover .links {
   display: flex;
 }
-.container:hover .content {
-  display: none;
-}
 
 .divider {
   border: dashed 5px var(--primary);

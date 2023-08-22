@@ -1,16 +1,16 @@
 import { fixDemandado,
          fixFechas } from '#@/lib/fix';
-import { intProceso } from '#@/lib/types/procesos';
 import Link from 'next/link';
 import styles from './procesos.module.css';
 import typography from '#@/styles/fonts/typography.module.css';
 import type { Route } from 'next';
+import { Proceso } from '#@/lib/types/procesos';
 
 export const ProcesoCard = (
   {
     proceso
   }: {
-  proceso: intProceso;
+  proceso: Proceso;
 } 
 ) => {
   if ( !proceso ) {

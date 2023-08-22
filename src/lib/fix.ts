@@ -21,7 +21,7 @@ export function sleep(
               } 
             );
       console.log(
-        `estará listo a las ${ outputTime }`
+        `salió del timeout y empezó el fetch a las  ${ outputTime }`
       );
 
       return setTimeout(

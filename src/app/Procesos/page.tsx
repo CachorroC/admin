@@ -8,19 +8,30 @@ import { fixFechas,
          sleep,
          toNameString } from '#@/lib/fix';
 import { Card } from '#@/components/card/card';
-import { NombreComponent } from '#@/components/card/Nombre';
-import { MonCarpeta } from '#@/lib/types/carpeta';
-
 import { Metadata } from 'next';
-import { getActuaciones } from '#@/lib/Actuaciones';
-import { Loader } from '#@/components/Loader';
 import { FechaActuacionComponent } from '#@/components/Actuacion/server-components';
+import { Loader } from '#@/components/Loader';
 
 export const metadata: Metadata = {
   title: 'Procesos'
 };
 
-export default async function PageProcesosLeft () {
+export default async function PageProcesosLeft(
+  {
+    searchParams
+  }: {  searchParams: { [key: string]: string | string[] | undefined }}
+) {
+
+  const sortSearchParam = searchParams.sort;
+
+  if ( sortSearchParam ) {
+    const typeOfSearchparam = typeof sortSearchParam;
+    console.log(
+      sortSearchParam
+    );
+  }
+
+
   const carpetasRaw = await getCarpetas();
 
   const carpetas = [
@@ -31,9 +42,7 @@ export default async function PageProcesosLeft () {
     ) => {
       const typeofA = typeof a.fecha;
 
-
       const typeofB = typeof b.fecha;
-
 
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -61,7 +70,7 @@ export default async function PageProcesosLeft () {
 
   return (
     <>
-      { carpetas.map(
+      {carpetas.map(
         (
           carpeta, index
         ) => {
@@ -78,30 +87,22 @@ export default async function PageProcesosLeft () {
 
           return (
             <Card
-              path={ '/Procesos' }
-              carpeta={ carpeta }
-              key={ carpeta._id }
+              path={'/Procesos'}
+              carpeta={carpeta}
+              key={carpeta._id}
             >
-              <Suspense
-                key={ carpeta._id }
-                fallback={
-                  <sub className={ card.date }>
-                    { `Ultima Actuacion registrada guardada en el servidor: ${ fixFechas(
-                      carpeta.fecha
-                    ) }` }
-                  </sub>
-                }
-              >
+
+              <Suspense fallback={<Loader  key={carpeta._id}/>} >
                 <FechaActuacionComponent
-                  key={ carpeta._id }
-                  idProceso={ carpeta.idProceso }
-                  index={ index }
+                  key={carpeta._id}
+                  idProceso={carpeta.idProceso}
+                  index={index}
                 />
               </Suspense>
             </Card>
           );
         }
-      ) }
+      )}
     </>
   );
 }
