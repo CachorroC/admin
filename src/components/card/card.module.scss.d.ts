@@ -1,6 +1,7 @@
 export type Styles = {
   actuacion: string;
   anotacion: string;
+  anotascion: string;
   card: string;
   container: string;
   content: string;

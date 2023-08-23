@@ -16,7 +16,7 @@ export const DemandaContainer = (
     demanda
   }: {
   demanda: Demanda;
-} 
+}
 ) => {
   const {
     departamento,
@@ -36,7 +36,7 @@ export const DemandaContainer = (
         }>{`${ departamento }: ${ municipio }`}</h2>
       {juzgados.map(
         (
-          despacho, index 
+          despacho, index
         ) => {
           switch ( index ) {
                   case 0:
@@ -84,7 +84,7 @@ export const DemandaContainer = (
           }
 
           return null;
-        } 
+        }
       )}
     </div>
   );
@@ -95,15 +95,15 @@ export const CarpetaCard = (
     carpeta
   }: {
   carpeta: MonCarpeta;
-} 
+}
 ) => {
   const {
-    llaveProceso, idProceso, _id 
+    llaveProceso, idProceso, _id
   }
     = carpeta;
 
   const {
-    tel, direccion, email 
+    tel, direccion, email
   }
     = carpeta.deudor;
 
@@ -147,7 +147,7 @@ export const CarpetaCard = (
             {tel.celular
               && tel.celular.map(
                 (
-                  cel, i 
+                  cel, i
                 ) => {
                   return (
                     <Link
@@ -166,12 +166,12 @@ export const CarpetaCard = (
                       </span>
                     </Link>
                   );
-                } 
+                }
               )}
             {tel.fijo
               && tel.fijo.map(
                 (
-                  f, i 
+                  f, i
                 ) => {
                   return (
                     <Link
@@ -190,7 +190,7 @@ export const CarpetaCard = (
                       </span>
                     </Link>
                   );
-                } 
+                }
               )}
             {carpeta.demanda
                   .vencimientoPagare && (
@@ -233,10 +233,8 @@ export const CarpetaCard = (
               {carpeta.demanda.capitalAdeudado
                 && fixMoney(
                   {
-                    valor:
-                    carpeta.demanda
-                          .capitalAdeudado
-                  } 
+                    valor: carpeta.demanda.capitalAdeudado
+                  }
                 )}
             </p>
           </div>

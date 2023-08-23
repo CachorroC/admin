@@ -5,24 +5,23 @@ import { ObjectId } from 'mongodb';
 import { IntCarpeta,
          MonCarpeta,
          carpetaConvert } from '../types/carpeta';
-import { getBaseUrl } from '../getBaseUrl';
 
 export const carpetasCollection = async () => {
   const client = await clientPromise;
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico' 
+      'no hay cliente mongólico'
     );
   }
 
   const db = client.db(
-    'RyS' 
+    'RyS'
   );
 
   const carpetas
     = db.collection<IntCarpeta>(
-      'Carpetas' 
+      'Carpetas'
     );
 
   return carpetas;
@@ -33,12 +32,12 @@ export async function fetchCarpetas() {
 
   const carpetasRaw = await collection
         .find(
-          {} 
+          {}
         )
         .sort(
           {
             fecha: 1
-          } 
+          }
         )
         .allowDiskUse()
         .toArray();
@@ -51,7 +50,7 @@ export async function getCarpetas() {
 
   const carpetas
     = carpetaConvert.toMonCarpetas(
-      carpetasRaw 
+      carpetasRaw
     );
 
   return carpetas;
@@ -62,20 +61,20 @@ export async function getCarpetasByllaveProceso(
     llaveProceso
   }: {
   llaveProceso: string;
-} 
+}
 ) {
   const collection = await carpetasCollection();
 
   const carpeta = await collection.findOne(
     {
       llaveProceso: llaveProceso
-    } 
+    }
   );
 
   if ( carpeta ) {
     const newCarpeta
       = carpetaConvert.toMonCarpeta(
-        carpeta 
+        carpeta
       );
 
     return newCarpeta;
@@ -89,16 +88,16 @@ export const getCarpetaById = async (
     _id
   }: {
   _id: string;
-} 
+}
 ) => {
   const collection = await carpetasCollection();
 
   const Carpeta = await collection.findOne(
     {
       _id: new ObjectId(
-        _id 
+        _id
       )
-    } 
+    }
   );
 
   if ( !Carpeta ) {
@@ -107,7 +106,7 @@ export const getCarpetaById = async (
 
   const carpeta
     = carpetaConvert.toMonCarpeta(
-      Carpeta 
+      Carpeta
     );
 
   return Carpeta;
@@ -118,14 +117,14 @@ export const getCarpetaByidProceso = async (
     idProceso
   }: {
   idProceso: number;
-} 
+}
 ) => {
   const collection = await carpetasCollection();
 
   const carpeta = await collection.findOne(
     {
       idProceso: idProceso
-    } 
+    }
   );
 
   if ( !carpeta ) {
@@ -134,7 +133,7 @@ export const getCarpetaByidProceso = async (
 
   const Carpeta
     = carpetaConvert.toMonCarpeta(
-      carpeta 
+      carpeta
     );
 
   return Carpeta;

@@ -72,12 +72,10 @@ export const Card = (
   const isInProcesos = pathname === path;
 
   const href = (
-    carpeta.llaveProceso
-      ? carpeta.idProceso
-        ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
-        : `${ path }/${ carpeta.llaveProceso }`
-      : `${ path }`
-  ) as Route;
+    carpeta.idProceso > 1
+      ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
+      : `${ path }/${ carpeta.llaveProceso }`
+  ) ;
 
   const isActive
     = pathname === href
@@ -144,7 +142,7 @@ export const Card = (
                 </span>
               </Link><Link
                 className={ `${ card.link } ${ isActive && card.isActive }` }
-                href={ `/Procesos/${ carpeta.llaveProceso }/Editar` }>
+                href={ `/Procesos/${ carpeta.llaveProceso }/Editar`  as Route}>
                 <span
                   className={ `material-symbols-outlined ${ card.icon }` }>
                   folder_shared
@@ -154,7 +152,7 @@ export const Card = (
                 </span>
               </Link><Link
                 className={ `${ card.link } ${ isActive && card.isActive }` }
-                href={ `/Procesos/${ carpeta.llaveProceso }` }>
+                href={ `/Procesos/${ carpeta.llaveProceso }` as Route }>
                 <span
                   className={ `material-symbols-outlined ${ card.icon }` }>
                   badge

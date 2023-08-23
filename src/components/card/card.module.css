@@ -19,40 +19,10 @@
   box-shadow: var(--dp20);
 }
 .container:hover .date .actuacion,
-.container:hover .date .anotacion {
+.container:hover .date .anotascion {
   display: flex;
 }
-.container > .card,
-.container > .card .container > .isActive,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .notActive,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .isActive,
-.container > .card .container > .notActive,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .notActive
-  .container
-  > .notActive,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .isActive
-  .container
-  > .notActive {
+.container > .card, .container > .card .container > .isActive, .container > .card .container > .isActive .container > .notActive, .container > .card .container > .isActive .container > .isActive, .container > .card .container > .notActive, .container > .card .container > .isActive .container > .notActive .container > .notActive, .container > .card .container > .isActive .container > .isActive .container > .notActive {
   display: flex;
   padding: 2cqmin;
   border-radius: 2vmin;
@@ -64,62 +34,28 @@
   flex-direction: column;
 }
 .container > .card .notActive {
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
   color: var(--on-surface);
   box-shadow: none;
 }
 .container > .card .isActive {
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
   color: var(--on-secondary-container);
   box-shadow: none;
   border: 2px solid var(--outline-variant);
 }
-.container > .card .isActive:link,
-.container > .card .isActive:visited {
+.container > .card .isActive:link, .container > .card .isActive:visited {
   background-color: var(--primary-container);
   color: var(--on-primary-container);
   box-shadow: var(--dp0);
 }
-.container > .card .isActive:link .icon,
-.container > .card .isActive:visited .icon {
+.container > .card .isActive:link .icon, .container > .card .isActive:visited .icon {
   margin: 0;
   grid-area: icon;
   color: var(--on-primary-container);
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 300,
-    'GRAD' 0,
-    'opsz' 24;
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
 }
-.container > .card > .section,
-.container
-  > .card
-  .container
-  > .notActive
-  > .section,
-.container
-  > .card
-  .container
-  > .isActive
-  > .section,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .notActive
-  > .section,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .isActive
-  > .section {
+.container > .card > .section, .container > .card .container > .notActive > .section, .container > .card .container > .isActive > .section, .container > .card .container > .isActive .container > .notActive > .section, .container > .card .container > .isActive .container > .isActive > .section {
   border-radius: 2vmin;
   gap: 1cqmin;
   padding: 2cqmin;
@@ -128,158 +64,26 @@
   flex-flow: row nowrap;
   border: 1px solid var(--primary);
 }
-.container > .card > .section > .sub,
-.container
-  > .card
-  .container
-  > .notActive
-  > .section
-  > .sub,
-.container
-  > .card
-  .container
-  > .isActive
-  > .section
-  > .sub,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .notActive
-  > .section
-  > .sub,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .isActive
-  > .section
-  > .sub {
+.container > .card > .section > .sub, .container > .card .container > .notActive > .section > .sub, .container > .card .container > .isActive > .section > .sub, .container > .card .container > .isActive .container > .notActive > .section > .sub, .container > .card .container > .isActive .container > .isActive > .section > .sub {
   font-family: var(--font-poiret);
   flex: 1;
 }
-.container > .card > .section > .title,
-.container
-  > .card
-  .container
-  > .notActive
-  > .section
-  > .title,
-.container
-  > .card
-  .container
-  > .isActive
-  > .section
-  > .title,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .notActive
-  > .section
-  > .title,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .isActive
-  > .section
-  > .title {
+.container > .card > .section > .title, .container > .card .container > .notActive > .section > .title, .container > .card .container > .isActive > .section > .title, .container > .card .container > .isActive .container > .notActive > .section > .title, .container > .card .container > .isActive .container > .isActive > .section > .title {
   flex: 3;
 }
-.container > .card > .content,
-.container
-  > .card
-  .container
-  > .notActive
-  > .content,
-.container
-  > .card
-  .container
-  > .isActive
-  > .content,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .notActive
-  > .content,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .isActive
-  > .content {
+.container > .card > .content, .container > .card .container > .notActive > .content, .container > .card .container > .isActive > .content, .container > .card .container > .isActive .container > .notActive > .content, .container > .card .container > .isActive .container > .isActive > .content {
   text-align: center;
   grid-area: content;
   font-family: var(--roboto);
   color: var(--on-background);
 }
-.container > .card > .links,
-.container
-  > .card
-  .container
-  > .notActive
-  > .links,
-.container
-  > .card
-  .container
-  > .isActive
-  > .links,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .notActive
-  > .links,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .isActive
-  > .links {
+.container > .card > .links, .container > .card .container > .notActive > .links, .container > .card .container > .isActive > .links, .container > .card .container > .isActive .container > .notActive > .links, .container > .card .container > .isActive .container > .isActive > .links {
   display: flex;
   flex-flow: row wrap;
   grid-area: links;
   gap: 2cqmin;
 }
-.container > .card > .links > *,
-.container
-  > .card
-  .container
-  > .notActive
-  > .links
-  > *,
-.container
-  > .card
-  .container
-  > .isActive
-  > .links
-  > *,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .notActive
-  > .links
-  > *,
-.container
-  > .card
-  .container
-  > .isActive
-  .container
-  > .isActive
-  > .links
-  > * {
+.container > .card > .links > *, .container > .card .container > .notActive > .links > *, .container > .card .container > .isActive > .links > *, .container > .card .container > .isActive .container > .notActive > .links > *, .container > .card .container > .isActive .container > .isActive > .links > * {
   flex: 0 1 20cqmin;
 }
 
@@ -295,9 +99,7 @@
 
 .updated {
   grid-area: date;
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
   box-shadow: var(--dp12);
   padding: 2cqmin;
   color: var(--on-surface);
@@ -362,17 +164,11 @@
   margin: 0;
   grid-area: icon;
   color: var(--secondary);
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 300,
-    'GRAD' 0,
-    'opsz' 24;
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
 }
 .link:hover {
   box-shadow: var(--dp8);
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
 }
 .link:hover > p {
   color: var(--primary);
@@ -380,23 +176,15 @@
 }
 .link:hover .icon {
   color: var(--tertiary);
-  font-variation-settings:
-    'FILL' 1,
-    'wght' 500,
-    'GRAD' 200,
-    'opsz' 48;
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 200, "opsz" 48;
 }
 .link:focus {
   box-shadow: var(--dp20);
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
   border: 2px dashed var(--primary-container);
 }
 .link:active {
-  background-color: var(
-    --ssurface-container-high
-  );
+  background-color: var(--ssurface-container-high);
   box-shadow: var(--dp3);
 }
 .link > .tooltiptext {
@@ -416,29 +204,23 @@
   transition: all 0.5s;
 }
 .link > .tooltiptext::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 100%;
   left: 50%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent
-    transparent;
+  border-color: #555 transparent transparent transparent;
 }
 .link > .icon {
   margin: 0;
   grid-area: icon;
   color: var(--on-tertiary-container);
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 300,
-    'GRAD' 0,
-    'opsz' 24;
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
   font-size: 1.5rem;
 }
-.link:hover .tooltiptext,
-.link:active .tooltiptext {
+.link:hover .tooltiptext, .link:active .tooltiptext {
   visibility: visible;
   opacity: 1;
 }
@@ -470,3 +252,46 @@
     flex-flow: column nowrap;
   }
 }
+/*
+@container card (width < 100px) {
+  .form,
+  .card {
+    background-color: red;
+  }
+}
+@container card ( 100px < width < 200px) {
+  .form,
+  .card {
+    background-color: orange;
+  }
+}
+@container card ( 200px < width < 300px) {
+  .form,
+  .card {
+    background-color: yellow;
+  }
+}
+@container card ( 300px < width < 400px) {
+  .form,
+  .card {
+    background-color: green;
+  }
+}
+@container card ( 400px < width < 500px) {
+  .form,
+  .card {
+    background-color: blue;
+  }
+}
+@container card ( 500px < width < 600px) {
+  .form,
+  .card {
+    background-color: purple;
+  }
+}
+@container card ( 600px < width) {
+  .form,
+  .card {
+    background-color: var(--primary-container);
+  }
+} */
