@@ -1,11 +1,11 @@
 import navbar from '#@/components/navbar/navbar.module.scss';
 
-export function ButtonSkeleton() {
+export const  ButtonSkeleton= () => {
   return (
-    <button className={navbar.button}>
+    <button className={navbar.button} type={'button'}>
       <span className='material-symbols-outlined'>
         cached
       </span>
     </button>
   );
-}
+};

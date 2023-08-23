@@ -14,6 +14,7 @@ export const CategoryFilterButton = () => {
     'Bancolombia',
     'LiosJuridicos',
     'Insolvencia',
+    'Terminados',
     'todos'
   ];
 
@@ -22,6 +23,7 @@ export const CategoryFilterButton = () => {
     'account_balance_wallet',
     'gavel',
     'money_off',
+    'group_remove',
     'clear_all'
   ];
 
@@ -29,14 +31,14 @@ export const CategoryFilterButton = () => {
     <>
       {categorias.map(
         (
-          categoria, index 
+          categoria, index
         ) => {
           return (
             <button
               key={index}
               onClick={() => {
                 setCategory(
-                  categoria 
+                  categoria
                 );
               }}
               type='button'
@@ -54,7 +56,7 @@ export const CategoryFilterButton = () => {
               </p>
             </button>
           );
-        } 
+        }
       )}
     </>
   );

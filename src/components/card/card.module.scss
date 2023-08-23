@@ -15,7 +15,7 @@
 
     .date {
       .actuacion,
-      .anotacion {
+      .anotascion {
         display: flex;
       }
       background-color: var(--primary-container);
@@ -36,25 +36,19 @@
     flex-direction: column;
     .notActive {
       @extend .card;
-      background-color: var(
-        --surface-container-highest
-      );
+      background-color: var(--surface-container-highest);
       color: var(--on-surface);
       box-shadow: none;
     }
     .isActive {
       @extend .card;
-      background-color: var(
-        --surface-container-highest
-      );
+      background-color: var(--surface-container-highest);
       color: var(--on-secondary-container);
       box-shadow: none;
       border: 2px solid var(--outline-variant);
       &:link,
       &:visited {
-        background-color: var(
-          --primary-container
-        );
+        background-color: var(--primary-container);
         color: var(--on-primary-container);
         box-shadow: var(--dp0);
         .icon {
@@ -62,10 +56,10 @@
           grid-area: icon;
           color: var(--on-primary-container);
           font-variation-settings:
-            'FILL' 0,
-            'wght' 300,
-            'GRAD' 0,
-            'opsz' 24;
+            "FILL" 0,
+            "wght" 300,
+            "GRAD" 0,
+            "opsz" 24;
         }
       }
     }
@@ -114,9 +108,7 @@
 }
 .updated {
   grid-area: date;
-  background-color: var(
-    --surface-container-highest
-  );
+  background-color: var(--surface-container-highest);
   box-shadow: var(--dp12);
   padding: 2cqmin;
   color: var(--on-surface);
@@ -139,9 +131,7 @@
     width: 100%;
   }
   & > .date {
-    background-color: var(
-      --surface-container-high
-    );
+    background-color: var(--surface-container-high);
     padding: 2cqmin;
     color: var(--on-surface);
     font-family: var(--font-poiret);
@@ -177,16 +167,14 @@
     grid-area: icon;
     color: var(--secondary);
     font-variation-settings:
-      'FILL' 0,
-      'wght' 300,
-      'GRAD' 0,
-      'opsz' 24;
+      "FILL" 0,
+      "wght" 300,
+      "GRAD" 0,
+      "opsz" 24;
   }
   &:hover {
     box-shadow: var(--dp8);
-    background-color: var(
-      --surface-container-highest
-    );
+    background-color: var(--surface-container-highest);
     & > p {
       color: var(--primary);
       font-weight: 800;
@@ -194,23 +182,19 @@
     .icon {
       color: var(--tertiary);
       font-variation-settings:
-        'FILL' 1,
-        'wght' 500,
-        'GRAD' 200,
-        'opsz' 48;
+        "FILL" 1,
+        "wght" 500,
+        "GRAD" 200,
+        "opsz" 48;
     }
   }
   &:focus {
     box-shadow: var(--dp20);
-    background-color: var(
-      --surface-container-highest
-    );
+    background-color: var(--surface-container-highest);
     border: 2px dashed var(--primary-container);
   }
   &:active {
-    background-color: var(
-      --ssurface-container-high
-    );
+    background-color: var(--ssurface-container-high);
     box-shadow: var(--dp3);
   }
 
@@ -235,15 +219,14 @@
     opacity: 0;
     transition: all 0.5s;
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 100%;
       left: 50%;
       margin-left: -5px;
       border-width: 5px;
       border-style: solid;
-      border-color: #555 transparent transparent
-        transparent;
+      border-color: #555 transparent transparent transparent;
     }
   }
   & > .icon {
@@ -251,10 +234,10 @@
     grid-area: icon;
     color: var(--on-tertiary-container);
     font-variation-settings:
-      'FILL' 0,
-      'wght' 300,
-      'GRAD' 0,
-      'opsz' 24;
+      "FILL" 0,
+      "wght" 300,
+      "GRAD" 0,
+      "opsz" 24;
     font-size: 1.5rem;
   }
   &:hover,
@@ -290,5 +273,48 @@
   .isActive,
   .notActive {
     flex-flow: column nowrap;
+  }
+}
+
+@container card (width < 100px) {
+  .form,
+  .card {
+    background-color: red;
+  }
+}
+@container card ( 100px < width < 200px) {
+  .form,
+  .card {
+    background-color: orange;
+  }
+}
+@container card ( 200px < width < 300px) {
+  .form,
+  .card {
+    background-color: yellow;
+  }
+}
+@container card ( 300px < width < 400px) {
+  .form,
+  .card {
+    background-color: green;
+  }
+}
+@container card ( 400px < width < 500px) {
+  .form,
+  .card {
+    background-color: blue;
+  }
+}
+@container card ( 500px < width < 600px) {
+  .form,
+  .card {
+    background-color: purple;
+  }
+}
+@container card ( 600px < width) {
+  .form,
+  .card {
+    background-color: var(--primary-container);
   }
 }

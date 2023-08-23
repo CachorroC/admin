@@ -106,7 +106,13 @@ export const Card = (
   }
 
   return (
-    <div className={card.container}>
+    <div className={card.container} onClick={
+      () => {
+        setOpenLinks(
+          !openLinks
+        );
+      }
+    }>
       <div className={card.card}>
         <div className={card.section}>
           <sub
@@ -119,24 +125,8 @@ export const Card = (
         <div className={card.content}>
           {children}
         </div>
-        <button onClick={
-          () => {
-            setOpenLinks(
-              true
-            );
-          }
-        }>
-          {'button'}
-        </button>
-        <button onClick={
-          () => {
-            setOpenLinks(
-              false
-            );
-          }
-        }>
-          {'no button'}
-        </button>
+
+
 
         {
           openLinks && (
