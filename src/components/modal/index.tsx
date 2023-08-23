@@ -133,12 +133,10 @@ export default function Modal(
         className={modal.modal}
         onClick={() => {
           onClick;
-        }}
-      >
+        }}>
         <div
           ref={wrapper}
-          className={modal.wrapper}
-        >
+          className={modal.wrapper}>
           <ForwardButton /> {children}
           <BackwardsButton />
         </div>

@@ -27,24 +27,21 @@ export default function Error(
         className={typography.displayLarge}
         style={{
           color: 'var(--error)'
-        }}
-      >
+        }}>
         Error
       </h1>
       <p
         className={typography.bodyLarge}
         style={{
           color: 'var(--on-surface-container)'
-        }}
-      >
+        }}>
         {error?.message}
       </p>
       <button
         onClick={() => {
           return reset();
         }}
-        className={navbar.button}
-      >
+        className={navbar.button}>
         Try Again
       </button>
     </div>

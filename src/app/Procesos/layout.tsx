@@ -15,7 +15,7 @@ export default function LayoutProcesos(
   children: ReactNode;
   top: ReactNode;
   right: ReactNode;
-}
+} 
 ) {
   return (
     <div className={layout.body}>

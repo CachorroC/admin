@@ -137,15 +137,13 @@ export default function RootLayout(
   return (
     <html lang='en'>
       <body
-        className={`${ poiret.variable } ${ raleway.variable } ${ inter.variable } ${ roboto.variable } ${ josefina.variable } [ color-scheme: light dark ]`}
-      >
+        className={`${ poiret.variable } ${ raleway.variable } ${ inter.variable } ${ roboto.variable } ${ josefina.variable } [ color-scheme: light dark ]`}>
         <NoteSliderProvider>
           <SearchProvider>
             <ModalProvider>
               <NoteProvider>
                 <div
-                  className={`${ layout.container } ${ typography.container }`}
-                >
+                  className={`${ layout.container } ${ typography.container }`}>
                   {modal} {header} {children}
                 </div>
               </NoteProvider>

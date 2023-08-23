@@ -2,7 +2,7 @@ import typography from '#@/styles/fonts/typography.module.css';
 import { NombreCompleto,
          Deudor } from '#@/lib/types/carpeta';
 import { toNameString } from '#@/lib/fix';
-import card from '#@/components/card/card.module.css';
+import card from '#@/components/card/card.module.scss';
 
 export function NombreComponent(
   {
@@ -33,8 +33,7 @@ export function NombreComponent(
 
     return (
       <h4
-        className={`${ typography.displaySmall } ${ card.title }`}
-      >
+        className={`${ typography.displaySmall } ${ card.title }`}>
         {name}
       </h4>
     );
@@ -55,8 +54,7 @@ export function NombreComponent(
 
   return (
     <h4
-      className={`${ typography.displaySmall } ${ card.title }`}
-    >
+      className={`${ typography.titleLarge } ${ card.title }`}>
       {name}
     </h4>
   );

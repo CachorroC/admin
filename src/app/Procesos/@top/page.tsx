@@ -10,11 +10,6 @@ export default async function PageProcesos() {
         Procesos
       </h1>
       <CategoryFilterButton />
-
-      <NewNota
-        llaveProceso={'Procesos'}
-        uri={getBaseUrl()}
-      />
     </>
   );
 }

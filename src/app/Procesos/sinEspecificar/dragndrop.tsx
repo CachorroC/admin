@@ -17,8 +17,7 @@ export function DragNDrop() {
           return console.log(
             'onDragEnd' 
           );
-        }}
-      >
+        }}>
         Drag source
       </div>
       <div
@@ -50,8 +49,7 @@ export function DragNDrop() {
           return console.log(
             'onDrop' 
           );
-        }}
-      >
+        }}>
         Drop target
       </div>
     </>

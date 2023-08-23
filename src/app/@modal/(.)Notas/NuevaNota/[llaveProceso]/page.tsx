@@ -18,8 +18,7 @@ export default function NuevaNotallaveProceso(
     <Suspense
       fallback={
         <Loader key={params.llaveProceso} />
-      }
-    >
+      }>
       <Modal key={params.llaveProceso}>
         <NewNota
           key={params.llaveProceso}

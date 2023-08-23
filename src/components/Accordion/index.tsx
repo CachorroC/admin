@@ -20,8 +20,7 @@ export function Accordion(
     <div
       className={`${ styles.accordion } ${
         isActive && styles.isActive
-      }`}
-    >
+      }`}>
       <div className={styles.item}>
         <button
           type='button'
@@ -30,8 +29,7 @@ export function Accordion(
             return setIsActive(
               !isActive 
             );
-          }}
-        >
+          }}>
           <span className='material-symbols-outlined'>
             {isActive
               ? 'expand_less'

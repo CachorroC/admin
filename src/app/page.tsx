@@ -25,105 +25,89 @@ export default async function Page() {
       <div className={layout.left}>
         <Link
           className={layout.link}
-          href={'/Procesos' as Route}
-        >
+          href={'/Procesos' as Route}>
           <span className='material-symbols-outlined'>
             gavel
           </span>
           <h1
-            className={typography.displayMedium}
-          >
+            className={typography.displayMedium}>
             Procesos
           </h1>
         </Link>
         <Link
           className={layout.link}
-          href={'/Notas' as Route}
-        >
+          href={'/Notas' as Route}>
           <span className='material-symbols-outlined'>
             note
           </span>
           <h1
-            className={typography.displayMedium}
-          >
+            className={typography.displayMedium}>
             Notas
           </h1>
         </Link>
         <Link
           className={layout.link}
-          href={'/Carpetas' as Route}
-        >
+          href={'/Carpetas' as Route}>
           <span className='material-symbols-outlined'>
             folder_open
           </span>
           <h1
-            className={typography.displayMedium}
-          >
+            className={typography.displayMedium}>
             Carpetas
           </h1>
         </Link>
         <Link
           className={layout.link}
-          href={'/api' as Route}
-        >
+          href={'/api' as Route}>
           <span className='material-symbols-outlined'>
             api
           </span>
           <h1
-            className={typography.displayMedium}
-          >
+            className={typography.displayMedium}>
             api
           </h1>
         </Link>
         <Link
           className={layout.link}
-          href={'/Notas/NuevaNota' as Route}
-        >
+          href={'/Notas/NuevaNota' as Route}>
           <span className='material-symbols-outlined'>
             note_add
           </span>
           <h1
-            className={typography.displayMedium}
-          >
+            className={typography.displayMedium}>
             Nueva Nota
           </h1>
         </Link>
         <Link
           className={layout.link}
-          href={'/Costos' as Route}
-        >
+          href={'/Costos' as Route}>
           <span className='material-symbols-outlined'>
             folder_open
           </span>
           <h1
-            className={typography.displayMedium}
-          >
+            className={typography.displayMedium}>
             Costos
           </h1>
         </Link>
         <Link
           className={layout.link}
-          href={'/Contacto' as Route}
-        >
+          href={'/Contacto' as Route}>
           <span className='material-symbols-outlined'>
             folder_open
           </span>
           <h1
-            className={typography.displayMedium}
-          >
+            className={typography.displayMedium}>
             Contacto
           </h1>
         </Link>
         <Link
           className={layout.link}
-          href={'/QuienesSomos' as Route}
-        >
+          href={'/QuienesSomos' as Route}>
           <span className='material-symbols-outlined'>
             folder_open
           </span>
           <h1
-            className={typography.displayMedium}
-          >
+            className={typography.displayMedium}>
             Quienes Somos
           </h1>
         </Link>
@@ -131,27 +115,23 @@ export default async function Page() {
           className={layout.link}
           href={
             '/Demandados/NuevoProceso' as Route
-          }
-        >
+          }>
           <span className='material-symbols-outlined'>
             add
           </span>
           <h1
-            className={typography.displayMedium}
-          >
+            className={typography.displayMedium}>
             NuevoProceso
           </h1>
         </Link>
         <Link
           className={layout.link}
-          href={'/Demandados' as Route}
-        >
+          href={'/Demandados' as Route}>
           <span className='material-symbols-outlined'>
             person_pin
           </span>
           <h1
-            className={typography.displayMedium}
-          >
+            className={typography.displayMedium}>
             Demandados
           </h1>
         </Link>

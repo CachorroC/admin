@@ -11,8 +11,7 @@ export function Fecha(
 ) {
   return (
     <sub
-      className={`${ typography.labelSmall } ${ card.date }`}
-    >
+      className={`${ typography.labelSmall } ${ card.date }`}>
       {fixFechas(
         helper 
       )}

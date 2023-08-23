@@ -35,11 +35,9 @@ export function DeleteNoteButton(
   return (
     <button
       className={note.buttonDelete}
-      onClick={deleteRequestHandler}
-    >
+      onClick={deleteRequestHandler}>
       <span
-        className={`material-symbols-outlined ${ note.icon }`}
-      >
+        className={`material-symbols-outlined ${ note.icon }`}>
         delete
       </span>
     </button>
@@ -95,11 +93,9 @@ export function AddNoteButton(
   return (
     <button
       className={note.buttonAdd}
-      onClick={addRequestHandler}
-    >
+      onClick={addRequestHandler}>
       <span
-        className={`material-symbols-outlined ${ note.icon }`}
-      >
+        className={`material-symbols-outlined ${ note.icon }`}>
         delete
       </span>
     </button>
@@ -116,11 +112,9 @@ export function EditNoteButton(
   return (
     <Link
       className={note.buttonEdit}
-      href={`/Notas/${ nota.llaveProceso }/Editar?_id=${ nota._id }`}
-    >
+      href={`/Notas/${ nota.llaveProceso }/Editar?_id=${ nota._id }`}>
       <span
-        className={`material-symbols-outlined ${ note.icon }`}
-      >
+        className={`material-symbols-outlined ${ note.icon }`}>
         edit
       </span>
     </Link>

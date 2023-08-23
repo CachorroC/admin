@@ -44,15 +44,13 @@ export const SelectSection = (
     <section className={form.section}>
       <label
         className={`${ form.label } ${ typography.titleLarge }`}
-        htmlFor={field.name}
-      >
+        htmlFor={field.name}>
         {title}
       </label>
 
       <select
         {...register}
-        className={form.selectArea}
-      >
+        className={form.selectArea}>
         {options.map(
           (
             option, index 
@@ -60,8 +58,7 @@ export const SelectSection = (
             return (
               <option
                 value={option}
-                key={index}
-              >
+                key={index}>
                 {option}
               </option>
             );

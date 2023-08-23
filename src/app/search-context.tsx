@@ -62,20 +62,17 @@ export function SearchProvider(
       value={[
         category,
         setCategory
-      ]}
-    >
+      ]}>
       <SearchContext.Provider
         value={[
           search,
           setSearch
-        ]}
-      >
+        ]}>
         <NavContext.Provider
           value={[
             isNavOpen,
             setIsNavOpen
-          ]}
-        >
+          ]}>
           {children}
         </NavContext.Provider>
       </SearchContext.Provider>

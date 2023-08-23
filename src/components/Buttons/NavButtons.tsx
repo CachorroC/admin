@@ -25,11 +25,9 @@ export const ForwardButton = () => {
         setIsNavOpen(
           false 
         );
-      }}
-    >
+      }}>
       <span
-        className={`material-symbols-outlined ${ navbar.icon }`}
-      >
+        className={`material-symbols-outlined ${ navbar.icon }`}>
         chevron_right
       </span>
       <p className={navbar.ButtonTextHelper}>
@@ -67,11 +65,9 @@ export const BackwardsButton = () => {
     <button
       type='button'
       className={navbar.buttonBackwards}
-      onClick={clickHandler}
-    >
+      onClick={clickHandler}>
       <span
-        className={`material-symbols-outlined ${ navbar.icon }`}
-      >
+        className={`material-symbols-outlined ${ navbar.icon }`}>
         chevron_left
       </span>
       <p className={navbar.ButtonTextHelper}>
@@ -97,11 +93,9 @@ export const DrawerMenuButton = () => {
           return setIsNavOpen(
             false 
           );
-        }}
-      >
+        }}>
         <span
-          className={`material-symbols-outlined ${ navbar.icon }`}
-        >
+          className={`material-symbols-outlined ${ navbar.icon }`}>
           close
         </span>
         <p className={navbar.ButtonTextHelper}>
@@ -119,11 +113,9 @@ export const DrawerMenuButton = () => {
         return setIsNavOpen(
           true 
         );
-      }}
-    >
+      }}>
       <span
-        className={`material-symbols-outlined ${ navbar.icon }`}
-      >
+        className={`material-symbols-outlined ${ navbar.icon }`}>
         menu
       </span>
       <p className={navbar.ButtonTextHelper}>
@@ -148,11 +140,9 @@ export const HomeButton = () => {
         setIsNavOpen(
           false 
         );
-      }}
-    >
+      }}>
       <span
-        className={`material-symbols-outlined ${ navbar.icon }`}
-      >
+        className={`material-symbols-outlined ${ navbar.icon }`}>
         home
       </span>
       <p className={navbar.ButtonTextHelper}>
@@ -175,11 +165,9 @@ export const ModalButton = () => {
         return setIsOpen(
           true 
         );
-      }}
-    >
+      }}>
       <span
-        className={`material-symbols-outlined ${ navbar.icon }`}
-      >
+        className={`material-symbols-outlined ${ navbar.icon }`}>
         box
       </span>
     </button>

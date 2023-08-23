@@ -31,8 +31,9 @@ export const DemandaContainer = (
         {radicado}
       </h1>
       <h2
-        className={typography.titleMedium}
-      >{`${ departamento }: ${ municipio }`}</h2>
+        className={
+          typography.titleMedium
+        }>{`${ departamento }: ${ municipio }`}</h2>
       {juzgados.map(
         (
           despacho, index 
@@ -41,23 +42,20 @@ export const DemandaContainer = (
                   case 0:
                     return (
                       <Link
-                        href={juzgados[ 0 ].url as Route}
-                      >
+                        href={juzgados[ 0 ].url as Route}>
                         <span className='material-symbols-outlined'>
                   enable
                         </span>
                         <sub
                           className={
                             typography.displaySmall
-                          }
-                        >
+                          }>
                           {juzgados[ 0 ].id}
                         </sub>
                         <p
                           className={
                             typography.labelSmall
-                          }
-                        >
+                          }>
                           {`Juzgado de origen: ${ juzgados[ 0 ].tipo }`}
                         </p>
                       </Link>
@@ -65,23 +63,20 @@ export const DemandaContainer = (
                   case 1:
                     return (
                       <Link
-                        href={juzgados[ 1 ].url as Route}
-                      >
+                        href={juzgados[ 1 ].url as Route}>
                         <span className='material-symbols-outlined'>
                   trip_origin
                         </span>
                         <sub
                           className={
                             typography.displaySmall
-                          }
-                        >
+                          }>
                           {juzgados[ 1 ].id}
                         </sub>
                         <p
                           className={
                             typography.labelSmall
-                          }
-                        >
+                          }>
                           {`Juzgado de origen: ${ juzgados[ 1 ].tipo }`}
                         </p>
                       </Link>
@@ -129,8 +124,7 @@ export const CarpetaCard = (
       />
       <div
         className={styles.container}
-        key={_id}
-      >
+        key={_id}>
         <div className={styles.cardInactive}>
           <NombreComponent
             deudor={carpeta.deudor}
@@ -139,16 +133,13 @@ export const CarpetaCard = (
           <div className={styles.links}>
             <Link
               className={styles.button}
-              href={href}
-            >
+              href={href}>
               <span
-                className={`material-symbols-outlined ${ styles.icon }`}
-              >
+                className={`material-symbols-outlined ${ styles.icon }`}>
                 folder_open
               </span>
               <span
-                className={styles.tooltiptext}
-              >
+                className={styles.tooltiptext}>
                 Abrir
               </span>
             </Link>
@@ -162,18 +153,15 @@ export const CarpetaCard = (
                     <Link
                       key={i}
                       className={styles.button}
-                      href={`tel:${ cel }`}
-                    >
+                      href={`tel:${ cel }`}>
                       <span
-                        className={`material-symbols-outlined ${ styles.icon }`}
-                      >
+                        className={`material-symbols-outlined ${ styles.icon }`}>
                       phone_iphone
                       </span>
                       <span
                         className={
                           styles.tooltiptext
-                        }
-                      >
+                        }>
                         {cel.toString()}
                       </span>
                     </Link>
@@ -189,18 +177,15 @@ export const CarpetaCard = (
                     <Link
                       key={i}
                       className={styles.button}
-                      href={`tel:${ f }`}
-                    >
+                      href={`tel:${ f }`}>
                       <span
-                        className={`material-symbols-outlined ${ styles.icon }`}
-                      >
+                        className={`material-symbols-outlined ${ styles.icon }`}>
                       call
                       </span>
                       <span
                         className={
                           styles.tooltiptext
-                        }
-                      >
+                        }>
                         {f.toString()}
                       </span>
                     </Link>
@@ -210,8 +195,9 @@ export const CarpetaCard = (
             {carpeta.demanda
                   .vencimientoPagare && (
               <p
-                className={typography.labelMedium}
-              >
+                className={
+                  typography.labelMedium
+                }>
                 {fixFechas(
                   carpeta.demanda
                         .vencimientoPagare
@@ -221,16 +207,13 @@ export const CarpetaCard = (
             {email && (
               <Link
                 className={styles.button}
-                href={`mailto:${ email }`}
-              >
+                href={`mailto:${ email }`}>
                 <span
-                  className={`material-symbols-outlined ${ styles.icon }`}
-                >
+                  className={`material-symbols-outlined ${ styles.icon }`}>
                   forward_to_inbox
                 </span>
                 <span
-                  className={styles.tooltiptext}
-                >
+                  className={styles.tooltiptext}>
                   Email
                 </span>
               </Link>
@@ -239,8 +222,7 @@ export const CarpetaCard = (
             {carpeta.demanda
                   .entregagarantiasAbogado && (
               <p
-                className={typography.labelSmall}
-              >
+                className={typography.labelSmall}>
                 {fixFechas(
                   carpeta.demanda
                         .entregagarantiasAbogado

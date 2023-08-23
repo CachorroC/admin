@@ -104,13 +104,11 @@ export const LinkCard = (
           isActive
             ? searchbar.isActive
             : searchbar.notActive
-        }
-      >
+        }>
         <sup
           className={`${
             !isSearch && searchbar.sub
-          }`}
-        >
+          }`}>
           {carpeta.numero}
         </sup>
         <NombreComponent deudor={deudor} />

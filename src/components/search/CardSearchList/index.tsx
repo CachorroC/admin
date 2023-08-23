@@ -89,8 +89,7 @@ export const CardSearchList = (
         <Card
           key={Fecha._id}
           path={path}
-          carpeta={Fecha}
-        >
+          carpeta={Fecha}>
           <p className={card.sub}>{`${ i + 1 } de ${
             arr.length
           }`}</p>

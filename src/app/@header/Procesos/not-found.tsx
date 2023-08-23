@@ -9,14 +9,12 @@ export default function NotFound() {
         style={{
           backgroundColor:
             'var(--error-container)'
-        }}
-      >
+        }}>
         <Title helper='perdido' />
         <p
           style={{
             color: 'var(--on-error-container)'
-          }}
-        >
+          }}>
           No pudimos resolver la consulta que
           realizaste. No existe el recurso
         </p>

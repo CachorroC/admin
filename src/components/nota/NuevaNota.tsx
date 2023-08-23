@@ -121,13 +121,11 @@ export function NewNota(
         className={note.form}
         onSubmit={handleSubmit(
           onSubmit 
-        )}
-      >
+        )}>
         <div className={note.section}>
           <label
             htmlFor='nota'
-            className={`${ note.label } ${ typography.titleMedium }`}
-          >
+            className={`${ note.label } ${ typography.titleMedium }`}>
             Nota
           </label>
           <input
@@ -149,8 +147,7 @@ export function NewNota(
             return setIsActive(
               !isActive 
             );
-          }}
-        >
+          }}>
           <span className='material-symbols-outlined'>
             {isActive
               ? 'expand_less'
@@ -175,8 +172,7 @@ export function NewNota(
                     <div className={note.section}>
                       <label
                         htmlFor={`tareas.${ index }.tarea`}
-                        className={note.label}
-                      >
+                        className={note.label}>
                       Tarea:
                       </label>
                       <input
@@ -207,8 +203,7 @@ export function NewNota(
                               ? false
                               : true
                           );
-                        }}
-                      >
+                        }}>
                         <span className='material-symbols-outlined'>
                           {watchIsDone
                             ? 'check_box'
@@ -219,8 +214,7 @@ export function NewNota(
                     <div className={note.section}>
                       <label
                         htmlFor={`tareas.${ index }.dueDate`}
-                        className={note.label}
-                      >
+                        className={note.label}>
                       Para cuándo es?:
                       </label>
                       <input
@@ -234,8 +228,7 @@ export function NewNota(
                       />
                     </div>
                     <div
-                      className={note.buttonsRow}
-                    >
+                      className={note.buttonsRow}>
                       <button
                         className={
                           note.submitButton
@@ -245,8 +238,7 @@ export function NewNota(
                           return remove(
                             index 
                           );
-                        }}
-                      >
+                        }}>
                         <span className='material-symbols-outlined'>
                         remove
                         </span>
@@ -266,8 +258,7 @@ export function NewNota(
                                   .toISOString()
                             } 
                           );
-                        }}
-                      >
+                        }}>
                         <span className='material-symbols-outlined'>
                         add
                         </span>
@@ -282,8 +273,7 @@ export function NewNota(
         <div className={note.section}>
           <button
             type='submit'
-            className={note.submitButton}
-          >
+            className={note.submitButton}>
             <span className='material-symbols-outlined'>
               send
             </span>

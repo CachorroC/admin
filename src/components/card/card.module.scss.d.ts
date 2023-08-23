@@ -1,15 +1,16 @@
 export type Styles = {
-  cardBack: string;
-  cardFront: string;
+  actuacion: string;
+  anotacion: string;
+  card: string;
   container: string;
   content: string;
   date: string;
   divider: string;
   dummytxt: string;
   error: string;
+  fecha: string;
   icon: string;
   isActive: string;
-  label: string;
   link: string;
   linkIsActive: string;
   links: string;
@@ -17,7 +18,6 @@ export type Styles = {
   section: string;
   sub: string;
   title: string;
-  titleInput: string;
   tooltiptext: string;
   updated: string;
 };

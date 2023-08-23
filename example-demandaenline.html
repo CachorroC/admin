@@ -4,31 +4,25 @@
     <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+      content="width=device-width, initial-scale=1.0" />
     <title>Recepción de Demanda En Linea</title>
     <link
       rel="stylesheet"
-      href="/demandaenlinea/lib/bootstrap/dist/css/bootstrap.min.css"
-    />
+      href="/demandaenlinea/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link
       rel="stylesheet"
-      href="/demandaenlinea/css/site.css"
-    />
+      href="/demandaenlinea/css/site.css" />
     <link
       rel="stylesheet"
-      href="/demandaenlinea/lib/bootstrap/dist/js/bootstrap.js"
-    />
+      href="/demandaenlinea/lib/bootstrap/dist/js/bootstrap.js" />
     <link
       id="Link1"
       rel="shortcut icon"
       href="/demandaenlinea/csj.ico"
-      type="image/x-icon"
-    />
+      type="image/x-icon" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
   </head>
 
   <body>
@@ -37,17 +31,14 @@
         class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
         style="
           background-color: #7f0bfb !important;
-        "
-      >
+        ">
         <a
           class="navbar-brand"
-          href="/demandaenlinea"
-        >
+          href="/demandaenlinea">
           <img
             src="/demandaenlinea/images/logo_csj.svg"
             alt="Demanda en Línea"
-            style="height: 70px; width: 250px"
-          />
+            style="height: 70px; width: 250px" />
         </a>
         <div class="container">
           <button
@@ -57,15 +48,12 @@
             data-target=".navbar-collapse"
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+            aria-label="Toggle navigation">
             <span
-              class="navbar-toggler-icon"
-            ></span>
+              class="navbar-toggler-icon"></span>
           </button>
           <div
-            class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
-          >
+            class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a
@@ -93,8 +81,7 @@
     <div class="container">
       <main
         role="main"
-        class="pb-3"
-      >
+        class="pb-3">
         <fieldset class="scheduler-border">
           <br />
           <br />
@@ -102,8 +89,7 @@
             style="
               text-align: Center;
               color: #5908b0;
-            "
-          >
+            ">
             RECEPCIÓN DE DEMANDAS EN LÍNEA
           </h2>
 
@@ -115,8 +101,7 @@
               margin: 0;
               height: 5px;
               display: block;
-            "
-          ></div>
+            "></div>
 
           <script src="https://www.google.com/recaptcha/api.js"></script>
           <div class="form-horizontal">
@@ -127,15 +112,13 @@
                 background-color: #5908b0 !important;
                 color: white;
                 padding: 10px;
-              "
-            >
+              ">
               Lugar de envío de la Demanda
             </h4>
 
             <div
               class="form-row mb-12"
-              style="color: #6d6e71"
-            >
+              style="color: #6d6e71">
               <label
                 class="col-md-2 control-label asterisk"
                 for="Departamento"
@@ -146,8 +129,7 @@
                   class="form-control"
                   disabled="disabled"
                   id="DdlDepartamento"
-                  name="DdlDepartamento"
-                >
+                  name="DdlDepartamento">
                   <option value="">
                     Seleccione...
                   </option>
@@ -158,8 +140,7 @@
                 <div
                   id="errorDdlDepartamento"
                   class="red"
-                  style="display: none"
-                >
+                  style="display: none">
                   Campo obligatorio
                 </div>
               </div>
@@ -173,8 +154,7 @@
                 <select
                   class="form-control"
                   id="DDlCiudad"
-                  name="DDlCiudad"
-                >
+                  name="DDlCiudad">
                   <option value="">
                     Seleccione...
                   </option>
@@ -185,8 +165,7 @@
                 <div
                   id="errorDDlCiudad"
                   class="red"
-                  style="display: none"
-                >
+                  style="display: none">
                   Campo obligatorio
                 </div>
               </div>
@@ -201,8 +180,7 @@
               margin: 0;
               height: 5px;
               display: block;
-            "
-          ></div>
+            "></div>
 
           <div class="form-horizontal">
             <h4
@@ -212,15 +190,13 @@
                 background-color: #5908b0 !important;
                 color: white;
                 padding: 10px;
-              "
-            >
+              ">
               Especialidad y Clase de Proceso
             </h4>
 
             <div
               class="form-row mb-12"
-              style="color: #6d6e71"
-            >
+              style="color: #6d6e71">
               <label
                 class="col-md-2 control-label asterisk"
                 for="Especialidad"
@@ -230,20 +206,17 @@
                 <select
                   class="form-control"
                   id="DDlEspecialidad"
-                  name="DDlEspecialidad"
-                >
+                  name="DDlEspecialidad">
                   <option
                     selected="selected"
-                    value="-1"
-                  >
+                    value="-1">
                     Seleccione...
                   </option>
                 </select>
                 <div
                   id="errorDDlEspecialidad"
                   class="red"
-                  style="display: none"
-                >
+                  style="display: none">
                   Campo obligatorio
                 </div>
               </div>
@@ -257,20 +230,17 @@
                 <select
                   class="form-control"
                   id="DDlProceso"
-                  name="DDlProceso"
-                >
+                  name="DDlProceso">
                   <option
                     selected="selected"
-                    value="-1"
-                  >
+                    value="-1">
                     Seleccione...
                   </option>
                 </select>
                 <div
                   id="errorDDlProceso"
                   class="red"
-                  style="display: none"
-                >
+                  style="display: none">
                   Campo obligatorio
                 </div>
               </div>
@@ -285,8 +255,7 @@
               margin: 0;
               height: 5px;
               display: block;
-            "
-          ></div>
+            "></div>
 
           <div class="form-horizontal">
             <h4
@@ -296,15 +265,13 @@
                 background-color: #5908b0 !important;
                 color: white;
                 padding: 10px;
-              "
-            >
+              ">
               Sujetos Procesales
             </h4>
 
             <div
               class="form-row mb-12"
-              style="color: #6d6e71"
-            >
+              style="color: #6d6e71">
               <label
                 class="col-md-2 control-label asterisk"
                 for="TipodeSujeto"
@@ -314,20 +281,17 @@
                 <select
                   class="form-control"
                   id="DDlTipoSujeto"
-                  name="DDlTipoSujeto"
-                >
+                  name="DDlTipoSujeto">
                   <option
                     selected="selected"
-                    value="-1"
-                  >
+                    value="-1">
                     Seleccione...
                   </option>
                 </select>
                 <div
                   id="errorDDlTipoSujeto"
                   class="red"
-                  style="display: none"
-                >
+                  style="display: none">
                   Campo obligatorio
                 </div>
               </div>
@@ -341,20 +305,17 @@
                 <select
                   class="form-control"
                   id="DDlTipoPersona"
-                  name="DDlTipoPersona"
-                >
+                  name="DDlTipoPersona">
                   <option
                     selected="selected"
-                    value="-1"
-                  >
+                    value="-1">
                     Seleccione...
                   </option>
                 </select>
                 <div
                   id="errorDDlTipoPersona"
                   class="red"
-                  style="display: none"
-                >
+                  style="display: none">
                   Campo obligatorio
                 </div>
               </div>
@@ -368,13 +329,11 @@
                 margin: 0;
                 height: 5px;
                 display: block;
-              "
-            ></div>
+              "></div>
 
             <div
               class="form-row mb-12"
-              style="color: #6d6e71"
-            >
+              style="color: #6d6e71">
               <label
                 class="col-md-2 control-label asterisk"
                 for="Tipodocumento"
@@ -384,20 +343,17 @@
                 <select
                   class="form-control"
                   id="DDlTipodocumento"
-                  name="DDlTipodocumento"
-                >
+                  name="DDlTipodocumento">
                   <option
                     selected="selected"
-                    value="-1"
-                  >
+                    value="-1">
                     Seleccione...
                   </option>
                 </select>
                 <div
                   id="errorDDlTipodocumento"
                   class="red"
-                  style="display: none"
-                >
+                  style="display: none">
                   Campo obligatorio
                 </div>
               </div>
@@ -413,29 +369,28 @@
                   id="DocumentodeIdendificacion"
                   name="DocumentodeIdendificacion"
                   type="text"
-                  value=""
-                />
+                  value="" />
                 <div
                   id="ProfesionalApoderado"
-                  style="display: none"
-                >
+                  style="display: none">
                   <p>
                     <label
                       id="TarjetaProfesional"
-                      style="display: none"
-                    ></label>
+                      style="
+                        display: none;
+                      "></label>
                     <label id="Caracter"></label>
                     <label
                       id="NumeroTarjeta"
-                      style="display: none"
-                    ></label>
+                      style="
+                        display: none;
+                      "></label>
                   </p>
                 </div>
                 <div
                   id="errorDocumentodeIdendificacion"
                   class="red"
-                  style="display: none"
-                >
+                  style="display: none">
                   Campo obligatorio
                 </div>
               </div>
@@ -449,17 +404,14 @@
                 margin: 0;
                 height: 5px;
                 display: block;
-              "
-            ></div>
+              "></div>
 
             <div
               class="DvNatural"
-              style="display: none"
-            >
+              style="display: none">
               <div
                 class="form-row mb-12"
-                style="color: #6d6e71"
-              >
+                style="color: #6d6e71">
                 <label
                   class="col-md-2 control-label asterisk"
                   for="PrimerNombre"
@@ -471,13 +423,11 @@
                     id="PrimerNombre"
                     name="PrimerNombre"
                     type="text"
-                    value=""
-                  />
+                    value="" />
                   <div
                     id="ErrPrimerNombre"
                     class="red"
-                    style="display: none"
-                  >
+                    style="display: none">
                     Campo obligatorio
                   </div>
                 </div>
@@ -492,8 +442,7 @@
                     id="SegundoNombre"
                     name="SegundoNombre"
                     type="text"
-                    value=""
-                  />
+                    value="" />
                 </div>
               </div>
 
@@ -505,13 +454,11 @@
                   margin: 0;
                   height: 5px;
                   display: block;
-                "
-              ></div>
+                "></div>
 
               <div
                 class="form-row mb-12"
-                style="color: #6d6e71"
-              >
+                style="color: #6d6e71">
                 <label
                   class="col-md-2 control-label asterisk"
                   for="PrimerApellido"
@@ -523,13 +470,11 @@
                     id="PrimerApellido"
                     name="PrimerApellido"
                     type="text"
-                    value=""
-                  />
+                    value="" />
                   <div
                     id="ErrPrimerApellido"
                     class="red"
-                    style="display: none"
-                  >
+                    style="display: none">
                     Campo obligatorio
                   </div>
                 </div>
@@ -544,8 +489,7 @@
                     id="SegundoApellido"
                     name="SegundoApellido"
                     type="text"
-                    value=""
-                  />
+                    value="" />
                 </div>
               </div>
             </div>
@@ -558,16 +502,13 @@
                 margin: 0;
                 height: 5px;
                 display: block;
-              "
-            ></div>
+              "></div>
             <div
               class="DvDiscapacidad"
-              style="display: none"
-            >
+              style="display: none">
               <div
                 class="form-row mb-12"
-                style="color: #6d6e71"
-              >
+                style="color: #6d6e71">
                 <label
                   class="col-md-2 control-label asterisk"
                   for="TipoDiscapacidad"
@@ -577,20 +518,17 @@
                   <select
                     class="form-control"
                     id="DDlTipodiscapacidad"
-                    name="DDlTipodiscapacidad"
-                  >
+                    name="DDlTipodiscapacidad">
                     <option
                       selected="selected"
-                      value="-1"
-                    >
+                      value="-1">
                       Seleccione...
                     </option>
                   </select>
                   <div
                     id="errorDDlTipoDiscapacidad"
                     style="display: none"
-                    class="red"
-                  >
+                    class="red">
                     Seleccione tipo de
                     discapacidad
                   </div>
@@ -606,17 +544,14 @@
                 margin: 0;
                 height: 5px;
                 display: block;
-              "
-            ></div>
+              "></div>
 
             <div
               class="DvJuridico"
-              style="display: none"
-            >
+              style="display: none">
               <div
                 class="form-row mb-12"
-                style="color: #6d6e71"
-              >
+                style="color: #6d6e71">
                 <label
                   class="col-md-2 control-label asterisk"
                   for="NombreJuridico"
@@ -628,13 +563,11 @@
                     id="NombreJuridico"
                     name="NombreJuridico"
                     type="text"
-                    value=""
-                  />
+                    value="" />
                   <div
                     id="ErrNombreJuridico"
                     style="display: none"
-                    class="red"
-                  >
+                    class="red">
                     Campo obligatorio
                   </div>
                 </div>
@@ -649,14 +582,12 @@
                 margin: 0;
                 height: 5px;
                 display: block;
-              "
-            ></div>
+              "></div>
 
             <div class="DvLocalidad">
               <div
                 class="form-row mb-12"
-                style="color: #6d6e71"
-              >
+                style="color: #6d6e71">
                 <label
                   class="col-md-2 control-label asterisk"
                   for="Localidad"
@@ -667,20 +598,17 @@
                   <select
                     class="form-control"
                     id="DDlLocalidad"
-                    name="DDlLocalidad"
-                  >
+                    name="DDlLocalidad">
                     <option
                       selected="selected"
-                      value="-1"
-                    >
+                      value="-1">
                       Seleccione...
                     </option>
                   </select>
                   <div
                     id="errorDDlLocalidad"
                     class="red"
-                    style="display: none"
-                  >
+                    style="display: none">
                     Campo obligatorio
                   </div>
                 </div>
@@ -695,13 +623,11 @@
                 margin: 0;
                 height: 5px;
                 display: block;
-              "
-            ></div>
+              "></div>
 
             <div
               class="form-row mb-12"
-              style="color: #6d6e71"
-            >
+              style="color: #6d6e71">
               <label
                 class="col-md-2 control-label"
                 for="Direccion"
@@ -713,8 +639,7 @@
                   id="IdDireccion"
                   name="IdDireccion"
                   type="text"
-                  value=""
-                />
+                  value="" />
               </div>
               <label
                 class="col-md-2 control-label"
@@ -727,8 +652,7 @@
                   id="IdTelefono"
                   name="IdTelefono"
                   type="text"
-                  value=""
-                />
+                  value="" />
               </div>
             </div>
 
@@ -740,13 +664,11 @@
                 margin: 0;
                 height: 5px;
                 display: block;
-              "
-            ></div>
+              "></div>
 
             <div
               class="form-row mb-12 IdEmail"
-              style="color: #6d6e71"
-            >
+              style="color: #6d6e71">
               <label
                 class="col-md-2 control-label asterisk"
                 for="Correonotificaciones"
@@ -759,13 +681,11 @@
                   id="IdEmail"
                   name="IdEmail"
                   data-validation="IdEmail"
-                  placeholder=""
-                />
+                  placeholder="" />
                 <div
                   id="xmail"
                   class="red"
-                  style="display: none"
-                >
+                  style="display: none">
                   Ingresa un email valido
                 </div>
                 <br />
@@ -774,8 +694,7 @@
                   type="button"
                   id="btnValidar"
                   value="Validar correo para notificaciones"
-                  onclick="ValidarCorreo()"
-                />
+                  onclick="ValidarCorreo()" />
               </div>
 
               <label
@@ -792,8 +711,7 @@
                   name="ConfirmaEmail"
                   data-validation="IdEmail"
                   placeholder=""
-                  disabled="disabled"
-                />
+                  disabled="disabled" />
               </div>
             </div>
 
@@ -805,19 +723,16 @@
                 margin: 0;
                 height: 5px;
                 display: block;
-              "
-            ></div>
+              "></div>
 
             <div
-              class="form-group botonAccionado"
-            >
+              class="form-group botonAccionado">
               <div class="col-md-4">
                 <input
                   type="button"
                   class="btn btn-primary"
                   id="btnAddAccionado"
-                  value="Agregar"
-                />
+                  value="Agregar" />
               </div>
             </div>
 
@@ -829,15 +744,13 @@
                 margin: 0;
                 height: 5px;
                 display: block;
-              "
-            ></div>
+              "></div>
 
             <div class="table-responsive">
               <table
                 id="tblCustomers"
                 class="tables table-bordered"
-                style="display: none"
-              >
+                style="display: none">
                 <thead>
                   <tr>
                     <th style="width: 120px">
@@ -883,12 +796,10 @@
               margin: 0;
               height: 5px;
               display: block;
-            "
-          ></div>
+            "></div>
 
           <div
-            class="form-horizontal cajaOculta4"
-          >
+            class="form-horizontal cajaOculta4">
             <h4
               class="col-md-12 text-center"
               style="
@@ -897,15 +808,13 @@
                 color: white;
                 height: 51px;
                 padding: 10px;
-              "
-            >
+              ">
               Archivos Adjuntos
             </h4>
 
             <div
               class="form-row"
-              style="color: #6d6e71"
-            >
+              style="color: #6d6e71">
               <div class="col-md-4">
                 <label
                   class="col-md-12 control-label lblArchivo asterisk"
@@ -919,8 +828,7 @@
                   <label
                     id="Adicionar"
                     class="control-label"
-                    style="color: #6d6e71"
-                  >
+                    style="color: #6d6e71">
                     Se Adicionaron 10 MB de
                     tamaño.
                   </label>
@@ -928,8 +836,7 @@
                   Capacidad de Cargue
                   <label
                     id="Capacidad"
-                    class="control-label, red"
-                  ></label>
+                    class="control-label, red"></label>
                   MB
                 </p>
               </div>
@@ -942,8 +849,7 @@
                   margin: 0;
                   height: 5px;
                   display: block;
-                "
-              ></div>
+                "></div>
               <div class="col-md-1"></div>
 
               <div class="col-md-6">
@@ -957,20 +863,17 @@
                     <select
                       class="form-control"
                       id="DDlTipoArchivo"
-                      name="DDlTipoArchivo"
-                    >
+                      name="DDlTipoArchivo">
                       <option
                         selected="selected"
-                        value="-1"
-                      >
+                        value="-1">
                         Seleccione...
                       </option>
                     </select>
                     <div
                       id="errorDDlTipoArchivo"
                       class="red"
-                      style="display: none"
-                    >
+                      style="display: none">
                       Campo obligatorio
                     </div>
                   </div>
@@ -982,21 +885,18 @@
                     type="file"
                     onchange="validaAdjunto(this.value)"
                     name="ArchivoFile0"
-                    id="ArchivoFile0"
-                  />
+                    id="ArchivoFile0" />
                 </div>
                 <span
                   id="spnmsg"
-                  style="color: red"
-                ></span>
+                  style="color: red"></span>
                 <div class="col-md-2">
                   <br />
                   <input
                     class="btn"
                     type="button"
                     id="btnAddfile"
-                    value="Agregar Archivo"
-                  />
+                    value="Agregar Archivo" />
                 </div>
               </div>
             </div>
@@ -1009,19 +909,16 @@
                 margin: 0;
                 height: 5px;
                 display: block;
-              "
-            ></div>
+              "></div>
 
             <div
-              class="table-responsive col-md-12"
-            >
+              class="table-responsive col-md-12">
               <table
                 id="tblFiles"
                 style="display: none"
                 class="tables table-responsive table-bordered"
                 cellpadding="0"
-                cellspacing="0"
-              >
+                cellspacing="0">
                 <thead>
                   <tr>
                     <th style="width: 500px">
@@ -1051,8 +948,7 @@
               margin: 0;
               height: 5px;
               display: block;
-            "
-          ></div>
+            "></div>
 
           <div class="form-horizontal">
             <h4
@@ -1063,28 +959,23 @@
                 color: white;
                 height: 10px;
                 padding: 6px;
-              "
-            ></h4>
+              "></h4>
 
             <div class="form-row">
               <div class="col-md-8 center-block">
                 <form
                   method="post"
-                  onsubmit="return comprobarradio();"
-                >
+                  onsubmit="return comprobarradio();">
                   <div
                     class="g-recaptcha"
                     data-sitekey="6LcnkeUUAAAAAIzytmwnkjif8k066vQVR6EKXFw0"
-                    data-callback="verifyCaptcha"
-                  ></div>
+                    data-callback="verifyCaptcha"></div>
                   <div
-                    id="g-recaptcha-error"
-                  ></div>
+                    id="g-recaptcha-error"></div>
                   <input
                     name="__RequestVerificationToken"
                     type="hidden"
-                    value="CfDJ8OniZur8_1BEiEQiSUbqxZoj8pvZNTt0a34HG1UZlw_QByj8X5Vdpv-iAXcefP5E9U2gN6qGfsXBW1CV9rpAcLXkQrmQZ_63Fo9n-D1J62xdsM6-lnolh7TI6TNzhTnz7F6ItwfcSTSOPIxT3FjLmq8"
-                  />
+                    value="CfDJ8OniZur8_1BEiEQiSUbqxZoj8pvZNTt0a34HG1UZlw_QByj8X5Vdpv-iAXcefP5E9U2gN6qGfsXBW1CV9rpAcLXkQrmQZ_63Fo9n-D1J62xdsM6-lnolh7TI6TNzhTnz7F6ItwfcSTSOPIxT3FjLmq8" />
                 </form>
               </div>
 
@@ -1094,8 +985,7 @@
                   type="button"
                   onclick="comprobarradio()"
                   id="enviar"
-                  value="ENVIAR"
-                />
+                  value="ENVIAR" />
               </div>
             </div>
           </div>
@@ -1108,8 +998,7 @@
               margin: 0;
               height: 5px;
               display: block;
-            "
-          ></div>
+            "></div>
 
           <div class="form-row">
             <h5
@@ -1120,8 +1009,7 @@
                 color: white;
                 height: 100%;
                 padding: 10px;
-              "
-            >
+              ">
               <strong>
                 Si tienes dudas o problemas,
                 contacta a nuestro equipo de
@@ -1139,8 +1027,7 @@
               <img
                 width="160"
                 src="/demandaenlinea/images/navegadores.png"
-                alt="Navegadores Recomendados"
-              />
+                alt="Navegadores Recomendados" />
               <br />
             </h5>
           </div>

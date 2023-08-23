@@ -6,29 +6,24 @@ export const ActuacionCardSkeleton = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         <h1
-          className={`${ typography.titleMedium } ${ styles.title }`}
-        >
+          className={`${ typography.titleMedium } ${ styles.title }`}>
           Cargando
         </h1>
 
         <sub
-          className={`${ typography.labelSmall } ${ styles.sub }`}
-        >
+          className={`${ typography.labelSmall } ${ styles.sub }`}>
           cargando
         </sub>
         <button
           type='button'
-          className={styles.button}
-        >
+          className={styles.button}>
           <span
-            className={`material-symbols-outlined ${ styles.icon }`}
-          >
+            className={`material-symbols-outlined ${ styles.icon }`}>
             downloading
           </span>
         </button>
         <sup
-          className={`${ typography.labelMedium } ${ styles.date }`}
-        >
+          className={`${ typography.labelMedium } ${ styles.date }`}>
           cargando
         </sup>
       </div>

@@ -14,8 +14,7 @@ export function DeudorFormComponent() {
       <section className={form.section}>
         <label
           className={`${ form.label } ${ typography.titleLarge }`}
-          htmlFor={'deudor.primerNombre'}
-        >
+          htmlFor={'deudor.primerNombre'}>
           Primer Nombre
         </label>
         <input
@@ -33,8 +32,7 @@ export function DeudorFormComponent() {
       <section className={form.section}>
         <label
           className={`${ form.label } ${ typography.titleLarge }`}
-          htmlFor={'deudor.segundoNombre'}
-        >
+          htmlFor={'deudor.segundoNombre'}>
           Segundo Nombre
         </label>
         <input
@@ -52,8 +50,7 @@ export function DeudorFormComponent() {
       <section className={form.section}>
         <label
           className={`${ form.label } ${ typography.titleLarge }`}
-          htmlFor={'deudor.primerApellido'}
-        >
+          htmlFor={'deudor.primerApellido'}>
           Primer Apellido
         </label>
         <input
@@ -71,8 +68,7 @@ export function DeudorFormComponent() {
       <section className={form.section}>
         <label
           className={`${ form.label } ${ typography.titleLarge }`}
-          htmlFor={'deudor.segundoApellido'}
-        >
+          htmlFor={'deudor.segundoApellido'}>
           Segundo Apellido
         </label>
         <input
@@ -90,8 +86,7 @@ export function DeudorFormComponent() {
       <section className={form.section}>
         <label
           className={`${ form.label } ${ typography.titleLarge }`}
-          htmlFor={'deudor.cedula'}
-        >
+          htmlFor={'deudor.cedula'}>
           Cédula de ciudadania
         </label>
         <input
@@ -110,8 +105,7 @@ export function DeudorFormComponent() {
       <section className={form.section}>
         <label
           className={`${ form.label } ${ typography.titleLarge }`}
-          htmlFor={'deudor.email'}
-        >
+          htmlFor={'deudor.email'}>
           Correo Electrónico
         </label>
         <input
@@ -130,8 +124,7 @@ export function DeudorFormComponent() {
       <section className={form.section}>
         <label
           className={`${ form.label } ${ typography.titleLarge }`}
-          htmlFor={'deudor.tel.celular'}
-        >
+          htmlFor={'deudor.tel.celular'}>
           Telefono celular
         </label>
         <input
@@ -150,8 +143,7 @@ export function DeudorFormComponent() {
       <section className={form.section}>
         <label
           className={`${ form.label } ${ typography.titleLarge }`}
-          htmlFor={'deudor.tel.fijo'}
-        >
+          htmlFor={'deudor.tel.fijo'}>
           Telefono Fijo
         </label>
 
@@ -171,8 +163,7 @@ export function DeudorFormComponent() {
       <section className={form.section}>
         <label
           className={`${ form.label } ${ typography.titleLarge }`}
-          htmlFor={'deudor.direccion'}
-        >
+          htmlFor={'deudor.direccion'}>
           Direccion
         </label>
         <input

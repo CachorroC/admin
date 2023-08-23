@@ -175,8 +175,7 @@ export const NuevoProceso = (
             className={form.form}
             onSubmit={handleSubmit(
               onSubmit 
-            )}
-          >
+            )}>
             <section className={form.section}>
               <DeudorFormComponent />
             </section>
@@ -195,8 +194,7 @@ export const NuevoProceso = (
                           'demanda.departamento',
                           descr
                         );
-                      }}
-                    >
+                      }}>
                       <strong>
                         {descr.descripcion}
                       </strong>
@@ -230,11 +228,9 @@ export const NuevoProceso = (
             />
             <button
               type='submit'
-              className={form.button}
-            >
+              className={form.button}>
               <sub
-                className={typography.labelSmall}
-              >
+                className={typography.labelSmall}>
                 Enviar
               </sub>
               <span className='material-symbols-outlined'>

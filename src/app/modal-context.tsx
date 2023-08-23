@@ -32,8 +32,7 @@ export function ModalProvider(
       value={[
         isOpen,
         setIsOpen
-      ]}
-    >
+      ]}>
       {children}
     </ModalContext.Provider>
   );

@@ -35,7 +35,8 @@ export default async function Page(
 
   return (
     <h1
-      className={typography.titleSmall}
-    >{`Editar: ${ ntext }`}</h1>
+      className={
+        typography.titleSmall
+      }>{`Editar: ${ ntext }`}</h1>
   );
 }

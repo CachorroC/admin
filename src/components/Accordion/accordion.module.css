@@ -14,7 +14,9 @@
 
 .content {
   padding: 1vmin;
-  background-color: var(--surface-container-lowest);
+  background-color: var(
+    --surface-container-lowest
+  );
   border-top: solid 5px var(--outline);
   overflow: hidden;
   box-sizing: border-box;

@@ -9,7 +9,7 @@ import { fixFechas,
          toNameString } from '#@/lib/fix';
 import { Card } from '#@/components/card/card';
 import { Metadata } from 'next';
-import { FechaActuacionComponent } from '#@/components/Actuacion/server-components';
+import { FechaActuacionComponent } from '#@/app/Actuacion/server-components';
 import { Loader } from '#@/components/Loader';
 
 export const metadata: Metadata = {
@@ -19,18 +19,21 @@ export const metadata: Metadata = {
 export default async function PageProcesosLeft(
   {
     searchParams
-  }: {  searchParams: { [key: string]: string | string[] | undefined }}
+  }: {
+  searchParams: {
+    [key: string]: string | string[] | undefined;
+  };
+} 
 ) {
-
   const sortSearchParam = searchParams.sort;
 
   if ( sortSearchParam ) {
-    const typeOfSearchparam = typeof sortSearchParam;
+    const typeOfSearchparam
+      = typeof sortSearchParam;
     console.log(
-      sortSearchParam
+      sortSearchParam 
     );
   }
-
 
   const carpetasRaw = await getCarpetas();
 
@@ -38,7 +41,7 @@ export default async function PageProcesosLeft(
     ...carpetasRaw
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       const typeofA = typeof a.fecha;
 
@@ -72,10 +75,10 @@ export default async function PageProcesosLeft(
     <>
       {carpetas.map(
         (
-          carpeta, index
+          carpeta, index 
         ) => {
           const {
-            deudor
+            deudor 
           } = carpeta;
 
           const {
@@ -89,10 +92,11 @@ export default async function PageProcesosLeft(
             <Card
               path={'/Procesos'}
               carpeta={carpeta}
-              key={carpeta._id}
-            >
-
-              <Suspense fallback={<Loader  key={carpeta._id}/>} >
+              key={carpeta._id}>
+              <Suspense
+                fallback={
+                  <Loader key={carpeta._id} />
+                }>
                 <FechaActuacionComponent
                   key={carpeta._id}
                   idProceso={carpeta.idProceso}
@@ -101,7 +105,7 @@ export default async function PageProcesosLeft(
               </Suspense>
             </Card>
           );
-        }
+        } 
       )}
     </>
   );

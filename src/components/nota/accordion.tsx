@@ -34,8 +34,7 @@ export function AccordionRow(
             return setIsActive(
               !isActive 
             );
-          }}
-        >
+          }}>
           <span className='material-symbols-outlined'>
             {isActive
               ? 'expand_less'
@@ -45,8 +44,7 @@ export function AccordionRow(
         {isActive && (
           <div className={accordion.content}>
             <h1
-              className={typography.titleMedium}
-            >
+              className={typography.titleMedium}>
               {tarea}
             </h1>
             <p
@@ -54,8 +52,7 @@ export function AccordionRow(
                 isDone
                   ? note.innactive
                   : note.active
-              }
-            >
+              }>
               {`fecha de entrega: ${ fixFechas(
                 dueDate.toString()
               ) }`}
@@ -65,8 +62,7 @@ export function AccordionRow(
                 isDone
                   ? note.innactive
                   : note.active
-              } material-symbols-outlined`}
-            >
+              } material-symbols-outlined`}>
               {isDone
                 ? 'assignment_turned_in'
                 : 'assignment_late'}

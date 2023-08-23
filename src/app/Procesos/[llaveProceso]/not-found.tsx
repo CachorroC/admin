@@ -6,8 +6,7 @@ export default function NotFound() {
       className={typography.bodyLarge}
       style={{
         color: 'var(--on-error-container)'
-      }}
-    >
+      }}>
       No pudimos resolver la consulta que
       realizaste. No existe el recurso
     </p>

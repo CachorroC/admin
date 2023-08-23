@@ -30,8 +30,7 @@ export function Nota(
   return (
     <div
       className={note.container}
-      key={_id}
-    >
+      key={_id}>
       <div className={note.nota}>
         <sup className={note.sup}>{`${
           i + 1
@@ -41,11 +40,9 @@ export function Nota(
           llaveProceso={notaRaw.llaveProceso}
         />
         <p
-          className={`${ typography.bodySmall } ${ note.textArea }`}
-        >{`Nota: ${ nota }`}</p>
+          className={`${ typography.bodySmall } ${ note.textArea }`}>{`Nota: ${ nota }`}</p>
         <sub
-          className={`${ typography.labelSmall } ${ note.textArea }`}
-        >
+          className={`${ typography.labelSmall } ${ note.textArea }`}>
           {fixFechas(
             fecha.toString() 
           )}

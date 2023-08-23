@@ -28,20 +28,17 @@ export function NotaSkeleton(
   return (
     <div
       className={styles.container}
-      key={index}
-    >
+      key={index}>
       <div className={styles.nota}>
         <sup className={styles.sup}>{`${
           index + 1
         }`}</sup>
         <p
-          className={`${ typography.bodySmall } ${ styles.textArea }`}
-        >
+          className={`${ typography.bodySmall } ${ styles.textArea }`}>
           Nota: ... cargando
         </p>
         <sub
-          className={`${ typography.labelSmall } ${ styles.date }`}
-        >
+          className={`${ typography.labelSmall } ${ styles.date }`}>
           ... cargando
         </sub>
         <div className={styles.buttonsRow}>

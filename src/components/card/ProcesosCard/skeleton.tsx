@@ -6,23 +6,19 @@ export const ProcesoCardSkeleton = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         <h1
-          className={`${ typography.titleLarge } ${ styles.title }`}
-        >
+          className={`${ typography.titleLarge } ${ styles.title }`}>
           Cargando
         </h1>
         <button
           className={styles.button}
-          type='button'
-        >
+          type='button'>
           <span
-            className={`material-symbols-outlined ${ styles.icon }`}
-          >
+            className={`material-symbols-outlined ${ styles.icon }`}>
             open_in_new
           </span>
         </button>
         <p
-          className={`${ typography.bodyMedium } ${ styles.content }`}
-        >
+          className={`${ typography.bodyMedium } ${ styles.content }`}>
           cargando
         </p>
       </div>

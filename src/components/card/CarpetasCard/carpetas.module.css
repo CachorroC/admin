@@ -6,7 +6,9 @@
   width: 100%;
 }
 
-.card, .cardInactive, .cardActive {
+.card,
+.cardInactive,
+.cardActive {
   box-sizing: border-box;
   padding: 2cqmin;
   background-color: var(--primary);
@@ -36,21 +38,29 @@
   background-color: var(--surface-container);
 }
 .cardInactive > .links > .button {
-  background-color: var(--surface-container-highest);
+  background-color: var(
+    --surface-container-highest
+  );
   color: var(--on-surface);
 }
-.card .title, .cardActive .title, .cardInactive .title {
+.card .title,
+.cardActive .title,
+.cardInactive .title {
   color: var(--primary);
   text-align: right;
   flex: 1 0 100%;
 }
-.card .links, .cardActive .links, .cardInactive .links {
+.card .links,
+.cardActive .links,
+.cardInactive .links {
   display: flex;
   width: 100%;
   flex-flow: row wrap;
   gap: 2vmin;
 }
-.card .links .button, .cardActive .links .button, .cardInactive .links .button {
+.card .links .button,
+.cardActive .links .button,
+.cardInactive .links .button {
   display: flex;
   flex-flow: column nowrap;
   position: relative;
@@ -58,7 +68,9 @@
   padding: 2cqmin;
   flex: 1 0;
 }
-.card .links .button > .tooltiptext, .cardActive .links .button > .tooltiptext, .cardInactive .links .button > .tooltiptext {
+.card .links .button > .tooltiptext,
+.cardActive .links .button > .tooltiptext,
+.cardInactive .links .button > .tooltiptext {
   visibility: hidden;
   width: auto;
   background-color: var(--inverse-surface);
@@ -74,41 +86,69 @@
   opacity: 0;
   transition: all 0.5s;
 }
-.card .links .button > .tooltiptext::after, .cardActive .links .button > .tooltiptext::after, .cardInactive .links .button > .tooltiptext::after {
-  content: "";
+.card .links .button > .tooltiptext::after,
+.cardActive .links .button > .tooltiptext::after,
+.cardInactive
+  .links
+  .button
+  > .tooltiptext::after {
+  content: '';
   position: absolute;
   top: 100%;
   left: 50%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent transparent;
+  border-color: #555 transparent transparent
+    transparent;
 }
-.card .links .button > .icon, .cardActive .links .button > .icon, .cardInactive .links .button > .icon {
+.card .links .button > .icon,
+.cardActive .links .button > .icon,
+.cardInactive .links .button > .icon {
   margin: 0 auto;
-  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24;
   font-size: 1.5rem;
 }
-.card .links .button:hover, .cardActive .links .button:hover, .cardInactive .links .button:hover, .card .links .button:active, .cardActive .links .button:active, .cardInactive .links .button:active {
+.card .links .button:hover,
+.cardActive .links .button:hover,
+.cardInactive .links .button:hover,
+.card .links .button:active,
+.cardActive .links .button:active,
+.cardInactive .links .button:active {
   background-color: var(--primary);
   color: var(--on-primary);
   box-shadow: var(--dp8);
 }
-.card .links .button:hover .tooltiptext, .cardActive .links .button:hover .tooltiptext, .cardInactive .links .button:hover .tooltiptext, .card .links .button:active .tooltiptext, .cardActive .links .button:active .tooltiptext, .cardInactive .links .button:active .tooltiptext {
+.card .links .button:hover .tooltiptext,
+.cardActive .links .button:hover .tooltiptext,
+.cardInactive .links .button:hover .tooltiptext,
+.card .links .button:active .tooltiptext,
+.cardActive .links .button:active .tooltiptext,
+.cardInactive .links .button:active .tooltiptext {
   visibility: visible;
   opacity: 1;
 }
-.card .content, .cardActive .content, .cardInactive .content {
+.card .content,
+.cardActive .content,
+.cardInactive .content {
   text-align: center;
   padding: 2cqmin;
   border-radius: 2cqmin;
   flex: 1 0 100%;
 }
-.card .sub, .cardActive .sub, .cardInactive .sub {
+.card .sub,
+.cardActive .sub,
+.cardInactive .sub {
   color: var(--surface-on-variant);
   flex: 0 0 25%;
 }
-.card .date, .cardActive .date, .cardInactive .date {
+.card .date,
+.cardActive .date,
+.cardInactive .date {
   grid-area: date;
   background-color: var(--surface);
   padding: 2cqmin;
@@ -118,7 +158,9 @@
   align-self: center;
   flex: 1 0 50%;
 }
-.card .dummytxt, .cardActive .dummytxt, .cardInactive .dummytxt {
+.card .dummytxt,
+.cardActive .dummytxt,
+.cardInactive .dummytxt {
   height: 6px;
   border: none;
   background: rgba(0, 0, 0, 0.1);

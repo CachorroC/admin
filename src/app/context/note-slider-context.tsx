@@ -39,8 +39,7 @@ export function NoteSliderProvider(
       value={[
         noteSliderMap,
         setNoteSliderMap
-      ]}
-    >
+      ]}>
       {children}
     </NoteSliderContext.Provider>
   );

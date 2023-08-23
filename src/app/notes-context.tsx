@@ -34,8 +34,7 @@ export function NoteProvider(
       value={[
         isShowing,
         setIsShowing
-      ]}
-    >
+      ]}>
       {children}
     </NoteContext.Provider>
   );

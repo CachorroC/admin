@@ -13,17 +13,17 @@ export const procesosCollection = async () => {
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico'
+      'no hay cliente mongólico' 
     );
   }
 
   const db = client.db(
-    'RyS'
+    'RyS' 
   );
 
   const carpetas
     = db.collection<Proceso>(
-      'Procesos'
+      'Procesos' 
     );
 
   return carpetas;
@@ -36,7 +36,7 @@ export async function fetchProceso(
   }: {
   llaveProceso: string;
   index: number;
-}
+} 
 ) {
   try {
     if (
@@ -63,7 +63,7 @@ export async function fetchProceso(
     const res
       = procesosConvert.toConsultaNumeroRadicacion(
         JSON.stringify(
-          json
+          json 
         )
       );
 
@@ -91,16 +91,15 @@ export async function getProceso(
   }: {
   llaveProceso: string;
   index: number;
-}
+} 
 ) {
-
   const collection = await procesosCollection();
 
   const fetchP = await fetchProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
-    }
+    } 
   );
 
   if ( fetchP ) {

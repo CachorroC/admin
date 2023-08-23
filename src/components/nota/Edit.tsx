@@ -98,13 +98,11 @@ export function Edit(
         className={note.form}
         onSubmit={handleSubmit(
           onSubmit 
-        )}
-      >
+        )}>
         <div className={note.section}>
           <label
             htmlFor={'nota'}
-            className={`${ note.label } ${ typography.titleMedium }`}
-          >
+            className={`${ note.label } ${ typography.titleMedium }`}>
             Nota
           </label>
           <textarea
@@ -126,8 +124,7 @@ export function Edit(
                 <div className={note.section}>
                   <label
                     htmlFor={`tareas.${ index }.tarea`}
-                    className={note.label}
-                  >
+                    className={note.label}>
                   Tarea:
                   </label>
                   <textarea
@@ -143,8 +140,7 @@ export function Edit(
                 <div className={note.section}>
                   <label
                     htmlFor={`tareas.${ index }.isDone`}
-                    className={note.label}
-                  >
+                    className={note.label}>
                   ¿Tarea completa?
                   </label>
                   <input
@@ -160,8 +156,7 @@ export function Edit(
                 <div className={note.section}>
                   <label
                     htmlFor={`tareas.${ index }.dueDate`}
-                    className={note.label}
-                  >
+                    className={note.label}>
                   Para cuándo es?:
                   </label>
                   <input
@@ -182,8 +177,7 @@ export function Edit(
                       return remove(
                         index 
                       );
-                    }}
-                  >
+                    }}>
                     <span className='material-symbols-outlined'>
                     remove
                     </span>
@@ -201,8 +195,7 @@ export function Edit(
                               .toISOString()
                         } 
                       );
-                    }}
-                  >
+                    }}>
                     <span className='material-symbols-outlined'>
                     add
                     </span>
@@ -215,8 +208,7 @@ export function Edit(
         <div className={note.section}>
           <button
             type='submit'
-            className={note.submitButton}
-          >
+            className={note.submitButton}>
             <span className='material-symbols-outlined'>
               send
             </span>
@@ -227,8 +219,7 @@ export function Edit(
               setValue(
                 'nota', nota.nota 
               );
-            }}
-          >
+            }}>
             Set All Values
           </button>
         </div>

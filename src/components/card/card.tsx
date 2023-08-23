@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { ReactNode, useState } from 'react';
 import card from '#@/components/card/card.module.scss';
 import { useModal } from '#@/app/modal-context';
-import typography from '#@/styles/fonts/typography.module.scss';
+import typography from '#@/styles/fonts/typography.module.css';
 import { useCategory,
          useNavigator } from '#@/app/search-context';
 import { toNameString } from '#@/lib/fix';
@@ -25,14 +25,21 @@ export const Card = (
   path: string;
   carpeta: MonCarpeta;
   children: ReactNode;
-} 
+}
 ) => {
+  const [
+    openLinks,
+    setOpenLinks
+  ] = useState(
+    false
+  );
+
   const {
-    deudor 
+    deudor
   } = carpeta;
 
   const {
-    email, tel 
+    email, tel
   } = deudor;
 
   const [
@@ -53,10 +60,10 @@ export const Card = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false 
+      false
     );
     setIsOpen(
-      false 
+      false
     );
   };
 
@@ -92,19 +99,18 @@ export const Card = (
     segundoApellido
   } = carpeta.deudor;
 
+  function handleOpenLinks () {
+    setOpenLinks(
+      !openLinks
+    );
+  }
+
   return (
     <div className={card.container}>
-      <div
-        className={
-          isActive
-            ? card.isActive
-            : card.notActive
-        }
-      >
+      <div className={card.card}>
         <div className={card.section}>
           <sub
-            className={card.sub}
-          >{`carpeta numero ${ carpeta.numero }`}</sub>
+            className={`${ typography.labelSmall } ${ card.sub }`}>{`carpeta numero ${ carpeta.numero }`}</sub>
           <NombreComponent
             key={carpeta._id}
             deudor={carpeta.deudor}
@@ -113,148 +119,148 @@ export const Card = (
         <div className={card.content}>
           {children}
         </div>
-        <div className={card.links}>
-          {email && (
-            <Link
-              className={`${ card.link } ${
-                isActive && card.isActive
-              }`}
-              href={email as Route}
-            >
-              <span
-                className={`material-symbols-outlined ${ card.icon }`}
-              >
+        <button onClick={
+          () => {
+            setOpenLinks(
+              true
+            );
+          }
+        }>
+          {'button'}
+        </button>
+        <button onClick={
+          () => {
+            setOpenLinks(
+              false
+            );
+          }
+        }>
+          {'no button'}
+        </button>
+
+        {
+          openLinks && (
+            <div className={card.links}>
+              <Link
+                className={ `${ card.link } ${ isActive && card.isActive }` }
+                onClick={ clickHandler }
+                href={ href }>
+                <span
+                  className={ `${ card.icon } material-symbols-outlined` }>
+                file_open
+                </span>
+                <span className={ card.tooltiptext }>
+                Actuaciones del proceso
+                </span>
+              </Link><Link
+                className={ `${ card.link } ${ isActive && card.isActive }` }
+                href={ `/Procesos/${ carpeta.llaveProceso }/Editar` }>
+                <span
+                  className={ `material-symbols-outlined ${ card.icon }` }>
+                  folder_shared
+                </span>
+                <span className={ card.tooltiptext }>
+                  Perfil del Demandado
+                </span>
+              </Link><Link
+                className={ `${ card.link } ${ isActive && card.isActive }` }
+                href={ `/Procesos/${ carpeta.llaveProceso }` }>
+                <span
+                  className={ `material-symbols-outlined ${ card.icon }` }>
+                  badge
+                </span>
+                <span className={ card.tooltiptext }>
+                  Procesos
+                </span>
+              </Link>
+              <Link
+                className={ `${ card.link } ${ isActive && card.isActive }` }
+                href={ `/Notas/${ carpeta.llaveProceso }` }
+                onClick={
+                  () => {
+                    setIsOpen(
+                      true
+                    );
+                  }
+                }>
+                <span
+                  className={ `material-symbols-outlined ${ card.icon }` }>
+                  add
+                </span>
+                <span className={ card.tooltiptext }>
+                  Agregar nota
+                </span>
+              </Link>
+              {
+                email && (
+                  <Link
+                    className={`${ card.link } ${
+                      isActive && card.isActive
+                    }`}
+                    href={email as Route}>
+                    <span
+                      className={`material-symbols-outlined ${ card.icon }`}>
                 mail
-              </span>
-              <span className={card.tooltiptext}>
+                    </span>
+                    <span className={card.tooltiptext}>
                 Correo Electrónico
-              </span>
-            </Link>
-          )}
-          {tel.celular
-            && tel.celular.map(
-              (
-                cel, i 
-              ) => {
-                return (
-                  <Link
-                    key={i}
-                    className={card.link}
-                    href={`tel:${ cel }`}
-                  >
-                    <span
-                      className={`material-symbols-outlined ${ card.icon }`}
-                    >
+                    </span>
+                  </Link>
+                )
+              }
+              {
+                tel.celular && tel.celular.map(
+                  (
+                    cel, i
+                  ) => {
+                    return (
+                      <Link
+                        key={i}
+                        className={card.link}
+                        href={`tel:${ cel }`}>
+                        <span
+                          className={`material-symbols-outlined ${ card.icon }`}>
                     phone_iphone
-                    </span>
-                    <span
-                      className={card.tooltiptext}
-                    >
-                      {cel.toString()}
-                    </span>
-                  </Link>
-                );
-              } 
-            )}
-          {tel.fijo
-            && tel.fijo.map(
-              (
-                f, i 
-              ) => {
-                return (
-                  <Link
-                    key={i}
-                    className={card.link}
-                    href={`tel:${ f }`}
-                  >
-                    <span
-                      className={`material-symbols-outlined ${ card.icon }`}
-                    >
+                        </span>
+                        <span
+                          className={card.tooltiptext}>
+                          {cel.toString()}
+                        </span>
+                      </Link>
+                    );
+                  }
+                )
+              }
+              {
+                tel.fijo && tel.fijo.map(
+                  (
+                    f, i
+                  ) => {
+                    return (
+                      <Link
+                        key={i}
+                        className={card.link}
+                        href={`tel:${ f }`}>
+                        <span
+                          className={`material-symbols-outlined ${ card.icon }`}>
                     call
-                    </span>
-                    <span
-                      className={card.tooltiptext}
-                    >
-                      {f.toString()}
-                    </span>
-                  </Link>
-                );
-              } 
-            )}
-          <Link
-            className={`${ card.link } ${
-              isActive && card.isActive
-            }`}
-            href={
-              `/Procesos/${
-                carpeta.llaveProceso
-                ?? 'sinEspecificar'
-              }/Editar` as Route
-            }
-          >
-            <span
-              className={`material-symbols-outlined ${ card.icon }`}
-            >
-              folder_shared
-            </span>
-            <span className={card.tooltiptext}>
-              Perfil del Demandado
-            </span>
-          </Link>
-          <Link
-            className={`${ card.link } ${
-              isActive && card.isActive
-            }`}
-            href={
-              `/Procesos/${ carpeta.llaveProceso }` as Route
-            }
-          >
-            <span
-              className={`material-symbols-outlined ${ card.icon }`}
-            >
-              badge
-            </span>
-            <span className={card.tooltiptext}>
-              Procesos
-            </span>
-          </Link>
-          <Link
-            className={`${ card.link } ${
-              isActive && card.isActive
-            }`}
-            href={`/Notas/${ carpeta.llaveProceso }`}
-            onClick={() => {
-              setIsOpen(
-                true 
-              );
-            }}
-          >
-            <span
-              className={`material-symbols-outlined ${ card.icon }`}
-            >
-              add
-            </span>
-            <span className={card.tooltiptext}>
-              Agregar nota
-            </span>
-          </Link>
-          <Link
-            className={`${ card.link } ${
-              isActive && card.isActive
-            }`}
-            onClick={clickHandler}
-            href={href}
-          >
-            <span
-              className={`${ card.icon } material-symbols-outlined`}
-            >
-              file_open
-            </span>
-            <span className={card.tooltiptext}>
-              Actuaciones del proceso
-            </span>
-          </Link>
-        </div>
+                        </span>
+                        <span
+                          className={card.tooltiptext}>
+                          {f.toString()}
+                        </span>
+                      </Link>
+                    );
+                  }
+                )
+              }
+            </div>
+
+
+          )
+        }
+
+
       </div>
     </div>
   );

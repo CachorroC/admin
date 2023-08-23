@@ -6,8 +6,7 @@ export default function CardSkeleton() {
     <div className={card.container}>
       <div className={card.notActive}>
         <h1
-          className={`${ typography.titleMedium } ${ card.title }`}
-        >
+          className={`${ typography.titleMedium } ${ card.title }`}>
           Nombre
         </h1>
         <p className={card.content}>
@@ -17,11 +16,9 @@ export default function CardSkeleton() {
         <div className={card.links}>
           <button
             className={card.link}
-            type='button'
-          >
+            type='button'>
             <span
-              className={`${ card.icon }  material-symbols-outlined`}
-            >
+              className={`${ card.icon }  material-symbols-outlined`}>
               autorenew
             </span>
           </button>

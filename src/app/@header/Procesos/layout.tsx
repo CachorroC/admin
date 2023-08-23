@@ -21,8 +21,7 @@ export default async function Layout(
       {children}
       <Drawer>
         <Suspense
-          fallback={<SearchOutputListSkeleton />}
-        >
+          fallback={<SearchOutputListSkeleton />}>
           <SearchOutputList
             path={'/Procesos'}
             fechas={carpetas}

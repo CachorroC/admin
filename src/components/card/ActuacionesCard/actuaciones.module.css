@@ -33,7 +33,9 @@
 }
 .card .date {
   grid-area: date;
-  background-color: var(--surface-container-highest);
+  background-color: var(
+    --surface-container-highest
+  );
   padding: 2cqmin;
   color: var(--on-surface);
   font-family: var(--font-poiret);
@@ -70,17 +72,31 @@
   margin: 0;
   grid-area: icon;
   color: var(--on-tertiary-container);
-  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24;
   font-size: 2rem;
 }
-.card .button:hover, .card .button:active {
+.card .button:hover,
+.card .button:active {
   background-color: var(--tertiary);
   color: var(--on-tertiary);
   box-shadow: var(--dp8);
-  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
+  transition:
+    background-color 0.35s ease-in-out,
+    color 0.35s ease-in-out;
 }
-.card .button:hover > .icon, .card .button:active > .icon {
+.card .button:hover > .icon,
+.card .button:active > .icon {
   color: var(--on-tertiary);
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 200, "opsz" 24;
-  transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 200,
+    'opsz' 24;
+  transition:
+    background-color 0.35s ease-in-out,
+    color 0.35s ease-in-out;
 }

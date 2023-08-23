@@ -44,11 +44,9 @@ export const CategoryFilterButton = () => {
                 category === categoria
                   ? styles.active
                   : styles.button
-              }
-            >
+              }>
               <span
-                className={`material-symbols-outlined ${ styles.icon }`}
-              >
+                className={`material-symbols-outlined ${ styles.icon }`}>
                 {icons[ index ]}
               </span>
               <p className={styles.text}>

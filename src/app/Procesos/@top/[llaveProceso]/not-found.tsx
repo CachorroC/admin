@@ -7,8 +7,7 @@ export default function NotFound() {
       className={typography.displayLarge}
       style={{
         color: 'var(--on-error-container)'
-      }}
-    >
+      }}>
       {' ¿Perdido?'}
     </h1>
   );

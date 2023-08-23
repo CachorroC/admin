@@ -30,8 +30,7 @@ export const ActuacionCard = (
     <div className={styles.container}>
       <div className={styles.card}>
         <h1
-          className={`${ typography.titleMedium } ${ styles.title }`}
-        >
+          className={`${ typography.titleMedium } ${ styles.title }`}>
           {actuacion.replace(
             /\s+/g, ' ' 
           )}
@@ -44,21 +43,17 @@ export const ActuacionCard = (
           </p>
         )}
         <sub
-          className={`${ typography.labelSmall } ${ styles.sub }`}
-        >{`${ consActuacion } de ${ cant }`}</sub>
+          className={`${ typography.labelSmall } ${ styles.sub }`}>{`${ consActuacion } de ${ cant }`}</sub>
         <Link
           href={`/Notas/${ llaveProceso }/NuevaNota`}
-          className={styles.button}
-        >
+          className={styles.button}>
           <span
-            className={`material-symbols-outlined ${ styles.icon }`}
-          >
+            className={`material-symbols-outlined ${ styles.icon }`}>
             note_add
           </span>
         </Link>
         <sup
-          className={`${ typography.labelMedium } ${ styles.date }`}
-        >
+          className={`${ typography.labelMedium } ${ styles.date }`}>
           {fixFechas(
             fechaActuacion 
           )}

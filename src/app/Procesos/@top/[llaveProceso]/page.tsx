@@ -36,8 +36,7 @@ export default async function DefaultProcesosllaveProceso(
         href={
           `/Procesos/${ llaveProceso }` as Route
         }
-        className={card.link}
-      >
+        className={card.link}>
         <span className='material-symbols-outlined'>
           folder_shared
         </span>

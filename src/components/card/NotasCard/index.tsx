@@ -66,8 +66,7 @@ export const NotasList = (
                   return scrollToId(
                     _id 
                   );
-                }}
-              >
+                }}>
                 <span className='material-symbols-outlined'>
                 open_in_new
                 </span>
@@ -100,31 +99,26 @@ export const NotasList = (
                     nota._id 
                   );
                 }
-              }}
-            >
+              }}>
               <div className={styles.nota}>
                 <sup className={styles.sup}>{`${
                   index + 1
                 }`}</sup>
                 <p
-                  className={`${ typography.bodySmall } ${ styles.textArea }`}
-                >{`Nota: ${ nota.nota }`}</p>
+                  className={`${ typography.bodySmall } ${ styles.textArea }`}>{`Nota: ${ nota.nota }`}</p>
                 <sub
-                  className={`${ typography.labelSmall } ${ styles.date }`}
-                >
+                  className={`${ typography.labelSmall } ${ styles.date }`}>
                   {fixFechas(
                     nota.fecha.toString() 
                   )}
                 </sub>
                 <div className={styles.buttonsRow}>
                   <Suspense
-                    fallback={<ButtonSkeleton />}
-                  >
+                    fallback={<ButtonSkeleton />}>
                     <EditNoteButton nota={nota} />
                   </Suspense>
                   <Suspense
-                    fallback={<ButtonSkeleton />}
-                  >
+                    fallback={<ButtonSkeleton />}>
                     <DeleteNoteButton
                       id={nota._id}
                     />
@@ -167,31 +161,26 @@ export const NotaFRef = forwardRef(
     return (
       <div
         className={styles.container}
-        key={nota._id}
-      >
+        key={nota._id}>
         <div className={styles.nota}>
           <sup className={styles.sup}>{`${
             index + 1
           }`}</sup>
           <p
-            className={`${ typography.bodySmall } ${ styles.textArea }`}
-          >{`Nota: ${ nota.nota }`}</p>
+            className={`${ typography.bodySmall } ${ styles.textArea }`}>{`Nota: ${ nota.nota }`}</p>
           <sub
-            className={`${ typography.labelSmall } ${ styles.date }`}
-          >
+            className={`${ typography.labelSmall } ${ styles.date }`}>
             {fixFechas(
               nota.fecha.toString() 
             )}
           </sub>
           <div className={styles.buttonsRow}>
             <Suspense
-              fallback={<ButtonSkeleton />}
-            >
+              fallback={<ButtonSkeleton />}>
               <EditNoteButton nota={nota} />
             </Suspense>
             <Suspense
-              fallback={<ButtonSkeleton />}
-            >
+              fallback={<ButtonSkeleton />}>
               <DeleteNoteButton id={nota._id} />
             </Suspense>
           </div>

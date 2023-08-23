@@ -51,8 +51,7 @@ export default function Fields(
             return (
               <section
                 className={form.section}
-                key={item.id}
-              >
+                key={item.id}>
                 <h2 className={form.label}>
                   {index === 0
                     ? 'Juzgado de Origen'
@@ -61,8 +60,7 @@ export default function Fields(
                 <section className={form.section}>
                   <label
                     className={form.label}
-                    htmlFor={`demanda.juzgados.${ index }.id`}
-                  >
+                    htmlFor={`demanda.juzgados.${ index }.id`}>
                   Juzgado número
                   </label>
                   <input
@@ -76,15 +74,13 @@ export default function Fields(
                 <section className={form.section}>
                   <label
                     className={form.label}
-                    htmlFor={`demanda.juzgados.${ index }.id`}
-                  >
+                    htmlFor={`demanda.juzgados.${ index }.id`}>
                   Juzgado número
                   </label>
                   <select
                     {...register(
                       `demanda.juzgados.${ index }.tipo`
-                    )}
-                  >
+                    )}>
                     {options.map(
                       (
                         option, i 
@@ -92,8 +88,7 @@ export default function Fields(
                         return (
                           <option
                             value={option.url}
-                            key={index}
-                          >
+                            key={index}>
                             {option.nombre}
                           </option>
                         );
@@ -104,8 +99,7 @@ export default function Fields(
                 <section className={form.section}>
                   <label
                     className={form.label}
-                    htmlFor={`demanda.juzgados.${ index }.url`}
-                  >
+                    htmlFor={`demanda.juzgados.${ index }.url`}>
                   url
                   </label>
 
@@ -146,8 +140,7 @@ export default function Fields(
                                   }
                                 ]
                               );
-                            }}
-                          >
+                            }}>
                             <h2>
                               {option.especialidad}
                             </h2>
@@ -164,8 +157,7 @@ export default function Fields(
                     return remove(
                       index 
                     );
-                  }}
-                >
+                  }}>
                 Delete
                 </button>
               </section>
@@ -185,8 +177,7 @@ export default function Fields(
                 url : 'https://ramajudicial.gov.co'
               } 
             );
-          }}
-        >
+          }}>
           append
         </button>
 
@@ -204,8 +195,7 @@ export default function Fields(
                 }
               ] 
             );
-          }}
-        >
+          }}>
           Append Nested
         </button>
 
@@ -219,8 +209,7 @@ export default function Fields(
                 url : 'https://ramajudicial.gov.co'
               } 
             );
-          }}
-        >
+          }}>
           prepend
         </button>
 
@@ -238,8 +227,7 @@ export default function Fields(
                 || [] )
               ] 
             );
-          }}
-        >
+          }}>
           prepend Nested
         </button>
       </section>

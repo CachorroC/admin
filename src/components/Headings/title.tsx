@@ -80,8 +80,7 @@ export default function Title(
 
   return (
     <h1
-      className={`${ typography.titleMedium }  ${ typeface.navbar }`}
-    >
+      className={`${ typography.titleMedium }  ${ typeface.navbar }`}>
       {isOnline
         ? txt
         : 'offline'}

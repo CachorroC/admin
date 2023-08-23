@@ -81,8 +81,7 @@ export default function Formulario() {
           'Title', {
             required: true
           } 
-        )}
-      >
+        )}>
         <option value='Mr'>Mr</option>
         <option value='Mrs'>Mrs</option>
         <option value='Miss'>Miss</option>

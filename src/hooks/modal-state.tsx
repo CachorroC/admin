@@ -47,16 +47,14 @@ export default function ModalDialog(
           setShow(
             false 
           );
-        }}
-      >
+        }}>
         <span className='material-symbols-outlined'>
           close
         </span>
       </button>
       <dialog
         ref={ref}
-        className={modal.modal}
-      >
+        className={modal.modal}>
         {children}
       </dialog>
       <button
@@ -64,8 +62,7 @@ export default function ModalDialog(
           return setShow(
             true 
           );
-        }}
-      >
+        }}>
         Open dialog
       </button>
     </>

@@ -73,14 +73,24 @@
 }
 .submitButton > span {
   color: var(--on-secondary);
-  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24;
 }
-.submitButton:hover, .submitButton:active {
+.submitButton:hover,
+.submitButton:active {
   background-color: var(--secondary);
   box-shadow: var(--dp8);
 }
-.submitButton:hover > span, .submitButton:active > span {
-  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 200, "opsz" 48;
+.submitButton:hover > span,
+.submitButton:active > span {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 600,
+    'GRAD' 200,
+    'opsz' 48;
   color: var(--on-secondary);
 }
 
@@ -103,7 +113,9 @@
 }
 .textArea:focus,
 .selectArea:focus {
-  background-color: var(--surface-container-lowest);
+  background-color: var(
+    --surface-container-lowest
+  );
 }
 
 .editButton {
@@ -155,9 +167,14 @@
 .addButton > span,
 .HomeButton > span {
   color: var(--on-secondary);
-  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24;
 }
-.button:hover, .button:active,
+.button:hover,
+.button:active,
 .editButton:hover,
 .editButton:active,
 .deleteButton:hover,
@@ -169,7 +186,8 @@
   background-color: var(--tertiary-container);
   box-shadow: var(--dp8);
 }
-.button:hover > span, .button:active > span,
+.button:hover > span,
+.button:active > span,
 .editButton:hover > span,
 .editButton:active > span,
 .deleteButton:hover > span,
@@ -178,7 +196,11 @@
 .addButton:active > span,
 .HomeButton:hover > span,
 .HomeButton:active > span {
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 200, "opsz" 24;
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 200,
+    'opsz' 24;
   color: var(--tertiary);
 }
 
@@ -243,7 +265,7 @@
 }
 .switchBox .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 26px;
   width: 26px;
   left: 4px;

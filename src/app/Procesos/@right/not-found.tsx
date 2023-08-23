@@ -7,14 +7,12 @@ export default function NotFound() {
       className={layout.right}
       style={{
         backgroundColor: 'var(--error-container)'
-      }}
-    >
+      }}>
       <p
         className={typography.bodyLarge}
         style={{
           color: 'var(--on-error-container)'
-        }}
-      >
+        }}>
         {
           'No pudimos resolver la consulta que realizaste. No existe el recurso'
         }

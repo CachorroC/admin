@@ -36,8 +36,7 @@ export const NuevaCarpetaProvider = (
       value={[
         map,
         setMap
-      ]}
-    >
+      ]}>
       {children}
     </NuevaCarpetaContext.Provider>
   );
