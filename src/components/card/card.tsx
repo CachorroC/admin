@@ -75,7 +75,7 @@ export const Card = (
     carpeta.idProceso > 1
       ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
       : `${ path }/${ carpeta.llaveProceso }`
-  ) ;
+  ) as Route;
 
   const isActive
     = pathname === href

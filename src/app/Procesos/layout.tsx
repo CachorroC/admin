@@ -2,7 +2,6 @@ import layout from '#@/styles/layout.module.css';
 import React, { ReactNode,
                 Suspense } from 'react';
 
-export const dynamic = 'force-dynamic';
 
 export const dynamicParams = true;
 
@@ -15,7 +14,7 @@ export default function LayoutProcesos(
   children: ReactNode;
   top: ReactNode;
   right: ReactNode;
-} 
+}
 ) {
   return (
     <div className={layout.body}>

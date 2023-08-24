@@ -40,16 +40,18 @@ export class actuacionConvert {
   public static toConsultaActuacion(
     json: string
   ): ConsultaActuacion {
-    return JSON.parse(
-      json 
+    const parsed: ConsultaActuacion = JSON.parse(
+      json
     );
+
+    return parsed;
   }
 
   public static consultaActuacionToJson(
     value: ConsultaActuacion
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 
@@ -57,7 +59,7 @@ export class actuacionConvert {
     json: string
   ): Actuacion {
     return JSON.parse(
-      json 
+      json
     );
   }
 
@@ -65,7 +67,7 @@ export class actuacionConvert {
     value: Actuacion
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 
@@ -73,7 +75,7 @@ export class actuacionConvert {
     json: string
   ): Paginacion {
     return JSON.parse(
-      json 
+      json
     );
   }
 
@@ -81,7 +83,7 @@ export class actuacionConvert {
     value: Paginacion
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 }

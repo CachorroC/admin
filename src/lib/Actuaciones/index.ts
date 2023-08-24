@@ -1,13 +1,37 @@
 import 'server-only';
-import { carpetasCollection } from '../Carpetas';
+import { carpetasCollection, getCarpetaByidProceso } from '../Carpetas';
 import { sleep } from '../fix';
 import { cache } from 'react';
 import { Actuacion,
          actuacionConvert } from '../types/actuaciones';
+import { MonCarpeta } from '../types/carpeta';
+import clientPromise from '../mongodb';
+
+
+export const actuacionesCollection = async () => {
+  const client = await clientPromise;
+
+  if ( !client ) {
+    throw new Error(
+      'no hay cliente mongólico'
+    );
+  }
+
+  const db = client.db(
+    'RyS'
+  );
+
+  const actuaciones
+    = db.collection<Actuacion>(
+      'Actuaciones'
+    );
+
+  return actuaciones;
+};
 
 export const fetchActuaciones = cache(
   async (
-    idProceso: number 
+    idProceso: number
   ) => {
     try {
       if ( idProceso === 1 ) {
@@ -36,7 +60,7 @@ export const fetchActuaciones = cache(
       const consulta
         = actuacionConvert.toConsultaActuacion(
           JSON.stringify(
-            json 
+            json
           )
         );
 
@@ -66,7 +90,7 @@ export const getActuaciones = cache(
     }: {
     idProceso: number;
     index: number;
-  } 
+  }
   ) => {
     const actuaciones = await fetchActuaciones(
       idProceso
@@ -77,7 +101,7 @@ export const getActuaciones = cache(
         {
           idProceso  : idProceso,
           actuaciones: actuaciones
-        } 
+        }
       );
     }
 
@@ -93,12 +117,13 @@ export const updateActuaciones = cache(
     }: {
     idProceso: number;
     actuaciones: Actuacion[];
-  } 
+  }
   ) => {
-    const collection = await carpetasCollection();
+
+    const carpetasColl = await carpetasCollection();
 
     const updateCarpetawithActuaciones
-      = await collection.updateOne(
+      = await carpetasColl.updateOne(
         {
           idProceso: idProceso
         },
@@ -106,7 +131,11 @@ export const updateActuaciones = cache(
           $set: {
             fecha: new Date(
               actuaciones[ 0 ].fechaActuacion
-            )
+            ),
+            ultimaActuacion: actuaciones[ 0 ]
+          },
+          $currentDate: {
+            lastModified: true
           }
         },
         {
@@ -124,5 +153,6 @@ export const updateActuaciones = cache(
         `se modificaron ${ updateCarpetawithActuaciones.modifiedCount } carpetas y se insertaron ${ updateCarpetawithActuaciones.upsertedCount } carpetas`
       );
     }
+
   }
 );

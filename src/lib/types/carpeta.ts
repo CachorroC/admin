@@ -6,6 +6,7 @@
 
 import { WithId } from 'mongodb';
 import { toNameString } from '../fix';
+import { Actuacion } from './actuaciones';
 
 export interface IntCarpeta {
   demanda: Demanda;
@@ -29,11 +30,11 @@ export interface Demanda {
   capitalAdeudado: number | null;
   entregagarantiasAbogado: Date;
   etapaProcesal: null | string;
-  fechaPresentacion?: Date;
+  fechaPresentacion?: Date | string;
   municipio: string;
-  obligacion: { [key: string]: number | string };
+  obligacion: { [key: string]:Obligacion };
   radicado: string;
-  vencimientoPagare?: Date;
+  vencimientoPagare?: Date | string;
   expediente: string;
   juzgados: Juzgado[];
 }
@@ -55,12 +56,14 @@ export interface Juzgado {
   url: string;
 }
 
+export type Obligacion = number | string;
+
 export interface Deudor {
   tel: Tel;
   primerNombre: string;
-  segundoNombre: string;
+  segundoNombre?: string;
   primerApellido: string;
-  segundoApellido: string;
+  segundoApellido?: string;
   cedula: number | null;
   direccion?: string;
   email?: string;
@@ -91,7 +94,9 @@ export type TipoProceso =
 export interface MonCarpeta extends IntCarpeta {
   _id: string;
   nombre: string;
-  fecha?: Date;
+  fecha?:           Date;
+    lastModified?:    Date;
+    ultimaActuacion?: Actuacion;
 }
 
 export type CarpetaKeys = keyof IntCarpeta;
@@ -102,23 +107,24 @@ export class carpetaConvert {
     carpeta: WithId<IntCarpeta>
   ): MonCarpeta {
     const fixedCarpeta: MonCarpeta = {
+
       ...carpeta,
       _id: carpeta._id.toString(),
-      get nombre() {
-        const rawName
-          = this.deudor.primerNombre
-            + ' '
-            + this.deudor.segundoNombre
-          ?? ' '
-            + ' '
-            + this.deudor.primerApellido
-            + this.deudor.segundoApellido
-          ?? ' ';
+      get nombre () {
+        const nombres = this.deudor.segundoNombre
+          ? this.deudor.primerNombre + ' ' + this.deudor.segundoNombre
+          : this.deudor.primerNombre;
+
+        const apellidos = this.deudor.segundoApellido
+          ? this.deudor.primerApellido + ' '+ this.deudor.segundoApellido
+          : this.deudor.primerApellido;
+
+        const rawName = nombres + ' ' + apellidos;
 
         const nameOutput = toNameString(
           {
             nameRaw: rawName
-          } 
+          }
         );
 
         return nameOutput;
@@ -132,10 +138,10 @@ export class carpetaConvert {
   ): MonCarpeta[] {
     const newCarpetas = carpetas.map(
       (
-        carpeta 
+        carpeta
       ) => {
         return this.toMonCarpeta(
-          carpeta 
+          carpeta
         );
       }
     );
@@ -146,7 +152,7 @@ export class carpetaConvert {
     json: string
   ): IntCarpeta[] {
     return JSON.parse(
-      json 
+      json
     );
   }
 
@@ -154,7 +160,7 @@ export class carpetaConvert {
     value: IntCarpeta[]
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 
@@ -162,7 +168,7 @@ export class carpetaConvert {
     json: string
   ): IntCarpeta {
     return JSON.parse(
-      json 
+      json
     );
   }
 
@@ -170,15 +176,15 @@ export class carpetaConvert {
     value: IntCarpeta
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 
   public static toDemanda(
-    json: string 
+    json: string
   ): Demanda {
     return JSON.parse(
-      json 
+      json
     );
   }
 
@@ -186,15 +192,15 @@ export class carpetaConvert {
     value: Demanda
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 
   public static toJuzgado(
-    json: string 
+    json: string
   ): Juzgado {
     return JSON.parse(
-      json 
+      json
     );
   }
 
@@ -202,15 +208,15 @@ export class carpetaConvert {
     value: Juzgado
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 
   public static toDeudor(
-    json: string 
+    json: string
   ): Deudor {
     return JSON.parse(
-      json 
+      json
     );
   }
 
@@ -218,23 +224,23 @@ export class carpetaConvert {
     value: Deudor
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 
   public static toTel(
-    json: string 
+    json: string
   ): Tel {
     return JSON.parse(
-      json 
+      json
     );
   }
 
   public static telToJson(
-    value: Tel 
+    value: Tel
   ): string {
     return JSON.stringify(
-      value 
+      value
     );
   }
 }
@@ -250,14 +256,28 @@ export class NombreCompleto {
     }: {
     primerNombre: string;
     primerApellido: string;
-    segundoNombre: string | null;
-    segundoApellido: string | null;
-  } 
+        segundoNombre?: string;
+        segundoApellido?: string;
+  }
   ) {
-    this.Nombre = segundoApellido
-      ? segundoNombre
-        ? `${ primerNombre } ${ segundoNombre } ${ primerApellido } ${ segundoApellido }`
-        : `${ primerNombre } ${ primerApellido } ${ segundoApellido }`
-      : `${ primerNombre } ${ primerApellido }`;
+
+    const nombres = segundoNombre
+      ? primerNombre + ' ' + segundoNombre
+      : primerNombre;
+
+    const apellidos = segundoApellido
+      ? primerApellido + ' '+ segundoApellido
+      : primerApellido;
+
+    const rawName = nombres + ' ' + apellidos;
+
+    const nameOutput = toNameString(
+      {
+        nameRaw: rawName
+      }
+    );
+
+
+    this.Nombre =  nameOutput;
   }
 }
