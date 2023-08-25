@@ -9,7 +9,7 @@ import * as fs from 'fs/promises';
 import { IntCarpeta } from '#@/lib/types/carpeta';
 
 export async function GET(
-  Request: NextRequest 
+  Request: NextRequest
 ) {
   const {
     searchParams,
@@ -17,23 +17,23 @@ export async function GET(
     hostname,
     pathname
   } = new URL(
-    Request.url 
+    Request.url
   );
   console.log(
-    host 
+    host
   );
   console.log(
-    hostname 
+    hostname
   );
   console.log(
-    pathname 
+    pathname
   );
 
   const collection = await carpetasCollection();
 
   const carpetas = await collection
         .find(
-          {} 
+          {}
         )
         .toArray();
 
@@ -44,7 +44,7 @@ export async function GET(
   if ( llaveProceso ) {
     const Demandados = carpetas.filter(
       (
-        carpeta 
+        carpeta
       ) => {
         return (
           carpeta.llaveProceso === llaveProceso
@@ -54,7 +54,7 @@ export async function GET(
 
     return new NextResponse(
       JSON.stringify(
-        Demandados 
+        Demandados
       ),
       {
         status : 200,
@@ -66,13 +66,13 @@ export async function GET(
   }
 
   const idProceso = searchParams.get(
-    'idProceso' 
+    'idProceso'
   );
 
   if ( idProceso ) {
     const Demandados = carpetas.filter(
       (
-        carpeta 
+        carpeta
       ) => {
         return (
           carpeta.llaveProceso === llaveProceso
@@ -82,7 +82,7 @@ export async function GET(
 
     return new NextResponse(
       JSON.stringify(
-        Demandados 
+        Demandados
       ),
       {
         status : 200,
@@ -94,21 +94,21 @@ export async function GET(
   }
 
   const _id = searchParams.get(
-    '_id' 
+    '_id'
   );
 
   if ( _id ) {
     const Carpeta = carpetas.filter(
       (
-        carpeta 
+        carpeta
       ) => {
         return carpeta._id.toString() === _id;
-      } 
+      }
     );
 
     return new NextResponse(
       JSON.stringify(
-        Carpeta 
+        Carpeta
       ),
       {
         status : 200,
@@ -121,7 +121,7 @@ export async function GET(
 
   return new NextResponse(
     JSON.stringify(
-      carpetas 
+      carpetas
     ),
     {
       status : 200,

@@ -25,22 +25,22 @@ export const Card = (
   path: string;
   carpeta: MonCarpeta;
   children: ReactNode;
-} 
+}
 ) => {
   const [
     openLinks,
     setOpenLinks
   ]
     = useState(
-      false 
+      false
     );
 
   const {
-    deudor 
+    deudor
   } = carpeta;
 
   const {
-    email, tel 
+    email, tel
   } = deudor;
 
   const [
@@ -61,10 +61,10 @@ export const Card = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false 
+      false
     );
     setIsOpen(
-      false 
+      false
     );
   };
 
@@ -73,7 +73,7 @@ export const Card = (
   const isInProcesos = pathname === path;
 
   const href = (
-    carpeta.idProceso > 1
+    carpeta.idProceso
       ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
       : `${ path }/${ carpeta.llaveProceso }`
   ) as Route;
@@ -100,7 +100,7 @@ export const Card = (
 
   function handleOpenLinks() {
     setOpenLinks(
-      !openLinks 
+      !openLinks
     );
   }
 
@@ -109,7 +109,7 @@ export const Card = (
       className={card.container}
       onClick={() => {
         setOpenLinks(
-          !openLinks 
+          !openLinks
         );
       }}>
       <div className={card.card}>
@@ -178,7 +178,7 @@ export const Card = (
               href={`/Notas/${ carpeta.llaveProceso }`}
               onClick={() => {
                 setIsOpen(
-                  true 
+                  true
                 );
               }}>
               <span

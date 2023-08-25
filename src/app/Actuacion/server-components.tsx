@@ -12,11 +12,15 @@ export const FechaActuacionComponent = async (
   }: {
   carpeta: MonCarpeta;
   index: number;
-} 
+}
 ) => {
+  if ( !carpeta.idProceso ) {
+    return null;
+  }
+
   const awaitTime = index * 10;
   await sleep(
-    awaitTime 
+    awaitTime
   );
 
   const today = new Date()
@@ -57,7 +61,7 @@ export const FechaActuacionComponent = async (
     {
       idProceso: carpeta.idProceso,
       index    : index
-    } 
+    }
   );
 
   if ( !actuaciones || actuaciones.length === 0 ) {

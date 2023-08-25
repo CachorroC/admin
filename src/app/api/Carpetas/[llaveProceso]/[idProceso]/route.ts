@@ -15,9 +15,9 @@ export async function GET(
   const llaveProceso = context.params.llaveProceso;
 
   const {
-    searchParams 
+    searchParams
   } = new URL(
-    request.url 
+    request.url
   );
 
   try {
@@ -41,7 +41,7 @@ export async function GET(
     return NextResponse.json(
       {
         product
-      } 
+      }
     );
   } catch ( error ) {
     if ( error instanceof Error ) {
@@ -56,7 +56,7 @@ export async function GET(
     return new NextResponse(
       null, {
         status: 404
-      } 
+      }
     );
   }
 }

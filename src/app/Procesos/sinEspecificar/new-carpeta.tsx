@@ -14,7 +14,6 @@ import typography from '#@/styles/fonts/typography.module.css';
 import { SelectSection } from '#@/components/form/SelectSection';
 import { ReactNode } from 'react';
 import { getCarpetaById } from '#@/lib/Carpetas';
-import { DeudorFormComponent } from '#@/components/form/deudor-form';
 import Fields from './fieldArray-juzgados';
 import { Despacho } from '#@/lib/types/despachos';
 import { NuevaCarpetaProvider } from '#@/hooks/formContext';
@@ -68,6 +67,7 @@ const defaultValues: DefaultValues<IntCarpeta> = {
   demanda     : defaultDemanda,
   deudor      : defaultDeudor,
   category    : 'Bancolombia',
+  categoryTag : 1,
   idProceso   : 0,
   llaveProceso: '12345678912345678912345',
   numero      : 574,
@@ -85,13 +85,13 @@ export const NuevoProceso = (
   descripciones: Departamento[];
   despachos: Despacho[];
   carpeta?: IntCarpeta;
-} 
+}
 ) => {
   const methods = useForm<IntCarpeta>(
     {
       defaultValues,
       values: carpeta
-    } 
+    }
   );
 
   const {
@@ -115,34 +115,38 @@ export const NuevoProceso = (
   const onSubmit: SubmitHandler<
     IntCarpeta
   > = async (
-    data 
+    data
   ) => {
     alert(
       JSON.stringify(
-        dirtyFields 
-      ) 
+        dirtyFields
+      )
     );
     alert(
       JSON.stringify(
-        data 
-      ) 
+        data
+      )
     );
 
     const postNewNote = await fetch(
-      '/api/Carpetas',
+      `/api/Carpetas/${ data.llaveProceso }`,
       {
         method : 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(
-          data 
+          data
         )
       }
     );
 
-    return console.log(
-      data 
+    const nAlert = await postNewNote.json();
+
+    return alert(
+      JSON.stringify(
+        nAlert
+      )
     );
   };
 
@@ -155,11 +159,10 @@ export const NuevoProceso = (
           <form
             className={form.form}
             onSubmit={handleSubmit(
-              onSubmit 
+              onSubmit
             )}>
             <section className={form.section}>
               <section className={form.section}>
-                <DeudorFormComponent />
                 <section className={form.section}>
                   <InputSection
                     name={'deudor.primerNombre'}
@@ -196,6 +199,17 @@ export const NuevoProceso = (
                     }}
                   />
                 </section>
+                <InputSection name={ 'deudor.cedula' } title={ 'Cédula de Ciudadanía' } type={ 'number' } rls={{
+                  required: true
+                }}/>
+                <InputSection name={ 'deudor.direccion' } title={ 'Dirección' } type={ 'textarea' } rls={{
+                  required: false
+                }} />
+                <InputSection name={ 'deudor.email' } title={ 'Correo Electrónico' } type={ 'email' } rls={{
+                  required: false,
+                  pattern : /^\S+@\S+$/i
+                }}/>
+
               </section>
               <InputSection
                 name={'numero'}
@@ -216,30 +230,7 @@ export const NuevoProceso = (
                 type={'text'}
               />
 
-              <section className={form.section}>
-                {descripciones.map(
-                  (
-                    descr, i 
-                  ) => {
-                    return (
-                      <button
-                        key={descr.codigo}
-                        type='button'
-                        className={form.selectArea}
-                        onClick={() => {
-                          setValue(
-                            'demanda.departamento',
-                            descr
-                          );
-                        }}>
-                        <strong>
-                          {descr.descripcion}
-                        </strong>
-                      </button>
-                    );
-                  } 
-                )}
-              </section>
+
               <Fields options={despachos} />
 
               <SelectSection
@@ -275,22 +266,98 @@ export const NuevoProceso = (
                 send
               </span>
             </button>
+            <section className={form.section}>
+              <section className={form.section}>
+                <pre>
+                  {JSON.stringify(
+                    {
+                      errors
+                    },
+                    null,
+                    2
+                  )}
+                </pre>
+              </section>
+              <section className={form.section}>
+                <pre>
+                  {JSON.stringify(
+                    {
+
+                      dirtyFields,
+
+                    },
+                    null,
+                    2
+                  )}
+                </pre>
+              </section>
+              <section className={form.section}>
+                <pre>
+                  {JSON.stringify(
+                    {
+
+                      submitCount,
+
+                    },
+                    null,
+                    2
+                  )}
+                </pre>
+              </section>
+              <section className={form.section}>
+                <pre>
+                  {JSON.stringify(
+                    {
+
+                      isSubmitting,
+
+                    },
+                    null,
+                    2
+                  )}
+                </pre>
+              </section>
+              <section className={form.section}>
+                <pre>
+                  {JSON.stringify(
+                    {
+
+                      isSubmitSuccessful,
+
+                    },
+                    null,
+                    2
+                  )}
+                </pre>
+              </section>
+              <section className={form.section}>
+                <pre>
+                  {JSON.stringify(
+                    {
+
+                      isLoading,
+
+                    },
+                    null,
+                    2
+                  )}
+                </pre>
+              </section>
+              <section className={form.section}>
+                <pre>
+                  {JSON.stringify(
+                    {
+
+                      carpeta
+                    },
+                    null,
+                    2
+                  )}
+                </pre>
+              </section>
+            </section>
           </form>
-          <pre>
-            {JSON.stringify(
-              {
-                errors,
-                dirtyFields,
-                submitCount,
-                isSubmitting,
-                isSubmitSuccessful,
-                isLoading,
-                carpeta
-              },
-              null,
-              2
-            )}
-          </pre>
+
         </div>
       </FormProvider>
     </NuevaCarpetaProvider>
