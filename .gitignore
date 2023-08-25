@@ -16,6 +16,8 @@ scss.d.ts
 css.d.ts
 module.scss.d.ts
 module.css.d.ts
+.css
+*.css
 
 # testing
 /coverage
