@@ -18,6 +18,7 @@ import { DeudorFormComponent } from '#@/components/form/deudor-form';
 import Fields from './fieldArray-juzgados';
 import { Despacho } from '#@/lib/types/despachos';
 import { NuevaCarpetaProvider } from '#@/hooks/formContext';
+import { InputSection } from '#@/components/form/InputSection';
 let renderCount = 0;
 
 const defaultDemanda: Demanda = {
@@ -57,12 +58,8 @@ const defaultDeudor: Deudor = {
   email          : 'juankpato87@gmail.com',
   direccion      : 'carrera 63 # 22 - 31',
   tel            : {
-    fijo: [
-      6051567
-    ],
-    celular: [
-      3506144932
-    ]
+    fijo   : 6051567,
+    celular: 3506144932
   },
   cedula: 1022352429
 };
@@ -155,6 +152,130 @@ export const NuevoProceso = (
     <NuevaCarpetaProvider>
       <FormProvider {...methods}>
         <div className={form.container}>
+          <form
+            className={form.form}
+            onSubmit={handleSubmit(
+              onSubmit 
+            )}>
+            <section className={form.section}>
+              <section className={form.section}>
+                <DeudorFormComponent />
+                <section className={form.section}>
+                  <InputSection
+                    name={'deudor.primerNombre'}
+                    title={'Primer Nombre'}
+                    type={'text'}
+                    rls={{
+                      required: true
+                    }}
+                  />
+                  <InputSection
+                    name={'deudor.segundoNombre'}
+                    title={'Segundo Nombre'}
+                    type={'text'}
+                    rls={{
+                      required: false
+                    }}
+                  />
+                  <InputSection
+                    name={'deudor.primerApellido'}
+                    title={'Primer Apellido'}
+                    type={'text'}
+                    rls={{
+                      required: true
+                    }}
+                  />
+                  <InputSection
+                    name={
+                      'deudor.segundoApellido'
+                    }
+                    title={'Segundo Apellido'}
+                    type={'text'}
+                    rls={{
+                      required: false
+                    }}
+                  />
+                </section>
+              </section>
+              <InputSection
+                name={'numero'}
+                title={'Carpeta Numero'}
+                rls={{
+                  required: true
+                }}
+                type={'number'}
+              />
+              <InputSection
+                name={'llaveProceso'}
+                title={'Expediente'}
+                rls={{
+                  required : true,
+                  maxLength: 23,
+                  minLength: 22
+                }}
+                type={'text'}
+              />
+
+              <section className={form.section}>
+                {descripciones.map(
+                  (
+                    descr, i 
+                  ) => {
+                    return (
+                      <button
+                        key={descr.codigo}
+                        type='button'
+                        className={form.selectArea}
+                        onClick={() => {
+                          setValue(
+                            'demanda.departamento',
+                            descr
+                          );
+                        }}>
+                        <strong>
+                          {descr.descripcion}
+                        </strong>
+                      </button>
+                    );
+                  } 
+                )}
+              </section>
+              <Fields options={despachos} />
+
+              <SelectSection
+                name={'category'}
+                title={'Grupo al que pertenece'}
+                options={[
+                  'Bancolombia',
+                  'Insolvencia',
+                  'Reintegra',
+                  'LiosJuridicos',
+                  'Terminados'
+                ]}
+              />
+
+              <SelectSection
+                name={'tipoProceso'}
+                title={'Proceso del Tipo'}
+                options={[
+                  'SINGULAR',
+                  'HIPOTECARIO',
+                  'PRENDARIO'
+                ]}
+              />
+            </section>
+            <button
+              type='submit'
+              className={form.button}>
+              <sub
+                className={typography.labelSmall}>
+                Enviar
+              </sub>
+              <span className='material-symbols-outlined'>
+                send
+              </span>
+            </button>
+          </form>
           <pre>
             {JSON.stringify(
               {
@@ -170,74 +291,6 @@ export const NuevoProceso = (
               2
             )}
           </pre>
-
-          <form
-            className={form.form}
-            onSubmit={handleSubmit(
-              onSubmit 
-            )}>
-            <section className={form.section}>
-              <DeudorFormComponent />
-            </section>
-            <section className={form.section}>
-              {descripciones.map(
-                (
-                  descr, i 
-                ) => {
-                  return (
-                    <button
-                      key={descr.codigo}
-                      type='button'
-                      className={form.selectArea}
-                      onClick={() => {
-                        setValue(
-                          'demanda.departamento',
-                          descr
-                        );
-                      }}>
-                      <strong>
-                        {descr.descripcion}
-                      </strong>
-                    </button>
-                  );
-                } 
-              )}
-            </section>
-            <Fields options={despachos} />
-
-            <SelectSection
-              name={'category'}
-              title={'Grupo al que pertenece'}
-              options={[
-                'Bancolombia',
-                'Insolvencia',
-                'Reintegra',
-                'LiosJuridicos',
-                'Terminados'
-              ]}
-            />
-
-            <SelectSection
-              name={'tipoProceso'}
-              title={'Proceso del Tipo'}
-              options={[
-                'SINGULAR',
-                'HIPOTECARIO',
-                'PRENDARIO'
-              ]}
-            />
-            <button
-              type='submit'
-              className={form.button}>
-              <sub
-                className={typography.labelSmall}>
-                Enviar
-              </sub>
-              <span className='material-symbols-outlined'>
-                send
-              </span>
-            </button>
-          </form>
         </div>
       </FormProvider>
     </NuevaCarpetaProvider>

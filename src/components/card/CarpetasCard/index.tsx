@@ -10,13 +10,14 @@ import { Loader } from '#@/components/Loader';
 import { ReactNode, Fragment } from 'react';
 import { Accordion } from '#@/components/Accordion';
 import { NombreComponent } from '../Nombre';
+import card from '#@/components/card/card.module.css';
 
 export const DemandaContainer = (
   {
     demanda
   }: {
   demanda: Demanda;
-}
+} 
 ) => {
   const {
     departamento,
@@ -36,7 +37,7 @@ export const DemandaContainer = (
         }>{`${ departamento }: ${ municipio }`}</h2>
       {juzgados.map(
         (
-          despacho, index
+          despacho, index 
         ) => {
           switch ( index ) {
                   case 0:
@@ -84,7 +85,7 @@ export const DemandaContainer = (
           }
 
           return null;
-        }
+        } 
       )}
     </div>
   );
@@ -95,15 +96,15 @@ export const CarpetaCard = (
     carpeta
   }: {
   carpeta: MonCarpeta;
-}
+} 
 ) => {
   const {
-    llaveProceso, idProceso, _id
+    llaveProceso, idProceso, _id 
   }
     = carpeta;
 
   const {
-    tel, direccion, email
+    tel, direccion, email 
   }
     = carpeta.deudor;
 
@@ -144,54 +145,36 @@ export const CarpetaCard = (
               </span>
             </Link>
 
-            {tel.celular
-              && tel.celular.map(
-                (
-                  cel, i
-                ) => {
-                  return (
-                    <Link
-                      key={i}
-                      className={styles.button}
-                      href={`tel:${ cel }`}>
-                      <span
-                        className={`material-symbols-outlined ${ styles.icon }`}>
-                      phone_iphone
-                      </span>
-                      <span
-                        className={
-                          styles.tooltiptext
-                        }>
-                        {cel.toString()}
-                      </span>
-                    </Link>
-                  );
-                }
-              )}
-            {tel.fijo
-              && tel.fijo.map(
-                (
-                  f, i
-                ) => {
-                  return (
-                    <Link
-                      key={i}
-                      className={styles.button}
-                      href={`tel:${ f }`}>
-                      <span
-                        className={`material-symbols-outlined ${ styles.icon }`}>
-                      call
-                      </span>
-                      <span
-                        className={
-                          styles.tooltiptext
-                        }>
-                        {f.toString()}
-                      </span>
-                    </Link>
-                  );
-                }
-              )}
+            {tel.celular && (
+              <Link
+                key={tel.celular}
+                className={card.link}
+                href={`tel:${ tel.celular }`}>
+                <span
+                  className={`material-symbols-outlined ${ styles.icon }`}>
+                  phone_iphone
+                </span>
+                <span
+                  className={styles.tooltiptext}>
+                  {tel.celular.toString()}
+                </span>
+              </Link>
+            )}
+            {tel.fijo && (
+              <Link
+                key={tel.fijo}
+                className={card.link}
+                href={`tel:${ tel.fijo }`}>
+                <span
+                  className={`material-symbols-outlined ${ styles.icon }`}>
+                  call
+                </span>
+                <span
+                  className={styles.tooltiptext}>
+                  {tel.fijo.toString()}
+                </span>
+              </Link>
+            )}
             {carpeta.demanda
                   .vencimientoPagare && (
               <p
@@ -233,8 +216,10 @@ export const CarpetaCard = (
               {carpeta.demanda.capitalAdeudado
                 && fixMoney(
                   {
-                    valor: carpeta.demanda.capitalAdeudado
-                  }
+                    valor:
+                    carpeta.demanda
+                          .capitalAdeudado
+                  } 
                 )}
             </p>
           </div>

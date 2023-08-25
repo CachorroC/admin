@@ -4,23 +4,29 @@ import { MonCarpeta } from '#@/lib/types/carpeta';
 import { useState } from 'react';
 import { useSyncExternalStore } from 'react';
 
-
 function subscribe(
-  callback: { ( this: Window, ev: Event ): any; ( this: Window, ev: Event ): any; ( this: Window, ev: Event ): any; ( this: Window, ev: Event ): any; }
+  callback: {
+  ( this: Window, ev: Event ): any;
+  ( this: Window, ev: Event ): any;
+  ( this: Window, ev: Event ): any;
+  ( this: Window, ev: Event ): any;
+} 
 ) {
   window.addEventListener(
-    'online', callback
+    'online', callback 
   );
   window.addEventListener(
-    'offline', callback
+    'offline', callback 
   );
 
   return () => {
     window.removeEventListener(
-      'online', callback
+      'online',
+      callback
     );
     window.removeEventListener(
-      'offline', callback
+      'offline',
+      callback
     );
   };
 }
@@ -32,18 +38,20 @@ export function getSnapshot() {
 export default function PruebaList(
   {
     carpetas
-  }: {carpetas: MonCarpeta[]}
+  }: {
+  carpetas: MonCarpeta[];
+} 
 ) {
-
   const isOnline = useSyncExternalStore(
-    subscribe, getSnapshot
+    subscribe,
+    getSnapshot
   );
 
   const [
     list,
     setList
   ] = useState(
-    carpetas
+    carpetas 
   );
 
   function handleClick() {
@@ -52,25 +60,31 @@ export default function PruebaList(
     ];
     nextList.sort();
     setList(
-      nextList
+      nextList 
     );
   }
 
   return (
     <>
-      <h1>{isOnline
-        ? '✅ Online'
-        : '❌ Disconnected'}</h1>
+      <h1>
+        {isOnline
+          ? '✅ Online'
+          : '❌ Disconnected'}
+      </h1>
       <button onClick={handleClick}>
         Reverse
       </button>
       <ul>
         {list.map(
-          artwork => {
+          (
+            artwork 
+          ) => {
             return (
-              <li key={artwork._id}>{artwork.nombre}</li>
+              <li key={artwork._id}>
+                {artwork.nombre}
+              </li>
             );
-          }
+          } 
         )}
       </ul>
     </>

@@ -11,7 +11,7 @@ export const ProcesoCard = (
     proceso
   }: {
   proceso: Proceso;
-}
+} 
 ) => {
   if ( !proceso ) {
     return null;
@@ -33,11 +33,11 @@ export const ProcesoCard = (
   const juzgado = despacho
     ? despacho
           .replace(
-            / /g, '-'
+            / /g, '-' 
           )
           .toLocaleLowerCase()
           .slice(
-            0, -1
+            0, -1 
           )
     : null;
 
@@ -47,7 +47,7 @@ export const ProcesoCard = (
         <h1
           className={`${ typography.titleLarge } ${ styles.title }`}>
           {fixDemandado(
-            sujetosProcesales
+            sujetosProcesales 
           )}
         </h1>
         <Link
@@ -67,7 +67,7 @@ export const ProcesoCard = (
         {fechaUltimaActuacion && (
           <sub className={styles.date}>
             {fixFechas(
-              fechaUltimaActuacion
+              fechaUltimaActuacion 
             )}
           </sub>
         )}
@@ -80,7 +80,7 @@ export const ProcesoCard = (
             ) }`}>
             <p className={typography.bodySmall}>
               {juzgado.replaceAll(
-                'á', 'a'
+                'á', 'a' 
               )}
             </p>
           </Link>

@@ -8,11 +8,11 @@ export default function Loading() {
       <h1 className={typography.displayLarge}>
         Cargando
       </h1>
-      <ButtonSkeleton key={1}/>
-      <ButtonSkeleton key={2}/>
-      <ButtonSkeleton key={3}/>
-      <ButtonSkeleton key={ 4 } />
-      <ButtonSkeleton key={5}/>
+      <ButtonSkeleton key={1} />
+      <ButtonSkeleton key={2} />
+      <ButtonSkeleton key={3} />
+      <ButtonSkeleton key={4} />
+      <ButtonSkeleton key={5} />
     </>
   );
 }

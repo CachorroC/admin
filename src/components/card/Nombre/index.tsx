@@ -33,6 +33,7 @@ export function NombreComponent(
 
     return (
       <h4
+        key={deudor.cedula}
         className={`${ typography.displaySmall } ${ card.title }`}>
         {name}
       </h4>
@@ -54,7 +55,8 @@ export function NombreComponent(
 
   return (
     <h4
-      className={`${ typography.titleLarge } ${ card.title }`}>
+      key={deudor.cedula}
+      className={`${ typography.displaySmall } ${ card.title }`}>
       {name}
     </h4>
   );

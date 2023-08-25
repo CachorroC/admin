@@ -41,7 +41,7 @@ export function NewNota(
             tarea  : '',
             isDone : false,
             dueDate: new Date()
-                  .toISOString()
+                  .toLocaleString()
           }
         ]
       },
@@ -67,8 +67,9 @@ export function NewNota(
       llaveProceso: llaveProceso,
       pathname    : pathname,
       fecha       : new Date()
-            .toString()
+            .toLocaleString()
     };
+
     alert(
       JSON.stringify(
         newData 
@@ -86,18 +87,7 @@ export function NewNota(
           newData 
         )
       }
-    )
-          .then(
-            (
-              fullfilled 
-            ) => {
-              alert(
-                fullfilled.status 
-              );
-
-              return fullfilled;
-            } 
-          );
+    );
 
     const responsePostNewNote
       = await postNewNote.json();

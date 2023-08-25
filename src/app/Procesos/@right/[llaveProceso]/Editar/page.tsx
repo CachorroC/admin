@@ -1,14 +1,19 @@
+import { NuevoProceso } from '#@/app/Procesos/sinEspecificar/new-carpeta';
 import { Card } from '#@/components/card/card';
+import { NewNota } from '#@/components/nota/NuevaNota';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
+import { getBaseUrl } from '#@/lib/getBaseUrl';
 
 export default async function PageRightEditar(
   {
     params,
-    searchParams,
+    searchParams
   }: {
-  params: { llaveProceso: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-  }
+  params: { llaveProceso: string };
+  searchParams: {
+    [key: string]: string | string[] | undefined;
+  };
+} 
 ) {
   const _id = searchParams._id;
 
@@ -23,11 +28,13 @@ export default async function PageRightEditar(
   }
 
   return (
-    <Card path={ '/Procesos' } carpeta={ carpeta }>
-      <p>{'idk'}</p>
+    <Card
+      path={'/Procesos'}
+      carpeta={carpeta}>
+      <NewNota
+        llaveProceso={params.llaveProceso}
+        uri={getBaseUrl()}
+      />
     </Card>
   );
-
-
-
 }

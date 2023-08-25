@@ -80,12 +80,8 @@
       "segundoApellido": "VERDUGO",
       "segundoNombre": "ANDRES",
       "tel": {
-        "celular": [
-          3142064177
-        ],
-        "fijo": [
-          3935996
-        ]
+        "celular": [3142064177],
+        "fijo": [3935996]
       }
     },
     "fecha": "2021-09-20T05:00:00.000Z",
@@ -176,9 +172,7 @@
       "segundoApellido": "CASTIBLANCO",
       "segundoNombre": "EUSEBIO",
       "tel": {
-        "celular": [
-          3182165543
-        ],
+        "celular": [3182165543],
         "fijo": null
       }
     },
@@ -222,9 +216,7 @@
       "segundoApellido": "TOVAR",
       "segundoNombre": "PATRICIA",
       "tel": {
-        "celular": [
-          3217662673
-        ],
+        "celular": [3217662673],
         "fijo": null
       }
     },
@@ -265,9 +257,7 @@
       "primerNombre": "FRANCISCO",
       "segundoApellido": "QUESADA",
       "tel": {
-        "celular": [
-          3118469698
-        ],
+        "celular": [3118469698],
         "fijo": null
       }
     },
@@ -365,9 +355,7 @@
       "segundoApellido": "VALDES",
       "segundoNombre": "WILSON",
       "tel": {
-        "celular": [
-          3106980002
-        ],
+        "celular": [3106980002],
         "fijo": null
       }
     },
@@ -411,13 +399,8 @@
       "segundoApellido": "RODRIGUEZ",
       "segundoNombre": "ALEJANDRA",
       "tel": {
-        "celular": [
-          1020731500,
-          3105583907
-        ],
-        "fijo": [
-          731500
-        ]
+        "celular": [1020731500, 3105583907],
+        "fijo": [731500]
       }
     },
     "idProceso": 1,
@@ -464,9 +447,7 @@
       "segundoApellido": "HERNANDEZ",
       "segundoNombre": "MORALES",
       "tel": {
-        "celular": [
-          3202705987
-        ],
+        "celular": [3202705987],
         "fijo": null
       }
     },
@@ -514,9 +495,7 @@
       "segundoApellido": "REYES",
       "segundoNombre": "ROMERO",
       "tel": {
-        "celular": [
-          3209229120
-        ],
+        "celular": [3209229120],
         "fijo": null
       }
     },
@@ -560,9 +539,7 @@
       "segundoApellido": "GARCIA",
       "segundoNombre": "MANUEL",
       "tel": {
-        "celular": [
-          3214791915
-        ],
+        "celular": [3214791915],
         "fijo": null
       }
     },
@@ -604,9 +581,7 @@
       "segundoApellido": "ENCISO",
       "segundoNombre": "ORTEGA",
       "tel": {
-        "celular": [
-          3106890300
-        ],
+        "celular": [3106890300],
         "fijo": null
       }
     },
@@ -648,12 +623,8 @@
       "segundoApellido": "ROMERO",
       "segundoNombre": "SOSA",
       "tel": {
-        "celular": [
-          3133743400
-        ],
-        "fijo": [
-          5295780
-        ]
+        "celular": [3133743400],
+        "fijo": [5295780]
       }
     },
     "idProceso": 1,
@@ -700,10 +671,7 @@
       "segundoApellido": "CASTAÑEDA",
       "segundoNombre": "SUSANA",
       "tel": {
-        "celular": [
-          3155112901,
-          3043581350
-        ],
+        "celular": [3155112901, 3043581350],
         "fijo": null
       }
     },
@@ -758,9 +726,7 @@
       "segundoApellido": "RAMOS",
       "segundoNombre": "ALBEIRO",
       "tel": {
-        "celular": [
-          3212337597
-        ],
+        "celular": [3212337597],
         "fijo": null
       }
     },
@@ -815,9 +781,7 @@
       "segundoApellido": "RAMOS",
       "segundoNombre": "ALBEIRO",
       "tel": {
-        "celular": [
-          3212337597
-        ],
+        "celular": [3212337597],
         "fijo": null
       }
     },
@@ -1130,9 +1094,7 @@
       "segundoApellido": "SAENZ",
       "segundoNombre": "ALEXIS",
       "tel": {
-        "celular": [
-          3186899839
-        ],
+        "celular": [3186899839],
         "fijo": null
       }
     },
@@ -1174,9 +1136,7 @@
       "segundoApellido": "MORA",
       "segundoNombre": "ARMANDO",
       "tel": {
-        "celular": [
-          3102354541
-        ],
+        "celular": [3102354541],
         "fijo": null
       }
     },
@@ -1332,9 +1292,7 @@
       "segundoApellido": "",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3183517022
-        ],
+        "celular": [3183517022],
         "fijo": null
       }
     },
@@ -1420,12 +1378,8 @@
       "segundoApellido": "GONZALEZ",
       "segundoNombre": "TORRES",
       "tel": {
-        "celular": [
-          3102301734
-        ],
-        "fijo": [
-          8671269
-        ]
+        "celular": [3102301734],
+        "fijo": [8671269]
       }
     },
     "idProceso": 1,
@@ -1514,9 +1468,7 @@
       "segundoApellido": "HERRERA",
       "segundoNombre": "VIVIANA",
       "tel": {
-        "celular": [
-          3002107965
-        ],
+        "celular": [3002107965],
         "fijo": null
       }
     },
@@ -1560,12 +1512,8 @@
       "segundoApellido": "",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3014192323
-        ],
-        "fijo": [
-          7793347
-        ]
+        "celular": [3014192323],
+        "fijo": [7793347]
       }
     },
     "idProceso": 1,
@@ -1612,9 +1560,7 @@
       "segundoApellido": "PARRA",
       "segundoNombre": "ANDRES",
       "tel": {
-        "celular": [
-          3134775602
-        ],
+        "celular": [3134775602],
         "fijo": null
       }
     },
@@ -1664,9 +1610,7 @@
       "segundoApellido": "MONROY",
       "segundoNombre": "JOHANA",
       "tel": {
-        "celular": [
-          3118113651
-        ],
+        "celular": [3118113651],
         "fijo": null
       }
     },
@@ -1708,9 +1652,7 @@
       "segundoApellido": "GUTIERREZ",
       "segundoNombre": "JULIETH",
       "tel": {
-        "celular": [
-          3006308169
-        ],
+        "celular": [3006308169],
         "fijo": null
       }
     },
@@ -1758,9 +1700,7 @@
       "segundoApellido": "VELANDIA",
       "segundoNombre": "CARLOS",
       "tel": {
-        "celular": [
-          3106199094
-        ],
+        "celular": [3106199094],
         "fijo": null
       }
     },
@@ -1804,9 +1744,7 @@
       "segundoApellido": "MONTAGUT",
       "segundoNombre": "PATRICIA",
       "tel": {
-        "celular": [
-          3012419992
-        ],
+        "celular": [3012419992],
         "fijo": null
       }
     },
@@ -1848,9 +1786,7 @@
       "segundoApellido": "GIRALDO",
       "segundoNombre": "ALBERTO",
       "tel": {
-        "celular": [
-          3208091862
-        ],
+        "celular": [3208091862],
         "fijo": null
       }
     },
@@ -1892,9 +1828,7 @@
       "segundoApellido": "MARTÍNEZ",
       "segundoNombre": "MIRYAM",
       "tel": {
-        "celular": [
-          3142310966
-        ],
+        "celular": [3142310966],
         "fijo": null
       }
     },
@@ -1942,12 +1876,8 @@
       "segundoApellido": "GÓMEZ",
       "segundoNombre": "ALONSO",
       "tel": {
-        "celular": [
-          3012746201
-        ],
-        "fijo": [
-          7053290
-        ]
+        "celular": [3012746201],
+        "fijo": [7053290]
       }
     },
     "fecha": "2021-10-05T05:00:00.000Z",
@@ -2046,9 +1976,7 @@
       "segundoApellido": "BOHORQUEZ",
       "segundoNombre": "KARINA",
       "tel": {
-        "celular": [
-          3103247337
-        ],
+        "celular": [3103247337],
         "fijo": null
       }
     },
@@ -2092,9 +2020,7 @@
       "segundoApellido": "CIFUENTES",
       "segundoNombre": "DANIEL",
       "tel": {
-        "celular": [
-          3126139284
-        ],
+        "celular": [3126139284],
         "fijo": null
       }
     },
@@ -2142,9 +2068,7 @@
       "segundoApellido": "RUIZ",
       "segundoNombre": "FREDDY",
       "tel": {
-        "celular": [
-          3124041113
-        ],
+        "celular": [3124041113],
         "fijo": null
       }
     },
@@ -2194,9 +2118,7 @@
       "segundoApellido": "RUIZ",
       "segundoNombre": "FREDDY",
       "tel": {
-        "celular": [
-          3124041113
-        ],
+        "celular": [3124041113],
         "fijo": null
       }
     },
@@ -2244,9 +2166,7 @@
       "segundoApellido": "CARDENAL",
       "segundoNombre": "PALMA",
       "tel": {
-        "celular": [
-          3123142449
-        ],
+        "celular": [3123142449],
         "fijo": null
       }
     },
@@ -2296,9 +2216,7 @@
       "segundoApellido": "ALONSO",
       "segundoNombre": "RODRIGUEZ",
       "tel": {
-        "celular": [
-          3166182970
-        ],
+        "celular": [3166182970],
         "fijo": null
       }
     },
@@ -2346,9 +2264,7 @@
       "segundoApellido": "GOMEZ",
       "segundoNombre": "RITA",
       "tel": {
-        "celular": [
-          3229150048
-        ],
+        "celular": [3229150048],
         "fijo": null
       }
     },
@@ -2448,9 +2364,7 @@
       "segundoApellido": "CORDOBA",
       "segundoNombre": "ISRAEL",
       "tel": {
-        "celular": [
-          3165275725
-        ],
+        "celular": [3165275725],
         "fijo": null
       }
     },
@@ -2500,9 +2414,7 @@
       "segundoApellido": "BAQUERO",
       "segundoNombre": "ASTRID",
       "tel": {
-        "celular": [
-          3212062887
-        ],
+        "celular": [3212062887],
         "fijo": null
       }
     },
@@ -2552,9 +2464,7 @@
       "segundoApellido": "VERA",
       "segundoNombre": "CAROLINA",
       "tel": {
-        "celular": [
-          3175921396
-        ],
+        "celular": [3175921396],
         "fijo": null
       }
     },
@@ -2598,9 +2508,7 @@
       "segundoApellido": "BOLIVAR",
       "segundoNombre": "STELLA",
       "tel": {
-        "celular": [
-          3114720151
-        ],
+        "celular": [3114720151],
         "fijo": null
       }
     },
@@ -2642,9 +2550,7 @@
       "segundoApellido": "LOZANO",
       "segundoNombre": "MARCELA",
       "tel": {
-        "celular": [
-          3212307798
-        ],
+        "celular": [3212307798],
         "fijo": null
       }
     },
@@ -2692,9 +2598,7 @@
       "segundoApellido": "",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3138615288
-        ],
+        "celular": [3138615288],
         "fijo": null
       }
     },
@@ -2738,9 +2642,7 @@
       "segundoApellido": "RIOS",
       "segundoNombre": "AYURE",
       "tel": {
-        "celular": [
-          3124488945
-        ],
+        "celular": [3124488945],
         "fijo": null
       }
     },
@@ -2788,12 +2690,8 @@
       "segundoApellido": "LOPEZ",
       "segundoNombre": "HERNANDEZ",
       "tel": {
-        "celular": [
-          3138551970
-        ],
-        "fijo": [
-          7900454
-        ]
+        "celular": [3138551970],
+        "fijo": [7900454]
       }
     },
     "fecha": "2023-05-10T05:00:00.000Z",
@@ -2842,9 +2740,7 @@
       "segundoApellido": "ZAMBRANO",
       "segundoNombre": "CECILIA",
       "tel": {
-        "celular": [
-          3102279518
-        ],
+        "celular": [3102279518],
         "fijo": null
       }
     },
@@ -2894,12 +2790,8 @@
       "segundoApellido": "PERDOMO",
       "segundoNombre": "URIEL",
       "tel": {
-        "celular": [
-          3228293322
-        ],
-        "fijo": [
-          4183276
-        ]
+        "celular": [3228293322],
+        "fijo": [4183276]
       }
     },
     "fecha": "2023-06-23T05:00:00.000Z",
@@ -2948,12 +2840,8 @@
       "segundoApellido": "GOMEZ",
       "segundoNombre": "RODRIGUEZ",
       "tel": {
-        "celular": [
-          3103161197
-        ],
-        "fijo": [
-          6977403
-        ]
+        "celular": [3103161197],
+        "fijo": [6977403]
       }
     },
     "fecha": "2017-10-06T05:00:00.000Z",
@@ -3088,9 +2976,7 @@
       "segundoApellido": "BUSTOS",
       "segundoNombre": "EDUARDO",
       "tel": {
-        "celular": [
-          3138253554
-        ],
+        "celular": [3138253554],
         "fijo": null
       }
     },
@@ -3133,9 +3019,7 @@
       "segundoNombre": "MARCELA",
       "tel": {
         "celular": null,
-        "fijo": [
-          7493169
-        ]
+        "fijo": [7493169]
       }
     },
     "idProceso": 1,
@@ -3182,12 +3066,8 @@
       "segundoApellido": "PARGA",
       "segundoNombre": "ERNESTO",
       "tel": {
-        "celular": [
-          3157900006
-        ],
-        "fijo": [
-          3157900
-        ]
+        "celular": [3157900006],
+        "fijo": [3157900]
       }
     },
     "fecha": "2018-02-22T05:00:00.000Z",
@@ -3286,9 +3166,7 @@
       "segundoApellido": "GALVIS",
       "segundoNombre": "PATRICIA",
       "tel": {
-        "celular": [
-          3144113614
-        ],
+        "celular": [3144113614],
         "fijo": null
       }
     },
@@ -3338,9 +3216,7 @@
       "segundoApellido": "CORRALES",
       "segundoNombre": "ENRIQUE",
       "tel": {
-        "celular": [
-          3005146155
-        ],
+        "celular": [3005146155],
         "fijo": null
       }
     },
@@ -3384,9 +3260,7 @@
       "segundoApellido": "BOLIVAR",
       "segundoNombre": "STELLA",
       "tel": {
-        "celular": [
-          3114720151
-        ],
+        "celular": [3114720151],
         "fijo": null
       }
     },
@@ -3435,9 +3309,7 @@
       "segundoNombre": "CATHERINE",
       "tel": {
         "celular": null,
-        "fijo": [
-          7507842
-        ]
+        "fijo": [7507842]
       }
     },
     "fecha": "2023-05-10T05:00:00.000Z",
@@ -3486,9 +3358,7 @@
       "segundoApellido": "ARIAS",
       "segundoNombre": "AUGUSTO",
       "tel": {
-        "celular": [
-          3152248920
-        ],
+        "celular": [3152248920],
         "fijo": null
       }
     },
@@ -3639,9 +3509,7 @@
       "segundoNombre": "",
       "tel": {
         "celular": null,
-        "fijo": [
-          2333333
-        ]
+        "fijo": [2333333]
       }
     },
     "fecha": "2023-08-22T05:00:00.000Z",
@@ -3690,9 +3558,7 @@
       "segundoApellido": "ARCE",
       "segundoNombre": "ANDRÉS",
       "tel": {
-        "celular": [
-          3138327713
-        ],
+        "celular": [3138327713],
         "fijo": null
       }
     },
@@ -3792,9 +3658,7 @@
       "segundoApellido": "GARZÓN",
       "segundoNombre": "MARIN",
       "tel": {
-        "celular": [
-          3112110025
-        ],
+        "celular": [3112110025],
         "fijo": null
       }
     },
@@ -3838,12 +3702,8 @@
       "segundoApellido": "VASQUEZ",
       "segundoNombre": "CAROLINA",
       "tel": {
-        "celular": [
-          3174386730
-        ],
-        "fijo": [
-          5663711
-        ]
+        "celular": [3174386730],
+        "fijo": [5663711]
       }
     },
     "idProceso": 1,
@@ -3890,9 +3750,7 @@
       "segundoApellido": "MARTIN",
       "segundoNombre": "EDISON",
       "tel": {
-        "celular": [
-          3158939957
-        ],
+        "celular": [3158939957],
         "fijo": null
       }
     },
@@ -4134,12 +3992,8 @@
       "segundoApellido": "ARCINIEGAS",
       "segundoNombre": "ADOLFO",
       "tel": {
-        "celular": [
-          3115672367
-        ],
-        "fijo": [
-          2478114
-        ]
+        "celular": [3115672367],
+        "fijo": [2478114]
       }
     },
     "fecha": "2019-03-19T05:00:00.000Z",
@@ -4182,12 +4036,8 @@
       "segundoApellido": "RUBIO",
       "segundoNombre": "HERNANDEZ",
       "tel": {
-        "celular": [
-          3118802970
-        ],
-        "fijo": [
-          8054434
-        ]
+        "celular": [3118802970],
+        "fijo": [8054434]
       }
     },
     "idProceso": 1,
@@ -4285,9 +4135,7 @@
       "segundoNombre": "MEZA",
       "tel": {
         "celular": null,
-        "fijo": [
-          4062925
-        ]
+        "fijo": [4062925]
       }
     },
     "fecha": "2023-05-29T05:00:00.000Z",
@@ -4380,9 +4228,7 @@
       "segundoApellido": "CARDONA",
       "segundoNombre": "FERRO",
       "tel": {
-        "celular": [
-          3103126814
-        ],
+        "celular": [3103126814],
         "fijo": null
       }
     },
@@ -5011,9 +4857,7 @@
       "segundoApellido": "ORTIZ",
       "segundoNombre": "JAIRO",
       "tel": {
-        "celular": [
-          3143190799
-        ],
+        "celular": [3143190799],
         "fijo": null
       }
     },
@@ -5061,9 +4905,7 @@
       "segundoApellido": "MORA",
       "segundoNombre": "JOHANNA",
       "tel": {
-        "celular": [
-          3004975278
-        ],
+        "celular": [3004975278],
         "fijo": null
       }
     },
@@ -5107,9 +4949,7 @@
       "segundoApellido": "REYES",
       "segundoNombre": "ALEJANDRA",
       "tel": {
-        "celular": [
-          3114456631
-        ],
+        "celular": [3114456631],
         "fijo": null
       }
     },
@@ -5162,9 +5002,7 @@
       "segundoApellido": "CHACON",
       "segundoNombre": "ENRIQUE",
       "tel": {
-        "celular": [
-          3216066052
-        ],
+        "celular": [3216066052],
         "fijo": null
       }
     },
@@ -5219,9 +5057,7 @@
       "segundoApellido": "CHACON",
       "segundoNombre": "ENRIQUE",
       "tel": {
-        "celular": [
-          3216066052
-        ],
+        "celular": [3216066052],
         "fijo": null
       }
     },
@@ -5269,9 +5105,7 @@
       "segundoApellido": "MENDEZ",
       "segundoNombre": "HERRERA",
       "tel": {
-        "celular": [
-          3103230563
-        ],
+        "celular": [3103230563],
         "fijo": null
       }
     },
@@ -5321,9 +5155,7 @@
       "segundoApellido": "POZO",
       "segundoNombre": "JESUS",
       "tel": {
-        "celular": [
-          3133809713
-        ],
+        "celular": [3133809713],
         "fijo": null
       }
     },
@@ -5423,12 +5255,8 @@
       "segundoApellido": "TURRIAGO",
       "segundoNombre": "EFRAIN",
       "tel": {
-        "celular": [
-          3176550987
-        ],
-        "fijo": [
-          5936306
-        ]
+        "celular": [3176550987],
+        "fijo": [5936306]
       }
     },
     "fecha": "2019-07-29T05:00:00.000Z",
@@ -5527,9 +5355,7 @@
       "segundoApellido": "MORA",
       "segundoNombre": "IVAN",
       "tel": {
-        "celular": [
-          3045449490
-        ],
+        "celular": [3045449490],
         "fijo": null
       }
     },
@@ -5629,12 +5455,8 @@
       "segundoApellido": "CORONADO",
       "segundoNombre": "VIVIANA",
       "tel": {
-        "celular": [
-          3014347540
-        ],
-        "fijo": [
-          2131545
-        ]
+        "celular": [3014347540],
+        "fijo": [2131545]
       }
     },
     "fecha": "2017-11-15T05:00:00.000Z",
@@ -5683,12 +5505,8 @@
       "segundoApellido": "TORRES",
       "segundoNombre": "TRINIDAD",
       "tel": {
-        "celular": [
-          3124740888
-        ],
-        "fijo": [
-          5399415
-        ]
+        "celular": [3124740888],
+        "fijo": [5399415]
       }
     },
     "fecha": "2022-12-19T05:00:00.000Z",
@@ -5737,12 +5555,8 @@
       "segundoApellido": "MAYORGA",
       "segundoNombre": "BIBIANA",
       "tel": {
-        "celular": [
-          3167289932
-        ],
-        "fijo": [
-          6210512
-        ]
+        "celular": [3167289932],
+        "fijo": [6210512]
       }
     },
     "fecha": "2019-09-25T05:00:00.000Z",
@@ -5791,12 +5605,8 @@
       "segundoApellido": "RUIZ",
       "segundoNombre": "ANTONIO",
       "tel": {
-        "celular": [
-          3128067314
-        ],
-        "fijo": [
-          3213173
-        ]
+        "celular": [3128067314],
+        "fijo": [3213173]
       }
     },
     "fecha": "2019-08-22T05:00:00.000Z",
@@ -5845,12 +5655,8 @@
       "segundoApellido": "VELASQUEZ",
       "segundoNombre": "MARIA",
       "tel": {
-        "celular": [
-          3212344417
-        ],
-        "fijo": [
-          5741561
-        ]
+        "celular": [3212344417],
+        "fijo": [5741561]
       }
     },
     "fecha": "2019-10-15T05:00:00.000Z",
@@ -5899,12 +5705,8 @@
       "segundoApellido": "PARDO",
       "segundoNombre": "KARINA",
       "tel": {
-        "celular": [
-          3164355892
-        ],
-        "fijo": [
-          3579028
-        ]
+        "celular": [3164355892],
+        "fijo": [3579028]
       }
     },
     "fecha": "2018-10-30T05:00:00.000Z",
@@ -6003,9 +5805,7 @@
       "segundoApellido": "ROJAS",
       "segundoNombre": "ORLANDO",
       "tel": {
-        "celular": [
-          3103358755
-        ],
+        "celular": [3103358755],
         "fijo": null
       }
     },
@@ -6055,12 +5855,8 @@
       "segundoApellido": "GALLEGO",
       "segundoNombre": "AUGUSTO",
       "tel": {
-        "celular": [
-          3103789233
-        ],
-        "fijo": [
-          4610722
-        ]
+        "celular": [3103789233],
+        "fijo": [4610722]
       }
     },
     "fecha": "2019-01-14T05:00:00.000Z",
@@ -6293,12 +6089,8 @@
       "segundoApellido": "MELO",
       "segundoNombre": "EDELMIRA",
       "tel": {
-        "celular": [
-          3202092701
-        ],
-        "fijo": [
-          6749599
-        ]
+        "celular": [3202092701],
+        "fijo": [6749599]
       }
     },
     "fecha": "2018-03-24T05:00:00.000Z",
@@ -6449,12 +6241,8 @@
       "segundoApellido": "PULIDO",
       "segundoNombre": "ARTURO",
       "tel": {
-        "celular": [
-          3138725407
-        ],
-        "fijo": [
-          8211035
-        ]
+        "celular": [3138725407],
+        "fijo": [8211035]
       }
     },
     "idProceso": 1,
@@ -6495,12 +6283,8 @@
       "segundoApellido": "TRILLERAS",
       "segundoNombre": "SUAVITA",
       "tel": {
-        "celular": [
-          3124498840
-        ],
-        "fijo": [
-          3614483
-        ]
+        "celular": [3124498840],
+        "fijo": [3614483]
       }
     },
     "idProceso": 1,
@@ -6597,12 +6381,8 @@
       "segundoApellido": "",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3184581490
-        ],
-        "fijo": [
-          6928962
-        ]
+        "celular": [3184581490],
+        "fijo": [6928962]
       }
     },
     "fecha": "2018-04-16T05:00:00.000Z",
@@ -6651,12 +6431,8 @@
       "segundoApellido": "MESTRE",
       "segundoNombre": "ENRIQUE",
       "tel": {
-        "celular": [
-          3125855939
-        ],
-        "fijo": [
-          6371679
-        ]
+        "celular": [3125855939],
+        "fijo": [6371679]
       }
     },
     "fecha": "2021-06-01T05:00:00.000Z",
@@ -6747,12 +6523,8 @@
       "segundoApellido": "RAMIREZ",
       "segundoNombre": "EMILIO",
       "tel": {
-        "celular": [
-          3214033971
-        ],
-        "fijo": [
-          8023973
-        ]
+        "celular": [3214033971],
+        "fijo": [8023973]
       }
     },
     "fecha": "2018-06-18T05:00:00.000Z",
@@ -6801,12 +6573,8 @@
       "segundoApellido": "GARCIA",
       "segundoNombre": "GIOVANNY",
       "tel": {
-        "celular": [
-          3125757941
-        ],
-        "fijo": [
-          4316891
-        ]
+        "celular": [3125757941],
+        "fijo": [4316891]
       }
     },
     "fecha": "2020-11-24T05:00:00.000Z",
@@ -6849,12 +6617,8 @@
       "segundoApellido": "PARADA",
       "segundoNombre": "ALEXANDER",
       "tel": {
-        "celular": [
-          3105519200
-        ],
-        "fijo": [
-          8284768
-        ]
+        "celular": [3105519200],
+        "fijo": [8284768]
       }
     },
     "idProceso": 1,
@@ -6906,12 +6670,8 @@
       "segundoApellido": "SIERRA",
       "segundoNombre": "ANDRES",
       "tel": {
-        "celular": [
-          3007704166
-        ],
-        "fijo": [
-          6045701
-        ]
+        "celular": [3007704166],
+        "fijo": [6045701]
       }
     },
     "fecha": "2021-12-14T05:00:00.000Z",
@@ -6965,12 +6725,8 @@
       "segundoApellido": "SIERRA",
       "segundoNombre": "ANDRES",
       "tel": {
-        "celular": [
-          3007704166
-        ],
-        "fijo": [
-          6045701
-        ]
+        "celular": [3007704166],
+        "fijo": [6045701]
       }
     },
     "idProceso": 81638681,
@@ -7017,12 +6773,8 @@
       "segundoApellido": "MANRIQUE",
       "segundoNombre": "ERNESTO",
       "tel": {
-        "celular": [
-          3125225701
-        ],
-        "fijo": [
-          2990898
-        ]
+        "celular": [3125225701],
+        "fijo": [2990898]
       }
     },
     "fecha": "2020-03-06T05:00:00.000Z",
@@ -7071,12 +6823,8 @@
       "segundoApellido": "SANCHEZ",
       "segundoNombre": "MILENA",
       "tel": {
-        "celular": [
-          3002908272
-        ],
-        "fijo": [
-          3002766
-        ]
+        "celular": [3002908272],
+        "fijo": [3002766]
       }
     },
     "fecha": "2018-09-07T05:00:00.000Z",
@@ -7125,12 +6873,8 @@
       "segundoApellido": "CARO",
       "segundoNombre": "YAMILE",
       "tel": {
-        "celular": [
-          3103446498
-        ],
-        "fijo": [
-          5471164
-        ]
+        "celular": [3103446498],
+        "fijo": [5471164]
       }
     },
     "fecha": "2022-03-23T05:00:00.000Z",
@@ -7179,12 +6923,8 @@
       "segundoApellido": "SARMIENTO",
       "segundoNombre": "EMILCE",
       "tel": {
-        "celular": [
-          3204955563
-        ],
-        "fijo": [
-          7502262
-        ]
+        "celular": [3204955563],
+        "fijo": [7502262]
       }
     },
     "fecha": "2018-10-17T05:00:00.000Z",
@@ -7277,12 +7017,8 @@
       "segundoApellido": "RINCON",
       "segundoNombre": "DAVID",
       "tel": {
-        "celular": [
-          3003932311
-        ],
-        "fijo": [
-          4137430
-        ]
+        "celular": [3003932311],
+        "fijo": [4137430]
       }
     },
     "idProceso": 1,
@@ -7426,9 +7162,7 @@
       "segundoApellido": "SALAS",
       "segundoNombre": "FILOMENA",
       "tel": {
-        "celular": [
-          3124794983
-        ],
+        "celular": [3124794983],
         "fijo": null
       }
     },
@@ -7483,9 +7217,7 @@
       "segundoApellido": "SALAS",
       "segundoNombre": "FILOMENA",
       "tel": {
-        "celular": [
-          3124794983
-        ],
+        "celular": [3124794983],
         "fijo": null
       }
     },
@@ -7585,12 +7317,8 @@
       "segundoApellido": "TISNES",
       "segundoNombre": "NEL",
       "tel": {
-        "celular": [
-          3116216567
-        ],
-        "fijo": [
-          2103564
-        ]
+        "celular": [3116216567],
+        "fijo": [2103564]
       }
     },
     "idProceso": 81888371,
@@ -7637,12 +7365,8 @@
       "segundoApellido": "RINCON",
       "segundoNombre": "ANDRES",
       "tel": {
-        "celular": [
-          3133912606
-        ],
-        "fijo": [
-          6320923
-        ]
+        "celular": [3133912606],
+        "fijo": [6320923]
       }
     },
     "fecha": "2021-08-13T05:00:00.000Z",
@@ -7692,9 +7416,7 @@
       "segundoNombre": "GERARDO",
       "tel": {
         "celular": null,
-        "fijo": [
-          4109980
-        ]
+        "fijo": [4109980]
       }
     },
     "fecha": "2018-11-30T05:00:00.000Z",
@@ -7737,12 +7459,8 @@
       "segundoApellido": "GONZALEZ",
       "segundoNombre": "TATIANA",
       "tel": {
-        "celular": [
-          3138172167
-        ],
-        "fijo": [
-          7867106
-        ]
+        "celular": [3138172167],
+        "fijo": [7867106]
       }
     },
     "idProceso": 1,
@@ -7783,12 +7501,8 @@
       "segundoApellido": "ALARCON",
       "segundoNombre": "TRIANA",
       "tel": {
-        "celular": [
-          3156448156
-        ],
-        "fijo": [
-          3156448
-        ]
+        "celular": [3156448156],
+        "fijo": [3156448]
       }
     },
     "idProceso": 1,
@@ -7879,12 +7593,8 @@
       "segundoApellido": "RODRIGUEZ",
       "segundoNombre": "OSORIO",
       "tel": {
-        "celular": [
-          3142566974
-        ],
-        "fijo": [
-          3142566
-        ]
+        "celular": [3142566974],
+        "fijo": [3142566]
       }
     },
     "idProceso": 1,
@@ -7925,12 +7635,8 @@
       "segundoApellido": "ALVAREZ",
       "segundoNombre": "ROCIO",
       "tel": {
-        "celular": [
-          3214064280
-        ],
-        "fijo": [
-          5168872
-        ]
+        "celular": [3214064280],
+        "fijo": [5168872]
       }
     },
     "idProceso": 1,
@@ -7977,12 +7683,8 @@
       "segundoApellido": "LADINO",
       "segundoNombre": "EDUARDO",
       "tel": {
-        "celular": [
-          3112945552
-        ],
-        "fijo": [
-          7347505
-        ]
+        "celular": [3112945552],
+        "fijo": [7347505]
       }
     },
     "fecha": "2023-08-16T05:00:00.000Z",
@@ -8202,9 +7904,7 @@
       "segundoApellido": "ENCISO",
       "segundoNombre": "FREDY",
       "tel": {
-        "celular": [
-          3125586008
-        ],
+        "celular": [3125586008],
         "fijo": null
       }
     },
@@ -8254,12 +7954,8 @@
       "segundoApellido": "SALINAS",
       "segundoNombre": "ALBERTO",
       "tel": {
-        "celular": [
-          3118411820
-        ],
-        "fijo": [
-          6047182
-        ]
+        "celular": [3118411820],
+        "fijo": [6047182]
       }
     },
     "fecha": "2019-07-02T05:00:00.000Z",
@@ -8302,12 +7998,8 @@
       "segundoApellido": "HERNANDEZ",
       "segundoNombre": "ALBERTO",
       "tel": {
-        "celular": [
-          3153808376
-        ],
-        "fijo": [
-          3153808
-        ]
+        "celular": [3153808376],
+        "fijo": [3153808]
       }
     },
     "idProceso": 1,
@@ -8441,9 +8133,7 @@
       "segundoApellido": "DIAZ",
       "segundoNombre": "RUIZ",
       "tel": {
-        "celular": [
-          3102785072
-        ],
+        "celular": [3102785072],
         "fijo": null
       }
     },
@@ -8493,12 +8183,8 @@
       "segundoApellido": "",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3125312823
-        ],
-        "fijo": [
-          4088069
-        ]
+        "celular": [3125312823],
+        "fijo": [4088069]
       }
     },
     "fecha": "2023-05-31T05:00:00.000Z",
@@ -8547,12 +8233,8 @@
       "segundoApellido": "PEÑA",
       "segundoNombre": "AIDE",
       "tel": {
-        "celular": [
-          3142403097
-        ],
-        "fijo": [
-          4006426
-        ]
+        "celular": [3142403097],
+        "fijo": [4006426]
       }
     },
     "fecha": "2023-08-11T05:00:00.000Z",
@@ -8601,12 +8283,8 @@
       "segundoApellido": "CALDERON",
       "segundoNombre": "MAURICIO",
       "tel": {
-        "celular": [
-          3196564315
-        ],
-        "fijo": [
-          4589855
-        ]
+        "celular": [3196564315],
+        "fijo": [4589855]
       }
     },
     "fecha": "2022-09-15T05:00:00.000Z",
@@ -8655,12 +8333,8 @@
       "segundoApellido": "BELTRAN",
       "segundoNombre": "STELLA",
       "tel": {
-        "celular": [
-          3164673352
-        ],
-        "fijo": [
-          6861327
-        ]
+        "celular": [3164673352],
+        "fijo": [6861327]
       }
     },
     "fecha": "2018-09-04T05:00:00.000Z",
@@ -8759,12 +8433,8 @@
       "segundoApellido": "DURAN",
       "segundoNombre": "CRISTINA",
       "tel": {
-        "celular": [
-          3006509338
-        ],
-        "fijo": [
-          5514126
-        ]
+        "celular": [3006509338],
+        "fijo": [5514126]
       }
     },
     "fecha": "2019-05-30T05:00:00.000Z",
@@ -8911,12 +8581,8 @@
       "segundoApellido": "OCHOA",
       "segundoNombre": "ALEXANDER",
       "tel": {
-        "celular": [
-          3114901649
-        ],
-        "fijo": [
-          7230139
-        ]
+        "celular": [3114901649],
+        "fijo": [7230139]
       }
     },
     "fecha": "2019-08-06T05:00:00.000Z",
@@ -8965,12 +8631,8 @@
       "segundoApellido": "MARTINEZ",
       "segundoNombre": "HERNANDEZ",
       "tel": {
-        "celular": [
-          3144189224
-        ],
-        "fijo": [
-          4530972
-        ]
+        "celular": [3144189224],
+        "fijo": [4530972]
       }
     },
     "fecha": "2023-08-09T05:00:00.000Z",
@@ -9013,12 +8675,8 @@
       "segundoApellido": "AVILA",
       "segundoNombre": "GUSTAVO",
       "tel": {
-        "celular": [
-          3118866968
-        ],
-        "fijo": [
-          8212461
-        ]
+        "celular": [3118866968],
+        "fijo": [8212461]
       }
     },
     "idProceso": 1,
@@ -9070,12 +8728,8 @@
       "segundoApellido": "DAZA",
       "segundoNombre": "FREDY",
       "tel": {
-        "celular": [
-          3182221747
-        ],
-        "fijo": [
-          7562457
-        ]
+        "celular": [3182221747],
+        "fijo": [7562457]
       }
     },
     "fecha": "2021-12-10T05:00:00.000Z",
@@ -9129,12 +8783,8 @@
       "segundoApellido": "DAZA",
       "segundoNombre": "FREDY",
       "tel": {
-        "celular": [
-          3182221747
-        ],
-        "fijo": [
-          7562457
-        ]
+        "celular": [3182221747],
+        "fijo": [7562457]
       }
     },
     "idProceso": 81628051,
@@ -9231,12 +8881,8 @@
       "segundoApellido": "PINZON",
       "segundoNombre": "OCASIONES",
       "tel": {
-        "celular": [
-          3156780088
-        ],
-        "fijo": [
-          7675057
-        ]
+        "celular": [3156780088],
+        "fijo": [7675057]
       }
     },
     "fecha": "2019-02-12T05:00:00.000Z",
@@ -9285,12 +8931,8 @@
       "segundoApellido": "TAGUA",
       "segundoNombre": "GONZALEZ",
       "tel": {
-        "celular": [
-          3218180993
-        ],
-        "fijo": [
-          5642974
-        ]
+        "celular": [3218180993],
+        "fijo": [5642974]
       }
     },
     "fecha": "2023-07-26T05:00:00.000Z",
@@ -9381,12 +9023,8 @@
       "segundoApellido": "GUERRERO",
       "segundoNombre": "ALIRIO",
       "tel": {
-        "celular": [
-          3103048137
-        ],
-        "fijo": [
-          7177769
-        ]
+        "celular": [3103048137],
+        "fijo": [7177769]
       }
     },
     "idProceso": 82132851,
@@ -9632,12 +9270,8 @@
       "segundoApellido": "FERNANDEZ",
       "segundoNombre": "GIOVANNI",
       "tel": {
-        "celular": [
-          3103397090
-        ],
-        "fijo": [
-          3351000
-        ]
+        "celular": [3103397090],
+        "fijo": [3351000]
       }
     },
     "idProceso": 1,
@@ -9720,12 +9354,8 @@
       "segundoApellido": "PINZON",
       "segundoNombre": "ALVARADO",
       "tel": {
-        "celular": [
-          3138851725
-        ],
-        "fijo": [
-          8717658
-        ]
+        "celular": [3138851725],
+        "fijo": [8717658]
       }
     },
     "idProceso": 1,
@@ -9816,12 +9446,8 @@
       "segundoApellido": "GRISALES",
       "segundoNombre": "JESUS",
       "tel": {
-        "celular": [
-          3142125039
-        ],
-        "fijo": [
-          3213559
-        ]
+        "celular": [3142125039],
+        "fijo": [3213559]
       }
     },
     "idProceso": 1,
@@ -9910,13 +9536,8 @@
       "segundoApellido": "MARQUEZ",
       "segundoNombre": "ALEXANDER",
       "tel": {
-        "celular": [
-          3004525014
-        ],
-        "fijo": [
-          2376454,
-          2371468
-        ]
+        "celular": [3004525014],
+        "fijo": [2376454, 2371468]
       }
     },
     "fecha": "2023-08-23T05:00:00.000Z",
@@ -10001,12 +9622,8 @@
       "segundoApellido": "MARTINEZ",
       "segundoNombre": "ELIZABETH",
       "tel": {
-        "celular": [
-          3204792977
-        ],
-        "fijo": [
-          7829236
-        ]
+        "celular": [3204792977],
+        "fijo": [7829236]
       }
     },
     "idProceso": 1,
@@ -10053,9 +9670,7 @@
       "segundoApellido": "RUEDA",
       "segundoNombre": "MARTINEZ",
       "tel": {
-        "celular": [
-          3107976282
-        ],
+        "celular": [3107976282],
         "fijo": null
       }
     },
@@ -10099,12 +9714,8 @@
       "segundoApellido": "CORTES",
       "segundoNombre": "FABIAN",
       "tel": {
-        "celular": [
-          3118280782
-        ],
-        "fijo": [
-          4429545
-        ]
+        "celular": [3118280782],
+        "fijo": [4429545]
       }
     },
     "idProceso": 1,
@@ -10151,12 +9762,8 @@
       "segundoApellido": "",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3157303099
-        ],
-        "fijo": [
-          7677881
-        ]
+        "celular": [3157303099],
+        "fijo": [7677881]
       }
     },
     "fecha": "2023-06-05T05:00:00.000Z",
@@ -10255,12 +9862,8 @@
       "segundoApellido": "PUENTES",
       "segundoNombre": "MANUEL",
       "tel": {
-        "celular": [
-          3142998727
-        ],
-        "fijo": [
-          3142498
-        ]
+        "celular": [3142998727],
+        "fijo": [3142498]
       }
     },
     "fecha": "2017-11-02T05:00:00.000Z",
@@ -10303,13 +9906,8 @@
       "segundoApellido": "COLORADO",
       "segundoNombre": "LILIANA",
       "tel": {
-        "celular": [
-          3108612781,
-          3502772711
-        ],
-        "fijo": [
-          8612781
-        ]
+        "celular": [3108612781, 3502772711],
+        "fijo": [8612781]
       }
     },
     "idProceso": 1,
@@ -10356,12 +9954,8 @@
       "segundoApellido": "CASTAÑEDA",
       "segundoNombre": "ROJAS",
       "tel": {
-        "celular": [
-          3103770989
-        ],
-        "fijo": [
-          7600199
-        ]
+        "celular": [3103770989],
+        "fijo": [7600199]
       }
     },
     "fecha": "2022-03-02T05:00:00.000Z",
@@ -10410,12 +10004,8 @@
       "segundoApellido": "VARGAS",
       "segundoNombre": "OLGA",
       "tel": {
-        "celular": [
-          3108711046
-        ],
-        "fijo": [
-          6256456
-        ]
+        "celular": [3108711046],
+        "fijo": [6256456]
       }
     },
     "fecha": "2023-06-05T05:00:00.000Z",
@@ -10514,12 +10104,8 @@
       "segundoApellido": "MARTINEZ",
       "segundoNombre": "VILLABON",
       "tel": {
-        "celular": [
-          3118264932
-        ],
-        "fijo": [
-          7672705
-        ]
+        "celular": [3118264932],
+        "fijo": [7672705]
       }
     },
     "fecha": "2019-07-17T05:00:00.000Z",
@@ -10618,12 +10204,8 @@
       "segundoApellido": "MESA",
       "segundoNombre": "CARMEN",
       "tel": {
-        "celular": [
-          3143313269
-        ],
-        "fijo": [
-          7616370
-        ]
+        "celular": [3143313269],
+        "fijo": [7616370]
       }
     },
     "fecha": "2022-03-17T05:00:00.000Z",
@@ -10820,12 +10402,8 @@
       "segundoApellido": "CAÑON",
       "segundoNombre": "ALFONSO",
       "tel": {
-        "celular": [
-          3212406004
-        ],
-        "fijo": [
-          1006108
-        ]
+        "celular": [3212406004],
+        "fijo": [1006108]
       }
     },
     "fecha": "2023-07-14T05:00:00.000Z",
@@ -10879,12 +10457,8 @@
       "segundoApellido": "CORTES",
       "segundoNombre": "ANTONIO",
       "tel": {
-        "celular": [
-          3015004499
-        ],
-        "fijo": [
-          4658342
-        ]
+        "celular": [3015004499],
+        "fijo": [4658342]
       }
     },
     "fecha": "2023-06-22T05:00:00.000Z",
@@ -10938,12 +10512,8 @@
       "segundoApellido": "CORTES",
       "segundoNombre": "ANTONIO",
       "tel": {
-        "celular": [
-          3015004499
-        ],
-        "fijo": [
-          4658342
-        ]
+        "celular": [3015004499],
+        "fijo": [4658342]
       }
     },
     "idProceso": 81643141,
@@ -11118,12 +10688,8 @@
       "segundoApellido": "MAHECHA",
       "segundoNombre": "PATRICIA",
       "tel": {
-        "celular": [
-          3204297147
-        ],
-        "fijo": [
-          7290666
-        ]
+        "celular": [3204297147],
+        "fijo": [7290666]
       }
     },
     "idProceso": 1,
@@ -11333,12 +10899,8 @@
       "segundoApellido": "HERNANDEZ",
       "segundoNombre": "VANESSA",
       "tel": {
-        "celular": [
-          3108096132
-        ],
-        "fijo": [
-          2256952
-        ]
+        "celular": [3108096132],
+        "fijo": [2256952]
       }
     },
     "fecha": "2019-01-15T05:00:00.000Z",
@@ -11392,12 +10954,8 @@
       "segundoApellido": "HERNANDEZ",
       "segundoNombre": "VANESSA",
       "tel": {
-        "celular": [
-          3108096132
-        ],
-        "fijo": [
-          2256952
-        ]
+        "celular": [3108096132],
+        "fijo": [2256952]
       }
     },
     "fecha": "2019-09-20T05:00:00.000Z",
@@ -11546,12 +11104,8 @@
       "segundoApellido": "PINEDA",
       "segundoNombre": "EUGENIA",
       "tel": {
-        "celular": [
-          3144468420
-        ],
-        "fijo": [
-          7842477
-        ]
+        "celular": [3144468420],
+        "fijo": [7842477]
       }
     },
     "fecha": "2020-03-06T05:00:00.000Z",
@@ -11600,12 +11154,8 @@
       "segundoApellido": "MACHADO",
       "segundoNombre": "HELENA",
       "tel": {
-        "celular": [
-          3103025587
-        ],
-        "fijo": [
-          4506940
-        ]
+        "celular": [3103025587],
+        "fijo": [4506940]
       }
     },
     "fecha": "2021-10-13T05:00:00.000Z",
@@ -11654,12 +11204,8 @@
       "segundoApellido": "PINILLA",
       "segundoNombre": "AUGUSTO",
       "tel": {
-        "celular": [
-          3005705869
-        ],
-        "fijo": [
-          5705869
-        ]
+        "celular": [3005705869],
+        "fijo": [5705869]
       }
     },
     "fecha": "2017-12-07T05:00:00.000Z",
@@ -11708,12 +11254,8 @@
       "segundoApellido": "VEGA",
       "segundoNombre": "ANTONIO",
       "tel": {
-        "celular": [
-          3153330306
-        ],
-        "fijo": [
-          3349755
-        ]
+        "celular": [3153330306],
+        "fijo": [3349755]
       }
     },
     "fecha": "2023-08-03T05:00:00.000Z",
@@ -11756,9 +11298,7 @@
       "segundoApellido": "CORTES",
       "segundoNombre": "ROSA",
       "tel": {
-        "celular": [
-          3114881698
-        ],
+        "celular": [3114881698],
         "fijo": null
       }
     },
@@ -12056,12 +11596,8 @@
       "segundoApellido": "CASTAÑEDA",
       "segundoNombre": "ALEXANDER",
       "tel": {
-        "celular": [
-          3057528084
-        ],
-        "fijo": [
-          8137713
-        ]
+        "celular": [3057528084],
+        "fijo": [8137713]
       }
     },
     "fecha": "2023-01-27T05:00:00.000Z",
@@ -12202,12 +11738,8 @@
       "segundoApellido": "TAMAYO",
       "segundoNombre": "LUIS",
       "tel": {
-        "celular": [
-          3138216786
-        ],
-        "fijo": [
-          3138216
-        ]
+        "celular": [3138216786],
+        "fijo": [3138216]
       }
     },
     "fecha": "2022-06-16T05:00:00.000Z",
@@ -12256,12 +11788,8 @@
       "segundoApellido": "BERMUDEZ",
       "segundoNombre": "ALEXANDER",
       "tel": {
-        "celular": [
-          3052392765
-        ],
-        "fijo": [
-          7451585
-        ]
+        "celular": [3052392765],
+        "fijo": [7451585]
       }
     },
     "fecha": "2018-10-26T05:00:00.000Z",
@@ -12310,12 +11838,8 @@
       "segundoApellido": "AGUDELO",
       "segundoNombre": "DIAZ",
       "tel": {
-        "celular": [
-          3212406193
-        ],
-        "fijo": [
-          8060271
-        ]
+        "celular": [3212406193],
+        "fijo": [8060271]
       }
     },
     "fecha": "2023-07-27T05:00:00.000Z",
@@ -12358,12 +11882,8 @@
       "segundoApellido": "OLAYA",
       "segundoNombre": "MORENO",
       "tel": {
-        "celular": [
-          3123836799
-        ],
-        "fijo": [
-          7191321
-        ]
+        "celular": [3123836799],
+        "fijo": [7191321]
       }
     },
     "idProceso": 1,
@@ -12404,12 +11924,8 @@
       "segundoApellido": "SALGUERO",
       "segundoNombre": "AUGUSTO",
       "tel": {
-        "celular": [
-          3114602334
-        ],
-        "fijo": [
-          8656241
-        ]
+        "celular": [3114602334],
+        "fijo": [8656241]
       }
     },
     "idProceso": 1,
@@ -12456,12 +11972,8 @@
       "segundoApellido": "ARIAS",
       "segundoNombre": "ALEXANDER",
       "tel": {
-        "celular": [
-          3106289389
-        ],
-        "fijo": [
-          2362747
-        ]
+        "celular": [3106289389],
+        "fijo": [2362747]
       }
     },
     "fecha": "2018-10-24T05:00:00.000Z",
@@ -12549,12 +12061,8 @@
       "segundoApellido": "MONGUI",
       "segundoNombre": "ALIRIO",
       "tel": {
-        "celular": [
-          3134293286
-        ],
-        "fijo": [
-          5774513
-        ]
+        "celular": [3134293286],
+        "fijo": [5774513]
       }
     },
     "idProceso": 1,
@@ -12640,12 +12148,8 @@
       "segundoApellido": "ROMO",
       "segundoNombre": "OTALVARO",
       "tel": {
-        "celular": [
-          3223968514
-        ],
-        "fijo": [
-          4805457
-        ]
+        "celular": [3223968514],
+        "fijo": [4805457]
       }
     },
     "idProceso": 1,
@@ -12692,14 +12196,8 @@
       "segundoApellido": "PERUGACHI",
       "segundoNombre": "OLGA",
       "tel": {
-        "celular": [
-          3222223988,
-          3143072762
-        ],
-        "fijo": [
-          1111111,
-          2239883
-        ]
+        "celular": [3222223988, 3143072762],
+        "fijo": [1111111, 2239883]
       }
     },
     "fecha": "2023-07-17T05:00:00.000Z",
@@ -12848,12 +12346,8 @@
       "segundoApellido": "VILLAMIL",
       "segundoNombre": "BUITRAGO",
       "tel": {
-        "celular": [
-          3204979488
-        ],
-        "fijo": [
-          7696884
-        ]
+        "celular": [3204979488],
+        "fijo": [7696884]
       }
     },
     "fecha": "2018-02-20T05:00:00.000Z",
@@ -12891,9 +12385,7 @@
       "segundoApellido": "NOVOA",
       "segundoNombre": "LANCHEROS",
       "tel": {
-        "celular": [
-          3115221604
-        ],
+        "celular": [3115221604],
         "fijo": null
       }
     },
@@ -12941,9 +12433,7 @@
       "segundoApellido": "ALBA",
       "segundoNombre": "CARRANZA",
       "tel": {
-        "celular": [
-          3193196261
-        ],
+        "celular": [3193196261],
         "fijo": null
       }
     },
@@ -12993,12 +12483,8 @@
       "segundoApellido": "BENDEK",
       "segundoNombre": "ALBERTO",
       "tel": {
-        "celular": [
-          3134749213
-        ],
-        "fijo": [
-          6701643
-        ]
+        "celular": [3134749213],
+        "fijo": [6701643]
       }
     },
     "fecha": "2023-05-16T05:00:00.000Z",
@@ -13041,12 +12527,8 @@
       "segundoApellido": "RAMIREZ",
       "segundoNombre": "CONTRERAS",
       "tel": {
-        "celular": [
-          3135348199
-        ],
-        "fijo": [
-          8715525
-        ]
+        "celular": [3135348199],
+        "fijo": [8715525]
       }
     },
     "idProceso": 1,
@@ -13093,9 +12575,7 @@
       "segundoApellido": "BENAVIDES",
       "segundoNombre": "JAVIER",
       "tel": {
-        "celular": [
-          3178195535
-        ],
+        "celular": [3178195535],
         "fijo": null
       }
     },
@@ -13195,12 +12675,8 @@
       "segundoApellido": "CORREDOR",
       "segundoNombre": "EDUARDO",
       "tel": {
-        "celular": [
-          3115197002
-        ],
-        "fijo": [
-          3521314
-        ]
+        "celular": [3115197002],
+        "fijo": [3521314]
       }
     },
     "fecha": "2022-11-11T05:00:00.000Z",
@@ -13243,12 +12719,8 @@
       "segundoApellido": "VALOYES",
       "segundoNombre": "PRADO",
       "tel": {
-        "celular": [
-          3103291690
-        ],
-        "fijo": [
-          8615372
-        ]
+        "celular": [3103291690],
+        "fijo": [8615372]
       }
     },
     "idProceso": 1,
@@ -13618,12 +13090,8 @@
       "segundoApellido": "DELGADO",
       "segundoNombre": "ALBERTO",
       "tel": {
-        "celular": [
-          3125489014
-        ],
-        "fijo": [
-          2737360
-        ]
+        "celular": [3125489014],
+        "fijo": [2737360]
       }
     },
     "idProceso": 1,
@@ -13664,9 +13132,7 @@
       "segundoApellido": "ZAMORA",
       "segundoNombre": "ANDRES",
       "tel": {
-        "celular": [
-          3103247146
-        ],
+        "celular": [3103247146],
         "fijo": null
       }
     },
@@ -13758,9 +13224,7 @@
       "segundoApellido": "PEÑA",
       "segundoNombre": "JULIO",
       "tel": {
-        "celular": [
-          3105683065
-        ],
+        "celular": [3105683065],
         "fijo": null
       }
     },
@@ -13802,12 +13266,8 @@
       "segundoApellido": "ARGOTE",
       "segundoNombre": "RENE",
       "tel": {
-        "celular": [
-          3118027001
-        ],
-        "fijo": [
-          3018759
-        ]
+        "celular": [3118027001],
+        "fijo": [3018759]
       }
     },
     "idProceso": 1,
@@ -13849,9 +13309,7 @@
       "segundoApellido": "AGUIRRE",
       "segundoNombre": "JESUS",
       "tel": {
-        "celular": [
-          3138085772
-        ],
+        "celular": [3138085772],
         "fijo": null
       }
     },
@@ -14037,12 +13495,8 @@
       "segundoApellido": "HERNANDEZ",
       "segundoNombre": "ANDRES",
       "tel": {
-        "celular": [
-          3107727822
-        ],
-        "fijo": [
-          4566333
-        ]
+        "celular": [3107727822],
+        "fijo": [4566333]
       }
     },
     "idProceso": 1,
@@ -14231,12 +13685,8 @@
       "segundoApellido": "BORRAEZ",
       "segundoNombre": "GUILLERMO",
       "tel": {
-        "celular": [
-          3178134824
-        ],
-        "fijo": [
-          6915340
-        ]
+        "celular": [3178134824],
+        "fijo": [6915340]
       }
     },
     "fecha": "2018-04-26T05:00:00.000Z",
@@ -14279,12 +13729,8 @@
       "segundoApellido": "",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3208100658
-        ],
-        "fijo": [
-          6012243
-        ]
+        "celular": [3208100658],
+        "fijo": [6012243]
       }
     },
     "idProceso": 1,
@@ -14325,12 +13771,8 @@
       "segundoApellido": "GOMEZ",
       "segundoNombre": "MAYORGA",
       "tel": {
-        "celular": [
-          3204283595
-        ],
-        "fijo": [
-          9008364
-        ]
+        "celular": [3204283595],
+        "fijo": [9008364]
       }
     },
     "idProceso": 1,
@@ -14427,12 +13869,8 @@
       "segundoApellido": "JARAMILLO",
       "segundoNombre": "DARY",
       "tel": {
-        "celular": [
-          3103430010
-        ],
-        "fijo": [
-          4357832
-        ]
+        "celular": [3103430010],
+        "fijo": [4357832]
       }
     },
     "fecha": "2022-03-09T05:00:00.000Z",
@@ -14481,9 +13919,7 @@
       "segundoApellido": "TRUJILLO",
       "segundoNombre": "FELIPE",
       "tel": {
-        "celular": [
-          3115964170
-        ],
+        "celular": [3115964170],
         "fijo": null
       }
     },
@@ -14528,12 +13964,8 @@
       "segundoApellido": "VALBUENA",
       "segundoNombre": "HERNANDO",
       "tel": {
-        "celular": [
-          3125826241
-        ],
-        "fijo": [
-          4789274
-        ]
+        "celular": [3125826241],
+        "fijo": [4789274]
       }
     },
     "fecha": "2022-01-26T05:00:00.000Z",
@@ -14624,12 +14056,8 @@
       "segundoApellido": "AGUILAR",
       "segundoNombre": "HUMBERTO",
       "tel": {
-        "celular": [
-          3125024008
-        ],
-        "fijo": [
-          4170527
-        ]
+        "celular": [3125024008],
+        "fijo": [4170527]
       }
     },
     "fecha": "2021-11-08T05:00:00.000Z",
@@ -14770,12 +14198,8 @@
       "segundoApellido": "GOMEZ",
       "segundoNombre": "MARIA",
       "tel": {
-        "celular": [
-          3134576869
-        ],
-        "fijo": [
-          8065373
-        ]
+        "celular": [3134576869],
+        "fijo": [8065373]
       }
     },
     "fecha": "2023-05-25T05:00:00.000Z",
@@ -14932,12 +14356,8 @@
       "segundoApellido": "CASTAÑEDA",
       "segundoNombre": "GERMAN",
       "tel": {
-        "celular": [
-          3104865508
-        ],
-        "fijo": [
-          6087374
-        ]
+        "celular": [3104865508],
+        "fijo": [6087374]
       }
     },
     "fecha": "2022-08-11T05:00:00.000Z",
@@ -15078,12 +14498,8 @@
       "segundoApellido": "RODRIGUEZ",
       "segundoNombre": "GIL",
       "tel": {
-        "celular": [
-          3152504510
-        ],
-        "fijo": [
-          6051177
-        ]
+        "celular": [3152504510],
+        "fijo": [6051177]
       }
     },
     "fecha": "2020-03-19T05:00:00.000Z",
@@ -15169,9 +14585,7 @@
       "segundoNombre": "FREDY",
       "tel": {
         "celular": null,
-        "fijo": [
-          7641957
-        ]
+        "fijo": [7641957]
       }
     },
     "idProceso": 1,
@@ -15218,12 +14632,8 @@
       "segundoApellido": "SANTOS",
       "segundoNombre": "REVELO",
       "tel": {
-        "celular": [
-          3118526428
-        ],
-        "fijo": [
-          4725511
-        ]
+        "celular": [3118526428],
+        "fijo": [4725511]
       }
     },
     "fecha": "2022-12-01T05:00:00.000Z",
@@ -15467,9 +14877,7 @@
       "segundoApellido": "HUERTAS",
       "segundoNombre": "ANGEL",
       "tel": {
-        "celular": [
-          3123077900
-        ],
+        "celular": [3123077900],
         "fijo": null
       }
     },
@@ -15517,9 +14925,7 @@
       "segundoApellido": "BOHORQUEZ",
       "segundoNombre": "GABRIEL",
       "tel": {
-        "celular": [
-          3164700074
-        ],
+        "celular": [3164700074],
         "fijo": null
       }
     },
@@ -15605,12 +15011,8 @@
       "segundoApellido": "SANCHEZ",
       "segundoNombre": "EDILBERTO",
       "tel": {
-        "celular": [
-          3174280231
-        ],
-        "fijo": [
-          2623688
-        ]
+        "celular": [3174280231],
+        "fijo": [2623688]
       }
     },
     "idProceso": 1,
@@ -15693,12 +15095,8 @@
       "segundoApellido": "LOPEZ",
       "segundoNombre": "GODOY",
       "tel": {
-        "celular": [
-          3005821212
-        ],
-        "fijo": [
-          8272125
-        ]
+        "celular": [3005821212],
+        "fijo": [8272125]
       }
     },
     "idProceso": 1,
@@ -15745,12 +15143,8 @@
       "segundoApellido": "VELANDIA",
       "segundoNombre": "ALFONSO",
       "tel": {
-        "celular": [
-          3202777672
-        ],
-        "fijo": [
-          7170610
-        ]
+        "celular": [3202777672],
+        "fijo": [7170610]
       }
     },
     "fecha": "2022-05-11T05:00:00.000Z",
@@ -15793,9 +15187,7 @@
       "segundoApellido": "TELLEZ",
       "segundoNombre": "GONZALEZ",
       "tel": {
-        "celular": [
-          3212414138
-        ],
+        "celular": [3212414138],
         "fijo": null
       }
     },
@@ -15893,12 +15285,8 @@
       "segundoApellido": "LEAL",
       "segundoNombre": "ARTURO",
       "tel": {
-        "celular": [
-          3102050752
-        ],
-        "fijo": [
-          2953878
-        ]
+        "celular": [3102050752],
+        "fijo": [2953878]
       }
     },
     "fecha": "2022-10-21T05:00:00.000Z",
@@ -16699,12 +16087,8 @@
       "segundoApellido": "POBLADOR",
       "segundoNombre": "YAMILE",
       "tel": {
-        "celular": [
-          3112326151
-        ],
-        "fijo": [
-          5205695
-        ]
+        "celular": [3112326151],
+        "fijo": [5205695]
       }
     },
     "idProceso": 81891881,
@@ -16893,12 +16277,8 @@
       "segundoApellido": "LOPEZ",
       "segundoNombre": "ELIECER",
       "tel": {
-        "celular": [
-          3138267838
-        ],
-        "fijo": [
-          7102329
-        ]
+        "celular": [3138267838],
+        "fijo": [7102329]
       }
     },
     "fecha": "2018-02-27T05:00:00.000Z",
@@ -17047,12 +16427,8 @@
       "segundoApellido": "VARON",
       "segundoNombre": "MELENDEZ",
       "tel": {
-        "celular": [
-          3107584138
-        ],
-        "fijo": [
-          2287430
-        ]
+        "celular": [3107584138],
+        "fijo": [2287430]
       }
     },
     "fecha": "2021-09-15T05:00:00.000Z",
@@ -17101,12 +16477,8 @@
       "segundoApellido": "SUAREZ",
       "segundoNombre": "ARBEY",
       "tel": {
-        "celular": [
-          3176822122
-        ],
-        "fijo": [
-          6822121
-        ]
+        "celular": [3176822122],
+        "fijo": [6822121]
       }
     },
     "fecha": "2021-09-22T05:00:00.000Z",
@@ -17191,12 +16563,8 @@
       "segundoApellido": "MARROQUIN",
       "segundoNombre": "ANTONIO",
       "tel": {
-        "celular": [
-          3168017488
-        ],
-        "fijo": [
-          9032416
-        ]
+        "celular": [3168017488],
+        "fijo": [9032416]
       }
     },
     "idProceso": 1,
@@ -17293,12 +16661,8 @@
       "segundoApellido": "ORJUELA",
       "segundoNombre": "JULIO",
       "tel": {
-        "celular": [
-          3132088678
-        ],
-        "fijo": [
-          7459324
-        ]
+        "celular": [3132088678],
+        "fijo": [7459324]
       }
     },
     "fecha": "2022-09-27T05:00:00.000Z",
@@ -17447,12 +16811,8 @@
       "segundoApellido": "RIOS",
       "segundoNombre": "ALFONSO",
       "tel": {
-        "celular": [
-          3115030138
-        ],
-        "fijo": [
-          7651426
-        ]
+        "celular": [3115030138],
+        "fijo": [7651426]
       }
     },
     "fecha": "2023-07-12T05:00:00.000Z",
@@ -17643,12 +17003,8 @@
       "segundoApellido": "PARRA",
       "segundoNombre": "VELEZ",
       "tel": {
-        "celular": [
-          3102124649
-        ],
-        "fijo": [
-          6155668
-        ]
+        "celular": [3102124649],
+        "fijo": [6155668]
       }
     },
     "fecha": "2019-07-29T05:00:00.000Z",
@@ -17741,12 +17097,8 @@
       "segundoApellido": "JIMENEZ",
       "segundoNombre": "ALFONSO",
       "tel": {
-        "celular": [
-          3188426582
-        ],
-        "fijo": [
-          5470813
-        ]
+        "celular": [3188426582],
+        "fijo": [5470813]
       }
     },
     "idProceso": 1,
@@ -17793,12 +17145,8 @@
       "segundoApellido": "ORTIZ",
       "segundoNombre": "AUGUSTO",
       "tel": {
-        "celular": [
-          3174409073
-        ],
-        "fijo": [
-          8003961
-        ]
+        "celular": [3174409073],
+        "fijo": [8003961]
       }
     },
     "fecha": "2023-05-17T05:00:00.000Z",
@@ -17847,12 +17195,8 @@
       "segundoApellido": "GUTIERREZ",
       "segundoNombre": "JEANNETTE",
       "tel": {
-        "celular": [
-          3204900530
-        ],
-        "fijo": [
-          7216691
-        ]
+        "celular": [3204900530],
+        "fijo": [7216691]
       }
     },
     "fecha": "2021-03-10T05:00:00.000Z",
@@ -17901,12 +17245,8 @@
       "segundoApellido": "LOPEZ",
       "segundoNombre": "ANDREA",
       "tel": {
-        "celular": [
-          3016393345
-        ],
-        "fijo": [
-          4668308
-        ]
+        "celular": [3016393345],
+        "fijo": [4668308]
       }
     },
     "fecha": "2020-11-06T05:00:00.000Z",
@@ -17950,9 +17290,7 @@
       "segundoNombre": "ELENA",
       "tel": {
         "celular": null,
-        "fijo": [
-          2869149
-        ]
+        "fijo": [2869149]
       }
     },
     "idProceso": 1,
@@ -17999,12 +17337,8 @@
       "segundoApellido": "RIVERA",
       "segundoNombre": "BEATRIZ",
       "tel": {
-        "celular": [
-          3106630177
-        ],
-        "fijo": [
-          5101587
-        ]
+        "celular": [3106630177],
+        "fijo": [5101587]
       }
     },
     "fecha": "2023-08-14T05:00:00.000Z",
@@ -18053,9 +17387,7 @@
       "segundoApellido": "ROSERO",
       "segundoNombre": "GARCIA",
       "tel": {
-        "celular": [
-          3155831999
-        ],
+        "celular": [3155831999],
         "fijo": null
       }
     },
@@ -18105,12 +17437,8 @@
       "segundoApellido": "VALDERRAMA",
       "segundoNombre": "FERNEY",
       "tel": {
-        "celular": [
-          3112441540
-        ],
-        "fijo": [
-          4647087
-        ]
+        "celular": [3112441540],
+        "fijo": [4647087]
       }
     },
     "fecha": "2022-10-24T05:00:00.000Z",
@@ -18153,12 +17481,8 @@
       "segundoApellido": "NORIEGA",
       "segundoNombre": "JOSUE",
       "tel": {
-        "celular": [
-          3134704885
-        ],
-        "fijo": [
-          7612712
-        ]
+        "celular": [3134704885],
+        "fijo": [7612712]
       }
     },
     "idProceso": 1,
@@ -18353,12 +17677,8 @@
       "segundoApellido": "TORRES",
       "segundoNombre": "ANIBAL",
       "tel": {
-        "celular": [
-          3003813863
-        ],
-        "fijo": [
-          6854161
-        ]
+        "celular": [3003813863],
+        "fijo": [6854161]
       }
     },
     "fecha": "2018-08-10T05:00:00.000Z",
@@ -18458,9 +17778,7 @@
       "segundoNombre": "XIMENA",
       "tel": {
         "celular": null,
-        "fijo": [
-          4707082
-        ]
+        "fijo": [4707082]
       }
     },
     "fecha": "2023-07-24T05:00:00.000Z",
@@ -18559,9 +17877,7 @@
       "segundoApellido": "VARGAS",
       "segundoNombre": "JOAQUIN",
       "tel": {
-        "celular": [
-          3005941798
-        ],
+        "celular": [3005941798],
         "fijo": null
       }
     },
@@ -18611,13 +17927,8 @@
       "segundoApellido": "SAAVEDRA",
       "segundoNombre": "DAVID",
       "tel": {
-        "celular": [
-          3165335586
-        ],
-        "fijo": [
-          1665335,
-          3165335
-        ]
+        "celular": [3165335586],
+        "fijo": [1665335, 3165335]
       }
     },
     "fecha": "2020-01-14T05:00:00.000Z",
@@ -18666,12 +17977,8 @@
       "segundoApellido": "BERNAL",
       "segundoNombre": "PILAR",
       "tel": {
-        "celular": [
-          3002261859
-        ],
-        "fijo": [
-          7416881
-        ]
+        "celular": [3002261859],
+        "fijo": [7416881]
       }
     },
     "fecha": "2018-03-23T05:00:00.000Z",
@@ -18764,12 +18071,8 @@
       "segundoApellido": "SUAREZ",
       "segundoNombre": "HERNANDEZ",
       "tel": {
-        "celular": [
-          3007553091
-        ],
-        "fijo": [
-          7553091
-        ]
+        "celular": [3007553091],
+        "fijo": [7553091]
       }
     },
     "idProceso": 1,
@@ -19008,12 +18311,8 @@
       "segundoApellido": "PAEZ",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3144899865
-        ],
-        "fijo": [
-          6481255
-        ]
+        "celular": [3144899865],
+        "fijo": [6481255]
       }
     },
     "fecha": "2022-11-01T05:00:00.000Z",
@@ -19306,9 +18605,7 @@
       "segundoApellido": "PINZON",
       "segundoNombre": "RUBIELA",
       "tel": {
-        "celular": [
-          3152482331
-        ],
+        "celular": [3152482331],
         "fijo": null
       }
     },
@@ -19350,9 +18647,7 @@
       "segundoApellido": "VILLALBA",
       "segundoNombre": "ALBERTO",
       "tel": {
-        "celular": [
-          3112764286
-        ],
+        "celular": [3112764286],
         "fijo": null
       }
     },
@@ -19653,12 +18948,8 @@
       "segundoApellido": "GALVIS",
       "segundoNombre": "ALEXANDER",
       "tel": {
-        "celular": [
-          3157236856
-        ],
-        "fijo": [
-          5686327
-        ]
+        "celular": [3157236856],
+        "fijo": [5686327]
       }
     },
     "fecha": "2022-05-02T05:00:00.000Z",
@@ -19712,12 +19003,8 @@
       "segundoApellido": "GALVIS",
       "segundoNombre": "ALEXANDER",
       "tel": {
-        "celular": [
-          3157236856
-        ],
-        "fijo": [
-          5686327
-        ]
+        "celular": [3157236856],
+        "fijo": [5686327]
       }
     },
     "idProceso": 81806941,
@@ -19769,12 +19056,8 @@
       "segundoApellido": "GALVIS",
       "segundoNombre": "ALEXANDER",
       "tel": {
-        "celular": [
-          3157236856
-        ],
-        "fijo": [
-          5686327
-        ]
+        "celular": [3157236856],
+        "fijo": [5686327]
       }
     },
     "idProceso": 51918100,
@@ -19826,12 +19109,8 @@
       "segundoApellido": "GALVIS",
       "segundoNombre": "ALEXANDER",
       "tel": {
-        "celular": [
-          3157236856
-        ],
-        "fijo": [
-          5686327
-        ]
+        "celular": [3157236856],
+        "fijo": [5686327]
       }
     },
     "idProceso": 81806941,
@@ -19878,9 +19157,7 @@
       "segundoApellido": "MELO",
       "segundoNombre": "MARISOL",
       "tel": {
-        "celular": [
-          3203430311
-        ],
+        "celular": [3203430311],
         "fijo": null
       }
     },
@@ -19924,9 +19201,7 @@
       "segundoApellido": "BARRAGAN",
       "segundoNombre": "ALBERTO",
       "tel": {
-        "celular": [
-          3107518479
-        ],
+        "celular": [3107518479],
         "fijo": null
       }
     },
@@ -20024,9 +19299,7 @@
       "segundoApellido": "MEJIA",
       "segundoNombre": "JAVIER",
       "tel": {
-        "celular": [
-          3202116040
-        ],
+        "celular": [3202116040],
         "fijo": null
       }
     },
@@ -20168,12 +19441,8 @@
       "segundoApellido": "SANABRIA",
       "segundoNombre": "SANABRIA",
       "tel": {
-        "celular": [
-          3118066048
-        ],
-        "fijo": [
-          4251180
-        ]
+        "celular": [3118066048],
+        "fijo": [4251180]
       }
     },
     "fecha": "2023-01-19T05:00:00.000Z",
@@ -20222,12 +19491,8 @@
       "segundoApellido": "PUCCETI",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3124575163
-        ],
-        "fijo": [
-          6126610
-        ]
+        "celular": [3124575163],
+        "fijo": [6126610]
       }
     },
     "fecha": "2019-07-31T05:00:00.000Z",
@@ -20468,12 +19733,8 @@
       "segundoApellido": "RODRIGUEZ",
       "segundoNombre": "ALEJANDRO",
       "tel": {
-        "celular": [
-          3013377704
-        ],
-        "fijo": [
-          6356262
-        ]
+        "celular": [3013377704],
+        "fijo": [6356262]
       }
     },
     "fecha": "2021-05-27T05:00:00.000Z",
@@ -20522,12 +19783,8 @@
       "segundoApellido": "TORRES",
       "segundoNombre": "HERNANDO",
       "tel": {
-        "celular": [
-          3153113742
-        ],
-        "fijo": [
-          5605872
-        ]
+        "celular": [3153113742],
+        "fijo": [5605872]
       }
     },
     "fecha": "2021-05-27T05:00:00.000Z",
@@ -20618,12 +19875,8 @@
       "segundoApellido": "BARRETO",
       "segundoNombre": "ENRIQUE",
       "tel": {
-        "celular": [
-          3118163887
-        ],
-        "fijo": [
-          7836655
-        ]
+        "celular": [3118163887],
+        "fijo": [7836655]
       }
     },
     "fecha": "2023-03-13T05:00:00.000Z",
@@ -20708,9 +19961,7 @@
       "segundoApellido": "LOPEZ",
       "segundoNombre": "ANDREA",
       "tel": {
-        "celular": [
-          3214771295
-        ],
+        "celular": [3214771295],
         "fijo": null
       }
     },
@@ -20850,12 +20101,8 @@
       "segundoApellido": "RODRIGUEZ",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3112572775
-        ],
-        "fijo": [
-          7232225
-        ]
+        "celular": [3112572775],
+        "fijo": [7232225]
       }
     },
     "fecha": "2018-03-07T05:00:00.000Z",
@@ -20904,12 +20151,8 @@
       "segundoApellido": "HUERTAS",
       "segundoNombre": "CECILIA",
       "tel": {
-        "celular": [
-          3205307727
-        ],
-        "fijo": [
-          4596827
-        ]
+        "celular": [3205307727],
+        "fijo": [4596827]
       }
     },
     "fecha": "2018-04-24T05:00:00.000Z",
@@ -21002,12 +20245,8 @@
       "segundoApellido": "RIOS",
       "segundoNombre": "AUGUSTO",
       "tel": {
-        "celular": [
-          3102259717
-        ],
-        "fijo": [
-          2035780
-        ]
+        "celular": [3102259717],
+        "fijo": [2035780]
       }
     },
     "idProceso": 1,
@@ -21054,12 +20293,8 @@
       "segundoApellido": "GOMEZ",
       "segundoNombre": "LINCE",
       "tel": {
-        "celular": [
-          3108844560
-        ],
-        "fijo": [
-          4244358
-        ]
+        "celular": [3108844560],
+        "fijo": [4244358]
       }
     },
     "fecha": "2023-06-15T05:00:00.000Z",
@@ -21250,12 +20485,8 @@
       "segundoApellido": "S.A.S",
       "segundoNombre": "SOLUCIONES",
       "tel": {
-        "celular": [
-          3107982028
-        ],
-        "fijo": [
-          8626344
-        ]
+        "celular": [3107982028],
+        "fijo": [8626344]
       }
     },
     "fecha": "2023-06-08T05:00:00.000Z",
@@ -21390,9 +20621,7 @@
       "segundoApellido": "CRISTIANO",
       "segundoNombre": "NELSON",
       "tel": {
-        "celular": [
-          3204063623
-        ],
+        "celular": [3204063623],
         "fijo": null
       }
     },
@@ -21582,12 +20811,8 @@
       "segundoApellido": "HERNANDEZ",
       "segundoNombre": "ANTONIO",
       "tel": {
-        "celular": [
-          3134664560
-        ],
-        "fijo": [
-          2724305
-        ]
+        "celular": [3134664560],
+        "fijo": [2724305]
       }
     },
     "fecha": "2023-04-27T05:00:00.000Z",
@@ -21636,12 +20861,8 @@
       "segundoApellido": "CHUCHIN",
       "segundoNombre": "HUMBERTO",
       "tel": {
-        "celular": [
-          3105638608
-        ],
-        "fijo": [
-          2511959
-        ]
+        "celular": [3105638608],
+        "fijo": [2511959]
       }
     },
     "fecha": "2022-03-10T05:00:00.000Z",
@@ -21774,12 +20995,8 @@
       "segundoApellido": "OSMA",
       "segundoNombre": "PATRICIA",
       "tel": {
-        "celular": [
-          3107706773
-        ],
-        "fijo": [
-          3085025
-        ]
+        "celular": [3107706773],
+        "fijo": [3085025]
       }
     },
     "fecha": "2023-08-10T05:00:00.000Z",
@@ -22194,12 +21411,8 @@
       "segundoApellido": "RODRIGUEZ",
       "segundoNombre": "HERNANDEZ",
       "tel": {
-        "celular": [
-          3157637045
-        ],
-        "fijo": [
-          7644527
-        ]
+        "celular": [3157637045],
+        "fijo": [7644527]
       }
     },
     "fecha": "2019-04-30T05:00:00.000Z",
@@ -22253,9 +21466,7 @@
       "segundoApellido": "ARIAS",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3112907361
-        ],
+        "celular": [3112907361],
         "fijo": null
       }
     },
@@ -22310,9 +21521,7 @@
       "segundoApellido": "ARIAS",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3112907361
-        ],
+        "celular": [3112907361],
         "fijo": null
       }
     },
@@ -22562,9 +21771,7 @@
       "segundoApellido": "FLOREZ",
       "segundoNombre": "JAVIER",
       "tel": {
-        "celular": [
-          3193862544
-        ],
+        "celular": [3193862544],
         "fijo": null
       }
     },
@@ -22792,9 +21999,7 @@
       "segundoApellido": "CEPEDA",
       "segundoNombre": "ESNEYDER",
       "tel": {
-        "celular": [
-          3123170535
-        ],
+        "celular": [3123170535],
         "fijo": null
       }
     },
@@ -22836,9 +22041,7 @@
       "segundoApellido": "GIRALDO",
       "segundoNombre": "ESTHER",
       "tel": {
-        "celular": [
-          3107996508
-        ],
+        "celular": [3107996508],
         "fijo": null
       }
     },
@@ -22880,9 +22083,7 @@
       "segundoApellido": "PRIETO",
       "segundoNombre": "MILLAN",
       "tel": {
-        "celular": [
-          3102762216
-        ],
+        "celular": [3102762216],
         "fijo": null
       }
     },
@@ -22980,9 +22181,7 @@
       "segundoApellido": "ALVARADO",
       "segundoNombre": "FERNANDO",
       "tel": {
-        "celular": [
-          3502092709
-        ],
+        "celular": [3502092709],
         "fijo": null
       }
     },
@@ -23076,12 +22275,8 @@
       "segundoApellido": "BEJARANO",
       "segundoNombre": "CARLOS",
       "tel": {
-        "celular": [
-          3212282328
-        ],
-        "fijo": [
-          3654986
-        ]
+        "celular": [3212282328],
+        "fijo": [3654986]
       }
     },
     "idProceso": 1,
@@ -23270,12 +22465,8 @@
       "segundoApellido": "ROJAS",
       "segundoNombre": "ERNESTO",
       "tel": {
-        "celular": [
-          3204265908
-        ],
-        "fijo": [
-          7510457
-        ]
+        "celular": [3204265908],
+        "fijo": [7510457]
       }
     },
     "fecha": "2022-04-20T05:00:00.000Z",
@@ -23374,9 +22565,7 @@
       "segundoApellido": "CARRILLO",
       "segundoNombre": "JEISSON",
       "tel": {
-        "celular": [
-          3209393337
-        ],
+        "celular": [3209393337],
         "fijo": null
       }
     },
@@ -23426,12 +22615,8 @@
       "segundoApellido": "OROZCO",
       "segundoNombre": "MARIN",
       "tel": {
-        "celular": [
-          3124885346
-        ],
-        "fijo": [
-          4412100
-        ]
+        "celular": [3124885346],
+        "fijo": [4412100]
       }
     },
     "fecha": "2022-03-25T05:00:00.000Z",
@@ -23522,12 +22707,8 @@
       "segundoApellido": "ARCINIEGAS",
       "segundoNombre": "ERNESTO",
       "tel": {
-        "celular": [
-          3114473402
-        ],
-        "fijo": [
-          2863225
-        ]
+        "celular": [3114473402],
+        "fijo": [2863225]
       }
     },
     "fecha": "2022-07-13T05:00:00.000Z",
@@ -23668,9 +22849,7 @@
       "segundoApellido": "",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3108881287
-        ],
+        "celular": [3108881287],
         "fijo": null
       }
     },
@@ -23768,9 +22947,7 @@
       "segundoApellido": "VANEGAS",
       "segundoNombre": "ARMANDO",
       "tel": {
-        "celular": [
-          3108121876
-        ],
+        "celular": [3108121876],
         "fijo": null
       }
     },
@@ -23914,12 +23091,8 @@
       "segundoApellido": "CACERES",
       "segundoNombre": "GELVES",
       "tel": {
-        "celular": [
-          3114915425
-        ],
-        "fijo": [
-          7279254
-        ]
+        "celular": [3114915425],
+        "fijo": [7279254]
       }
     },
     "idProceso": 1,
@@ -24168,12 +23341,8 @@
       "segundoApellido": "HIGUERA",
       "segundoNombre": "JULIED",
       "tel": {
-        "celular": [
-          3115754578
-        ],
-        "fijo": [
-          4933266
-        ]
+        "celular": [3115754578],
+        "fijo": [4933266]
       }
     },
     "fecha": "2023-04-13T05:00:00.000Z",
@@ -24266,12 +23435,8 @@
       "segundoApellido": "PIÑEROS",
       "segundoNombre": "EDUARDO",
       "tel": {
-        "celular": [
-          3102438242
-        ],
-        "fijo": [
-          2400591
-        ]
+        "celular": [3102438242],
+        "fijo": [2400591]
       }
     },
     "idProceso": 1,
@@ -24318,12 +23483,8 @@
       "segundoApellido": "TUTA",
       "segundoNombre": "MYRIAM",
       "tel": {
-        "celular": [
-          3123178629
-        ],
-        "fijo": [
-          8117033
-        ]
+        "celular": [3123178629],
+        "fijo": [8117033]
       }
     },
     "fecha": "2020-02-04T05:00:00.000Z",
@@ -24408,12 +23569,8 @@
       "segundoApellido": "AGUILAR",
       "segundoNombre": "MIREYA",
       "tel": {
-        "celular": [
-          3166997083
-        ],
-        "fijo": [
-          7608072
-        ]
+        "celular": [3166997083],
+        "fijo": [7608072]
       }
     },
     "idProceso": 1,
@@ -24538,12 +23695,8 @@
       "segundoApellido": "CAMACHO",
       "segundoNombre": "KATERINE",
       "tel": {
-        "celular": [
-          3144765126
-        ],
-        "fijo": [
-          4383117
-        ]
+        "celular": [3144765126],
+        "fijo": [4383117]
       }
     },
     "idProceso": 1,
@@ -24718,12 +23871,8 @@
       "segundoApellido": "PASTOR",
       "segundoNombre": "HERNANDO",
       "tel": {
-        "celular": [
-          3202340560
-        ],
-        "fijo": [
-          8646896
-        ]
+        "celular": [3202340560],
+        "fijo": [8646896]
       }
     },
     "idProceso": 1,
@@ -24812,9 +23961,7 @@
       "segundoApellido": "PEÑA",
       "segundoNombre": "VANEGAS",
       "tel": {
-        "celular": [
-          3152573448
-        ],
+        "celular": [3152573448],
         "fijo": null
       }
     },
@@ -24858,12 +24005,8 @@
       "segundoApellido": "PEÑARANDA",
       "segundoNombre": "",
       "tel": {
-        "celular": [
-          3144195480
-        ],
-        "fijo": [
-          5731671
-        ]
+        "celular": [3144195480],
+        "fijo": [5731671]
       }
     },
     "idProceso": 1,
@@ -25038,12 +24181,8 @@
       "segundoApellido": "BALLEN",
       "segundoNombre": "MARGARITA",
       "tel": {
-        "celular": [
-          3002667595
-        ],
-        "fijo": [
-          3468511
-        ]
+        "celular": [3002667595],
+        "fijo": [3468511]
       }
     },
     "idProceso": 1,
@@ -25436,9 +24575,7 @@
       "segundoApellido": "VITOPIA",
       "segundoNombre": "ENELLY",
       "tel": {
-        "celular": [
-          3214747968
-        ],
+        "celular": [3214747968],
         "fijo": null
       }
     },
@@ -26108,9 +25245,7 @@
       "segundoApellido": "TOVAR",
       "segundoNombre": "ALFONSO",
       "tel": {
-        "celular": [
-          3123703828
-        ],
+        "celular": [3123703828],
         "fijo": null
       }
     },
@@ -26554,9 +25689,7 @@
       "segundoApellido": "VANEGAS",
       "segundoNombre": "IVAN",
       "tel": {
-        "celular": [
-          3124487509
-        ],
+        "celular": [3124487509],
         "fijo": null
       }
     },
@@ -26790,9 +25923,7 @@
       "segundoApellido": "ANDRADE",
       "segundoNombre": "ALEJANDRA",
       "tel": {
-        "celular": [
-          3123704906
-        ],
+        "celular": [3123704906],
         "fijo": null
       }
     },
@@ -26840,9 +25971,7 @@
       "segundoApellido": "ROJAS",
       "segundoNombre": "YOHANA",
       "tel": {
-        "celular": [
-          3213987669
-        ],
+        "celular": [3213987669],
         "fijo": null
       }
     },
@@ -26936,9 +26065,7 @@
       "segundoApellido": "RODRIGUEZ",
       "segundoNombre": "DAVID",
       "tel": {
-        "celular": [
-          3202954313
-        ],
+        "celular": [3202954313],
         "fijo": null
       }
     },
@@ -26980,12 +26107,8 @@
       "segundoApellido": "RODRIGUEZ",
       "segundoNombre": "MARCELO",
       "tel": {
-        "celular": [
-          3108090708
-        ],
-        "fijo": [
-          8233553
-        ]
+        "celular": [3108090708],
+        "fijo": [8233553]
       }
     },
     "idProceso": 1,
@@ -27174,12 +26297,8 @@
       "segundoApellido": "MURCIA",
       "segundoNombre": "LEONOR",
       "tel": {
-        "celular": [
-          3134386087
-        ],
-        "fijo": [
-          6139147
-        ]
+        "celular": [3134386087],
+        "fijo": [6139147]
       }
     },
     "fecha": "2023-03-13T05:00:00.000Z",
@@ -27309,9 +26428,7 @@
       "segundoApellido": "VALBUENA",
       "segundoNombre": "JULIO",
       "tel": {
-        "celular": [
-          3115159670
-        ],
+        "celular": [3115159670],
         "fijo": null
       }
     },
@@ -27459,12 +26576,8 @@
       "segundoApellido": "BELTRAN",
       "segundoNombre": "LILIANA",
       "tel": {
-        "celular": [
-          3108540511
-        ],
-        "fijo": [
-          5360278
-        ]
+        "celular": [3108540511],
+        "fijo": [5360278]
       }
     },
     "fecha": "2023-07-10T05:00:00.000Z",
@@ -27613,12 +26726,8 @@
       "segundoApellido": "QUINTERO",
       "segundoNombre": "RODRIGO",
       "tel": {
-        "celular": [
-          3143659602
-        ],
-        "fijo": [
-          6855750
-        ]
+        "celular": [3143659602],
+        "fijo": [6855750]
       }
     },
     "fecha": "2023-06-27T05:00:00.000Z",
@@ -27871,12 +26980,8 @@
       "segundoApellido": "ORTIZ",
       "segundoNombre": "ANGELICA",
       "tel": {
-        "celular": [
-          3112925970
-        ],
-        "fijo": [
-          8055915
-        ]
+        "celular": [3112925970],
+        "fijo": [8055915]
       }
     },
     "idProceso": 1,
@@ -27965,9 +27070,7 @@
       "segundoApellido": "VARGAS",
       "segundoNombre": "JOAQUIN",
       "tel": {
-        "celular": [
-          3005941798
-        ],
+        "celular": [3005941798],
         "fijo": null
       }
     },
@@ -28321,12 +27424,8 @@
       "segundoApellido": "RODRIGUEZ",
       "segundoNombre": "PATRICIA",
       "tel": {
-        "celular": [
-          3157352910
-        ],
-        "fijo": [
-          2297973
-        ]
+        "celular": [3157352910],
+        "fijo": [2297973]
       }
     },
     "idProceso": 1,
@@ -28367,12 +27466,8 @@
       "segundoApellido": "RAMIREZ",
       "segundoNombre": "SOLEY",
       "tel": {
-        "celular": [
-          3506509064
-        ],
-        "fijo": [
-          3917539
-        ]
+        "celular": [3506509064],
+        "fijo": [3917539]
       }
     },
     "idProceso": 1,
@@ -28419,9 +27514,7 @@
       "segundoApellido": "ONOFRE",
       "segundoNombre": "ERQUILIAN",
       "tel": {
-        "celular": [
-          3023193548
-        ],
+        "celular": [3023193548],
         "fijo": null
       }
     },
@@ -28463,12 +27556,8 @@
       "segundoApellido": "QUINTERO",
       "segundoNombre": "HERNEY",
       "tel": {
-        "celular": [
-          3002985587
-        ],
-        "fijo": [
-          6485655
-        ]
+        "celular": [3002985587],
+        "fijo": [6485655]
       }
     },
     "idProceso": 1,
@@ -28509,9 +27598,7 @@
       "segundoApellido": "PEREZ",
       "segundoNombre": "ALEXANDER",
       "tel": {
-        "celular": [
-          3112633806
-        ],
+        "celular": [3112633806],
         "fijo": null
       }
     },
@@ -28559,14 +27646,8 @@
       "segundoApellido": "BARROS",
       "segundoNombre": "MARTINEZ",
       "tel": {
-        "celular": [
-          3043463859,
-          3005306070
-        ],
-        "fijo": [
-          3930210,
-          3463859
-        ]
+        "celular": [3043463859, 3005306070],
+        "fijo": [3930210, 3463859]
       }
     },
     "idProceso": 159311631,
@@ -28607,12 +27688,8 @@
       "segundoApellido": "MORENO",
       "segundoNombre": "JANNETH",
       "tel": {
-        "celular": [
-          3153208374
-        ],
-        "fijo": [
-          7848056
-        ]
+        "celular": [3153208374],
+        "fijo": [7848056]
       }
     },
     "idProceso": 1,
@@ -28737,9 +27814,7 @@
       "segundoApellido": "CARRILLO",
       "segundoNombre": "ALEX",
       "tel": {
-        "celular": [
-          3125642401
-        ],
+        "celular": [3125642401],
         "fijo": null
       }
     },
@@ -28787,12 +27862,8 @@
       "segundoApellido": "RIVERA",
       "segundoNombre": "MILENA",
       "tel": {
-        "celular": [
-          3058819253
-        ],
-        "fijo": [
-          7442510
-        ]
+        "celular": [3058819253],
+        "fijo": [7442510]
       }
     },
     "fecha": "2023-08-18T05:00:00.000Z",
@@ -28841,12 +27912,8 @@
       "segundoApellido": "GALEANO",
       "segundoNombre": "ANDRES",
       "tel": {
-        "celular": [
-          3203203196
-        ],
-        "fijo": [
-          7156426
-        ]
+        "celular": [3203203196],
+        "fijo": [7156426]
       }
     },
     "fecha": "2023-08-11T05:00:00.000Z",
@@ -28889,12 +27956,8 @@
       "segundoApellido": "QUIRAMA",
       "segundoNombre": "JESUS",
       "tel": {
-        "celular": [
-          3144005060
-        ],
-        "fijo": [
-          7766244
-        ]
+        "celular": [3144005060],
+        "fijo": [7766244]
       }
     },
     "idProceso": 1,
@@ -28935,13 +27998,8 @@
       "segundoApellido": "LEAL",
       "segundoNombre": "GUISELLE",
       "tel": {
-        "celular": [
-          3046243064,
-          3015181948
-        ],
-        "fijo": [
-          6243064
-        ]
+        "celular": [3046243064, 3015181948],
+        "fijo": [6243064]
       }
     },
     "idProceso": 1,
@@ -28982,9 +28040,7 @@
       "segundoApellido": "RODRIGUEZ",
       "segundoNombre": "PATRICIA",
       "tel": {
-        "celular": [
-          3203477527
-        ],
+        "celular": [3203477527],
         "fijo": null
       }
     },
@@ -29032,13 +28088,8 @@
       "segundoApellido": "ARENAS",
       "segundoNombre": "CECILIA",
       "tel": {
-        "celular": [
-          3163096532
-        ],
-        "fijo": [
-          2977768,
-          7534515
-        ]
+        "celular": [3163096532],
+        "fijo": [2977768, 7534515]
       }
     },
     "fecha": "2023-08-14T05:00:00.000Z",
@@ -29081,12 +28132,8 @@
       "segundoApellido": "MARTINEZ",
       "segundoNombre": "YANETH",
       "tel": {
-        "celular": [
-          3126172174
-        ],
-        "fijo": [
-          5751066
-        ]
+        "celular": [3126172174],
+        "fijo": [5751066]
       }
     },
     "idProceso": 1,
@@ -29127,12 +28174,8 @@
       "segundoApellido": "MENDOZA",
       "segundoNombre": "ENRIQUE",
       "tel": {
-        "celular": [
-          3102997350
-        ],
-        "fijo": [
-          6154763
-        ]
+        "celular": [3102997350],
+        "fijo": [6154763]
       }
     },
     "idProceso": 1,
@@ -29173,12 +28216,8 @@
       "segundoApellido": "ALMANZA",
       "segundoNombre": "PATRICIA",
       "tel": {
-        "celular": [
-          3203369576
-        ],
-        "fijo": [
-          4152969
-        ]
+        "celular": [3203369576],
+        "fijo": [4152969]
       }
     },
     "idProceso": 1,

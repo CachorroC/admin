@@ -16,18 +16,18 @@ async function ProcesoComponent(
   }: {
   llaveProceso: string;
   index: number;
-}
+} 
 ) {
   const awaitTime = index * 500;
   await sleep(
-    awaitTime
+    awaitTime 
   );
 
   const procesos = await getProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
-    }
+    } 
   );
 
   if ( !procesos ) {
@@ -38,7 +38,7 @@ async function ProcesoComponent(
     <>
       {procesos.map(
         (
-          proceso
+          proceso 
         ) => {
           return (
             <ProcesoCard
@@ -46,7 +46,7 @@ async function ProcesoComponent(
               proceso={proceso}
             />
           );
-        }
+        } 
       )}
     </>
   );
@@ -57,10 +57,10 @@ export default async function PageProcesosRight() {
 
   return (
     <>
-      <PruebaList carpetas={ carpetas } />
+      <PruebaList carpetas={carpetas} />
       {carpetas.map(
         (
-          carpeta, index
+          carpeta, index 
         ) => {
           return (
             <Fragment key={carpeta._id}>
@@ -80,7 +80,7 @@ export default async function PageProcesosRight() {
               </Suspense>
             </Fragment>
           );
-        }
+        } 
       )}
     </>
   );

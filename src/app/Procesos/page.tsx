@@ -23,7 +23,7 @@ export default async function PageProcesosLeft(
   searchParams: {
     [key: string]: string | string[] | undefined;
   };
-}
+} 
 ) {
   const sortSearchParam = searchParams.sort;
 
@@ -31,7 +31,7 @@ export default async function PageProcesosLeft(
     const typeOfSearchparam
       = typeof sortSearchParam;
     console.log(
-      sortSearchParam
+      sortSearchParam 
     );
   }
 
@@ -41,7 +41,7 @@ export default async function PageProcesosLeft(
     ...carpetasRaw
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       const typeofA = typeof a.fecha;
 
@@ -75,10 +75,10 @@ export default async function PageProcesosLeft(
     <>
       {carpetas.map(
         (
-          carpeta, index
+          carpeta, index 
         ) => {
           const {
-            deudor
+            deudor 
           } = carpeta;
 
           const {
@@ -105,7 +105,7 @@ export default async function PageProcesosLeft(
               </Suspense>
             </Card>
           );
-        }
+        } 
       )}
     </>
   );

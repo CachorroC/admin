@@ -108,7 +108,7 @@ export default function SearchOutputList(
       return 0;
     } 
   );
-  idk.forEach(
+  fechas.forEach(
     (
       proceso, index, array 
     ) => {
