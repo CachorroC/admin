@@ -2,42 +2,42 @@
   --display-large-font-family-name: Poiret_One;
   --display-large-font-family-style: Regular;
   --display-large-font-weight: 400px;
-  --display-large-font-size: 3rem;
+  --display-large-font-size: 2.5rem;
   --display-large-line-height: 64px;
   --display-large-letter-spacing: -0.25px;
   /* display - medium */
   --display-medium-font-family-name: Roboto;
   --display-medium-font-family-style: Regular;
   --display-medium-font-weight: 400px;
-  --display-medium-font-size: 2.6rem;
+  --display-medium-font-size: 2rem;
   --display-medium-line-height: 52px;
   --display-medium-letter-spacing: 0px;
   /* display - small */
   --display-small-font-family-name: Roboto;
   --display-small-font-family-style: Regular;
   --display-small-font-weight: 400px;
-  --display-small-font-size: 2rem;
+  --display-small-font-size: 1.5rem;
   --display-small-line-height: 44px;
   --display-small-letter-spacing: 0px;
   /* headline - large */
   --headline-large-font-family-name: Roboto;
   --headline-large-font-family-style: Regular;
   --headline-large-font-weight: 400px;
-  --headline-large-font-size: 1rem;
+  --headline-large-font-size: 1.2rem;
   --headline-large-line-height: 40px;
   --headline-large-letter-spacing: 0px;
   /* headline - medium */
   --headline-medium-font-family-name: Roboto;
   --headline-medium-font-family-style: Regular;
   --headline-medium-font-weight: 400px;
-  --headline-medium-font-size: 0.8rem;
+  --headline-medium-font-size: 1rem;
   --headline-medium-line-height: 36px;
   --headline-medium-letter-spacing: 0px;
   /* headline - small */
   --headline-small-font-family-name: Roboto;
   --headline-small-font-family-style: Regular;
   --headline-small-font-weight: 400px;
-  --headline-small-font-size: 0.6rem;
+  --headline-small-font-size: 0.8rem;
   --headline-small-line-height: 32px;
   --headline-small-letter-spacing: 0px;
   /* body - large */
@@ -86,14 +86,14 @@
   --title-large-font-family-name: Roboto;
   --title-large-font-family-style: Medium;
   --title-large-font-weight: 700px;
-  --title-large-font-size: 1.2rem;
+  --title-large-font-size: 1rem;
   --title-large-line-height: 28px;
   --title-large-letter-spacing: 0px;
   /* title - medium */
   --title-medium-font-family-name: Roboto;
   --title-medium-font-family-style: Medium;
   --title-medium-font-weight: 700px;
-  --title-medium-font-size: 1rem;
+  --title-medium-font-size: 0.9rem;
   --title-medium-line-height: 24px;
   --title-medium-letter-spacing: 0.15px;
   /* title - small */
@@ -205,7 +205,7 @@
 }
 
 .labelLarge {
-  font-family: var(--roboto);
+  font-family: var(--raleway);
   font-style: var(--label-large-font-family-style);
   font-weight: var(--label-large-font-weight);
   font-size: var(--label-large-font-size);
@@ -216,7 +216,7 @@
 }
 
 .labelMedium {
-  font-family: var(--roboto);
+  font-family: var(--raleway);
   font-style: var(--label-medium-font-family-style);
   font-weight: var(--label-medium-font-weight);
   font-size: var(--label-medium-font-size);
@@ -227,7 +227,7 @@
 }
 
 .labelSmall {
-  font-family: var(--label-small-font-family-name);
+  font-family: var(--raleway);
   font-style: var(--label-small-font-family-style);
   font-weight: var(--label-small-font-weight);
   font-size: var(--label-small-font-size);

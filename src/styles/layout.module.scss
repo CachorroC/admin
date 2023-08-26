@@ -8,10 +8,14 @@ $MaxSW: 480px; //maximum sma width
 
 .container {
   display: grid;
+
   gap: 2vmin;
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
+
+    background-color: var(--surface)
+
 }
 .right {
   display: flex;
@@ -24,6 +28,7 @@ $MaxSW: 480px; //maximum sma width
   align-content: stretch;
   grid-area: right;
   overflow: auto;
+  background-color: var(--surface-bright);
   gap: 2vmin;
   & > * {
     flex: 1 0 auto;
@@ -35,6 +40,7 @@ $MaxSW: 480px; //maximum sma width
   flex-flow: row nowrap;
   border-radius: 2vmin;
   box-shadow: var(--dp1);
+  background-color: var(--surface-dim);
   padding: 2vmin;
   gap: 2vmin;
   justify-content: space-between;

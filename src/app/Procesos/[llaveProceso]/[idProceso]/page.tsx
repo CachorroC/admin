@@ -4,6 +4,7 @@ import { ActuacionCard } from '#@/components/card/ActuacionesCard';
 import { Name } from '#@/components/Headings/serverSideName';
 import { notFound } from 'next/navigation';
 import { sleep } from '#@/lib/fix';
+import { Fragment } from 'react';
 
 export default async function Page(
   {
@@ -13,18 +14,18 @@ export default async function Page(
     llaveProceso: string;
     idProceso: number;
   };
-} 
+}
 ) {
   const awaitTime = 1000;
   await sleep(
-    awaitTime 
+    awaitTime
   );
 
   const actuaciones = await getActuaciones(
     {
       idProceso: params.idProceso,
       index    : 1
-    } 
+    }
   );
 
   if ( params.idProceso === 1 || !actuaciones ) {
@@ -32,10 +33,10 @@ export default async function Page(
   }
 
   return (
-    <>
+    <Fragment key={params.idProceso}>
       {actuaciones.map(
         (
-          actuacion, index, arr 
+          actuacion, index, arr
         ) => {
           return (
             <ActuacionCard
@@ -45,6 +46,6 @@ export default async function Page(
           );
         }
       )}
-    </>
+    </Fragment>
   );
 }

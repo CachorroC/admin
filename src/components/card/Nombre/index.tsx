@@ -9,55 +9,35 @@ export function NombreComponent(
     deudor
   }: {
   deudor: Deudor;
-} 
+}
 ) {
-  const newName = new NombreCompleto(
-    deudor 
-  );
+  const nombres = deudor.segundoNombre
+    ? deudor.primerNombre
+            + ' '
+            + deudor.segundoNombre
+    : deudor.primerNombre;
 
-  const isSegundoNombrePrimerApellido
-    = deudor.segundoNombre
-    === deudor.primerApellido;
+  const apellidos = deudor
+        .segundoApellido
+    ? deudor.primerApellido
+            + ' '
+            + deudor.segundoApellido
+    : deudor.primerApellido;
 
-  if ( isSegundoNombrePrimerApellido ) {
-    const name = toNameString(
-      {
-        nameRaw:
-        deudor.primerNombre
-        + ' '
-        + deudor.primerApellido
-        + ' '
-        + deudor.segundoApellido
-      } 
-    );
+  const rawName = nombres + ' ' + apellidos;
 
-    return (
-      <h4
-        key={deudor.cedula}
-        className={`${ typography.displaySmall } ${ card.title }`}>
-        {name}
-      </h4>
-    );
-  }
-
-  const name = toNameString(
+  const nameOutput = toNameString(
     {
-      nameRaw:
-      deudor.primerNombre
-      + ' '
-      + deudor.segundoNombre
-      + ' '
-      + deudor.primerApellido
-      + ' '
-      + deudor.segundoApellido
-    } 
+      nameRaw: rawName
+    }
   );
+
 
   return (
     <h4
       key={deudor.cedula}
       className={`${ typography.displaySmall } ${ card.title }`}>
-      {name}
+      {nameOutput}
     </h4>
   );
 }

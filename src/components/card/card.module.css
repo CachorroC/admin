@@ -3,6 +3,7 @@
   container-type: inline-size;
   container-name: card;
   border-radius: 2vmin;
+  border: 2px solid var(--outline);
   text-align: center;
 }
 .container > * {
@@ -42,7 +43,7 @@
   background-color: var(--surface-container-highest);
   color: var(--on-secondary-container);
   box-shadow: none;
-  border: 2px solid var(--outline-variant);
+  border: 2px solid var(--outline);
 }
 .container > .card .isActive:link, .container > .card .isActive:visited {
   background-color: var(--primary-container);
@@ -62,10 +63,8 @@
   flex: 1;
   display: flex;
   flex-flow: row nowrap;
-  border: 1px solid var(--primary);
 }
 .container > .card > .section > .sub, .container > .card .container > .notActive > .section > .sub, .container > .card .container > .isActive > .section > .sub, .container > .card .container > .isActive .container > .notActive > .section > .sub, .container > .card .container > .isActive .container > .isActive > .section > .sub {
-  font-family: var(--font-poiret);
   flex: 1;
 }
 .container > .card > .section > .title, .container > .card .container > .notActive > .section > .title, .container > .card .container > .isActive > .section > .title, .container > .card .container > .isActive .container > .notActive > .section > .title, .container > .card .container > .isActive .container > .isActive > .section > .title {
@@ -92,9 +91,7 @@
 }
 
 .sub {
-  color: var(--primary);
-  font-size: 0.5rem;
-  font-family: var(--josefa);
+  color: var(--secondary);
 }
 
 .updated {
@@ -250,6 +247,11 @@
   .isActive,
   .notActive {
     flex-flow: column nowrap;
+  }
+}
+@container card ( 400px < width < 500px) {
+  .date .actuacion, .date .anotacion {
+    display: none;
   }
 }
 /*

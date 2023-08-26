@@ -82,9 +82,7 @@ const Fecha = async (
 }
 ) => {
   const awaitTime
-    = index > 200
-      ? ( index / 2 ) * 1000
-      : index * 1000;
+    =  index * 1000;
   await sleep(
     awaitTime
   );

@@ -18,44 +18,11 @@ export const FechaActuacionComponent = async (
     return null;
   }
 
-  const awaitTime = index * 10;
+  const awaitTime = index * 200;
   await sleep(
     awaitTime
   );
 
-  const today = new Date()
-        .getDate();
-
-  if (
-    carpeta.lastModified
-    && today === carpeta.lastModified.getDate()
-  ) {
-    const lastDay
-      = carpeta.lastModified.getDate();
-
-    return (
-      <div className={card.date}>
-        {carpeta.ultimaActuacion?.actuacion && (
-          <h5
-            className={` ${ card.actuacion } ${ typography.titleSmall }`}>
-            {carpeta.ultimaActuacion.actuacion}
-          </h5>
-        )}
-        {carpeta.ultimaActuacion?.anotacion && (
-          <p
-            className={` ${ card.anotacion } ${ typography.labelSmall }`}>
-            {carpeta.ultimaActuacion.anotacion}
-          </p>
-        )}
-        <sub className={card.fecha}>
-          {`actuacion registrada el: ${ fixFechas(
-            carpeta.ultimaActuacion
-                  ?.fechaActuacion
-          ) }`}
-        </sub>
-      </div>
-    );
-  }
 
   const actuaciones = await getActuaciones(
     {

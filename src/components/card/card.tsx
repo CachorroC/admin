@@ -115,7 +115,7 @@ export const Card = (
       <div className={card.card}>
         <div className={card.section}>
           <sub
-            className={`${ typography.labelSmall } ${ card.sub }`}>{`carpeta numero ${ carpeta.numero }`}</sub>
+            className={`${ typography.labelSmall } ${ card.sub }`}>{carpeta.numero}</sub>
           <NombreComponent
             key={carpeta._id}
             deudor={carpeta.deudor}

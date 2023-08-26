@@ -18,6 +18,8 @@ import Fields from './fieldArray-juzgados';
 import { Despacho } from '#@/lib/types/despachos';
 import { NuevaCarpetaProvider } from '#@/hooks/formContext';
 import { InputSection } from '#@/components/form/InputSection';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { IntCarpetaElementSchema } from '#@/lib/types/zod-schema';
 let renderCount = 0;
 
 const defaultDemanda: Demanda = {
@@ -90,7 +92,10 @@ export const NuevoProceso = (
   const methods = useForm<IntCarpeta>(
     {
       defaultValues,
-      values: carpeta
+      values  : carpeta,
+      resolver: zodResolver(
+        IntCarpetaElementSchema 
+      )
     }
   );
 
@@ -99,6 +104,7 @@ export const NuevoProceso = (
     getValues,
     setValue,
     watch,
+    setFocus,
     handleSubmit,
     formState: {
       errors,
@@ -160,7 +166,16 @@ export const NuevoProceso = (
             className={form.form}
             onSubmit={handleSubmit(
               onSubmit
-            )}>
+            ) }>
+            <button type={'button'} className={form.addButton} onClick={() => {
+              setFocus(
+                'numero', {
+                  shouldSelect: true
+                }
+              );
+            } }>
+              <span>{'primerNombre'}</span>
+            </button>
             <section className={form.section}>
               <section className={form.section}>
                 <section className={form.section}>

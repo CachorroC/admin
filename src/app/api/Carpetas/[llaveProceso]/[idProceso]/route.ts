@@ -11,17 +11,17 @@ export async function GET(
   }
 ) {
   const idProceso = context.params.idProceso;
-
+  /*
   const llaveProceso = context.params.llaveProceso;
 
   const {
     searchParams
   } = new URL(
     request.url
-  );
+  ); */
 
   try {
-    const res = await fetch(
+    const request = await fetch(
       `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
       {
         headers: {
@@ -30,13 +30,13 @@ export async function GET(
       }
     );
 
-    if ( !res.ok ) {
+    if ( !request.ok ) {
       throw new Error(
-        ` actuaciones not ok, status: ${ res.status } with ${ res.statusText } idProceso: ${ idProceso } => headers: ${ res.headers }`
+        ` actuaciones not ok, status: ${ request.status } with ${ request.statusText } idProceso: ${ idProceso } => headers: ${ request.headers }`
       );
     }
 
-    const product = await res.json();
+    const product = await request.json();
 
     return NextResponse.json(
       {

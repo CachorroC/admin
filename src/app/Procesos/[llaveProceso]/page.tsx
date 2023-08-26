@@ -2,7 +2,7 @@ import { getCarpetas,
          getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { ActuacionCard } from '#@/components/card/ActuacionesCard';
 import { getActuaciones } from '#@/lib/Actuaciones';
-import { Suspense } from 'react';
+import { Fragment, Suspense } from 'react';
 import { Loader } from '#@/components/Loader';
 import { sleep } from '#@/lib/fix';
 
@@ -88,15 +88,15 @@ export default async function PageProcesosLeftllaveProceso(
   }
 
   return (
-    <>
+    <Fragment key={params.llaveProceso}>
       <p>Page Left llaveProceso</p>
 
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<Loader key={Carpeta._id}/>}>
         {Carpeta.idProceso && ( <Acts
           key={Carpeta._id}
           idProceso={Carpeta.idProceso}
         /> )}
       </Suspense>
-    </>
+    </Fragment>
   );
 }

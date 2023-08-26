@@ -4,6 +4,7 @@
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
+  background-color: var(--surface);
 }
 
 .right {
@@ -17,6 +18,7 @@
   align-content: stretch;
   grid-area: right;
   overflow: auto;
+  background-color: var(--surface-bright);
   gap: 2vmin;
 }
 .right > * {
@@ -28,6 +30,7 @@
   flex-flow: row nowrap;
   border-radius: 2vmin;
   box-shadow: var(--dp1);
+  background-color: var(--surface-dim);
   padding: 2vmin;
   gap: 2vmin;
   justify-content: space-between;
