@@ -3,7 +3,5 @@ import typography from '#@/styles/fonts/typography.module.scss';
 import card from '#@/components/card/card.module.scss';
 
 export const Loader = () => {
-  return (
-    <div className={layout.loader}></div>
-  );
+  return <div className={layout.loader}></div>;
 };

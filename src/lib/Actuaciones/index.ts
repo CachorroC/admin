@@ -13,12 +13,12 @@ export const actuacionesCollection = async () => {
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico'
+      'no hay cliente mongólico' 
     );
   }
 
   const db = client.db(
-    'RyS'
+    'RyS' 
   );
 
   const actuaciones = db.collection<Actuacion>(
@@ -30,7 +30,7 @@ export const actuacionesCollection = async () => {
 
 export const fetchActuaciones = cache(
   async (
-    idProceso: number
+    idProceso: number 
   ) => {
     try {
       if ( idProceso === 1 ) {
@@ -59,7 +59,7 @@ export const fetchActuaciones = cache(
       const consulta
         = actuacionConvert.toConsultaActuacion(
           JSON.stringify(
-            json
+            json 
           )
         );
 
@@ -89,8 +89,14 @@ export const getActuaciones = cache(
     }: {
     idProceso: number;
     index: number;
-  }
+  } 
   ) => {
+    const awaitTime = index * 1000;
+
+    await sleep(
+      awaitTime 
+    );
+
     const actuaciones = await fetchActuaciones(
       idProceso
     );
@@ -100,7 +106,7 @@ export const getActuaciones = cache(
         {
           idProceso  : idProceso,
           actuaciones: actuaciones
-        }
+        } 
       );
     }
 
@@ -116,7 +122,7 @@ export const updateActuaciones = cache(
     }: {
     idProceso: number;
     actuaciones: Actuacion[];
-  }
+  } 
   ) => {
     const carpetasColl
       = await carpetasCollection();

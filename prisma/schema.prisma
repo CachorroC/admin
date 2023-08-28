@@ -1,0 +1,98 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model PrismaCarpeta {
+  numero       Int          @id @default(autoincrement())
+  category     Category     @default(Bancolombia)
+  tipoProceso  TipoProceso
+  deudor       PrismaDeudor @relation(fields: [cedula], references: [cedula])
+  cedula       String       @unique
+  procesos     Proceso[]
+  llaveProceso String       @unique
+}
+
+model Proceso {
+  idProceso            BigInt        @unique
+  idConexion           Int
+  carpeta              PrismaCarpeta @relation(fields: [llaveProceso], references: [llaveProceso])
+  llaveProceso         String        @id
+  fechaProceso         DateTime
+  fechaUltimaActuacion DateTime
+  despacho             String
+  departamento         Departamento
+  sujetosProcesales    String
+  esPrivado            Boolean
+  cantFilas            Int
+  actuaciones          Actuacion[]
+}
+
+model Demanda {
+  departamento Departamento
+}
+
+model Actuacion {
+  proceso        Proceso   @relation(fields: [llaveProceso], references: [llaveProceso])
+  idRegActuacion Int       @unique
+  llaveProceso   String    @id
+  consActuacion  Int
+  fechaActuacion DateTime
+  actuacion      String
+  anotacion      String?
+  fechaInicial   DateTime?
+  fechaRegistro  DateTime
+  fechaFinal     DateTime?
+  codRegla       String
+  conDocumentos  Boolean
+  can            Int
+}
+
+model PrismaDeudor {
+  cedula          String         @id @unique
+  primerNombre    String
+  primerApellido  String
+  direccion       String?
+  email           String?
+  segundoApellido String?
+  segundoNombre   String?
+  telefono        Telefono?
+  PrismaCarpeta   PrismaCarpeta?
+}
+
+model Telefono {
+  fijo    BigInt?
+  celular BigInt?
+  deudor  PrismaDeudor @relation(fields: [cedula], references: [cedula])
+  cedula  String       @id
+}
+
+enum Category {
+  Terminados
+  LiosJuridicos
+  Bancolombia
+  Reintegra
+  Insolvencia
+}
+
+enum TipoProceso {
+  HIPOTECARIO
+  PRENDARIO
+  SINGULAR
+  ACUMULADO
+}
+
+enum Departamento {
+  BOGOTA
+  CUNDINAMARCA
+  META
+  ANTIOQUIA
+  ATLANTICO
+}

@@ -3,12 +3,43 @@
 import { useCategory } from '#@/app/search-context';
 import styles from './buttons.module.css';
 
-export const CategoryFilterButton = () => {
+export const CategoryButton = (
+  {
+    categoria,
+    icon
+  }: {
+  categoria: string;
+  icon: string;
+} 
+) => {
   const [
     category,
     setCategory
   ] = useCategory();
 
+  return (
+    <button
+      onClick={() => {
+        setCategory(
+          categoria 
+        );
+      }}
+      type='button'
+      className={
+        category === categoria
+          ? styles.active
+          : styles.button
+      }>
+      <span
+        className={`material-symbols-outlined ${ styles.icon }`}>
+        {icon}
+      </span>
+      <p className={styles.text}>{categoria}</p>
+    </button>
+  );
+};
+
+export const CategoryFilterButton = () => {
   const categorias = [
     'Reintegra',
     'Bancolombia',
@@ -34,27 +65,11 @@ export const CategoryFilterButton = () => {
           categoria, index 
         ) => {
           return (
-            <button
-              key={index}
-              onClick={() => {
-                setCategory(
-                  categoria 
-                );
-              }}
-              type='button'
-              className={
-                category === categoria
-                  ? styles.active
-                  : styles.button
-              }>
-              <span
-                className={`material-symbols-outlined ${ styles.icon }`}>
-                {icons[ index ]}
-              </span>
-              <p className={styles.text}>
-                {categoria}
-              </p>
-            </button>
+            <CategoryButton
+              key={categoria}
+              categoria={categoria}
+              icon={icons[ index ]}
+            />
           );
         } 
       )}

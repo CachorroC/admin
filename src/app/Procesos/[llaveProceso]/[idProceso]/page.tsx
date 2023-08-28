@@ -14,18 +14,13 @@ export default async function Page(
     llaveProceso: string;
     idProceso: number;
   };
-}
+} 
 ) {
-  const awaitTime = 1000;
-  await sleep(
-    awaitTime
-  );
-
   const actuaciones = await getActuaciones(
     {
       idProceso: params.idProceso,
       index    : 1
-    }
+    } 
   );
 
   if ( params.idProceso === 1 || !actuaciones ) {
@@ -36,7 +31,7 @@ export default async function Page(
     <Fragment key={params.idProceso}>
       {actuaciones.map(
         (
-          actuacion, index, arr
+          actuacion, index, arr 
         ) => {
           return (
             <ActuacionCard

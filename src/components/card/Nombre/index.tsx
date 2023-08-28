@@ -9,19 +9,18 @@ export function NombreComponent(
     deudor
   }: {
   deudor: Deudor;
-}
+} 
 ) {
   const nombres = deudor.segundoNombre
     ? deudor.primerNombre
-            + ' '
-            + deudor.segundoNombre
+      + ' '
+      + deudor.segundoNombre
     : deudor.primerNombre;
 
-  const apellidos = deudor
-        .segundoApellido
+  const apellidos = deudor.segundoApellido
     ? deudor.primerApellido
-            + ' '
-            + deudor.segundoApellido
+      + ' '
+      + deudor.segundoApellido
     : deudor.primerApellido;
 
   const rawName = nombres + ' ' + apellidos;
@@ -29,9 +28,8 @@ export function NombreComponent(
   const nameOutput = toNameString(
     {
       nameRaw: rawName
-    }
+    } 
   );
-
 
   return (
     <h4

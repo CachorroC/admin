@@ -1,0 +1,47 @@
+import prisma from '#@/lib/prisma';
+import { NextApiRequest,
+         NextApiResponse } from 'next';
+import { hash } from 'bcrypt';
+import { NextResponse } from 'next/server';
+
+export async function POST(
+  req: Request 
+) {
+  const {
+    cedula, password 
+  } = await req.json();
+
+  const exists = await prisma.user.findUnique(
+    {
+      where: {
+        cedula
+      }
+    } 
+  );
+
+  if ( exists ) {
+    return NextResponse.json(
+      {
+        error: 'User already exists'
+      },
+      {
+        status: 400
+      }
+    );
+  }
+
+  const user = await prisma.user.create(
+    {
+      data: {
+        cedula,
+        password: await hash(
+          password, 10 
+        )
+      }
+    } 
+  );
+
+  return NextResponse.json(
+    user 
+  );
+}

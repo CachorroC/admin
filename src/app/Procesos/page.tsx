@@ -9,7 +9,7 @@ import { fixFechas,
          toNameString } from '#@/lib/fix';
 import { Card } from '#@/components/card/card';
 import { Metadata } from 'next';
-import { FechaActuacionComponent } from '#@/app/Actuacion/server-components';
+import  FechaActuacionComponent from '#@/app/Actuacion/server-components';
 import { Loader } from '#@/components/Loader';
 
 export const metadata: Metadata = {

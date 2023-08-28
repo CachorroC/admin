@@ -19,7 +19,8 @@ import { Despacho } from '#@/lib/types/despachos';
 import { NuevaCarpetaProvider } from '#@/hooks/formContext';
 import { InputSection } from '#@/components/form/InputSection';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { IntCarpetaElementSchema } from '#@/lib/types/zod-schema';
+import { IntCarpetaElement,
+         IntCarpetaElementSchema } from '#@/lib/types/zod-schema';
 let renderCount = 0;
 
 const defaultDemanda: Demanda = {
@@ -87,16 +88,13 @@ export const NuevoProceso = (
   descripciones: Departamento[];
   despachos: Despacho[];
   carpeta?: IntCarpeta;
-}
+} 
 ) => {
   const methods = useForm<IntCarpeta>(
     {
       defaultValues,
-      values  : carpeta,
-      resolver: zodResolver(
-        IntCarpetaElementSchema 
-      )
-    }
+      values: carpeta
+    } 
   );
 
   const {
@@ -121,17 +119,17 @@ export const NuevoProceso = (
   const onSubmit: SubmitHandler<
     IntCarpeta
   > = async (
-    data
+    data 
   ) => {
     alert(
       JSON.stringify(
-        dirtyFields
-      )
+        dirtyFields 
+      ) 
     );
     alert(
       JSON.stringify(
-        data
-      )
+        data 
+      ) 
     );
 
     const postNewNote = await fetch(
@@ -142,7 +140,7 @@ export const NuevoProceso = (
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(
-          data
+          data 
         )
       }
     );
@@ -151,8 +149,8 @@ export const NuevoProceso = (
 
     return alert(
       JSON.stringify(
-        nAlert
-      )
+        nAlert 
+      ) 
     );
   };
 
@@ -165,15 +163,18 @@ export const NuevoProceso = (
           <form
             className={form.form}
             onSubmit={handleSubmit(
-              onSubmit
-            ) }>
-            <button type={'button'} className={form.addButton} onClick={() => {
-              setFocus(
-                'numero', {
-                  shouldSelect: true
-                }
-              );
-            } }>
+              onSubmit 
+            )}>
+            <button
+              type={'button'}
+              className={form.addButton}
+              onClick={() => {
+                setFocus(
+                  'numero', {
+                    shouldSelect: true
+                  } 
+                );
+              }}>
               <span>{'primerNombre'}</span>
             </button>
             <section className={form.section}>
@@ -214,17 +215,31 @@ export const NuevoProceso = (
                     }}
                   />
                 </section>
-                <InputSection name={ 'deudor.cedula' } title={ 'Cédula de Ciudadanía' } type={ 'number' } rls={{
-                  required: true
-                }}/>
-                <InputSection name={ 'deudor.direccion' } title={ 'Dirección' } type={ 'textarea' } rls={{
-                  required: false
-                }} />
-                <InputSection name={ 'deudor.email' } title={ 'Correo Electrónico' } type={ 'email' } rls={{
-                  required: false,
-                  pattern : /^\S+@\S+$/i
-                }}/>
-
+                <InputSection
+                  name={'deudor.cedula'}
+                  title={'Cédula de Ciudadanía'}
+                  type={'number'}
+                  rls={{
+                    required: true
+                  }}
+                />
+                <InputSection
+                  name={'deudor.direccion'}
+                  title={'Dirección'}
+                  type={'textarea'}
+                  rls={{
+                    required: false
+                  }}
+                />
+                <InputSection
+                  name={'deudor.email'}
+                  title={'Correo Electrónico'}
+                  type={'email'}
+                  rls={{
+                    required: false,
+                    pattern : /^\S+@\S+$/i
+                  }}
+                />
               </section>
               <InputSection
                 name={'numero'}
@@ -244,7 +259,6 @@ export const NuevoProceso = (
                 }}
                 type={'text'}
               />
-
 
               <Fields options={despachos} />
 
@@ -297,9 +311,7 @@ export const NuevoProceso = (
                 <pre>
                   {JSON.stringify(
                     {
-
-                      dirtyFields,
-
+                      dirtyFields
                     },
                     null,
                     2
@@ -310,9 +322,7 @@ export const NuevoProceso = (
                 <pre>
                   {JSON.stringify(
                     {
-
-                      submitCount,
-
+                      submitCount
                     },
                     null,
                     2
@@ -323,9 +333,7 @@ export const NuevoProceso = (
                 <pre>
                   {JSON.stringify(
                     {
-
-                      isSubmitting,
-
+                      isSubmitting
                     },
                     null,
                     2
@@ -336,9 +344,7 @@ export const NuevoProceso = (
                 <pre>
                   {JSON.stringify(
                     {
-
-                      isSubmitSuccessful,
-
+                      isSubmitSuccessful
                     },
                     null,
                     2
@@ -349,9 +355,7 @@ export const NuevoProceso = (
                 <pre>
                   {JSON.stringify(
                     {
-
-                      isLoading,
-
+                      isLoading
                     },
                     null,
                     2
@@ -362,7 +366,6 @@ export const NuevoProceso = (
                 <pre>
                   {JSON.stringify(
                     {
-
                       carpeta
                     },
                     null,
@@ -372,7 +375,6 @@ export const NuevoProceso = (
               </section>
             </section>
           </form>
-
         </div>
       </FormProvider>
     </NuevaCarpetaProvider>

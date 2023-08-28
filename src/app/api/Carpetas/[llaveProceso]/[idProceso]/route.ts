@@ -1,6 +1,7 @@
 import { NextRequest,
          NextResponse } from 'next/server';
 
+//? aqui van todas las peticiones a actuaciones individuales, es decir a cada ruta por ruta de idProceso y tambien van las peticiones a fetchCarpeta by idProceso
 export async function GET(
   request: NextRequest,
   context: {
@@ -41,7 +42,7 @@ export async function GET(
     return NextResponse.json(
       {
         product
-      }
+      } 
     );
   } catch ( error ) {
     if ( error instanceof Error ) {
@@ -56,7 +57,7 @@ export async function GET(
     return new NextResponse(
       null, {
         status: 404
-      }
+      } 
     );
   }
 }

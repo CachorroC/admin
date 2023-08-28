@@ -25,10 +25,10 @@ export const InputSection = (
     | 'setValueAs'
     | 'disabled'
   >;
-}
+} 
 ) => {
   const {
-    register, control
+    register, control 
   }
     = useFormContext<IntCarpeta>();
 
@@ -49,7 +49,7 @@ export const InputSection = (
         type={type}
         placeholder={title}
         {...register(
-          name, rules
+          name, rules 
         )}
       />
     </section>

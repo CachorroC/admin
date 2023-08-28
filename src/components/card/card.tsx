@@ -25,22 +25,22 @@ export const Card = (
   path: string;
   carpeta: MonCarpeta;
   children: ReactNode;
-}
+} 
 ) => {
   const [
     openLinks,
     setOpenLinks
   ]
     = useState(
-      false
+      false 
     );
 
   const {
-    deudor
+    deudor 
   } = carpeta;
 
   const {
-    email, tel
+    email, tel 
   } = deudor;
 
   const [
@@ -61,10 +61,10 @@ export const Card = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false
+      false 
     );
     setIsOpen(
-      false
+      false 
     );
   };
 
@@ -100,7 +100,7 @@ export const Card = (
 
   function handleOpenLinks() {
     setOpenLinks(
-      !openLinks
+      !openLinks 
     );
   }
 
@@ -109,13 +109,15 @@ export const Card = (
       className={card.container}
       onClick={() => {
         setOpenLinks(
-          !openLinks
+          !openLinks 
         );
       }}>
       <div className={card.card}>
         <div className={card.section}>
           <sub
-            className={`${ typography.labelSmall } ${ card.sub }`}>{carpeta.numero}</sub>
+            className={`${ typography.labelSmall } ${ card.sub }`}>
+            {carpeta.numero}
+          </sub>
           <NombreComponent
             key={carpeta._id}
             deudor={carpeta.deudor}
@@ -178,7 +180,7 @@ export const Card = (
               href={`/Notas/${ carpeta.llaveProceso }`}
               onClick={() => {
                 setIsOpen(
-                  true
+                  true 
                 );
               }}>
               <span

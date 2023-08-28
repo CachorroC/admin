@@ -21,13 +21,13 @@ const ProcesosList = async (
   }: {
   llaveProceso: string;
   index: number;
-}
+} 
 ) => {
   const procesos = await getProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
-    }
+    } 
   );
 
   if ( !procesos ) {
@@ -58,7 +58,7 @@ const ProcesosList = async (
     <Fragment key={llaveProceso}>
       {procesos.map(
         (
-          proceso
+          proceso 
         ) => {
           return (
             <ProcesoCard
@@ -66,7 +66,7 @@ const ProcesosList = async (
               key={proceso.idProceso}
             />
           );
-        }
+        } 
       )}
     </Fragment>
   );
@@ -79,19 +79,18 @@ const Fecha = async (
   }: {
   idProceso: number;
   index: number;
-}
+} 
 ) => {
-  const awaitTime
-    =  index * 1000;
+  const awaitTime = index * 1000;
   await sleep(
-    awaitTime
+    awaitTime 
   );
 
   const acts = await getActuaciones(
     {
       idProceso: idProceso,
       index    : index
-    }
+    } 
   );
 
   if ( !acts ) {
@@ -114,7 +113,7 @@ export async function ListCardCarpetasNFechas() {
     ...carpetas
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -144,7 +143,7 @@ export async function ListCardCarpetasNFechas() {
     <>
       {sortedCarpetas.map(
         (
-          carpeta, index, arr
+          carpeta, index, arr 
         ) => {
           return (
             <Fragment key={carpeta._id}>
@@ -157,11 +156,15 @@ export async function ListCardCarpetasNFechas() {
                   key={carpeta._id}
                 />
                 <Suspense fallback={<Loader />}>
-                  {carpeta.idProceso && ( <Fecha
-                    key={carpeta.idProceso}
-                    idProceso={carpeta.idProceso}
-                    index={index}
-                  /> )}
+                  {carpeta.idProceso && (
+                    <Fecha
+                      key={carpeta.idProceso}
+                      idProceso={
+                        carpeta.idProceso
+                      }
+                      index={index}
+                    />
+                  )}
                 </Suspense>
               </Card>
               <Suspense fallback={<Loader />}>

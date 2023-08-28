@@ -78,7 +78,6 @@
       display: flex;
       flex-flow: row nowrap;
 
-
       & > .sub {
         flex: 1;
       }
@@ -292,8 +291,9 @@
 }
 
 @container card ( 400px < width < 500px) {
-  .date{
-    .actuacion, .anotacion{
+  .date {
+    .actuacion,
+    .anotacion {
       display: none;
     }
   }

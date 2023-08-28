@@ -10,17 +10,17 @@ export default function ModalDialog(
     children
   }: {
   children: ReactNode;
-} 
+}
 ) {
   const [
     isOpen,
     setShow
   ] = useState(
-    false 
+    false
   );
 
   const ref = useRef<HTMLDialogElement>(
-    null 
+    null
   );
 
   useEffect(
@@ -37,15 +37,15 @@ export default function ModalDialog(
       };
     }, [
       isOpen
-    ] 
+    ]
   );
 
   return (
     <>
-      <button
+      <button type={'button'}
         onClick={() => {
           setShow(
-            false 
+            false
           );
         }}>
         <span className='material-symbols-outlined'>
@@ -58,9 +58,10 @@ export default function ModalDialog(
         {children}
       </dialog>
       <button
+        type={'button'}
         onClick={() => {
           return setShow(
-            true 
+            true
           );
         }}>
         Open dialog

@@ -38,6 +38,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/Procesos/@left/sinEspecificar/Judicial/validar-archivo",
-    "src/app/api/Carpetas/[llaveProceso]/[idProceso]/route.ts"
+    "src/app/api/Carpetas/Actuaciones/[idProceso]/route.ts"
   ]
 }

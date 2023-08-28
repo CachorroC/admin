@@ -27,7 +27,9 @@ export const ActuacionCard = (
   } = act;
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      key={idRegActuacion}>
       <div className={styles.card}>
         <h1
           className={`${ typography.titleMedium } ${ styles.title }`}>
@@ -37,10 +39,14 @@ export const ActuacionCard = (
         </h1>
         {anotacion && (
           <p className={typography.bodyMedium}>
-            {anotacion.replace(
-              /\s+/g, ' ' 
-            )}
+            {anotacion}
           </p>
+        )}
+        {conDocumentos && (
+          <span
+            className={`material-symbols-outlined ${ styles.icon }`}>
+            file_present
+          </span>
         )}
         <sub
           className={`${ typography.labelSmall } ${ styles.sub }`}>{`${ consActuacion } de ${ cant }`}</sub>

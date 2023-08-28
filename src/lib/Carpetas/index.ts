@@ -1,141 +1,153 @@
-import 'server-only';
 import clientPromise from '#@/lib/mongodb';
 import { NextResponse } from 'next/server';
 import { ObjectId } from 'mongodb';
+import { cache } from 'react';
 import { IntCarpeta,
          MonCarpeta,
          carpetaConvert } from '../types/carpeta';
 
-export const carpetasCollection = async () => {
-  const client = await clientPromise;
+export const revalidate = 86400; // revalidate the data at most every hour
 
-  if ( !client ) {
-    throw new Error(
-      'no hay cliente mongólico' 
+export const carpetasCollection = cache(
+  async () => {
+    const client = await clientPromise;
+
+    if ( !client ) {
+      throw new Error(
+        'no hay cliente mongólico' 
+      );
+    }
+
+    const db = client.db(
+      'RyS' 
     );
+
+    const carpetas
+      = db.collection<IntCarpeta>(
+        'Carpetas' 
+      );
+
+    return carpetas;
   }
+);
 
-  const db = client.db(
-    'RyS' 
-  );
+export const fetchCarpetas = cache(
+  async () => {
+    const collection = await carpetasCollection();
 
-  const carpetas
-    = db.collection<IntCarpeta>(
-      'Carpetas' 
-    );
+    const carpetasRaw = await collection
+          .find(
+            {} 
+          )
+          .sort(
+            {
+              categoryTag: 1,
+              numero     : -1
+            } 
+          )
+          .allowDiskUse()
+          .toArray();
 
-  return carpetas;
-};
+    return carpetasRaw;
+  } 
+);
 
-export async function fetchCarpetas() {
-  const collection = await carpetasCollection();
+export const getCarpetas = cache(
+  async () => {
+    const carpetasRaw = await fetchCarpetas();
 
-  const carpetasRaw = await collection
-        .find(
-          {} 
-        )
-        .sort(
-          {
-            categoryTag: 1,
-            numero     : -1
-          } 
-        )
-        .allowDiskUse()
-        .toArray();
-
-  return carpetasRaw;
-}
-
-export async function getCarpetas() {
-  const carpetasRaw = await fetchCarpetas();
-
-  const carpetas
+    const carpetas
     = carpetaConvert.toMonCarpetas(
       carpetasRaw 
     );
 
-  return carpetas;
-}
+    return carpetas;
+  } 
+);
 
-export async function getCarpetasByllaveProceso(
-  {
-    llaveProceso
-  }: {
-  llaveProceso: string;
-} 
-) {
-  const collection = await carpetasCollection();
-
-  const carpeta = await collection.findOne(
+export const getCarpetasByllaveProceso = cache(
+  async (
     {
-      llaveProceso: llaveProceso
-    } 
-  );
+      llaveProceso
+    }: {
+    llaveProceso: string;
+  } 
+  ) => {
+    const collection = await carpetasCollection();
 
-  if ( carpeta ) {
-    const newCarpeta
+    const carpeta = await collection.findOne(
+      {
+        llaveProceso: llaveProceso
+      } 
+    );
+
+    if ( carpeta ) {
+      const newCarpeta
+        = carpetaConvert.toMonCarpeta(
+          carpeta 
+        );
+
+      return newCarpeta;
+    }
+
+    return null;
+  }
+);
+
+export const getCarpetaById = cache(
+  async (
+    {
+      _id 
+    }: { _id: string } 
+  ) => {
+    const collection = await carpetasCollection();
+
+    const Carpeta = await collection.findOne(
+      {
+        _id: new ObjectId(
+          _id 
+        )
+      } 
+    );
+
+    if ( !Carpeta ) {
+      return null;
+    }
+
+    const carpeta
+      = carpetaConvert.toMonCarpeta(
+        Carpeta 
+      );
+
+    return Carpeta;
+  }
+);
+
+export const getCarpetaByidProceso = cache(
+  async (
+    {
+      idProceso
+    }: {
+    idProceso: number;
+  } 
+  ) => {
+    const collection = await carpetasCollection();
+
+    const carpeta = await collection.findOne(
+      {
+        idProceso: idProceso
+      } 
+    );
+
+    if ( !carpeta ) {
+      return null;
+    }
+
+    const Carpeta
       = carpetaConvert.toMonCarpeta(
         carpeta 
       );
 
-    return newCarpeta;
+    return Carpeta;
   }
-
-  return null;
-}
-
-export const getCarpetaById = async (
-  {
-    _id
-  }: {
-  _id: string;
-} 
-) => {
-  const collection = await carpetasCollection();
-
-  const Carpeta = await collection.findOne(
-    {
-      _id: new ObjectId(
-        _id 
-      )
-    } 
-  );
-
-  if ( !Carpeta ) {
-    return null;
-  }
-
-  const carpeta
-    = carpetaConvert.toMonCarpeta(
-      Carpeta 
-    );
-
-  return Carpeta;
-};
-
-export const getCarpetaByidProceso = async (
-  {
-    idProceso
-  }: {
-  idProceso: number;
-} 
-) => {
-  const collection = await carpetasCollection();
-
-  const carpeta = await collection.findOne(
-    {
-      idProceso: idProceso
-    } 
-  );
-
-  if ( !carpeta ) {
-    return null;
-  }
-
-  const Carpeta
-    = carpetaConvert.toMonCarpeta(
-      carpeta 
-    );
-
-  return Carpeta;
-};
+);

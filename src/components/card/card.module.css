@@ -250,7 +250,8 @@
   }
 }
 @container card ( 400px < width < 500px) {
-  .date .actuacion, .date .anotacion {
+  .date .actuacion,
+  .date .anotacion {
     display: none;
   }
 }

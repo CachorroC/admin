@@ -31,13 +31,13 @@ export const getDespachos = cache(
         response
       );
 
-      const despachos = despachosConvert.toDespacho(
+      const despachos
+      = despachosConvert.toDespacho(
         json
       );
 
       return despachos;
     } catch ( e ) {
-
       if ( e instanceof Error ) {
         console.log(
           ` error en la conexion network del getDespacxhos ${ e.name } : ${ e.message }`
@@ -164,14 +164,14 @@ export const fetchProceso = cache(
       llaveProceso,
       index
     }: {
-  llaveProceso: string;
-  index: number;
-}
+    llaveProceso: string;
+    index: number;
+  }
   ) => {
     try {
       if (
         llaveProceso.length < 23
-      || llaveProceso === 'sinEspecificar'
+        || llaveProceso === 'sinEspecificar'
       ) {
         throw new Error(
           `${ index }: esta llaveProceso es menos de 23: ${ llaveProceso }`
@@ -191,14 +191,13 @@ export const fetchProceso = cache(
       const json = await req.json();
 
       const res
-      = procesosConvert.toConsultaNumeroRadicacion(
-        JSON.stringify(
-          json
-        )
-      );
+        = procesosConvert.toConsultaNumeroRadicacion(
+          JSON.stringify(
+            json
+          )
+        );
 
       return res.procesos;
-
     } catch ( e ) {
       if ( e instanceof Error ) {
         console.log(
@@ -214,17 +213,20 @@ export const fetchProceso = cache(
   }
 );
 
-export const getProceso= cache(
+export const getProceso = cache(
   async (
     {
       llaveProceso,
       index
     }: {
-  llaveProceso: string;
-  index: number;
-}
+    llaveProceso: string;
+    index: number;
+  }
   ) => {
-    const collection = await procesosCollection();
+    const awaitTime = index * 1000;
+    await sleep(
+      awaitTime
+    );
 
     const carpColl = await carpetasCollection();
 
@@ -236,9 +238,7 @@ export const getProceso= cache(
     );
 
     if ( fetchP ) {
-      for ( let i = 0; i < fetchP.length; i++ ) {
-        const proceso = fetchP[ i ];
-
+      for ( const proceso of fetchP ) {
         const juzgados = await newJuzgado(
           fetchP
         );
@@ -258,7 +258,7 @@ export const getProceso= cache(
 
         if (
           updt.modifiedCount > 0
-        || updt.upsertedCount > 0
+          || updt.upsertedCount > 0
         ) {
           console.log(
             ` se actualizaron ${ updt.modifiedCount } procesos y se insertaron ${ updt.upsertedCount } procesosn nuevos  `
