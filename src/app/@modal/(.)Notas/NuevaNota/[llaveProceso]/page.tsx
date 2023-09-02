@@ -12,7 +12,7 @@ export default function NuevaNotallaveProceso(
     params
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   return (
     <Suspense
@@ -23,7 +23,6 @@ export default function NuevaNotallaveProceso(
         <NewNota
           key={params.llaveProceso}
           llaveProceso={params.llaveProceso}
-          uri={`${ getBaseUrl() }`}
         />
       </Modal>
     </Suspense>

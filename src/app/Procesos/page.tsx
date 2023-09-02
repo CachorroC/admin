@@ -1,18 +1,9 @@
-import 'server-only';
+
 import { Fragment, Suspense } from 'react';
 import { getCarpetas } from '#@/lib/Carpetas';
-import CardSkeleton from '#@/components/card/card-skeleton';
-import typography from '#@/styles/fonts/typography.module.scss';
-import card from '#@/components/card/card.module.scss';
-import { fixFechas,
-         sleep,
-         toNameString } from '#@/lib/fix';
 import { Card } from '#@/components/card/card';
 import { Metadata } from 'next';
 import { Loader } from '#@/components/Loader';
-import { ConsultaActuacion,
-         actuacionConvert } from '#@/lib/types/actuaciones';
-import { MonCarpeta } from '#@/lib/types/carpeta';
 import { FechaActuacionComponent } from '../Actuacion/server-components';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
 

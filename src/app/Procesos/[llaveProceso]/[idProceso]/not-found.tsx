@@ -2,8 +2,7 @@ import typography from '#@/styles/fonts/typography.module.css';
 
 export default function NotFound() {
   return (
-    <p
-      className={typography.bodyLarge}
+    <div className={typography.bodyLarge}
       style={{
         backgroundColor: 'var(--error-container)',
         color          : 'var(--on-error-container)'
@@ -11,6 +10,6 @@ export default function NotFound() {
       {
         'No pudimos resolver la consulta que realizaste. No existe el recurso'
       }
-    </p>
+    </div>
   );
 }

@@ -1,11 +1,13 @@
 import { Nota } from '#@/components/nota/notas';
+import { LinkCard } from '#@/components/search/link';
+import { getCarpetaByidProceso } from '#@/lib/Carpetas';
 import { getNotasByllaveProceso } from '#@/lib/notas';
 import { Fragment } from 'react';
 
-export default async function Default (
+export default async function Page (
   {
     params
-  }: { params: { llaveProceso: string } }
+  }: { params: { llaveProceso: string;  idProceso: string} }
 ) {
   const notas = await getNotasByllaveProceso(
     {
@@ -13,8 +15,19 @@ export default async function Default (
     }
   );
 
+  const carpeta = await getCarpetaByidProceso(
+    {
+      idProceso: Number(
+        params.idProceso
+      )
+    }
+  );
+
   return (
-    <Fragment key={'defaultRightllaveProceso'}>
+    <Fragment key={ params.idProceso }>
+      { carpeta && (
+        <LinkCard key={params.idProceso} path={ '/Procesos' } carpeta={ carpeta } />
+      )}
       { notas.map(
         (
           nota, index, arr

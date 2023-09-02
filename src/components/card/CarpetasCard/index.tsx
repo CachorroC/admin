@@ -12,84 +12,7 @@ import { Accordion } from '#@/components/Accordion';
 import { NombreComponent } from '../../nombre';
 import card from '#@/components/card/card.module.css';
 
-export const DemandaContainer = (
-  {
-    demanda
-  }: {
-  demanda: Demanda;
-}
-) => {
-  const {
-    departamento,
-    municipio,
-    radicado,
-    juzgados
-  } = demanda;
 
-  return (
-    <div className={styles.section}>
-      <h1 className={typography.headlineMedium}>
-        {radicado}
-      </h1>
-      <h2
-        className={
-          typography.titleMedium
-        }>{`${ departamento }: ${ municipio }`}</h2>
-      {juzgados && juzgados.map(
-        (
-          despacho, index
-        ) => {
-          switch ( index ) {
-                  case 0:
-                    return (
-                      <Link
-                        href={juzgados[ 0 ].url as Route}>
-                        <span className='material-symbols-outlined'>
-                  enable
-                        </span>
-                        <sub
-                          className={
-                            typography.displaySmall
-                          }>
-                          {juzgados[ 0 ].id}
-                        </sub>
-                        <p
-                          className={
-                            typography.labelSmall
-                          }>
-                          {`Juzgado de origen: ${ juzgados[ 0 ].tipo }`}
-                        </p>
-                      </Link>
-                    );
-                  case 1:
-                    return (
-                      <Link
-                        href={juzgados[ 1 ].url as Route}>
-                        <span className='material-symbols-outlined'>
-                  trip_origin
-                        </span>
-                        <sub
-                          className={
-                            typography.displaySmall
-                          }>
-                          {juzgados[ 1 ].id}
-                        </sub>
-                        <p
-                          className={
-                            typography.labelSmall
-                          }>
-                          {`Juzgado de origen: ${ juzgados[ 1 ].tipo }`}
-                        </p>
-                      </Link>
-                    );
-          }
-
-          return null;
-        }
-      )}
-    </div>
-  );
-};
 
 export const CarpetaCard = (
   {
@@ -108,6 +31,13 @@ export const CarpetaCard = (
   }
     = carpeta.deudor;
 
+  const {
+    departamento,
+    municipio,
+    radicado,
+    juzgados
+  } = carpeta.demanda;
+
   const path = '/Procesos';
 
   const href = (
@@ -119,101 +49,123 @@ export const CarpetaCard = (
   ) as Route;
 
   return (
-    <Fragment key={_id}>
-      <DemandaContainer
-        demanda={carpeta.demanda}
-      />
-      <div
-        className={styles.container}
-        key={_id}>
-        <div className={styles.cardInactive}>
-          <NombreComponent
-            deudor={carpeta.deudor}
-          />
 
-          <div className={styles.links}>
+    <div
+      className={styles.container}
+      key={_id}>
+      <div className={styles.card}>
+        <NombreComponent key={_id}
+          deudor={carpeta.deudor}
+        />
+        <div className={styles.links}>
+          <Link
+            className={ styles.button }
+            key={_id}
+            href={href}>
+            <span
+              className={`material-symbols-outlined ${ styles.icon }`}>
+                folder_open
+            </span>
+            <span
+              className={styles.tooltiptext}>
+                Abrir
+            </span>
+          </Link>
+          {juzgados && juzgados.map(
+            (
+              despacho, index
+            ) => {
+              return (
+                <Link key={despacho.url}              className={card.link}
+                  href={despacho.url as Route}>
+                  <span className={`material-symbols-outlined ${ card.icon }`}>
+                  enable
+                  </span>
+                  <sub
+                    className={
+                      typography.displaySmall
+                    }>
+                    {`${ despacho.id }`}
+                  </sub>
+                  <p
+                    className={
+                      typography.labelSmall
+                    }>
+                    {`Juzgado de origen: ${ despacho.tipo }`}
+                  </p>
+                </Link>
+              );
+            }
+          )}
+          {tel.celular && (
             <Link
-              className={styles.button}
-              href={href}>
+              key={tel.celular}
+              className={card.link}
+              href={`tel:${ tel.celular }`}>
               <span
                 className={`material-symbols-outlined ${ styles.icon }`}>
-                folder_open
+                  phone_iphone
               </span>
               <span
                 className={styles.tooltiptext}>
-                Abrir
+                {tel.celular.toString()}
               </span>
             </Link>
-
-            {tel.celular && (
-              <Link
-                key={tel.celular}
-                className={card.link}
-                href={`tel:${ tel.celular }`}>
-                <span
-                  className={`material-symbols-outlined ${ styles.icon }`}>
-                  phone_iphone
-                </span>
-                <span
-                  className={styles.tooltiptext}>
-                  {tel.celular.toString()}
-                </span>
-              </Link>
-            )}
-            {tel.fijo && (
-              <Link
-                key={tel.fijo}
-                className={card.link}
-                href={`tel:${ tel.fijo }`}>
-                <span
-                  className={`material-symbols-outlined ${ styles.icon }`}>
+          )}
+          {tel.fijo && (
+            <Link
+              key={tel.fijo}
+              className={card.link}
+              href={`tel:${ tel.fijo }`}>
+              <span
+                className={`material-symbols-outlined ${ styles.icon }`}>
                   call
-                </span>
-                <span
-                  className={styles.tooltiptext}>
-                  {tel.fijo.toString()}
-                </span>
-              </Link>
-            )}
-            {carpeta.demanda
-                  .vencimientoPagare && (
-              <p
-                className={
-                  typography.labelMedium
-                }>
-                {fixFechas(
-                  carpeta.demanda
-                        .vencimientoPagare
-                )}
-              </p>
-            )}
-            {email && (
-              <Link
-                className={styles.button}
-                href={`mailto:${ email }`}>
-                <span
-                  className={`material-symbols-outlined ${ styles.icon }`}>
+              </span>
+              <span
+                className={styles.tooltiptext}>
+                {tel.fijo.toString()}
+              </span>
+            </Link>
+          )}
+          {carpeta.demanda
+                .vencimientoPagare && (
+            <p
+              className={
+                typography.labelMedium
+              }>
+              {fixFechas(
+                carpeta.demanda
+                      .vencimientoPagare
+              )}
+            </p>
+          )}
+          {email && (
+            <Link
+              className={styles.button}
+              href={`mailto:${ email }`}>
+              <span
+                className={`material-symbols-outlined ${ styles.icon }`}>
                   forward_to_inbox
-                </span>
-                <span
-                  className={styles.tooltiptext}>
+              </span>
+              <span
+                className={styles.tooltiptext}>
                   Email
-                </span>
-              </Link>
-            )}
+              </span>
+            </Link>
+          )}
 
-            {carpeta.demanda
-                  .entregagarantiasAbogado && (
-              <p
-                className={typography.labelSmall}>
-                {fixFechas(
-                  carpeta.demanda
-                        .entregagarantiasAbogado
-                )}
-              </p>
-            )}
-            <p>
-              {carpeta.demanda.capitalAdeudado
+          {carpeta.demanda
+                .entregagarantiasAbogado && (
+            <p
+              className={typography.labelSmall}>
+              {fixFechas(
+                carpeta.demanda
+                      .entregagarantiasAbogado
+              )}
+            </p>
+          )}
+          <p>
+            {carpeta.demanda.capitalAdeudado
                 && fixMoney(
                   {
                     valor: Number(
@@ -222,10 +174,9 @@ export const CarpetaCard = (
                     )
                   }
                 )}
-            </p>
-          </div>
+          </p>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };

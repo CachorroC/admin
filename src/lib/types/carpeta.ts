@@ -303,38 +303,3 @@ export class carpetaConvert {
     );
   }
 }
-
-export class NombreCompleto {
-  Nombre: string;
-  constructor(
-    {
-      primerNombre,
-      segundoNombre,
-      primerApellido,
-      segundoApellido
-    }: {
-    primerNombre: string;
-    primerApellido: string;
-    segundoNombre?: string;
-    segundoApellido?: string;
-  }
-  ) {
-    const nombres = segundoNombre
-      ? primerNombre + ' ' + segundoNombre
-      : primerNombre;
-
-    const apellidos = segundoApellido
-      ? primerApellido + ' ' + segundoApellido
-      : primerApellido;
-
-    const rawName = nombres + ' ' + apellidos;
-
-    const nameOutput = toNameString(
-      {
-        nameRaw: rawName
-      }
-    );
-
-    this.Nombre = nameOutput;
-  }
-}

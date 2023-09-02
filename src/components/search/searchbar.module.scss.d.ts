@@ -6,6 +6,7 @@ export type Styles = {
   inputForm: string;
   isActive: string;
   notActive: string;
+  searchBarLink: string;
   sub: string;
 };
 

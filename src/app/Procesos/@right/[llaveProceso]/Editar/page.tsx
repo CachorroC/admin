@@ -13,7 +13,7 @@ export default async function PageRightEditar(
   searchParams: {
     [key: string]: string | string[] | undefined;
   };
-} 
+}
 ) {
   const _id = searchParams._id;
 
@@ -32,8 +32,8 @@ export default async function PageRightEditar(
       path={'/Procesos'}
       carpeta={carpeta}>
       <NewNota
-        llaveProceso={params.llaveProceso}
-        uri={getBaseUrl()}
+        llaveProceso={ params.llaveProceso }
+        key={params.llaveProceso}
       />
     </Card>
   );

@@ -9,7 +9,7 @@
 .card, .cardInactive, .cardActive {
   box-sizing: border-box;
   padding: 2cqmin;
-  background-color: var(--primary);
+  background-color: var(--surface-container-low);
   gap: 2cqmin;
   border-radius: 2cqmin;
   text-align: center;
@@ -42,7 +42,7 @@
 .card .title, .cardActive .title, .cardInactive .title {
   color: var(--primary);
   text-align: right;
-  flex: 1 0 100%;
+  flex: 0 1 50%;
 }
 .card .links, .cardActive .links, .cardInactive .links {
   display: flex;
@@ -127,3 +127,5 @@
 .section {
   box-shadow: var(--dp8);
 }
+
+/*# sourceMappingURL=carpetas.module.css.map */

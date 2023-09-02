@@ -164,8 +164,7 @@
   background: rgba(0, 0, 0, 0.1);
 }
 .title {
-  color: var(--primary);
-  grid-area: title;
+ flex: 0 1 50%;
   text-align: center;
 }
 

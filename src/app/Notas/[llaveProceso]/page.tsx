@@ -9,7 +9,7 @@ export default function NuevaNotallaveProceso(
     params
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   return (
     <div className={layout.body}>
@@ -17,7 +17,6 @@ export default function NuevaNotallaveProceso(
         <NewNota
           key={params.llaveProceso}
           llaveProceso={params.llaveProceso}
-          uri={`${ getBaseUrl() }`}
         />
       </div>
       <div className={layout.right}>

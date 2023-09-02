@@ -10,8 +10,8 @@ export default function Default() {
         Procesos
       </h1>
       <NewNota
-        llaveProceso={'Procesos'}
-        uri={getBaseUrl()}
+        llaveProceso={ 'Procesos' }
+        key={'Procesos'}
       />
     </>
   );

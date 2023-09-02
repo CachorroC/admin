@@ -8,13 +8,8 @@ import { useModal } from '#@/app/modal-context';
 import typography from '#@/styles/fonts/typography.module.css';
 import { useCategory,
          useNavigator } from '#@/app/search-context';
-import { toNameString } from '#@/lib/fix';
-import { Deudor,
-         IntCarpeta,
-         MonCarpeta,
-         NombreCompleto } from '#@/lib/types/carpeta';
+import { MonCarpeta } from '#@/lib/types/carpeta';
 import { NombreComponent } from '../nombre';
-import { Router } from 'next/router';
 
 export const Card = (
   {

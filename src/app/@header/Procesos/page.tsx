@@ -32,7 +32,7 @@ export default async function Page() {
       <Suspense fallback={<Loader />}>
         <Drawer>
           <SearchOutputList
-            path={'/Procesos'}
+            path={'/Carpetas'}
             fechas={carpetas}
           />
         </Drawer>

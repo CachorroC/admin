@@ -146,8 +146,7 @@
 }
 
 .title {
-  color: var(--primary);
-  grid-area: title;
+  flex: 0 1 50%;
   text-align: center;
 }
 
@@ -300,3 +299,5 @@
     background-color: var(--primary-container);
   }
 } */
+
+/*# sourceMappingURL=card.module.css.map */

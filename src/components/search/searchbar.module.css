@@ -5,9 +5,31 @@
 .container > * {
   width: 100%;
 }
+.container:link {
+  background-color: var(--surface-container);
+  color: var(--on-surface);
+}
+.container:visited {
+  background-color: var(--surface-container-lowest);
+  color: var(--on-surface-variant);
+}
+.container:hover {
+  background-color: var(--surface-container-high);
+  color: var(--on-surface);
+  box-shadow: var(--dp8);
+}
+.container:focus {
+  background-color: var(--surface-container-high);
+  color: var(--on-surface);
+  box-shadow: var(--dp8);
+  border: 5px solid var(--outline);
+}
+.container:active {
+  background-color: var(--surface-container-highest);
+  color: var(--primary);
+}
 
-.isActive,
-.notActive {
+.searchBarLink, .isActive, .notActive {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -21,8 +43,7 @@
   border-radius: 2vmin;
   text-align: center;
 }
-.isActive .date,
-.notActive .date {
+.searchBarLink .date, .isActive .date, .notActive .date {
   grid-area: date;
   background-color: var(--surface);
   padding: 2cqmin;
@@ -31,37 +52,16 @@
   border-radius: 2cqmin;
   align-self: center;
 }
-.isActive .sub,
-.notActive .sub {
+.searchBarLink .sub, .isActive .sub, .notActive .sub {
   color: var(--secondary);
 }
 
-.notActive:link {
-  background-color: var(--surface-container);
-  color: var(--on-surface);
-}
-.notActive:visited {
-  background-color: var(--surface-container-lowest);
-  color: var(--on-surface-variant);
-}
-.notActive:hover {
-  background-color: var(--surface-container-high);
-  color: var(--on-surface);
-  box-shadow: var(--dp8);
-}
-.notActive:active {
-  background-color: var(--surface-container-highest);
-  color: var(--primary);
+.notActive .date {
+  display: none;
 }
 
-.isActive:link, .isActive:visited {
-  background-color: var(--primary-container);
-  border: dashed solid 2px var(--on-primary-container);
-  box-shadow: var(--dp4);
-}
-.isActive:hover, .isActive:active {
-  background-color: var(--primary-container);
-  color: var(--on-primary-container);
+.isActive .date {
+  display: flex;
 }
 
 .input {
@@ -115,25 +115,24 @@
     background-color: red;
   }
 }
-@container link ( 100px < width < 200px) {
+@container link (100px < width < 200px) {
   .isActive,
   .notActive {
     background-color: orange;
   }
 }
-@container link ( 200px < width < 300px) {
-  .isActive,
-  .notActive {
-    background-color: yellow;
+@container link (200px < width < 300px) {
+  .isActive {
+    box-shadow: var(--dp12);
   }
 }
-@container link ( 300px < width < 400px) {
+@container link (300px < width < 400px) {
   .isActive,
   .notActive {
     background-color: green;
   }
 }
-@container link ( 400px < width < 500px) {
+@container link (400px < width < 500px) {
   .isActive,
   .notActive {
     background-color: blue;

@@ -1,16 +1,11 @@
 'use client';
 import Link from 'next/link';
-import { useSelectedLayoutSegment,
-         usePathname,
-         useSelectedLayoutSegments,
-         useParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import type { Route } from 'next';
-import searchbar from '#@/components/search/searchbar.module.scss';
+import searchbar from '#@/components/search/searchbar.module.css';
 import { fixFechas } from '#@/lib/fix';
 import { useNavigator,
          useSearch } from '#@/app/search-context';
-import { useModal } from '#@/app/modal-context';
-import { Name } from '../Headings/clientSideName';
 import { useRouter } from 'next/navigation';
 import { NombreComponent } from '../nombre';
 import { MonCarpeta } from '#@/lib/types/carpeta';
@@ -24,10 +19,6 @@ export const LinkCard = (
   carpeta: MonCarpeta;
 }
 ) => {
-  const [
-    isOpen,
-    setIsOpen
-  ] = useModal();
 
   const [
     search,
@@ -44,15 +35,6 @@ export const LinkCard = (
 
   const Nombre = carpeta.nombre;
 
-  const isCarpeta = path === '/Carpetas';
-
-  const {
-    cedula, direccion, tel, email
-  }
-    = deudor;
-
-  const params = useParams();
-
   const pathname = usePathname();
 
   const [
@@ -61,16 +43,13 @@ export const LinkCard = (
   ]
     = useNavigator();
 
-  const carpetaHref
-    = `${ path }/${ carpeta._id }` as Route;
-
   const procesosHref = (
     carpeta.llaveProceso
       ? carpeta.idProceso
         ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
         : `${ path }/${ carpeta.llaveProceso }`
-      : path
-  ) as Route;
+      : `/Carpetas/${ carpeta.numero }`
+  ) ;
 
   const isActive
     = pathname === procesosHref
@@ -88,30 +67,28 @@ export const LinkCard = (
           ) === -1;
 
   return (
-    <div className={searchbar.container}>
-      <Link
-        href={
-          isCarpeta
-            ? carpetaHref
-            : procesosHref
-        }
-        onClick={() => {
-          return setIsNavOpen(
-            false
-          );
-        }}
-        className={
-          isActive
-            ? searchbar.isActive
-            : searchbar.notActive
-        }>
+
+    <Link key={carpeta._id}
+      href={
+          procesosHref as Route
+      }
+      onClick={() => {
+        setIsNavOpen(
+          false
+        );
+      }}
+      className={ searchbar.container }>
+      <div className={  isActive
+        ? searchbar.isActive
+        : searchbar.notActive}>
+
         <sup
           className={`${
             !isSearch && searchbar.sub
           }`}>
           {carpeta.numero}
         </sup>
-        <NombreComponent deudor={deudor} />
+        <NombreComponent key={carpeta._id} deudor={deudor} />
         {Nombre}
 
         <sub className={searchbar.date}>
@@ -119,7 +96,8 @@ export const LinkCard = (
             fecha
           )}
         </sub>
-      </Link>
-    </div>
+      </div>
+    </Link>
+
   );
 };

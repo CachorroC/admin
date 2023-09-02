@@ -1,7 +1,5 @@
 import typography from '#@/styles/fonts/typography.module.css';
-import { NombreCompleto,
-         Deudor } from '#@/lib/types/carpeta';
-import { toNameString } from '#@/lib/fix';
+import { Deudor } from '#@/lib/types/carpeta';
 import card from '#@/components/card/card.module.scss';
 
 export function NombreComponent(

@@ -8,7 +8,7 @@
 .card {
   box-sizing: border-box;
   padding: 2cqmin;
-  background-color: var(--primary);
+  background-color: var(--surface-container-low);
   gap: 2cqmin;
   border-radius: 2cqmin;
   text-align: center;
@@ -50,7 +50,7 @@
   .title {
     color: var(--primary);
     text-align: right;
-    flex: 1 0 100%;
+    flex: 0 1 50%;
   }
   .links {
     display: flex;

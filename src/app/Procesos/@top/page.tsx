@@ -1,8 +1,6 @@
-import { NewNota } from '#@/components/nota/NuevaNota';
+
 import typography from '#@/styles/fonts/typography.module.css';
-import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { CategoryFilterButton } from '#@/components/Buttons/FilteringButtons';
-import Link from 'next/link';
 
 export default async function PageProcesos() {
   return (

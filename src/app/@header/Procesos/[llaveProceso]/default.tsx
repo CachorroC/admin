@@ -16,7 +16,7 @@ export default async function Page(
   );
 
   if ( !proceso ) {
-    notFound();
+    return null;
   }
 
   return (

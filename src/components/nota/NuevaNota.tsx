@@ -14,12 +14,10 @@ import typography from '#@/styles/fonts/typography.module.css';
 
 export function NewNota(
   {
-    llaveProceso,
-    uri
+    llaveProceso
   }: {
   llaveProceso: string;
-  uri: string;
-} 
+}
 ) {
   const pathname = usePathname();
 
@@ -30,7 +28,7 @@ export function NewNota(
     setValue,
     handleSubmit,
     formState: {
-      errors 
+      errors
     }
   } = useForm<intNotaFormValues>(
     {
@@ -46,17 +44,17 @@ export function NewNota(
         ]
       },
       mode: 'onBlur'
-    } 
+    }
   );
 
   const {
-    fields, append, remove 
+    fields, append, remove
   }
     = useFieldArray(
       {
         name: 'tareas',
         control
-      } 
+      }
     );
 
   const onSubmit = async (
@@ -72,19 +70,19 @@ export function NewNota(
 
     alert(
       JSON.stringify(
-        newData 
-      ) 
+        newData
+      )
     );
 
     const postNewNote = await fetch(
-      '/api/Notas',
+      `/api/Notas/${ llaveProceso }`,
       {
-        method : 'POST',
+        method : 'PUT',
         headers: {
           'content-type': 'application/json'
         },
         body: JSON.stringify(
-          newData 
+          newData
         )
       }
     );
@@ -92,7 +90,7 @@ export function NewNota(
     const responsePostNewNote
       = await postNewNote.json();
     alert(
-      responsePostNewNote 
+      responsePostNewNote
     );
 
     return responsePostNewNote;
@@ -102,7 +100,7 @@ export function NewNota(
     isActive,
     setIsActive
   ] = useState(
-    false 
+    false
   );
 
   return (
@@ -110,7 +108,7 @@ export function NewNota(
       <form
         className={note.form}
         onSubmit={handleSubmit(
-          onSubmit 
+          onSubmit
         )}>
         <div className={note.section}>
           <label
@@ -126,7 +124,7 @@ export function NewNota(
             {...register(
               'nota', {
                 required: true
-              } 
+              }
             )}
           />
         </div>
@@ -135,7 +133,7 @@ export function NewNota(
           type='button'
           onClick={() => {
             return setIsActive(
-              !isActive 
+              !isActive
             );
           }}>
           <span className='material-symbols-outlined'>
@@ -151,7 +149,7 @@ export function NewNota(
           <div className={accordion.content}>
             {fields.map(
               (
-                field, index 
+                field, index
               ) => {
                 const watchIsDone = watch(
                   `tareas.${ index }.isDone`
@@ -159,15 +157,17 @@ export function NewNota(
 
                 return (
                   <Fragment key={field.id}>
-                    <div className={note.section}>
+                    <div className={note.section} key={field.id}>
                       <label
-                        htmlFor={`tareas.${ index }.tarea`}
+                        htmlFor={ `tareas.${ index }.tarea` }
+                        key={field.id}
                         className={note.label}>
                       Tarea:
                       </label>
                       <input
                         type='text'
                         placeholder='tarea'
+                        key={field.id}
                         {...register(
                           `tareas.${ index }.tarea`,
                           {}
@@ -226,7 +226,7 @@ export function NewNota(
                         type='button'
                         onClick={() => {
                           return remove(
-                            index 
+                            index
                           );
                         }}>
                         <span className='material-symbols-outlined'>
@@ -246,7 +246,7 @@ export function NewNota(
                               dueDate:
                             new Date()
                                   .toISOString()
-                            } 
+                            }
                           );
                         }}>
                         <span className='material-symbols-outlined'>
@@ -256,7 +256,7 @@ export function NewNota(
                     </div>
                   </Fragment>
                 );
-              } 
+              }
             )}
           </div>
         )}
