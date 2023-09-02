@@ -9,8 +9,11 @@ import { fixFechas,
          toNameString } from '#@/lib/fix';
 import { Card } from '#@/components/card/card';
 import { Metadata } from 'next';
-import  FechaActuacionComponent from '#@/app/Actuacion/server-components';
 import { Loader } from '#@/components/Loader';
+import { ConsultaActuacion,
+         actuacionConvert } from '#@/lib/types/actuaciones';
+import { MonCarpeta } from '#@/lib/types/carpeta';
+import { FechaActuacionComponent } from '../Actuacion/server-components';
 
 export const metadata: Metadata = {
   title: 'Procesos'
@@ -23,7 +26,7 @@ export default async function PageProcesosLeft(
   searchParams: {
     [key: string]: string | string[] | undefined;
   };
-}
+} 
 ) {
   const sortSearchParam = searchParams.sort;
 
@@ -31,7 +34,7 @@ export default async function PageProcesosLeft(
     const typeOfSearchparam
       = typeof sortSearchParam;
     console.log(
-      sortSearchParam
+      sortSearchParam 
     );
   }
 
@@ -41,7 +44,7 @@ export default async function PageProcesosLeft(
     ...carpetasRaw
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       const typeofA = typeof a.fecha;
 
@@ -56,8 +59,14 @@ export default async function PageProcesosLeft(
       }
 
       const x = a.fecha.toISOString();
+      console.log(
+        x 
+      );
 
       const y = b.fecha.toISOString();
+      console.log(
+        y 
+      );
 
       if ( x < y ) {
         return 1;
@@ -75,10 +84,10 @@ export default async function PageProcesosLeft(
     <>
       {carpetas.map(
         (
-          carpeta, index
+          carpeta, index 
         ) => {
           const {
-            deudor
+            deudor 
           } = carpeta;
 
           const {
@@ -106,7 +115,7 @@ export default async function PageProcesosLeft(
               </Suspense>
             </Card>
           );
-        }
+        } 
       )}
     </>
   );

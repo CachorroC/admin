@@ -61,7 +61,7 @@ export function Nota(
             />
           </Suspense>
         </div>
-        <div className={note.tareas}>
+        <div className={note.section}>
           {tareas.map(
             (
               tr 

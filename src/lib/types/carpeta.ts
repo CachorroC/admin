@@ -13,7 +13,6 @@ export interface IntCarpeta {
   category: Category;
   categoryTag: number;
   deudor: Deudor;
-
   numero: number;
   llaveProceso: string;
   tipoProceso: TipoProceso;
@@ -37,7 +36,9 @@ export interface Demanda {
   etapaProcesal: null | string;
   fechaPresentacion?: Date | string;
   municipio: string;
-  obligacion: { [key: string]: Obligacion };
+  obligacion:
+    | { [key: string]: Obligacion }
+    | ( string | number | null )[];
   radicado: string;
   vencimientoPagare?: Date | string;
   expediente: string;

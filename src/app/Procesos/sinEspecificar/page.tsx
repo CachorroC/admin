@@ -6,6 +6,7 @@ import { NuevoProceso } from './new-carpeta';
 import { getDepartamentos,
          getDespachos } from '#@/lib/RamaJudicial';
 import { NuevaCarpetaProvider } from '#@/hooks/formContext';
+import { RevalidateTagActuaciones } from '#@/app/actions';
 
 export default async function NuevaCarpetaPage() {
   const despachos = await getDespachos();
@@ -36,6 +37,11 @@ export default async function NuevaCarpetaPage() {
         <h1 className={typography.displaySmall}>
           Nueva Carpeta
         </h1>
+        <button
+          type={'button'}
+          onClick={
+            RevalidateTagActuaciones
+          }></button>
       </div>
       <div className={layout.left}>
         <NuevaCarpetaProvider>

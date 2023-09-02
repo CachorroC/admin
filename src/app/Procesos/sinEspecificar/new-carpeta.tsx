@@ -10,7 +10,7 @@ import { Demanda,
          Departamento,
          Deudor,
          IntCarpeta } from '#@/lib/types/carpeta';
-import typography from '#@/styles/fonts/typography.module.css';
+import typography from '#@/styles/fonts/typography.module.scss';
 import { SelectSection } from '#@/components/form/SelectSection';
 import { ReactNode } from 'react';
 import { getCarpetaById } from '#@/lib/Carpetas';
@@ -18,74 +18,55 @@ import Fields from './fieldArray-juzgados';
 import { Despacho } from '#@/lib/types/despachos';
 import { NuevaCarpetaProvider } from '#@/hooks/formContext';
 import { InputSection } from '#@/components/form/InputSection';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { IntCarpetaElement,
-         IntCarpetaElementSchema } from '#@/lib/types/zod-schema';
+import layout from '#@/styles/layout.module.css';
 let renderCount = 0;
 
-const defaultDemanda: Demanda = {
-  entregagarantiasAbogado: new Date(),
-  juzgados               : [
-    {
-      id  : 0,
-      tipo: 'Civil Municipal',
-      url : 'https://app.rsasesorjuridico.com'
-    }
-  ],
-  obligacion: {
-    '1': '1772345678',
-    '2': 654567890
-  },
-  municipio: 'Bogota',
-  radicado : '000 - 00000',
-
-  etapaProcesal    : 'ADMISION DE LA DEMANDA',
-  vencimientoPagare: new Date(),
-  fechaPresentacion: new Date(),
-  departamento     : {
-    descripcion           : 'CUNDINAMARCA',
-    idCatalogoDetallePadre: 1,
-    idCatalogoDetalle     : 13,
-    codigo                : '25'
-  },
-  capitalAdeudado: 10000000,
-  expediente     : '12345678912345678912345'
-};
-
-const defaultDeudor: Deudor = {
-  primerApellido : 'Montoya',
-  primerNombre   : 'Pedro',
-  segundoNombre  : 'Pablo',
-  segundoApellido: 'Jimenez',
-  email          : 'juankpato87@gmail.com',
-  direccion      : 'carrera 63 # 22 - 31',
-  tel            : {
-    fijo   : 6051567,
-    celular: 3506144932
-  },
-  cedula: 1022352429
-};
-
 const defaultValues: DefaultValues<IntCarpeta> = {
-  demanda     : defaultDemanda,
-  deudor      : defaultDeudor,
   category    : 'Bancolombia',
   categoryTag : 1,
-  idProceso   : 0,
-  llaveProceso: '12345678912345678912345',
+  llaveProceso: '00000000000000000000000',
   numero      : 574,
-  tipoProceso : 'SINGULAR'
+  tipoProceso : 'SINGULAR',
+  deudor      : {
+    cedula         : 1022352429,
+    primerApellido : 'primerApellido',
+    primerNombre   : 'primerNombre',
+    segundoNombre  : 'segundoNombre',
+    segundoApellido: 'segundoApellido',
+    email          : 'ejemplo@gmail.com',
+    direccion      : 'carrera 63 # 22 - 31',
+    tel            : {
+      fijo   : 6016051567,
+      celular: 3506144932
+    }
+  },
+  demanda: {
+    entregagarantiasAbogado: new Date(),
+    municipio              : 'Bogota',
+    radicado               : '000 - 00000',
+    etapaProcesal          : 'ADMISION DE LA DEMANDA',
+    vencimientoPagare      : new Date(),
+    fechaPresentacion      : new Date(),
+    capitalAdeudado        : 10000000,
+    expediente             : '00000000000000000000000',
+    obligacion             : [
+      '1772345678',
+      654567890
+    ],
+    departamento: {
+      descripcion           : 'CUNDINAMARCA',
+      idCatalogoDetallePadre: 1,
+      idCatalogoDetalle     : 13,
+      codigo                : '25'
+    }
+  }
 };
 
 export const NuevoProceso = (
   {
-    uri,
-    descripciones,
     despachos,
     carpeta
   }: {
-  uri: string;
-  descripciones: Departamento[];
   despachos: Despacho[];
   carpeta?: IntCarpeta;
 } 
@@ -93,7 +74,8 @@ export const NuevoProceso = (
   const methods = useForm<IntCarpeta>(
     {
       defaultValues,
-      values: carpeta
+      values          : carpeta,
+      shouldFocusError: true
     } 
   );
 
@@ -157,14 +139,18 @@ export const NuevoProceso = (
   renderCount++;
 
   return (
-    <NuevaCarpetaProvider>
-      <FormProvider {...methods}>
-        <div className={form.container}>
-          <form
-            className={form.form}
-            onSubmit={handleSubmit(
-              onSubmit 
-            )}>
+    <>
+      <NuevaCarpetaProvider>
+        <FormProvider {...methods}>
+          <div className={layout.name}>
+            <h1
+              className={typography.titleMedium}>
+              {carpeta?.deudor.primerNombre
+                ?? defaultValues.deudor
+                      ?.primerNombre}
+            </h1>
+          </div>
+          <div className={layout.right}>
             <button
               type={'button'}
               className={form.addButton}
@@ -175,208 +161,324 @@ export const NuevoProceso = (
                   } 
                 );
               }}>
-              <span>{'primerNombre'}</span>
+              <span>{'numero'}</span>
             </button>
-            <section className={form.section}>
-              <section className={form.section}>
-                <section className={form.section}>
-                  <InputSection
-                    name={'deudor.primerNombre'}
-                    title={'Primer Nombre'}
-                    type={'text'}
-                    rls={{
-                      required: true
-                    }}
-                  />
-                  <InputSection
-                    name={'deudor.segundoNombre'}
-                    title={'Segundo Nombre'}
-                    type={'text'}
-                    rls={{
-                      required: false
-                    }}
-                  />
-                  <InputSection
-                    name={'deudor.primerApellido'}
-                    title={'Primer Apellido'}
-                    type={'text'}
-                    rls={{
-                      required: true
-                    }}
-                  />
-                  <InputSection
-                    name={
-                      'deudor.segundoApellido'
-                    }
-                    title={'Segundo Apellido'}
-                    type={'text'}
-                    rls={{
-                      required: false
-                    }}
-                  />
-                </section>
-                <InputSection
-                  name={'deudor.cedula'}
-                  title={'Cédula de Ciudadanía'}
-                  type={'number'}
-                  rls={{
-                    required: true
-                  }}
-                />
-                <InputSection
-                  name={'deudor.direccion'}
-                  title={'Dirección'}
-                  type={'textarea'}
-                  rls={{
-                    required: false
-                  }}
-                />
-                <InputSection
-                  name={'deudor.email'}
-                  title={'Correo Electrónico'}
-                  type={'email'}
-                  rls={{
-                    required: false,
-                    pattern : /^\S+@\S+$/i
-                  }}
-                />
-              </section>
-              <InputSection
-                name={'numero'}
-                title={'Carpeta Numero'}
-                rls={{
-                  required: true
-                }}
-                type={'number'}
-              />
-              <InputSection
-                name={'llaveProceso'}
-                title={'Expediente'}
-                rls={{
-                  required : true,
-                  maxLength: 23,
-                  minLength: 22
-                }}
-                type={'text'}
-              />
-
-              <Fields options={despachos} />
-
-              <SelectSection
-                name={'category'}
-                title={'Grupo al que pertenece'}
-                options={[
-                  'Bancolombia',
-                  'Insolvencia',
-                  'Reintegra',
-                  'LiosJuridicos',
-                  'Terminados'
-                ]}
-              />
-
-              <SelectSection
-                name={'tipoProceso'}
-                title={'Proceso del Tipo'}
-                options={[
-                  'SINGULAR',
-                  'HIPOTECARIO',
-                  'PRENDARIO'
-                ]}
-              />
-            </section>
             <button
-              type='submit'
-              className={form.button}>
-              <sub
-                className={typography.labelSmall}>
-                Enviar
-              </sub>
-              <span className='material-symbols-outlined'>
-                send
-              </span>
+              type={'button'}
+              className={form.addButton}
+              onClick={() => {
+                setFocus(
+                  'category', {
+                    shouldSelect: true
+                  } 
+                );
+              }}>
+              <span>{'categoria'}</span>
             </button>
-            <section className={form.section}>
-              <section className={form.section}>
-                <pre>
-                  {JSON.stringify(
-                    {
-                      errors
-                    },
-                    null,
-                    2
-                  )}
-                </pre>
-              </section>
-              <section className={form.section}>
-                <pre>
-                  {JSON.stringify(
-                    {
-                      dirtyFields
-                    },
-                    null,
-                    2
-                  )}
-                </pre>
-              </section>
-              <section className={form.section}>
-                <pre>
-                  {JSON.stringify(
-                    {
-                      submitCount
-                    },
-                    null,
-                    2
-                  )}
-                </pre>
-              </section>
-              <section className={form.section}>
-                <pre>
-                  {JSON.stringify(
-                    {
-                      isSubmitting
-                    },
-                    null,
-                    2
-                  )}
-                </pre>
-              </section>
-              <section className={form.section}>
-                <pre>
-                  {JSON.stringify(
-                    {
-                      isSubmitSuccessful
-                    },
-                    null,
-                    2
-                  )}
-                </pre>
-              </section>
-              <section className={form.section}>
-                <pre>
-                  {JSON.stringify(
-                    {
-                      isLoading
-                    },
-                    null,
-                    2
-                  )}
-                </pre>
-              </section>
-              <section className={form.section}>
-                <pre>
-                  {JSON.stringify(
-                    {
-                      carpeta
-                    },
-                    null,
-                    2
-                  )}
-                </pre>
-              </section>
-            </section>
-          </form>
-        </div>
-      </FormProvider>
-    </NuevaCarpetaProvider>
+            <button
+              type={'button'}
+              className={form.addButton}
+              onClick={() => {
+                setFocus(
+                  'llaveProceso', {
+                    shouldSelect: true
+                  } 
+                );
+              }}>
+              <span>{'expediente'}</span>
+            </button>
+            <button
+              type={'button'}
+              className={form.addButton}
+              onClick={() => {
+                setFocus(
+                  'tipoProceso', {
+                    shouldSelect: true
+                  } 
+                );
+              }}>
+              <span>{'tipo de proceso'}</span>
+            </button>
+            <button
+              type={'button'}
+              className={form.addButton}
+              onClick={() => {
+                setFocus(
+                  'deudor.primerNombre', {
+                    shouldSelect: true
+                  } 
+                );
+              }}>
+              <span>{'nombre'}</span>
+            </button>
+            <button
+              type={'button'}
+              className={form.addButton}
+              onClick={() => {
+                setFocus(
+                  'deudor.segundoNombre', {
+                    shouldSelect: true
+                  } 
+                );
+              }}>
+              <span>{'segundo nombre'}</span>
+            </button>
+          </div>
+
+          <div className={layout.left}>
+            <div className={form.container}>
+              <form
+                className={form.form}
+                onSubmit={handleSubmit(
+                  onSubmit 
+                )}>
+                <section className={form.section}>
+                  <section
+                    className={form.section}>
+                    <h3
+                      className={
+                        typography.displaySmall
+                      }>
+                      {'Deudor'}
+                    </h3>
+                    <InputSection
+                      name={'deudor.primerNombre'}
+                      title={'Primer Nombre'}
+                      type={'text'}
+                      rls={{
+                        required: true
+                      }}
+                    />
+                    <InputSection
+                      key={'deudor.segundoNombre'}
+                      name={
+                        'deudor.segundoNombre'
+                      }
+                      title={'Segundo Nombre'}
+                      type={'text'}
+                      rls={{
+                        required: false
+                      }}
+                    />
+                    <InputSection
+                      name={
+                        'deudor.primerApellido'
+                      }
+                      title={'Primer Apellido'}
+                      type={'text'}
+                      rls={{
+                        required: true
+                      }}
+                    />
+                    <InputSection
+                      name={
+                        'deudor.segundoApellido'
+                      }
+                      title={'Segundo Apellido'}
+                      type={'text'}
+                      rls={{
+                        required: false
+                      }}
+                    />
+                    <InputSection
+                      name={'deudor.cedula'}
+                      title={
+                        'Cédula de Ciudadanía'
+                      }
+                      type={'number'}
+                      rls={{
+                        required: true
+                      }}
+                    />
+                    <InputSection
+                      name={'deudor.direccion'}
+                      title={'Dirección'}
+                      type={'textarea'}
+                      rls={{
+                        required: false
+                      }}
+                    />
+                    <InputSection
+                      name={'deudor.email'}
+                      title={'Correo Electrónico'}
+                      type={'email'}
+                      rls={{
+                        required: false,
+                        pattern : /^\S+@\S+$/i
+                      }}
+                    />
+                  </section>
+
+                  <InputSection
+                    name={'numero'}
+                    title={'Carpeta Numero'}
+                    rls={{
+                      required: true
+                    }}
+                    type={'number'}
+                  />
+                  <InputSection
+                    name={'llaveProceso'}
+                    title={'Expediente'}
+                    rls={{
+                      required : true,
+                      maxLength: 23,
+                      minLength: 22
+                    }}
+                    type={'text'}
+                  />
+
+                  <Fields options={despachos} />
+
+                  <SelectSection
+                    name={'category'}
+                    title={
+                      'Grupo al que pertenece'
+                    }
+                    options={[
+                      'Bancolombia',
+                      'Insolvencia',
+                      'Reintegra',
+                      'LiosJuridicos',
+                      'Terminados'
+                    ]}
+                  />
+
+                  <SelectSection
+                    name={'tipoProceso'}
+                    title={'Proceso del Tipo'}
+                    options={[
+                      'SINGULAR',
+                      'HIPOTECARIO',
+                      'PRENDARIO'
+                    ]}
+                  />
+                  <section
+                    className={form.section}>
+                    <InputSection
+                      name={'demanda.radicado'}
+                      title={'Radicado'}
+                      type={'text'}
+                      rls={{
+                        required: true
+                      }}
+                    />
+                    <InputSection
+                      name={
+                        'demanda.capitalAdeudado'
+                      }
+                      title={'Capital Adeudado'}
+                      type={'number'}
+                      rls={{
+                        required: true
+                      }}
+                    />
+                  </section>
+                </section>
+                <button
+                  type='submit'
+                  className={form.button}>
+                  <sub
+                    className={
+                      typography.labelSmall
+                    }>
+                    Enviar
+                  </sub>
+                  <span className='material-symbols-outlined'>
+                    send
+                  </span>
+                </button>
+                <section className={form.section}>
+                  <section
+                    className={form.section}>
+                    <pre>
+                      {JSON.stringify(
+                        {
+                          errors
+                        },
+                        null,
+                        2
+                      )}
+                    </pre>
+                  </section>
+                  <section
+                    className={form.section}>
+                    <pre>
+                      {JSON.stringify(
+                        {
+                          dirtyFields
+                        },
+                        null,
+                        2
+                      )}
+                    </pre>
+                  </section>
+                  <section
+                    className={form.section}>
+                    <pre>
+                      {JSON.stringify(
+                        {
+                          submitCount
+                        },
+                        null,
+                        2
+                      )}
+                    </pre>
+                  </section>
+                  <section
+                    className={form.section}>
+                    <pre>
+                      {JSON.stringify(
+                        {
+                          isSubmitting
+                        },
+                        null,
+                        2
+                      )}
+                    </pre>
+                  </section>
+                  <section
+                    className={form.section}>
+                    <pre>
+                      {JSON.stringify(
+                        {
+                          isSubmitSuccessful
+                        },
+                        null,
+                        2
+                      )}
+                    </pre>
+                  </section>
+                  <section
+                    className={form.section}>
+                    <pre>
+                      {JSON.stringify(
+                        {
+                          isLoading
+                        },
+                        null,
+                        2
+                      )}
+                    </pre>
+                  </section>
+                  <section
+                    className={form.section}>
+                    <pre>
+                      {JSON.stringify(
+                        {
+                          carpeta
+                        },
+                        null,
+                        2
+                      )}
+                    </pre>
+                  </section>
+                </section>
+              </form>
+            </div>
+          </div>
+        </FormProvider>
+      </NuevaCarpetaProvider>
+    </>
   );
 };

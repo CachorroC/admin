@@ -33,10 +33,32 @@ model Proceso {
   esPrivado            Boolean
   cantFilas            Int
   actuaciones          Actuacion[]
+  Demanda              Demanda[]
+  Juzgado              Juzgado       @relation(fields: [despacho], references: [tipo])
 }
 
 model Demanda {
-  departamento Departamento
+  departamento            Departamento
+  capitalAdeudado         BigInt
+  entregaGarantiasAbogado DateTime
+  etapaProcesal           String
+  fechaPresentacion       DateTime
+  municipio               String
+  obligacion              String[]
+  radicado                String       @unique
+  vencimientoPagare       DateTime
+  juzgados                Juzgado[]
+  expediente              String       @id
+  proceso                 Proceso      @relation(fields: [expediente], references: [llaveProceso])
+}
+
+model Juzgado {
+  id                Int
+  tipo              String    @id
+  url               String
+  Proceso           Proceso[]
+  Demanda           Demanda?  @relation(fields: [demandaExpediente], references: [expediente])
+  demandaExpediente String?
 }
 
 model Actuacion {

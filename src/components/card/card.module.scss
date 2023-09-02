@@ -27,6 +27,8 @@
 
   & > .card {
     display: flex;
+    box-sizing: border-box;
+    height: 100%;
     padding: 2cqmin;
     border-radius: 2vmin;
     text-align: center;

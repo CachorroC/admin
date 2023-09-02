@@ -5,10 +5,12 @@ export function sleep(
     (
       resolve 
     ) => {
+      const newMs = ms * 300;
+
       const now = new Date()
             .getTime();
 
-      const masTarde = now + ms;
+      const masTarde = now + newMs;
 
       const outputTime = new Date(
         masTarde
@@ -25,7 +27,7 @@ export function sleep(
       );
 
       return setTimeout(
-        resolve, ms 
+        resolve, newMs 
       );
     } 
   );

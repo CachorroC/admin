@@ -49,7 +49,7 @@ export class procesosConvert {
     json: string
   ): ConsultaNumeroRadicacion {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -57,7 +57,7 @@ export class procesosConvert {
     value: ConsultaNumeroRadicacion
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
@@ -65,7 +65,7 @@ export class procesosConvert {
     json: string
   ): Paginacion {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -73,7 +73,7 @@ export class procesosConvert {
     value: Paginacion
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
@@ -81,7 +81,7 @@ export class procesosConvert {
     json: string
   ): Parametros {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -89,15 +89,15 @@ export class procesosConvert {
     value: Parametros
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toProceso(
-    json: string
+    json: string 
   ): Proceso {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -105,7 +105,7 @@ export class procesosConvert {
     value: Proceso
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 }

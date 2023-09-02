@@ -2,14 +2,41 @@ import Title from '#@/components/Headings/title';
 import { getCarpetas } from '#@/lib/Carpetas';
 import Drawer from '#@/components/navbar/drawer';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
-import Header from '#@/components/navbar/Header';
+import { ForwardButton,
+         BackwardsButton,
+         DrawerMenuButton,
+         HomeButton } from '#@/components/Buttons/NavButtons';
 import { Suspense } from 'react';
-import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-import { Loader } from '#@/components/Loader/index';
-import { LinkCard } from '#@/components/search/link';
+import { Loader } from '#@/components/Loader';
 
 export default async function Page() {
   const carpetas = await getCarpetas();
 
-  return <Title />;
+  return (
+    <>
+      <Suspense fallback={<Loader />}>
+        <DrawerMenuButton />
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        <HomeButton />
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        <ForwardButton />
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        <BackwardsButton />
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        <Title helper={'Procesos'} />
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        <Drawer>
+          <SearchOutputList
+            path={'/Procesos'}
+            fechas={carpetas}
+          />
+        </Drawer>
+      </Suspense>
+    </>
+  );
 }

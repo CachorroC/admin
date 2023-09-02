@@ -21,19 +21,19 @@ export const getDespachos = cache(
 
       if ( !request.ok ) {
         throw new Error(
-          'error en los despachos'
+          'error en los despachos' 
         );
       }
 
       const response = await request.json();
 
       const json = JSON.stringify(
-        response
+        response 
       );
 
       const despachos
       = despachosConvert.toDespacho(
-        json
+        json 
       );
 
       return despachos;
@@ -49,7 +49,7 @@ export const getDespachos = cache(
 
       return [];
     }
-  }
+  } 
 );
 
 export async function newJuzgado(
@@ -61,35 +61,35 @@ export async function newJuzgado(
 
   for ( const proceso of procesos ) {
     const indexOf = procesos.indexOf(
-      proceso
+      proceso 
     );
 
     const matchedDespacho = Despachos.find(
       (
-        despacho
+        despacho 
       ) => {
         const nDesp = despacho.nombre
               .toLowerCase()
               .normalize(
-                'NFD'
+                'NFD' 
               )
               .replace(
-                /\p{Diacritic}/gu, ''
+                /\p{Diacritic}/gu, '' 
               )
               .trim();
 
         const pDesp = proceso.despacho
               .toLowerCase()
               .normalize(
-                'NFD'
+                'NFD' 
               )
               .replace(
-                /\p{Diacritic}/gu, ''
+                /\p{Diacritic}/gu, '' 
               )
               .trim();
 
         const indexOfDesp = nDesp.indexOf(
-          pDesp
+          pDesp 
         );
 
         if ( indexOfDesp >= 0 ) {
@@ -107,11 +107,11 @@ export async function newJuzgado(
       : proceso.despacho;
 
     const matchedId = nameN.match(
-      /\d+/g
+      /\d+/g 
     );
 
     const newId = Number(
-      matchedId?.toString()
+      matchedId?.toString() 
     );
 
     const newJuzgado: Juzgado = {
@@ -123,17 +123,17 @@ export async function newJuzgado(
         ? `https://www.ramajudicial.gov.co${ matchedDespacho.url }`
         : `https://www.ramajudicial.gov.co${ proceso.despacho
               .replaceAll(
-                ' ', '-'
+                ' ', '-' 
               )
               .toLowerCase() }`
     };
     juzgados.set(
-      indexOf, newJuzgado
+      indexOf, newJuzgado 
     );
   }
 
   return Array.from(
-    juzgados.values()
+    juzgados.values() 
   );
 }
 
@@ -142,76 +142,74 @@ export const procesosCollection = async () => {
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico'
+      'no hay cliente mongólico' 
     );
   }
 
   const db = client.db(
-    'RyS'
+    'RyS' 
   );
 
   const carpetas
     = db.collection<Proceso>(
-      'Procesos'
+      'Procesos' 
     );
 
   return carpetas;
 };
 
-export const fetchProceso = cache(
-  async (
-    {
-      llaveProceso,
-      index
-    }: {
-    llaveProceso: string;
-    index: number;
-  }
-  ) => {
-    try {
-      if (
-        llaveProceso.length < 23
-        || llaveProceso === 'sinEspecificar'
-      ) {
-        throw new Error(
-          `${ index }: esta llaveProceso es menos de 23: ${ llaveProceso }`
-        );
-      }
-
-      const req = await fetch(
-        `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=true`
+export async function fetchProceso(
+  {
+    llaveProceso,
+    index
+  }: {
+  llaveProceso: string;
+  index: number;
+} 
+) {
+  try {
+    if (
+      llaveProceso.length < 23
+      || llaveProceso === 'sinEspecificar'
+    ) {
+      throw new Error(
+        `${ index }: esta llaveProceso es menos de 23: ${ llaveProceso }`
       );
-
-      if ( !req.ok ) {
-        throw new Error(
-          `${ index }: procesos not ok, status: ${ req.status } with ${ req.statusText } llaveProceso: ${ llaveProceso }`
-        );
-      }
-
-      const json = await req.json();
-
-      const res
-        = procesosConvert.toConsultaNumeroRadicacion(
-          JSON.stringify(
-            json
-          )
-        );
-
-      return res.procesos;
-    } catch ( e ) {
-      if ( e instanceof Error ) {
-        console.log(
-          `${ index }: ${ llaveProceso }: error en la conexion network del fetchProceso ${ e.name } : ${ e.message }`
-        );
-      }
-      console.log(
-        `${ index }: ${ llaveProceso }: : error en la conexion network del fetchProceso  =>  ${ e }`
-      );
-
-      return null;
     }
+
+    const req = await fetch(
+      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=true`
+    );
+
+    if ( !req.ok ) {
+      throw new Error(
+        `${ index }: procesos not ok, status: ${ req.status } with ${ req.statusText } llaveProceso: ${ llaveProceso }`
+      );
+    }
+
+    const json = await req.json();
+
+    const res
+      = procesosConvert.toConsultaNumeroRadicacion(
+        JSON.stringify(
+          json 
+        )
+      );
+
+    return res.procesos;
+  } catch ( e ) {
+    if ( e instanceof Error ) {
+      console.log(
+        `${ index }: ${ llaveProceso }: error en la conexion network del fetchProceso ${ e.name } : ${ e.message }`
+      );
+    }
+    console.log(
+      `${ index }: ${ llaveProceso }: : error en la conexion network del fetchProceso  =>  ${ e }`
+    );
+
+    return null;
   }
-);
+}
 
 export const getProceso = cache(
   async (
@@ -221,11 +219,10 @@ export const getProceso = cache(
     }: {
     llaveProceso: string;
     index: number;
-  }
+  } 
   ) => {
-    const awaitTime = index * 1000;
     await sleep(
-      awaitTime
+      index 
     );
 
     const carpColl = await carpetasCollection();
@@ -234,13 +231,13 @@ export const getProceso = cache(
       {
         llaveProceso: llaveProceso,
         index       : index
-      }
+      } 
     );
 
     if ( fetchP ) {
       for ( const proceso of fetchP ) {
         const juzgados = await newJuzgado(
-          fetchP
+          fetchP 
         );
 
         const updt = await carpColl.updateOne(

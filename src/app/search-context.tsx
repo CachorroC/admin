@@ -15,9 +15,9 @@ const SearchContext = createContext<
 
 const NavContext = createContext<
   | [boolean, Dispatch<SetStateAction<boolean>>]
-  | undefined
+  | null
 >(
-  undefined 
+  null 
 );
 
 const CategoryContext = createContext<
@@ -58,25 +58,25 @@ export function SearchProvider(
     );
 
   return (
-    <CategoryContext.Provider
+    <NavContext.Provider
       value={[
-        category,
-        setCategory
+        isNavOpen,
+        setIsNavOpen
       ]}>
-      <SearchContext.Provider
+      <CategoryContext.Provider
         value={[
-          search,
-          setSearch
+          category,
+          setCategory
         ]}>
-        <NavContext.Provider
+        <SearchContext.Provider
           value={[
-            isNavOpen,
-            setIsNavOpen
+            search,
+            setSearch
           ]}>
           {children}
-        </NavContext.Provider>
-      </SearchContext.Provider>
-    </CategoryContext.Provider>
+        </SearchContext.Provider>
+      </CategoryContext.Provider>
+    </NavContext.Provider>
   );
 }
 
@@ -99,7 +99,7 @@ export function useNavigator() {
     NavContext 
   );
 
-  if ( context === undefined ) {
+  if ( context === null ) {
     throw new Error(
       'useNavigator must be used within a NavProvider'
     );

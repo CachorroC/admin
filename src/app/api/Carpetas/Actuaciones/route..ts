@@ -2,28 +2,28 @@ import { getCarpetas } from '#@/lib/Carpetas';
 import { fetchActuaciones } from '#@/lib/Actuaciones';
 import { sleep } from '#@/lib/fix';
 import { MonCarpeta } from '#@/lib/types/carpeta';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest,
+         NextResponse } from 'next/server';
 
 //? aqui van las peticiones a todas las actuaciones por cada carpeta, es decir, el timer que va a ejecutarser con el for of de las carpetas
-export async function GET (
-  request: NextRequest
+export async function GET(
+  request: NextRequest 
 ) {
   const {
-    searchParams
+    searchParams 
   } = new URL(
-    request.url
+    request.url 
   );
 
   const _id = searchParams.get(
-    '_id'
+    '_id' 
   );
 
   if ( _id ) {
     return new NextResponse(
-      null,
-      {
+      null, {
         status: 404
-      }
+      } 
     );
   }
 
@@ -36,30 +36,31 @@ export async function GET (
 
   const totalCarpetas = carpetas.length;
   console.log(
-    totalCarpetas
+    totalCarpetas 
   );
 
   for ( const carpeta of carpetas ) {
     CarpetasMap.set(
-      carpeta._id, carpeta
+      carpeta._id, carpeta 
     );
 
     const indexOfCarpeta
       = carpetas.indexOf(
-        carpeta
+        carpeta 
       );
     console.time(
-      indexOfCarpeta.toString()
+      indexOfCarpeta.toString() 
     );
     await sleep(
-      1000
+      1000 
     );
 
     const actuaciones = await fetchActuaciones(
-      carpeta.idProceso ?? 1
+      carpeta.idProceso ?? 1,
+      indexOfCarpeta
     );
     console.timeEnd(
-      indexOfCarpeta.toString()
+      indexOfCarpeta.toString() 
     );
 
     if ( actuaciones ) {
@@ -71,7 +72,7 @@ export async function GET (
         ultimaActuacion: actuaciones[ 0 ]
       };
       CarpetasMap.set(
-        carpeta._id, newCarpeta
+        carpeta._id, newCarpeta 
       );
     }
   }
@@ -82,7 +83,7 @@ export async function GET (
 
   return new NextResponse(
     JSON.stringify(
-      CarpetasOutput
+      CarpetasOutput 
     ),
     {
       status : 200,

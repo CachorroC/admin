@@ -1,11 +1,12 @@
 import layout from '#@/styles/layout.module.css';
-import React from 'react';
+import React, { ReactNode,
+                Suspense } from 'react';
 
-export default function Layout(
+export default function LayoutProcesos(
   {
     children
   }: {
-  children: React.ReactNode;
+  children: ReactNode;
 } 
 ) {
   return (

@@ -1,9 +1,9 @@
 import 'server-only';
-import { carpetasCollection,
-         getCarpetaByidProceso } from '../Carpetas';
+import { carpetasCollection } from '#@/lib/Carpetas';
 import { sleep } from '../fix';
 import { cache } from 'react';
 import { Actuacion,
+         ConsultaActuacion,
          actuacionConvert } from '../types/actuaciones';
 import { MonCarpeta } from '../types/carpeta';
 import clientPromise from '../mongodb';
@@ -28,86 +28,110 @@ export const actuacionesCollection = async () => {
   return actuaciones;
 };
 
-export const fetchActuaciones = cache(
-  async (
-    idProceso: number 
-  ) => {
-    try {
-      if ( idProceso === 1 ) {
-        throw new Error(
-          'idProceso es 1, no es posible hacer la peticion'
-        );
-      }
+export async function fetchActuaciones(
+  idProceso: number,
+  index: number
+) {
+  console.time(
+    index.toString() 
+  );
+  await sleep(
+    index 
+  );
+  console.timeEnd(
+    index.toString() 
+  );
 
-      const request = await fetch(
-        `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
-        {
-          next: {
-            revalidate: 259200
-          }
+  try {
+    const request = await fetch(
+      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso.toString() }`,
+      {
+        next: {
+          revalidate: 259200,
+          tags      : [
+            'actuaciones'
+          ]
         }
-      );
-
-      if ( !request.ok ) {
-        throw new Error(
-          ` actuaciones not ok, status: ${ request.status } with ${ request.statusText } idProceso: ${ idProceso } => headers: ${ request.headers }`
-        );
       }
+    );
+    console.log(
+      request.status 
+    );
 
-      const json = await request.json();
-
-      const consulta
-        = actuacionConvert.toConsultaActuacion(
-          JSON.stringify(
-            json 
-          )
-        );
-
-      const actuaciones = consulta.actuaciones;
-
-      return actuaciones;
-    } catch ( error ) {
-      if ( error instanceof Error ) {
-        console.log(
-          `${ idProceso }: error en la conexion network del fetchActuaciones => ${ error.name } : ${ error.message }`
-        );
-      }
-      console.log(
-        `${ idProceso }: : error en la conexion network del fetchActuaciones  =>  ${ error }`
+    if ( !request.ok ) {
+      throw new Error(
+        `fetch Actuaciones not ok: ${ request.status }: ${ request.statusText } del ${ idProceso }`
       );
-
-      return null;
     }
+
+    const json
+      = ( await request.json() ) as ConsultaActuacion;
+
+    const {
+      actuaciones 
+    } = json;
+
+    return actuaciones;
+  } catch ( error ) {
+    if ( error instanceof Error ) {
+      console.log(
+        `${ idProceso }: error en la conexion network del fetchActuaciones => ${ error.name } : ${ error.message }`
+      );
+    }
+    console.log(
+      `${ idProceso }: : error en la conexion network del fetchActuaciones  =>  ${ error }`
+    );
+
+    return null;
   }
-);
+}
 
 export const getActuaciones = cache(
   async (
     {
-      idProceso,
+      carpeta,
       index
     }: {
-    idProceso: number;
+    carpeta: MonCarpeta;
     index: number;
   } 
   ) => {
-    const awaitTime = index * 1000;
-
-    await sleep(
-      awaitTime 
-    );
+    if ( !carpeta.idProceso ) {
+      return null;
+    }
 
     const actuaciones = await fetchActuaciones(
-      idProceso
+      carpeta.idProceso,
+      index
     );
 
     if ( actuaciones ) {
-      await updateActuaciones(
-        {
-          idProceso  : idProceso,
-          actuaciones: actuaciones
-        } 
+      const ultimaActuacion = actuaciones[ 0 ];
+
+      const newDate = new Date(
+        ultimaActuacion.fechaActuacion
+      )
+            .toISOString();
+      console.log(
+        newDate 
       );
+
+      const oldDate = new Date(
+        carpeta.fecha ?? ''
+      )
+            .toISOString();
+      console.log(
+        oldDate 
+      );
+
+      if ( oldDate !== newDate ) {
+        await updateActuaciones(
+          {
+            idProceso  : carpeta.idProceso,
+            actuaciones: actuaciones
+          } 
+        );
+      }
     }
 
     return actuaciones;

@@ -66,8 +66,9 @@ self.addEventListener(
               error
             );
 
-            const cache = await caches.open(
-              CACHE_NAME
+            const cache
+            = await caches.open(
+              CACHE_NAME 
             );
 
             const cachedResponse

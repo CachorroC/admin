@@ -8,16 +8,18 @@ export async function POST(
   req: Request 
 ) {
   const {
-    cedula, password 
-  } = await req.json();
+    cedula, primerNombre, primerApellido 
+  }
+    = await req.json();
 
-  const exists = await prisma.user.findUnique(
-    {
-      where: {
-        cedula
-      }
-    } 
-  );
+  const exists
+    = await prisma.prismaDeudor.findUnique(
+      {
+        where: {
+          cedula
+        }
+      } 
+    );
 
   if ( exists ) {
     return NextResponse.json(
@@ -30,16 +32,26 @@ export async function POST(
     );
   }
 
-  const user = await prisma.user.create(
+  const user = await prisma.prismaDeudor.create(
+    {
+      data: {
+        cedula,
+        primerNombre,
+        primerApellido
+      }
+    } 
+  );
+
+  /*   const user = await prisma.prismaDeudor.create(
     {
       data: {
         cedula,
         password: await hash(
-          password, 10 
+          password, 10
         )
       }
-    } 
-  );
+    }
+  ); */
 
   return NextResponse.json(
     user 

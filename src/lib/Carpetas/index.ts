@@ -41,8 +41,7 @@ export const fetchCarpetas = cache(
           )
           .sort(
             {
-              categoryTag: 1,
-              numero     : -1
+              numero: -1
             } 
           )
           .allowDiskUse()
@@ -117,6 +116,31 @@ export const getCarpetaById = cache(
     const carpeta
       = carpetaConvert.toMonCarpeta(
         Carpeta 
+      );
+
+    return Carpeta;
+  }
+);
+
+export const getCarpetabyNumero = cache(
+  async (
+    numero: number 
+  ) => {
+    const collection = await carpetasCollection();
+
+    const carpeta = await collection.findOne(
+      {
+        numero: numero
+      } 
+    );
+
+    if ( !carpeta ) {
+      return null;
+    }
+
+    const Carpeta
+      = carpetaConvert.toMonCarpeta(
+        carpeta 
       );
 
     return Carpeta;

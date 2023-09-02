@@ -16,11 +16,13 @@ RUN \
   else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
   fi
 
-RUN pnpm add typescript-plugin-css-modules
+RUN pnpm add typescript-plugin-css-modules prisma
+COPY . .
 COPY src ./src
 COPY public ./public
 COPY next.config.js .
 COPY tsconfig.json .
+RUN npx prisma generate
 
 # Environment variables must be present at build time
 # https://github.com/vercel/next.js/discussions/14030
@@ -34,6 +36,7 @@ ENV NEXT_PUBLIC_ENV_VARIABLE=${NEXT_PUBLIC_ENV_VARIABLE}
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 # Build Next.js based on the preferred package manager
+RUN pnpx prisma generate
 RUN \
   if [ -f yarn.lock ]; then yarn build; \
   elif [ -f package-lock.json ]; then npm run build; \

@@ -64,7 +64,7 @@ export const DrawerMenuButton = () => {
       className={navbar.buttonDrawerMenu}
       onClick={() => {
         setIsNavOpen(
-          !isNavOpen
+          !isNavOpen 
         );
       }}>
       <span
@@ -115,7 +115,7 @@ export const ModalButton = () => {
       className={buttons.buttonModal}
       onClick={() => {
         setIsOpen(
-          !isOpen
+          !isOpen 
         );
       }}>
       <span

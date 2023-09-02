@@ -16,6 +16,7 @@ import typography from '#@/styles/fonts/typography.module.css';
 import { NoteSliderProvider } from './context/note-slider-context';
 import { Toaster } from 'react-hot-toast';
 import AuthStatus from '#@/components/auth-status';
+import './manifest';
 
 const hostname
   = process.env.URL
@@ -58,7 +59,6 @@ export const metadata: Metadata = {
     }
   ],
   creator        : 'Cachorro Cami',
-  manifest       : `https://${ hostname }/manifest.json`,
   publisher      : 'CachorroC',
   alternates     : {},
   formatDetection: {
@@ -144,9 +144,10 @@ export default function RootLayout(
           <SearchProvider>
             <ModalProvider>
               <NoteProvider>
+                {modal}
                 <div
                   className={`${ layout.container } ${ typography.container }`}>
-                  {modal} {header} {children}
+                  {header} {children}
                 </div>
               </NoteProvider>
             </ModalProvider>

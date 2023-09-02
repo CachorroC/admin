@@ -36,7 +36,8 @@ export async function GET() {
     );
 
     const actuaciones = await fetchActuaciones(
-      carpeta.idProceso ?? 1
+      carpeta.idProceso ?? 1,
+      indexOfCarpeta
     );
     console.timeEnd(
       indexOfCarpeta.toString() 

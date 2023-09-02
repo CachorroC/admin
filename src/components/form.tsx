@@ -12,13 +12,13 @@ export default function Form(
     type
   }: {
   type: 'login' | 'register';
-}
+} 
 ) {
   const [
     loading,
     setLoading
   ] = useState(
-    false
+    false 
   );
 
   const router = useRouter();
@@ -26,11 +26,11 @@ export default function Form(
   return (
     <form
       onSubmit={(
-        e
+        e 
       ) => {
         e.preventDefault();
         setLoading(
-          true
+          true 
         );
 
         if ( type === 'login' ) {
@@ -40,27 +40,26 @@ export default function Form(
               email   : e.currentTarget.email.value,
               password:
               e.currentTarget.password.value
-
-            }
+            } 
           )
                 .then(
                   (
-                    ff
+                    ff 
                   ) => {
                     if ( ff && ff.error ) {
                       setLoading(
-                        false
+                        false 
                       );
                       toast.error(
-                        ff.error
+                        ff.error 
                       );
                     } else {
                       router.refresh();
                       router.push(
-                        '/protected'
+                        '/protected' 
                       );
                     }
-                  }
+                  } 
                 );
         } else {
           fetch(
@@ -74,16 +73,16 @@ export default function Form(
                   email: e.currentTarget.email.value,
                   password:
                 e.currentTarget.password.value
-                }
+                } 
               )
-            }
+            } 
           )
                 .then(
                   async (
-                    res
+                    res 
                   ) => {
                     setLoading(
-                      false
+                      false 
                     );
 
                     if ( res.status === 200 ) {
@@ -93,19 +92,19 @@ export default function Form(
                       setTimeout(
                         () => {
                           router.push(
-                            '/login'
+                            '/login' 
                           );
-                        }, 2000
+                        }, 2000 
                       );
                     } else {
                       const {
-                        error
+                        error 
                       } = await res.json();
                       toast.error(
-                        error
+                        error 
                       );
                     }
-                  }
+                  } 
                 );
         }
       }}

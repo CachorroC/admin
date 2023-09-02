@@ -5,12 +5,15 @@ import { getActuaciones } from '#@/lib/Actuaciones';
 import { Fragment, Suspense } from 'react';
 import { Loader } from '#@/components/Loader';
 import { sleep } from '#@/lib/fix';
+import { MonCarpeta } from '#@/lib/types/carpeta';
 
 async function Acts(
   {
-    idProceso
+    idProceso,
+    carpeta
   }: {
   idProceso: number;
+  carpeta: MonCarpeta;
 } 
 ) {
   const awaitTime = 1000;
@@ -20,8 +23,8 @@ async function Acts(
 
   const actuaciones = await getActuaciones(
     {
-      idProceso: idProceso,
-      index    : 1
+      carpeta: carpeta,
+      index  : 1
     } 
   );
 
@@ -97,6 +100,7 @@ export default async function PageProcesosLeftllaveProceso(
           <Acts
             key={Carpeta._id}
             idProceso={Carpeta.idProceso}
+            carpeta={Carpeta}
           />
         )}
       </Suspense>

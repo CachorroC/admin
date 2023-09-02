@@ -1,35 +1,54 @@
-import { carpetaConvert } from '#@/lib/types/carpeta';
+import { carpetasCollection } from '#@/lib/Carpetas';
+import { IntCarpeta,
+         carpetaConvert } from '#@/lib/types/carpeta';
 import { NextRequest,
          NextResponse } from 'next/server';
 
-//? Peticiones a carpetas individuales y a pedir carpeta por llaveProceso
 export async function PUT(
   request: NextRequest,
   context: { params: { llaveProceso: string } }
 ) {
-  const json = await request.json();
-
-  const transform = JSON.stringify(
+  const json
+    = ( await request.json() ) as IntCarpeta;
+  console.log(
     json 
   );
 
-  const convert
-    = carpetaConvert.toIntCarpeta(
-      transform 
+  const collection = await carpetasCollection();
+
+  const update
+    = await collection.findOneAndUpdate(
+      {
+        llaveProceso:
+          json.llaveProceso
+          ?? context.params.llaveProceso
+      },
+      {
+        $set: json
+      },
+      {
+        upsert        : true,
+        returnDocument: 'after'
+      }
     );
-  console.log(
-    convert 
-  );
+
+  if ( update.value ) {
+    return new NextResponse(
+      JSON.stringify(
+        update.value 
+      ),
+      {
+        status : 200,
+        headers: {
+          'content-type': 'application/json'
+        }
+      }
+    );
+  }
 
   return new NextResponse(
-    JSON.stringify(
-      convert 
-    ),
-    {
-      status : 200,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
+    null, {
+      status: 304
+    } 
   );
 }

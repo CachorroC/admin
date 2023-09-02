@@ -7,7 +7,8 @@ import { Fragment,
          useEffect,
          useState } from 'react';
 import styles from './carpetas.module.css';
-import { getActuaciones } from '#@/lib/Actuaciones';
+import { fetchActuaciones,
+         getActuaciones } from '#@/lib/Actuaciones';
 import { Loader } from '#@/components/Loader';
 import { Card } from '#@/components/card/card';
 import { ProcesoCard } from '../ProcesosCard';
@@ -81,16 +82,9 @@ const Fecha = async (
   index: number;
 } 
 ) => {
-  const awaitTime = index * 1000;
-  await sleep(
-    awaitTime 
-  );
-
-  const acts = await getActuaciones(
-    {
-      idProceso: idProceso,
-      index    : index
-    } 
+  const acts = await fetchActuaciones(
+    idProceso,
+    index
   );
 
   if ( !acts ) {

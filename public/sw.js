@@ -13,9 +13,10 @@ self.addEventListener(
 
     event.waitUntil(
       ( async () => {
-        const cache = await caches.open(
-          CACHE_NAME
-        );
+        const cache
+          = await caches.open(
+            CACHE_NAME 
+          );
         // Setting {cache: 'reload'} in the new request will ensure that the response
         // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
         await cache.add(
@@ -83,8 +84,9 @@ self.addEventListener(
               error
             );
 
-            const cache = await caches.open(
-              CACHE_NAME
+            const cache
+            = await caches.open(
+              CACHE_NAME 
             );
 
             const cachedResponse

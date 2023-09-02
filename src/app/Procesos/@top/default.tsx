@@ -9,8 +9,6 @@ export default function Default() {
       <h1 className={typography.displayLarge}>
         Procesos
       </h1>
-      <CategoryFilterButton />
-
       <NewNota
         llaveProceso={'Procesos'}
         uri={getBaseUrl()}

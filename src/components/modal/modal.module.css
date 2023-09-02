@@ -22,7 +22,7 @@
   gap: 2vmin;
   padding: 2vmin;
   display: grid;
-  grid-template-areas: "forwardButton . backwardsButton" "forwardButton . backwardsButton" ". . ." ". . ." ". . ." ". . .";
+  grid-template-areas: 'forwardButton . backwardsButton' 'forwardButton . backwardsButton' '. . .' '. . .' '. . .' '. . .';
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: stretch;
@@ -58,7 +58,8 @@
   color: white;
   font-weight: bold;
 }
-.wrapper .content .header:hover > span, .wrapper .content .header:active > span {
+.wrapper .content .header:hover > span,
+.wrapper .content .header:active > span {
   color: #000;
   text-decoration: none;
   cursor: pointer;
