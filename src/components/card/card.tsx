@@ -3,7 +3,7 @@ import { Route } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode, useState } from 'react';
-import card from '#@/components/card/card.module.scss';
+import card from '#@/components/card/card.module.css';
 import { useModal } from '#@/app/modal-context';
 import typography from '#@/styles/fonts/typography.module.css';
 import { useCategory,
@@ -13,7 +13,7 @@ import { Deudor,
          IntCarpeta,
          MonCarpeta,
          NombreCompleto } from '#@/lib/types/carpeta';
-import { NombreComponent } from './Nombre';
+import { NombreComponent } from '../nombre';
 import { Router } from 'next/router';
 
 export const Card = (
@@ -25,22 +25,22 @@ export const Card = (
   path: string;
   carpeta: MonCarpeta;
   children: ReactNode;
-} 
+}
 ) => {
   const [
     openLinks,
     setOpenLinks
   ]
     = useState(
-      false 
+      false
     );
 
   const {
-    deudor 
+    deudor
   } = carpeta;
 
   const {
-    email, tel 
+    email, tel
   } = deudor;
 
   const [
@@ -61,10 +61,10 @@ export const Card = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false 
+      false
     );
     setIsOpen(
-      false 
+      false
     );
   };
 
@@ -100,7 +100,7 @@ export const Card = (
 
   function handleOpenLinks() {
     setOpenLinks(
-      !openLinks 
+      !openLinks
     );
   }
 
@@ -109,7 +109,7 @@ export const Card = (
       className={card.container}
       onClick={() => {
         setOpenLinks(
-          !openLinks 
+          !openLinks
         );
       }}>
       <div className={card.card}>
@@ -140,7 +140,7 @@ export const Card = (
                 file_open
               </span>
               <span className={card.tooltiptext}>
-                Actuaciones del proceso
+                {'Actuaciones del proceso'}
               </span>
             </Link>
             <Link
@@ -155,7 +155,7 @@ export const Card = (
                 folder_shared
               </span>
               <span className={card.tooltiptext}>
-                Perfil del Demandado
+                {'Perfil del Demandado'}
               </span>
             </Link>
             <Link
@@ -180,7 +180,7 @@ export const Card = (
               href={`/Notas/${ carpeta.llaveProceso }`}
               onClick={() => {
                 setIsOpen(
-                  true 
+                  true
                 );
               }}>
               <span
@@ -188,7 +188,7 @@ export const Card = (
                 add
               </span>
               <span className={card.tooltiptext}>
-                Agregar nota
+                {' Agregar nota'}
               </span>
             </Link>
             {email && (
@@ -203,7 +203,7 @@ export const Card = (
                 </span>
                 <span
                   className={card.tooltiptext}>
-                  Correo Electrónico
+                  {'Correo Electrónico'}
                 </span>
               </Link>
             )}

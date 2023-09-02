@@ -5,6 +5,11 @@ import { cache } from 'react';
 import { IntCarpeta,
          MonCarpeta,
          carpetaConvert } from '../types/carpeta';
+import { PrismaCarpeta,
+         PrismaClient,
+         PrismaDeudor } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export const revalidate = 86400; // revalidate the data at most every hour
 

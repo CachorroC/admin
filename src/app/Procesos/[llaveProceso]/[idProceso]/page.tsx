@@ -35,7 +35,7 @@ export default async function Page(
           return (
             <ActuacionCard
               act={actuacion}
-              key={actuacion.idRegActuacion}
+              key={index}
             />
           );
         }

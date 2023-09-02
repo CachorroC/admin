@@ -6,12 +6,12 @@
   box-sizing: border-box;
   background-color: var(--surface);
 }
-@media screen and (max-width: 600px) {
+@media (width < 600px) {
   .container {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(12, 1fr);
     grid-auto-flow: row;
-    grid-template-areas: 'header header header header' 'body body body body' 'body body body body' 'body body body body' 'body body body body' 'body body body body' 'body body body body' 'body body body body' 'body body body body' 'body body body body' 'body body body body' 'body body body body';
+    grid-template-areas: "header header header header" "body body body body" "body body body body" "body body body body" "body body body body" "body body body body" "body body body body" "body body body body" "body body body body" "body body body body" "body body body body" "body body body body";
   }
 }
 @media (600px < width < 1200px) {
@@ -19,14 +19,14 @@
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(12, 1fr);
     grid-auto-flow: row;
-    grid-template-areas: 'header header header header header header header header' 'body body body body body body body body' 'body body body body body body body body' 'body body body body body body body body' 'body body body body body body body body' 'body body body body body body body body' 'body body body body body body body body' 'body body body body body body body body' 'body body body body body body body body' 'body body body body body body body body' 'body body body body body body body body' 'body body body body body body body body';
+    grid-template-areas: "header header header header header header header header" "body body body body body body body body" "body body body body body body body body" "body body body body body body body body" "body body body body body body body body" "body body body body body body body body" "body body body body body body body body" "body body body body body body body body" "body body body body body body body body" "body body body body body body body body" "body body body body body body body body" "body body body body body body body body";
   }
 }
-@media screen and (min-width: 1200px) {
+@media (1200px < width) {
   .container {
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
-    grid-template-areas: 'header header header header header header header header header header header header' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body' 'body body body body body body body body body body body body';
+    grid-template-areas: "header header header header header header header header header header header header" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body" "body body body body body body body body body body body body";
   }
 }
 
@@ -103,18 +103,12 @@
   border-radius: 2vmin;
   box-shadow: var(--dp2);
 }
-.link:hover,
-.link:active {
+.link:hover, .link:active {
   background-color: var(--inverse-surface);
   color: var(--inverse-on-surface);
 }
-.link:hover > span,
-.link:active > span {
-  font-variation-settings:
-    'FILL' 1,
-    'wght' 600,
-    'GRAD' 200,
-    'opsz' 40;
+.link:hover > span, .link:active > span {
+  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 200, "opsz" 40;
 }
 
 @media screen and (max-width: 600px) {
@@ -162,7 +156,7 @@
     grid-template-rows: repeat(7, 1fr);
     box-sizing: border-box;
     grid-auto-flow: row;
-    grid-template-areas: 'name name name name' 'left left left left' 'left left left left' 'left left left left' 'left left left left' 'right right right right' 'right right right right';
+    grid-template-areas: "name name name name" "left left left left" "left left left left" "left left left left" "left left left left" "right right right right" "right right right right";
     grid-area: body;
   }
   .name {
@@ -229,7 +223,7 @@
     gap: 1% 1%;
     padding: 2vmin;
     grid-auto-flow: row;
-    grid-template-areas: 'name name name name name name name name name right right right' 'left left left left left left left left left right right right' 'left left left left left left left left left right right right' 'left left left left left left left left left right right right' 'left left left left left left left left left right right right' 'left left left left left left left left left right right right' 'left left left left left left left left left right right right' 'left left left left left left left left left right right right' 'left left left left left left left left left right right right';
+    grid-template-areas: "name name name name name name name name name right right right" "left left left left left left left left left right right right" "left left left left left left left left left right right right" "left left left left left left left left left right right right" "left left left left left left left left left right right right" "left left left left left left left left left right right right" "left left left left left left left left left right right right" "left left left left left left left left left right right right" "left left left left left left left left left right right right";
     grid-area: body;
   }
 }
@@ -259,5 +253,3 @@
     transform: rotate(360deg);
   }
 }
-
-/*# sourceMappingURL=layout.module.css.map */

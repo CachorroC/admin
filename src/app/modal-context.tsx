@@ -8,9 +8,9 @@ import { Dispatch,
 
 const ModalContext = createContext<
   | [boolean, Dispatch<SetStateAction<boolean>>]
-  | undefined
+  | null
 >(
-  undefined 
+  null
 );
 
 export function ModalProvider(
@@ -18,13 +18,13 @@ export function ModalProvider(
     children
   }: {
   children: ReactNode;
-} 
+}
 ) {
   const [
     isOpen,
     setIsOpen
   ] = useState(
-    true 
+    false
   );
 
   return (
@@ -40,10 +40,10 @@ export function ModalProvider(
 
 export function useModal() {
   const context = useContext(
-    ModalContext 
+    ModalContext
   );
 
-  if ( context === undefined ) {
+  if ( context === null ) {
     throw new Error(
       'useModal must be used within a ModalProvider'
     );

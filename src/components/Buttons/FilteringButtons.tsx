@@ -1,6 +1,7 @@
 'use client';
 
 import { useCategory } from '#@/app/search-context';
+import { useState } from 'react';
 import styles from './buttons.module.css';
 
 export const CategoryButton = (

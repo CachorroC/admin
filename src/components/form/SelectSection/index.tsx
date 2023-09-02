@@ -26,9 +26,12 @@ export const SelectSection = (
   };
 
   const {
-    register, control 
-  }
-    = useFormContext<IntCarpeta>();
+    register,
+    control,
+    formState: {
+      errors 
+    }
+  } = useFormContext<IntCarpeta>();
 
   const {
     field, fieldState 
@@ -44,12 +47,15 @@ export const SelectSection = (
     <section className={form.section}>
       <label
         className={`${ form.label } ${ typography.titleLarge }`}
-        htmlFor={field.name}>
+        htmlFor={name}>
         {title}
       </label>
 
       <select
-        {...register}
+        key={name}
+        {...register(
+          name, rules 
+        )}
         className={form.selectArea}>
         {options.map(
           (

@@ -14,37 +14,25 @@ import { ConsultaActuacion,
          actuacionConvert } from '#@/lib/types/actuaciones';
 import { MonCarpeta } from '#@/lib/types/carpeta';
 import { FechaActuacionComponent } from '../Actuacion/server-components';
+import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
+
+
+export const dynamic = 'force-dynamic';
+
+export const dynamicParams = true;
 
 export const metadata: Metadata = {
   title: 'Procesos'
 };
 
-export default async function PageProcesosLeft(
-  {
-    searchParams
-  }: {
-  searchParams: {
-    [key: string]: string | string[] | undefined;
-  };
-} 
-) {
-  const sortSearchParam = searchParams.sort;
-
-  if ( sortSearchParam ) {
-    const typeOfSearchparam
-      = typeof sortSearchParam;
-    console.log(
-      sortSearchParam 
-    );
-  }
-
+export default async function PageProcesosLeft() {
   const carpetasRaw = await getCarpetas();
 
   const carpetas = [
     ...carpetasRaw
   ].sort(
     (
-      a, b 
+      a, b
     ) => {
       const typeofA = typeof a.fecha;
 
@@ -59,14 +47,8 @@ export default async function PageProcesosLeft(
       }
 
       const x = a.fecha.toISOString();
-      console.log(
-        x 
-      );
 
       const y = b.fecha.toISOString();
-      console.log(
-        y 
-      );
 
       if ( x < y ) {
         return 1;
@@ -82,41 +64,36 @@ export default async function PageProcesosLeft(
 
   return (
     <>
-      {carpetas.map(
-        (
-          carpeta, index 
-        ) => {
-          const {
-            deudor 
-          } = carpeta;
+      <Suspense fallback={<SearchOutputListSkeleton />}>
+        {carpetas.map(
+          (
+            carpeta, index
+          ) => {
+            const {
+              deudor
+            } = carpeta;
 
-          const {
-            primerNombre,
-            segundoNombre,
-            primerApellido,
-            segundoApellido
-          } = deudor;
-
-          return (
-            <Card
-              path={'/Procesos'}
-              carpeta={carpeta}
-              key={carpeta._id}>
-              <Suspense
-                key={carpeta._id}
-                fallback={
-                  <Loader key={carpeta._id} />
-                }>
-                <FechaActuacionComponent
-                  carpeta={carpeta}
+            return (
+              <Card
+                path={'/Procesos'}
+                carpeta={carpeta}
+                key={carpeta._id}>
+                <Suspense
                   key={carpeta._id}
-                  index={index}
-                />
-              </Suspense>
-            </Card>
-          );
-        } 
-      )}
+                  fallback={
+                    <Loader key={carpeta._id} />
+                  }>
+                  <FechaActuacionComponent
+                    carpeta={carpeta}
+                    key={carpeta._id}
+                    index={index}
+                  />
+                </Suspense>
+              </Card>
+            );
+          }
+        )}
+      </Suspense>
     </>
   );
 }

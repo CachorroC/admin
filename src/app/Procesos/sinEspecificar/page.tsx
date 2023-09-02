@@ -45,11 +45,7 @@ export default async function NuevaCarpetaPage() {
       </div>
       <div className={layout.left}>
         <NuevaCarpetaProvider>
-          <NuevoProceso
-            uri={`${ getBaseUrl() }`}
-            descripciones={descripciones}
-            despachos={despachos}
-          />
+          <NuevoProceso despachos={despachos} />
         </NuevaCarpetaProvider>
       </div>
     </div>

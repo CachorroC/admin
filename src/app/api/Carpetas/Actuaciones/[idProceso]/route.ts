@@ -15,9 +15,6 @@ export async function GET() {
   const carpetas = await getCarpetas();
 
   const totalCarpetas = carpetas.length;
-  console.log(
-    totalCarpetas 
-  );
 
   for ( const carpeta of carpetas ) {
     CarpetasMap.set(
@@ -28,9 +25,6 @@ export async function GET() {
       = carpetas.indexOf(
         carpeta 
       );
-    console.time(
-      indexOfCarpeta.toString() 
-    );
     await sleep(
       1000 
     );
@@ -38,9 +32,6 @@ export async function GET() {
     const actuaciones = await fetchActuaciones(
       carpeta.idProceso ?? 1,
       indexOfCarpeta
-    );
-    console.timeEnd(
-      indexOfCarpeta.toString() 
     );
 
     if ( actuaciones ) {

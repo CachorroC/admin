@@ -1,15 +1,11 @@
-import { Collection, ObjectId } from 'mongodb';
-import { carpetasCollection,
-         getCarpetas,
-         getCarpetasByllaveProceso } from '../Carpetas';
-import { fetchDespachos } from '../global/Despachos';
-import { sleep } from '../fix';
-import clientPromise from '../mongodb';
-import { Proceso,
-         procesosConvert } from '../types/procesos';
-import { NextResponse } from 'next/server';
-import { Juzgado } from '../types/carpeta';
-import { despachosConvert } from '../types/despachos';
+
+import { carpetasCollection } from '#@/lib/Carpetas';
+import { sleep } from '#@/lib/fix';
+import clientPromise from '#@/lib/mongodb';
+import { ConsultaNumeroRadicacion,
+         Proceso } from '#@/lib/types/procesos';
+import { Juzgado } from '#@/lib/types/carpeta';
+import { Despacho } from '#@/lib/types/despachos';
 import { cache } from 'react';
 
 export const getDespachos = cache(
@@ -21,22 +17,14 @@ export const getDespachos = cache(
 
       if ( !request.ok ) {
         throw new Error(
-          'error en los despachos' 
+          'error en los despachos'
         );
       }
 
-      const response = await request.json();
+      const response
+      = ( await request.json() ) as Despacho[];
 
-      const json = JSON.stringify(
-        response 
-      );
-
-      const despachos
-      = despachosConvert.toDespacho(
-        json 
-      );
-
-      return despachos;
+      return response;
     } catch ( e ) {
       if ( e instanceof Error ) {
         console.log(
@@ -49,7 +37,7 @@ export const getDespachos = cache(
 
       return [];
     }
-  } 
+  }
 );
 
 export async function newJuzgado(
@@ -61,35 +49,35 @@ export async function newJuzgado(
 
   for ( const proceso of procesos ) {
     const indexOf = procesos.indexOf(
-      proceso 
+      proceso
     );
 
     const matchedDespacho = Despachos.find(
       (
-        despacho 
+        despacho
       ) => {
         const nDesp = despacho.nombre
               .toLowerCase()
               .normalize(
-                'NFD' 
+                'NFD'
               )
               .replace(
-                /\p{Diacritic}/gu, '' 
+                /\p{Diacritic}/gu, ''
               )
               .trim();
 
         const pDesp = proceso.despacho
               .toLowerCase()
               .normalize(
-                'NFD' 
+                'NFD'
               )
               .replace(
-                /\p{Diacritic}/gu, '' 
+                /\p{Diacritic}/gu, ''
               )
               .trim();
 
         const indexOfDesp = nDesp.indexOf(
-          pDesp 
+          pDesp
         );
 
         if ( indexOfDesp >= 0 ) {
@@ -107,11 +95,11 @@ export async function newJuzgado(
       : proceso.despacho;
 
     const matchedId = nameN.match(
-      /\d+/g 
+      /\d+/g
     );
 
     const newId = Number(
-      matchedId?.toString() 
+      matchedId?.toString()
     );
 
     const newJuzgado: Juzgado = {
@@ -123,17 +111,17 @@ export async function newJuzgado(
         ? `https://www.ramajudicial.gov.co${ matchedDespacho.url }`
         : `https://www.ramajudicial.gov.co${ proceso.despacho
               .replaceAll(
-                ' ', '-' 
+                ' ', '-'
               )
               .toLowerCase() }`
     };
     juzgados.set(
-      indexOf, newJuzgado 
+      indexOf, newJuzgado
     );
   }
 
   return Array.from(
-    juzgados.values() 
+    juzgados.values()
   );
 }
 
@@ -142,43 +130,48 @@ export const procesosCollection = async () => {
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico' 
+      'no hay cliente mongólico'
     );
   }
 
   const db = client.db(
-    'RyS' 
+    'RyS'
   );
 
   const carpetas
     = db.collection<Proceso>(
-      'Procesos' 
+      'Procesos'
     );
 
   return carpetas;
 };
 
 export async function fetchProceso(
-  {
-    llaveProceso,
-    index
-  }: {
-  llaveProceso: string;
-  index: number;
-} 
+  llaveProceso: string,
+  index: number
 ) {
+
+
   try {
-    if (
-      llaveProceso.length < 23
-      || llaveProceso === 'sinEspecificar'
-    ) {
+    await sleep(
+      index
+    );
+
+    if ( llaveProceso.length < 23 ) {
       throw new Error(
-        `${ index }: esta llaveProceso es menos de 23: ${ llaveProceso }`
+        `${ index } la llaveProceso no está bien estructurada: ${ llaveProceso }`
       );
     }
 
     const req = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=true`
+      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=true`,
+      {
+        next: {
+          tags: [
+            'procesos'
+          ]
+        }
+      }
     );
 
     if ( !req.ok ) {
@@ -187,21 +180,21 @@ export async function fetchProceso(
       );
     }
 
-    const json = await req.json();
+    const json
+      = ( await req.json() ) as ConsultaNumeroRadicacion;
 
-    const res
-      = procesosConvert.toConsultaNumeroRadicacion(
-        JSON.stringify(
-          json 
-        )
-      );
+    const {
+      procesos
+    } = json;
 
-    return res.procesos;
+    return procesos;
   } catch ( e ) {
     if ( e instanceof Error ) {
       console.log(
         `${ index }: ${ llaveProceso }: error en la conexion network del fetchProceso ${ e.name } : ${ e.message }`
       );
+
+      return null;
     }
     console.log(
       `${ index }: ${ llaveProceso }: : error en la conexion network del fetchProceso  =>  ${ e }`
@@ -219,47 +212,50 @@ export const getProceso = cache(
     }: {
     llaveProceso: string;
     index: number;
-  } 
+  }
   ) => {
-    await sleep(
-      index 
-    );
-
     const carpColl = await carpetasCollection();
 
     const fetchP = await fetchProceso(
-      {
-        llaveProceso: llaveProceso,
-        index       : index
-      } 
+      llaveProceso,
+      index
     );
 
     if ( fetchP ) {
       for ( const proceso of fetchP ) {
-        const juzgados = await newJuzgado(
-          fetchP 
-        );
+        if ( !proceso.esPrivado ) {
+          const juzgados
+            = await newJuzgado(
+              fetchP
+            );
 
-        const updt = await carpColl.updateOne(
-          {
-            llaveProceso: llaveProceso,
-            idProceso   : proceso.idProceso
-          },
-          {
-            $set: {
-              idProceso         : proceso.idProceso,
-              'demanda.juzgados': juzgados
+          const updt = await carpColl.updateOne(
+            {
+              $or: [
+                {
+                  idProceso: proceso.idProceso
+                },
+                {
+                  llaveProceso: llaveProceso
+                }
+              ]
+            },
+            {
+              $set: {
+                idProceso         : proceso.idProceso,
+                'demanda.juzgados': juzgados
+              }
             }
-          }
-        );
-
-        if (
-          updt.modifiedCount > 0
-          || updt.upsertedCount > 0
-        ) {
-          console.log(
-            ` se actualizaron ${ updt.modifiedCount } procesos y se insertaron ${ updt.upsertedCount } procesosn nuevos  `
           );
+
+          if (
+            updt.modifiedCount > 0
+            || updt.upsertedCount > 0
+          ) {
+            console.log(
+              ` se actualizaron ${ updt.modifiedCount } procesos y se insertaron ${ updt.upsertedCount } procesosn nuevos  `
+            );
+          }
         }
       }
     }

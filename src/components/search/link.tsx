@@ -12,7 +12,7 @@ import { useNavigator,
 import { useModal } from '#@/app/modal-context';
 import { Name } from '../Headings/clientSideName';
 import { useRouter } from 'next/navigation';
-import { NombreComponent } from '../card/Nombre';
+import { NombreComponent } from '../nombre';
 import { MonCarpeta } from '#@/lib/types/carpeta';
 
 export const LinkCard = (
@@ -22,7 +22,7 @@ export const LinkCard = (
   }: {
   path: string;
   carpeta: MonCarpeta;
-} 
+}
 ) => {
   const [
     isOpen,
@@ -47,7 +47,7 @@ export const LinkCard = (
   const isCarpeta = path === '/Carpetas';
 
   const {
-    cedula, direccion, tel, email 
+    cedula, direccion, tel, email
   }
     = deudor;
 
@@ -84,7 +84,7 @@ export const LinkCard = (
     = carpeta.nombre
           .toLowerCase()
           .indexOf(
-            search.toLowerCase() 
+            search.toLowerCase()
           ) === -1;
 
   return (
@@ -97,7 +97,7 @@ export const LinkCard = (
         }
         onClick={() => {
           return setIsNavOpen(
-            false 
+            false
           );
         }}
         className={
@@ -116,7 +116,7 @@ export const LinkCard = (
 
         <sub className={searchbar.date}>
           {fixFechas(
-            fecha 
+            fecha
           )}
         </sub>
       </Link>

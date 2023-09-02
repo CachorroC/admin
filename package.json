@@ -11,7 +11,8 @@
     "dev": "URL=beta.rsasesorjuridico.com NEXTAUTH_URL=https://beta.rsasesorjuridico.com next dev",
     "start": "next start",
     "db:migrate": "prisma migrate dev --name init --create-only && prisma generate",
-    "db:push": "prisma db push"
+    "db:push": "prisma db push",
+    "json-to-prisma": "json-to-prisma-schema-convertor convert --inputPath='./prisma/schema.json' --outputPath='./prisma/new/schema.prisma'"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -28,6 +29,7 @@
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
     "jose": "^4.14.4",
+    "json-to-prisma-schema-convertor": "^0.1.0",
     "material-symbols": "^0.11.0",
     "mongodb": "^5.8.1",
     "next": "^13.4.19",

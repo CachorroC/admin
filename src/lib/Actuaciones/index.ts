@@ -1,24 +1,24 @@
 import 'server-only';
 import { carpetasCollection } from '#@/lib/Carpetas';
-import { sleep } from '../fix';
+import { sleep } from '#@/lib/fix';
 import { cache } from 'react';
 import { Actuacion,
          ConsultaActuacion,
-         actuacionConvert } from '../types/actuaciones';
-import { MonCarpeta } from '../types/carpeta';
-import clientPromise from '../mongodb';
+         actuacionConvert } from '#@/lib/types/actuaciones';
+import { MonCarpeta } from '#@/lib/types/carpeta';
+import clientPromise from '#@/lib/mongodb';
 
 export const actuacionesCollection = async () => {
   const client = await clientPromise;
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico' 
+      'no hay cliente mongólico'
     );
   }
 
   const db = client.db(
-    'RyS' 
+    'RyS'
   );
 
   const actuaciones = db.collection<Actuacion>(
@@ -32,19 +32,14 @@ export async function fetchActuaciones(
   idProceso: number,
   index: number
 ) {
-  console.time(
-    index.toString() 
-  );
-  await sleep(
-    index 
-  );
-  console.timeEnd(
-    index.toString() 
-  );
 
   try {
+    await sleep(
+      index
+    );
+
     const request = await fetch(
-      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso.toString() }`,
+      `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`,
       {
         next: {
           revalidate: 259200,
@@ -53,9 +48,6 @@ export async function fetchActuaciones(
           ]
         }
       }
-    );
-    console.log(
-      request.status 
     );
 
     if ( !request.ok ) {
@@ -68,7 +60,7 @@ export async function fetchActuaciones(
       = ( await request.json() ) as ConsultaActuacion;
 
     const {
-      actuaciones 
+      actuaciones
     } = json;
 
     return actuaciones;
@@ -77,6 +69,8 @@ export async function fetchActuaciones(
       console.log(
         `${ idProceso }: error en la conexion network del fetchActuaciones => ${ error.name } : ${ error.message }`
       );
+
+      return null;
     }
     console.log(
       `${ idProceso }: : error en la conexion network del fetchActuaciones  =>  ${ error }`
@@ -94,7 +88,7 @@ export const getActuaciones = cache(
     }: {
     carpeta: MonCarpeta;
     index: number;
-  } 
+  }
   ) => {
     if ( !carpeta.idProceso ) {
       return null;
@@ -113,15 +107,17 @@ export const getActuaciones = cache(
       )
             .toISOString();
       console.log(
-        newDate 
+        `${ index } : ${ newDate }`
       );
 
-      const oldDate = new Date(
-        carpeta.fecha ?? ''
-      )
-            .toISOString();
+      const oldDate
+        = carpeta.fecha
+        && new Date(
+          carpeta.fecha
+        )
+              .toISOString();
       console.log(
-        oldDate 
+        `${ index } : ${ oldDate }`
       );
 
       if ( oldDate !== newDate ) {
@@ -129,7 +125,7 @@ export const getActuaciones = cache(
           {
             idProceso  : carpeta.idProceso,
             actuaciones: actuaciones
-          } 
+          }
         );
       }
     }
@@ -146,7 +142,7 @@ export const updateActuaciones = cache(
     }: {
     idProceso: number;
     actuaciones: Actuacion[];
-  } 
+  }
   ) => {
     const carpetasColl
       = await carpetasCollection();

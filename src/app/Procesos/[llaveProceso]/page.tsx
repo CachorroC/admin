@@ -9,18 +9,11 @@ import { MonCarpeta } from '#@/lib/types/carpeta';
 
 async function Acts(
   {
-    idProceso,
     carpeta
   }: {
-  idProceso: number;
   carpeta: MonCarpeta;
 } 
 ) {
-  const awaitTime = 1000;
-  await sleep(
-    awaitTime 
-  );
-
   const actuaciones = await getActuaciones(
     {
       carpeta: carpeta,
@@ -98,8 +91,7 @@ export default async function PageProcesosLeftllaveProceso(
         fallback={<Loader key={Carpeta._id} />}>
         {Carpeta.idProceso && (
           <Acts
-            key={Carpeta._id}
-            idProceso={Carpeta.idProceso}
+            key={Carpeta.idProceso}
             carpeta={Carpeta}
           />
         )}

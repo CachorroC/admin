@@ -2,18 +2,18 @@ import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import Link from 'next/link';
 import card from '#@/components/card/card.module.css';
-import { NombreComponent } from '#@/components/card/Nombre';
+import { NombreComponent } from '#@/components/nombre';
 import { notFound } from 'next/navigation';
 import { Route } from 'next';
 
 export default async function DefaultProcesosllaveProceso(
   {
     params: {
-      llaveProceso 
+      llaveProceso
     }
   }: {
   params: { llaveProceso: string };
-} 
+}
 ) {
   const Carpeta = await getCarpetasByllaveProceso(
     {

@@ -1,7 +1,7 @@
 import { fixDemandado,
          fixFechas } from '#@/lib/fix';
 import Link from 'next/link';
-import styles from './procesos.module.css';
+import styles from '#@/components/card/ProcesosCard/procesos.module.css';
 import typography from '#@/styles/fonts/typography.module.css';
 import type { Route } from 'next';
 import { Proceso } from '#@/lib/types/procesos';
@@ -13,10 +13,6 @@ export const ProcesoCard = (
   proceso: Proceso;
 } 
 ) => {
-  if ( !proceso ) {
-    return null;
-  }
-
   const {
     idProceso,
     llaveProceso,
@@ -42,7 +38,9 @@ export const ProcesoCard = (
     : null;
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      key={proceso.idProceso}>
       <div className={styles.card}>
         <h1
           className={`${ typography.titleLarge } ${ styles.title }`}>

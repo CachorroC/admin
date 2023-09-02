@@ -11,8 +11,8 @@ import { fetchActuaciones,
          getActuaciones } from '#@/lib/Actuaciones';
 import { Loader } from '#@/components/Loader';
 import { Card } from '#@/components/card/card';
-import { ProcesoCard } from '../ProcesosCard';
-import { NombreComponent } from '../Nombre';
+import { ProcesoCard } from '../ProcesosCard/card';
+import { NombreComponent } from '../../nombre';
 import { getProceso } from '#@/lib/Procesos';
 
 const ProcesosList = async (
@@ -22,13 +22,13 @@ const ProcesosList = async (
   }: {
   llaveProceso: string;
   index: number;
-} 
+}
 ) => {
   const procesos = await getProceso(
     {
       llaveProceso: llaveProceso,
       index       : index
-    } 
+    }
   );
 
   if ( !procesos ) {
@@ -59,7 +59,7 @@ const ProcesosList = async (
     <Fragment key={llaveProceso}>
       {procesos.map(
         (
-          proceso 
+          proceso
         ) => {
           return (
             <ProcesoCard
@@ -67,7 +67,7 @@ const ProcesosList = async (
               key={proceso.idProceso}
             />
           );
-        } 
+        }
       )}
     </Fragment>
   );
@@ -80,7 +80,7 @@ const Fecha = async (
   }: {
   idProceso: number;
   index: number;
-} 
+}
 ) => {
   const acts = await fetchActuaciones(
     idProceso,
@@ -107,7 +107,7 @@ export async function ListCardCarpetasNFechas() {
     ...carpetas
   ].sort(
     (
-      a, b 
+      a, b
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -137,7 +137,7 @@ export async function ListCardCarpetasNFechas() {
     <>
       {sortedCarpetas.map(
         (
-          carpeta, index, arr 
+          carpeta, index, arr
         ) => {
           return (
             <Fragment key={carpeta._id}>

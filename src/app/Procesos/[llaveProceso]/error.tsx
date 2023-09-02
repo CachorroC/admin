@@ -9,16 +9,16 @@ export default function Error(
   {
     error,
     reset
-  }: any 
+  }: any
 ) {
   useEffect(
     () => {
       console.log(
-        'logging error:', error 
+        'logging error:', error
       );
     }, [
       error
-    ] 
+    ]
   );
 
   return (
@@ -31,7 +31,7 @@ export default function Error(
         style={{
           color: 'var(--on-error-container)'
         }}>
-        Error
+        {' Error'}
       </h2>
       <p className={typography.bodyLarge}>
         {error?.message}

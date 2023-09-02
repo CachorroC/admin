@@ -9,7 +9,7 @@ export function NombreComponent(
     deudor
   }: {
   deudor: Deudor;
-} 
+}
 ) {
   const nombres = deudor.segundoNombre
     ? deudor.primerNombre
@@ -25,17 +25,12 @@ export function NombreComponent(
 
   const rawName = nombres + ' ' + apellidos;
 
-  const nameOutput = toNameString(
-    {
-      nameRaw: rawName
-    } 
-  );
 
   return (
     <h4
       key={deudor.cedula}
-      className={`${ typography.displaySmall } ${ card.title }`}>
-      {nameOutput}
+      className={`${ typography.displayMedium } ${ card.title }`}>
+      {rawName}
     </h4>
   );
 }

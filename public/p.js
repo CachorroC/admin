@@ -1,24 +1,17 @@
+const OFFLINE_VERSION = 1;
+
 const CACHE_NAME = 'offline';
 
 const OFFLINE_URL = 'offline.html';
-
 self.addEventListener(
-  'install',
-  function (
+  'install', (
     event 
-  ) {
-    console.log(
-      '[ServiceWorker] Install' 
-    );
-
+  ) => {
     event.waitUntil(
       ( async () => {
-        const cache
-          = await caches.open(
-            CACHE_NAME 
-          );
-        // Setting {cache: 'reload'} in the new request will ensure that the response
-        // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
+        const cache = await caches.open(
+          CACHE_NAME 
+        );
         await cache.add(
           new Request(
             OFFLINE_URL, {
@@ -28,22 +21,15 @@ self.addEventListener(
         );
       } )()
     );
-
     self.skipWaiting();
-  }
+  } 
 );
-
 self.addEventListener(
   'activate', (
     event 
   ) => {
-    console.log(
-      '[ServiceWorker] Activate' 
-    );
     event.waitUntil(
       ( async () => {
-      // Enable navigation preload if it's supported.
-      // See https://developers.google.com/web/updates/2017/02/navigation-preload
         if (
           'navigationPreload' in self.registration
         ) {
@@ -51,17 +37,13 @@ self.addEventListener(
         }
       } )()
     );
-
-    // Tell the active service worker to take control of the page immediately.
     self.clients.claim();
   } 
 );
-
 self.addEventListener(
-  'fetch', function (
+  'fetch', (
     event 
-  ) {
-  // console.log('[Service Worker] Fetch', event.request.url);
+  ) => {
     if ( event.request.mode === 'navigate' ) {
       event.respondWith(
         ( async () => {
@@ -80,7 +62,7 @@ self.addEventListener(
             return networkResponse;
           } catch ( error ) {
             console.log(
-              '[Service Worker] Fetch failed; returning offline page instead.',
+              'Fetch failed; returning offline page instead.',
               error
             );
 

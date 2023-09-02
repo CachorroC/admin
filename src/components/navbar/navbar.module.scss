@@ -59,7 +59,7 @@
 .button {
   border: none;
   border-radius: 2vmin;
-  flex: 1 1 auto;
+
   display: flex;
   flex-flow: column nowrap;
   justify-items: center;
@@ -69,6 +69,7 @@
   transition: all 0.3s;
   &Forward {
     @extend .button;
+    flex: 1 1 auto;
     grid-area: forwardButton;
     background-color: var(--primary-container);
     & > .icon {
@@ -77,6 +78,7 @@
   }
   &Backwards {
     @extend .button;
+    flex: 1 1 auto;
     background-color: var(--primary-container);
     grid-area: backwardsButton;
     & > .icon {
@@ -85,14 +87,16 @@
   }
   &DrawerMenu {
     @extend .button;
+    flex: 2 1 auto;
     grid-area: drawerMenuButton;
-    background-color: var(--primary-container);
+    background-color: var(--secondary);
     & > .icon {
-      color: var(--on-primary-container);
+      color: var(--on-secondary);
     }
   }
   &Home {
     @extend .button;
+    flex: 2 1 auto;
     grid-area: homeButton;
     box-shadow: var(--dp2);
     background-color: var(--primary);

@@ -16,12 +16,6 @@ export default function Fields(
   options: Despacho[];
 } 
 ) {
-  const [
-    despachoSelected,
-    setDespachoSelected
-  ]
-    = useState<Despacho>();
-
   const {
     register,
     control,

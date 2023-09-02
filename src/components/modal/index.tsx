@@ -19,18 +19,16 @@ export default function Modal(
     children
   }: {
   children: React.ReactNode;
-} 
+}
 ) {
-  const params = useParams();
 
-  const pathname = usePathname();
 
   const overlay = useRef(
-    null 
+    null
   );
 
   const wrapper = useRef(
-    null 
+    null
   );
 
   const router = useRouter();
@@ -43,36 +41,30 @@ export default function Modal(
   const onEnter = useCallback(
     () => {
       setIsOpen(
-        false 
-      );
-      router.push(
- pathname as Route 
+        false
       );
     }, [
-      router,
-      pathname,
+
       setIsOpen
-    ] 
+    ]
   );
 
   const onDismiss = useCallback(
     () => {
       setIsOpen(
-        isOpen
-          ? false
-          : true 
+        !isOpen
       );
       router.back();
     }, [
       router,
       setIsOpen,
       isOpen
-    ] 
+    ]
   );
 
   const onClick = useCallback(
     (
-      e: { target: undefined } 
+      e: { target: unknown; }
     ) => {
       if (
         e.target === overlay.current
@@ -97,7 +89,7 @@ export default function Modal(
 
   const onKeyDown = useCallback(
     (
-      e: { key: string } 
+      e: { key: string }
     ) => {
       if ( e.key === 'Escape' ) {
         onDismiss();
@@ -113,17 +105,14 @@ export default function Modal(
     ]
   );
 
-  const searchParams = useSearchParams();
   useEffect(
     () => {
       setIsOpen(
-        true 
+        true
       );
     }, [
-      pathname,
-      searchParams,
       setIsOpen
-    ] 
+    ]
   );
 
   if ( isOpen ) {

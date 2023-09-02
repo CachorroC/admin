@@ -69,14 +69,14 @@ export const NuevoProceso = (
   }: {
   despachos: Despacho[];
   carpeta?: IntCarpeta;
-} 
+}
 ) => {
   const methods = useForm<IntCarpeta>(
     {
       defaultValues,
       values          : carpeta,
       shouldFocusError: true
-    } 
+    }
   );
 
   const {
@@ -101,18 +101,28 @@ export const NuevoProceso = (
   const onSubmit: SubmitHandler<
     IntCarpeta
   > = async (
-    data 
+    data, e
   ) => {
     alert(
       JSON.stringify(
-        dirtyFields 
-      ) 
+        e
+      )
     );
     alert(
       JSON.stringify(
-        data 
-      ) 
+        dirtyFields
+      )
     );
+    alert(
+      JSON.stringify(
+        data
+      )
+    );
+
+    const newCarpeta: IntCarpeta = {
+      ...carpeta,
+      ...data
+    };
 
     const postNewNote = await fetch(
       `/api/Carpetas/${ data.llaveProceso }`,
@@ -122,7 +132,7 @@ export const NuevoProceso = (
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(
-          data 
+          newCarpeta
         )
       }
     );
@@ -131,8 +141,8 @@ export const NuevoProceso = (
 
     return alert(
       JSON.stringify(
-        nAlert 
-      ) 
+        nAlert
+      )
     );
   };
 
@@ -158,7 +168,7 @@ export const NuevoProceso = (
                 setFocus(
                   'numero', {
                     shouldSelect: true
-                  } 
+                  }
                 );
               }}>
               <span>{'numero'}</span>
@@ -170,7 +180,7 @@ export const NuevoProceso = (
                 setFocus(
                   'category', {
                     shouldSelect: true
-                  } 
+                  }
                 );
               }}>
               <span>{'categoria'}</span>
@@ -182,7 +192,7 @@ export const NuevoProceso = (
                 setFocus(
                   'llaveProceso', {
                     shouldSelect: true
-                  } 
+                  }
                 );
               }}>
               <span>{'expediente'}</span>
@@ -194,7 +204,7 @@ export const NuevoProceso = (
                 setFocus(
                   'tipoProceso', {
                     shouldSelect: true
-                  } 
+                  }
                 );
               }}>
               <span>{'tipo de proceso'}</span>
@@ -206,7 +216,7 @@ export const NuevoProceso = (
                 setFocus(
                   'deudor.primerNombre', {
                     shouldSelect: true
-                  } 
+                  }
                 );
               }}>
               <span>{'nombre'}</span>
@@ -218,7 +228,7 @@ export const NuevoProceso = (
                 setFocus(
                   'deudor.segundoNombre', {
                     shouldSelect: true
-                  } 
+                  }
                 );
               }}>
               <span>{'segundo nombre'}</span>
@@ -230,7 +240,7 @@ export const NuevoProceso = (
               <form
                 className={form.form}
                 onSubmit={handleSubmit(
-                  onSubmit 
+                  onSubmit
                 )}>
                 <section className={form.section}>
                   <section
@@ -307,6 +317,21 @@ export const NuevoProceso = (
                         pattern : /^\S+@\S+$/i
                       }}
                     />
+                    <section
+                      className={form.section}>
+                      <InputSection
+                        name={
+                          'deudor.tel.celular'
+                        }
+                        title={'celular'}
+                        type={'tel'}
+                      />
+                      <InputSection
+                        name={'deudor.tel.fijo'}
+                        title={'fijo'}
+                        type={'tel'}
+                      />
+                    </section>
                   </section>
 
                   <InputSection
@@ -321,9 +346,8 @@ export const NuevoProceso = (
                     name={'llaveProceso'}
                     title={'Expediente'}
                     rls={{
-                      required : true,
-                      maxLength: 23,
-                      minLength: 22
+                      required: true,
+                      pattern : /\d{23}/g
                     }}
                     type={'text'}
                   />
@@ -360,7 +384,9 @@ export const NuevoProceso = (
                       title={'Radicado'}
                       type={'text'}
                       rls={{
-                        required: true
+                        required: true,
+                        pattern:
+                          /\d{4}\s-\s\d{5}/g
                       }}
                     />
                     <InputSection
@@ -372,6 +398,59 @@ export const NuevoProceso = (
                       rls={{
                         required: true
                       }}
+                    />
+                    <InputSection
+                      name={
+                        'demanda.entregagarantiasAbogado'
+                      }
+                      title={
+                        'Entrega de Garantias'
+                      }
+                      type={'date'}
+                    />
+                    <InputSection
+                      name={
+                        'demanda.etapaProcesal'
+                      }
+                      title={'etapa procesal'}
+                      type={'text'}
+                    />
+                    <InputSection
+                      name={
+                        'demanda.fechaPresentacion'
+                      }
+                      title={
+                        'fecha de presentacion de la demanda'
+                      }
+                      type={'date'}
+                    />
+                    <InputSection
+                      name={'demanda.municipio'}
+                      title={'Municipio'}
+                      type={'textarea'}
+                    />
+                    <InputSection
+                      name={
+                        'demanda.obligacion.1'
+                      }
+                      title={'Obligacion'}
+                      type={'text'}
+                    />
+                    <InputSection
+                      name={
+                        'demanda.obligacion.2'
+                      }
+                      title={'Obligacion'}
+                      type={'text'}
+                    />
+                    <InputSection
+                      name={
+                        'demanda.vencimientoPagare'
+                      }
+                      title={
+                        'Vencimiento del pagaré'
+                      }
+                      type={'date'}
                     />
                   </section>
                 </section>

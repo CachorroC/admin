@@ -1,15 +1,15 @@
 import Title from '#@/components/Headings/title';
 import Drawer from '#@/components/navbar/drawer';
 import { getCarpetas } from '#@/lib/Carpetas';
-import { LinkCard } from '#@/components/search/link';
-import { ReactNode, Suspense } from 'react';
 import SearchOutputList from '#@/components/search/SearchProcesosOutput';
-import { BackwardsButton,
+import { ForwardButton,
+         BackwardsButton,
          DrawerMenuButton,
-         ForwardButton,
          HomeButton } from '#@/components/Buttons/NavButtons';
 import { Loader } from '#@/components/Loader';
-import layout from '#@/styles/layout.module.scss';
+import { Suspense } from 'react';
+import layout from '#@/styles/layout.module.css';
+import InputSearchBar from '#@/components/search/InputSearchBar';
 
 export default async function Default() {
   const carpetas = await getCarpetas();
@@ -17,11 +17,12 @@ export default async function Default() {
   return (
     <div className={layout.header}>
       <Suspense fallback={<Loader />}>
-        <DrawerMenuButton />
-      </Suspense>
-      <Suspense fallback={<Loader />}>
         <HomeButton />
       </Suspense>
+      <Suspense fallback={<Loader />}>
+        <InputSearchBar />
+      </Suspense>
+
       <Suspense fallback={<Loader />}>
         <ForwardButton />
       </Suspense>
@@ -29,7 +30,7 @@ export default async function Default() {
         <BackwardsButton />
       </Suspense>
       <Suspense fallback={<Loader />}>
-        <Title helper={'Procesos'} />
+        <DrawerMenuButton />
       </Suspense>
       <Suspense fallback={<Loader />}>
         <Drawer>

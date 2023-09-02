@@ -1,13 +1,13 @@
 import 'server-only';
 import { getCarpetasByllaveProceso } from '#@/lib/Carpetas';
-import { NombreComponent } from '../card/Nombre';
+import { NombreComponent } from '../nombre';
 
 export async function Name(
   {
     llaveProceso
   }: {
   llaveProceso: string;
-} 
+}
 ) {
   const proceso = await getCarpetasByllaveProceso(
     {

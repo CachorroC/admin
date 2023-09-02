@@ -13,18 +13,18 @@ datasource db {
 model PrismaCarpeta {
   numero       Int          @id @default(autoincrement())
   category     Category     @default(Bancolombia)
-  tipoProceso  TipoProceso
+  tipoProceso  String
   deudor       PrismaDeudor @relation(fields: [cedula], references: [cedula])
-  cedula       String       @unique
+  cedula       Int          @unique
   procesos     Proceso[]
   llaveProceso String       @unique
 }
 
 model Proceso {
-  idProceso            BigInt        @unique
+  idProceso            BigInt        @id
   idConexion           Int
   carpeta              PrismaCarpeta @relation(fields: [llaveProceso], references: [llaveProceso])
-  llaveProceso         String        @id
+  llaveProceso         String
   fechaProceso         DateTime
   fechaUltimaActuacion DateTime
   despacho             String
@@ -49,7 +49,7 @@ model Demanda {
   vencimientoPagare       DateTime
   juzgados                Juzgado[]
   expediente              String       @id
-  proceso                 Proceso      @relation(fields: [expediente], references: [llaveProceso])
+  proceso                 Proceso[]
 }
 
 model Juzgado {
@@ -62,9 +62,10 @@ model Juzgado {
 }
 
 model Actuacion {
-  proceso        Proceso   @relation(fields: [llaveProceso], references: [llaveProceso])
-  idRegActuacion Int       @unique
-  llaveProceso   String    @id
+  proceso        Proceso   @relation(fields: [idProceso], references: [idProceso])
+  idRegActuacion Int
+  idProceso      BigInt    @id
+  llaveProceso   String
   consActuacion  Int
   fechaActuacion DateTime
   actuacion      String
@@ -78,7 +79,7 @@ model Actuacion {
 }
 
 model PrismaDeudor {
-  cedula          String         @id @unique
+  cedula          Int            @id @unique
   primerNombre    String
   primerApellido  String
   direccion       String?
@@ -90,10 +91,10 @@ model PrismaDeudor {
 }
 
 model Telefono {
-  fijo    BigInt?
-  celular BigInt?
+  fijo    Int
+  celular Int
   deudor  PrismaDeudor @relation(fields: [cedula], references: [cedula])
-  cedula  String       @id
+  cedula  Int          @id
 }
 
 enum Category {
@@ -109,6 +110,10 @@ enum TipoProceso {
   PRENDARIO
   SINGULAR
   ACUMULADO
+  PRENDARO
+  HIPOTECARIA
+  HIPOTECARO
+  SOACHA
 }
 
 enum Departamento {

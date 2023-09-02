@@ -11,7 +11,7 @@ const NoteContext = createContext<
   | [boolean, Dispatch<SetStateAction<boolean>>]
   | null
 >(
-  null 
+  null
 );
 
 export function NoteProvider(
@@ -19,14 +19,14 @@ export function NoteProvider(
     children
   }: {
   children: ReactNode;
-} 
+}
 ) {
   const [
     isShowing,
     setIsShowing
   ]
     = useState(
-      false 
+      false
     );
 
   return (
@@ -42,12 +42,12 @@ export function NoteProvider(
 
 export function useNoter() {
   const context = useContext(
-    NoteContext 
+    NoteContext
   );
 
   if ( context === null ) {
     throw new Error(
-      'useModal must be used within NoteProvider'
+      'useNoter must be used within NoteProvider'
     );
   }
 

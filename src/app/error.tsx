@@ -9,16 +9,16 @@ export default function Error(
   {
     error,
     reset
-  }: any 
+  }: any
 ) {
   React.useEffect(
     () => {
       console.log(
-        'logging error:', error 
+        'logging error:', error
       );
     }, [
       error
-    ] 
+    ]
   );
 
   return (
@@ -34,7 +34,7 @@ export default function Error(
           style={{
             color: 'var(--on-error-container)'
           }}>
-          Error
+          {' Error'}
         </h2>
         <p className={typography.bodyLarge}>
           {error?.message}
@@ -46,7 +46,7 @@ export default function Error(
             return reset();
           }}
           className={navbar.button}>
-          Try Again
+          {'Reintentar'}
         </button>
       </div>
     </div>

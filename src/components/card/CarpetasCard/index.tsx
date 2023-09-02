@@ -9,7 +9,7 @@ import { fixFechas, fixMoney } from '#@/lib/fix';
 import { Loader } from '#@/components/Loader';
 import { ReactNode, Fragment } from 'react';
 import { Accordion } from '#@/components/Accordion';
-import { NombreComponent } from '../Nombre';
+import { NombreComponent } from '../../nombre';
 import card from '#@/components/card/card.module.css';
 
 export const DemandaContainer = (
@@ -17,7 +17,7 @@ export const DemandaContainer = (
     demanda
   }: {
   demanda: Demanda;
-} 
+}
 ) => {
   const {
     departamento,
@@ -35,9 +35,9 @@ export const DemandaContainer = (
         className={
           typography.titleMedium
         }>{`${ departamento }: ${ municipio }`}</h2>
-      {juzgados.map(
+      {juzgados && juzgados.map(
         (
-          despacho, index 
+          despacho, index
         ) => {
           switch ( index ) {
                   case 0:
@@ -85,7 +85,7 @@ export const DemandaContainer = (
           }
 
           return null;
-        } 
+        }
       )}
     </div>
   );
@@ -96,15 +96,15 @@ export const CarpetaCard = (
     carpeta
   }: {
   carpeta: MonCarpeta;
-} 
+}
 ) => {
   const {
-    llaveProceso, idProceso, _id 
+    llaveProceso, idProceso, _id
   }
     = carpeta;
 
   const {
-    tel, direccion, email 
+    tel, direccion, email
   }
     = carpeta.deudor;
 
@@ -220,7 +220,7 @@ export const CarpetaCard = (
                       carpeta.demanda
                             .capitalAdeudado
                     )
-                  } 
+                  }
                 )}
             </p>
           </div>

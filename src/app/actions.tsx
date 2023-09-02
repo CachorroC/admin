@@ -8,11 +8,3 @@ export async function RevalidateTagActuaciones() {
     'actuaciones' 
   );
 }
-
-export async function createNewDeudor(
-  deudor 
-) {
-  'use server';
-
-  const user = await prisma.Prisma;
-}

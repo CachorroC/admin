@@ -6,6 +6,50 @@ import { Fragment } from 'react';
 import card from '#@/components/card/card.module.scss';
 import { ConsultaActuacion,
          actuacionConvert } from '#@/lib/types/actuaciones';
+import { getProceso } from '#@/lib/Procesos';
+import { ProcesoCard } from '#@/components/card/ProcesosCard/card';
+
+export const ProcesoComponent = async (
+  {
+    carpeta,
+    index
+  }: {
+  carpeta: MonCarpeta;
+  index: number;
+}
+) => {
+  if ( !carpeta.llaveProceso ) {
+    return null;
+  }
+
+  const procesos = await getProceso(
+    {
+      llaveProceso: carpeta.llaveProceso,
+      index       : index
+    }
+  );
+
+  if ( !procesos || procesos.length === 0 ) {
+    return null;
+  }
+
+  return (
+    <Fragment key={carpeta.llaveProceso}>
+      {procesos.map(
+        (
+          proceso
+        ) => {
+          return (
+            <ProcesoCard
+              key={proceso.idProceso}
+              proceso={proceso}
+            />
+          );
+        }
+      )}
+    </Fragment>
+  );
+};
 
 export const FechaActuacionComponent = async (
   {
@@ -14,7 +58,7 @@ export const FechaActuacionComponent = async (
   }: {
   carpeta: MonCarpeta;
   index: number;
-} 
+}
 ) => {
   if ( !carpeta.idProceso ) {
     return null;
@@ -24,7 +68,7 @@ export const FechaActuacionComponent = async (
     {
       carpeta: carpeta,
       index  : index
-    } 
+    }
   );
 
   if (
