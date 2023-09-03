@@ -2,11 +2,11 @@ import card from '#@/components/card/card.module.css';
 import typography from '#@/styles/fonts/typography.module.css';
 import { Loader } from '../Loader';
 
-const  CardSkeleton= () => {
+const CardSkeleton = () => {
   return (
     <div className={card.container}>
-      <div className={ card.card }>
-        <div className={ card.section }>
+      <div className={card.card}>
+        <div className={card.section}>
           <sub
             className={`${ typography.labelSmall } ${ card.sub }`}>
             {'Numero'}
@@ -32,13 +32,9 @@ const  CardSkeleton= () => {
             </span>
           </button>
         </div>
-
-
       </div>
     </div>
   );
 };
-
-
 
 export default CardSkeleton;

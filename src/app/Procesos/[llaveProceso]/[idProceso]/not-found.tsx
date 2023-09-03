@@ -2,7 +2,8 @@ import typography from '#@/styles/fonts/typography.module.css';
 
 export default function NotFound() {
   return (
-    <div className={typography.bodyLarge}
+    <div
+      className={typography.bodyLarge}
       style={{
         backgroundColor: 'var(--error-container)',
         color          : 'var(--on-error-container)'

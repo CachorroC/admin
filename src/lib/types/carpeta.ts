@@ -114,41 +114,55 @@ export class carpetaConvert {
   public static toMonCarpeta(
     carpeta: WithId<IntCarpeta>
   ): MonCarpeta {
-    const pN = carpeta.deudor.primerNombre.charAt(
-      0
-    )
-          .toUpperCase() + carpeta.deudor.primerNombre.toLowerCase()
-          .slice(
-            1
-          );
-
-    const pA = carpeta.deudor.primerApellido.charAt(
-      0
-    )
-          .toUpperCase() + carpeta.deudor.primerApellido.toLowerCase()
-          .slice(
-            1
-          );
-
-    const sN = carpeta.deudor.segundoNombre && (
-      carpeta.deudor.segundoNombre.charAt(
-        0
-      )
-            .toUpperCase() + carpeta.deudor.segundoNombre.toLowerCase()
-            .slice(
-              1
+    const pN
+      = carpeta.deudor.primerNombre
+            .charAt(
+              0 
             )
-    );
-
-    const sA = carpeta.deudor.segundoApellido && (
-      carpeta.deudor.segundoApellido.charAt(
-        0
-      )
-            .toUpperCase() + carpeta.deudor.segundoApellido.toLowerCase()
+            .toUpperCase()
+      + carpeta.deudor.primerNombre
+            .toLowerCase()
             .slice(
-              1
+              1 
+            );
+
+    const pA
+      = carpeta.deudor.primerApellido
+            .charAt(
+              0 
             )
-    );
+            .toUpperCase()
+      + carpeta.deudor.primerApellido
+            .toLowerCase()
+            .slice(
+              1 
+            );
+
+    const sN
+      = carpeta.deudor.segundoNombre
+      && carpeta.deudor.segundoNombre
+            .charAt(
+              0 
+            )
+            .toUpperCase()
+        + carpeta.deudor.segundoNombre
+              .toLowerCase()
+              .slice(
+                1 
+              );
+
+    const sA
+      = carpeta.deudor.segundoApellido
+      && carpeta.deudor.segundoApellido
+            .charAt(
+              0 
+            )
+            .toUpperCase()
+        + carpeta.deudor.segundoApellido
+              .toLowerCase()
+              .slice(
+                1 
+              );
 
     return {
       ...carpeta,
@@ -161,7 +175,10 @@ export class carpetaConvert {
         segundoApellido: sA
       },
       get nombre() {
-        const nombres = this.deudor.primerNombre + ( this.deudor.segundoNombre && ' ' + this.deudor.segundoNombre );
+        const nombres
+          = this.deudor.primerNombre
+          + ( this.deudor.segundoNombre
+            && ' ' + this.deudor.segundoNombre );
 
         const apellidos = this.deudor
               .segundoApellido
@@ -181,10 +198,10 @@ export class carpetaConvert {
   ): MonCarpeta[] {
     const newCarpetas = carpetas.map(
       (
-        carpeta
+        carpeta 
       ) => {
         return this.toMonCarpeta(
-          carpeta
+          carpeta 
         );
       }
     );
@@ -195,7 +212,7 @@ export class carpetaConvert {
     json: string
   ): IntCarpeta[] {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -203,7 +220,7 @@ export class carpetaConvert {
     value: IntCarpeta[]
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
@@ -211,7 +228,7 @@ export class carpetaConvert {
     json: string
   ): IntCarpeta {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -219,7 +236,7 @@ export class carpetaConvert {
     value: IntCarpeta
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
@@ -227,7 +244,7 @@ export class carpetaConvert {
     json: string
   ): intDemanda {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -235,7 +252,7 @@ export class carpetaConvert {
     value: intDemanda
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
@@ -243,7 +260,7 @@ export class carpetaConvert {
     json: string
   ): Departamento {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -251,7 +268,7 @@ export class carpetaConvert {
     value: Departamento
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
@@ -259,7 +276,7 @@ export class carpetaConvert {
     json: string
   ): intJuzgado {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -267,7 +284,7 @@ export class carpetaConvert {
     value: intJuzgado
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
@@ -275,7 +292,7 @@ export class carpetaConvert {
     json: string
   ): intDeudor {
     return JSON.parse(
-      json
+      json 
     );
   }
 
@@ -283,23 +300,23 @@ export class carpetaConvert {
     value: intDeudor
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 
   public static toTel(
-    json: string
+    json: string 
   ): intTel {
     return JSON.parse(
-      json
+      json 
     );
   }
 
   public static telToJson(
-    value: intTel
+    value: intTel 
   ): string {
     return JSON.stringify(
-      value
+      value 
     );
   }
 }

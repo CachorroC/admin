@@ -19,9 +19,8 @@ export const LinkCard = (
   }: {
   path: string;
   carpeta: MonCarpeta;
-}
+} 
 ) => {
-
   const [
     search,
     setSearch
@@ -45,13 +44,11 @@ export const LinkCard = (
   ]
     = useNavigator();
 
-  const procesosHref = (
-    carpeta.llaveProceso
-      ? carpeta.idProceso
-        ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
-        : `${ path }/${ carpeta.llaveProceso }`
-      : `/Carpetas/${ carpeta.numero }`
-  ) ;
+  const procesosHref = carpeta.llaveProceso
+    ? carpeta.idProceso
+      ? `${ path }/${ carpeta.llaveProceso }/${ carpeta.idProceso }`
+      : `${ path }/${ carpeta.llaveProceso }`
+    : `/Carpetas/${ carpeta.numero }`;
 
   const isActive
     = pathname === procesosHref
@@ -65,25 +62,25 @@ export const LinkCard = (
     = carpeta.nombre
           .toLowerCase()
           .indexOf(
-            search.toLowerCase()
+            search.toLowerCase() 
           ) === -1;
 
   return (
-
-    <Link key={carpeta._id}
-      href={
-          procesosHref as Route
-      }
+    <Link
+      key={carpeta._id}
+      href={procesosHref as Route}
       onClick={() => {
         setIsNavOpen(
-          false
+          false 
         );
       }}
-      className={ searchbar.container }>
-      <div className={  isActive
-        ? searchbar.isActive
-        : searchbar.notActive}>
-
+      className={searchbar.container}>
+      <div
+        className={
+          isActive
+            ? searchbar.isActive
+            : searchbar.notActive
+        }>
         <sup
           className={`${
             !isSearch && searchbar.sub
@@ -91,17 +88,19 @@ export const LinkCard = (
           {carpeta.numero}
         </sup>
         <Suspense fallback={<Loader />}>
-           <NombreComponent key={carpeta._id} deudor={deudor} />
-       </Suspense>
+          <NombreComponent
+            key={carpeta._id}
+            deudor={deudor}
+          />
+        </Suspense>
         {Nombre}
 
         <sub className={searchbar.date}>
           {fixFechas(
-            fecha
+            fecha 
           )}
         </sub>
       </div>
     </Link>
-
   );
 };

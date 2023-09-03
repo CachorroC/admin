@@ -70,18 +70,18 @@ $MaxSW: 480px; //maximum sma width
   }
 }
 
-   .header{
-     display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: stretch;
-    grid-area: header;
-    border-radius: 0 0 2vmin 2vmin;
-    gap: 1vmin;
-    padding: 1vmin;
-    box-shadow: var(--dp6);
-    background-color: var(--nav-background);
-  }
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  grid-area: header;
+  border-radius: 0 0 2vmin 2vmin;
+  gap: 1vmin;
+  padding: 1vmin;
+  box-shadow: var(--dp6);
+  background-color: var(--nav-background);
+}
 .right {
   display: flex;
   flex-wrap: nowrap;
@@ -99,8 +99,8 @@ $MaxSW: 480px; //maximum sma width
   & > * {
     flex: 1 0 auto;
   }
-  @media (width < 600px){
-    display:none;
+  @media (width < 600px) {
+    display: none;
   }
 }
 
@@ -119,10 +119,9 @@ $MaxSW: 480px; //maximum sma width
   & > * {
     flex: 1 1 100%;
   }
-  @media(1200px<width){
- flex-flow: row nowrap;
+  @media (1200px<width) {
+    flex-flow: row nowrap;
   }
-
 }
 
 .left {
@@ -231,19 +230,16 @@ $MaxSW: 480px; //maximum sma width
     box-sizing: border-box;
     grid-auto-flow: row;
     grid-template-areas:
-
       'left left left left'
       'left left left left'
       'left left left left'
       'left left left left'
-       'left left left left'
-        'left left left left'
-
+      'left left left left'
+      'left left left left'
       'name name name name'
       'name name name name';
     grid-area: body;
   }
-
 
   .left {
     display: flex;
@@ -257,13 +253,10 @@ $MaxSW: 480px; //maximum sma width
       box-sizing: border-box;
     }
   }
-
-
 }
 
 @media screen and (min-width: 1200px) {
   .header {
-
     .sidenav {
       display: grid;
       grid-template-columns: repeat(3, 1fr);

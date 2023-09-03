@@ -18,7 +18,7 @@ export function Edit(
     nota
   }: {
   nota: monNota;
-}
+} 
 ) {
   const {
     register,
@@ -26,24 +26,24 @@ export function Edit(
     setValue,
     handleSubmit,
     formState: {
-      errors
+      errors 
     }
   } = useForm<intNotaFormValues>();
 
   const {
-    fields, append, remove
+    fields, append, remove 
   }
     = useFieldArray(
       {
         name: 'tareas',
         control
-      }
+      } 
     );
 
   const onSubmit: SubmitHandler<
     intNotaFormValues
   > = async (
-    data: intNotaFormValues
+    data: intNotaFormValues 
   ) => {
     const newData = {
       ...data,
@@ -53,8 +53,8 @@ export function Edit(
     };
     alert(
       JSON.stringify(
-        newData
-      )
+        newData 
+      ) 
     );
 
     const postNewNote = await fetch(
@@ -65,26 +65,26 @@ export function Edit(
           'content-type': 'application/json'
         },
         body: JSON.stringify(
-          newData
+          newData 
         )
       }
     )
           .then(
             (
-              fullfilled
+              fullfilled 
             ) => {
               alert(
-                fullfilled.status
+                fullfilled.status 
               );
 
               return fullfilled;
-            }
+            } 
           );
 
     const responsePostNewNote
       = await postNewNote.json();
     alert(
-      responsePostNewNote
+      responsePostNewNote 
     );
 
     return responsePostNewNote;
@@ -95,7 +95,7 @@ export function Edit(
       <form
         className={note.form}
         onSubmit={handleSubmit(
-          onSubmit
+          onSubmit 
         )}>
         <div className={note.section}>
           <label
@@ -109,13 +109,13 @@ export function Edit(
             {...register(
               'nota', {
                 required: true
-              }
+              } 
             )}
           />
         </div>
         {nota.tareas.map(
           (
-            field, index
+            field, index 
           ) => {
             return (
               <Fragment key={field.tarea}>
@@ -173,7 +173,7 @@ export function Edit(
                     type='button'
                     onClick={() => {
                       return remove(
-                        index
+                        index 
                       );
                     }}>
                     <span className='material-symbols-outlined'>
@@ -191,7 +191,7 @@ export function Edit(
                           dueDate:
                         new Date()
                               .toISOString()
-                        }
+                        } 
                       );
                     }}>
                     <span className='material-symbols-outlined'>
@@ -201,7 +201,7 @@ export function Edit(
                 </div>
               </Fragment>
             );
-          }
+          } 
         )}
         <div className={note.section}>
           <button
@@ -215,7 +215,7 @@ export function Edit(
             type='button'
             onClick={() => {
               setValue(
-                'nota', nota.nota
+                'nota', nota.nota 
               );
             }}>
             Set All Values

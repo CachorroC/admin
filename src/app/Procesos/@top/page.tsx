@@ -1,4 +1,3 @@
-
 import typography from '#@/styles/fonts/typography.module.css';
 import { CategoryFilterButton } from '#@/components/Buttons/FilteringButtons';
 

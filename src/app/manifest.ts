@@ -21,13 +21,14 @@ export default function manifest(): MetadataRoute.Manifest {
     prefer_related_applications: false,
     display                    : 'standalone',
     share_target               : {
-      action : '/api',
-      method : 'get',
-      url    : 'link',
-      title  : 'name',
-      text   : 'descripcion',
-      enctype: 'application/x-www-form-urlencoded',
-      params : [
+      action: '/api',
+      method: 'get',
+      url   : 'link',
+      title : 'name',
+      text  : 'descripcion',
+      enctype:
+        'application/x-www-form-urlencoded',
+      params: [
         {
           name    : 'idk',
           value   : 'godKnows',
@@ -40,7 +41,7 @@ export default function manifest(): MetadataRoute.Manifest {
       'Somos una firma legal comprometida con brindar something',
     display_override: [
       'fullscreen',
-      'minimal-ui',
+      'minimal-ui'
     ],
     shortcuts: [
       {
@@ -180,7 +181,7 @@ export default function manifest(): MetadataRoute.Manifest {
         sizes  : '512x512',
         type   : 'image/png',
         purpose: 'maskable'
-      },
+      }
     ]
   };
 }

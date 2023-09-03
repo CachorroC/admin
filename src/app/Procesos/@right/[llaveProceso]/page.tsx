@@ -13,29 +13,34 @@ export default async function PageProcesosRightllaveProceso(
   params: {
     llaveProceso: string;
   };
-}
+} 
 ) {
   const notas = await getNotasByllaveProceso(
     {
       llaveProceso: params.llaveProceso
-    }
+    } 
   );
 
   return (
     <Fragment key={'pageRightllaveProceso'}>
       <p>page</p>
       <NewNota
-        llaveProceso={ params.llaveProceso }
+        llaveProceso={params.llaveProceso}
         key={params.llaveProceso}
       />
-      { notas.map(
+      {notas.map(
         (
-          nota, index, arr
+          nota, index, arr 
         ) => {
           return (
-            <Nota notaRaw={ nota } key={nota._id} i={ index } arr={ arr} />
+            <Nota
+              notaRaw={nota}
+              key={nota._id}
+              i={index}
+              arr={arr}
+            />
           );
-        }
+        } 
       )}
     </Fragment>
   );

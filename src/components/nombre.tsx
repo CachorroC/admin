@@ -1,5 +1,5 @@
 import typography from '#@/styles/fonts/typography.module.css';
-import {intDeudor } from '#@/lib/types/carpeta';
+import { intDeudor } from '#@/lib/types/carpeta';
 import card from '#@/components/card/card.module.scss';
 
 export function NombreComponent(
@@ -7,7 +7,7 @@ export function NombreComponent(
     deudor
   }: {
   deudor: intDeudor;
-}
+} 
 ) {
   const nombres = deudor.segundoNombre
     ? deudor.primerNombre
@@ -22,7 +22,6 @@ export function NombreComponent(
     : deudor.primerApellido;
 
   const rawName = nombres + ' ' + apellidos;
-
 
   return (
     <h4

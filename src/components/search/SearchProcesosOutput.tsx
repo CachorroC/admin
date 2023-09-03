@@ -18,7 +18,7 @@ export default function SearchOutputList(
   }: {
   path: string;
   fechas: MonCarpeta[];
-}
+} 
 ) {
   const pathname = usePathname();
 
@@ -31,23 +31,23 @@ export default function SearchOutputList(
     any,
     any
   > | null>(
-    null
+    null 
   );
 
   function scrollToId(
-    _id: string
+    _id: string 
   ) {
     const map = getMap();
 
     const node = map.get(
-      _id
+      _id 
     );
     node.scrollIntoView(
       {
         behavior: 'smooth',
         block   : 'nearest',
         inline  : 'center'
-      }
+      } 
     );
     node.focus();
   }
@@ -62,7 +62,7 @@ export default function SearchOutputList(
 
   const clickHandler = () => {
     setIsNavOpen(
-      false
+      false 
     );
   };
 
@@ -82,7 +82,7 @@ export default function SearchOutputList(
     ...fechas
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       if ( !a.fecha || a.fecha === undefined ) {
         return 1;
@@ -105,17 +105,17 @@ export default function SearchOutputList(
       }
 
       return 0;
-    }
+    } 
   );
   fechas.forEach(
     (
-      proceso, index, array
+      proceso, index, array 
     ) => {
       if (
         proceso.nombre
               .toLowerCase()
               .indexOf(
-                search.toLowerCase()
+                search.toLowerCase() 
               ) === -1
       ) {
         return;
@@ -127,7 +127,7 @@ export default function SearchOutputList(
           key={proceso._id}
         />
       );
-    }
+    } 
   );
 
   return <>{rows}</>;

@@ -11,11 +11,11 @@ import { Loader } from '#@/components/Loader';
 export default async function DefaultProcesosllaveProceso(
   {
     params: {
-      llaveProceso
+      llaveProceso 
     }
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   const Carpeta = await getCarpetasByllaveProceso(
     {
@@ -25,17 +25,19 @@ export default async function DefaultProcesosllaveProceso(
 
   return (
     <>
-      { Carpeta && (
-        <Fragment key={ llaveProceso }>
+      {Carpeta && (
+        <Fragment key={llaveProceso}>
           <Suspense fallback={<Loader />}>
-             <NombreComponent
-            key={ Carpeta._id }
-            deudor={ Carpeta.deudor } />
-         </Suspense>
+            <NombreComponent
+              key={Carpeta._id}
+              deudor={Carpeta.deudor}
+            />
+          </Suspense>
 
           <CarpetaCard
-            key={ Carpeta._id }
-            carpeta={ Carpeta } />
+            key={Carpeta._id}
+            carpeta={Carpeta}
+          />
         </Fragment>
       )}
     </>

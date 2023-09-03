@@ -15,7 +15,9 @@ export default function NotFound() {
           style={{
             color: 'var(--on-error-container)'
           }}>
-          {' No pudimos resolver la consulta que realizaste. No existe el recurso'}
+          {
+            ' No pudimos resolver la consulta que realizaste. No existe el recurso'
+          }
         </p>
       </div>
     </div>

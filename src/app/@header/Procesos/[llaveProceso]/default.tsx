@@ -7,7 +7,7 @@ export default async function Page(
     params
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   const proceso = await getCarpetasByllaveProceso(
     {

@@ -11,22 +11,22 @@ export default async function Page(
   searchParams: {
     [key: string]: string | string[] | undefined;
   };
-}
+} 
 ) {
   const rows = [];
 
   const collection = await carpetasCollection();
 
   console.log(
-    searchParams
+    searchParams 
   );
 
   const carpetas = await collection
         .find(
-          {}
+          {} 
         )
         .sort(
- searchParams as Sort
+ searchParams as Sort 
         )
         .toArray();
 
@@ -34,22 +34,22 @@ export default async function Page(
     <>
       {carpetas.map(
         (
-          carpeta
+          carpeta 
         ) => {
           const carpetaC
           = carpetaConvert.toMonCarpeta(
-            carpeta
+            carpeta 
           );
 
           return (
             <Card
-              key={ carpetaC._id }
-              path={ '/Procesos' }
-              carpeta={ carpetaC } >
+              key={carpetaC._id}
+              path={'/Procesos'}
+              carpeta={carpetaC}>
               <p>{carpeta.llaveProceso}</p>
             </Card>
           );
-        }
+        } 
       )}
     </>
   );

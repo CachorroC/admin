@@ -1,4 +1,3 @@
-
 import { Fragment, Suspense } from 'react';
 import { getCarpetas } from '#@/lib/Carpetas';
 import { Card } from '#@/components/card/card';
@@ -6,7 +5,6 @@ import { Metadata } from 'next';
 import { Loader } from '#@/components/Loader';
 import { FechaActuacionComponent } from '../Actuacion/server-components';
 import SearchOutputListSkeleton from '#@/components/search/SearchProcesosOutputSkeleton';
-
 
 export const dynamic = 'force-dynamic';
 
@@ -23,7 +21,7 @@ export default async function PageProcesosLeft() {
     ...carpetasRaw
   ].sort(
     (
-      a, b
+      a, b 
     ) => {
       const typeofA = typeof a.fecha;
 
@@ -55,13 +53,14 @@ export default async function PageProcesosLeft() {
 
   return (
     <>
-      <Suspense fallback={<SearchOutputListSkeleton />}>
+      <Suspense
+        fallback={<SearchOutputListSkeleton />}>
         {carpetas.map(
           (
-            carpeta, index
+            carpeta, index 
           ) => {
             const {
-              deudor
+              deudor 
             } = carpeta;
 
             return (
@@ -82,7 +81,7 @@ export default async function PageProcesosLeft() {
                 </Suspense>
               </Card>
             );
-          }
+          } 
         )}
       </Suspense>
     </>

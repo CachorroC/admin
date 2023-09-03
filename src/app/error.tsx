@@ -9,16 +9,16 @@ export default function Error(
   {
     error,
     reset
-  }: any
+  }: any 
 ) {
   React.useEffect(
     () => {
       console.log(
-        'logging error:', error
+        'logging error:', error 
       );
     }, [
       error
-    ]
+    ] 
   );
 
   return (

@@ -1,37 +1,42 @@
-import { Category, intDemanda, intDeudor, IntCarpeta, TipoProceso, intTel } from '../types/carpeta';
+import { Category,
+         intDemanda,
+         intDeudor,
+         IntCarpeta,
+         TipoProceso,
+         intTel } from '../types/carpeta';
 
 export class Tel implements intTel {
   fijo: number | null;
   celular: number | null;
   constructor(
-    telefono: string
+    telefono: string 
   ) {
     const celularStringArray
       = telefono.match(
-        /\d{10}/g
+        /\d{10}/g 
       );
 
     const fijoStringArray
       = telefono.match(
-        /\d{7}\s/g
+        /\d{7}\s/g 
       );
 
     const celularNumber = celularStringArray?.map(
       (
-        f
+        f 
       ) => {
         return Number(
-          f
+          f 
         );
       }
     );
 
     const fijoNumber = fijoStringArray?.map(
       (
-        f
+        f 
       ) => {
         return Number(
-          f
+          f 
         );
       }
     );
@@ -39,15 +44,21 @@ export class Tel implements intTel {
     this.fijo = fijoNumber
       ? fijoNumber[ 0 ]
       : null;
-    this.celular
-      = celularNumber
-        ? celularNumber[ 0 ]
-        : null;
+    this.celular = celularNumber
+      ? celularNumber[ 0 ]
+      : null;
   }
 }
 class Deudor implements intDeudor {
-  constructor (
-    cedula: number | string, tel: { fijo: number;  celular: number}, primerNombre: string, primerApellido: string, segundoNombre?: string, segundoApellido?: string, direccion?: string, email?: string,
+  constructor(
+    cedula: number | string,
+    tel: { fijo: number; celular: number },
+    primerNombre: string,
+    primerApellido: string,
+    segundoNombre?: string,
+    segundoApellido?: string,
+    direccion?: string,
+    email?: string
   ) {
     this.tel = {
       fijo   : tel.fijo,
@@ -57,10 +68,11 @@ class Deudor implements intDeudor {
     this.segundoNombre = segundoNombre;
     this.primerApellido = primerApellido;
     this.segundoApellido = segundoApellido;
-    this.cedula = Number( cedula )
+    this.cedula = Number(
+      cedula 
+    );
     this.direccion = direccion;
-    this.email = email
-
+    this.email = email;
   }
   tel: intTel;
   primerNombre: string;
@@ -71,9 +83,13 @@ class Deudor implements intDeudor {
   direccion?: string | undefined;
   email?: string | undefined;
 }
-class Carpeta implements IntCarpeta{
-  constructor (
-    category: Category, numero: number, llaveProceso: string, tipoProceso: TipoProceso, idProceso?: number | undefined
+class Carpeta implements IntCarpeta {
+  constructor(
+    category: Category,
+    numero: number,
+    llaveProceso: string,
+    tipoProceso: TipoProceso,
+    idProceso?: number | undefined
   ) {
     const categories = [
       'nn',
@@ -86,13 +102,12 @@ class Carpeta implements IntCarpeta{
     this.category = category;
     this.numero = numero;
     this.llaveProceso = llaveProceso;
-    this.idProceso = idProceso,
-    this.tipoProceso = tipoProceso;
-    this.categoryTag = categories.indexOf(
-      category
-    );
-
-
+    ( this.idProceso = idProceso ),
+    ( this.tipoProceso = tipoProceso );
+    this.categoryTag
+      = categories.indexOf(
+        category 
+      );
   }
   demanda: Demanda;
   deudor: Deudor;

@@ -1,4 +1,3 @@
-
 import { carpetasCollection } from '#@/lib/Carpetas';
 import { sleep } from '#@/lib/fix';
 import clientPromise from '#@/lib/mongodb';
@@ -17,7 +16,7 @@ export const getDespachos = cache(
 
       if ( !request.ok ) {
         throw new Error(
-          'error en los despachos'
+          'error en los despachos' 
         );
       }
 
@@ -37,7 +36,7 @@ export const getDespachos = cache(
 
       return [];
     }
-  }
+  } 
 );
 
 export async function newJuzgado(
@@ -49,35 +48,35 @@ export async function newJuzgado(
 
   for ( const proceso of procesos ) {
     const indexOf = procesos.indexOf(
-      proceso
+      proceso 
     );
 
     const matchedDespacho = Despachos.find(
       (
-        despacho
+        despacho 
       ) => {
         const nDesp = despacho.nombre
               .toLowerCase()
               .normalize(
-                'NFD'
+                'NFD' 
               )
               .replace(
-                /\p{Diacritic}/gu, ''
+                /\p{Diacritic}/gu, '' 
               )
               .trim();
 
         const pDesp = proceso.despacho
               .toLowerCase()
               .normalize(
-                'NFD'
+                'NFD' 
               )
               .replace(
-                /\p{Diacritic}/gu, ''
+                /\p{Diacritic}/gu, '' 
               )
               .trim();
 
         const indexOfDesp = nDesp.indexOf(
-          pDesp
+          pDesp 
         );
 
         if ( indexOfDesp >= 0 ) {
@@ -95,11 +94,11 @@ export async function newJuzgado(
       : proceso.despacho;
 
     const matchedId = nameN.match(
-      /\d+/g
+      /\d+/g 
     );
 
     const newId = Number(
-      matchedId?.toString()
+      matchedId?.toString() 
     );
 
     const newJuzgado: intJuzgado = {
@@ -111,17 +110,17 @@ export async function newJuzgado(
         ? `https://www.ramajudicial.gov.co${ matchedDespacho.url }`
         : `https://www.ramajudicial.gov.co${ proceso.despacho
               .replaceAll(
-                ' ', '-'
+                ' ', '-' 
               )
               .toLowerCase() }`
     };
     juzgados.set(
-      indexOf, newJuzgado
+      indexOf, newJuzgado 
     );
   }
 
   return Array.from(
-    juzgados.values()
+    juzgados.values() 
   );
 }
 
@@ -130,17 +129,17 @@ export const procesosCollection = async () => {
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico'
+      'no hay cliente mongólico' 
     );
   }
 
   const db = client.db(
-    'RyS'
+    'RyS' 
   );
 
   const carpetas
     = db.collection<Proceso>(
-      'Procesos'
+      'Procesos' 
     );
 
   return carpetas;
@@ -150,11 +149,9 @@ export async function fetchProceso(
   llaveProceso: string,
   index: number
 ) {
-
-
   try {
     await sleep(
-      index
+      index 
     );
 
     if ( llaveProceso.length < 23 ) {
@@ -184,7 +181,7 @@ export async function fetchProceso(
       = ( await req.json() ) as ConsultaNumeroRadicacion;
 
     const {
-      procesos
+      procesos 
     } = json;
 
     return procesos;
@@ -212,7 +209,7 @@ export const getProceso = cache(
     }: {
     llaveProceso: string;
     index: number;
-  }
+  } 
   ) => {
     const carpColl = await carpetasCollection();
 
@@ -226,7 +223,7 @@ export const getProceso = cache(
         if ( !proceso.esPrivado ) {
           const juzgados
             = await newJuzgado(
-              fetchP
+              fetchP 
             );
 
           const updt = await carpColl.updateOne(

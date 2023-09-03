@@ -2,21 +2,21 @@ import { NextRequest,
          NextResponse } from 'next/server';
 
 export async function GET(
-  request: NextRequest
+  request: NextRequest 
 ) {
   const {
-    host, searchParams, hostname, port
+    host, searchParams, hostname, port 
   }
     = new URL(
-      request.url
+      request.url 
     );
 
   const sharedName = searchParams.get(
-    'name'
+    'name' 
   );
 
   const sharedLink = searchParams.get(
-    'link'
+    'link' 
   );
 
   const newBookmark = {
@@ -26,7 +26,7 @@ export async function GET(
 
   return new NextResponse(
     JSON.stringify(
-      newBookmark
+      newBookmark 
     ),
     {
       status : 200,

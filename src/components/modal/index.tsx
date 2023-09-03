@@ -19,16 +19,14 @@ export default function Modal(
     children
   }: {
   children: React.ReactNode;
-}
+} 
 ) {
-
-
   const overlay = useRef(
-    null
+    null 
   );
 
   const wrapper = useRef(
-    null
+    null 
   );
 
   const router = useRouter();
@@ -41,30 +39,29 @@ export default function Modal(
   const onEnter = useCallback(
     () => {
       setIsOpen(
-        false
+        false 
       );
     }, [
-
       setIsOpen
-    ]
+    ] 
   );
 
   const onDismiss = useCallback(
     () => {
       setIsOpen(
-        !isOpen
+        !isOpen 
       );
       router.back();
     }, [
       router,
       setIsOpen,
       isOpen
-    ]
+    ] 
   );
 
   const onClick = useCallback(
     (
-      e: { target: unknown; }
+      e: { target: unknown } 
     ) => {
       if (
         e.target === overlay.current
@@ -89,7 +86,7 @@ export default function Modal(
 
   const onKeyDown = useCallback(
     (
-      e: { key: string }
+      e: { key: string } 
     ) => {
       if ( e.key === 'Escape' ) {
         onDismiss();
@@ -108,11 +105,11 @@ export default function Modal(
   useEffect(
     () => {
       setIsOpen(
-        true
+        true 
       );
     }, [
       setIsOpen
-    ]
+    ] 
   );
 
   if ( isOpen ) {

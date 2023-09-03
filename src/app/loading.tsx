@@ -5,7 +5,7 @@ import typeface from '#@/styles/fonts/typeface.module.css';
 import Link from 'next/link';
 import { Loader } from '#@/components/Loader';
 
-export default function Loading () {
+export default function Loading() {
   return (
     <div className={layout.body}>
       <div className={layout.name}>

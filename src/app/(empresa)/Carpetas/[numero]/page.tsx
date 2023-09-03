@@ -10,10 +10,12 @@ import layout from '#@/styles/layout.module.scss';
 export async function generateMetadata(
   {
     params
-  }: {params: {numero: string}}
+  }: {
+  params: { numero: string };
+} 
 ) {
   return {
-    title: `Carpeta ${ params.numero }`,
+    title: `Carpeta ${ params.numero }`
   };
 }
 
@@ -22,11 +24,11 @@ export default async function PageCarpetaNumero(
     params
   }: {
   params: { numero: string };
-}
+} 
 ) {
   const carpeta = await getCarpetabyNumero(
     Number(
-      params.numero
+      params.numero 
     )
   );
 

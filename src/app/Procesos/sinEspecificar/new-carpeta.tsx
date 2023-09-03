@@ -1,27 +1,20 @@
 'use client';
-
 import { DefaultValues,
          FormProvider,
          SubmitHandler,
          useForm,
          useWatch } from 'react-hook-form';
 import form from '#@/components/form/form.module.css';
-import { Demanda,
-         Departamento,
-         Deudor,
-         IntCarpeta } from '#@/lib/types/carpeta';
+import { IntCarpeta } from '#@/lib/types/carpeta';
 import typography from '#@/styles/fonts/typography.module.scss';
 import { SelectSection } from '#@/components/form/SelectSection';
-import { ReactNode } from 'react';
-import { getCarpetaById } from '#@/lib/Carpetas';
 import Fields from './fieldArray-juzgados';
 import { Despacho } from '#@/lib/types/despachos';
 import { NuevaCarpetaProvider } from '#@/hooks/formContext';
 import { InputSection } from '#@/components/form/InputSection';
 import layout from '#@/styles/layout.module.css';
-let renderCount = 0;
 
-const defaultValues: DefaultValues<IntCarpeta> = {
+export const defaultValues: DefaultValues<IntCarpeta> = {
   category    : 'Bancolombia',
   categoryTag : 1,
   llaveProceso: '00000000000000000000000',
@@ -80,10 +73,6 @@ export const NuevoProceso = (
   );
 
   const {
-    register,
-    getValues,
-    setValue,
-    watch,
     setFocus,
     handleSubmit,
     formState: {
@@ -146,7 +135,6 @@ export const NuevoProceso = (
     );
   };
 
-  renderCount++;
 
   return (
     <>

@@ -9,7 +9,7 @@ export async function Name(
     llaveProceso
   }: {
   llaveProceso: string;
-}
+} 
 ) {
   const proceso = await getCarpetasByllaveProceso(
     {
@@ -23,7 +23,10 @@ export async function Name(
 
   return (
     <Suspense fallback={<Loader />}>
-      <NombreComponent key={llaveProceso} deudor={proceso.deudor} />
+      <NombreComponent
+        key={llaveProceso}
+        deudor={proceso.deudor}
+      />
     </Suspense>
   );
 }

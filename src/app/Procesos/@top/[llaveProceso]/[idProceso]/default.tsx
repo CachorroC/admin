@@ -1,4 +1,5 @@
-import { getCarpetaByidProceso, getCarpetasByllaveProceso } from '#@/lib/Carpetas';
+import { getCarpetaByidProceso,
+         getCarpetasByllaveProceso } from '#@/lib/Carpetas';
 import { CarpetaCard } from '#@/components/card/CarpetasCard';
 import Link from 'next/link';
 import card from '#@/components/card/card.module.css';
@@ -11,33 +12,38 @@ import { Loader } from '#@/components/Loader';
 export default async function DefaultProcesosllaveProceso(
   {
     params: {
-      llaveProceso, idProceso
+      llaveProceso, idProceso 
     }
   }: {
-      params: { llaveProceso: string; idProceso: string };
-}
+  params: {
+    llaveProceso: string;
+    idProceso: string;
+  };
+} 
 ) {
   const Carpeta = await getCarpetaByidProceso(
     {
       idProceso: Number(
-        idProceso
+        idProceso 
       )
-    }
+    } 
   );
 
   return (
     <>
-      { Carpeta && (
-        <Fragment key={ llaveProceso }>
+      {Carpeta && (
+        <Fragment key={llaveProceso}>
           <Suspense fallback={<Loader />}>
-             <NombreComponent
-            key={ Carpeta._id }
-            deudor={ Carpeta.deudor } />
-         </Suspense>
+            <NombreComponent
+              key={Carpeta._id}
+              deudor={Carpeta.deudor}
+            />
+          </Suspense>
 
           <CarpetaCard
-            key={ Carpeta._id }
-            carpeta={ Carpeta } />
+            key={Carpeta._id}
+            carpeta={Carpeta}
+          />
         </Fragment>
       )}
     </>

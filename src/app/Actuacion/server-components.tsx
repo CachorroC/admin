@@ -16,7 +16,7 @@ export const ProcesoComponent = async (
   }: {
   carpeta: MonCarpeta;
   index: number;
-}
+} 
 ) => {
   if ( !carpeta.llaveProceso ) {
     return null;
@@ -26,7 +26,7 @@ export const ProcesoComponent = async (
     {
       llaveProceso: carpeta.llaveProceso,
       index       : index
-    }
+    } 
   );
 
   if ( !procesos || procesos.length === 0 ) {
@@ -37,7 +37,7 @@ export const ProcesoComponent = async (
     <Fragment key={carpeta.llaveProceso}>
       {procesos.map(
         (
-          proceso
+          proceso 
         ) => {
           return (
             <ProcesoCard
@@ -45,7 +45,7 @@ export const ProcesoComponent = async (
               proceso={proceso}
             />
           );
-        }
+        } 
       )}
     </Fragment>
   );
@@ -58,7 +58,7 @@ export const FechaActuacionComponent = async (
   }: {
   carpeta: MonCarpeta;
   index: number;
-}
+} 
 ) => {
   if ( !carpeta.idProceso ) {
     return null;
@@ -68,7 +68,7 @@ export const FechaActuacionComponent = async (
     {
       carpeta: carpeta,
       index  : index
-    }
+    } 
   );
 
   if (

@@ -7,7 +7,9 @@ import { Notas } from '#@/components/nota/notas';
 export default function NuevaNota(
   {
     params
-  }: {params: {llaveProceso: string}}
+  }: {
+  params: { llaveProceso: string };
+} 
 ) {
   return (
     <div className={layout.body}>

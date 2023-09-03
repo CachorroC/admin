@@ -12,24 +12,32 @@
   }
 
   &:visited {
-    background-color: var(--surface-container-lowest);
+    background-color: var(
+      --surface-container-lowest
+    );
     color: var(--on-surface-variant);
   }
 
   &:hover {
-    background-color: var(--surface-container-high);
+    background-color: var(
+      --surface-container-high
+    );
     color: var(--on-surface);
     box-shadow: var(--dp8);
   }
 
   &:focus {
-     background-color: var(--surface-container-high);
+    background-color: var(
+      --surface-container-high
+    );
     color: var(--on-surface);
     box-shadow: var(--dp8);
     border: 5px solid var(--outline);
   }
   &:active {
-    background-color: var(--surface-container-highest);
+    background-color: var(
+      --surface-container-highest
+    );
     color: var(--primary);
   }
 }
@@ -79,7 +87,9 @@
 }
 
 .input {
-  background-color: var(--surface-container-lowest);
+  background-color: var(
+    --surface-container-lowest
+  );
   border: 2px solid var(--outline-variant);
   color: var(--on-surface);
   grid-area: inputSearchBar;
@@ -106,10 +116,10 @@
 
   & > .icon {
     font-variation-settings:
-      "FILL" 0,
-      "wght" 200,
-      "GRAD" 0,
-      "opsz" 24;
+      'FILL' 0,
+      'wght' 200,
+      'GRAD' 0,
+      'opsz' 24;
     color: var(--secondary);
   }
 
@@ -130,10 +140,10 @@
 
     & > .icon {
       font-variation-settings:
-        "FILL" 1,
-        "wght" 600,
-        "GRAD" 200,
-        "opsz" 48;
+        'FILL' 1,
+        'wght' 600,
+        'GRAD' 200,
+        'opsz' 48;
       color: var(--secondary);
     }
   }

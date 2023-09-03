@@ -12,13 +12,13 @@ async function Acts(
     carpeta
   }: {
   carpeta: MonCarpeta;
-}
+} 
 ) {
   const actuaciones = await getActuaciones(
     {
       carpeta: carpeta,
       index  : 1
-    }
+    } 
   );
 
   return (
@@ -26,10 +26,10 @@ async function Acts(
       {actuaciones
         && actuaciones.map(
           (
-            act, i, arr
+            act, i, arr 
           ) => {
             const {
-              idRegActuacion
+              idRegActuacion 
             } = act;
 
             return (
@@ -38,12 +38,11 @@ async function Acts(
                 key={i}
               />
             );
-          }
+          } 
         )}
     </>
   );
 }
-
 
 export default async function PageProcesosLeftllaveProceso(
   {
@@ -52,7 +51,7 @@ export default async function PageProcesosLeftllaveProceso(
   params: {
     llaveProceso: string;
   };
-}
+} 
 ) {
   const Carpeta = await getCarpetasByllaveProceso(
     {

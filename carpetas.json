@@ -32080,10 +32080,7 @@
           "url": "https://www.ramajudicial.gov.co/web/juzgado-006-civil-municipal-de-bogota"
         }
       ],
-      "obligacion": [
-        "1772345678",
-        654567890
-      ]
+      "obligacion": ["1772345678", 654567890]
     },
     "deudor": {
       "cedula": "79780047",

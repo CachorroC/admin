@@ -2,7 +2,9 @@
 import { Route } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ReactNode, Suspense, useState } from 'react';
+import { ReactNode,
+         Suspense,
+         useState } from 'react';
 import card from '#@/components/card/card.module.css';
 import { useModal } from '#@/app/modal-context';
 import typography from '#@/styles/fonts/typography.module.css';
@@ -21,22 +23,22 @@ export const Card = (
   path: string;
   carpeta: MonCarpeta;
   children: ReactNode;
-}
+} 
 ) => {
   const [
     openLinks,
     setOpenLinks
   ]
     = useState(
-      false
+      false 
     );
 
   const {
-    deudor
+    deudor 
   } = carpeta;
 
   const {
-    email, tel
+    email, tel 
   } = deudor;
 
   const [
@@ -57,10 +59,10 @@ export const Card = (
 
   const clickHandler = () => {
     setIsNavOpen(
-      false
+      false 
     );
     setIsOpen(
-      false
+      false 
     );
   };
 
@@ -96,7 +98,7 @@ export const Card = (
 
   function handleOpenLinks() {
     setOpenLinks(
-      !openLinks
+      !openLinks 
     );
   }
 
@@ -105,7 +107,7 @@ export const Card = (
       className={card.container}
       onClick={() => {
         setOpenLinks(
-          !openLinks
+          !openLinks 
         );
       }}>
       <div className={card.card}>
@@ -116,9 +118,9 @@ export const Card = (
           </sub>
           <Suspense fallback={<Loader />}>
             <NombreComponent
-            key={carpeta._id}
-            deudor={carpeta.deudor}
-          />
+              key={carpeta._id}
+              deudor={carpeta.deudor}
+            />
           </Suspense>
         </div>
         <div className={card.content}>
@@ -178,7 +180,7 @@ export const Card = (
               href={`/Notas/${ carpeta.llaveProceso }`}
               onClick={() => {
                 setIsOpen(
-                  true
+                  true 
                 );
               }}>
               <span

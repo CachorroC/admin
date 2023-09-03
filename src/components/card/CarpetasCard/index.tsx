@@ -12,22 +12,20 @@ import { Accordion } from '#@/components/Accordion';
 import { NombreComponent } from '../../nombre';
 import card from '#@/components/card/card.module.css';
 
-
-
 export const CarpetaCard = (
   {
     carpeta
   }: {
   carpeta: MonCarpeta;
-}
+} 
 ) => {
   const {
-    llaveProceso, idProceso, _id
+    llaveProceso, idProceso, _id 
   }
     = carpeta;
 
   const {
-    tel, direccion, email
+    tel, direccion, email 
   }
     = carpeta.deudor;
 
@@ -49,69 +47,79 @@ export const CarpetaCard = (
   ) as Route;
 
   return (
-
     <div
       className={styles.container}
       key={_id}>
       <div className={styles.card}>
-        <NombreComponent key={_id}
+        <NombreComponent
+          key={_id}
           deudor={carpeta.deudor}
         />
-        <sub className={ card.sub }>
+        <sub className={card.sub}>
           {carpeta.numero}
         </sub>
-        <p className={ typography.bodySmall }>{ carpeta.category }</p>
-        <p className={ typography.labelSmall }>{ carpeta.tipoProceso }</p>
-        <p className={ typography.titleSmall }>{ carpeta.deudor.cedula }</p>
+        <p className={typography.bodySmall}>
+          {carpeta.category}
+        </p>
+        <p className={typography.labelSmall}>
+          {carpeta.tipoProceso}
+        </p>
+        <p className={typography.titleSmall}>
+          {carpeta.deudor.cedula}
+        </p>
         <div className={styles.links}>
           <Link
-            className={ styles.button }
+            className={styles.button}
             key={_id}
             href={`/Carpetas/${ carpeta.numero }`}>
             <span
               className={`material-symbols-outlined ${ styles.icon }`}>
-                folder_open
+              folder_open
             </span>
-            <span
-              className={styles.tooltiptext}>
-                Abrir
+            <span className={styles.tooltiptext}>
+              Abrir
             </span>
           </Link>
-          {juzgados && juzgados.map(
-            (
-              despacho, index
-            ) => {
-              return (
-                <Link key={despacho.url}   target={'_blank'}           className={card.link}
-                  href={despacho.url as Route}>
-                  <span className={`material-symbols-outlined ${ card.icon }`}>
-                  enable
-                  </span>
-                  <sub
-                    className={
-                      typography.displaySmall
-                    }>
-                    {`${ despacho.id }`}
-                  </sub>
-                  <p
-                    className={
-                      typography.labelSmall
-                    }>
-                    {`Juzgado de origen: ${ despacho.tipo }`}
-                  </p>
-                </Link>
-              );
-            }
-          )}
+          {juzgados
+            && juzgados.map(
+              (
+                despacho, index 
+              ) => {
+                return (
+                  <Link
+                    key={despacho.url}
+                    target={'_blank'}
+                    className={card.link}
+                    href={despacho.url as Route}>
+                    <span
+                      className={`material-symbols-outlined ${ card.icon }`}>
+                    enable
+                    </span>
+                    <sub
+                      className={
+                        typography.displaySmall
+                      }>
+                      {`${ despacho.id }`}
+                    </sub>
+                    <p
+                      className={
+                        typography.labelSmall
+                      }>
+                      {`Juzgado de origen: ${ despacho.tipo }`}
+                    </p>
+                  </Link>
+                );
+              } 
+            )}
           {tel.celular && (
             <Link
-              key={ tel.celular }
+              key={tel.celular}
               target={'_blank'}
               className={card.link}
               href={`tel:${ tel.celular }`}>
               <span
                 className={`material-symbols-outlined ${ styles.icon }`}>
-                  phone_iphone
+                phone_iphone
               </span>
               <span
                 className={styles.tooltiptext}>
@@ -121,13 +129,13 @@ export const CarpetaCard = (
           )}
           {tel.fijo && (
             <Link
-              key={ tel.fijo }
+              key={tel.fijo}
               target={'_blank'}
               className={card.link}
               href={`tel:${ tel.fijo }`}>
               <span
                 className={`material-symbols-outlined ${ styles.icon }`}>
-                  call
+                call
               </span>
               <span
                 className={styles.tooltiptext}>
@@ -135,38 +143,32 @@ export const CarpetaCard = (
               </span>
             </Link>
           )}
-          {carpeta.demanda
-                .vencimientoPagare && (
-            <p
-              className={
-                typography.labelMedium
-              }>
+          {carpeta.demanda.vencimientoPagare && (
+            <p className={typography.labelMedium}>
               {fixFechas(
-                carpeta.demanda
-                      .vencimientoPagare
+                carpeta.demanda.vencimientoPagare
               )}
             </p>
           )}
           {email && (
             <Link
-              className={ styles.button }
+              className={styles.button}
               target={'_blank'}
               href={`mailto:${ email }`}>
               <span
                 className={`material-symbols-outlined ${ styles.icon }`}>
-                  forward_to_inbox
+                forward_to_inbox
               </span>
               <span
                 className={styles.tooltiptext}>
-                  Email
+                Email
               </span>
             </Link>
           )}
 
           {carpeta.demanda
                 .entregagarantiasAbogado && (
-            <p
-              className={typography.labelSmall}>
+            <p className={typography.labelSmall}>
               {fixFechas(
                 carpeta.demanda
                       .entregagarantiasAbogado
@@ -175,14 +177,13 @@ export const CarpetaCard = (
           )}
           <p>
             {carpeta.demanda.capitalAdeudado
-                && fixMoney(
-                  {
-                    valor: Number(
-                      carpeta.demanda
-                            .capitalAdeudado
-                    )
-                  }
-                )}
+              && fixMoney(
+                {
+                  valor: Number(
+                    carpeta.demanda.capitalAdeudado
+                  )
+                } 
+              )}
           </p>
         </div>
       </div>

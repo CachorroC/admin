@@ -11,7 +11,7 @@ export default async function PageProcesosEditarLeft(
     params
   }: {
   params: { llaveProceso: string };
-}
+} 
 ) {
   const carpeta = await getCarpetasByllaveProceso(
     {
@@ -26,7 +26,8 @@ export default async function PageProcesosEditarLeft(
   }
 
   return (
-    <NuevoProceso key={params.llaveProceso}
+    <NuevoProceso
+      key={params.llaveProceso}
       carpeta={carpeta}
       despachos={despachos}
     />

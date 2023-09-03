@@ -10,7 +10,7 @@ export default function Default() {
         Procesos
       </h1>
       <NewNota
-        llaveProceso={ 'Procesos' }
+        llaveProceso={'Procesos'}
         key={'Procesos'}
       />
     </>

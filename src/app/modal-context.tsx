@@ -10,7 +10,7 @@ const ModalContext = createContext<
   | [boolean, Dispatch<SetStateAction<boolean>>]
   | null
 >(
-  null
+  null 
 );
 
 export function ModalProvider(
@@ -18,13 +18,13 @@ export function ModalProvider(
     children
   }: {
   children: ReactNode;
-}
+} 
 ) {
   const [
     isOpen,
     setIsOpen
   ] = useState(
-    false
+    false 
   );
 
   return (
@@ -40,7 +40,7 @@ export function ModalProvider(
 
 export function useModal() {
   const context = useContext(
-    ModalContext
+    ModalContext 
   );
 
   if ( context === null ) {

@@ -1,4 +1,3 @@
-
 import layout from '#@/styles/layout.module.css';
 import Formulario from './formulario';
 import Title from '#@/components/Headings/title';

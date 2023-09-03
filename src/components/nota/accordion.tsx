@@ -15,23 +15,22 @@ export function AccordionRow(
   tarea: string;
   dueDate: string;
   isDone: boolean;
-}
+} 
 ) {
   const [
     isActive,
     setIsActive
   ] = useState(
-    false
+    false 
   );
 
   return (
     <>
-
       <button
         className={accordion.button}
         onClick={() => {
           return setIsActive(
-            !isActive
+            !isActive 
           );
         }}>
         <span className='material-symbols-outlined'>
@@ -42,8 +41,7 @@ export function AccordionRow(
       </button>
       {isActive && (
         <div className={accordion.content}>
-          <h1
-            className={typography.titleMedium}>
+          <h1 className={typography.titleMedium}>
             {tarea}
           </h1>
           <p
@@ -68,7 +66,6 @@ export function AccordionRow(
           </span>
         </div>
       )}
-
     </>
   );
 }

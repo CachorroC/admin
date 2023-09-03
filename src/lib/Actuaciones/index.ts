@@ -13,12 +13,12 @@ export const actuacionesCollection = async () => {
 
   if ( !client ) {
     throw new Error(
-      'no hay cliente mongólico'
+      'no hay cliente mongólico' 
     );
   }
 
   const db = client.db(
-    'RyS'
+    'RyS' 
   );
 
   const actuaciones = db.collection<Actuacion>(
@@ -32,10 +32,9 @@ export async function fetchActuaciones(
   idProceso: number,
   index: number
 ) {
-
   try {
     await sleep(
-      index
+      index 
     );
 
     const request = await fetch(
@@ -60,7 +59,7 @@ export async function fetchActuaciones(
       = ( await request.json() ) as ConsultaActuacion;
 
     const {
-      actuaciones
+      actuaciones 
     } = json;
 
     return actuaciones;
@@ -88,7 +87,7 @@ export const getActuaciones = cache(
     }: {
     carpeta: MonCarpeta;
     index: number;
-  }
+  } 
   ) => {
     if ( !carpeta.idProceso ) {
       return null;
@@ -107,17 +106,17 @@ export const getActuaciones = cache(
       )
             .toISOString();
       console.log(
-        `${ index } : ${ newDate }`
+        `${ index } : ${ newDate }` 
       );
 
       const oldDate
         = carpeta.fecha
         && new Date(
-          carpeta.fecha
+          carpeta.fecha 
         )
               .toISOString();
       console.log(
-        `${ index } : ${ oldDate }`
+        `${ index } : ${ oldDate }` 
       );
 
       if ( oldDate !== newDate ) {
@@ -125,7 +124,7 @@ export const getActuaciones = cache(
           {
             idProceso  : carpeta.idProceso,
             actuaciones: actuaciones
-          }
+          } 
         );
       }
     }
@@ -142,7 +141,7 @@ export const updateActuaciones = cache(
     }: {
     idProceso: number;
     actuaciones: Actuacion[];
-  }
+  } 
   ) => {
     const carpetasColl
       = await carpetasCollection();

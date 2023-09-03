@@ -14,17 +14,17 @@ export const carpetasCollection = cache(
 
     if ( !client ) {
       throw new Error(
-        'no hay cliente mongólico'
+        'no hay cliente mongólico' 
       );
     }
 
     const db = client.db(
-      'RyS'
+      'RyS' 
     );
 
     const carpetas
       = db.collection<IntCarpeta>(
-        'Carpetas'
+        'Carpetas' 
       );
 
     return carpetas;
@@ -37,18 +37,18 @@ export const fetchCarpetas = cache(
 
     const carpetasRaw = await collection
           .find(
-            {}
+            {} 
           )
           .sort(
             {
               numero: -1
-            }
+            } 
           )
           .allowDiskUse()
           .toArray();
 
     return carpetasRaw;
-  }
+  } 
 );
 
 export const getCarpetas = cache(
@@ -57,11 +57,11 @@ export const getCarpetas = cache(
 
     const carpetas
     = carpetaConvert.toMonCarpetas(
-      carpetasRaw
+      carpetasRaw 
     );
 
     return carpetas;
-  }
+  } 
 );
 
 export const getCarpetasByllaveProceso = cache(
@@ -70,20 +70,20 @@ export const getCarpetasByllaveProceso = cache(
       llaveProceso
     }: {
     llaveProceso: string;
-  }
+  } 
   ) => {
     const collection = await carpetasCollection();
 
     const carpeta = await collection.findOne(
       {
         llaveProceso: llaveProceso
-      }
+      } 
     );
 
     if ( carpeta ) {
       const newCarpeta
         = carpetaConvert.toMonCarpeta(
-          carpeta
+          carpeta 
         );
 
       return newCarpeta;
@@ -96,17 +96,17 @@ export const getCarpetasByllaveProceso = cache(
 export const getCarpetaById = cache(
   async (
     {
-      _id
-    }: { _id: string }
+      _id 
+    }: { _id: string } 
   ) => {
     const collection = await carpetasCollection();
 
     const Carpeta = await collection.findOne(
       {
         _id: new ObjectId(
-          _id
+          _id 
         )
-      }
+      } 
     );
 
     if ( !Carpeta ) {
@@ -115,7 +115,7 @@ export const getCarpetaById = cache(
 
     const carpeta
       = carpetaConvert.toMonCarpeta(
-        Carpeta
+        Carpeta 
       );
 
     return Carpeta;
@@ -124,14 +124,14 @@ export const getCarpetaById = cache(
 
 export const getCarpetabyNumero = cache(
   async (
-    numero: number
+    numero: number 
   ) => {
     const collection = await carpetasCollection();
 
     const carpeta = await collection.findOne(
       {
         numero: numero
-      }
+      } 
     );
 
     if ( !carpeta ) {
@@ -140,7 +140,7 @@ export const getCarpetabyNumero = cache(
 
     const Carpeta
       = carpetaConvert.toMonCarpeta(
-        carpeta
+        carpeta 
       );
 
     return Carpeta;
@@ -153,14 +153,14 @@ export const getCarpetaByidProceso = cache(
       idProceso
     }: {
     idProceso: number;
-  }
+  } 
   ) => {
     const collection = await carpetasCollection();
 
     const carpeta = await collection.findOne(
       {
         idProceso: idProceso
-      }
+      } 
     );
 
     if ( !carpeta ) {
@@ -169,7 +169,7 @@ export const getCarpetaByidProceso = cache(
 
     const Carpeta
       = carpetaConvert.toMonCarpeta(
-        carpeta
+        carpeta 
       );
 
     return Carpeta;
