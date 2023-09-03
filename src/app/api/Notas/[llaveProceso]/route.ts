@@ -95,7 +95,7 @@ export async function PUT(
       json
     );
 
-  if ( update.acknowledged) {
+  if ( update.acknowledged ) {
     return new NextResponse(
       JSON.stringify(
         update.insertedId

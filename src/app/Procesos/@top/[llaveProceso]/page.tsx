@@ -5,7 +5,8 @@ import card from '#@/components/card/card.module.css';
 import { NombreComponent } from '#@/components/nombre';
 import { notFound } from 'next/navigation';
 import { Route } from 'next';
-import { Fragment } from 'react';
+import { Fragment, Suspense } from 'react';
+import { Loader } from '#@/components/Loader';
 
 export default async function DefaultProcesosllaveProceso(
   {
@@ -26,9 +27,11 @@ export default async function DefaultProcesosllaveProceso(
     <>
       { Carpeta && (
         <Fragment key={ llaveProceso }>
-          <NombreComponent
+          <Suspense fallback={<Loader />}>
+            <NombreComponent
             key={ Carpeta._id }
             deudor={ Carpeta.deudor } />
+          </Suspense>
 
           <CarpetaCard
             key={ Carpeta._id }

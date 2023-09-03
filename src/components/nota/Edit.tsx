@@ -58,7 +58,7 @@ export function Edit(
     );
 
     const postNewNote = await fetch(
-      `/api/Notas/${nota.llaveProceso}?_id=${ nota._id }`,
+      `/api/Notas/${ nota.llaveProceso }?_id=${ nota._id }`,
       {
         method : 'PUT',
         headers: {

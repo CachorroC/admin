@@ -14,8 +14,8 @@ export interface IntCarpeta {
   category: Category;
   llaveProceso: string;
   tipoProceso: TipoProceso;
-  demanda: Demanda;
-  deudor: Deudor;
+  demanda: intDemanda;
+  deudor: intDeudor;
   idProceso?: number;
 
   lastModified?: Date;
@@ -28,7 +28,7 @@ export type Category =
   | 'Reintegra'
   | 'Insolvencia';
 
-export interface Demanda {
+export interface intDemanda {
   capitalAdeudado: CapitalAdeudado;
   entregagarantiasAbogado: Date;
   etapaProcesal: null | string;
@@ -42,7 +42,7 @@ export interface Demanda {
   obligacion?:
     | { [key: string]: Obligacion }
     | ( string | number | null )[];
-  juzgados?: Juzgado[];
+  juzgados?: intJuzgado[];
 }
 
 export type CapitalAdeudado = number | string;
@@ -58,7 +58,7 @@ export type Descripcion =
   | 'CUNDINAMARCA'
   | 'TOLIMA';
 
-export interface Juzgado {
+export interface intJuzgado {
   id: number;
   tipo: string;
   url: string;
@@ -66,8 +66,8 @@ export interface Juzgado {
 
 export type Obligacion = number | string;
 
-export interface Deudor {
-  tel: Tel;
+export interface intDeudor {
+  tel: intTel;
   primerNombre: string;
   segundoNombre?: string;
   primerApellido: string;
@@ -77,7 +77,7 @@ export interface Deudor {
   email?: string;
 }
 
-export interface Tel {
+export interface intTel {
   fijo: number | null;
   celular: number | null;
 }
@@ -225,14 +225,14 @@ export class carpetaConvert {
 
   public static toDemanda(
     json: string
-  ): Demanda {
+  ): intDemanda {
     return JSON.parse(
       json
     );
   }
 
   public static demandaToJson(
-    value: Demanda
+    value: intDemanda
   ): string {
     return JSON.stringify(
       value
@@ -257,14 +257,14 @@ export class carpetaConvert {
 
   public static toJuzgado(
     json: string
-  ): Juzgado {
+  ): intJuzgado {
     return JSON.parse(
       json
     );
   }
 
   public static juzgadoToJson(
-    value: Juzgado
+    value: intJuzgado
   ): string {
     return JSON.stringify(
       value
@@ -273,14 +273,14 @@ export class carpetaConvert {
 
   public static toDeudor(
     json: string
-  ): Deudor {
+  ): intDeudor {
     return JSON.parse(
       json
     );
   }
 
   public static deudorToJson(
-    value: Deudor
+    value: intDeudor
   ): string {
     return JSON.stringify(
       value
@@ -289,14 +289,14 @@ export class carpetaConvert {
 
   public static toTel(
     json: string
-  ): Tel {
+  ): intTel {
     return JSON.parse(
       json
     );
   }
 
   public static telToJson(
-    value: Tel
+    value: intTel
   ): string {
     return JSON.stringify(
       value

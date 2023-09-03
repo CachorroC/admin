@@ -5,20 +5,20 @@ import { hash } from 'bcrypt';
 import { NextResponse } from 'next/server';
 
 export async function POST(
-  req: Request 
+  req: Request
 ) {
   const {
-    cedula, primerNombre, primerApellido 
+    cedula, primerNombre, primerApellido
   }
     = await req.json();
 
   const exists
-    = await prisma.prismaDeudor.findUnique(
+    = await prisma.deudor.findUnique(
       {
         where: {
           cedula
         }
-      } 
+      }
     );
 
   if ( exists ) {
@@ -32,14 +32,14 @@ export async function POST(
     );
   }
 
-  const user = await prisma.prismaDeudor.create(
+  const user = await prisma.deudor.create(
     {
       data: {
         cedula,
         primerNombre,
         primerApellido
       }
-    } 
+    }
   );
 
   /*   const user = await prisma.prismaDeudor.create(
@@ -54,6 +54,6 @@ export async function POST(
   ); */
 
   return NextResponse.json(
-    user 
+    user
   );
 }

@@ -145,10 +145,12 @@ export async function ListCardCarpetasNFechas() {
                 key={carpeta._id}
                 path={'/Procesos'}
                 carpeta={carpeta}>
-                <NombreComponent
+                <Suspense fallback={<Loader />}>
+                   <NombreComponent
                   deudor={carpeta.deudor}
                   key={carpeta._id}
                 />
+               </Suspense>
                 <Suspense fallback={<Loader />}>
                   {carpeta.idProceso && (
                     <Fecha

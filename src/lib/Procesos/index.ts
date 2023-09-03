@@ -4,7 +4,7 @@ import { sleep } from '#@/lib/fix';
 import clientPromise from '#@/lib/mongodb';
 import { ConsultaNumeroRadicacion,
          Proceso } from '#@/lib/types/procesos';
-import { Juzgado } from '#@/lib/types/carpeta';
+import { intJuzgado } from '#@/lib/types/carpeta';
 import { Despacho } from '#@/lib/types/despachos';
 import { cache } from 'react';
 
@@ -102,7 +102,7 @@ export async function newJuzgado(
       matchedId?.toString()
     );
 
-    const newJuzgado: Juzgado = {
+    const newJuzgado: intJuzgado = {
       id  : newId ?? 0,
       tipo: matchedDespacho
         ? matchedDespacho.nombre

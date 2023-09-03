@@ -10,20 +10,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model PrismaCarpeta {
-  numero       Int          @id @default(autoincrement())
-  category     Category     @default(Bancolombia)
+model Deudor {
+  cedula          BigInt    @id @unique
+  primerNombre    String
+  segundoNombre   String?
+  primerApellido  String
+  segundoApellido String?
+  email           String?
+  telefono        Telefono?
+  direccion       String?
+  Carpeta         Carpeta[]
+}
+
+model Carpeta {
+  numero       Int       @id @unique
+  category     Category  @default(Bancolombia)
   tipoProceso  String
-  deudor       PrismaDeudor @relation(fields: [cedula], references: [cedula])
-  cedula       Int          @unique
+  deudor       Deudor    @relation(fields: [deudorCedula], references: [cedula])
   procesos     Proceso[]
-  llaveProceso String       @unique
+  llaveProceso String    @unique
+  deudorCedula BigInt
 }
 
 model Proceso {
-  idProceso            BigInt        @id
+  idProceso            BigInt       @id
   idConexion           Int
-  carpeta              PrismaCarpeta @relation(fields: [llaveProceso], references: [llaveProceso])
+  carpeta              Carpeta      @relation(fields: [llaveProceso], references: [llaveProceso])
   llaveProceso         String
   fechaProceso         DateTime
   fechaUltimaActuacion DateTime
@@ -34,7 +46,7 @@ model Proceso {
   cantFilas            Int
   actuaciones          Actuacion[]
   Demanda              Demanda[]
-  Juzgado              Juzgado       @relation(fields: [despacho], references: [tipo])
+  Juzgado              Juzgado      @relation(fields: [despacho], references: [tipo])
 }
 
 model Demanda {
@@ -78,23 +90,11 @@ model Actuacion {
   can            Int
 }
 
-model PrismaDeudor {
-  cedula          Int            @id @unique
-  primerNombre    String
-  primerApellido  String
-  direccion       String?
-  email           String?
-  segundoApellido String?
-  segundoNombre   String?
-  telefono        Telefono?
-  PrismaCarpeta   PrismaCarpeta?
-}
-
 model Telefono {
   fijo    Int
   celular Int
-  deudor  PrismaDeudor @relation(fields: [cedula], references: [cedula])
-  cedula  Int          @id
+  deudor  Deudor @relation(fields: [cedula], references: [cedula])
+  cedula  BigInt @id
 }
 
 enum Category {

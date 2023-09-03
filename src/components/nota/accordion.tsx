@@ -5,7 +5,6 @@ import accordion from './accordion.module.css';
 import typeface from '#@/components/typográficos/typeface.module.css';
 import note from '#@/components/nota/note.module.css';
 import typography from '#@/styles/fonts/typography.module.css';
-import { Accordion } from '#@/components/Accordion';
 
 export function AccordionRow(
   {
@@ -26,7 +25,7 @@ export function AccordionRow(
   );
 
   return (
-    <Accordion>
+    <>
 
       <button
         className={accordion.button}
@@ -70,6 +69,6 @@ export function AccordionRow(
         </div>
       )}
 
-    </Accordion>
+    </>
   );
 }

@@ -91,15 +91,15 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icons/favicon.png'
+        url: '/favicon.ico'
       },
       new URL(
         '/favicon.svg',
         `https://${ hostname }`
       )
     ],
-    shortcut: '/safari-pinned-tab.svg',
-    apple   : '/icons/apple-touch-icon.png',
+    shortcut: '/icons/safari-pinned-tab.svg',
+    apple   : '/icons/safari-pinned-tab.svg',
     other   : {
       rel: 'apple-touch-icon-precomposed',
       url: '/icons/apple-touch-icon-precomposed.png'

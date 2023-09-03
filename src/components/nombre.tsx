@@ -1,12 +1,12 @@
 import typography from '#@/styles/fonts/typography.module.css';
-import { Deudor } from '#@/lib/types/carpeta';
+import {intDeudor } from '#@/lib/types/carpeta';
 import card from '#@/components/card/card.module.scss';
 
 export function NombreComponent(
   {
     deudor
   }: {
-  deudor: Deudor;
+  deudor: intDeudor;
 }
 ) {
   const nombres = deudor.segundoNombre

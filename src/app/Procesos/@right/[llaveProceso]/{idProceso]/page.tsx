@@ -1,3 +1,4 @@
+import { NewNota } from '#@/components/nota/NuevaNota';
 import { Nota } from '#@/components/nota/notas';
 import { LinkCard } from '#@/components/search/link';
 import { getCarpetaByidProceso } from '#@/lib/Carpetas';
@@ -25,6 +26,7 @@ export default async function Page (
 
   return (
     <Fragment key={ params.idProceso }>
+      <NewNota llaveProceso={ params.llaveProceso } key={params.llaveProceso}/>
       { carpeta && (
         <LinkCard key={params.idProceso} path={ '/Procesos' } carpeta={ carpeta } />
       )}

@@ -9,6 +9,8 @@ import { useNavigator,
 import { useRouter } from 'next/navigation';
 import { NombreComponent } from '../nombre';
 import { MonCarpeta } from '#@/lib/types/carpeta';
+import { Suspense } from 'react';
+import { Loader } from '../Loader';
 
 export const LinkCard = (
   {
@@ -88,7 +90,9 @@ export const LinkCard = (
           }`}>
           {carpeta.numero}
         </sup>
-        <NombreComponent key={carpeta._id} deudor={deudor} />
+        <Suspense fallback={<Loader />}>
+           <NombreComponent key={carpeta._id} deudor={deudor} />
+       </Suspense>
         {Nombre}
 
         <sub className={searchbar.date}>

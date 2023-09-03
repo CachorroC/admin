@@ -1,7 +1,7 @@
 .container {
   display: grid;
   gap: 2vmin;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   box-sizing: border-box;
   background-color: var(--surface);
@@ -30,6 +30,19 @@
   }
 }
 
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  grid-area: header;
+  border-radius: 0 0 2vmin 2vmin;
+  gap: 1vmin;
+  padding: 1vmin;
+  box-shadow: var(--dp6);
+  background-color: var(--nav-background);
+}
+
 .right {
   display: flex;
   flex-wrap: nowrap;
@@ -47,10 +60,15 @@
 .right > * {
   flex: 1 0 auto;
 }
+@media (width < 600px) {
+  .right {
+    display: none;
+  }
+}
 
 .name {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   border-radius: 2vmin;
   box-shadow: var(--dp1);
   background-color: var(--surface-dim);
@@ -62,6 +80,11 @@
 }
 .name > * {
   flex: 1 1 100%;
+}
+@media (1200px < width) {
+  .name {
+    flex-flow: row nowrap;
+  }
 }
 
 .left {
@@ -153,16 +176,11 @@
   .body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-rows: repeat(8, 1fr);
     box-sizing: border-box;
     grid-auto-flow: row;
-    grid-template-areas: "name name name name" "left left left left" "left left left left" "left left left left" "left left left left" "right right right right" "right right right right";
+    grid-template-areas: "left left left left" "left left left left" "left left left left" "left left left left" "left left left left" "left left left left" "name name name name" "name name name name";
     grid-area: body;
-  }
-  .name {
-    grid-area: name;
-    display: flex;
-    flex-flow: row nowrap;
   }
   .left {
     display: flex;
@@ -175,29 +193,8 @@
     height: auto;
     box-sizing: border-box;
   }
-  .right {
-    display: flex;
-    flex-flow: column wrap;
-    grid-area: right;
-  }
-  .right > * {
-    width: 33%;
-    box-sizing: border-box;
-  }
 }
 @media screen and (min-width: 1200px) {
-  .header {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: stretch;
-    grid-area: header;
-    border-radius: 0 0 2vmin 2vmin;
-    gap: 1vmin;
-    padding: 1vmin;
-    box-shadow: var(--dp6);
-    background-color: var(--nav-background);
-  }
   .header .sidenav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -253,5 +250,3 @@
     transform: rotate(360deg);
   }
 }
-
-/*# sourceMappingURL=layout.module.css.map */

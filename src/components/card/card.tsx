@@ -2,7 +2,7 @@
 import { Route } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ReactNode, useState } from 'react';
+import { ReactNode, Suspense, useState } from 'react';
 import card from '#@/components/card/card.module.css';
 import { useModal } from '#@/app/modal-context';
 import typography from '#@/styles/fonts/typography.module.css';
@@ -10,6 +10,7 @@ import { useCategory,
          useNavigator } from '#@/app/search-context';
 import { MonCarpeta } from '#@/lib/types/carpeta';
 import { NombreComponent } from '../nombre';
+import { Loader } from '../Loader';
 
 export const Card = (
   {
@@ -113,10 +114,12 @@ export const Card = (
             className={`${ typography.labelSmall } ${ card.sub }`}>
             {carpeta.numero}
           </sub>
-          <NombreComponent
+          <Suspense fallback={<Loader />}>
+            <NombreComponent
             key={carpeta._id}
             deudor={carpeta.deudor}
           />
+          </Suspense>
         </div>
         <div className={card.content}>
           {children}

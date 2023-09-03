@@ -2,23 +2,31 @@ import { NextRequest,
          NextResponse } from 'next/server';
 
 export async function GET(
-  Request: NextRequest 
+  request: NextRequest
 ) {
   const {
-    host, searchParams, hostname, port 
+    host, searchParams, hostname, port
   }
     = new URL(
-      Request.url 
+      request.url
     );
+
+  const sharedName = searchParams.get(
+    'name'
+  );
+
+  const sharedLink = searchParams.get(
+    'link'
+  );
+
+  const newBookmark = {
+    name: sharedName,
+    link: sharedLink
+  };
 
   return new NextResponse(
     JSON.stringify(
-      {
-        host        : host,
-        searchParams: searchParams,
-        port        : port,
-        hostname    : hostname
-      } 
+      newBookmark
     ),
     {
       status : 200,

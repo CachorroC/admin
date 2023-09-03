@@ -1,8 +1,10 @@
-import layout from '#@/styles/layout.module.css';
-import navbar from '#@/components/navbar/navbar.module.css';
-import typography from '#@/styles/fonts/typography.module.css';
 import { Loader } from '#@/components/Loader';
+import layout from '#@/styles/layout.module.css';
 
 export default function Loading() {
-  return <Loader />;
+  return (
+    <div className={ layout.header }>
+      <Loader />
+    </div>
+  );
 }
